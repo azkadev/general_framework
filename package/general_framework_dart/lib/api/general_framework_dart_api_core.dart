@@ -32,7 +32,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-import 'dart:async'; 
+import 'dart:async';
 
 import 'package:general_lib/general_lib.dart';
 import 'package:general_framework_dart/api/extensions.dart';
@@ -100,12 +100,12 @@ class GeneralFrameworkDartApi {
 
     // default configuration pubspec
     PubspecGeneralFramework pubspecGeneralFramework_default = PubspecGeneralFramework.create(
-      repository: "https://github.com/{main_username_owner}/general_framework",
-      homepage: "https://github.com/{main_username_owner}/general_framework",
-      issue_tracker: "https://github.com/{main_username_owner}/general_framework/issues",
-      documentation: "https://github.com/{main_username_owner}/general_framework/tree/main/docs",
+      repository: "https://github.com/azkadev/general_framework",
+      homepage: "https://github.com/azkadev/general_framework",
+      issue_tracker: "https://github.com/azkadev/general_framework/issues",
+      documentation: "https://github.com/azkadev/general_framework/tree/main/docs",
       funding: [
-        "https://github.com/sponsors/{main_username_owner}",
+        "https://github.com/sponsors/azkadev",
       ],
       dependencies: PubspecGeneralFrameworkDependencies({
         "general_framework_dart": "any",

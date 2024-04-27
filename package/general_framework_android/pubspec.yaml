@@ -1,12 +1,12 @@
 name: 'general_framework_android'
-description: 'A sample command-line application.'
+description: 'General Framework Library for help you create project more easy with general standarization style code base'
 version: '0.0.0'
-homepage: 'https://github.com/{main_username_owner}/general_framework'
-repository: 'https://github.com/{main_username_owner}/general_framework'
-issue_tracker: 'https://github.com/{main_username_owner}/general_framework/issues'
-documentation: 'https://github.com/{main_username_owner}/general_framework/tree/main/docs'
+homepage: 'https://github.com/azkadev/general_framework'
+repository: 'https://github.com/azkadev/general_framework'
+issue_tracker: 'https://github.com/azkadev/general_framework/issues'
+documentation: 'https://github.com/azkadev/general_framework/tree/main/docs'
 funding: 
-  - 'https://github.com/sponsors/{main_username_owner}'
+  - 'https://github.com/sponsors/azkadev'
 platforms: 
   android: null
   ios: null

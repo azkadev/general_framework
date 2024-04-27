@@ -45,6 +45,7 @@ void main(List<String> args) async {
   }
 
   List<FileSystemEntity> file_system_entity_packages = directory_packages.listSync();
+  file_system_entity_packages.sort((a, b) => a.path.compareTo(b.path));
   String contents = """
 #!/bin/sh
 

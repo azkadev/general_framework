@@ -38,11 +38,11 @@ List<Map> schemes = [
     "version": "0.0.0",
     "publish_to": "none",
     "homepage": "https://youtube.com/{youtube_owner_username}",
-    "repository": "https://github.com/{main_username_owner}/packagex.git",
-    "issue_tracker": "https://github.com/{main_username_owner}/general_framework/issues",
-    "documentation": "https://github.com/{main_username_owner}/general_framework/tree/main/docs",
+    "repository": "https://github.com/azkadev/packagex.git",
+    "issue_tracker": "https://github.com/azkadev/general_framework/issues",
+    "documentation": "https://github.com/azkadev/general_framework/tree/main/docs",
     "funding": [
-      "https://github.com/sponsors/{main_username_owner}",
+      "https://github.com/sponsors/azkadev",
     ],
     "platforms": {
       "@type": "pubspecGeneralFrameworkPlatforms",
