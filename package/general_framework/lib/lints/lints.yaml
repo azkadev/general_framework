@@ -1,0 +1,18 @@
+include: package:lints/recommended.yaml
+
+linter:
+  rules:
+    # by me
+    - always_declare_return_types 
+    - unnecessary_brace_in_string_interps
+    - avoid_print
+    # 
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    
+    - avoid_field_initializers_in_const_classes
+    # by other
+    
