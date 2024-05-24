@@ -1,6 +1,8 @@
-# Package Full Template
+# General Framework
  
-**Package Full Template** this open source project is free 
+**WIP General Framework** is cross platform library, this library help you to create cross platform apps with use style code flutter
+
+
 
 ## Demo
  

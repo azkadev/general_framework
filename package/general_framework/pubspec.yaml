@@ -29,6 +29,7 @@ dependencies:
   meta: 1.11.0
   path: ^1.9.0
   mason_logger: ^0.2.15
+  general_lib: ^0.0.40
 
 dev_dependencies:
   flutter_test:
