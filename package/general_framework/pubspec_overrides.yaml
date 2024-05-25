@@ -1,4 +1,4 @@
 # melos_managed_dependency_overrides: edge_dart_runtime
-dependency_overrides: 
-  general_framework_scheme:
-    path: ../general_framework_scheme
+# dependency_overrides: 
+#   general_framework_scheme:
+#     path: ../general_framework_scheme

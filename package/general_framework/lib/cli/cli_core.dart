@@ -45,7 +45,8 @@ void generalFrameworkCli({
 
   if (command == "create") {
     String name_project = await Future(() async {
-      String name_project_procces = (args.after(command) ?? "").trim().toLowerCase();
+      String name_project_procces =
+          (args.after(command) ?? "").trim().toLowerCase();
       if (name_project_procces.isEmpty) {
         if (is_interactive == false) {
           logger.info("please add arguments");
@@ -54,7 +55,8 @@ void generalFrameworkCli({
 
         while (true) {
           await Future.delayed(Duration(microseconds: 1));
-          name_project_procces = logger.prompt("Name Project?: ").trim().toLowerCase();
+          name_project_procces =
+              logger.prompt("Name Project?: ").trim().toLowerCase();
           if (name_project_procces.isNotEmpty) {
             break;
           }

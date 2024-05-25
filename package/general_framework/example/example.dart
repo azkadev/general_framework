@@ -1,8 +1,8 @@
  
-import "package:path/path.dart" if (dart.library.ui) ":ath/path.dart";
+// import "package:flutter/material.dart";
+import "package:general_framework/flutter/material.dart";
 
 // import "package:path/path.dart";
 void main(List<String> args) {
-
-  join("part1");
+  runApp(const MaterialApp());
 }

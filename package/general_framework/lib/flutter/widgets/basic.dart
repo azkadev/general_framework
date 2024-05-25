@@ -5,3 +5,23 @@ class SizedBox extends Widget {
     super.key,
   });
 }
+
+class Align extends SingleChildRenderObjectWidget {
+  /// Creates an alignment widget.
+  ///
+  /// The alignment defaults to [Alignment.center].
+  const Align({
+    super.key,
+    super.child,
+  });
+}
+
+class Center extends Align {
+  /// Creates a widget that centers its child.
+  const Center({
+    super.key,
+    // super.widthFactor,
+    // super.heightFactor,
+    super.child,
+  });
+}
