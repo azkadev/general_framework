@@ -1,6 +1,5 @@
-
 /// * [WidgetsBinding], which handles the widget tree.
-class WidgetsFlutterBinding   {
+class WidgetsFlutterBinding {
   /// Returns an instance of the binding that implements
   /// [WidgetsBinding]. If no binding has yet been initialized, the
   /// [WidgetsFlutterBinding] class is used to create and initialize
@@ -13,6 +12,5 @@ class WidgetsFlutterBinding   {
   /// binding instance to a [TestWidgetsFlutterBinding], not a
   /// [WidgetsFlutterBinding]. See
   /// [TestWidgetsFlutterBinding.ensureInitialized].
-  static void ensureInitialized() { 
-  }
+  static void ensureInitialized() {}
 }

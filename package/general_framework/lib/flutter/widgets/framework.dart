@@ -44,14 +44,11 @@ abstract class State<T extends StatefulWidget> {
 
   @protected
   @mustCallSuper
-  void initState() {
-
-  }
+  void initState() {}
 
   @protected
   @mustCallSuper
-  void dispose() { 
-  }
+  void dispose() {}
   @protected
   Widget build(BuildContext context);
 }

@@ -10,7 +10,7 @@ class Scaffold extends StatefulWidget {
   final Widget? body;
 
   @override
-  State<StatefulWidget> createState() { 
+  State<StatefulWidget> createState() {
     throw UnimplementedError();
   }
 }

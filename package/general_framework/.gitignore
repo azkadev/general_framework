@@ -9,3 +9,5 @@ pubspec.lock
 example_*
 
 *.exe
+
+doc/
