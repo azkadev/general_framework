@@ -32,6 +32,5 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-void beta() {
-  print("beta: ui");
-}
+export "package:general_framework/general_framework_flutter/page/page.dart";
+export "package:general_framework/general_framework_flutter/widget/widget.dart";

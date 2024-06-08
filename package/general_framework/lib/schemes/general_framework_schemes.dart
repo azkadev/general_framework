@@ -32,6 +32,12 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-void beta() {
-  print("beta: ui");
-}
+// ignore_for_file: non_constant_identifier_names
+
+List<Map> general_framework_schemes = [
+  {
+    "@type": "pubspecGeneralFramework",
+    "name": "",
+    "version": "",
+  }
+]; 

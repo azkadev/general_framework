@@ -53,31 +53,24 @@ flutter pub add general_framework_flutter
 - from pub
 
 ```bash
-
+dart pub global activate general_framework
 ```
 
 - from github
 
+- from path
+
+```bash
+dart pub global activate . --source path
+```
+
+- TEST CLI
+
+```bash
+general_framework --interactive
+```
+
 ## 🚀️ Quick Start
 
 Example Quickstart script minimal for insight you or make you use this library because very simple 
-
-### Api
-
-### Cli
-
-### Edge
-
-if you want deploy server rest api on Severless functions Like (Supabase, Cloud Flare, Deno Deploy, Vercel, Netlify)
-
-```dart
-
-```
-
-
-### Native
-
-if you want deploy on device or server or vps, or flutter app try this script
-
-```dart 
-```
+ 
