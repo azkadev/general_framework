@@ -32,26 +32,28 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-import 'package:general_framework/flutter/material_io.dart';
+// ignore_for_file: non_constant_identifier_names
 
-class ChatGeneralFrameworkPage extends StatefulWidget {
-
-  const ChatGeneralFrameworkPage({
-    super.key,
-  });
-
-  @override
-  State<ChatGeneralFrameworkPage> createState() => _ChatGeneralFrameworkPageState();
-}
-
-class _ChatGeneralFrameworkPageState extends State<ChatGeneralFrameworkPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return  Scaffold();
-  }
-}
+List<Map> general_framework_api_schemes = [
+  {
+    "@type": "signIn",
+    "username_or_token_or_token_bot": "",
+    "password_encrypt_base64": "",
+  },
+  {
+    "@type": "signUp",
+    "username": "",
+  }, 
+  {
+    "@type": "getMe",
+  },
+  {
+    "@type": "setName",
+    "first_name": "",
+    "last_name": "",
+  },
+  {
+    "@type": "setUsername",
+    "username": "",
+  },
+];

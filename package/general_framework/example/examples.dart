@@ -37,6 +37,7 @@ import 'package:general_framework/general_framework_client/general_framework_cli
 import 'package:general_lib/general_lib.dart';
 
 void main(List<String> args) async {
+  print("${Dart.executable_type.name}");
   GeneralFrameworkClient generalFrameworkClient = GeneralFrameworkClient(
     secret_crypto: Crypto(key: ""),
     general_framework_connection_type: GeneralFrameworkConnectionType.http,

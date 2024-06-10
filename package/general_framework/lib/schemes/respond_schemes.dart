@@ -32,3 +32,17 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+// ignore_for_file: non_constant_identifier_names
+
+List<Map> general_framework_respond_schemes = [
+  {
+    "@type": "error",
+    "message": "",
+  },
+  {
+    "@type": "ok",
+  },
+  {
+    "@type": "session",
+  },
+];
