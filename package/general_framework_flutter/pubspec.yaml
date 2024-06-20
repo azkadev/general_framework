@@ -15,20 +15,21 @@ platforms:
   web: null
   windows: null
 environment: 
-  sdk: '>=3.2.3 <4.0.0'
+  sdk: '>=3.3.3 <4.0.0'
   flutter: '>=1.17.0'
 dependencies: 
   flutter: 
     sdk: 'flutter'
-  general_lib: '^0.0.36'
-  general_lib_flutter: '^0.0.19'
+  general_lib: '^0.0.42'
+  general_lib_flutter: '^0.0.22'
   path: '^1.9.0'
   universal_io: '^2.2.2'
   general_framework: '^0.0.0'
-  # general_framework_dart: '^0.0.0'
-  # general_framework_scheme: '^0.0.0'
 dev_dependencies: 
   flutter_test: 
     sdk: 'flutter'
   flutter_lints: '^2.0.0'
 flutter: null
+publish_to: 'none'
+dependency_overrides: 
+  pointycastle: '3.8.0'

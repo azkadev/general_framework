@@ -15,19 +15,21 @@ platforms:
   web: null
   windows: null
 environment: 
-  sdk: '^3.2.3'
+  sdk: '>=3.3.3 <4.0.0'
 dependencies: 
   path: '^1.9.0'
   universal_io: '^2.2.2'
   general_framework: '^0.0.0'
-  # general_framework_scheme: '^0.0.0'
   mason_logger: '^0.2.5'
   collection: '^1.18.0'
   yaml: '^3.1.2'
   yaml_writer: '^2.0.0'
-  general_lib: '^0.0.36'
+  general_lib: '^0.0.42'
 dev_dependencies: 
   lints: '^2.1.0'
   test: '^1.24.0'
 executables: 
   general_framework_dart: 'general_framework_dart'
+publish_to: 'none'
+dependency_overrides: 
+  pointycastle: '3.8.0'
