@@ -11,3 +11,9 @@ example_*
 *.exe
 
 doc/
+*.deb
+*.sqlite-*
+*.sqlite
+docs/canvaskit
+*/canvaskit
+/build/

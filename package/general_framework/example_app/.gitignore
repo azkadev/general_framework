@@ -44,3 +44,9 @@ app.*.map.json
 
 *.js
 *.js.*
+*.exe
+*.deb
+*.sqlite-*
+*.sqlite
+docs/canvaskit
+*/canvaskit
