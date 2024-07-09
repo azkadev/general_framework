@@ -20,8 +20,8 @@ environment:
 dependencies: 
   flutter: 
     sdk: 'flutter'
-  general_lib: '^0.0.42'
-  general_lib_flutter: '^0.0.22'
+  general_lib: '^0.0.43'
+  general_lib_flutter: '^0.0.23'
   path: '^1.9.0'
   universal_io: '^2.2.2'
   general_framework: '^0.0.0'

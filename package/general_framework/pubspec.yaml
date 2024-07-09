@@ -24,9 +24,9 @@ dependencies:
   meta: '^1.11.0'
   path: '^1.9.0'
   mason_logger: '^0.2.15'
-  general_lib: '^0.0.42'
-  general_lib_flutter: '^0.0.22'
-  packagex: '^0.0.58'
+  general_lib: '^0.0.43'
+  general_lib_flutter: '^0.0.23'
+  packagex: '^0.0.59'
   http: '^1.1.0'
 dependency_overrides: 
   meta: '^1.12.0'
