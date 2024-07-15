@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 /* <!-- START LICENSE -->
 
 
@@ -48,3 +50,27 @@ class WidgetsFlutterBinding {
   /// [TestWidgetsFlutterBinding.ensureInitialized].
   static void ensureInitialized() {}
 }
+
+mixin WidgetsBinding on BindingBase {
+  static SchedulerBinding? _instance;
+
+  static WidgetsBinding get instance => BindingBase.checkInstance(null);  
+  
+  void addPostFrameCallback(FrameCallback callback, {String debugLabel = 'callback'}) {}
+}
+
+abstract class BindingBase {
+  static T checkInstance<T extends BindingBase>(T? instance) {
+    return instance!;
+  }
+
+  void initInstances() {}
+}
+
+mixin SchedulerBinding on BindingBase {
+  @override
+  void initInstances() {}
+
+  void addPostFrameCallback(FrameCallback callback, {String debugLabel = 'callback'}) {}
+}
+typedef FrameCallback = void Function(Duration timeStamp);

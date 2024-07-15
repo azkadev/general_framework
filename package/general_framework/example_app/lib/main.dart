@@ -32,12 +32,10 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-// import "package:flutter/material.dart";
-// import "package:general_framework/flutter/material_ui.dart";
-import "package:general_framework/flutter/material.dart";
-// import "package:general_lib/general_lib.dart";
 
-// import "package:path/path.dart";
+import "package:general_framework/flutter/material.dart";
+// import "package:general_framework/flutter/material_ui.dart" as material_ui;
+
 void main(List<String> args) {
   print("oke");
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,6 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
+    // material_ui.WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+
+    // });
   }
 
   @override
@@ -76,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print("build");
     return const Scaffold(
       body: Center(
         child: Text("Hello World"),

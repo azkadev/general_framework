@@ -57,7 +57,10 @@ abstract class StatefulWidget extends Widget {
 
 abstract class StatelessWidget extends Widget {
   /// Initializes [key] for subclasses.
-  const StatelessWidget({super.key});
+  const StatelessWidget({
+    super.key,
+  });
+
   @protected
   Widget build(BuildContext context);
 }
