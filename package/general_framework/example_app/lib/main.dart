@@ -39,7 +39,6 @@ import "package:general_framework/flutter/material.dart";
 void main(List<String> args) {
   print("oke");
   WidgetsFlutterBinding.ensureInitialized();
-  // Dart.executable_type.printPretty();
   runApp(const MyApp());
 }
 
@@ -78,7 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print("build");
     return const Scaffold(
       body: Center(
         child: Text("Hello World"),

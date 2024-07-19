@@ -28,10 +28,15 @@ dependencies:
   general_lib_flutter: '^0.0.24'
   packagex: '^0.0.59'
   http: '^1.1.0'
+  server_universe: '^0.0.17'
+  general: '^0.0.24'
+  general_dart: '^0.0.24'
 dependency_overrides: 
   meta: '^1.12.0'
   pointycastle: '3.8.0'
 dev_dependencies: 
   flutter_lints: '^4.0.0'
-flutter: null
+flutter: 
+  assets: 
+    - 'README.md'
 publish_to: 'none'
