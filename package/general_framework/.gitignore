@@ -18,3 +18,4 @@ docs/canvaskit
 */canvaskit
 /build/
 generate_glx_*
+node_modules/
