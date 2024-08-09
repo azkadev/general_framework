@@ -8,7 +8,11 @@ dependencies:
   flutter: 
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
-  path: '^1.9.0'
+  path: '^1.9.0' 
+  mason_logger: '^0.2.15'
+  general_lib: '^0.0.44'
+  general_lib_flutter: '^0.0.25'
+  general: '^0.0.26'
   general_framework: 
     path: '../'
 dev_dependencies: 

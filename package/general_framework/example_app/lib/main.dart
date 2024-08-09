@@ -1,85 +1,78 @@
-/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-
-import "package:general_framework/flutter/material.dart";
-// import "package:general_framework/flutter/material_ui.dart" as material_ui;
+ import 'package:flutter/material.dart';
+import 'package:general/flutter/flutter.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 void main(List<String> args) {
-  print("oke");
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+
+  runApp(const GeneralExampleMainApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class GeneralExampleMainApp extends StatelessWidget {
+  static GeneralLibFlutterApp generalLibFlutterApp = GeneralLibFlutterApp();
+  static GeneralFlutter generalFlutter = GeneralFlutter();
+  const GeneralExampleMainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MyHomePage(),
+    return GeneralLibFlutterAppMain(
+      generalLibFlutterApp: generalLibFlutterApp,
+      builder: (themeMode, lightTheme, darkTheme, widget) {
+        final MaterialApp materialApp = MaterialApp(
+          themeMode: themeMode,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          home: const GeneralExampleApp(),
+          debugShowCheckedModeBanner: false,
+        );
+        return materialApp;
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class GeneralExampleApp extends StatefulWidget {
+  const GeneralExampleApp({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<GeneralExampleApp> createState() => _GeneralExampleAppState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _GeneralExampleAppState extends State<GeneralExampleApp> {
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
-    // material_ui.WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-
-    // });
+    WidgetsBinding.instance.addPostFrameCallback((d) {
+      task();
+    });
   }
 
-  @override
-  void dispose() {
-    super.dispose();
+  task() async {
+    setState(() {});
+    Future(() async {
+      GeneralExampleMainApp.generalLibFlutterApp.initState(
+        context: context,
+        themeMode: GeneralExampleMainApp.generalLibFlutterApp.themeMode,
+        onSet: () {
+          setState(() {});
+        },
+      );
+      // context.navigator().pushReplacement(MaterialPageRoute(
+      //   builder: (context) {
+      //     return const HomePageGeneralApp();
+      //   },
+      // ));
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text("Hello World"),
+        child: CircularProgressIndicator(
+          color: context.theme.indicatorColor,
+        ),
       ),
     );
   }
