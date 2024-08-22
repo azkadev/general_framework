@@ -31,7 +31,7 @@ dependencies:
   server_universe: '^0.0.19'
   general: '^0.0.26'
   qr_lib: 
-    path: /home/galaxeus/.pub-cache/hosted/pub.dev/qr_lib-0.0.0
+    path: '/home/galaxeus/.pub-cache/hosted/pub.dev/qr_lib-0.0.0'
 dependency_overrides: 
   meta: '^1.12.0'
   pointycastle: '3.8.0'
