@@ -29,7 +29,7 @@ dependencies:
   packagex: '^0.0.59'
   http: '^1.1.0'
   server_universe: '^0.0.19'
-  general: '^0.0.26'
+  general: '^0.0.29'
   qr_lib: 
     path: '/home/galaxeus/.pub-cache/hosted/pub.dev/qr_lib-0.0.0'
 dependency_overrides: 
