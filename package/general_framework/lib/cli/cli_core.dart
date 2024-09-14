@@ -38,7 +38,9 @@ import 'dart:io';
 
 import 'package:general_framework/api/api_core.dart';
 import 'package:general_lib/args/args.dart';
+import 'package:general_lib/general_lib.dart';
 import 'package:mason_logger/mason_logger.dart';
+import "package:path/path.dart" as path;
 
 Logger logger = Logger();
 void generalFrameworkCli({
@@ -52,20 +54,31 @@ void generalFrameworkCli({
     "help",
   ];
   commands.sort();
-  bool is_contains_help = [
-    args.contains("--help"),
-    args.contains("-h"),
-  ].contains(true);
-  bool is_interactive = [
-    args.contains("--interactive"),
-    args.contains("-I"),
-  ].contains(true);
+  final bool is_contains_help = args.contains(
+    [
+      "--help",
+      "-h",
+      "help",
+    ],
+    isRemoveIfFound: true,
+  );
+  final bool is_interactive = args.contains(
+    [
+      "--interactive",
+      "-I",
+    ],
+    isRemoveIfFound: true,
+  );
   String command = (args.arguments.firstOrNull ?? "").trim();
+  final String executable_name = path.basenameWithoutExtension(Dart.executable);
   if (commands.contains(command) == false) {
     if (is_interactive) {
       command = logger.chooseOne("Commands?: ", choices: commands);
     } else {
-      logger.info(commands.join("\n"));
+      logger.info(GeneralFramework.helpGlobal(
+        executable_name: executable_name,
+        commands: commands,
+      ));
       exit(1);
     }
   }
@@ -78,7 +91,7 @@ void generalFrameworkCli({
   }
 
   if (command == "create") {
-    String name_project = await Future(() async {
+    final String name_project = await Future(() async {
       String name_project_procces = (args.after(command) ?? "").trim().toLowerCase();
       if (name_project_procces.isEmpty) {
         if (is_interactive == false) {
@@ -100,4 +113,53 @@ void generalFrameworkCli({
 
   logger.info("unimplemented: ${command}");
   exit(1);
+}
+
+class GeneralFramework {
+  static String seeYoutubeForDocumentOrTutorial() {
+    return """
+See https://youtube.com/@azkadev for detailed documentation and tutorial.
+"""
+        .trim();
+  }
+
+  static String watermark() {
+    return """
+General Framework Created By DEVELOPER AZKADEV - https://github.com/azkadev
+Corporation - GLOBAL CORPORATION & GENERAL CORPORATION
+"""
+        .trim();
+  }
+
+  static String helpGlobal({
+    required String executable_name,
+    required List<String> commands
+  }) {
+    return """
+General Framework.
+
+Usage: ${executable_name} <command> [arguments]
+
+Global options:
+  help                 Print this usage information. 
+  version              Print the Userbot version.
+  reload               Reload package glx
+
+
+Available commands: 
+  create     Create a new Dart project.
+  list_template list template
+  setup
+  init
+
+Run "glx help <command>" for more information about a command.
+${GeneralFramework.seeYoutubeForDocumentOrTutorial()}
+
+${GeneralFramework.watermark()}
+
+Commands:
+- ${commands.join("\n- ")}
+"""
+        .trim();
+  }
 }

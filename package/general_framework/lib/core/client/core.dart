@@ -40,12 +40,24 @@ import 'dart:typed_data';
 
 import 'package:general/core/core.dart';
 import 'package:general_framework/core/client/options.dart';
+import 'package:general_framework/core/database/database_core.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/scheme/socket_connection.dart';
 import 'package:http/http.dart';
 
-abstract class GeneralFrameworkClientBaseCore {
 
+typedef InvokeClientValidationFunction<T> = FutureOr<T> Function(
+  Map parameters,
+  GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions,
+);
+
+typedef InvokeClientFunction<T> = FutureOr<T> Function(
+  Map result,
+  Map parameters,
+  GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions,
+);
+
+abstract class GeneralFrameworkClientBaseCore {
 
   String encryptData({
     required Map data,
@@ -60,18 +72,9 @@ abstract class GeneralFrameworkClientBaseCore {
   }
 }
 
-typedef InvokeClientValidationFunction<T> = FutureOr<T> Function(
-  Map parameters,
-  GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions,
-);
-
-typedef InvokeClientFunction<T> = FutureOr<T> Function(
-  Map result,
-  Map parameters,
-  GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions,
-);
-
-abstract class GeneralFrameworkClient implements GeneralFrameworkClientBaseCore {
+/// GeneralFrameworkClient
+/// is universal client for help you connection to rest api server super easy friendly
+abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implements GeneralFrameworkClientBaseCore {
   final WebSocketClient web_socket_client = WebSocketClient("");
   final TcpSocketClient tcp_socket_client = TcpSocketClient(host: "", port: 0);
   late final EventEmitter event_emitter;
@@ -82,11 +85,13 @@ abstract class GeneralFrameworkClient implements GeneralFrameworkClientBaseCore 
   late final GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions;
   final String apiUrl;
   final GeneralLibrary generalLibrary;
+  final D generalFrameworkDatabase;
   late final InvokeClientValidationFunction<Map?> onInvokeValidation;
   late final InvokeClientFunction<dynamic> onInvokeRequest;
   late final InvokeClientFunction<dynamic> onInvokeResult;
   late final String currentPath;
   GeneralFrameworkClient({
+    required this.generalFrameworkDatabase,
     required this.generalLibrary,
     required this.apiUrl,
     required this.networkClientConnectionType,
@@ -113,6 +118,7 @@ abstract class GeneralFrameworkClient implements GeneralFrameworkClientBaseCore 
   }
 
   bool is_initialized = false;
+  /// call this method
   FutureOr<void> ensureInitialized({
     required InvokeClientFunction<dynamic> onInvokeRequest,
     required InvokeClientFunction<dynamic> onInvokeResult,

@@ -37,6 +37,8 @@ dependencies:
 dependency_overrides: 
   meta: '^1.12.0'
   pointycastle: '3.8.0'
+  general_lib:
+    path: ../../../general_lib
 dev_dependencies: 
   flutter_lints: '^4.0.0'
 flutter: 

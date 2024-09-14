@@ -32,17 +32,10 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-import 'package:general_framework/core/api/api.dart';
+import 'package:base_template_general_framework_project_api_database/base_template_general_framework_project_api_database.dart'
+    as base_template_general_framework_project_api_database;
 
-abstract class GeneralFrameworkApiServerCore {
-  
-}
-
-abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase> implements GeneralFrameworkApiServerCore {
-  final T generalFrameworkApi;
-  GeneralFrameworkApiServer({
-    required this.generalFrameworkApi,
-  });
-
-  void ensureInitialized() {}
+void main(List<String> arguments) {
+  print(
+      'Hello world: ${base_template_general_framework_project_api_database.calculate()}!');
 }
