@@ -32,6 +32,49 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+import 'dart:async';
+
+import 'package:general_lib/extension/string.dart';
+import 'package:general_lib/script_generate/script_generate.dart';
+import "package:path/path.dart" as path;
+import 'package:universal_io/io.dart';
+
 class GeneralFrameworkApi {
   GeneralFrameworkApi();
+
+  Future<Map> createProject({
+    required String name_project,
+    required List<ScriptGenerator> template_project,
+    required String currentPath,
+  }) async {
+    name_project = name_project.trim().snakeCaseClass();
+    if (name_project.isEmpty) {
+      return {
+        "@type": "error",
+        "message": "name_project_cant_empty",
+      };
+    }
+    final Directory directoryProject = Directory(path.join(currentPath, name_project));
+
+    if (directoryProject.existsSync()) {
+      return {
+        "@type": "error",
+        "message": "directory_project_already_exist",
+      };
+    }
+    final Stream<ScriptGeneratorStatus> status = template_project.generateToDirectory(
+      directoryBase: directoryProject,
+    );
+    final Completer<bool> completer = Completer<bool>();
+    status.listen(
+      (e) {
+        print(e);
+      },
+      onDone: () {
+        completer.complete(true);
+      },
+    );
+    await completer.future;
+    return {"@type": "ok"};
+  }
 }

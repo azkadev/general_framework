@@ -34,88 +34,22 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 // ignore_for_file: unnecessary_brace_in_string_interps, non_constant_identifier_names, unused_local_variable, prefer_const_constructors
 
+import 'dart:async';
 import 'dart:io';
 
 import 'package:general_framework/api/api_core.dart';
-import 'package:general_lib/args/args.dart';
+import 'package:general_framework/templates/base_template_general_framework_project_template.dart';
 import 'package:general_lib/general_lib.dart';
+import 'package:general_lib/script_generate/script_generate.dart';
 import 'package:mason_logger/mason_logger.dart';
 import "package:path/path.dart" as path;
 
 Logger logger = Logger();
-void generalFrameworkCli({
-  required List<String> arguments,
-}) async {
-  GeneralFrameworkApi generalFrameworkApi = GeneralFrameworkApi();
-  Args args = Args(arguments);
-  List<String> commands = [
-    "build",
-    "create",
-    "help",
-  ];
-  commands.sort();
-  final bool is_contains_help = args.contains(
-    [
-      "--help",
-      "-h",
-      "help",
-    ],
-    isRemoveIfFound: true,
-  );
-  final bool is_interactive = args.contains(
-    [
-      "--interactive",
-      "-I",
-    ],
-    isRemoveIfFound: true,
-  );
-  String command = (args.arguments.firstOrNull ?? "").trim();
-  final String executable_name = path.basenameWithoutExtension(Dart.executable);
-  if (commands.contains(command) == false) {
-    if (is_interactive) {
-      command = logger.chooseOne("Commands?: ", choices: commands);
-    } else {
-      logger.info(GeneralFramework.helpGlobal(
-        executable_name: executable_name,
-        commands: commands,
-      ));
-      exit(1);
-    }
-  }
 
-  if (command == "build") {
-    String build_type = (args.after(command) ?? "").trim().toLowerCase();
-    List<String> build_types = [
-      "",
-    ];
-  }
-
-  if (command == "create") {
-    final String name_project = await Future(() async {
-      String name_project_procces = (args.after(command) ?? "").trim().toLowerCase();
-      if (name_project_procces.isEmpty) {
-        if (is_interactive == false) {
-          logger.info("please add arguments");
-          exit(1);
-        }
-
-        while (true) {
-          await Future.delayed(Duration(microseconds: 1));
-          name_project_procces = logger.prompt("Name Project?: ").trim().toLowerCase();
-          if (name_project_procces.isNotEmpty) {
-            break;
-          }
-        }
-      }
-      return name_project_procces;
-    });
-  }
-
-  logger.info("unimplemented: ${command}");
-  exit(1);
-}
-
-class GeneralFramework {
+class GeneralFrameworkCli {
+  static Map<String, List<ScriptGenerator>> get templates => {
+        "base": base_template_general_framework_project_script_generators,
+      };
   static String seeYoutubeForDocumentOrTutorial() {
     return """
 See https://youtube.com/@azkadev for detailed documentation and tutorial.
@@ -131,10 +65,7 @@ Corporation - GLOBAL CORPORATION & GENERAL CORPORATION
         .trim();
   }
 
-  static String helpGlobal({
-    required String executable_name,
-    required List<String> commands
-  }) {
+  static String helpGlobal({required String executable_name, required List<String> commands}) {
     return """
 General Framework.
 
@@ -153,13 +84,132 @@ Available commands:
   init
 
 Run "glx help <command>" for more information about a command.
-${GeneralFramework.seeYoutubeForDocumentOrTutorial()}
+${GeneralFrameworkCli.seeYoutubeForDocumentOrTutorial()}
 
-${GeneralFramework.watermark()}
+${GeneralFrameworkCli.watermark()}
 
 Commands:
 - ${commands.join("\n- ")}
 """
         .trim();
+  }
+
+  static void generalFrameworkCli({
+    required List<String> arguments,
+  }) async {
+    final GeneralFrameworkApi generalFrameworkApi = GeneralFrameworkApi();
+    final Args args = Args(arguments);
+    final List<String> commands = [
+      "create",
+      "help",
+    ];
+    commands.sort();
+    final bool is_contains_help = args.contains(
+      [
+        "--help",
+        "-h",
+        "help",
+      ],
+      isRemoveIfFound: true,
+    );
+    final bool is_interactive = args.contains(
+      [
+        "--interactive",
+        "-i",
+        "-I",
+      ],
+      isRemoveIfFound: true,
+    );
+    String command = (args.arguments.firstOrNull ?? "").trim();
+    final String executable_name = path.basenameWithoutExtension(Dart.executable);
+    if (commands.contains(command) == false) {
+      if (is_interactive) {
+        command = logger.chooseOne("Commands?: ", choices: commands);
+      } else {
+        logger.info(GeneralFrameworkCli.helpGlobal(
+          executable_name: executable_name,
+          commands: commands,
+        ));
+        exit(1);
+      }
+    }
+    
+    if (command == "create") {
+      final String name_project = (await Future(() async {
+        String name_project_procces = (args.after(command) ?? "").trim().toLowerCase();
+        if (name_project_procces.isEmpty) {
+          if (is_interactive == false) {
+            logger.info("please add arguments");
+            exit(1);
+          }
+
+          while (true) {
+            await Future.delayed(Duration(microseconds: 1));
+            name_project_procces = logger.prompt("Name Project?: ").trim().toLowerCase();
+            if (name_project_procces.isNotEmpty) {
+              break;
+            }
+          }
+        }
+        return name_project_procces;
+      }))
+          .snakeCaseClass();
+      final List<ScriptGenerator> template_project_procces = await Future(() async {
+        {
+          final String template_project_name_procces = (args.after(["-t", "--template"]) ?? "").trim().toLowerCase();
+          final List<ScriptGenerator>? template_project_procces = templates[template_project_name_procces];
+          if (template_project_procces != null) {
+            return template_project_procces;
+          }
+          if (is_interactive == false) {
+            logger.info("please add arguments");
+            exit(1);
+          }
+        }
+        {
+          while (true) {
+            final String template_project_name_procces = logger.chooseOne(
+              "Pilih Template?: ",
+              choices: templates.keys.toList(),
+              defaultValue: templates.keys.firstOrNull,
+              display: (choice) {
+                return choice.split(" ").map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
+              },
+            );
+            final List<ScriptGenerator>? template_project_procces = templates[template_project_name_procces];
+            if (template_project_procces != null) {
+              return template_project_procces;
+            }
+          }
+        }
+      });
+      final Directory directory_project = Directory(path.join(Directory.current.path, name_project));
+      if (directory_project.existsSync()) {
+        if (args.contains(["-f", "--force"]) == false) {
+          if (is_interactive == false) {
+            logger.info("Folder ${name_project} Already Exist. Use -f if you want force");
+            exit(1);
+          }
+          {
+            final question = logger.chooseOne(
+              "Folder Already Exist?",
+              choices: ["Continue", "Stop"]..sort(),
+            );
+            if (question != "Continue") {
+              exit(1);
+            }
+          }
+        }
+      }
+      await generalFrameworkApi.createProject(
+        name_project: name_project,
+        template_project: template_project_procces,
+        currentPath: Directory.current.path,
+      );
+      exit(0);
+    }
+
+    logger.info("unimplemented: ${command}");
+    exit(1);
   }
 }

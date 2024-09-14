@@ -35,5 +35,5 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:general_framework/cli/cli_core.dart';
 
 void main(List<String> args) {
-  generalFrameworkCli(arguments: args);
+  GeneralFrameworkCli.generalFrameworkCli(arguments: args);
 }

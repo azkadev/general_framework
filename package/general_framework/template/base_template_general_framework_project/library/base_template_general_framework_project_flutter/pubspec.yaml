@@ -2,22 +2,22 @@ name: 'base_template_general_framework_project_flutter'
 description: 'A new Flutter package project.'
 version: '0.0.1'
 homepage: null
-publish_to: none
+publish_to: 'none'
 environment: 
   sdk: '>=3.3.3 <4.0.0'
   flutter: '>=1.17.0'
 dependencies: 
   flutter: 
     sdk: 'flutter'
-  path: '^1.9.0' 
+  path: '^1.9.0'
   general_lib: '^0.0.44'
   general: '^0.0.29'
-  base_template_general_framework_project_client:
-    path: ../base_template_general_framework_project_client
-  base_template_general_framework_project_secret:
-    path: ../base_template_general_framework_project_secret
-  general_framework:
-    path: ../../../../
+  base_template_general_framework_project_client: 
+    path: '../base_template_general_framework_project_client'
+  base_template_general_framework_project_secret: 
+    path: '../base_template_general_framework_project_secret'
+  general_framework: 
+    path: '../../../../'
 dev_dependencies: 
   flutter_test: 
     sdk: 'flutter'
