@@ -36,6 +36,11 @@
 - **2024-04-20**
   Starting **Release Stable** With core Features
 
+## ⚠️ WARNING
+
+this library is created original style code by [AZKADEV](https://github.com/azkadev) DEVELOPER FROM [GLOBAL CORPORATION](https://github.com/) this library is pure by AZKA DEVELOPER MIND (not copy from any sources) don't recreate library with new name with new style code / try claim / try put inspired from **GENERAL FRAMEWORK** if you don't hastle on your life
+
+
 ### 📥️ Install Library
 
 1. **Dart**
@@ -77,7 +82,7 @@ general_framework --interactive
 Example Quickstart script minimal for insight you or make you use this library because very simple 
  
 
-## 
+## 📚 Library Feature
 
 1. Client
    if you want make application with full support like real apps you can make super easy and instant because you don't handle connection this library created for help you for make apps full speed, example

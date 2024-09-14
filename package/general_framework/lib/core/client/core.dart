@@ -45,6 +45,8 @@ import 'package:general_lib/scheme/socket_connection.dart';
 import 'package:http/http.dart';
 
 abstract class GeneralFrameworkClientBaseCore {
+
+
   String encryptData({
     required Map data,
   }) {
@@ -58,7 +60,12 @@ abstract class GeneralFrameworkClientBaseCore {
   }
 }
 
-typedef InvokeResultFunction = FutureOr<dynamic> Function(
+typedef InvokeClientValidationFunction<T> = FutureOr<T> Function(
+  Map parameters,
+  GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions,
+);
+
+typedef InvokeClientFunction<T> = FutureOr<T> Function(
   Map result,
   Map parameters,
   GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions,
@@ -75,7 +82,10 @@ abstract class GeneralFrameworkClient implements GeneralFrameworkClientBaseCore 
   late final GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions;
   final String apiUrl;
   final GeneralLibrary generalLibrary;
-  late final InvokeResultFunction onInvokeResult;
+  late final InvokeClientValidationFunction<Map?> onInvokeValidation;
+  late final InvokeClientFunction<dynamic> onInvokeRequest;
+  late final InvokeClientFunction<dynamic> onInvokeResult;
+  late final String currentPath;
   GeneralFrameworkClient({
     required this.generalLibrary,
     required this.apiUrl,
@@ -104,7 +114,10 @@ abstract class GeneralFrameworkClient implements GeneralFrameworkClientBaseCore 
 
   bool is_initialized = false;
   FutureOr<void> ensureInitialized({
-    required InvokeResultFunction onInvokeResult,
+    required InvokeClientFunction<dynamic> onInvokeRequest,
+    required InvokeClientFunction<dynamic> onInvokeResult,
+    required InvokeClientValidationFunction<Map?> onInvokeValidation,
+    required String currentPath,
   }) async {
     if (is_initialized) {
       return;
@@ -113,6 +126,9 @@ abstract class GeneralFrameworkClient implements GeneralFrameworkClientBaseCore 
     tcp_socket_client.port = api_uri.port;
     web_socket_client.url = api_uri.replace(scheme: (api_uri.scheme == "https") ? "wss" : "ws").toString();
     this.onInvokeResult = onInvokeResult;
+    this.onInvokeRequest = onInvokeRequest;
+    this.onInvokeValidation = onInvokeValidation;
+    this.currentPath = currentPath;
     is_initialized = true;
     if (Dart.isWeb) {
       return;
@@ -225,7 +241,7 @@ abstract class GeneralFrameworkClient implements GeneralFrameworkClientBaseCore 
       }
       final String error_message = (result["message"] as String).trim();
       if (error_message.isEmpty) {
-        result["message"]= "unknown";
+        result["message"] = "unknown";
       }
     }
   }
@@ -249,9 +265,14 @@ abstract class GeneralFrameworkClient implements GeneralFrameworkClientBaseCore 
     final Map result = await Future<Map>(() async {
       final NetworkClientConnectionType networkClientConnectionType = invoke_parameters.networkClientConnectionType;
       try {
+        final Map invoke_validation = await onInvokeValidation(parameters, invoke_parameters) ?? {};
+        if (invoke_validation.isNotEmpty) {
+          return invoke_validation;
+        }
         if (method_name.isEmpty) {
           return {"@type": "error", "message": "method_must_be_not_empty"};
         }
+
         final String parameter_encrypt = (encryptData(data: parameters)).trim();
         if (networkClientConnectionType == NetworkClientConnectionType.http) {
           final Map<String, String> headers = <String, String>{

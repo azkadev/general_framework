@@ -23,7 +23,6 @@ dependencies:
     sdk: 'flutter'
   meta: '^1.11.0'
   path: '^1.9.0'
-  
   mason_logger: '^0.2.15'
   general_lib: '^0.0.44'
   general_lib_flutter: '^0.0.25'
@@ -32,6 +31,7 @@ dependencies:
   server_universe: '^0.0.19'
   general: '^0.0.29'
   path_provider: '^2.1.4'
+  universal_io: "^2.2.2" 
   qr_lib: 
     path: '/home/galaxeus/.pub-cache/hosted/pub.dev/qr_lib-0.0.0'
 dependency_overrides: 

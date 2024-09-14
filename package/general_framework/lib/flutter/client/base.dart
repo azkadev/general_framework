@@ -37,33 +37,53 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:general/flutter/flutter.dart';
+import 'package:general/flutter/general_flutter_core.dart';
 import 'package:general_framework/core/client/core.dart';
 import 'package:general_framework/core/client/options.dart';
+import 'package:general_framework/flutter/client/general_framework_client_flutter_app_directory.dart';
 
 abstract class GeneralFrameworkClientFlutterCore {
-  FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
+  FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {}
 
+  FutureOr<dynamic> onInvokeRequest(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {}
+
+  FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
+    return null;
   }
-  Widget signPage() {
-    throw UnimplementedError();
-  }
+ 
 }
 
 abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> implements GeneralFrameworkClientFlutterCore {
   final GlobalKey<NavigatorState> navigatorKey;
   final GeneralFlutter generalLibrary;
   final T generalFrameworkClient;
+
+  final GeneralFrameworkClientFlutterAppDirectory generalFrameworkClientFlutterAppDirectory = GeneralFrameworkClientFlutterAppDirectory();
   GeneralFrameworkClientFlutter({
     required this.navigatorKey,
     required this.generalLibrary,
     required this.generalFrameworkClient,
   });
 
-  FutureOr<void> ensureInitialized() async {
+  bool is_initialized = false;
+  FutureOr<void> ensureInitialized({
+    required BuildContext context,
+    required FutureOr<void> Function(String textLoading) onLoading,
+  }) async {
+    if (is_initialized) {
+      return;
+    }
+    is_initialized = true;
+    await generalFrameworkClientFlutterAppDirectory.ensureInitialized(
+      context: context,
+      onLoading: onLoading,
+    );
     await generalFrameworkClient.ensureInitialized(
       onInvokeResult: onInvokeResult,
+      currentPath: generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
+      onInvokeRequest: onInvokeRequest,
+      onInvokeValidation: onInvokeValidation,
     );
+    is_initialized = true;
   }
-
 }
