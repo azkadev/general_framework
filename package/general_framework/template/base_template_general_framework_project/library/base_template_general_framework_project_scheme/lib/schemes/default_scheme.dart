@@ -32,3 +32,30 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+
+import 'package:general_lib/general_lib.dart';
+
+class BaseTemplateGeneralFrameworkProjectSchemeDefault {
+  // BaseTemplateGeneralFrameworkProjectSchemeDefault();
+  //
+  //
+  static Map<String, dynamic> account({
+    required GeneralLibSchemeType generalLibSchemeType,
+  }) {
+    final Map<String, dynamic> json_data = {
+      "@type": "account${generalLibSchemeType.toSpesialType()}",
+      "id": 0,
+      "first_name": "",
+      "last_name": "",
+      "username": "",
+    };
+
+    if (generalLibSchemeType == GeneralLibSchemeType.database) {
+      json_data.general_lib_extension_updateForce(data: <String, dynamic>{
+        
+      });
+    }
+
+    return json_data;
+  }
+}

@@ -41,8 +41,7 @@ import 'dart:io';
 
 import 'package:general_framework/api/api_core.dart';
 import 'package:general_framework/packagex/packagex.dart';
-import 'package:general_framework/templates/base_template_general_framework_project_template.dart';
-import 'package:general_lib/general_lib.dart';
+ import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/script_generate/script_generate.dart';
 import 'package:mason_logger/mason_logger.dart';
 import "package:path/path.dart" as path;
@@ -50,9 +49,6 @@ import "package:path/path.dart" as path;
 Logger logger = Logger();
 
 class GeneralFrameworkCli {
-  static Map<String, List<ScriptGenerator>> get templates => {
-        "base": base_template_general_framework_project_script_generators,
-      };
   static String seeYoutubeForDocumentOrTutorial() {
     return """
 See https://youtube.com/@azkadev for detailed documentation and tutorial.
@@ -159,7 +155,7 @@ Commands:
       final List<ScriptGenerator> template_project_procces = await Future(() async {
         {
           final String template_project_name_procces = (args.after(["-t", "--template"]) ?? "").trim().toLowerCase();
-          final List<ScriptGenerator>? template_project_procces = templates[template_project_name_procces];
+          final List<ScriptGenerator>? template_project_procces = generalFrameworkApi.templates[template_project_name_procces];
           if (template_project_procces != null) {
             return template_project_procces;
           }
@@ -172,13 +168,13 @@ Commands:
           while (true) {
             final String template_project_name_procces = logger.chooseOne(
               "Pilih Template?: ",
-              choices: templates.keys.toList(),
-              defaultValue: templates.keys.firstOrNull,
+              choices: generalFrameworkApi.templates.keys.toList(),
+              defaultValue: generalFrameworkApi.templates.keys.firstOrNull,
               display: (choice) {
                 return choice.split(" ").map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
               },
             );
-            final List<ScriptGenerator>? template_project_procces = templates[template_project_name_procces];
+            final List<ScriptGenerator>? template_project_procces = generalFrameworkApi.templates[template_project_name_procces];
             if (template_project_procces != null) {
               return template_project_procces;
             }
@@ -205,6 +201,7 @@ Commands:
       }
       await generalFrameworkApi.createProject(
         name_project: name_project,
+        is_force: args.contains(["--force","-force", "-f", "-F"]),
         template_project: template_project_procces,
         current_path: Directory.current.path,
         onStatus: (status) {
