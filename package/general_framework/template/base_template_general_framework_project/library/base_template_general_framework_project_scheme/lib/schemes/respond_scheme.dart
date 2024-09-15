@@ -40,6 +40,7 @@ final List<Map<String, dynamic>> respond_schemes = () {
 
   return [
     BaseTemplateGeneralFrameworkProjectSchemeDefault.account(generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.message(generalLibSchemeType: generalLibSchemeType),
     BaseTemplateGeneralFrameworkProjectSchemeDefault.session(generalLibSchemeType: generalLibSchemeType),
     {
       "@type": "ok",

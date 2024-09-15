@@ -39,6 +39,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/account_database.dart';
+import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/message_database.dart';
 import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/session_isar_database.dart';
 import 'package:general_framework/core/database/database_core.dart';
 import 'package:http/http.dart';
@@ -50,6 +51,7 @@ class BaseTemplateGeneralFrameworkProjectClientDatabase
   final List<IsarGeneratedSchema> isar_schemes = [
     AccountDatabaseSchema,
     SessionIsarDatabaseSchema,
+    MessageDatabaseSchema,
   ];
   late final Isar isar_core;
   BaseTemplateGeneralFrameworkProjectClientDatabase();

@@ -39,7 +39,9 @@ final List<Map<String, dynamic>> database_schemes = () {
   final GeneralLibSchemeType generalLibSchemeType = GeneralLibSchemeType.database;
   return [
     BaseTemplateGeneralFrameworkProjectSchemeDefault.account(generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.message(generalLibSchemeType: generalLibSchemeType),
     BaseTemplateGeneralFrameworkProjectSchemeDefault.session(generalLibSchemeType: generalLibSchemeType),
     BaseTemplateGeneralFrameworkProjectSchemeDefault.session(generalLibSchemeType: GeneralLibSchemeType.isar),
+
   ];
 }();
