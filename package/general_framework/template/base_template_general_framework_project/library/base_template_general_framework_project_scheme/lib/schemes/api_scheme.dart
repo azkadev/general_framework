@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 /* <!-- START LICENSE -->
 
 
@@ -43,10 +45,20 @@ final List<Map<String, dynamic>> api_schemes = [
     "@type": "signIn",
     "username": "",
     "password": "",
-    // "@return_type": "ok",
+    "@return_type": "session",
   },
   {
     "@type": "getMe",
+    "@return_type": "account",
+  },
+  {
+    "@type": "getChat",
+    "chat_id": 0,
+    "@return_type": "account",
+  },
+  {
+    "@type": "getUser",
+    "user_id": 0,
     "@return_type": "account",
   },
   {
@@ -70,6 +82,13 @@ final List<Map<String, dynamic>> api_schemes = [
     "chat_id": 0,
     "text": "",
     "@return_type": "message",
+  },
+  {
+    "@type": "getAllMessages",
+    "chat_id": 0,
+    "offset": 0,
+    "limit": 0,
+    "@return_type": "messages",
   },
   {
     "@type": "getMessages",

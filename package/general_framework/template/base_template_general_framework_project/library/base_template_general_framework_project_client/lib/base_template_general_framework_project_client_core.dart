@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 /* <!-- START LICENSE -->
 
 
@@ -35,15 +37,19 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:base_template_general_framework_project_client_database/account/account.dart';
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
+import 'package:base_template_general_framework_project_client_database/session/session.dart';
+import 'package:base_template_general_framework_project_scheme/database_scheme/account_database.dart';
+import 'package:base_template_general_framework_project_scheme/database_scheme/session_isar_database.dart';
 import 'package:base_template_general_framework_project_secret/base_template_general_framework_project_secret.dart';
 import 'package:general_framework/core/client/client.dart';
+import 'package:general_lib/general_lib.dart';
 
 /// base template general framework
-class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
-    BaseTemplateGeneralFrameworkProjectClientDatabase> {
-  final BaseTemplateGeneralFrameworkProjectSecret
-      baseTemplateGeneralFrameworkProjectSecret;
+class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<BaseTemplateGeneralFrameworkProjectClientDatabase> {
+  final BaseTemplateGeneralFrameworkProjectSecret baseTemplateGeneralFrameworkProjectSecret;
+  final SessionIsarDatabase sessionDefault = SessionIsarDatabase({});
 
   BaseTemplateGeneralFrameworkProjectClient({
     required this.baseTemplateGeneralFrameworkProjectSecret,
@@ -60,25 +66,19 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
   @override
   FutureOr<void> ensureInitialized({
     required InvokeClientFunction<dynamic> onInvokeResult,
-    required InvokeClientFunction<dynamic> onInvokeRequest,
     required InvokeClientValidationFunction<Map?> onInvokeValidation,
     required String currentPath,
   }) async {
     await super.ensureInitialized(
       currentPath: currentPath,
-      onInvokeValidation:
-          (parameters, generalFrameworkClientInvokeOptions) async {
-        final Map result = await onInvokeValidationDefault(
-                parameters, generalFrameworkClientInvokeOptions) ??
-            {};
+      onInvokeValidation: (parameters, generalFrameworkClientInvokeOptions) async {
+        final Map result = await onInvokeValidationDefault(parameters, generalFrameworkClientInvokeOptions) ?? {};
         if (result.isNotEmpty) {
           return result;
         }
-        return await onInvokeValidation(
-            parameters, generalFrameworkClientInvokeOptions);
+        return await onInvokeValidation(parameters, generalFrameworkClientInvokeOptions);
       },
-      onInvokeResult:
-          (result, parameters, generalFrameworkClientInvokeOptions) async {
+      onInvokeResult: (result, parameters, generalFrameworkClientInvokeOptions) async {
         await onInvokeResultDefault(
           result,
           parameters,
@@ -90,50 +90,54 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
           generalFrameworkClientInvokeOptions,
         );
       },
-      onInvokeRequest:
-          (result, parameters, generalFrameworkClientInvokeOptions) async {
-        await onInvokeRequestDefault(
-          result,
-          parameters,
-          generalFrameworkClientInvokeOptions,
-        );
-        await onInvokeRequest(
-          result,
-          parameters,
-          generalFrameworkClientInvokeOptions,
-        );
-      },
     );
   }
 
-  FutureOr<Map?> onInvokeValidationDefault(
-      Map<dynamic, dynamic> parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) async {
+  FutureOr<Map?> onInvokeValidationDefault(Map<dynamic, dynamic> parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
+    if (parameters["@client_token"] is String == false) {
+      parameters["@client_token"] = sessionDefault.token;
+    }
     return null;
   }
 
-  FutureOr<dynamic> onInvokeRequestDefault(
-      Map<dynamic, dynamic> result,
-      Map<dynamic, dynamic> parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) {}
-
-  FutureOr<dynamic> onInvokeResultDefault(
-      Map<dynamic, dynamic> result,
-      Map<dynamic, dynamic> parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) {}
+  FutureOr<dynamic> onInvokeResultDefault(Map<dynamic, dynamic> result, Map<dynamic, dynamic> parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
+    final String parameters_special_type = parameters["@type"].toString().toLowerCase();
+    final String result_special_type = result["@type"].toString().toLowerCase();
+    if (parameters_special_type == "signin") {
+      if (result_special_type == "session") {
+        sessionDefault.rawData = result;
+        sessionDefault.is_default = true;
+        result["is_default"] = true;
+        generalFrameworkDatabase.session_saveSessionByToken(token: result["token"], newSessionDatabase: SessionIsarDatabase(result));
+      }
+    }
+    if (parameters_special_type == "getme") {
+      if (result_special_type == "account") {
+        generalFrameworkDatabase.account_saveAccountByUserId(account_user_id: result["id"], newAccountDatabase: AccountDatabase(result));
+      } else if (result_special_type == "error") {
+        if (result["message"] == "timeout") {
+          final account_from_database = generalFrameworkDatabase.account_getAccountByUserId(account_user_id: (sessionDefault.account_user_id ?? 0).toInt());
+          if (account_from_database == null) {
+            return;
+          }
+          result.clear();
+          result.general_lib_extension_updateForce(data: {
+            "@type": "account",
+            ...account_from_database.toJson(),
+          });
+        }
+      }
+    }
+    return;
+  }
 
   @override
   String decryptData({required String data}) {
-    return baseTemplateGeneralFrameworkProjectSecret.crypto
-        .decrypt(data_base64: data);
+    return baseTemplateGeneralFrameworkProjectSecret.crypto.decrypt(data_base64: data);
   }
 
   @override
   String encryptData({required Map data}) {
-    return baseTemplateGeneralFrameworkProjectSecret.crypto
-        .encrypt(data: json.encode(data));
+    return baseTemplateGeneralFrameworkProjectSecret.crypto.encrypt(data: json.encode(data));
   }
 }

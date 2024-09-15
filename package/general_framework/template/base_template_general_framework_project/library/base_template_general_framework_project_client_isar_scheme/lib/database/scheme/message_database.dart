@@ -12,6 +12,8 @@ class MessageDatabase {
 
   String special_type = "messageDatabase";
 
+  bool is_outgoing = false;
+
   int message_id = 0;
 
   int from_user_id = 0;
@@ -21,6 +23,8 @@ class MessageDatabase {
   int date = 0;
 
   int update_date = 0;
+
+  String status = "";
 
   List<int> chat_ids = [0];
 
@@ -41,6 +45,10 @@ class MessageDatabase {
       this.special_type = value;
     }
 
+    if (key == "is_outgoing") {
+      this.is_outgoing = value;
+    }
+
     if (key == "message_id") {
       this.message_id = value;
     }
@@ -59,6 +67,10 @@ class MessageDatabase {
 
     if (key == "update_date") {
       this.update_date = value;
+    }
+
+    if (key == "status") {
+      this.status = value;
     }
 
     if (key == "chat_ids") {
@@ -131,11 +143,13 @@ class MessageDatabase {
   Map toJson() {
     return {
       "@type": special_type,
+      "is_outgoing": is_outgoing,
       "message_id": message_id,
       "from_user_id": from_user_id,
       "text": text,
       "date": date,
       "update_date": update_date,
+      "status": status,
       "chat_ids": chat_ids,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
@@ -158,11 +172,13 @@ class MessageDatabase {
   static Map get defaultData {
     return {
       "@type": "messageDatabase",
+      "is_outgoing": false,
       "message_id": 0,
       "from_user_id": 0,
       "text": "",
       "date": 0,
       "update_date": 0,
+      "status": "",
       "chat_ids": [0],
       "from_app_id": "",
       "owner_account_user_id": 0,

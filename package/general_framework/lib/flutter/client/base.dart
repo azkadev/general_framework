@@ -44,9 +44,7 @@ import 'package:general_framework/flutter/client/general_framework_client_flutte
 
 abstract class GeneralFrameworkClientFlutterCore {
   FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {}
-
-  FutureOr<dynamic> onInvokeRequest(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {}
-
+ 
   FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
     return null;
   }
@@ -81,7 +79,7 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> i
     await generalFrameworkClient.ensureInitialized(
       onInvokeResult: onInvokeResult,
       currentPath: generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
-      onInvokeRequest: onInvokeRequest,
+
       onInvokeValidation: onInvokeValidation,
     );
     is_initialized = true;

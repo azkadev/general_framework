@@ -4,20 +4,20 @@ import "package:general_lib/general_lib.dart";
 
 
  
-class SignIn extends JsonScheme {
+class GetUser extends JsonScheme {
 
   
-  SignIn(super.rawData);
+  GetUser(super.rawData);
   
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"signIn","username":"","password":"","@return_type":"session","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
+    return {"@type":"getUser","user_id":0,"@return_type":"account","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
   }
 
   /// check data 
   /// if raw data 
-  /// - rawData["@type"] == signIn
+  /// - rawData["@type"] == getUser
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
     return rawData["@type"] == defaultData["@type"];
@@ -32,10 +32,10 @@ class SignIn extends JsonScheme {
 
   
 
-  /// create [SignIn]
+  /// create [GetUser]
   /// Empty  
-  static SignIn empty() {
-    return SignIn({});
+  static GetUser empty() {
+    return GetUser({});
   }
 
   
@@ -59,38 +59,20 @@ class SignIn extends JsonScheme {
 
 
   
-  String? get username {
+  num? get user_id {
     try {
-      if (rawData["username"] is String == false){
+      if (rawData["user_id"] is num == false){
         return null;
       }
-      return rawData["username"] as String;
+      return rawData["user_id"] as num;
     } catch (e) {
       return null;
     }
   }
 
   
-  set username(String? value) {
-    rawData["username"] = value;
-  }
-
-
-  
-  String? get password {
-    try {
-      if (rawData["password"] is String == false){
-        return null;
-      }
-      return rawData["password"] as String;
-    } catch (e) {
-      return null;
-    }
-  }
-
-  
-  set password(String? value) {
-    rawData["password"] = value;
+  set user_id(num? value) {
+    rawData["user_id"] = value;
   }
 
 
@@ -203,25 +185,23 @@ class SignIn extends JsonScheme {
 
 
   
-  static SignIn create({
+  static GetUser create({
               bool schemeUtilsIsSetDefaultData = false,
 
-    String special_type = "signIn",
-    String? username,
-    String? password,
-    String special_return_type = "session",
+    String special_type = "getUser",
+    num? user_id,
+    String special_return_type = "account",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
     String special_expire_date = "",
     String special_token = "",
 })  {
-    // SignIn signIn = SignIn({
-final Map signIn_data_create_json = {
+    // GetUser getUser = GetUser({
+final Map getUser_data_create_json = {
   
       "@type": special_type,
-      "username": username,
-      "password": password,
+      "user_id": user_id,
       "@return_type": special_return_type,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
@@ -233,16 +213,16 @@ final Map signIn_data_create_json = {
 };
 
 
-          signIn_data_create_json.removeWhere((key, value) => value == null);
+          getUser_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (signIn_data_create_json.containsKey(key) == false) {
-          signIn_data_create_json[key] = value;
+        if (getUser_data_create_json.containsKey(key) == false) {
+          getUser_data_create_json[key] = value;
         }
       });
     }
-return SignIn(signIn_data_create_json);
+return GetUser(getUser_data_create_json);
 
 
       }

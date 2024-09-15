@@ -88,24 +88,19 @@ class BaseTemplateGeneralFrameworkProjectSchemeDefault {
   }) {
     final Map<String, dynamic> json_data = {
       "@type": "message${generalLibSchemeType.toSpesialType()}",
+      "is_outgoing": false,
       "message_id": 0,
       "from_user_id": 0,
       "text": "",
       "date": 0,
       "update_date": 0,
+      "status": "",
     };
 
     if (generalLibSchemeType == GeneralLibSchemeType.database) {
       json_data.general_lib_extension_updateForce(data: <String, dynamic>{
         "chat_ids": [0],
-      });
-    // }
-    // } else if (generalLibSchemeType == GeneralLibSchemeType.isar) {
-    //   json_data.general_lib_extension_updateForce(data: <String, dynamic>{
-    //     //
-    //     //
-    //     "is_default": false,
-    //   });
+      }); 
     } else if (generalLibSchemeType == GeneralLibSchemeType.scheme) {
       json_data.general_lib_extension_updateForce(data: <String, dynamic>{
         "chat_id": 0,

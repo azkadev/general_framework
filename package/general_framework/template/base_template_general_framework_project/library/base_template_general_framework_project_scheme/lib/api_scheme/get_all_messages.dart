@@ -4,20 +4,20 @@ import "package:general_lib/general_lib.dart";
 
 
  
-class SignIn extends JsonScheme {
+class GetAllMessages extends JsonScheme {
 
   
-  SignIn(super.rawData);
+  GetAllMessages(super.rawData);
   
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"signIn","username":"","password":"","@return_type":"session","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
+    return {"@type":"getAllMessages","chat_id":0,"offset":0,"limit":0,"@return_type":"messages","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
   }
 
   /// check data 
   /// if raw data 
-  /// - rawData["@type"] == signIn
+  /// - rawData["@type"] == getAllMessages
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
     return rawData["@type"] == defaultData["@type"];
@@ -32,10 +32,10 @@ class SignIn extends JsonScheme {
 
   
 
-  /// create [SignIn]
+  /// create [GetAllMessages]
   /// Empty  
-  static SignIn empty() {
-    return SignIn({});
+  static GetAllMessages empty() {
+    return GetAllMessages({});
   }
 
   
@@ -59,38 +59,56 @@ class SignIn extends JsonScheme {
 
 
   
-  String? get username {
+  num? get chat_id {
     try {
-      if (rawData["username"] is String == false){
+      if (rawData["chat_id"] is num == false){
         return null;
       }
-      return rawData["username"] as String;
+      return rawData["chat_id"] as num;
     } catch (e) {
       return null;
     }
   }
 
   
-  set username(String? value) {
-    rawData["username"] = value;
+  set chat_id(num? value) {
+    rawData["chat_id"] = value;
   }
 
 
   
-  String? get password {
+  num? get offset {
     try {
-      if (rawData["password"] is String == false){
+      if (rawData["offset"] is num == false){
         return null;
       }
-      return rawData["password"] as String;
+      return rawData["offset"] as num;
     } catch (e) {
       return null;
     }
   }
 
   
-  set password(String? value) {
-    rawData["password"] = value;
+  set offset(num? value) {
+    rawData["offset"] = value;
+  }
+
+
+  
+  num? get limit {
+    try {
+      if (rawData["limit"] is num == false){
+        return null;
+      }
+      return rawData["limit"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set limit(num? value) {
+    rawData["limit"] = value;
   }
 
 
@@ -203,25 +221,27 @@ class SignIn extends JsonScheme {
 
 
   
-  static SignIn create({
+  static GetAllMessages create({
               bool schemeUtilsIsSetDefaultData = false,
 
-    String special_type = "signIn",
-    String? username,
-    String? password,
-    String special_return_type = "session",
+    String special_type = "getAllMessages",
+    num? chat_id,
+    num? offset,
+    num? limit,
+    String special_return_type = "messages",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
     String special_expire_date = "",
     String special_token = "",
 })  {
-    // SignIn signIn = SignIn({
-final Map signIn_data_create_json = {
+    // GetAllMessages getAllMessages = GetAllMessages({
+final Map getAllMessages_data_create_json = {
   
       "@type": special_type,
-      "username": username,
-      "password": password,
+      "chat_id": chat_id,
+      "offset": offset,
+      "limit": limit,
       "@return_type": special_return_type,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
@@ -233,16 +253,16 @@ final Map signIn_data_create_json = {
 };
 
 
-          signIn_data_create_json.removeWhere((key, value) => value == null);
+          getAllMessages_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (signIn_data_create_json.containsKey(key) == false) {
-          signIn_data_create_json[key] = value;
+        if (getAllMessages_data_create_json.containsKey(key) == false) {
+          getAllMessages_data_create_json[key] = value;
         }
       });
     }
-return SignIn(signIn_data_create_json);
+return GetAllMessages(getAllMessages_data_create_json);
 
 
       }

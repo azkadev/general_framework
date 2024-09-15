@@ -1,6 +1,9 @@
+export "get_all_messages.dart";
+export "get_chat.dart";
 export "get_me.dart";
 export "get_message.dart";
 export "get_messages.dart";
+export "get_user.dart";
 export "send_message.dart";
 export "set_bio.dart";
 export "set_name.dart";

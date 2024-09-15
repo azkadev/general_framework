@@ -85,7 +85,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
   final GeneralLibrary generalLibrary;
   final D generalFrameworkDatabase;
   late final InvokeClientValidationFunction<Map?> onInvokeValidation;
-  late final InvokeClientFunction<dynamic> onInvokeRequest;
+  // late final InvokeClientFunction<dynamic> onInvokeRequest;
   late final InvokeClientFunction<dynamic> onInvokeResult;
   late final String currentPath;
   GeneralFrameworkClient({
@@ -118,8 +118,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
   bool is_initialized = false;
 
   /// call this method
-  FutureOr<void> ensureInitialized({
-    required InvokeClientFunction<dynamic> onInvokeRequest,
+  FutureOr<void> ensureInitialized({ 
     required InvokeClientFunction<dynamic> onInvokeResult,
     required InvokeClientValidationFunction<Map?> onInvokeValidation,
     required String currentPath,
@@ -131,8 +130,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
     tcp_socket_client.port = api_uri.port;
     web_socket_client.url = api_uri.replace(scheme: (api_uri.scheme == "https") ? "wss" : "ws").toString();
     this.onInvokeResult = onInvokeResult;
-    this.onInvokeRequest = onInvokeRequest;
-    this.onInvokeValidation = onInvokeValidation;
+     this.onInvokeValidation = onInvokeValidation;
     this.currentPath = currentPath;
     await generalFrameworkDatabase.ensureInitialized(
       currentPath: currentPath,

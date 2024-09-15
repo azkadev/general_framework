@@ -22,7 +22,7 @@ extension BaseTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate
   }
 
   /// generate
-  Future<Ok> api_signIn({
+  Future<Session> api_signIn({
     required SignIn signInParameters,
     GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
   }) async {
@@ -30,7 +30,7 @@ extension BaseTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate
       parameters: signInParameters.toJson(),
       generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
       onResult: (result) {
-        return Ok(result);
+        return Session(result);
       },
     );
   }
@@ -42,6 +42,34 @@ extension BaseTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate
   }) async {
     return await invokeBuilder(
       parameters: getMeParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Account(result);
+      },
+    );
+  }
+
+  /// generate
+  Future<Account> api_getChat({
+    required GetChat getChatParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: getChatParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Account(result);
+      },
+    );
+  }
+
+  /// generate
+  Future<Account> api_getUser({
+    required GetUser getUserParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: getUserParameters.toJson(),
       generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
       onResult: (result) {
         return Account(result);
@@ -101,6 +129,20 @@ extension BaseTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate
       generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
       onResult: (result) {
         return Message(result);
+      },
+    );
+  }
+
+  /// generate
+  Future<Messages> api_getAllMessages({
+    required GetAllMessages getAllMessagesParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: getAllMessagesParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Messages(result);
       },
     );
   }

@@ -12,7 +12,7 @@ class MessageDatabase extends JsonScheme {
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"messageDatabase","message_id":0,"from_user_id":0,"text":"","date":0,"update_date":0,"chat_ids":[0],"from_app_id":"","owner_account_user_id":0};
+    return {"@type":"messageDatabase","is_outgoing":false,"message_id":0,"from_user_id":0,"text":"","date":0,"update_date":0,"status":"","chat_ids":[0],"from_app_id":"","owner_account_user_id":0};
   }
 
   /// check data 
@@ -55,6 +55,24 @@ class MessageDatabase extends JsonScheme {
   
   set special_type(String? value) {
     rawData["@type"] = value;
+  }
+
+
+  
+  bool? get is_outgoing {
+    try {
+      if (rawData["is_outgoing"] is bool == false){
+        return null;
+      }
+      return rawData["is_outgoing"] as bool;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set is_outgoing(bool? value) {
+    rawData["is_outgoing"] = value;
   }
 
 
@@ -149,6 +167,24 @@ class MessageDatabase extends JsonScheme {
 
 
   
+  String? get status {
+    try {
+      if (rawData["status"] is String == false){
+        return null;
+      }
+      return rawData["status"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set status(String? value) {
+    rawData["status"] = value;
+  }
+
+
+  
   ///
   /// default:
   /// 
@@ -212,11 +248,13 @@ class MessageDatabase extends JsonScheme {
               bool schemeUtilsIsSetDefaultData = false,
 
     String special_type = "messageDatabase",
+    bool? is_outgoing,
     num? message_id,
     num? from_user_id,
     String? text,
     num? date,
     num? update_date,
+    String? status,
       List<num>? chat_ids,
     String? from_app_id,
     num? owner_account_user_id,
@@ -225,11 +263,13 @@ class MessageDatabase extends JsonScheme {
 final Map messageDatabase_data_create_json = {
   
       "@type": special_type,
+      "is_outgoing": is_outgoing,
       "message_id": message_id,
       "from_user_id": from_user_id,
       "text": text,
       "date": date,
       "update_date": update_date,
+      "status": status,
       "chat_ids": chat_ids,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
