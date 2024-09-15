@@ -30,13 +30,4 @@ Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
 jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
 Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
 
-
-<!-- END LICENSE --> */
-import 'package:base_template_general_framework_project_api_server/base_template_general_framework_project_api_server.dart';
-import 'package:test/test.dart';
-
-void main() {
-  test('calculate', () {
-    expect(calculate(), 42);
-  });
-}
+ 
