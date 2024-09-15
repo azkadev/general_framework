@@ -69,6 +69,7 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage on Base
     if (new_data == null) {
       return null;
     }
+    new_data["chat_ids"] = [chat_id, user_id];
     return MessageDatabase(new_data);
   }
 

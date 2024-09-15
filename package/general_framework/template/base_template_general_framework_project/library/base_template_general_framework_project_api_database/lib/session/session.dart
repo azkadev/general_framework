@@ -21,6 +21,7 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionSession on Base
   }
 
   Future<SessionDatabase?> session_createNewSession({
+    required num account_user_id,
     required SessionDatabase newSessionDatabase,
   }) async {
     final String new_token = (await session_generateNewToken() ?? "").trim();
@@ -28,6 +29,7 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionSession on Base
       return null;
     }
     session_utils_removeUnusedAccountDatabase(sessionDatabase: newSessionDatabase);
+    newSessionDatabase.account_user_id  = account_user_id;
     newSessionDatabase.token = new_token;
     final new_data = await supabase_session.insert(newSessionDatabase.toJson(), defaultToNull: false).select().limit(1).maybeSingle();
     if (new_data == null) {

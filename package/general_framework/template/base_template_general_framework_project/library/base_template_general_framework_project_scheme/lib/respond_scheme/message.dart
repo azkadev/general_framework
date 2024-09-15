@@ -12,7 +12,7 @@ class Message extends JsonScheme {
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"message","id":0,"@extra":"","@expire_date":"","@client_id":""};
+    return {"@type":"message","is_outgoing":false,"message_id":0,"from_user_id":0,"text":"","date":0,"update_date":0,"status":"","chat_id":0,"@extra":"","@expire_date":"","@client_id":""};
   }
 
   /// check data 
@@ -59,20 +59,146 @@ class Message extends JsonScheme {
 
 
   
-  num? get id {
+  bool? get is_outgoing {
     try {
-      if (rawData["id"] is num == false){
+      if (rawData["is_outgoing"] is bool == false){
         return null;
       }
-      return rawData["id"] as num;
+      return rawData["is_outgoing"] as bool;
     } catch (e) {
       return null;
     }
   }
 
   
-  set id(num? value) {
-    rawData["id"] = value;
+  set is_outgoing(bool? value) {
+    rawData["is_outgoing"] = value;
+  }
+
+
+  
+  num? get message_id {
+    try {
+      if (rawData["message_id"] is num == false){
+        return null;
+      }
+      return rawData["message_id"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set message_id(num? value) {
+    rawData["message_id"] = value;
+  }
+
+
+  
+  num? get from_user_id {
+    try {
+      if (rawData["from_user_id"] is num == false){
+        return null;
+      }
+      return rawData["from_user_id"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set from_user_id(num? value) {
+    rawData["from_user_id"] = value;
+  }
+
+
+  
+  String? get text {
+    try {
+      if (rawData["text"] is String == false){
+        return null;
+      }
+      return rawData["text"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set text(String? value) {
+    rawData["text"] = value;
+  }
+
+
+  
+  num? get date {
+    try {
+      if (rawData["date"] is num == false){
+        return null;
+      }
+      return rawData["date"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set date(num? value) {
+    rawData["date"] = value;
+  }
+
+
+  
+  num? get update_date {
+    try {
+      if (rawData["update_date"] is num == false){
+        return null;
+      }
+      return rawData["update_date"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set update_date(num? value) {
+    rawData["update_date"] = value;
+  }
+
+
+  
+  String? get status {
+    try {
+      if (rawData["status"] is String == false){
+        return null;
+      }
+      return rawData["status"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set status(String? value) {
+    rawData["status"] = value;
+  }
+
+
+  
+  num? get chat_id {
+    try {
+      if (rawData["chat_id"] is num == false){
+        return null;
+      }
+      return rawData["chat_id"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set chat_id(num? value) {
+    rawData["chat_id"] = value;
   }
 
 
@@ -135,7 +261,14 @@ class Message extends JsonScheme {
               bool schemeUtilsIsSetDefaultData = false,
 
     String special_type = "message",
-    num? id,
+    bool? is_outgoing,
+    num? message_id,
+    num? from_user_id,
+    String? text,
+    num? date,
+    num? update_date,
+    String? status,
+    num? chat_id,
     String special_extra = "",
     String special_expire_date = "",
     String special_client_id = "",
@@ -144,7 +277,14 @@ class Message extends JsonScheme {
 final Map message_data_create_json = {
   
       "@type": special_type,
-      "id": id,
+      "is_outgoing": is_outgoing,
+      "message_id": message_id,
+      "from_user_id": from_user_id,
+      "text": text,
+      "date": date,
+      "update_date": update_date,
+      "status": status,
+      "chat_id": chat_id,
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@client_id": special_client_id,

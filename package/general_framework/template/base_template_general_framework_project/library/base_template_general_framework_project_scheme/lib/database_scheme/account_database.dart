@@ -12,7 +12,7 @@ class AccountDatabase extends JsonScheme {
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"accountDatabase","id":0,"first_name":"","last_name":"","username":"","password":"","from_app_id":"","owner_account_user_id":0};
+    return {"@type":"accountDatabase","id":0,"first_name":"","last_name":"","username":"","bio":"","password":"","from_app_id":"","owner_account_user_id":0};
   }
 
   /// check data 
@@ -131,6 +131,24 @@ class AccountDatabase extends JsonScheme {
 
 
   
+  String? get bio {
+    try {
+      if (rawData["bio"] is String == false){
+        return null;
+      }
+      return rawData["bio"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set bio(String? value) {
+    rawData["bio"] = value;
+  }
+
+
+  
   String? get password {
     try {
       if (rawData["password"] is String == false){
@@ -193,6 +211,7 @@ class AccountDatabase extends JsonScheme {
     String? first_name,
     String? last_name,
     String? username,
+    String? bio,
     String? password,
     String? from_app_id,
     num? owner_account_user_id,
@@ -205,6 +224,7 @@ final Map accountDatabase_data_create_json = {
       "first_name": first_name,
       "last_name": last_name,
       "username": username,
+      "bio": bio,
       "password": password,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 /* <!-- START LICENSE -->
 
 
@@ -31,12 +33,31 @@ jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesu
 Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
 
 
-<!-- END LICENSE --> */
-import 'package:base_template_general_framework_project_scheme/base_template_general_framework_project_scheme.dart';
-import 'package:test/test.dart';
+<!-- END LICENSE --> */ 
 
-void main() {
-  test('calculate', () {
-    expect(calculate(), 42);
-  });
+class BaseTemplateGeneralFrameworkProjectSchemeValidation {
+  static Map? usernameValidation({
+    required String username,
+  }) {
+    if (username.isEmpty) {
+      return {
+        "@type": "error",
+        "message": "username_cant_empty",
+      };
+    }
+
+    return null;
+  }
+  static Map? passwordValidation({
+    required String password,
+  }) {
+    if (password.isEmpty) {
+      return {
+        "@type": "error",
+        "message": "password_cant_empty",
+      };
+    }
+
+    return null;
+  }
 }

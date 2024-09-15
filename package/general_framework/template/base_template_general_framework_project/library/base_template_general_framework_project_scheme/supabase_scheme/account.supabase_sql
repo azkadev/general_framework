@@ -4,6 +4,7 @@ CREATE TABLE account (
   first_name text null default format(''::text),
   last_name text null default format(''::text),
   username text null default format(''::text),
+  bio text null default format(''::text),
   password text null default format(''::text),
   from_app_id text null default format(''::text),
   owner_account_user_id bigint null default 0
@@ -16,6 +17,7 @@ alter table account enable row level security;
 ALTER TABLE account ADD COLUMN first_name text DEFAULT format(''::text);
 ALTER TABLE account ADD COLUMN last_name text DEFAULT format(''::text);
 ALTER TABLE account ADD COLUMN username text DEFAULT format(''::text);
+ALTER TABLE account ADD COLUMN bio text DEFAULT format(''::text);
 ALTER TABLE account ADD COLUMN password text DEFAULT format(''::text);
 ALTER TABLE account ADD COLUMN from_app_id text DEFAULT format(''::text);
 ALTER TABLE account ADD COLUMN owner_account_user_id bigint DEFAULT 0;

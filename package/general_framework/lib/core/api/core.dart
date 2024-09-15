@@ -40,14 +40,14 @@ import 'package:http/http.dart';
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
 abstract class GeneralFrameworkApiBase<D extends GeneralFrameworkDatabase> {
-  final D generalFrameworkDatabase;
+  final D generalFrameworkApiDatabase;
   GeneralFrameworkApiBase({
-    required this.generalFrameworkDatabase,
+    required this.generalFrameworkApiDatabase,
   });
   FutureOr<void> ensureInitialized({
     required String currentPath,
     required Client httpClient,
   }) async {
-    await generalFrameworkDatabase.ensureInitialized(currentPath: currentPath, httpClient: httpClient,);
+    await generalFrameworkApiDatabase.ensureInitialized(currentPath: currentPath, httpClient: httpClient,);
   }
 }

@@ -38,6 +38,10 @@ const AccountDatabaseSchema = IsarGeneratedSchema(
         type: IsarType.string,
       ),
       IsarPropertySchema(
+        name: 'bio',
+        type: IsarType.string,
+      ),
+      IsarPropertySchema(
         name: 'password',
         type: IsarType.string,
       ),
@@ -66,9 +70,10 @@ int serializeAccountDatabase(IsarWriter writer, AccountDatabase object) {
   IsarCore.writeString(writer, 2, object.first_name);
   IsarCore.writeString(writer, 3, object.last_name);
   IsarCore.writeString(writer, 4, object.username);
-  IsarCore.writeString(writer, 5, object.password);
-  IsarCore.writeString(writer, 6, object.from_app_id);
-  IsarCore.writeLong(writer, 7, object.owner_account_user_id);
+  IsarCore.writeString(writer, 5, object.bio);
+  IsarCore.writeString(writer, 6, object.password);
+  IsarCore.writeString(writer, 7, object.from_app_id);
+  IsarCore.writeLong(writer, 8, object.owner_account_user_id);
   return object.id;
 }
 
@@ -80,9 +85,10 @@ AccountDatabase deserializeAccountDatabase(IsarReader reader) {
   object.first_name = IsarCore.readString(reader, 2) ?? '';
   object.last_name = IsarCore.readString(reader, 3) ?? '';
   object.username = IsarCore.readString(reader, 4) ?? '';
-  object.password = IsarCore.readString(reader, 5) ?? '';
-  object.from_app_id = IsarCore.readString(reader, 6) ?? '';
-  object.owner_account_user_id = IsarCore.readLong(reader, 7);
+  object.bio = IsarCore.readString(reader, 5) ?? '';
+  object.password = IsarCore.readString(reader, 6) ?? '';
+  object.from_app_id = IsarCore.readString(reader, 7) ?? '';
+  object.owner_account_user_id = IsarCore.readLong(reader, 8);
   return object;
 }
 
@@ -104,7 +110,9 @@ dynamic deserializeAccountDatabaseProp(IsarReader reader, int property) {
     case 6:
       return IsarCore.readString(reader, 6) ?? '';
     case 7:
-      return IsarCore.readLong(reader, 7);
+      return IsarCore.readString(reader, 7) ?? '';
+    case 8:
+      return IsarCore.readLong(reader, 8);
     default:
       throw ArgumentError('Unknown property: $property');
   }
@@ -117,6 +125,7 @@ sealed class _AccountDatabaseUpdate {
     String? first_name,
     String? last_name,
     String? username,
+    String? bio,
     String? password,
     String? from_app_id,
     int? owner_account_user_id,
@@ -135,6 +144,7 @@ class _AccountDatabaseUpdateImpl implements _AccountDatabaseUpdate {
     Object? first_name = ignore,
     Object? last_name = ignore,
     Object? username = ignore,
+    Object? bio = ignore,
     Object? password = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
@@ -146,9 +156,10 @@ class _AccountDatabaseUpdateImpl implements _AccountDatabaseUpdate {
           if (first_name != ignore) 2: first_name as String?,
           if (last_name != ignore) 3: last_name as String?,
           if (username != ignore) 4: username as String?,
-          if (password != ignore) 5: password as String?,
-          if (from_app_id != ignore) 6: from_app_id as String?,
-          if (owner_account_user_id != ignore) 7: owner_account_user_id as int?,
+          if (bio != ignore) 5: bio as String?,
+          if (password != ignore) 6: password as String?,
+          if (from_app_id != ignore) 7: from_app_id as String?,
+          if (owner_account_user_id != ignore) 8: owner_account_user_id as int?,
         }) >
         0;
   }
@@ -161,6 +172,7 @@ sealed class _AccountDatabaseUpdateAll {
     String? first_name,
     String? last_name,
     String? username,
+    String? bio,
     String? password,
     String? from_app_id,
     int? owner_account_user_id,
@@ -179,6 +191,7 @@ class _AccountDatabaseUpdateAllImpl implements _AccountDatabaseUpdateAll {
     Object? first_name = ignore,
     Object? last_name = ignore,
     Object? username = ignore,
+    Object? bio = ignore,
     Object? password = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
@@ -188,9 +201,10 @@ class _AccountDatabaseUpdateAllImpl implements _AccountDatabaseUpdateAll {
       if (first_name != ignore) 2: first_name as String?,
       if (last_name != ignore) 3: last_name as String?,
       if (username != ignore) 4: username as String?,
-      if (password != ignore) 5: password as String?,
-      if (from_app_id != ignore) 6: from_app_id as String?,
-      if (owner_account_user_id != ignore) 7: owner_account_user_id as int?,
+      if (bio != ignore) 5: bio as String?,
+      if (password != ignore) 6: password as String?,
+      if (from_app_id != ignore) 7: from_app_id as String?,
+      if (owner_account_user_id != ignore) 8: owner_account_user_id as int?,
     });
   }
 }
@@ -208,6 +222,7 @@ sealed class _AccountDatabaseQueryUpdate {
     String? first_name,
     String? last_name,
     String? username,
+    String? bio,
     String? password,
     String? from_app_id,
     int? owner_account_user_id,
@@ -226,6 +241,7 @@ class _AccountDatabaseQueryUpdateImpl implements _AccountDatabaseQueryUpdate {
     Object? first_name = ignore,
     Object? last_name = ignore,
     Object? username = ignore,
+    Object? bio = ignore,
     Object? password = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
@@ -235,9 +251,10 @@ class _AccountDatabaseQueryUpdateImpl implements _AccountDatabaseQueryUpdate {
       if (first_name != ignore) 2: first_name as String?,
       if (last_name != ignore) 3: last_name as String?,
       if (username != ignore) 4: username as String?,
-      if (password != ignore) 5: password as String?,
-      if (from_app_id != ignore) 6: from_app_id as String?,
-      if (owner_account_user_id != ignore) 7: owner_account_user_id as int?,
+      if (bio != ignore) 5: bio as String?,
+      if (password != ignore) 6: password as String?,
+      if (from_app_id != ignore) 7: from_app_id as String?,
+      if (owner_account_user_id != ignore) 8: owner_account_user_id as int?,
     });
   }
 }
@@ -263,6 +280,7 @@ class _AccountDatabaseQueryBuilderUpdateImpl
     Object? first_name = ignore,
     Object? last_name = ignore,
     Object? username = ignore,
+    Object? bio = ignore,
     Object? password = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
@@ -274,9 +292,10 @@ class _AccountDatabaseQueryBuilderUpdateImpl
         if (first_name != ignore) 2: first_name as String?,
         if (last_name != ignore) 3: last_name as String?,
         if (username != ignore) 4: username as String?,
-        if (password != ignore) 5: password as String?,
-        if (from_app_id != ignore) 6: from_app_id as String?,
-        if (owner_account_user_id != ignore) 7: owner_account_user_id as int?,
+        if (bio != ignore) 5: bio as String?,
+        if (password != ignore) 6: password as String?,
+        if (from_app_id != ignore) 7: from_app_id as String?,
+        if (owner_account_user_id != ignore) 8: owner_account_user_id as int?,
       });
     } finally {
       q.close();
@@ -1102,7 +1121,7 @@ extension AccountDatabaseQueryFilter
   }
 
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordEqualTo(
+      bioEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1118,7 +1137,7 @@ extension AccountDatabaseQueryFilter
   }
 
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordGreaterThan(
+      bioGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1134,7 +1153,7 @@ extension AccountDatabaseQueryFilter
   }
 
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordGreaterThanOrEqualTo(
+      bioGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1150,7 +1169,7 @@ extension AccountDatabaseQueryFilter
   }
 
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordLessThan(
+      bioLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1166,7 +1185,7 @@ extension AccountDatabaseQueryFilter
   }
 
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordLessThanOrEqualTo(
+      bioLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1174,6 +1193,186 @@ extension AccountDatabaseQueryFilter
       return query.addFilterCondition(
         LessOrEqualCondition(
           property: 5,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      bioBetween(
+    String lower,
+    String upper, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 5,
+          lower: lower,
+          upper: upper,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      bioStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        StartsWithCondition(
+          property: 5,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      bioEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EndsWithCondition(
+          property: 5,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      bioContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        ContainsCondition(
+          property: 5,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      bioMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        MatchesCondition(
+          property: 5,
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      bioIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const EqualCondition(
+          property: 5,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      bioIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const GreaterCondition(
+          property: 5,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      passwordEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 6,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      passwordGreaterThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 6,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      passwordGreaterThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 6,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      passwordLessThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 6,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      passwordLessThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 6,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -1190,7 +1389,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         BetweenCondition(
-          property: 5,
+          property: 6,
           lower: lower,
           upper: upper,
           caseSensitive: caseSensitive,
@@ -1207,7 +1406,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         StartsWithCondition(
-          property: 5,
+          property: 6,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -1223,7 +1422,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         EndsWithCondition(
-          property: 5,
+          property: 6,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -1236,7 +1435,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
-          property: 5,
+          property: 6,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -1249,7 +1448,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
-          property: 5,
+          property: 6,
           wildcard: pattern,
           caseSensitive: caseSensitive,
         ),
@@ -1262,7 +1461,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
-          property: 5,
+          property: 6,
           value: '',
         ),
       );
@@ -1274,7 +1473,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
-          property: 5,
+          property: 6,
           value: '',
         ),
       );
@@ -1289,7 +1488,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         EqualCondition(
-          property: 6,
+          property: 7,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -1305,7 +1504,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterCondition(
-          property: 6,
+          property: 7,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -1321,7 +1520,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterOrEqualCondition(
-          property: 6,
+          property: 7,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -1337,7 +1536,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessCondition(
-          property: 6,
+          property: 7,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -1353,7 +1552,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessOrEqualCondition(
-          property: 6,
+          property: 7,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -1370,7 +1569,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         BetweenCondition(
-          property: 6,
+          property: 7,
           lower: lower,
           upper: upper,
           caseSensitive: caseSensitive,
@@ -1387,7 +1586,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         StartsWithCondition(
-          property: 6,
+          property: 7,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -1403,7 +1602,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         EndsWithCondition(
-          property: 6,
+          property: 7,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -1416,7 +1615,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
-          property: 6,
+          property: 7,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -1429,7 +1628,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
-          property: 6,
+          property: 7,
           wildcard: pattern,
           caseSensitive: caseSensitive,
         ),
@@ -1442,7 +1641,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
-          property: 6,
+          property: 7,
           value: '',
         ),
       );
@@ -1454,7 +1653,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
-          property: 6,
+          property: 7,
           value: '',
         ),
       );
@@ -1468,7 +1667,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         EqualCondition(
-          property: 7,
+          property: 8,
           value: value,
         ),
       );
@@ -1482,7 +1681,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterCondition(
-          property: 7,
+          property: 8,
           value: value,
         ),
       );
@@ -1496,7 +1695,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterOrEqualCondition(
-          property: 7,
+          property: 8,
           value: value,
         ),
       );
@@ -1510,7 +1709,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessCondition(
-          property: 7,
+          property: 8,
           value: value,
         ),
       );
@@ -1524,7 +1723,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessOrEqualCondition(
-          property: 7,
+          property: 8,
           value: value,
         ),
       );
@@ -1539,7 +1738,7 @@ extension AccountDatabaseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         BetweenCondition(
-          property: 7,
+          property: 8,
           lower: lower,
           upper: upper,
         ),
@@ -1649,7 +1848,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByPassword(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByBio(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
@@ -1659,11 +1858,32 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByBioDesc(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        5,
+        sort: Sort.desc,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByPassword(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        6,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
       sortByPasswordDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
-        5,
+        6,
         sort: Sort.desc,
         caseSensitive: caseSensitive,
       );
@@ -1674,7 +1894,7 @@ extension AccountDatabaseQuerySortBy
       sortByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
-        6,
+        7,
         caseSensitive: caseSensitive,
       );
     });
@@ -1684,7 +1904,7 @@ extension AccountDatabaseQuerySortBy
       sortByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
-        6,
+        7,
         sort: Sort.desc,
         caseSensitive: caseSensitive,
       );
@@ -1694,14 +1914,14 @@ extension AccountDatabaseQuerySortBy
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
       sortByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(7);
+      return query.addSortBy(8);
     });
   }
 
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
       sortByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(7, sort: Sort.desc);
+      return query.addSortBy(8, sort: Sort.desc);
     });
   }
 }
@@ -1776,45 +1996,59 @@ extension AccountDatabaseQuerySortThenBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByPassword(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByBio(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenByPasswordDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByBioDesc(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByPassword(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6, caseSensitive: caseSensitive);
     });
   }
 
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenByFrom_app_idDesc({bool caseSensitive = true}) {
+      thenByPasswordDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
+      thenByFrom_app_id({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(7, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
+      thenByFrom_app_idDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(7, sort: Sort.desc, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
       thenByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(7);
+      return query.addSortBy(8);
     });
   }
 
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
       thenByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(7, sort: Sort.desc);
+      return query.addSortBy(8, sort: Sort.desc);
     });
   }
 }
@@ -1849,24 +2083,31 @@ extension AccountDatabaseQueryWhereDistinct
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
-      distinctByPassword({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct> distinctByBio(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(5, caseSensitive: caseSensitive);
     });
   }
 
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
-      distinctByFrom_app_id({bool caseSensitive = true}) {
+      distinctByPassword({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(6, caseSensitive: caseSensitive);
     });
   }
 
   QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
+      distinctByFrom_app_id({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(7, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
       distinctByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(7);
+      return query.addDistinctBy(8);
     });
   }
 }
@@ -1903,22 +2144,28 @@ extension AccountDatabaseQueryProperty1
     });
   }
 
-  QueryBuilder<AccountDatabase, String, QAfterProperty> passwordProperty() {
+  QueryBuilder<AccountDatabase, String, QAfterProperty> bioProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
   }
 
-  QueryBuilder<AccountDatabase, String, QAfterProperty> from_app_idProperty() {
+  QueryBuilder<AccountDatabase, String, QAfterProperty> passwordProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(6);
+    });
+  }
+
+  QueryBuilder<AccountDatabase, String, QAfterProperty> from_app_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(7);
     });
   }
 
   QueryBuilder<AccountDatabase, int, QAfterProperty>
       owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addProperty(7);
+      return query.addProperty(8);
     });
   }
 }
@@ -1959,24 +2206,30 @@ extension AccountDatabaseQueryProperty2<R>
     });
   }
 
-  QueryBuilder<AccountDatabase, (R, String), QAfterProperty>
-      passwordProperty() {
+  QueryBuilder<AccountDatabase, (R, String), QAfterProperty> bioProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
   }
 
   QueryBuilder<AccountDatabase, (R, String), QAfterProperty>
-      from_app_idProperty() {
+      passwordProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(6);
+    });
+  }
+
+  QueryBuilder<AccountDatabase, (R, String), QAfterProperty>
+      from_app_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(7);
     });
   }
 
   QueryBuilder<AccountDatabase, (R, int), QAfterProperty>
       owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addProperty(7);
+      return query.addProperty(8);
     });
   }
 }
@@ -2017,24 +2270,30 @@ extension AccountDatabaseQueryProperty3<R1, R2>
     });
   }
 
-  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations>
-      passwordProperty() {
+  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations> bioProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
   }
 
   QueryBuilder<AccountDatabase, (R1, R2, String), QOperations>
-      from_app_idProperty() {
+      passwordProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(6);
+    });
+  }
+
+  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations>
+      from_app_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(7);
     });
   }
 
   QueryBuilder<AccountDatabase, (R1, R2, int), QOperations>
       owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addProperty(7);
+      return query.addProperty(8);
     });
   }
 }

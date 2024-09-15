@@ -20,6 +20,8 @@ class AccountDatabase {
 
   String username = "";
 
+  String bio = "";
+
   String password = "";
 
   String from_app_id = "";
@@ -51,6 +53,10 @@ class AccountDatabase {
 
     if (key == "username") {
       this.username = value;
+    }
+
+    if (key == "bio") {
+      this.bio = value;
     }
 
     if (key == "password") {
@@ -123,6 +129,7 @@ class AccountDatabase {
       "first_name": first_name,
       "last_name": last_name,
       "username": username,
+      "bio": bio,
       "password": password,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
@@ -148,6 +155,7 @@ class AccountDatabase {
       "first_name": "",
       "last_name": "",
       "username": "",
+      "bio": "",
       "password": "",
       "from_app_id": "",
       "owner_account_user_id": 0

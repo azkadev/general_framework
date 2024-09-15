@@ -51,6 +51,7 @@ class BaseTemplateGeneralFrameworkProjectSchemeDefault {
       "first_name": "",
       "last_name": "",
       "username": "",
+      "bio": "",
     };
 
     if (generalLibSchemeType == GeneralLibSchemeType.database) {

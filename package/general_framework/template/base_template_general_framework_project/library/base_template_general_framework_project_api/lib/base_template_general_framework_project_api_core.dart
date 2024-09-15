@@ -38,6 +38,6 @@ import 'package:general_framework/core/api/core.dart';
 
 class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<BaseTemplateGeneralFrameworkProjectApiDatabase> {
   BaseTemplateGeneralFrameworkProjectApi({
-    required super.generalFrameworkDatabase,
+    required super.generalFrameworkApiDatabase,
   });
 }

@@ -77,7 +77,7 @@ Future<void> generateApi({
 }) async {
   for (var i = 0; i < database_schemes.length; i++) {
     // database_schemes[i].general_lib_extension_updateForce(data: data);
-    database_schemes[i].general_lib_extension_updateForce(data:{
+    database_schemes[i].general_lib_extension_updateForce(data: {
       "from_app_id": "",
       "owner_account_user_id": 0,
     });
@@ -127,7 +127,7 @@ Future<void> generateApi({
   );
   try {
     for (var i = 0; i < update_schemes.length; i++) {
-      update_schemes[i].general_lib_extension_updateForce(data:{
+      update_schemes[i].general_lib_extension_updateForce(data: {
         "@extra": "",
         "@expire_date": "",
         "@client_id": "",
@@ -328,17 +328,22 @@ Future<void> generateApiApi() async {
     final String return_type = element["@return_type"].toString().camelCaseClass();
 
     File file = File(path.join(directory.uri.toFilePath(), "${special_name}.dart"));
-    if (file.existsSync()) {
-      int size = file.statSync().size;
-      if (size > 1) {
-        continue;
+    int size = () {
+      if (file.existsSync()) {
+        int size = file.statSync().size;
+        return size;
       }
+      return 0;
+    }();
+    if (size > 1) {
+      continue;
     }
     String script = """
 // ignore_for_file: non_constant_identifier_names
 import 'dart:async';
 
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
+import 'package:base_template_general_framework_project_api/update/update.dart';
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
 extension BaseTemplateGeneralFrameworkProjectApiExtension${special_type.toLowerCaseFirstData()}${return_type} on BaseTemplateGeneralFrameworkProjectApi {
@@ -348,7 +353,9 @@ extension BaseTemplateGeneralFrameworkProjectApiExtension${special_type.toLowerC
 
     script += """
 
-  FutureOr<${return_type}> api_${special_type.toLowerCaseFirstData()}() {
+  FutureOr<${return_type}> api_${special_type.toLowerCaseFirstData()}({
+      required InvokeRequestData invokeRequestData,
+}) {
     return ${return_type}({
       "@type": "error",
       "message": "unimplemented"
@@ -357,7 +364,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtension${special_type.toLowerC
 """;
     script += "\n";
     script += "}";
-    await file.writeAsString(script);
+    script = script.trim();
+    
+      print("update: ${special_name}.dart");
+      await file.writeAsString(script); 
   }
   script_export.sort();
 
@@ -428,7 +438,7 @@ Future<void> generateIsarDatabase() async {
   }
 
   for (var i = 0; i < database_schemes.length; i++) {
-    database_schemes[i].general_lib_extension_updateForce(data:{
+    database_schemes[i].general_lib_extension_updateForce(data: {
       "id": 0,
     });
     Map<String, dynamic> data = database_schemes[i];

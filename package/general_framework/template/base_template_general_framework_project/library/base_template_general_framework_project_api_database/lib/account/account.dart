@@ -17,7 +17,7 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount on Base
     return AccountDatabase(result);
   }
 
-  FutureOr<AccountDatabase?> account_saveAccountByUserName({
+  FutureOr<AccountDatabase?> account_getAccountByUserName({
     required String username,
   }) async {
     final result = await supabase_account.select().ilike("username", username).limit(1).maybeSingle();
@@ -28,16 +28,14 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount on Base
   }
 
   Future<AccountDatabase?> account_createNewAccount({
-    required num account_user_id,
+    required String username,
+    required String password,
     required AccountDatabase newAccountDatabase,
   }) async {
-    newAccountDatabase.id = account_user_id;
-
     account_utils_removeUnusedAccountDatabase(accountDatabase: newAccountDatabase);
-    final result = await supabase_account.select("id").eq("id", account_user_id).limit(1).maybeSingle();
-    if (result == null) {
-      return null;
-    }
+    newAccountDatabase.username = username;
+
+    newAccountDatabase.password = password;
     final new_data = await supabase_account.insert(newAccountDatabase.toJson()).select().limit(1).maybeSingle();
     if (new_data == null) {
       return null;

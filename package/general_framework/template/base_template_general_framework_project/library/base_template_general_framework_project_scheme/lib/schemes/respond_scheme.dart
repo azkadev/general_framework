@@ -50,11 +50,7 @@ final List<Map<String, dynamic>> respond_schemes = () {
     {
       "@type": "error",
       "message": "",
-    },
-    {
-      "@type": "message",
-      "id": 0,
-    },
+    }, 
     {
       "@type": "messages",
       "total_count": 0,

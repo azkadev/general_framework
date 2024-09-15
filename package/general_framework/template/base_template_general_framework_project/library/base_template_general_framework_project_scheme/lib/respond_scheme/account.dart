@@ -12,7 +12,7 @@ class Account extends JsonScheme {
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"account","id":0,"first_name":"","last_name":"","username":"","@extra":"","@expire_date":"","@client_id":""};
+    return {"@type":"account","id":0,"first_name":"","last_name":"","username":"","bio":"","@extra":"","@expire_date":"","@client_id":""};
   }
 
   /// check data 
@@ -131,6 +131,24 @@ class Account extends JsonScheme {
 
 
   
+  String? get bio {
+    try {
+      if (rawData["bio"] is String == false){
+        return null;
+      }
+      return rawData["bio"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set bio(String? value) {
+    rawData["bio"] = value;
+  }
+
+
+  
   String? get special_extra {
     try {
       if (rawData["@extra"] is String == false){
@@ -193,6 +211,7 @@ class Account extends JsonScheme {
     String? first_name,
     String? last_name,
     String? username,
+    String? bio,
     String special_extra = "",
     String special_expire_date = "",
     String special_client_id = "",
@@ -205,6 +224,7 @@ final Map account_data_create_json = {
       "first_name": first_name,
       "last_name": last_name,
       "username": username,
+      "bio": bio,
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@client_id": special_client_id,
