@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 /* <!-- START LICENSE -->
 
 
@@ -33,8 +31,8 @@ jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesu
 Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
 
 
-<!-- END LICENSE --> */ 
-
+<!-- END LICENSE --> */
+ 
 class BaseTemplateGeneralFrameworkProjectSchemeValidation {
   static Map? usernameValidation({
     required String username,
