@@ -38,9 +38,10 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:general_lib/general_lib.dart';
 
 class BaseTemplateGeneralFrameworkProjectSchemeDefault {
-  // BaseTemplateGeneralFrameworkProjectSchemeDefault();
-  //
-  //
+  static String utils_generateSessionToken() {
+    return generateUuid(25, text: "0123456789abcdefghijklmnopqrstuvwxyz-_");
+  }
+
   static Map<String, dynamic> account({
     required GeneralLibSchemeType generalLibSchemeType,
   }) {
@@ -100,7 +101,7 @@ class BaseTemplateGeneralFrameworkProjectSchemeDefault {
     if (generalLibSchemeType == GeneralLibSchemeType.database) {
       json_data.general_lib_extension_updateForce(data: <String, dynamic>{
         "chat_ids": [0],
-      }); 
+      });
     } else if (generalLibSchemeType == GeneralLibSchemeType.scheme) {
       json_data.general_lib_extension_updateForce(data: <String, dynamic>{
         "chat_id": 0,

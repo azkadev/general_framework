@@ -95,4 +95,14 @@ class BaseTemplateGeneralFrameworkProjectApiDatabase extends GeneralFrameworkDat
     }
     _is_initialized = true;
   }
+
+  SupabaseQueryBuilder get supabase_account {
+    return supabase_core.from("account");
+  }
+  SupabaseQueryBuilder get supabase_message {
+    return supabase_core.from("message");
+  }
+  SupabaseQueryBuilder get supabase_session {
+    return supabase_core.from("session");
+  }
 }
