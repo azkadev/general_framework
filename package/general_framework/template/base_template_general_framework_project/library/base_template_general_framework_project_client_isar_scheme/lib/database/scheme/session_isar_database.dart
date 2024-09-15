@@ -4,27 +4,25 @@
 
 import 'dart:convert';
 import 'package:isar/isar.dart';
-part "account_database.g.dart";
+part "session_isar_database.g.dart";
 
 @collection
-class AccountDatabase {
+class SessionIsarDatabase {
   // Id id = Isar.autoIncrement;
 
-  String special_type = "accountDatabase";
+  String special_type = "sessionIsarDatabase";
 
-  int id = 0;
+  int account_user_id = 0;
 
-  String first_name = "";
+  String token = "";
 
-  String last_name = "";
-
-  String username = "";
-
-  String password = "";
+  bool is_default = false;
 
   String from_app_id = "";
 
   int owner_account_user_id = 0;
+
+  int id = 0;
 
   /// operator map data
   operator [](key) {
@@ -37,24 +35,16 @@ class AccountDatabase {
       this.special_type = value;
     }
 
-    if (key == "id") {
-      this.id = value;
+    if (key == "account_user_id") {
+      this.account_user_id = value;
     }
 
-    if (key == "first_name") {
-      this.first_name = value;
+    if (key == "token") {
+      this.token = value;
     }
 
-    if (key == "last_name") {
-      this.last_name = value;
-    }
-
-    if (key == "username") {
-      this.username = value;
-    }
-
-    if (key == "password") {
-      this.password = value;
+    if (key == "is_default") {
+      this.is_default = value;
     }
 
     if (key == "from_app_id") {
@@ -63,6 +53,10 @@ class AccountDatabase {
 
     if (key == "owner_account_user_id") {
       this.owner_account_user_id = value;
+    }
+
+    if (key == "id") {
+      this.id = value;
     }
   }
 
@@ -119,13 +113,12 @@ class AccountDatabase {
   Map toJson() {
     return {
       "@type": special_type,
-      "id": id,
-      "first_name": first_name,
-      "last_name": last_name,
-      "username": username,
-      "password": password,
+      "account_user_id": account_user_id,
+      "token": token,
+      "is_default": is_default,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
+      "id": id,
     };
   }
 
@@ -143,26 +136,25 @@ class AccountDatabase {
   /// return original data json
   static Map get defaultData {
     return {
-      "@type": "accountDatabase",
-      "id": 0,
-      "first_name": "",
-      "last_name": "",
-      "username": "",
-      "password": "",
+      "@type": "sessionIsarDatabase",
+      "account_user_id": 0,
+      "token": "",
+      "is_default": false,
       "from_app_id": "",
-      "owner_account_user_id": 0
+      "owner_account_user_id": 0,
+      "id": 0
     };
   }
 
-  static AccountDatabase create({
+  static SessionIsarDatabase create({
     bool utils_is_print_data = false,
   }) {
-    AccountDatabase accountDatabase_data_create = AccountDatabase();
+    SessionIsarDatabase sessionIsarDatabase_data_create = SessionIsarDatabase();
 
     if (utils_is_print_data) {
-      // print(accountDatabase_data_create.toStringPretty());
+      // print(sessionIsarDatabase_data_create.toStringPretty());
     }
 
-    return accountDatabase_data_create;
+    return sessionIsarDatabase_data_create;
   }
 }

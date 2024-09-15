@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 /* <!-- START LICENSE -->
 
 
@@ -52,10 +54,32 @@ class BaseTemplateGeneralFrameworkProjectSchemeDefault {
 
     if (generalLibSchemeType == GeneralLibSchemeType.database) {
       json_data.general_lib_extension_updateForce(data: <String, dynamic>{
-        
+        "password": "",
       });
     }
+    return json_data;
+  }
 
+  static Map<String, dynamic> session({
+    required GeneralLibSchemeType generalLibSchemeType,
+  }) {
+    final Map<String, dynamic> json_data = {
+      "@type": "session${generalLibSchemeType.toSpesialType()}",
+      "account_user_id": 0,
+      "token": "",
+    };
+
+    if (generalLibSchemeType == GeneralLibSchemeType.database) {
+      // json_data.general_lib_extension_updateForce(data: <String, dynamic>{
+
+      // });
+    } else if (generalLibSchemeType == GeneralLibSchemeType.isar) {
+      json_data.general_lib_extension_updateForce(data: <String, dynamic>{
+        //
+        //
+        "is_default": false,
+      });
+    }
     return json_data;
   }
 }

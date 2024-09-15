@@ -32,31 +32,34 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-final List<Map<String, dynamic>> respond_schemes = [
-  {
-    "@type": "ok",
-  },
-  {
-    "@type": "error",
-    "message": "",
-  },
-  {
-    "@type": "account",
-  },
-  {
-    "@type": "session",
-  },
-  {
-    "@type": "message",
-    "id": 0,
-  },
-  {
-    "@type": "messages",
-    "total_count": 0,
-    "messages": [
-      {
-        "@type": "message",
-      }
-    ]
-  }
-];
+import 'package:base_template_general_framework_project_scheme/schemes/default_scheme.dart';
+import 'package:general_lib/general_lib_core.dart';
+
+final List<Map<String, dynamic>> respond_schemes = () {
+  final GeneralLibSchemeType generalLibSchemeType = GeneralLibSchemeType.scheme;
+
+  return [
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.account(generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.session(generalLibSchemeType: generalLibSchemeType),
+    {
+      "@type": "ok",
+    },
+    {
+      "@type": "error",
+      "message": "",
+    },
+    {
+      "@type": "message",
+      "id": 0,
+    },
+    {
+      "@type": "messages",
+      "total_count": 0,
+      "messages": [
+        {
+          "@type": "message",
+        }
+      ]
+    }
+  ];
+}();

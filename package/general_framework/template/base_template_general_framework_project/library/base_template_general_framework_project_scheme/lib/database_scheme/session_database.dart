@@ -4,20 +4,20 @@ import "package:general_lib/general_lib.dart";
 
 
  
-class Session extends JsonScheme {
+class SessionDatabase extends JsonScheme {
 
   
-  Session(super.rawData);
+  SessionDatabase(super.rawData);
   
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"session","account_user_id":0,"token":"","@extra":"","@expire_date":"","@client_id":""};
+    return {"@type":"sessionDatabase","account_user_id":0,"token":"","from_app_id":"","owner_account_user_id":0};
   }
 
   /// check data 
   /// if raw data 
-  /// - rawData["@type"] == session
+  /// - rawData["@type"] == sessionDatabase
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
     return rawData["@type"] == defaultData["@type"];
@@ -32,10 +32,10 @@ class Session extends JsonScheme {
 
   
 
-  /// create [Session]
+  /// create [SessionDatabase]
   /// Empty  
-  static Session empty() {
-    return Session({});
+  static SessionDatabase empty() {
+    return SessionDatabase({});
   }
 
   
@@ -95,94 +95,74 @@ class Session extends JsonScheme {
 
 
   
-  String? get special_extra {
+  String? get from_app_id {
     try {
-      if (rawData["@extra"] is String == false){
+      if (rawData["from_app_id"] is String == false){
         return null;
       }
-      return rawData["@extra"] as String;
+      return rawData["from_app_id"] as String;
     } catch (e) {
       return null;
     }
   }
 
   
-  set special_extra(String? value) {
-    rawData["@extra"] = value;
+  set from_app_id(String? value) {
+    rawData["from_app_id"] = value;
   }
 
 
   
-  String? get special_expire_date {
+  num? get owner_account_user_id {
     try {
-      if (rawData["@expire_date"] is String == false){
+      if (rawData["owner_account_user_id"] is num == false){
         return null;
       }
-      return rawData["@expire_date"] as String;
+      return rawData["owner_account_user_id"] as num;
     } catch (e) {
       return null;
     }
   }
 
   
-  set special_expire_date(String? value) {
-    rawData["@expire_date"] = value;
+  set owner_account_user_id(num? value) {
+    rawData["owner_account_user_id"] = value;
   }
 
 
   
-  String? get special_client_id {
-    try {
-      if (rawData["@client_id"] is String == false){
-        return null;
-      }
-      return rawData["@client_id"] as String;
-    } catch (e) {
-      return null;
-    }
-  }
-
-  
-  set special_client_id(String? value) {
-    rawData["@client_id"] = value;
-  }
-
-
-  
-  static Session create({
+  static SessionDatabase create({
               bool schemeUtilsIsSetDefaultData = false,
 
-    String special_type = "session",
+    String special_type = "sessionDatabase",
     num? account_user_id,
     String? token,
-    String special_extra = "",
-    String special_expire_date = "",
-    String special_client_id = "",
+    String? from_app_id,
+    num? owner_account_user_id,
 })  {
-    // Session session = Session({
-final Map session_data_create_json = {
+    // SessionDatabase sessionDatabase = SessionDatabase({
+final Map sessionDatabase_data_create_json = {
   
       "@type": special_type,
       "account_user_id": account_user_id,
       "token": token,
-      "@extra": special_extra,
-      "@expire_date": special_expire_date,
-      "@client_id": special_client_id,
+      "from_app_id": from_app_id,
+      "owner_account_user_id": owner_account_user_id,
 
 
 };
 
 
-          session_data_create_json.removeWhere((key, value) => value == null);
+          sessionDatabase_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (session_data_create_json.containsKey(key) == false) {
-          session_data_create_json[key] = value;
+        if (sessionDatabase_data_create_json.containsKey(key) == false) {
+          sessionDatabase_data_create_json[key] = value;
         }
       });
     }
-return Session(session_data_create_json);
+return SessionDatabase(sessionDatabase_data_create_json);
 
 
       }

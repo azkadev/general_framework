@@ -49,7 +49,7 @@ import 'package:general_lib/general_lib.dart';
 import "package:path/path.dart" as path;
 
 extension DirectoryExtension on Directory {
-  Directory get init {
+  Directory recreate() {
     if (existsSync()) {
       deleteSync(recursive: true);
     }
@@ -76,27 +76,8 @@ Future<void> generateApi({
   required Directory directoryBase,
 }) async {
   for (var i = 0; i < database_schemes.length; i++) {
-    // Map<String, dynamic> json_data_owner_platform_app_user_id = {};
-    // Set<String> keys = {
-    //   "drive",
-    //   "coinlox",
-    //   "ads_gateway",
-    //   "envivore",
-    //   "galaxeus",
-    //   "glx",
-    //   "hexaminate",
-    //   "meesagee",
-    //   "roleplayer",
-    //   "specta",
-    //   "global",
-    //   "general_app",
-    //   "telegram",
-    // };
-
-    // for (var element in keys) {
-    // }
-    // json_data_owner_platform_app_user_id["owner_account_user_id"] = 0;
-    database_schemes[i].addAll({
+    // database_schemes[i].general_lib_extension_updateForce(data: data);
+    database_schemes[i].general_lib_extension_updateForce(data:{
       "from_app_id": "",
       "owner_account_user_id": 0,
     });
@@ -108,7 +89,7 @@ Future<void> generateApi({
         directoryBase.uri.toFilePath(),
         "database_scheme",
       ),
-    ).init,
+    ).recreate(),
   );
   List<String> api_methods = [];
   for (var i = 0; i < api_schemes.length; i++) {
@@ -142,11 +123,11 @@ Future<void> generateApi({
         directoryBase.uri.toFilePath(),
         "api_scheme",
       ),
-    ).init,
+    ).recreate(),
   );
   try {
     for (var i = 0; i < update_schemes.length; i++) {
-      update_schemes[i].addAll({
+      update_schemes[i].general_lib_extension_updateForce(data:{
         "@extra": "",
         "@expire_date": "",
         "@client_id": "",
@@ -159,7 +140,7 @@ Future<void> generateApi({
           directoryBase.uri.toFilePath(),
           "update_scheme",
         ),
-      ).init,
+      ).recreate(),
     );
   } catch (e, stack) {
     print("$e $stack");
@@ -179,14 +160,14 @@ Future<void> generateApi({
           directoryBase.uri.toFilePath(),
           "respond_scheme",
         ),
-      ).init,
+      ).recreate(),
     );
   } catch (e, stack) {
     print("$e $stack");
   }
   try {
     for (var i = 0; i < schemes.length; i++) {
-      // schemes[i].addAll({
+      // schemes[i].general_lib_extension_updateForce(data:{
       //   "@extra": "",
       //   "@expire_date": "",
       //   "@client_id": "",
@@ -199,7 +180,7 @@ Future<void> generateApi({
           directoryBase.uri.toFilePath(),
           "scheme",
         ),
-      ).init,
+      ).recreate(),
     );
   } catch (e, stack) {
     print("$e $stack");
@@ -208,7 +189,7 @@ Future<void> generateApi({
 
 Future<void> generateDatabaseSql() async {
   List<Map> jsonDatas = database_schemes;
-  Directory(path.join(Directory.current.path, "supabase_scheme")).init;
+  Directory(path.join(Directory.current.path, "supabase_scheme")).recreate();
   for (var jsonData in jsonDatas) {
     if (!jsonData.containsKey("@type")) {
       continue;
@@ -239,15 +220,13 @@ Future<void> generateDatabaseSql() async {
     // }
     jsonData["from_app_id"] = "";
     jsonData["owner_account_user_id"] = 0;
-    String table_name = (jsonData["@type"] as String)
-        .replaceAll(RegExp(r"(database)$", caseSensitive: false), "");
+    String table_name = (jsonData["@type"] as String).replaceAll(RegExp(r"(database)$", caseSensitive: false), "");
     String res = jsonToSqlSupabase(
       jsonData: jsonData,
       tableName: table_name.snakeCaseClass(),
     );
 
-    File file = File(path.join(Directory.current.path, "supabase_scheme",
-        "${table_name.snakeCaseClass()}.supabase_sql"));
+    File file = File(path.join(Directory.current.path, "supabase_scheme", "${table_name.snakeCaseClass()}.supabase_sql"));
     file.writeAsStringSync(res);
   }
 }
@@ -287,8 +266,7 @@ extension BaseTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate on
     }
     final String special_type = element["@type"].toString().camelCaseClass();
 
-    final String return_type =
-        element["@return_type"].toString().camelCaseClass();
+    final String return_type = element["@return_type"].toString().camelCaseClass();
 
     script += "\n";
     script += """
@@ -347,11 +325,9 @@ Future<void> generateApiApi() async {
     }
     final String special_type = element["@type"].toString().camelCaseClass();
 
-    final String return_type =
-        element["@return_type"].toString().camelCaseClass();
+    final String return_type = element["@return_type"].toString().camelCaseClass();
 
-    File file =
-        File(path.join(directory.uri.toFilePath(), "${special_name}.dart"));
+    File file = File(path.join(directory.uri.toFilePath(), "${special_name}.dart"));
     if (file.existsSync()) {
       int size = file.statSync().size;
       if (size > 1) {
@@ -385,8 +361,7 @@ extension BaseTemplateGeneralFrameworkProjectApiExtension${special_type.toLowerC
   }
   script_export.sort();
 
-  await File(path.join(directory.uri.toFilePath(), "api.dart"))
-      .writeAsString(script_export.map((e) {
+  await File(path.join(directory.uri.toFilePath(), "api.dart")).writeAsString(script_export.map((e) {
     return "export ${json.encode("${e}.dart")};";
   }).join("\n"));
   Process.runSync("dart", [
@@ -453,7 +428,7 @@ Future<void> generateIsarDatabase() async {
   }
 
   for (var i = 0; i < database_schemes.length; i++) {
-    database_schemes[i].addAll({
+    database_schemes[i].general_lib_extension_updateForce(data:{
       "id": 0,
     });
     Map<String, dynamic> data = database_schemes[i];
@@ -461,8 +436,7 @@ Future<void> generateIsarDatabase() async {
     if (data["@type"] is String == false) {
       continue;
     }
-    data["@type"] =
-        (data["@type"] as String).camelCaseClass().toLowerCaseFirstData();
+    data["@type"] = (data["@type"] as String).camelCaseClass().toLowerCaseFirstData();
     JsonDataScript jsonDataScript = jsonToIsar(
       data,
       className: (data["@type"]),

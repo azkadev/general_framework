@@ -32,8 +32,14 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-final List<Map<String, dynamic>> database_schemes = [
-  {
-    "@type": "accountDatabase",
-  },
-];
+import 'package:base_template_general_framework_project_scheme/schemes/default_scheme.dart';
+import 'package:general_lib/general_lib.dart';
+
+final List<Map<String, dynamic>> database_schemes = () {
+  final GeneralLibSchemeType generalLibSchemeType = GeneralLibSchemeType.database;
+  return [
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.account(generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.session(generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.session(generalLibSchemeType: GeneralLibSchemeType.isar),
+  ];
+}();
