@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 /* <!-- START LICENSE -->
 
 
@@ -45,7 +47,8 @@ class GeneralFrameworkApi {
   Future<Map> createProject({
     required String name_project,
     required List<ScriptGenerator> template_project,
-    required String currentPath,
+    required String current_path,
+    required FutureOr<dynamic> Function(ScriptGeneratorStatus status) onStatus,
   }) async {
     name_project = name_project.trim().snakeCaseClass();
     if (name_project.isEmpty) {
@@ -54,8 +57,7 @@ class GeneralFrameworkApi {
         "message": "name_project_cant_empty",
       };
     }
-    final Directory directoryProject = Directory(path.join(currentPath, name_project));
-
+    final Directory directoryProject = Directory(path.join(current_path, name_project));
     if (directoryProject.existsSync()) {
       return {
         "@type": "error",
@@ -65,16 +67,11 @@ class GeneralFrameworkApi {
     final Stream<ScriptGeneratorStatus> status = template_project.generateToDirectory(
       directoryBase: directoryProject,
     );
-    final Completer<bool> completer = Completer<bool>();
-    status.listen(
-      (e) {
-        print(e);
-      },
-      onDone: () {
-        completer.complete(true);
-      },
-    );
-    await completer.future;
-    return {"@type": "ok"};
+    await for (final element in status) {
+      await onStatus(element);
+    }
+    return {
+      "@type": "ok",
+    };
   }
 }

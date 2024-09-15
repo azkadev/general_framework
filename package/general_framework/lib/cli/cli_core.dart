@@ -133,7 +133,7 @@ Commands:
         exit(1);
       }
     }
-    
+
     if (command == "create") {
       final String name_project = (await Future(() async {
         String name_project_procces = (args.after(command) ?? "").trim().toLowerCase();
@@ -204,7 +204,10 @@ Commands:
       await generalFrameworkApi.createProject(
         name_project: name_project,
         template_project: template_project_procces,
-        currentPath: Directory.current.path,
+        current_path: Directory.current.path,
+        onStatus: (status) {
+          print(status);
+        },
       );
       exit(0);
     }
