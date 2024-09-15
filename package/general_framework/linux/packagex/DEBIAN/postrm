@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+rm -rf /usr/bin/general-framework
+rm -rf /usr/bin/general-framework-app
+rm -rf /usr/local/share/general-framework

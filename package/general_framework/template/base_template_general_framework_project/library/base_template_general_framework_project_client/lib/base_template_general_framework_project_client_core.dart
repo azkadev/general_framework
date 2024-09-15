@@ -35,11 +35,13 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
 import 'package:base_template_general_framework_project_secret/base_template_general_framework_project_secret.dart';
 import 'package:general_framework/core/client/client.dart';
 
 /// base template general framework
-class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient {
+class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
+    BaseTemplateGeneralFrameworkProjectClientDatabase> {
   final BaseTemplateGeneralFrameworkProjectSecret
       baseTemplateGeneralFrameworkProjectSecret;
 
@@ -53,9 +55,7 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient {
     super.eventInvoke,
     super.eventUpdate,
     super.httpClient,
-  }) : super(
-          apiUrl: baseTemplateGeneralFrameworkProjectSecret.apiUrl,
-        );
+  }) : super(apiUrl: baseTemplateGeneralFrameworkProjectSecret.apiUrl);
 
   @override
   FutureOr<void> ensureInitialized({

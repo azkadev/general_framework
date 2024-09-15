@@ -32,10 +32,15 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database.dart'
-    as base_template_general_framework_project_client_database;
+import 'dart:io';
+
+import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
+import 'package:http/http.dart';
 
 void main(List<String> arguments) {
-  print(
-      'Hello world: ${base_template_general_framework_project_client_database.calculate()}!');
+  final BaseTemplateGeneralFrameworkProjectClientDatabase
+      baseTemplateGeneralFrameworkProjectClientDatabase =
+      BaseTemplateGeneralFrameworkProjectClientDatabase();
+  baseTemplateGeneralFrameworkProjectClientDatabase.ensureInitialized(
+      currentPath: Directory.current.path, httpClient: Client());
 }

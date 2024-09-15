@@ -35,7 +35,6 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:io';
 
 import 'package:general_framework/templates/base_template_general_framework_project_template.dart';
-import "package:general_lib/general_lib.dart";
 import 'package:general_lib/script_generate/script_generate.dart';
 import "package:path/path.dart" as path;
 

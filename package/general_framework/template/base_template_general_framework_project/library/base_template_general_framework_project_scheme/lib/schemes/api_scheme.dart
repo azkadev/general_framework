@@ -33,10 +33,56 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 final List<Map<String, dynamic>> api_schemes = [
-  {"@type": "signUp", "username": "", "password": "", "@return_type": "ok"},
+  {
+    "@type": "signUp",
+    "username": "",
+    "password": "",
+    "@return_type": "ok",
+  },
   {
     "@type": "signIn",
     "username": "",
     "password": "",
-  }
-];
+    // "@return_type": "ok",
+  },
+  {
+    "@type": "getMe",
+    "@return_type": "account",
+  },
+  {
+    "@type": "setName",
+    "first_name": "",
+    "last_name": "",
+    "@return_type": "ok",
+  },
+  {
+    "@type": "setUsername",
+    "username": "username",
+    "@return_type": "ok",
+  },
+  {
+    "@type": "setBio",
+    "bio": "",
+    "@return_type": "ok",
+  },
+  {
+    "@type": "sendMessage",
+    "chat_id": 0,
+    "text": "",
+    "@return_type": "message",
+  },
+  {
+    "@type": "getMessages",
+    "chat_id": 0,
+    "message_ids": [0],
+    "@return_type": "messages",
+  },
+  {
+    "@type": "getMessage",
+    "chat_id": 0,
+    "message_id": 0,
+    "@return_type": "message",
+  },
+].map((e) {
+  return e;
+}).toList();

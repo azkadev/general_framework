@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 /* <!-- START LICENSE -->
 
 
@@ -38,6 +40,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:general_framework/api/api_core.dart';
+import 'package:general_framework/packagex/packagex.dart';
 import 'package:general_framework/templates/base_template_general_framework_project_template.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/script_generate/script_generate.dart';
@@ -73,9 +76,7 @@ Usage: ${executable_name} <command> [arguments]
 
 Global options:
   help                 Print this usage information. 
-  version              Print the Userbot version.
-  reload               Reload package glx
-
+  version              Print version.
 
 Available commands: 
   create     Create a new Dart project.
@@ -102,6 +103,7 @@ Commands:
     final List<String> commands = [
       "create",
       "help",
+      "version",
     ];
     commands.sort();
     final bool is_contains_help = args.contains(
@@ -209,6 +211,11 @@ Commands:
           print(status);
         },
       );
+      exit(0);
+    }
+
+    if (command == "version") {
+      print(jsonToMessage(PackagexProjectGeneralFramework.default_data, jsonFullMedia: {}));
       exit(0);
     }
 

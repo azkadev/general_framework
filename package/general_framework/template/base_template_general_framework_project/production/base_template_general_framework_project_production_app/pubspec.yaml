@@ -18,3 +18,7 @@ dependency_overrides:
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+homepage: 'https://youtube.com/@azkadev'
+repository: 'https://github.com/azkadev/general_framework'
+issue_tracker: 'https://t.me'
+documentation: 'https://youtube.com/@azkadev'

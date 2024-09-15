@@ -41,7 +41,28 @@ dependency_overrides:
     path: '../../../general_lib'
 dev_dependencies: 
   flutter_lints: '^4.0.0'
+  msix: '^3.16.7'
 flutter: 
   assets: 
     - 'README.md'
 publish_to: 'none'
+packagex: 
+  name: 'general_framework'
+  dart_target: 'general_framework'
+  flutter_target: 'main'
+  dart_name: 'general_framework'
+  flutter_name: 'general_framework'
+  is_without_platform_name: true
+  flutter_commands: 
+    obfuscate: true
+    split-debug-info: '0.0.0'
+    build-name: '0.0.0'
+    build-number: 1
+    split-per-abi: true
+    no-tree-shake-icons: true
+  project_id: 'azkadev.packagex'
+  github_username: 'azkadev'
+  github_is_org: false
+msix_config: 
+  display_name: 'general_framework'
+  install_certificate: false

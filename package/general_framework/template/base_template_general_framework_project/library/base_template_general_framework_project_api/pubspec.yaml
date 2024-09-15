@@ -7,6 +7,10 @@ environment:
 dependencies: 
   base_template_general_framework_project_scheme: 
     path: '../base_template_general_framework_project_scheme'
+  base_template_general_framework_project_api_database: 
+    path: '../base_template_general_framework_project_api_database'
+  general_framework: 
+    path: '../../../../'
 dev_dependencies: 
   lints: '^3.0.0'
   test: '^1.24.0'
@@ -14,3 +18,7 @@ dependency_overrides:
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+homepage: 'https://youtube.com/@azkadev'
+repository: 'https://github.com/azkadev/general_framework'
+issue_tracker: 'https://t.me'
+documentation: 'https://youtube.com/@azkadev'

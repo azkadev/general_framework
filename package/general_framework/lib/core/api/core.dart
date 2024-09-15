@@ -32,7 +32,10 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+import 'dart:async';
+
 import 'package:general_framework/core/database/database_core.dart';
+import 'package:http/http.dart';
 
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
@@ -41,9 +44,10 @@ abstract class GeneralFrameworkApiBase<D extends GeneralFrameworkDatabase> {
   GeneralFrameworkApiBase({
     required this.generalFrameworkDatabase,
   });
-  void ensureInitialized({
+  FutureOr<void> ensureInitialized({
     required String currentPath,
-  }) {
-    generalFrameworkDatabase.ensureInitialized(currentPath: currentPath);
+    required Client httpClient,
+  }) async {
+    await generalFrameworkDatabase.ensureInitialized(currentPath: currentPath, httpClient: httpClient,);
   }
 }

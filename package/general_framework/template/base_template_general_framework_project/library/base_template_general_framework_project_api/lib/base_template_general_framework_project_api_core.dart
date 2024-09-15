@@ -33,6 +33,12 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 
-class BaseTemplateGeneralFrameworkProjectApi {
-  BaseTemplateGeneralFrameworkProjectApi();
+import 'package:base_template_general_framework_project_api_database/base_template_general_framework_project_api_database_core.dart';
+import 'package:general_framework/core/api/core.dart';
+
+class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<
+    BaseTemplateGeneralFrameworkProjectApiDatabase> {
+  BaseTemplateGeneralFrameworkProjectApi({
+    required super.generalFrameworkDatabase,
+  });
 }

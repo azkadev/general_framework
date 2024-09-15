@@ -45,7 +45,6 @@ import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/scheme/socket_connection.dart';
 import 'package:http/http.dart';
 
-
 typedef InvokeClientValidationFunction<T> = FutureOr<T> Function(
   Map parameters,
   GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions,
@@ -58,7 +57,6 @@ typedef InvokeClientFunction<T> = FutureOr<T> Function(
 );
 
 abstract class GeneralFrameworkClientBaseCore {
-
   String encryptData({
     required Map data,
   }) {
@@ -118,6 +116,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
   }
 
   bool is_initialized = false;
+
   /// call this method
   FutureOr<void> ensureInitialized({
     required InvokeClientFunction<dynamic> onInvokeRequest,
@@ -135,6 +134,10 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
     this.onInvokeRequest = onInvokeRequest;
     this.onInvokeValidation = onInvokeValidation;
     this.currentPath = currentPath;
+    await generalFrameworkDatabase.ensureInitialized(
+      currentPath: currentPath,
+      httpClient: http_client,
+    );
     is_initialized = true;
     if (Dart.isWeb) {
       return;

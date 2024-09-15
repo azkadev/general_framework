@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 /* <!-- START LICENSE -->
 
 
@@ -32,15 +34,35 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-abstract class GeneralFrameworkDatabase {
-  late final String currentPath;
-  GeneralFrameworkDatabase();
+import 'dart:async';
 
-  void ensureInitialized({
-    required String currentPath,
-  }) {
-    this.currentPath = currentPath;
+import 'package:http/http.dart';
+import 'package:universal_io/io.dart';
+
+abstract class GeneralFrameworkDatabaseCore {
+  Directory get directory_base {
+    return Directory("");
   }
 
-  
+  void ensureInitializedDatabase() {}
+}
+
+abstract class GeneralFrameworkDatabase implements GeneralFrameworkDatabaseCore {
+  late final String currentPath;
+  bool _is_initialized = false;
+  late final Client httpClient;
+  GeneralFrameworkDatabase();
+
+  FutureOr<void> ensureInitialized({
+    required String currentPath,
+    required Client httpClient,
+  }) async {
+    if (_is_initialized) {
+      return;
+    }
+    this.currentPath = currentPath;
+    this.httpClient = httpClient;
+    ensureInitializedDatabase();
+    _is_initialized = true;
+  }
 }

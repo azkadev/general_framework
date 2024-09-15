@@ -117,7 +117,8 @@ Future<void> generateApi({
     } else {
       api_methods.add(api_schemes[i]["@type"]);
     }
-    api_schemes[i].addAll({
+    // api_schemes[i].general_lib_extension_updateForce(data: data);
+    api_schemes[i].general_lib_extension_updateForce(data: {
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -362,7 +363,7 @@ Future<void> generateApiApi() async {
 import 'dart:async';
 
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
-import 'package:base_template_general_framework_project_scheme/respond_scheme/ok.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
 extension BaseTemplateGeneralFrameworkProjectApiExtension${special_type.toLowerCaseFirstData()}${return_type} on BaseTemplateGeneralFrameworkProjectApi {
 

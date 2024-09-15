@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=0.0.0
+Name=General Framework
+GenericName=General Application
+Exec=general-framework-app -- %u
+Categories=Music;Media;
+Keywords=Hello;World;Test;Application;
+StartupNotify=true

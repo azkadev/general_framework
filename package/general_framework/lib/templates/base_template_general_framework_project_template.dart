@@ -143,42 +143,176 @@ void main(List<String> arguments) {
                         "library/base_template_general_framework_project_api/lib/api/api.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
+                    value: r"""export "get_me.dart";
+export "get_message.dart";
+export "get_messages.dart";
+export "send_message.dart";
+export "set_bio.dart";
+export "set_name.dart";
+export "set_username.dart";
 export "sign_in.dart";
 export "sign_up.dart";
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/get_me.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""// ignore_for_file: non_constant_identifier_names
+import 'dart:async';
+
+import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
+
+extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMeAccount
+    on BaseTemplateGeneralFrameworkProjectApi {
+  FutureOr<Account> api_getMe() {
+    return Account({"@type": "error", "message": "unimplemented"});
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/get_message.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""// ignore_for_file: non_constant_identifier_names
+import 'dart:async';
+
+import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
+
+extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMessageMessage
+    on BaseTemplateGeneralFrameworkProjectApi {
+  FutureOr<Message> api_getMessage() {
+    return Message({"@type": "error", "message": "unimplemented"});
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/get_messages.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""// ignore_for_file: non_constant_identifier_names
+import 'dart:async';
+
+import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
+
+extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMessagesMessages
+    on BaseTemplateGeneralFrameworkProjectApi {
+  FutureOr<Messages> api_getMessages() {
+    return Messages({"@type": "error", "message": "unimplemented"});
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/send_message.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""// ignore_for_file: non_constant_identifier_names
+import 'dart:async';
+
+import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
+
+extension BaseTemplateGeneralFrameworkProjectApiExtensionsendMessageMessage
+    on BaseTemplateGeneralFrameworkProjectApi {
+  FutureOr<Message> api_sendMessage() {
+    return Message({"@type": "error", "message": "unimplemented"});
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/set_bio.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""// ignore_for_file: non_constant_identifier_names
+import 'dart:async';
+
+import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/ok.dart';
+
+extension BaseTemplateGeneralFrameworkProjectApiExtensionsetBioOk
+    on BaseTemplateGeneralFrameworkProjectApi {
+  FutureOr<Ok> api_setBio() {
+    return Ok({"@type": "error", "message": "unimplemented"});
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/set_name.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""// ignore_for_file: non_constant_identifier_names
+import 'dart:async';
+
+import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/ok.dart';
+
+extension BaseTemplateGeneralFrameworkProjectApiExtensionsetNameOk
+    on BaseTemplateGeneralFrameworkProjectApi {
+  FutureOr<Ok> api_setName() {
+    return Ok({"@type": "error", "message": "unimplemented"});
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/set_username.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""// ignore_for_file: non_constant_identifier_names
+import 'dart:async';
+
+import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/ok.dart';
+
+extension BaseTemplateGeneralFrameworkProjectApiExtensionsetUsernameOk
+    on BaseTemplateGeneralFrameworkProjectApi {
+  FutureOr<Ok> api_setUsername() {
+    return Ok({"@type": "error", "message": "unimplemented"});
+  }
+}
 """,
                     children: [],
                   ),
@@ -389,8 +523,14 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 
-class BaseTemplateGeneralFrameworkProjectApi {
-  BaseTemplateGeneralFrameworkProjectApi();
+import 'package:base_template_general_framework_project_api_database/base_template_general_framework_project_api_database_core.dart';
+import 'package:general_framework/core/api/core.dart';
+
+class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<
+    BaseTemplateGeneralFrameworkProjectApiDatabase> {
+  BaseTemplateGeneralFrameworkProjectApi({
+    required super.generalFrameworkDatabase,
+  });
 }
 """,
                 children: [],
@@ -555,6 +695,35 @@ include: package:lints/recommended.yaml
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
+                "library/base_template_general_framework_project_api/LICENSE"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value:
+                r"""Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+SPDX-License-Identifier: MIT
+Copyright (c) 2024 GENERAL FRAMEWORK <http://github.com/azkadev/general_framework>.
+Permission is hereby  granted, free of charge, to any  person obtaining a copy
+of this software and associated  documentation files (the "Software"), to deal
+in the Software  without restriction, including without  limitation the rights
+to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell
+copies  of  the Software,  and  to  permit persons  to  whom  the Software  is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR
+IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF  MERCHANTABILITY,
+FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE
+AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER
+LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
                 "library/base_template_general_framework_project_api/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -567,6 +736,10 @@ environment:
 dependencies: 
   base_template_general_framework_project_scheme: 
     path: '../base_template_general_framework_project_scheme'
+  base_template_general_framework_project_api_database: 
+    path: '../base_template_general_framework_project_api_database'
+  general_framework: 
+    path: '../../../../' 
 dev_dependencies: 
   lints: '^3.0.0'
   test: '^1.24.0'
@@ -720,6 +893,119 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 int calculate() {
   return 6 * 7;
+}
+""",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_database/lib/base_template_general_framework_project_api_database_core.dart"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""// ignore_for_file: non_constant_identifier_names
+
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
+
+import 'dart:async';
+import 'dart:io';
+
+import 'package:general_framework/core/database/database_core.dart';
+import 'package:http/http.dart';
+import "package:path/path.dart" as path;
+import 'package:supabase/supabase.dart';
+
+class BaseTemplateGeneralFrameworkProjectApiDatabase
+    extends GeneralFrameworkDatabase {
+  final String supabase_url;
+  final String supabase_key;
+
+  late final SupabaseClient supabase_core;
+
+  BaseTemplateGeneralFrameworkProjectApiDatabase({
+    required this.supabase_url,
+    required this.supabase_key,
+  });
+
+  @override
+  Directory get directory_base {
+    final Directory directory = Directory(path.join(currentPath));
+    if (directory.existsSync() == false) {
+      directory.createSync(recursive: true);
+    }
+    return directory;
+  }
+
+  Directory get directory_database {
+    final Directory directory = Directory(path.join(directory_base.path,
+        "base_template_general_framework_project_database"));
+    if (directory.existsSync() == false) {
+      directory.createSync(recursive: true);
+    }
+    return directory;
+  }
+
+  @override
+  void ensureInitializedDatabase() {
+    {
+      directory_base;
+      directory_database;
+    }
+  }
+
+  bool _is_initialized = false;
+  @override
+  FutureOr<void> ensureInitialized(
+      {required String currentPath, required Client httpClient}) async {
+    await super
+        .ensureInitialized(currentPath: currentPath, httpClient: httpClient);
+    if (_is_initialized) {
+      return;
+    }
+    {
+      supabase_core = SupabaseClient(
+        supabase_url,
+        supabase_key,
+        httpClient: httpClient,
+      );
+    }
+    _is_initialized = true;
+  }
 }
 """,
                 children: [],
@@ -884,6 +1170,35 @@ include: package:lints/recommended.yaml
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
+                "library/base_template_general_framework_project_api_database/LICENSE"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value:
+                r"""Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+SPDX-License-Identifier: MIT
+Copyright (c) 2024 GENERAL FRAMEWORK <http://github.com/azkadev/general_framework>.
+Permission is hereby  granted, free of charge, to any  person obtaining a copy
+of this software and associated  documentation files (the "Software"), to deal
+in the Software  without restriction, including without  limitation the rights
+to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell
+copies  of  the Software,  and  to  permit persons  to  whom  the Software  is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR
+IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF  MERCHANTABILITY,
+FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE
+AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER
+LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
                 "library/base_template_general_framework_project_api_database/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -894,13 +1209,15 @@ version: '1.0.0'
 publish_to: 'none'
 environment: 
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
+dependencies:  
   base_template_general_framework_project_scheme: 
     path: '../base_template_general_framework_project_scheme'
   collection: '^1.18.0'
   general_lib: '^0.0.44'
   path: '^1.9.0'
   http: '^1.2.2'
+  general_framework: 
+    path: '../../../../' 
   yet_another_json_isolate: '^2.0.0'
   supabase: '^2.3.0'
 dev_dependencies: 
@@ -1220,6 +1537,35 @@ include: package:lints/recommended.yaml
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
+                "library/base_template_general_framework_project_api_server/LICENSE"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value:
+                r"""Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+SPDX-License-Identifier: MIT
+Copyright (c) 2024 GENERAL FRAMEWORK <http://github.com/azkadev/general_framework>.
+Permission is hereby  granted, free of charge, to any  person obtaining a copy
+of this software and associated  documentation files (the "Software"), to deal
+in the Software  without restriction, including without  limitation the rights
+to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell
+copies  of  the Software,  and  to  permit persons  to  whom  the Software  is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR
+IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF  MERCHANTABILITY,
+FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE
+AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER
+LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
                 "library/base_template_general_framework_project_api_server/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -1357,41 +1703,7 @@ void main(List<String> arguments) {
                         "library/base_template_general_framework_project_client/lib/api/api.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-// ignore_for_file: non_constant_identifier_names
+                    value: r"""// ignore_for_file: non_constant_identifier_names
 
 import 'package:base_template_general_framework_project_client/base_template_general_framework_project_client_core.dart';
 import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
@@ -1424,6 +1736,104 @@ extension BaseTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate
       generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
       onResult: (result) {
         return Ok(result);
+      },
+    );
+  }
+
+  /// generate
+  Future<Account> api_getMe({
+    required GetMe getMeParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: getMeParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Account(result);
+      },
+    );
+  }
+
+  /// generate
+  Future<Ok> api_setName({
+    required SetName setNameParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: setNameParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Ok(result);
+      },
+    );
+  }
+
+  /// generate
+  Future<Ok> api_setUsername({
+    required SetUsername setUsernameParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: setUsernameParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Ok(result);
+      },
+    );
+  }
+
+  /// generate
+  Future<Ok> api_setBio({
+    required SetBio setBioParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: setBioParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Ok(result);
+      },
+    );
+  }
+
+  /// generate
+  Future<Message> api_sendMessage({
+    required SendMessage sendMessageParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: sendMessageParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Message(result);
+      },
+    );
+  }
+
+  /// generate
+  Future<Messages> api_getMessages({
+    required GetMessages getMessagesParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: getMessagesParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Messages(result);
+      },
+    );
+  }
+
+  /// generate
+  Future<Message> api_getMessage({
+    required GetMessage getMessageParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: getMessageParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Message(result);
       },
     );
   }
@@ -1526,11 +1936,13 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
 import 'package:base_template_general_framework_project_secret/base_template_general_framework_project_secret.dart';
 import 'package:general_framework/core/client/client.dart';
 
 /// base template general framework
-class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient {
+class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
+    BaseTemplateGeneralFrameworkProjectClientDatabase> {
   final BaseTemplateGeneralFrameworkProjectSecret
       baseTemplateGeneralFrameworkProjectSecret;
 
@@ -1544,9 +1956,7 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient {
     super.eventInvoke,
     super.eventUpdate,
     super.httpClient,
-  }) : super(
-          apiUrl: baseTemplateGeneralFrameworkProjectSecret.apiUrl,
-        );
+  }) : super(apiUrl: baseTemplateGeneralFrameworkProjectSecret.apiUrl);
 
   @override
   FutureOr<void> ensureInitialized({
@@ -1791,6 +2201,35 @@ include: package:lints/recommended.yaml
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
+                "library/base_template_general_framework_project_client/LICENSE"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value:
+                r"""Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+SPDX-License-Identifier: MIT
+Copyright (c) 2024 GENERAL FRAMEWORK <http://github.com/azkadev/general_framework>.
+Permission is hereby  granted, free of charge, to any  person obtaining a copy
+of this software and associated  documentation files (the "Software"), to deal
+in the Software  without restriction, including without  limitation the rights
+to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell
+copies  of  the Software,  and  to  permit persons  to  whom  the Software  is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR
+IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF  MERCHANTABILITY,
+FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE
+AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER
+LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
                 "library/base_template_general_framework_project_client/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -1804,6 +2243,8 @@ dependencies:
   path: '^1.9.0'
   general_lib: '^0.0.44'
   general: '^0.0.29'
+  base_template_general_framework_project_client_database: 
+    path: '../base_template_general_framework_project_client_database'
   base_template_general_framework_project_scheme: 
     path: '../base_template_general_framework_project_scheme'
   base_template_general_framework_project_secret: 
@@ -1897,12 +2338,17 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database.dart'
-    as base_template_general_framework_project_client_database;
+import 'dart:io';
+
+import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
+import 'package:http/http.dart';
 
 void main(List<String> arguments) {
-  print(
-      'Hello world: ${base_template_general_framework_project_client_database.calculate()}!');
+  final BaseTemplateGeneralFrameworkProjectClientDatabase
+      baseTemplateGeneralFrameworkProjectClientDatabase =
+      BaseTemplateGeneralFrameworkProjectClientDatabase();
+  baseTemplateGeneralFrameworkProjectClientDatabase.ensureInitialized(
+      currentPath: Directory.current.path, httpClient: Client());
 }
 """,
                 children: [],
@@ -1963,6 +2409,143 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 int calculate() {
   return 6 * 7;
+}
+""",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/lib/base_template_general_framework_project_client_database_core.dart"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value:
+                    r"""// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps
+
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
+
+import 'dart:async';
+import 'dart:io';
+
+import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/account_database.dart';
+import 'package:general_framework/core/database/database_core.dart';
+import 'package:http/http.dart';
+import 'package:isar/isar.dart';
+import "package:path/path.dart" as path;
+
+class BaseTemplateGeneralFrameworkProjectClientDatabase
+    extends GeneralFrameworkDatabase {
+  final List<IsarGeneratedSchema> isar_schemes = [
+    AccountDatabaseSchema,
+  ];
+  late final Isar isar_core;
+  BaseTemplateGeneralFrameworkProjectClientDatabase();
+
+  @override
+  Directory get directory_base {
+    final Directory directory = Directory(path.join(currentPath));
+    if (directory.existsSync() == false) {
+      directory.createSync(recursive: true);
+    }
+    return directory;
+  }
+
+  Directory get directory_database {
+    final Directory directory = Directory(path.join(directory_base.path,
+        "base_template_general_framework_project_database"));
+    if (directory.existsSync() == false) {
+      directory.createSync(recursive: true);
+    }
+    return directory;
+  }
+
+  @override
+  void ensureInitializedDatabase() {
+    {
+      directory_base;
+      directory_database;
+    }
+  }
+
+  @override
+  FutureOr<void> ensureInitialized({
+    required String currentPath,
+    required Client httpClient,
+  }) async {
+    await super
+        .ensureInitialized(currentPath: currentPath, httpClient: httpClient);
+    {
+      isar_core = openIsar(
+        name: "base_template_general_framework_project_database",
+        maxSizeMiB: null,
+      );
+    }
+  }
+
+  Isar openIsar({
+    required String name,
+    required int? maxSizeMiB,
+  }) {
+    int try_count = 0;
+    while (true) {
+      try_count++;
+      try {
+        return Isar.open(
+          schemas: isar_schemes,
+          directory: directory_database.path,
+          name: name,
+          maxSizeMiB: maxSizeMiB ?? Isar.defaultMaxSizeMiB * 100,
+        );
+      } catch (e) {
+        if (try_count > 2) {
+          rethrow;
+        }
+        for (var element in [
+          File(path.join(directory_database.path, "${name}.isar")),
+          File(path.join(directory_database.path, "${name}.isar.lock")),
+        ]) {
+          if (element.existsSync()) {
+            element.deleteSync(recursive: true);
+          }
+        }
+      }
+    }
+  }
 }
 """,
                 children: [],
@@ -2127,6 +2710,35 @@ include: package:lints/recommended.yaml
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
+                "library/base_template_general_framework_project_client_database/LICENSE"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value:
+                r"""Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+SPDX-License-Identifier: MIT
+Copyright (c) 2024 GENERAL FRAMEWORK <http://github.com/azkadev/general_framework>.
+Permission is hereby  granted, free of charge, to any  person obtaining a copy
+of this software and associated  documentation files (the "Software"), to deal
+in the Software  without restriction, including without  limitation the rights
+to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell
+copies  of  the Software,  and  to  permit persons  to  whom  the Software  is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR
+IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF  MERCHANTABILITY,
+FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE
+AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER
+LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
                 "library/base_template_general_framework_project_client_database/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -2144,6 +2756,11 @@ dependencies:
   general_lib: '^0.0.44'
   path: '^1.9.0'
   http: '^1.2.2'
+  general_framework: 
+    path: '../../../../'
+  base_template_general_framework_project_client_isar_scheme: 
+    path: '../base_template_general_framework_project_client_isar_scheme'
+  isar: '^4.0.0-dev.14'
 dev_dependencies: 
   lints: '^3.0.0'
   test: '^1.24.0'
@@ -2281,41 +2898,8 @@ void main(List<String> arguments) {
                             "library/base_template_general_framework_project_client_isar_scheme/lib/database/scheme/account_database.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-// ignore_for_file: non_constant_identifier_names, unnecessary_this
+                        value:
+                            r"""// ignore_for_file: non_constant_identifier_names, unnecessary_this
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
@@ -2462,41 +3046,7 @@ class AccountDatabase {
                             "library/base_template_general_framework_project_client_isar_scheme/lib/database/scheme/account_database.g.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-// GENERATED CODE - DO NOT MODIFY BY HAND
+                        value: r"""// GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'account_database.dart';
 
@@ -3707,6 +4257,35 @@ include: package:lints/recommended.yaml
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
+                "library/base_template_general_framework_project_client_isar_scheme/LICENSE"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value:
+                r"""Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+SPDX-License-Identifier: MIT
+Copyright (c) 2024 GENERAL FRAMEWORK <http://github.com/azkadev/general_framework>.
+Permission is hereby  granted, free of charge, to any  person obtaining a copy
+of this software and associated  documentation files (the "Software"), to deal
+in the Software  without restriction, including without  limitation the rights
+to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell
+copies  of  the Software,  and  to  permit persons  to  whom  the Software  is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR
+IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF  MERCHANTABILITY,
+FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE
+AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER
+LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
                 "library/base_template_general_framework_project_client_isar_scheme/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -4307,8 +4886,25 @@ project_type: package
                 "library/base_template_general_framework_project_flutter/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""TODO: Add your license here.
-""",
+            value:
+                r"""Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+SPDX-License-Identifier: MIT
+Copyright (c) 2024 GENERAL FRAMEWORK <http://github.com/azkadev/general_framework>.
+Permission is hereby  granted, free of charge, to any  person obtaining a copy
+of this software and associated  documentation files (the "Software"), to deal
+in the Software  without restriction, including without  limitation the rights
+to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell
+copies  of  the Software,  and  to  permit persons  to  whom  the Software  is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR
+IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF  MERCHANTABILITY,
+FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE
+AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER
+LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.""",
             children: [],
           ),
           ScriptGenerator(
@@ -4694,6 +5290,35 @@ include: package:lints/recommended.yaml
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
+                "library/base_template_general_framework_project_media_server/LICENSE"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value:
+                r"""Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+SPDX-License-Identifier: MIT
+Copyright (c) 2024 GENERAL FRAMEWORK <http://github.com/azkadev/general_framework>.
+Permission is hereby  granted, free of charge, to any  person obtaining a copy
+of this software and associated  documentation files (the "Software"), to deal
+in the Software  without restriction, including without  limitation the rights
+to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell
+copies  of  the Software,  and  to  permit persons  to  whom  the Software  is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR
+IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF  MERCHANTABILITY,
+FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE
+AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER
+LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
                 "library/base_template_general_framework_project_media_server/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -4876,7 +5501,8 @@ Future<void> generateApi({
     } else {
       api_methods.add(api_schemes[i]["@type"]);
     }
-    api_schemes[i].addAll({
+    // api_schemes[i].general_lib_extension_updateForce(data: data);
+    api_schemes[i].general_lib_extension_updateForce(data: {
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -5121,7 +5747,7 @@ Future<void> generateApiApi() async {
 import 'dart:async';
 
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
-import 'package:base_template_general_framework_project_scheme/respond_scheme/ok.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
 extension BaseTemplateGeneralFrameworkProjectApiExtension${special_type.toLowerCaseFirstData()}${return_type} on BaseTemplateGeneralFrameworkProjectApi {
 
@@ -5282,42 +5908,1543 @@ Future<void> generateIsarDatabase() async {
                         "library/base_template_general_framework_project_scheme/lib/api_scheme/api_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
+                    value: r"""export "get_me.dart";
+export "get_message.dart";
+export "get_messages.dart";
+export "send_message.dart";
+export "set_bio.dart";
+export "set_name.dart";
+export "set_username.dart";
 export "sign_in.dart";
 export "sign_up.dart";
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/get_me.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+class GetMe extends JsonScheme {
+  GetMe(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "getMe",
+      "@return_type": "account",
+      "@platform_id": "",
+      "@platform_username": "",
+      "@extra": "",
+      "@expire_date": "",
+      "@token": ""
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == getMe
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [GetMe]
+  /// Empty
+  static GetMe empty() {
+    return GetMe({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  String? get special_return_type {
+    try {
+      if (rawData["@return_type"] is String == false) {
+        return null;
+      }
+      return rawData["@return_type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_return_type(String? value) {
+    rawData["@return_type"] = value;
+  }
+
+  String? get special_platform_id {
+    try {
+      if (rawData["@platform_id"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_id(String? value) {
+    rawData["@platform_id"] = value;
+  }
+
+  String? get special_platform_username {
+    try {
+      if (rawData["@platform_username"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_username"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_username(String? value) {
+    rawData["@platform_username"] = value;
+  }
+
+  String? get special_extra {
+    try {
+      if (rawData["@extra"] is String == false) {
+        return null;
+      }
+      return rawData["@extra"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_extra(String? value) {
+    rawData["@extra"] = value;
+  }
+
+  String? get special_expire_date {
+    try {
+      if (rawData["@expire_date"] is String == false) {
+        return null;
+      }
+      return rawData["@expire_date"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_expire_date(String? value) {
+    rawData["@expire_date"] = value;
+  }
+
+  String? get special_token {
+    try {
+      if (rawData["@token"] is String == false) {
+        return null;
+      }
+      return rawData["@token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_token(String? value) {
+    rawData["@token"] = value;
+  }
+
+  static GetMe create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "getMe",
+    String special_return_type = "account",
+    String special_platform_id = "",
+    String special_platform_username = "",
+    String special_extra = "",
+    String special_expire_date = "",
+    String special_token = "",
+  }) {
+    // GetMe getMe = GetMe({
+    final Map getMe_data_create_json = {
+      "@type": special_type,
+      "@return_type": special_return_type,
+      "@platform_id": special_platform_id,
+      "@platform_username": special_platform_username,
+      "@extra": special_extra,
+      "@expire_date": special_expire_date,
+      "@token": special_token,
+    };
+
+    getMe_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (getMe_data_create_json.containsKey(key) == false) {
+          getMe_data_create_json[key] = value;
+        }
+      });
+    }
+    return GetMe(getMe_data_create_json);
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/get_message.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+class GetMessage extends JsonScheme {
+  GetMessage(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "getMessage",
+      "chat_id": 0,
+      "message_id": 0,
+      "@return_type": "message",
+      "@platform_id": "",
+      "@platform_username": "",
+      "@extra": "",
+      "@expire_date": "",
+      "@token": ""
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == getMessage
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [GetMessage]
+  /// Empty
+  static GetMessage empty() {
+    return GetMessage({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  num? get chat_id {
+    try {
+      if (rawData["chat_id"] is num == false) {
+        return null;
+      }
+      return rawData["chat_id"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set chat_id(num? value) {
+    rawData["chat_id"] = value;
+  }
+
+  num? get message_id {
+    try {
+      if (rawData["message_id"] is num == false) {
+        return null;
+      }
+      return rawData["message_id"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set message_id(num? value) {
+    rawData["message_id"] = value;
+  }
+
+  String? get special_return_type {
+    try {
+      if (rawData["@return_type"] is String == false) {
+        return null;
+      }
+      return rawData["@return_type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_return_type(String? value) {
+    rawData["@return_type"] = value;
+  }
+
+  String? get special_platform_id {
+    try {
+      if (rawData["@platform_id"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_id(String? value) {
+    rawData["@platform_id"] = value;
+  }
+
+  String? get special_platform_username {
+    try {
+      if (rawData["@platform_username"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_username"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_username(String? value) {
+    rawData["@platform_username"] = value;
+  }
+
+  String? get special_extra {
+    try {
+      if (rawData["@extra"] is String == false) {
+        return null;
+      }
+      return rawData["@extra"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_extra(String? value) {
+    rawData["@extra"] = value;
+  }
+
+  String? get special_expire_date {
+    try {
+      if (rawData["@expire_date"] is String == false) {
+        return null;
+      }
+      return rawData["@expire_date"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_expire_date(String? value) {
+    rawData["@expire_date"] = value;
+  }
+
+  String? get special_token {
+    try {
+      if (rawData["@token"] is String == false) {
+        return null;
+      }
+      return rawData["@token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_token(String? value) {
+    rawData["@token"] = value;
+  }
+
+  static GetMessage create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "getMessage",
+    num? chat_id,
+    num? message_id,
+    String special_return_type = "message",
+    String special_platform_id = "",
+    String special_platform_username = "",
+    String special_extra = "",
+    String special_expire_date = "",
+    String special_token = "",
+  }) {
+    // GetMessage getMessage = GetMessage({
+    final Map getMessage_data_create_json = {
+      "@type": special_type,
+      "chat_id": chat_id,
+      "message_id": message_id,
+      "@return_type": special_return_type,
+      "@platform_id": special_platform_id,
+      "@platform_username": special_platform_username,
+      "@extra": special_extra,
+      "@expire_date": special_expire_date,
+      "@token": special_token,
+    };
+
+    getMessage_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (getMessage_data_create_json.containsKey(key) == false) {
+          getMessage_data_create_json[key] = value;
+        }
+      });
+    }
+    return GetMessage(getMessage_data_create_json);
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/get_messages.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+class GetMessages extends JsonScheme {
+  GetMessages(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "getMessages",
+      "chat_id": 0,
+      "message_ids": [0],
+      "@return_type": "messages",
+      "@platform_id": "",
+      "@platform_username": "",
+      "@extra": "",
+      "@expire_date": "",
+      "@token": ""
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == getMessages
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [GetMessages]
+  /// Empty
+  static GetMessages empty() {
+    return GetMessages({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  num? get chat_id {
+    try {
+      if (rawData["chat_id"] is num == false) {
+        return null;
+      }
+      return rawData["chat_id"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set chat_id(num? value) {
+    rawData["chat_id"] = value;
+  }
+
+  ///
+  /// default:
+  ///
+  ///
+  List<num> get message_ids {
+    try {
+      if (rawData["message_ids"] is List == false) {
+        return [];
+      }
+      return (rawData["message_ids"] as List).cast<num>();
+    } catch (e) {
+      return [];
+    }
+  }
+
+  set message_ids(List<num> value) {
+    rawData["message_ids"] = value;
+  }
+
+  String? get special_return_type {
+    try {
+      if (rawData["@return_type"] is String == false) {
+        return null;
+      }
+      return rawData["@return_type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_return_type(String? value) {
+    rawData["@return_type"] = value;
+  }
+
+  String? get special_platform_id {
+    try {
+      if (rawData["@platform_id"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_id(String? value) {
+    rawData["@platform_id"] = value;
+  }
+
+  String? get special_platform_username {
+    try {
+      if (rawData["@platform_username"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_username"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_username(String? value) {
+    rawData["@platform_username"] = value;
+  }
+
+  String? get special_extra {
+    try {
+      if (rawData["@extra"] is String == false) {
+        return null;
+      }
+      return rawData["@extra"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_extra(String? value) {
+    rawData["@extra"] = value;
+  }
+
+  String? get special_expire_date {
+    try {
+      if (rawData["@expire_date"] is String == false) {
+        return null;
+      }
+      return rawData["@expire_date"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_expire_date(String? value) {
+    rawData["@expire_date"] = value;
+  }
+
+  String? get special_token {
+    try {
+      if (rawData["@token"] is String == false) {
+        return null;
+      }
+      return rawData["@token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_token(String? value) {
+    rawData["@token"] = value;
+  }
+
+  static GetMessages create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "getMessages",
+    num? chat_id,
+    List<num>? message_ids,
+    String special_return_type = "messages",
+    String special_platform_id = "",
+    String special_platform_username = "",
+    String special_extra = "",
+    String special_expire_date = "",
+    String special_token = "",
+  }) {
+    // GetMessages getMessages = GetMessages({
+    final Map getMessages_data_create_json = {
+      "@type": special_type,
+      "chat_id": chat_id,
+      "message_ids": message_ids,
+      "@return_type": special_return_type,
+      "@platform_id": special_platform_id,
+      "@platform_username": special_platform_username,
+      "@extra": special_extra,
+      "@expire_date": special_expire_date,
+      "@token": special_token,
+    };
+
+    getMessages_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (getMessages_data_create_json.containsKey(key) == false) {
+          getMessages_data_create_json[key] = value;
+        }
+      });
+    }
+    return GetMessages(getMessages_data_create_json);
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/send_message.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+class SendMessage extends JsonScheme {
+  SendMessage(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "sendMessage",
+      "chat_id": 0,
+      "text": "",
+      "@return_type": "message",
+      "@platform_id": "",
+      "@platform_username": "",
+      "@extra": "",
+      "@expire_date": "",
+      "@token": ""
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == sendMessage
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [SendMessage]
+  /// Empty
+  static SendMessage empty() {
+    return SendMessage({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  num? get chat_id {
+    try {
+      if (rawData["chat_id"] is num == false) {
+        return null;
+      }
+      return rawData["chat_id"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set chat_id(num? value) {
+    rawData["chat_id"] = value;
+  }
+
+  String? get text {
+    try {
+      if (rawData["text"] is String == false) {
+        return null;
+      }
+      return rawData["text"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set text(String? value) {
+    rawData["text"] = value;
+  }
+
+  String? get special_return_type {
+    try {
+      if (rawData["@return_type"] is String == false) {
+        return null;
+      }
+      return rawData["@return_type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_return_type(String? value) {
+    rawData["@return_type"] = value;
+  }
+
+  String? get special_platform_id {
+    try {
+      if (rawData["@platform_id"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_id(String? value) {
+    rawData["@platform_id"] = value;
+  }
+
+  String? get special_platform_username {
+    try {
+      if (rawData["@platform_username"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_username"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_username(String? value) {
+    rawData["@platform_username"] = value;
+  }
+
+  String? get special_extra {
+    try {
+      if (rawData["@extra"] is String == false) {
+        return null;
+      }
+      return rawData["@extra"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_extra(String? value) {
+    rawData["@extra"] = value;
+  }
+
+  String? get special_expire_date {
+    try {
+      if (rawData["@expire_date"] is String == false) {
+        return null;
+      }
+      return rawData["@expire_date"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_expire_date(String? value) {
+    rawData["@expire_date"] = value;
+  }
+
+  String? get special_token {
+    try {
+      if (rawData["@token"] is String == false) {
+        return null;
+      }
+      return rawData["@token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_token(String? value) {
+    rawData["@token"] = value;
+  }
+
+  static SendMessage create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "sendMessage",
+    num? chat_id,
+    String? text,
+    String special_return_type = "message",
+    String special_platform_id = "",
+    String special_platform_username = "",
+    String special_extra = "",
+    String special_expire_date = "",
+    String special_token = "",
+  }) {
+    // SendMessage sendMessage = SendMessage({
+    final Map sendMessage_data_create_json = {
+      "@type": special_type,
+      "chat_id": chat_id,
+      "text": text,
+      "@return_type": special_return_type,
+      "@platform_id": special_platform_id,
+      "@platform_username": special_platform_username,
+      "@extra": special_extra,
+      "@expire_date": special_expire_date,
+      "@token": special_token,
+    };
+
+    sendMessage_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (sendMessage_data_create_json.containsKey(key) == false) {
+          sendMessage_data_create_json[key] = value;
+        }
+      });
+    }
+    return SendMessage(sendMessage_data_create_json);
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/set_bio.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+class SetBio extends JsonScheme {
+  SetBio(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "setBio",
+      "bio": "",
+      "@return_type": "ok",
+      "@platform_id": "",
+      "@platform_username": "",
+      "@extra": "",
+      "@expire_date": "",
+      "@token": ""
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == setBio
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [SetBio]
+  /// Empty
+  static SetBio empty() {
+    return SetBio({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  String? get bio {
+    try {
+      if (rawData["bio"] is String == false) {
+        return null;
+      }
+      return rawData["bio"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set bio(String? value) {
+    rawData["bio"] = value;
+  }
+
+  String? get special_return_type {
+    try {
+      if (rawData["@return_type"] is String == false) {
+        return null;
+      }
+      return rawData["@return_type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_return_type(String? value) {
+    rawData["@return_type"] = value;
+  }
+
+  String? get special_platform_id {
+    try {
+      if (rawData["@platform_id"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_id(String? value) {
+    rawData["@platform_id"] = value;
+  }
+
+  String? get special_platform_username {
+    try {
+      if (rawData["@platform_username"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_username"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_username(String? value) {
+    rawData["@platform_username"] = value;
+  }
+
+  String? get special_extra {
+    try {
+      if (rawData["@extra"] is String == false) {
+        return null;
+      }
+      return rawData["@extra"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_extra(String? value) {
+    rawData["@extra"] = value;
+  }
+
+  String? get special_expire_date {
+    try {
+      if (rawData["@expire_date"] is String == false) {
+        return null;
+      }
+      return rawData["@expire_date"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_expire_date(String? value) {
+    rawData["@expire_date"] = value;
+  }
+
+  String? get special_token {
+    try {
+      if (rawData["@token"] is String == false) {
+        return null;
+      }
+      return rawData["@token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_token(String? value) {
+    rawData["@token"] = value;
+  }
+
+  static SetBio create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "setBio",
+    String? bio,
+    String special_return_type = "ok",
+    String special_platform_id = "",
+    String special_platform_username = "",
+    String special_extra = "",
+    String special_expire_date = "",
+    String special_token = "",
+  }) {
+    // SetBio setBio = SetBio({
+    final Map setBio_data_create_json = {
+      "@type": special_type,
+      "bio": bio,
+      "@return_type": special_return_type,
+      "@platform_id": special_platform_id,
+      "@platform_username": special_platform_username,
+      "@extra": special_extra,
+      "@expire_date": special_expire_date,
+      "@token": special_token,
+    };
+
+    setBio_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (setBio_data_create_json.containsKey(key) == false) {
+          setBio_data_create_json[key] = value;
+        }
+      });
+    }
+    return SetBio(setBio_data_create_json);
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/set_name.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+class SetName extends JsonScheme {
+  SetName(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "setName",
+      "first_name": "",
+      "last_name": "",
+      "@return_type": "ok",
+      "@platform_id": "",
+      "@platform_username": "",
+      "@extra": "",
+      "@expire_date": "",
+      "@token": ""
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == setName
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [SetName]
+  /// Empty
+  static SetName empty() {
+    return SetName({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  String? get first_name {
+    try {
+      if (rawData["first_name"] is String == false) {
+        return null;
+      }
+      return rawData["first_name"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set first_name(String? value) {
+    rawData["first_name"] = value;
+  }
+
+  String? get last_name {
+    try {
+      if (rawData["last_name"] is String == false) {
+        return null;
+      }
+      return rawData["last_name"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set last_name(String? value) {
+    rawData["last_name"] = value;
+  }
+
+  String? get special_return_type {
+    try {
+      if (rawData["@return_type"] is String == false) {
+        return null;
+      }
+      return rawData["@return_type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_return_type(String? value) {
+    rawData["@return_type"] = value;
+  }
+
+  String? get special_platform_id {
+    try {
+      if (rawData["@platform_id"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_id(String? value) {
+    rawData["@platform_id"] = value;
+  }
+
+  String? get special_platform_username {
+    try {
+      if (rawData["@platform_username"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_username"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_username(String? value) {
+    rawData["@platform_username"] = value;
+  }
+
+  String? get special_extra {
+    try {
+      if (rawData["@extra"] is String == false) {
+        return null;
+      }
+      return rawData["@extra"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_extra(String? value) {
+    rawData["@extra"] = value;
+  }
+
+  String? get special_expire_date {
+    try {
+      if (rawData["@expire_date"] is String == false) {
+        return null;
+      }
+      return rawData["@expire_date"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_expire_date(String? value) {
+    rawData["@expire_date"] = value;
+  }
+
+  String? get special_token {
+    try {
+      if (rawData["@token"] is String == false) {
+        return null;
+      }
+      return rawData["@token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_token(String? value) {
+    rawData["@token"] = value;
+  }
+
+  static SetName create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "setName",
+    String? first_name,
+    String? last_name,
+    String special_return_type = "ok",
+    String special_platform_id = "",
+    String special_platform_username = "",
+    String special_extra = "",
+    String special_expire_date = "",
+    String special_token = "",
+  }) {
+    // SetName setName = SetName({
+    final Map setName_data_create_json = {
+      "@type": special_type,
+      "first_name": first_name,
+      "last_name": last_name,
+      "@return_type": special_return_type,
+      "@platform_id": special_platform_id,
+      "@platform_username": special_platform_username,
+      "@extra": special_extra,
+      "@expire_date": special_expire_date,
+      "@token": special_token,
+    };
+
+    setName_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (setName_data_create_json.containsKey(key) == false) {
+          setName_data_create_json[key] = value;
+        }
+      });
+    }
+    return SetName(setName_data_create_json);
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/set_username.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+class SetUsername extends JsonScheme {
+  SetUsername(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "setUsername",
+      "username": "username",
+      "@return_type": "ok",
+      "@platform_id": "",
+      "@platform_username": "",
+      "@extra": "",
+      "@expire_date": "",
+      "@token": ""
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == setUsername
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [SetUsername]
+  /// Empty
+  static SetUsername empty() {
+    return SetUsername({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  String? get username {
+    try {
+      if (rawData["username"] is String == false) {
+        return null;
+      }
+      return rawData["username"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set username(String? value) {
+    rawData["username"] = value;
+  }
+
+  String? get special_return_type {
+    try {
+      if (rawData["@return_type"] is String == false) {
+        return null;
+      }
+      return rawData["@return_type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_return_type(String? value) {
+    rawData["@return_type"] = value;
+  }
+
+  String? get special_platform_id {
+    try {
+      if (rawData["@platform_id"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_id(String? value) {
+    rawData["@platform_id"] = value;
+  }
+
+  String? get special_platform_username {
+    try {
+      if (rawData["@platform_username"] is String == false) {
+        return null;
+      }
+      return rawData["@platform_username"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_platform_username(String? value) {
+    rawData["@platform_username"] = value;
+  }
+
+  String? get special_extra {
+    try {
+      if (rawData["@extra"] is String == false) {
+        return null;
+      }
+      return rawData["@extra"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_extra(String? value) {
+    rawData["@extra"] = value;
+  }
+
+  String? get special_expire_date {
+    try {
+      if (rawData["@expire_date"] is String == false) {
+        return null;
+      }
+      return rawData["@expire_date"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_expire_date(String? value) {
+    rawData["@expire_date"] = value;
+  }
+
+  String? get special_token {
+    try {
+      if (rawData["@token"] is String == false) {
+        return null;
+      }
+      return rawData["@token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_token(String? value) {
+    rawData["@token"] = value;
+  }
+
+  static SetUsername create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "setUsername",
+    String? username,
+    String special_return_type = "ok",
+    String special_platform_id = "",
+    String special_platform_username = "",
+    String special_extra = "",
+    String special_expire_date = "",
+    String special_token = "",
+  }) {
+    // SetUsername setUsername = SetUsername({
+    final Map setUsername_data_create_json = {
+      "@type": special_type,
+      "username": username,
+      "@return_type": special_return_type,
+      "@platform_id": special_platform_id,
+      "@platform_username": special_platform_username,
+      "@extra": special_extra,
+      "@expire_date": special_expire_date,
+      "@token": special_token,
+    };
+
+    setUsername_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (setUsername_data_create_json.containsKey(key) == false) {
+          setUsername_data_create_json[key] = value;
+        }
+      });
+    }
+    return SetUsername(setUsername_data_create_json);
+  }
+}
 """,
                     children: [],
                   ),
@@ -5329,41 +7456,8 @@ export "sign_up.dart";
                         "library/base_template_general_framework_project_scheme/lib/api_scheme/sign_in.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-// ignore_for_file: non_constant_identifier_names, unused_import
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
@@ -5572,41 +7666,8 @@ class SignIn extends JsonScheme {
                         "library/base_template_general_framework_project_scheme/lib/api_scheme/sign_up.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-// ignore_for_file: non_constant_identifier_names, unused_import
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
@@ -5845,41 +7906,8 @@ class SignUp extends JsonScheme {
                         "library/base_template_general_framework_project_scheme/lib/database_scheme/account_database.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-// ignore_for_file: non_constant_identifier_names, unused_import
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
@@ -5998,41 +8026,7 @@ class AccountDatabase extends JsonScheme {
                         "library/base_template_general_framework_project_scheme/lib/database_scheme/database_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-export "account_database.dart";
+                    value: r"""export "account_database.dart";
 """,
                     children: [],
                   )
@@ -6053,44 +8047,149 @@ export "account_database.dart";
                     directory_base:
                         Directory("base_template_general_framework_project"),
                     file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/account.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+class Account extends JsonScheme {
+  Account(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "account",
+      "@extra": "",
+      "@expire_date": "",
+      "@client_id": ""
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == account
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [Account]
+  /// Empty
+  static Account empty() {
+    return Account({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  String? get special_extra {
+    try {
+      if (rawData["@extra"] is String == false) {
+        return null;
+      }
+      return rawData["@extra"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_extra(String? value) {
+    rawData["@extra"] = value;
+  }
+
+  String? get special_expire_date {
+    try {
+      if (rawData["@expire_date"] is String == false) {
+        return null;
+      }
+      return rawData["@expire_date"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_expire_date(String? value) {
+    rawData["@expire_date"] = value;
+  }
+
+  String? get special_client_id {
+    try {
+      if (rawData["@client_id"] is String == false) {
+        return null;
+      }
+      return rawData["@client_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_id(String? value) {
+    rawData["@client_id"] = value;
+  }
+
+  static Account create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "account",
+    String special_extra = "",
+    String special_expire_date = "",
+    String special_client_id = "",
+  }) {
+    // Account account = Account({
+    final Map account_data_create_json = {
+      "@type": special_type,
+      "@extra": special_extra,
+      "@expire_date": special_expire_date,
+      "@client_id": special_client_id,
+    };
+
+    account_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (account_data_create_json.containsKey(key) == false) {
+          account_data_create_json[key] = value;
+        }
+      });
+    }
+    return Account(account_data_create_json);
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
                         "library/base_template_general_framework_project_scheme/lib/respond_scheme/error.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-// ignore_for_file: non_constant_identifier_names, unused_import
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
@@ -6242,44 +8341,348 @@ class Error extends JsonScheme {
                     directory_base:
                         Directory("base_template_general_framework_project"),
                     file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/message.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+class Message extends JsonScheme {
+  Message(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "message",
+      "id": 0,
+      "@extra": "",
+      "@expire_date": "",
+      "@client_id": ""
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == message
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [Message]
+  /// Empty
+  static Message empty() {
+    return Message({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  num? get id {
+    try {
+      if (rawData["id"] is num == false) {
+        return null;
+      }
+      return rawData["id"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set id(num? value) {
+    rawData["id"] = value;
+  }
+
+  String? get special_extra {
+    try {
+      if (rawData["@extra"] is String == false) {
+        return null;
+      }
+      return rawData["@extra"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_extra(String? value) {
+    rawData["@extra"] = value;
+  }
+
+  String? get special_expire_date {
+    try {
+      if (rawData["@expire_date"] is String == false) {
+        return null;
+      }
+      return rawData["@expire_date"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_expire_date(String? value) {
+    rawData["@expire_date"] = value;
+  }
+
+  String? get special_client_id {
+    try {
+      if (rawData["@client_id"] is String == false) {
+        return null;
+      }
+      return rawData["@client_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_id(String? value) {
+    rawData["@client_id"] = value;
+  }
+
+  static Message create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "message",
+    num? id,
+    String special_extra = "",
+    String special_expire_date = "",
+    String special_client_id = "",
+  }) {
+    // Message message = Message({
+    final Map message_data_create_json = {
+      "@type": special_type,
+      "id": id,
+      "@extra": special_extra,
+      "@expire_date": special_expire_date,
+      "@client_id": special_client_id,
+    };
+
+    message_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (message_data_create_json.containsKey(key) == false) {
+          message_data_create_json[key] = value;
+        }
+      });
+    }
+    return Message(message_data_create_json);
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/messages.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+import "message.dart";
+
+class Messages extends JsonScheme {
+  Messages(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "messages",
+      "total_count": 0,
+      "messages": [
+        {"@type": "message"}
+      ],
+      "@extra": "",
+      "@expire_date": "",
+      "@client_id": ""
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == messages
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [Messages]
+  /// Empty
+  static Messages empty() {
+    return Messages({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  num? get total_count {
+    try {
+      if (rawData["total_count"] is num == false) {
+        return null;
+      }
+      return rawData["total_count"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set total_count(num? value) {
+    rawData["total_count"] = value;
+  }
+
+  List<Message> get messages {
+    try {
+      if (rawData["messages"] is List == false) {
+        return [];
+      }
+      return (rawData["messages"] as List)
+          .map((e) => Message(e as Map))
+          .toList()
+          .cast<Message>();
+    } catch (e) {
+      return [];
+    }
+  }
+
+  set messages(List<Message> values) {
+    rawData["messages"] = values.map((value) => value.toJson()).toList();
+  }
+
+  String? get special_extra {
+    try {
+      if (rawData["@extra"] is String == false) {
+        return null;
+      }
+      return rawData["@extra"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_extra(String? value) {
+    rawData["@extra"] = value;
+  }
+
+  String? get special_expire_date {
+    try {
+      if (rawData["@expire_date"] is String == false) {
+        return null;
+      }
+      return rawData["@expire_date"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_expire_date(String? value) {
+    rawData["@expire_date"] = value;
+  }
+
+  String? get special_client_id {
+    try {
+      if (rawData["@client_id"] is String == false) {
+        return null;
+      }
+      return rawData["@client_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_id(String? value) {
+    rawData["@client_id"] = value;
+  }
+
+  static Messages create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "messages",
+    num? total_count,
+    List<Message>? messages,
+    String special_extra = "",
+    String special_expire_date = "",
+    String special_client_id = "",
+  }) {
+    // Messages messages = Messages({
+    final Map messages_data_create_json = {
+      "@type": special_type,
+      "total_count": total_count,
+      "messages": (messages != null) ? messages.toJson() : null,
+      "@extra": special_extra,
+      "@expire_date": special_expire_date,
+      "@client_id": special_client_id,
+    };
+
+    messages_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (messages_data_create_json.containsKey(key) == false) {
+          messages_data_create_json[key] = value;
+        }
+      });
+    }
+    return Messages(messages_data_create_json);
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
                         "library/base_template_general_framework_project_scheme/lib/respond_scheme/ok.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-// ignore_for_file: non_constant_identifier_names, unused_import
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
@@ -6411,42 +8814,150 @@ class Ok extends JsonScheme {
                         "library/base_template_general_framework_project_scheme/lib/respond_scheme/respond_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
+                    value: r"""export "account.dart";
 export "error.dart";
+export "message.dart";
+export "messages.dart";
 export "ok.dart";
+export "session.dart";
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/session.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+class Session extends JsonScheme {
+  Session(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "session",
+      "@extra": "",
+      "@expire_date": "",
+      "@client_id": ""
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == session
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [Session]
+  /// Empty
+  static Session empty() {
+    return Session({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  String? get special_extra {
+    try {
+      if (rawData["@extra"] is String == false) {
+        return null;
+      }
+      return rawData["@extra"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_extra(String? value) {
+    rawData["@extra"] = value;
+  }
+
+  String? get special_expire_date {
+    try {
+      if (rawData["@expire_date"] is String == false) {
+        return null;
+      }
+      return rawData["@expire_date"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_expire_date(String? value) {
+    rawData["@expire_date"] = value;
+  }
+
+  String? get special_client_id {
+    try {
+      if (rawData["@client_id"] is String == false) {
+        return null;
+      }
+      return rawData["@client_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_id(String? value) {
+    rawData["@client_id"] = value;
+  }
+
+  static Session create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "session",
+    String special_extra = "",
+    String special_expire_date = "",
+    String special_client_id = "",
+  }) {
+    // Session session = Session({
+    final Map session_data_create_json = {
+      "@type": special_type,
+      "@extra": special_extra,
+      "@expire_date": special_expire_date,
+      "@client_id": special_client_id,
+    };
+
+    session_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (session_data_create_json.containsKey(key) == false) {
+          session_data_create_json[key] = value;
+        }
+      });
+    }
+    return Session(session_data_create_json);
+  }
+}
 """,
                     children: [],
                   )
@@ -6470,41 +8981,8 @@ export "ok.dart";
                         "library/base_template_general_framework_project_scheme/lib/scheme/error.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-// ignore_for_file: non_constant_identifier_names, unused_import
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
@@ -6602,41 +9080,8 @@ class Error extends JsonScheme {
                         "library/base_template_general_framework_project_scheme/lib/scheme/ok.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-// ignore_for_file: non_constant_identifier_names, unused_import
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
@@ -6717,41 +9162,7 @@ class Ok extends JsonScheme {
                         "library/base_template_general_framework_project_scheme/lib/scheme/scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-export "error.dart";
+                    value: r"""export "error.dart";
 export "ok.dart";
 """,
                     children: [],
@@ -6811,13 +9222,59 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 final List<Map<String, dynamic>> api_schemes = [
-  {"@type": "signUp", "username": "", "password": "", "@return_type": "ok"},
+  {
+    "@type": "signUp",
+    "username": "",
+    "password": "",
+    "@return_type": "ok",
+  },
   {
     "@type": "signIn",
     "username": "",
     "password": "",
-  }
-];
+    // "@return_type": "ok",
+  },
+  {
+    "@type": "getMe",
+    "@return_type": "account",
+  },
+  {
+    "@type": "setName",
+    "first_name": "",
+    "last_name": "",
+    "@return_type": "ok",
+  },
+  {
+    "@type": "setUsername",
+    "username": "username",
+    "@return_type": "ok",
+  },
+  {
+    "@type": "setBio",
+    "bio": "",
+    "@return_type": "ok",
+  },
+  {
+    "@type": "sendMessage",
+    "chat_id": 0,
+    "text": "",
+    "@return_type": "message",
+  },
+  {
+    "@type": "getMessages",
+    "chat_id": 0,
+    "message_ids": [0],
+    "@return_type": "messages",
+  },
+  {
+    "@type": "getMessage",
+    "chat_id": 0,
+    "message_id": 0,
+    "@return_type": "message",
+  },
+].map((e) {
+  return e;
+}).toList();
 """,
                     children: [],
                   ),
@@ -6966,6 +9423,25 @@ final List<Map<String, dynamic>> respond_schemes = [
     "@type": "error",
     "message": "",
   },
+  {
+    "@type": "account",
+  },
+  {
+    "@type": "session",
+  },
+  {
+    "@type": "message",
+    "id": 0,
+  },
+  {
+    "@type": "messages",
+    "total_count": 0,
+    "messages": [
+      {
+        "@type": "message",
+      }
+    ]
+  }
 ];
 """,
                     children: [],
@@ -7098,41 +9574,8 @@ final List<Map<String, dynamic>> update_schemes = [
                         "library/base_template_general_framework_project_scheme/lib/update_scheme/error.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-// ignore_for_file: non_constant_identifier_names, unused_import
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
@@ -7287,41 +9730,8 @@ class Error extends JsonScheme {
                         "library/base_template_general_framework_project_scheme/lib/update_scheme/ok.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-// ignore_for_file: non_constant_identifier_names, unused_import
+                    value:
+                        r"""// ignore_for_file: non_constant_identifier_names, unused_import
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
@@ -7453,41 +9863,7 @@ class Ok extends JsonScheme {
                         "library/base_template_general_framework_project_scheme/lib/update_scheme/update_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-export "error.dart";
+                    value: r"""export "error.dart";
 export "ok.dart";
 """,
                     children: [],
@@ -7732,6 +10108,35 @@ include: package:lints/recommended.yaml
 
 - Initial version.
 """,
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_scheme/LICENSE"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value:
+                r"""Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+SPDX-License-Identifier: MIT
+Copyright (c) 2024 GENERAL FRAMEWORK <http://github.com/azkadev/general_framework>.
+Permission is hereby  granted, free of charge, to any  person obtaining a copy
+of this software and associated  documentation files (the "Software"), to deal
+in the Software  without restriction, including without  limitation the rights
+to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell
+copies  of  the Software,  and  to  permit persons  to  whom  the Software  is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR
+IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF  MERCHANTABILITY,
+FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE
+AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER
+LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.""",
             children: [],
           ),
           ScriptGenerator(
@@ -8009,6 +10414,35 @@ include: package:lints/recommended.yaml
 
 - Initial version.
 """,
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_secret/LICENSE"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value:
+                r"""Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+SPDX-License-Identifier: MIT
+Copyright (c) 2024 GENERAL FRAMEWORK <http://github.com/azkadev/general_framework>.
+Permission is hereby  granted, free of charge, to any  person obtaining a copy
+of this software and associated  documentation files (the "Software"), to deal
+in the Software  without restriction, including without  limitation the rights
+to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell
+copies  of  the Software,  and  to  permit persons  to  whom  the Software  is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR
+IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF  MERCHANTABILITY,
+FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE
+AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER
+LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.""",
             children: [],
           ),
           ScriptGenerator(
@@ -16012,10 +18446,236 @@ in `lib/`, and example unit test in `test/`.
   ScriptGenerator(
     is_generate: true,
     directory_base: Directory("base_template_general_framework_project"),
+    file_system_entity: File("generate_glx_commands_dart_pub_get.sh"),
+    state_data: {},
+    file_system_entity_type: FileSystemEntityType.file,
+    value: r"""#!/bin/sh
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/
+dart pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/
+dart pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/
+dart pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/
+dart pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/
+dart pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/
+dart pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/
+dart pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
+dart pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
+dart pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/
+dart pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/
+dart pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/
+dart pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/
+dart pub get --offline
+""",
+    children: [],
+  ),
+  ScriptGenerator(
+    is_generate: true,
+    directory_base: Directory("base_template_general_framework_project"),
+    file_system_entity: File("generate_glx_commands_flutter_clean.sh"),
+    state_data: {},
+    file_system_entity_type: FileSystemEntityType.file,
+    value: r"""#!/bin/sh
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/
+flutter clean
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/
+flutter clean
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/
+flutter clean
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/
+flutter clean
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/
+flutter clean
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/
+flutter clean
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/
+flutter clean
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
+flutter clean
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
+flutter clean
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/
+flutter clean
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/
+flutter clean
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/
+flutter clean
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/
+flutter clean
+""",
+    children: [],
+  ),
+  ScriptGenerator(
+    is_generate: true,
+    directory_base: Directory("base_template_general_framework_project"),
+    file_system_entity: File("generate_glx_commands_flutter_pub_get.sh"),
+    state_data: {},
+    file_system_entity_type: FileSystemEntityType.file,
+    value: r"""#!/bin/sh
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/
+flutter pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/
+flutter pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/
+flutter pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/
+flutter pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/
+flutter pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/
+flutter pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/
+flutter pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
+flutter pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
+flutter pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/
+flutter pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/
+flutter pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/
+flutter pub get --offline
+
+
+echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/"
+cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/
+flutter pub get --offline
+""",
+    children: [],
+  ),
+  ScriptGenerator(
+    is_generate: true,
+    directory_base: Directory("base_template_general_framework_project"),
     file_system_entity: File("README.md"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: "",
+    value: r"""## DEVELOPMENT
+
+
+cd library/base_template_general_framework_project_scheme
+dart run""",
     children: [],
   )
 ];
