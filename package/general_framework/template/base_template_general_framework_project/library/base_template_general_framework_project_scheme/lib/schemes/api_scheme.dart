@@ -102,6 +102,10 @@ final List<Map<String, dynamic>> api_schemes = [
     "message_id": 0,
     "@return_type": "message",
   },
+  {
+    "@type": "getUpdate",
+    "@return_type": "update",
+  }
 ].map((e) {
   return e;
 }).toList();

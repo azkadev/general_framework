@@ -42,22 +42,23 @@ import 'package:base_template_general_framework_project_scheme/base_template_gen
 import 'package:base_template_general_framework_project_scheme/database_scheme/account_database.dart';
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
+import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
+
 extension BaseTemplateGeneralFrameworkProjectApiExtensionsignUpOk
     on BaseTemplateGeneralFrameworkProjectApi {
   FutureOr<Ok> api_signUp({
     required InvokeRequestData invokeRequestData,
   }) async {
+    final SignUp signUp = invokeRequestData.parametersBuilder<SignUp>(
+      builder: (parameters) {
+        return SignUp(parameters.toJson());
+      },
+    );
     final String username_parameters = () {
-      if (invokeRequestData.parameters["username"] is String) {
-        return invokeRequestData.parameters["username"];
-      }
-      return "";
+      return signUp.username ?? "";
     }();
     final String password_parameters = () {
-      if (invokeRequestData.parameters["password"] is String) {
-        return invokeRequestData.parameters["password"];
-      }
-      return "";
+      return signUp.password ?? "";
     }();
     // validation
     {

@@ -4,20 +4,20 @@ import "package:general_lib/general_lib.dart";
 
 
  
-class SetBio extends JsonScheme {
+class GetUpdate extends JsonScheme {
 
   
-  SetBio(super.rawData);
+  GetUpdate(super.rawData);
   
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"setBio","bio":"","@return_type":"ok","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
+    return {"@type":"getUpdate","@return_type":"update","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
   }
 
   /// check data 
   /// if raw data 
-  /// - rawData["@type"] == setBio
+  /// - rawData["@type"] == getUpdate
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
     return rawData["@type"] == defaultData["@type"];
@@ -32,10 +32,10 @@ class SetBio extends JsonScheme {
 
   
 
-  /// create [SetBio]
+  /// create [GetUpdate]
   /// Empty  
-  static SetBio empty() {
-    return SetBio({});
+  static GetUpdate empty() {
+    return GetUpdate({});
   }
 
   
@@ -55,24 +55,6 @@ class SetBio extends JsonScheme {
   
   set special_type(String? value) {
     rawData["@type"] = value;
-  }
-
-
-  
-  String? get bio {
-    try {
-      if (rawData["bio"] is String == false){
-        return null;
-      }
-      return rawData["bio"] as String;
-    } catch (e) {
-      return null;
-    }
-  }
-
-  
-  set bio(String? value) {
-    rawData["bio"] = value;
   }
 
 
@@ -185,23 +167,21 @@ class SetBio extends JsonScheme {
 
 
   
-  static SetBio create({
+  static GetUpdate create({
               bool schemeUtilsIsSetDefaultData = false,
 
-    String special_type = "setBio",
-    String? bio,
-    String special_return_type = "ok",
+    String special_type = "getUpdate",
+    String special_return_type = "update",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
     String special_expire_date = "",
     String special_token = "",
 })  {
-    // SetBio setBio = SetBio({
-final Map setBio_data_create_json = {
+    // GetUpdate getUpdate = GetUpdate({
+final Map getUpdate_data_create_json = {
   
       "@type": special_type,
-      "bio": bio,
       "@return_type": special_return_type,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
@@ -213,16 +193,16 @@ final Map setBio_data_create_json = {
 };
 
 
-          setBio_data_create_json.removeWhere((key, value) => value == null);
+          getUpdate_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (setBio_data_create_json.containsKey(key) == false) {
-          setBio_data_create_json[key] = value;
+        if (getUpdate_data_create_json.containsKey(key) == false) {
+          getUpdate_data_create_json[key] = value;
         }
       });
     }
-return SetBio(setBio_data_create_json);
+return GetUpdate(getUpdate_data_create_json);
 
 
       }

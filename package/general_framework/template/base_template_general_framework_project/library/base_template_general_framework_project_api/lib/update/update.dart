@@ -45,4 +45,10 @@ class InvokeRequestData {
     required this.accountDatabase,
     required this.sessionDatabase,
   });
+
+  T parametersBuilder<T>({
+    required T Function(JsonScheme parameters) builder,
+  }) {
+    return builder(parameters);
+  }
 }

@@ -345,6 +345,7 @@ import 'dart:async';
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
 import 'package:base_template_general_framework_project_api/update/update.dart';
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
+import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 
 extension BaseTemplateGeneralFrameworkProjectApiExtension${special_type.toLowerCaseFirstData()}${return_type} on BaseTemplateGeneralFrameworkProjectApi {
 
@@ -356,6 +357,13 @@ extension BaseTemplateGeneralFrameworkProjectApiExtension${special_type.toLowerC
   FutureOr<${return_type}> api_${special_type.toLowerCaseFirstData()}({
       required InvokeRequestData invokeRequestData,
 }) {
+
+    final ${special_type} ${special_type.toLowerCaseFirstData()} = invokeRequestData.parametersBuilder<${special_type}>(
+      builder: (parameters) {
+        return ${special_type}(parameters.toJson());
+      },
+    );
+
     return ${return_type}({
       "@type": "error",
       "message": "unimplemented"

@@ -41,7 +41,8 @@ import 'package:base_template_general_framework_project_api_database/account/acc
 import 'package:base_template_general_framework_project_scheme/database_scheme/account_database.dart';
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
-extension BaseTemplateGeneralFrameworkProjectApiExtensionsetNameOk on BaseTemplateGeneralFrameworkProjectApi {
+extension BaseTemplateGeneralFrameworkProjectApiExtensionsetNameOk
+    on BaseTemplateGeneralFrameworkProjectApi {
   FutureOr<Ok> api_setName({
     required InvokeRequestData invokeRequestData,
   }) async {
@@ -57,7 +58,8 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsetNameOk on BaseTempla
       }
       return null;
     }();
-    final bool is_update_succes = await generalFrameworkApiDatabase.account_saveAccountByUserId(
+    final bool is_update_succes =
+        await generalFrameworkApiDatabase.account_saveAccountByUserId(
       account_user_id: invokeRequestData.accountDatabase.id ?? 0,
       newAccountDatabase: AccountDatabase.create(
         first_name: first_name_parameters,

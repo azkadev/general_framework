@@ -59,6 +59,15 @@ final List<Map<String, dynamic>> respond_schemes = () {
           "@type": "message",
         }
       ]
+    },
+    {
+      "@type": "update",
+      "message": {
+        "@type": "message",
+      },
+      "new_message": {
+        "@type": "message",
+      }, 
     }
   ];
 }();

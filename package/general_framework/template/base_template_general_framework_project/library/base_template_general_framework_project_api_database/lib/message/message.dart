@@ -40,6 +40,17 @@ import 'package:base_template_general_framework_project_scheme/database_scheme/m
 import 'package:general_lib/extension/map.dart';
 
 extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage on BaseTemplateGeneralFrameworkProjectApiDatabase {
+  Future<List<MessageDatabase>> message_getMessageAllMessage({
+    required num chat_id,
+    required num user_id,
+    required num offset,
+    required num limit,
+  }) async {
+    return (await supabase_message.select().containedBy("chat_ids", [chat_id, user_id]).range(offset.toInt(), limit.toInt())).map((e) {
+      return MessageDatabase(e);
+    }).toList();
+  }
+
   Future<MessageDatabase?> message_getMessageByMessageId({
     required num chat_id,
     required num user_id,
