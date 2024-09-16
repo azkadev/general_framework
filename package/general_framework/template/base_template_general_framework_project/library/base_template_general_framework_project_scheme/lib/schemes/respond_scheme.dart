@@ -41,16 +41,19 @@ final List<Map<String, dynamic>> respond_schemes = () {
   final GeneralLibSchemeType generalLibSchemeType = GeneralLibSchemeType.scheme;
 
   return [
-    BaseTemplateGeneralFrameworkProjectSchemeDefault.account(generalLibSchemeType: generalLibSchemeType),
-    BaseTemplateGeneralFrameworkProjectSchemeDefault.message(generalLibSchemeType: generalLibSchemeType),
-    BaseTemplateGeneralFrameworkProjectSchemeDefault.session(generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.account(
+        generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.message(
+        generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.session(
+        generalLibSchemeType: generalLibSchemeType),
     {
       "@type": "ok",
     },
     {
       "@type": "error",
       "message": "",
-    }, 
+    },
     {
       "@type": "messages",
       "total_count": 0,
@@ -67,7 +70,7 @@ final List<Map<String, dynamic>> respond_schemes = () {
       },
       "new_message": {
         "@type": "message",
-      }, 
+      },
     }
   ];
 }();

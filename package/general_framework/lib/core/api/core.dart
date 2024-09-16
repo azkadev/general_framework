@@ -35,11 +35,29 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 
 import 'package:general_framework/core/database/database_core.dart';
+import 'package:general_lib/json_scheme/json_scheme.dart';
 import 'package:http/http.dart';
 
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
-abstract class GeneralFrameworkApiBase<D extends GeneralFrameworkDatabase> {
+abstract class GeneralFrameworkApiBaseCore{
+
+  
+
+  FutureOr<JsonScheme> invoke({
+    required JsonScheme parameters,
+  }) async {
+    return JsonScheme({
+      "@type": "error",
+      "message": "unimplemented"
+    });
+  }
+  
+}
+
+/// GeneralFrameworkClient
+/// is universal client for help you connection to rest api server super easy friendly
+abstract class GeneralFrameworkApiBase<D extends GeneralFrameworkDatabase>  implements GeneralFrameworkApiBaseCore{
   final D generalFrameworkApiDatabase;
   GeneralFrameworkApiBase({
     required this.generalFrameworkApiDatabase,
@@ -48,6 +66,9 @@ abstract class GeneralFrameworkApiBase<D extends GeneralFrameworkDatabase> {
     required String currentPath,
     required Client httpClient,
   }) async {
-    await generalFrameworkApiDatabase.ensureInitialized(currentPath: currentPath, httpClient: httpClient,);
+    await generalFrameworkApiDatabase.ensureInitialized(
+      currentPath: currentPath,
+      httpClient: httpClient,
+    );
   }
 }

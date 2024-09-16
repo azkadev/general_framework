@@ -35,7 +35,8 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:io';
 
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database.dart';
-import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/message_database.dart' as isar_scheme;
+import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/message_database.dart'
+    as isar_scheme;
 import 'package:base_template_general_framework_project_scheme/database_scheme/message_database.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:http/http.dart';
@@ -43,8 +44,10 @@ import 'package:isar/isar.dart';
 import 'package:test/test.dart';
 
 void main() async {
-  final BaseTemplateGeneralFrameworkProjectClientDatabase database = BaseTemplateGeneralFrameworkProjectClientDatabase();
-  await database.ensureInitialized(currentPath: Directory.current.path, httpClient: Client());
+  final BaseTemplateGeneralFrameworkProjectClientDatabase database =
+      BaseTemplateGeneralFrameworkProjectClientDatabase();
+  await database.ensureInitialized(
+      currentPath: Directory.current.path, httpClient: Client());
 
   int chat_id = 20000;
   int user_id = 10000;
@@ -53,7 +56,8 @@ void main() async {
     print("Wait");
     await Future.delayed(Duration(seconds: 2));
     int message_id = 1;
-    final MessageDatabase? messageDatabase = database.message_getMessageByMessageId(
+    final MessageDatabase? messageDatabase =
+        database.message_getMessageByMessageId(
       chat_id: chat_id,
       user_id: user_id,
       message_id: message_id,

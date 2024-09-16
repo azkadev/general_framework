@@ -33,11 +33,167 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 
+import 'dart:async';
+
+import 'package:base_template_general_framework_project_api/api/api.dart';
+import 'package:base_template_general_framework_project_api/update/update.dart';
 import 'package:base_template_general_framework_project_api_database/base_template_general_framework_project_api_database_core.dart';
+import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
 import 'package:general_framework/core/api/core.dart';
+import 'package:general_lib/json_scheme/json_scheme.dart';
 
 class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<BaseTemplateGeneralFrameworkProjectApiDatabase> {
   BaseTemplateGeneralFrameworkProjectApi({
     required super.generalFrameworkApiDatabase,
   });
+
+  @override
+  FutureOr<JsonScheme> invoke({
+    required JsonScheme parameters,
+  }) async {
+    final InvokeRequestData invokeRequestData = InvokeRequestData(
+      parameters: parameters,
+      accountDatabase: AccountDatabase({}),
+      sessionDatabase: SessionDatabase({}),
+    );
+
+    // validation check data
+    {
+      final JsonScheme? checkValidation = invokeRequestData.checkValidation();
+      if (checkValidation != null) {
+        return checkValidation;
+      }
+    }
+    await invokeRequestData.ensureInitialized(
+      database: generalFrameworkApiDatabase,
+    );
+    return await request(
+      invokeRequestData: invokeRequestData,
+    );
+  }
+
+  FutureOr<JsonScheme> request({
+    required InvokeRequestData invokeRequestData,
+  }) async {
+    final String requestMethod = invokeRequestData.requestMethod();
+
+    /// method not use session
+    if (RegExp(r"^(signIn)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_signIn(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+
+    if (RegExp(r"^(signUp)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_signUp(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+
+    /// method use session
+    /// check first
+    {
+      final JsonScheme? checkValidationSession = invokeRequestData.checkValidationSession();
+      if (checkValidationSession != null) {
+        return checkValidationSession;
+      }
+    }
+
+    if (RegExp(r"^(getAllMessages)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_getAllMessages(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+
+    if (RegExp(r"^(getChat)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_getChat(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+    if (RegExp(r"^(getMe)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_getMe(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+
+    if (RegExp(r"^(getMessage)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_getMessage(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+    if (RegExp(r"^(getMessages)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_getMessages(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+
+    if (RegExp(r"^(getUpdate)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_getUpdate(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+
+    if (RegExp(r"^(getUser)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_getUser(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+
+    if (RegExp(r"^(sendMessage)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_sendMessage(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+
+    if (RegExp(r"^(setBio)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_setBio(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+
+    if (RegExp(r"^(setName)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_setName(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+
+    if (RegExp(r"^(setUsername)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_setUsername(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+
+    return invokeRequestData.send(
+      result: JsonScheme({
+        "@type": "error",
+        "message": "unimplemented",
+      }),
+    );
+  }
 }

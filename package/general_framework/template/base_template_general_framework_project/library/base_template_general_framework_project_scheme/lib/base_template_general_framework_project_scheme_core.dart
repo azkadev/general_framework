@@ -32,7 +32,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
- 
+
 class BaseTemplateGeneralFrameworkProjectSchemeValidation {
   static Map? usernameValidation({
     required String username,
@@ -46,6 +46,7 @@ class BaseTemplateGeneralFrameworkProjectSchemeValidation {
 
     return null;
   }
+
   static Map? passwordValidation({
     required String password,
   }) {

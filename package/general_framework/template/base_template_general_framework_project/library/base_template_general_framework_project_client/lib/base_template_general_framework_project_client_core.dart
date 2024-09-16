@@ -48,11 +48,11 @@ import 'package:general_lib/general_lib.dart';
 
 /// base template general framework
 class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<BaseTemplateGeneralFrameworkProjectClientDatabase> {
-  final BaseTemplateGeneralFrameworkProjectSecret baseTemplateGeneralFrameworkProjectSecret;
+  final BaseTemplateGeneralFrameworkProjectSecretClientSide baseTemplateGeneralFrameworkProjectSecretClientSide;
   final SessionIsarDatabase sessionDefault = SessionIsarDatabase({});
 
   BaseTemplateGeneralFrameworkProjectClient({
-    required this.baseTemplateGeneralFrameworkProjectSecret,
+    required this.baseTemplateGeneralFrameworkProjectSecretClientSide,
     required super.generalLibrary,
     super.networkClientConnectionType = NetworkClientConnectionType.websocket,
     required super.generalFrameworkClientInvokeOptions,
@@ -61,7 +61,11 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<B
     super.eventInvoke,
     super.eventUpdate,
     super.httpClient,
-  }) : super(apiUrl: baseTemplateGeneralFrameworkProjectSecret.apiUrl);
+  }) : super(
+          apiUrl: baseTemplateGeneralFrameworkProjectSecretClientSide.apiUrl,
+          pathApi: baseTemplateGeneralFrameworkProjectSecretClientSide.pathApi,
+          pathWebSocket: baseTemplateGeneralFrameworkProjectSecretClientSide.pathWebSocket,
+        );
 
   @override
   FutureOr<void> ensureInitialized({
@@ -133,11 +137,11 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<B
 
   @override
   String decryptData({required String data}) {
-    return baseTemplateGeneralFrameworkProjectSecret.crypto.decrypt(data_base64: data);
+    return baseTemplateGeneralFrameworkProjectSecretClientSide.crypto.decrypt(data_base64: data);
   }
 
   @override
   String encryptData({required Map data}) {
-    return baseTemplateGeneralFrameworkProjectSecret.crypto.encrypt(data: json.encode(data));
+    return baseTemplateGeneralFrameworkProjectSecretClientSide.crypto.encrypt(data: json.encode(data));
   }
 }

@@ -220,13 +220,15 @@ Future<void> generateDatabaseSql() async {
     // }
     jsonData["from_app_id"] = "";
     jsonData["owner_account_user_id"] = 0;
-    String table_name = (jsonData["@type"] as String).replaceAll(RegExp(r"(database)$", caseSensitive: false), "");
+    String table_name = (jsonData["@type"] as String)
+        .replaceAll(RegExp(r"(database)$", caseSensitive: false), "");
     String res = jsonToSqlSupabase(
       jsonData: jsonData,
       tableName: table_name.snakeCaseClass(),
     );
 
-    File file = File(path.join(Directory.current.path, "supabase_scheme", "${table_name.snakeCaseClass()}.supabase_sql"));
+    File file = File(path.join(Directory.current.path, "supabase_scheme",
+        "${table_name.snakeCaseClass()}.supabase_sql"));
     file.writeAsStringSync(res);
   }
 }
@@ -266,7 +268,8 @@ extension BaseTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate on
     }
     final String special_type = element["@type"].toString().camelCaseClass();
 
-    final String return_type = element["@return_type"].toString().camelCaseClass();
+    final String return_type =
+        element["@return_type"].toString().camelCaseClass();
 
     script += "\n";
     script += """
@@ -325,9 +328,11 @@ Future<void> generateApiApi() async {
     }
     final String special_type = element["@type"].toString().camelCaseClass();
 
-    final String return_type = element["@return_type"].toString().camelCaseClass();
+    final String return_type =
+        element["@return_type"].toString().camelCaseClass();
 
-    File file = File(path.join(directory.uri.toFilePath(), "${special_name}.dart"));
+    File file =
+        File(path.join(directory.uri.toFilePath(), "${special_name}.dart"));
     int size = () {
       if (file.existsSync()) {
         int size = file.statSync().size;
@@ -373,13 +378,14 @@ extension BaseTemplateGeneralFrameworkProjectApiExtension${special_type.toLowerC
     script += "\n";
     script += "}";
     script = script.trim();
-    
-      print("update: ${special_name}.dart");
-      await file.writeAsString(script); 
+
+    print("update: ${special_name}.dart");
+    await file.writeAsString(script);
   }
   script_export.sort();
 
-  await File(path.join(directory.uri.toFilePath(), "api.dart")).writeAsString(script_export.map((e) {
+  await File(path.join(directory.uri.toFilePath(), "api.dart"))
+      .writeAsString(script_export.map((e) {
     return "export ${json.encode("${e}.dart")};";
   }).join("\n"));
   Process.runSync("dart", [
@@ -454,7 +460,8 @@ Future<void> generateIsarDatabase() async {
     if (data["@type"] is String == false) {
       continue;
     }
-    data["@type"] = (data["@type"] as String).camelCaseClass().toLowerCaseFirstData();
+    data["@type"] =
+        (data["@type"] as String).camelCaseClass().toLowerCaseFirstData();
     JsonDataScript jsonDataScript = jsonToIsar(
       data,
       className: (data["@type"]),

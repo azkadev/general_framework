@@ -2,21 +2,26 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
- 
 class GetChat extends JsonScheme {
-
-  
   GetChat(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"getChat","chat_id":0,"@return_type":"account","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
+    return {
+      "@type": "getChat",
+      "chat_id": 0,
+      "@return_type": "account",
+      "@platform_id": "",
+      "@platform_username": "",
+      "@extra": "",
+      "@expire_date": "",
+      "@token": ""
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == getChat
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +35,15 @@ class GetChat extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [GetChat]
-  /// Empty  
+  /// Empty
   static GetChat empty() {
     return GetChat({});
   }
 
-  
-
-  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -52,16 +52,13 @@ class GetChat extends JsonScheme {
     }
   }
 
-  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
-
-  
   num? get chat_id {
     try {
-      if (rawData["chat_id"] is num == false){
+      if (rawData["chat_id"] is num == false) {
         return null;
       }
       return rawData["chat_id"] as num;
@@ -70,16 +67,13 @@ class GetChat extends JsonScheme {
     }
   }
 
-  
   set chat_id(num? value) {
     rawData["chat_id"] = value;
   }
 
-
-  
   String? get special_return_type {
     try {
-      if (rawData["@return_type"] is String == false){
+      if (rawData["@return_type"] is String == false) {
         return null;
       }
       return rawData["@return_type"] as String;
@@ -88,16 +82,13 @@ class GetChat extends JsonScheme {
     }
   }
 
-  
   set special_return_type(String? value) {
     rawData["@return_type"] = value;
   }
 
-
-  
   String? get special_platform_id {
     try {
-      if (rawData["@platform_id"] is String == false){
+      if (rawData["@platform_id"] is String == false) {
         return null;
       }
       return rawData["@platform_id"] as String;
@@ -106,16 +97,13 @@ class GetChat extends JsonScheme {
     }
   }
 
-  
   set special_platform_id(String? value) {
     rawData["@platform_id"] = value;
   }
 
-
-  
   String? get special_platform_username {
     try {
-      if (rawData["@platform_username"] is String == false){
+      if (rawData["@platform_username"] is String == false) {
         return null;
       }
       return rawData["@platform_username"] as String;
@@ -124,16 +112,13 @@ class GetChat extends JsonScheme {
     }
   }
 
-  
   set special_platform_username(String? value) {
     rawData["@platform_username"] = value;
   }
 
-
-  
   String? get special_extra {
     try {
-      if (rawData["@extra"] is String == false){
+      if (rawData["@extra"] is String == false) {
         return null;
       }
       return rawData["@extra"] as String;
@@ -142,16 +127,13 @@ class GetChat extends JsonScheme {
     }
   }
 
-  
   set special_extra(String? value) {
     rawData["@extra"] = value;
   }
 
-
-  
   String? get special_expire_date {
     try {
-      if (rawData["@expire_date"] is String == false){
+      if (rawData["@expire_date"] is String == false) {
         return null;
       }
       return rawData["@expire_date"] as String;
@@ -160,16 +142,13 @@ class GetChat extends JsonScheme {
     }
   }
 
-  
   set special_expire_date(String? value) {
     rawData["@expire_date"] = value;
   }
 
-
-  
   String? get special_token {
     try {
-      if (rawData["@token"] is String == false){
+      if (rawData["@token"] is String == false) {
         return null;
       }
       return rawData["@token"] as String;
@@ -178,16 +157,12 @@ class GetChat extends JsonScheme {
     }
   }
 
-  
   set special_token(String? value) {
     rawData["@token"] = value;
   }
 
-
-  
   static GetChat create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "getChat",
     num? chat_id,
     String special_return_type = "account",
@@ -196,10 +171,9 @@ class GetChat extends JsonScheme {
     String special_extra = "",
     String special_expire_date = "",
     String special_token = "",
-})  {
+  }) {
     // GetChat getChat = GetChat({
-final Map getChat_data_create_json = {
-  
+    final Map getChat_data_create_json = {
       "@type": special_type,
       "chat_id": chat_id,
       "@return_type": special_return_type,
@@ -208,12 +182,9 @@ final Map getChat_data_create_json = {
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@token": special_token,
+    };
 
-
-};
-
-
-          getChat_data_create_json.removeWhere((key, value) => value == null);
+    getChat_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -222,8 +193,6 @@ final Map getChat_data_create_json = {
         }
       });
     }
-return GetChat(getChat_data_create_json);
-
-
-      }
+    return GetChat(getChat_data_create_json);
+  }
 }

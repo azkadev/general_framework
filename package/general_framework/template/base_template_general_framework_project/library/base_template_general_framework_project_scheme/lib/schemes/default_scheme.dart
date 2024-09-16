@@ -35,9 +35,11 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 
+import 'package:base_template_general_framework_project_scheme/schemes/api_scheme.dart';
 import 'package:general_lib/general_lib.dart';
 
 class BaseTemplateGeneralFrameworkProjectSchemeDefault {
+  static final List<String> api_methods = api_schemes.map((e) => e["@type"].toString()).toList();
   static String utils_generateSessionToken() {
     return generateUuid(25, text: "0123456789abcdefghijklmnopqrstuvwxyz-_");
   }

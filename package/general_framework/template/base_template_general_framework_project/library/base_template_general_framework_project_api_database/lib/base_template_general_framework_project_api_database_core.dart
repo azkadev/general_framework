@@ -38,20 +38,20 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 import 'dart:io';
 
+import 'package:base_template_general_framework_project_secret/base_template_general_framework_project_secret_core.dart';
 import 'package:general_framework/core/database/database_core.dart';
 import 'package:http/http.dart';
 import "package:path/path.dart" as path;
 import 'package:supabase/supabase.dart';
 
-class BaseTemplateGeneralFrameworkProjectApiDatabase extends GeneralFrameworkDatabase {
-  final String supabase_url;
-  final String supabase_key;
-
+class BaseTemplateGeneralFrameworkProjectApiDatabase
+    extends GeneralFrameworkDatabase {
   late final SupabaseClient supabase_core;
+  final BaseTemplateGeneralFrameworkProjectSecretServerSide
+      baseTemplateGeneralFrameworkProjectSecretServerSide;
 
   BaseTemplateGeneralFrameworkProjectApiDatabase({
-    required this.supabase_url,
-    required this.supabase_key,
+    required this.baseTemplateGeneralFrameworkProjectSecretServerSide,
   });
 
   @override
@@ -64,7 +64,8 @@ class BaseTemplateGeneralFrameworkProjectApiDatabase extends GeneralFrameworkDat
   }
 
   Directory get directory_database {
-    final Directory directory = Directory(path.join(directory_base.path, "base_template_general_framework_project_database"));
+    final Directory directory = Directory(path.join(directory_base.path,
+        "base_template_general_framework_project_database"));
     if (directory.existsSync() == false) {
       directory.createSync(recursive: true);
     }
@@ -81,15 +82,17 @@ class BaseTemplateGeneralFrameworkProjectApiDatabase extends GeneralFrameworkDat
 
   bool _is_initialized = false;
   @override
-  FutureOr<void> ensureInitialized({required String currentPath, required Client httpClient}) async {
-    await super.ensureInitialized(currentPath: currentPath, httpClient: httpClient);
+  FutureOr<void> ensureInitialized(
+      {required String currentPath, required Client httpClient}) async {
+    await super
+        .ensureInitialized(currentPath: currentPath, httpClient: httpClient);
     if (_is_initialized) {
       return;
     }
     {
       supabase_core = SupabaseClient(
-        supabase_url,
-        supabase_key,
+        baseTemplateGeneralFrameworkProjectSecretServerSide.supabaseUrl,
+        baseTemplateGeneralFrameworkProjectSecretServerSide.supabaseKey,
         httpClient: httpClient,
       );
     }
@@ -99,9 +102,11 @@ class BaseTemplateGeneralFrameworkProjectApiDatabase extends GeneralFrameworkDat
   SupabaseQueryBuilder get supabase_account {
     return supabase_core.from("account");
   }
+
   SupabaseQueryBuilder get supabase_message {
     return supabase_core.from("message");
   }
+
   SupabaseQueryBuilder get supabase_session {
     return supabase_core.from("session");
   }

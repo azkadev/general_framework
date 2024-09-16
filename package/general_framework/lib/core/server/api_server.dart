@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 /* <!-- START LICENSE -->
 
 
@@ -32,17 +34,123 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+import 'dart:async';
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:general_framework/core/api/api.dart';
+import 'package:general_lib/general_lib.dart';
+import 'package:http/http.dart';
+import 'package:server_universe/native.dart';
+import 'package:server_universe/native/core/type_handlers/websocket_type_handler.dart';
+import 'package:universal_io/io.dart';
 
 abstract class GeneralFrameworkApiServerCore {
-  
+  String encryptData({
+    required Map data,
+  }) {
+    return json.encode(data);
+  }
+
+  String decryptData({
+    required String data,
+  }) {
+    return data;
+  }
 }
 
 abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase> implements GeneralFrameworkApiServerCore {
+  final ServerUniverseNative serverUniverse;
   final T generalFrameworkApi;
+  final String pathApi;
+  final String pathWebSocket;
+
   GeneralFrameworkApiServer({
     required this.generalFrameworkApi,
+    required this.serverUniverse,
+    this.pathApi = "/api",
+    this.pathWebSocket = "/ws",
   });
+  bool _is_initialized = false;
+  FutureOr<void> ensureInitialized({required String currentPath, required Client httpClient}) async {
+    await generalFrameworkApi.ensureInitialized(currentPath: currentPath, httpClient: httpClient);
+    if (_is_initialized) {
+      return;
+    }
+    {
+      serverUniverse.all("*", cors());
+      serverUniverse.all(pathApi, (req, res) async {
+        try {
+          final Map parameters = await Future(() async {
+            final body = await req.body;
+            if (body is Uint8List) {
+              return json.decode(decryptData(data: utf8.decode(body)));
+            } else if (body is String) {
+              return json.decode(decryptData(data: body));
+            }
+            return {};
+          });
+          final result = await invoke(parameters: JsonScheme(parameters));
+          return res.send(encryptData(data: result.toJson()));
+        } catch (e) {
+          return res.send(encryptData(data: {
+            "@type": "error",
+            "message": "server_error",
+            "is_crash_on_server_side": true,
+          }));
+        }
+      });
+      serverUniverse.websocket(
+        path: pathWebSocket,
+        onWebSocket: () async {
+          return ServerUniverseWebSocketConnection(
+            onOpen: (websocket, httpRequest, httpResponse) {},
+            onClose: (websocket, httpRequest, httpResponse) {},
+            onError: (error, websocket, httpRequest, httpResponse) {},
+            onMessage: (update, websocket, httpRequest, httpResponse) async {
+              final Map parameters = () {
+                try {
+                  if (update is Uint8List) {
+                    return json.decode(decryptData(data: utf8.decode(update)));
+                  } else if (update is String) {
+                    return json.decode(decryptData(data: update));
+                  }
+                } catch (e) {
+                  return {"@type": "error", "message": "decrypt_error"};
+                }
+                return {};
+              }();
+              if (parameters["@type"] == "error" && parameters["message"] == "decrypt_error") {
+                await websocket.close();
+                return;
+              }
+              final result = await invoke(parameters: JsonScheme(parameters));
+              return websocket.send(encryptData(data: result.toJson()));
+            },
+          );
+        },
+      );
+    }
+    _is_initialized = true;
+  }
 
-  void ensureInitialized() {}
+  FutureOr<JsonScheme> invoke({
+    required JsonScheme parameters,
+  }) async {
+    return await generalFrameworkApi.invoke(parameters: parameters);
+  }
+
+  FutureOr<void> listen({
+    int port = 3000,
+    dynamic bindIp = '0.0.0.0',
+  }) async {
+    if (Dart.isWeb) {
+      return;
+    }
+    final HttpServer httpServer = await serverUniverse.listen(
+      port: port,
+      bindIp: bindIp,
+    );
+    httpServer;
+  }
 }

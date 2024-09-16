@@ -38,10 +38,12 @@ import 'package:flutter/material.dart';
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database.dart';
 import 'package:http/http.dart';
 
-  final BaseTemplateGeneralFrameworkProjectClientDatabase database = BaseTemplateGeneralFrameworkProjectClientDatabase();
-void main() async{
+final BaseTemplateGeneralFrameworkProjectClientDatabase database =
+    BaseTemplateGeneralFrameworkProjectClientDatabase();
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-    await database.ensureInitialized(currentPath: Directory.current.path, httpClient: Client());
+  await database.ensureInitialized(
+      currentPath: Directory.current.path, httpClient: Client());
 
   runApp(const MyApp());
 }

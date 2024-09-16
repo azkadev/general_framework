@@ -88,7 +88,11 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
   // late final InvokeClientFunction<dynamic> onInvokeRequest;
   late final InvokeClientFunction<dynamic> onInvokeResult;
   late final String currentPath;
+  final String pathApi;
+  final String pathWebSocket;
   GeneralFrameworkClient({
+    required this.pathApi,
+    required this.pathWebSocket,
     required this.generalFrameworkDatabase,
     required this.generalLibrary,
     required this.apiUrl,
@@ -112,13 +116,15 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
     }
   }
   Uri get api_uri {
-    return Uri.parse(apiUrl);
+    return Uri.parse(apiUrl).replace(
+      path: pathApi,
+    );
   }
 
   bool is_initialized = false;
 
   /// call this method
-  FutureOr<void> ensureInitialized({ 
+  FutureOr<void> ensureInitialized({
     required InvokeClientFunction<dynamic> onInvokeResult,
     required InvokeClientValidationFunction<Map?> onInvokeValidation,
     required String currentPath,
@@ -128,9 +134,9 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
     }
     tcp_socket_client.host = api_uri.host;
     tcp_socket_client.port = api_uri.port;
-    web_socket_client.url = api_uri.replace(scheme: (api_uri.scheme == "https") ? "wss" : "ws").toString();
+    web_socket_client.url = api_uri.replace(scheme: (api_uri.scheme == "https") ? "wss" : "ws",path: pathWebSocket).toString();
     this.onInvokeResult = onInvokeResult;
-     this.onInvokeValidation = onInvokeValidation;
+    this.onInvokeValidation = onInvokeValidation;
     this.currentPath = currentPath;
     await generalFrameworkDatabase.ensureInitialized(
       currentPath: currentPath,
