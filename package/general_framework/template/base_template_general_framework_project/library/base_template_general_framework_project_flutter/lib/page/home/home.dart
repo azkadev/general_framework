@@ -36,6 +36,7 @@ import 'package:base_template_general_framework_project_client/api/api.dart';
 import 'package:base_template_general_framework_project_flutter/client/core.dart';
 import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 class HomePage extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
   const HomePage({super.key, required super.generalFrameworkClientFlutter});
@@ -47,11 +48,8 @@ class HomePage extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatef
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_){
-
-    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {});
   }
 
   @override
@@ -59,7 +57,43 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-         title: const Text("Home"),
+        title: const Text("Home"),
+        backgroundColor: context.theme.primaryColor,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.search,
+            ),
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        width: context.width / 2,
+        backgroundColor: context.theme.primaryColor,
+        child: SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: context.height,
+              minWidth: context.width / 2,
+              maxWidth: context.width / 2,
+            ),
+            child: Column(
+              children: [
+                ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text("Settings"),
+                  onTap: () {
+                    context.routeGeneralLibFlutterPushNamed(
+                      routeName: "/settings",
+                      parameters: null,
+                    );
+                  },
+                )
+              ],
+            ),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

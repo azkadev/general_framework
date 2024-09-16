@@ -104,6 +104,7 @@ class BaseTemplateGeneralFrameworkProjectFlutterApp extends BaseTemplateGeneralF
       generalLibFlutterApp: BaseTemplateGeneralFrameworkProjectFlutter.generalLibFlutterApp,
       builder: (themeMode, lightTheme, darkTheme, widget) {
         final MaterialApp child = MaterialApp(
+          debugShowCheckedModeBanner: false,
           navigatorKey: generalFrameworkClientFlutter.navigatorKey,
           theme: lightTheme.copyWith(
             textTheme: Typography().black,

@@ -35,8 +35,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:base_template_general_framework_project_flutter/client/core.dart';
 import 'package:flutter/material.dart';
 
-class SettingsPage
-    extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
+class SettingsPage extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
   const SettingsPage({super.key, required super.generalFrameworkClientFlutter});
 
   @override
@@ -46,6 +45,11 @@ class SettingsPage
 class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Settings Page"),
+      ),
+    );
   }
 }
