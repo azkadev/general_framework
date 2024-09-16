@@ -35,7 +35,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:flutter/material.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class TextFormFieldWidget extends StatelessWidget {
+class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
   final String? hintText;
   final String? labelText;
   final IconData prefixIconData;
@@ -46,7 +46,7 @@ class TextFormFieldWidget extends StatelessWidget {
   final bool obscureText;
   final Widget? suffixIcon;
   final void Function(String value)? onChanged;
-  const TextFormFieldWidget({
+  const TextFormFieldGeneralFrameworkWidget({
     super.key,
     this.hintText,
     this.labelText,
