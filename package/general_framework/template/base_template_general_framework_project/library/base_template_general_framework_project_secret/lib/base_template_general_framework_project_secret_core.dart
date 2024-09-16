@@ -37,8 +37,8 @@ import 'package:general_lib/crypto/crypto.dart';
 class BaseTemplateGeneralFrameworkProjectSecret {
   static BaseTemplateGeneralFrameworkProjectSecretClientSide clientSide({
     required String apiUrl,
-  required String pathApi,
-  required String pathWebSocket,
+    required String pathApi,
+    required String pathWebSocket,
     required String cryptoKey,
     required String cryptoIv,
   }) {
@@ -54,8 +54,8 @@ class BaseTemplateGeneralFrameworkProjectSecret {
   static BaseTemplateGeneralFrameworkProjectSecretServerSide serverSide({
     required String supabaseUrl,
     required String supabaseKey,
-  required String pathApi,
-  required String pathWebSocket,
+    required String pathApi,
+    required String pathWebSocket,
     required String cryptoKey,
     required String cryptoIv,
   }) {
@@ -89,15 +89,15 @@ class BaseTemplateGeneralFrameworkProjectSecretClientSide {
 
   BaseTemplateGeneralFrameworkProjectSecretClientSide copyWith({
     String? apiUrl,
-  String? pathApi,
-  String? pathWebSocket,
+    String? pathApi,
+    String? pathWebSocket,
     String? cryptoKey,
     String? cryptoIv,
   }) {
     return BaseTemplateGeneralFrameworkProjectSecretClientSide(
       apiUrl: apiUrl ?? this.apiUrl,
       pathApi: pathApi ?? this.pathApi,
-      pathWebSocket: pathWebSocket??this.pathWebSocket,
+      pathWebSocket: pathWebSocket ?? this.pathWebSocket,
       cryptoKey: cryptoKey ?? crypto.defaultKey,
       cryptoIv: cryptoIv ?? crypto.defaultIv,
     );
@@ -136,17 +136,16 @@ class BaseTemplateGeneralFrameworkProjectSecretServerSide {
   BaseTemplateGeneralFrameworkProjectSecretServerSide copyWith({
     String? supabaseUrl,
     String? supabaseKey,
-  String? pathApi,
-  String? pathWebSocket,
+    String? pathApi,
+    String? pathWebSocket,
     String? cryptoKey,
     String? cryptoIv,
   }) {
     return BaseTemplateGeneralFrameworkProjectSecretServerSide(
       supabaseUrl: supabaseUrl ?? this.supabaseUrl,
       supabaseKey: supabaseKey ?? this.supabaseKey,
-      
       pathApi: pathApi ?? this.pathApi,
-      pathWebSocket: pathWebSocket??this.pathWebSocket,
+      pathWebSocket: pathWebSocket ?? this.pathWebSocket,
       cryptoKey: cryptoKey ?? crypto.defaultKey,
       cryptoIv: cryptoIv ?? crypto.defaultIv,
     );
@@ -155,7 +154,7 @@ class BaseTemplateGeneralFrameworkProjectSecretServerSide {
   static BaseTemplateGeneralFrameworkProjectSecretServerSide defaultData() {
     return BaseTemplateGeneralFrameworkProjectSecretServerSide(
       supabaseKey: "",
-      supabaseUrl: "", 
+      supabaseUrl: "",
       pathApi: "/api",
       pathWebSocket: "/ws",
       cryptoKey: Crypto.defaultCrypto().defaultKey,

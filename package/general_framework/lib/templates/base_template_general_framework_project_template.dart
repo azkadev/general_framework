@@ -4,7 +4,7 @@
 import 'package:general_lib/script_generate/script_generate.dart';
 import 'package:universal_io/io.dart';
 
-List<ScriptGenerator> base_template_general_framework_project_script_generators = [
+final List<ScriptGenerator> base_template_general_framework_project_script_generators = [
   ScriptGenerator(
     is_generate: true,
     directory_base: Directory("base_template_general_framework_project"),
@@ -1462,6 +1462,7 @@ import 'package:base_template_general_framework_project_api_database/account/acc
 import 'package:base_template_general_framework_project_api_database/base_template_general_framework_project_api_database_core.dart';
 import 'package:base_template_general_framework_project_api_database/session/session.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
+import 'package:base_template_general_framework_project_scheme/schemes/default_scheme.dart';
 import 'package:general_lib/json_scheme/json_scheme.dart';
 
 class InvokeRequestData {
@@ -1514,6 +1515,14 @@ class InvokeRequestData {
       return JsonScheme({
         "@type": "error",
         "message": "method_cant_empty",
+      });
+    }
+    if (BaseTemplateGeneralFrameworkProjectSchemeDefault.api_methods
+            .contains(special_type) ==
+        false) {
+      return JsonScheme({
+        "@type": "error",
+        "message": "method_not_found",
       });
     }
     return null;
@@ -2054,8 +2063,8 @@ include: package:lints/recommended.yaml
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""#!/bin/sh
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
 dart pub get --offline
 """,
             children: [],
@@ -2068,8 +2077,8 @@ dart pub get --offline
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""#!/bin/sh
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
 flutter clean
 """,
             children: [],
@@ -2082,8 +2091,8 @@ flutter clean
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""#!/bin/sh
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
 flutter pub get --offline
 """,
             children: [],
@@ -4263,7 +4272,11 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
     super.eventUpdate,
     super.httpClient,
   }) : super(
-            apiUrl: baseTemplateGeneralFrameworkProjectSecretClientSide.apiUrl);
+          apiUrl: baseTemplateGeneralFrameworkProjectSecretClientSide.apiUrl,
+          pathApi: baseTemplateGeneralFrameworkProjectSecretClientSide.pathApi,
+          pathWebSocket:
+              baseTemplateGeneralFrameworkProjectSecretClientSide.pathWebSocket,
+        );
 
   @override
   FutureOr<void> ensureInitialized({
@@ -6258,7 +6271,7 @@ include ":app"
                         value: r"""#!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/home/galaxeus/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/example"
+export "FLUTTER_APPLICATION_PATH=general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/example"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
@@ -6279,7 +6292,7 @@ export "PACKAGE_CONFIG=.dart_tool/package_config.json"
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""// This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=/home/galaxeus/development/flutter
-FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/example
+FLUTTER_APPLICATION_PATH=general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/example
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build
@@ -8819,7 +8832,7 @@ MyApplication* my_application_new();
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""// This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=/home/galaxeus/development/flutter
-FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/example
+FLUTTER_APPLICATION_PATH=general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/example
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.0
@@ -8840,7 +8853,7 @@ PACKAGE_CONFIG=.dart_tool/package_config.json
                             value: r"""#!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/home/galaxeus/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/example"
+export "FLUTTER_APPLICATION_PATH=general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/example"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.0.0"
@@ -29951,9 +29964,12 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 
+import 'package:base_template_general_framework_project_scheme/schemes/api_scheme.dart';
 import 'package:general_lib/general_lib.dart';
 
 class BaseTemplateGeneralFrameworkProjectSchemeDefault {
+  static final List<String> api_methods =
+      api_schemes.map((e) => e["@type"].toString()).toList();
   static String utils_generateSessionToken() {
     return generateUuid(25, text: "0123456789abcdefghijklmnopqrstuvwxyz-_");
   }
@@ -31125,11 +31141,15 @@ import 'package:general_lib/crypto/crypto.dart';
 class BaseTemplateGeneralFrameworkProjectSecret {
   static BaseTemplateGeneralFrameworkProjectSecretClientSide clientSide({
     required String apiUrl,
+    required String pathApi,
+    required String pathWebSocket,
     required String cryptoKey,
     required String cryptoIv,
   }) {
     return BaseTemplateGeneralFrameworkProjectSecretClientSide(
       apiUrl: apiUrl,
+      pathApi: pathApi,
+      pathWebSocket: pathWebSocket,
       cryptoKey: cryptoKey,
       cryptoIv: cryptoIv,
     );
@@ -31138,12 +31158,16 @@ class BaseTemplateGeneralFrameworkProjectSecret {
   static BaseTemplateGeneralFrameworkProjectSecretServerSide serverSide({
     required String supabaseUrl,
     required String supabaseKey,
+    required String pathApi,
+    required String pathWebSocket,
     required String cryptoKey,
     required String cryptoIv,
   }) {
     return BaseTemplateGeneralFrameworkProjectSecretServerSide(
       supabaseUrl: supabaseUrl,
       supabaseKey: supabaseKey,
+      pathApi: pathApi,
+      pathWebSocket: pathWebSocket,
       cryptoKey: cryptoKey,
       cryptoIv: cryptoIv,
     );
@@ -31152,10 +31176,14 @@ class BaseTemplateGeneralFrameworkProjectSecret {
 
 class BaseTemplateGeneralFrameworkProjectSecretClientSide {
   final String apiUrl;
+  final String pathApi;
+  final String pathWebSocket;
   final Crypto crypto = Crypto.defaultCrypto();
 
   BaseTemplateGeneralFrameworkProjectSecretClientSide({
     required this.apiUrl,
+    required this.pathApi,
+    required this.pathWebSocket,
     required String cryptoKey,
     required String cryptoIv,
   }) {
@@ -31165,11 +31193,15 @@ class BaseTemplateGeneralFrameworkProjectSecretClientSide {
 
   BaseTemplateGeneralFrameworkProjectSecretClientSide copyWith({
     String? apiUrl,
+    String? pathApi,
+    String? pathWebSocket,
     String? cryptoKey,
     String? cryptoIv,
   }) {
     return BaseTemplateGeneralFrameworkProjectSecretClientSide(
       apiUrl: apiUrl ?? this.apiUrl,
+      pathApi: pathApi ?? this.pathApi,
+      pathWebSocket: pathWebSocket ?? this.pathWebSocket,
       cryptoKey: cryptoKey ?? crypto.defaultKey,
       cryptoIv: cryptoIv ?? crypto.defaultIv,
     );
@@ -31177,7 +31209,9 @@ class BaseTemplateGeneralFrameworkProjectSecretClientSide {
 
   static BaseTemplateGeneralFrameworkProjectSecretClientSide defaultData() {
     return BaseTemplateGeneralFrameworkProjectSecretClientSide(
-      apiUrl: "",
+      apiUrl: "http://0.0.0.0:3000",
+      pathApi: "/api",
+      pathWebSocket: "/ws",
       cryptoKey: Crypto.defaultCrypto().defaultKey,
       cryptoIv: Crypto.defaultCrypto().defaultIv,
     );
@@ -31187,11 +31221,15 @@ class BaseTemplateGeneralFrameworkProjectSecretClientSide {
 class BaseTemplateGeneralFrameworkProjectSecretServerSide {
   final String supabaseUrl;
   final String supabaseKey;
+  final String pathApi;
+  final String pathWebSocket;
   final Crypto crypto = Crypto.defaultCrypto();
 
   BaseTemplateGeneralFrameworkProjectSecretServerSide({
     required this.supabaseUrl,
     required this.supabaseKey,
+    required this.pathApi,
+    required this.pathWebSocket,
     required String cryptoKey,
     required String cryptoIv,
   }) {
@@ -31202,12 +31240,16 @@ class BaseTemplateGeneralFrameworkProjectSecretServerSide {
   BaseTemplateGeneralFrameworkProjectSecretServerSide copyWith({
     String? supabaseUrl,
     String? supabaseKey,
+    String? pathApi,
+    String? pathWebSocket,
     String? cryptoKey,
     String? cryptoIv,
   }) {
     return BaseTemplateGeneralFrameworkProjectSecretServerSide(
       supabaseUrl: supabaseUrl ?? this.supabaseUrl,
       supabaseKey: supabaseKey ?? this.supabaseKey,
+      pathApi: pathApi ?? this.pathApi,
+      pathWebSocket: pathWebSocket ?? this.pathWebSocket,
       cryptoKey: cryptoKey ?? crypto.defaultKey,
       cryptoIv: cryptoIv ?? crypto.defaultIv,
     );
@@ -31217,6 +31259,8 @@ class BaseTemplateGeneralFrameworkProjectSecretServerSide {
     return BaseTemplateGeneralFrameworkProjectSecretServerSide(
       supabaseKey: "",
       supabaseUrl: "",
+      pathApi: "/api",
+      pathWebSocket: "/ws",
       cryptoKey: Crypto.defaultCrypto().defaultKey,
       cryptoIv: Crypto.defaultCrypto().defaultIv,
     );
@@ -33147,7 +33191,7 @@ include ":app"
                     value: r"""#!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/home/galaxeus/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app"
+export "FLUTTER_APPLICATION_PATH=general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
@@ -33168,7 +33212,7 @@ export "PACKAGE_CONFIG=.dart_tool/package_config.json"
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""// This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=/home/galaxeus/development/flutter
-FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app
+FLUTTER_APPLICATION_PATH=general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build
@@ -35536,7 +35580,7 @@ MyApplication* my_application_new();
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""// This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=/home/galaxeus/development/flutter
-FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app
+FLUTTER_APPLICATION_PATH=general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.0
@@ -35557,7 +35601,7 @@ PACKAGE_CONFIG=.dart_tool/package_config.json
                         value: r"""#!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/home/galaxeus/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app"
+export "FLUTTER_APPLICATION_PATH=general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.0.0"
@@ -39836,73 +39880,73 @@ include: package:lints/recommended.yaml
     file_system_entity_type: FileSystemEntityType.file,
     value: r"""#!/bin/sh
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/
 dart pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/
 dart pub get --offline
 """,
     children: [],
@@ -39915,73 +39959,73 @@ dart pub get --offline
     file_system_entity_type: FileSystemEntityType.file,
     value: r"""#!/bin/sh
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/
 flutter clean
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/
 flutter clean
 """,
     children: [],
@@ -39994,73 +40038,73 @@ flutter clean
     file_system_entity_type: FileSystemEntityType.file,
     value: r"""#!/bin/sh
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/
 flutter pub get --offline
 
 
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/
+echo "pub get v2: general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/"
+cd general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/
 flutter pub get --offline
 """,
     children: [],

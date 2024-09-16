@@ -95,7 +95,9 @@ class InvokeRequestData {
         "message": "method_cant_empty",
       });
     }
-    if (BaseTemplateGeneralFrameworkProjectSchemeDefault.api_methods.contains(special_type) == false){
+    if (BaseTemplateGeneralFrameworkProjectSchemeDefault.api_methods
+            .contains(special_type) ==
+        false) {
       return JsonScheme({
         "@type": "error",
         "message": "method_not_found",

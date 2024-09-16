@@ -39,7 +39,8 @@ import 'package:base_template_general_framework_project_scheme/schemes/api_schem
 import 'package:general_lib/general_lib.dart';
 
 class BaseTemplateGeneralFrameworkProjectSchemeDefault {
-  static final List<String> api_methods = api_schemes.map((e) => e["@type"].toString()).toList();
+  static final List<String> api_methods =
+      api_schemes.map((e) => e["@type"].toString()).toList();
   static String utils_generateSessionToken() {
     return generateUuid(25, text: "0123456789abcdefghijklmnopqrstuvwxyz-_");
   }
