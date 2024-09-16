@@ -46,6 +46,9 @@ class HomePage extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatef
 }
 
 class _HomePageState extends State<HomePage> {
+  final ScrollControllerAutoKeepStateData scrollControllerAutoKeepStateData = ScrollControllerAutoKeepStateData(
+    keyId: "home_page",
+  );
   @override
   void initState() {
     super.initState();
@@ -81,24 +84,47 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.settings),
-                  title: Text("Settings"),
+                  leading: const Icon(Icons.settings),
+                  title: const Text("Settings"),
                   onTap: () {
                     context.routeGeneralLibFlutterPushNamed(
                       routeName: "/settings",
                       parameters: null,
                     );
                   },
-                )
+                ),
               ],
             ),
           ),
         ),
       ),
+      body: scrollControllerAutoKeepStateData.builderWidget(
+        builder: (context, pageStorageBucket) {
+          return SingleChildScrollView(
+            controller: scrollControllerAutoKeepStateData.scroll_controller,
+            physics: const BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics(),
+            ),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: context.height,
+                minWidth: context.width,
+                maxWidth: context.width,
+              ),
+              child: const Column(
+                children: [],
+              ),
+            ),
+          );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           widget.generalFrameworkClientFlutter.generalFrameworkClient.api_getMe(getMeParameters: GetMe.create());
         },
+        child: const Icon(
+          Icons.message,
+        ),
       ),
     );
   }
