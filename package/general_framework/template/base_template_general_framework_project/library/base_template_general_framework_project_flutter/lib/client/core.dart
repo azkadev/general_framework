@@ -42,11 +42,10 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/flutter/client/base.dart';
 import 'package:general_framework/flutter/widget/core.dart';
+import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class BaseTemplateGeneralFrameworkProjectClientFlutter
-    extends GeneralFrameworkClientFlutter<
-        BaseTemplateGeneralFrameworkProjectClient> {
+class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkClientFlutter<BaseTemplateGeneralFrameworkProjectClient> {
   BaseTemplateGeneralFrameworkProjectClientFlutter({
     required super.navigatorKey,
     required super.generalLibrary,
@@ -85,33 +84,46 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
   }
 
   @override
-  FutureOr<dynamic> onInvokeResult(
-      Map result,
-      Map parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) async {}
+  FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
+    if (result["@type"] == "error") {
+      final context = navigatorKey.currentContext;
+      if (context == null) {
+        return;
+      }
+      if (result["message"] is String == false) {
+        result["message"] = "";
+      }
+      if (result["message"] == "session_not_found") {
+        context.routeGeneralLibFlutterPushAndRemoveUntil(
+          newRoute: MaterialPageRoute(
+            builder: (context) {
+              return signPage();
+            },
+          ),
+          routeName: "/",
+          parameters: {},
+        );
+        return;
+      }
+      final String message = (result["message"] as String).trim().split("_").map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
+      context.showSnackBar("Error: ${message}");
+    }
+  }
 
   @override
-  FutureOr<Map?> onInvokeValidation(
-      Map parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) async {
+  FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
     return null;
   }
 }
 
-abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget<
-        T extends BaseTemplateGeneralFrameworkProjectClientFlutter>
-    extends GeneralFrameworkClientFlutterAppStatefulWidget<T> {
+abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget<T extends BaseTemplateGeneralFrameworkProjectClientFlutter> extends GeneralFrameworkClientFlutterAppStatefulWidget<T> {
   const BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget({
     super.key,
     required super.generalFrameworkClientFlutter,
   });
 }
 
-abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget<
-        T extends BaseTemplateGeneralFrameworkProjectClientFlutter>
-    extends GeneralFrameworkClientFlutterAppStatelessWidget<T> {
+abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget<T extends BaseTemplateGeneralFrameworkProjectClientFlutter> extends GeneralFrameworkClientFlutterAppStatelessWidget<T> {
   const BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget({
     super.key,
     required super.generalFrameworkClientFlutter,

@@ -32,11 +32,12 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+import 'package:base_template_general_framework_project_client/api/api.dart';
 import 'package:base_template_general_framework_project_flutter/client/core.dart';
+import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 import 'package:flutter/material.dart';
 
-class HomePage
-    extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
+class HomePage extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
   const HomePage({super.key, required super.generalFrameworkClientFlutter});
 
   @override
@@ -45,7 +46,26 @@ class HomePage
 
 class _HomePageState extends State<HomePage> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+         title: const Text("Home"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          widget.generalFrameworkClientFlutter.generalFrameworkClient.api_getMe(getMeParameters: GetMe.create());
+        },
+      ),
+    );
   }
 }

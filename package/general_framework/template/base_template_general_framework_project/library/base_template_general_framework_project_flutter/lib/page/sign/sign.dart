@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 /* <!-- START LICENSE -->
 
 
@@ -32,12 +34,26 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+import 'package:base_template_general_framework_project_client/api/api.dart';
 import 'package:base_template_general_framework_project_flutter/client/core.dart';
+import 'package:base_template_general_framework_project_flutter/page/home/home.dart';
+import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/widget/text_form_field.dart';
+import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class SignPage
-    extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
+enum SignPageType {
+  sign_in,
+  sign_up,
+  reset_password;
+
+  String title() {
+    return name.split("_").map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
+  }
+}
+
+class SignPage extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
   const SignPage({super.key, required super.generalFrameworkClientFlutter});
 
   @override
@@ -45,27 +61,161 @@ class SignPage
 }
 
 class _SignPageState extends State<SignPage> {
+  SignPageType signPageType = SignPageType.sign_in;
+  final TextEditingController usernameTextEditingController = TextEditingController();
+  final TextEditingController passwordTextEditingController = TextEditingController();
+  final TextEditingController newPasswordTextEditingController = TextEditingController();
+
+  final TextEditingController secretWordsTextEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    usernameTextEditingController.dispose();
+    passwordTextEditingController.dispose();
+    newPasswordTextEditingController.dispose();
+    secretWordsTextEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sign Page"),
+        centerTitle: true,
+        title: Text(signPageType.title()),
       ),
       body: RefreshIndicator(
         onRefresh: () async {},
         color: context.theme.indicatorColor,
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: ConstrainedBox(
             constraints: BoxConstraints(
               minHeight: context.height,
               minWidth: context.width,
             ),
             child: Column(
-              children: [],
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                usernameFieldWidget(),
+                if (signPageType == SignPageType.sign_in) ...[
+                  passwordFieldWidget(),
+                ] else ...[
+                  newPasswordFieldWidget(),
+                ],
+                Container(
+                  width: context.width,
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: context.theme.primaryColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: MaterialButton(
+                    onPressed: () {
+                      signButton();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(signPageType.title()),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: context.mediaQueryData.padding.bottom,
+                ),
+              ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  Widget usernameFieldWidget() {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: TextFormFieldGeneralFrameworkWidget(
+        prefixIconData: Icons.person,
+        controller: usernameTextEditingController,
+        labelText: "Username",
+        hintText: "username",
+        onChanged: (value) {},
+      ),
+    );
+  }
+
+  Widget passwordFieldWidget() {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: TextFormFieldGeneralFrameworkWidget(
+        prefixIconData: Icons.key,
+        controller: passwordTextEditingController,
+        labelText: "Password",
+        hintText: "password",
+        onChanged: (value) {},
+      ),
+    );
+  }
+
+  Widget newPasswordFieldWidget() {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: TextFormFieldGeneralFrameworkWidget(
+        prefixIconData: Icons.key,
+        controller: passwordTextEditingController,
+        labelText: "Password",
+        hintText: "password",
+        onChanged: (value) {},
+      ),
+    );
+  }
+
+  Future<void> signButton() async {
+    await Future(() async {
+      final String username = usernameTextEditingController.text.trim();
+      final String password = passwordTextEditingController.text.trim();
+      final String newPassword = newPasswordTextEditingController.text.trim();
+      final String secretWords = secretWordsTextEditingController.text.trim();
+      if (username.isEmpty) {}
+      if (signPageType == SignPageType.sign_in) {
+        final res = await widget.generalFrameworkClientFlutter.generalFrameworkClient.api_signIn(
+          signInParameters: SignIn.create(
+            username: username,
+            password: password,
+          ),
+        );
+        res.rawData.printPretty();
+        if (res.json_scheme_utils_checkDataIsSameBySpecialType()) {
+          context.routeGeneralLibFlutterPushAndRemoveUntil(
+            newRoute: MaterialPageRoute(
+              builder: (context) {
+                return HomePage(generalFrameworkClientFlutter: widget.generalFrameworkClientFlutter);
+              },
+            ),
+            routeName: "/",
+            parameters: {},
+          );
+        }
+      } else if (signPageType == SignPageType.sign_up) {
+        await widget.generalFrameworkClientFlutter.generalFrameworkClient.api_signUp(
+          signUpParameters: SignUp.create(
+            username: username,
+            password: newPassword,
+          ),
+        );
+      } else if (signPageType == SignPageType.reset_password) {
+        secretWords;
+      }
+    });
   }
 }

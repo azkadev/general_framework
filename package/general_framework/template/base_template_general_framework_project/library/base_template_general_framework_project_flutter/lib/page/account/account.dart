@@ -51,8 +51,7 @@ class AccountPage
 
 class _AccountPageState extends State<AccountPage> {
   @override
-  Widget build(BuildContext context) {
-    PageStorage.of(context);
+  Widget build(BuildContext context) { 
     return Container();
   }
 }
