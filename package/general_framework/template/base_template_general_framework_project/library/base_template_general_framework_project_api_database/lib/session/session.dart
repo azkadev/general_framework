@@ -41,13 +41,19 @@ import 'package:base_template_general_framework_project_scheme/database_scheme/s
 import 'package:base_template_general_framework_project_scheme/schemes/default_scheme.dart';
 import 'package:general_lib/extension/map.dart';
 
-extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionSession on BaseTemplateGeneralFrameworkProjectApiDatabase {
+extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionSession
+    on BaseTemplateGeneralFrameworkProjectApiDatabase {
   Future<String?> session_generateNewToken() async {
     while (true) {
       await Future.delayed(Duration(milliseconds: 1));
-      final String new_token = BaseTemplateGeneralFrameworkProjectSchemeDefault.utils_generateSessionToken();
+      final String new_token = BaseTemplateGeneralFrameworkProjectSchemeDefault
+          .utils_generateSessionToken();
 
-      final result = await supabase_session.select("id").eq("token", new_token).limit(1).maybeSingle();
+      final result = await supabase_session
+          .select("id")
+          .eq("token", new_token)
+          .limit(1)
+          .maybeSingle();
       if (result == null) {
         return new_token;
       }
@@ -62,10 +68,15 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionSession on Base
     if (new_token.isEmpty) {
       return null;
     }
-    session_utils_removeUnusedAccountDatabase(sessionDatabase: newSessionDatabase);
+    session_utils_removeUnusedAccountDatabase(
+        sessionDatabase: newSessionDatabase);
     newSessionDatabase.account_user_id = account_user_id;
     newSessionDatabase.token = new_token;
-    final new_data = await supabase_session.insert(newSessionDatabase.toJson(), defaultToNull: false).select().limit(1).maybeSingle();
+    final new_data = await supabase_session
+        .insert(newSessionDatabase.toJson(), defaultToNull: false)
+        .select()
+        .limit(1)
+        .maybeSingle();
     if (new_data == null) {
       return null;
     }
@@ -75,7 +86,11 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionSession on Base
   Future<SessionDatabase?> session_getSessionByToken({
     required String token,
   }) async {
-    final result = await supabase_session.select().eq("token", token).limit(1).maybeSingle();
+    final result = await supabase_session
+        .select()
+        .eq("token", token)
+        .limit(1)
+        .maybeSingle();
     if (result == null) {
       return null;
     }
@@ -83,17 +98,28 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionSession on Base
     return SessionDatabase(result);
   }
 
-  Future<List<SessionDatabase>> session_getSessions({required num account_user_id, required num offset, required num limit}) async {
-    return (await supabase_session.select().eq("account_user_id", account_user_id).range(offset.toInt(), limit.toInt())).map((e) {
+  Future<List<SessionDatabase>> session_getSessions(
+      {required num account_user_id,
+      required num offset,
+      required num limit}) async {
+    return (await supabase_session
+            .select()
+            .eq("account_user_id", account_user_id)
+            .range(offset.toInt(), limit.toInt()))
+        .map((e) {
       return SessionDatabase(e);
-    }).toList(); 
+    }).toList();
   }
 
   Future<bool> session_deleteSession({
     required num account_user_id,
     required String token,
   }) async {
-    final res = await supabase_session.delete().eq("account_user_id", account_user_id).eq("token", token).select("id");
+    final res = await supabase_session
+        .delete()
+        .eq("account_user_id", account_user_id)
+        .eq("token", token)
+        .select("id");
     return res.isNotEmpty;
   }
 
@@ -105,12 +131,25 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionSession on Base
     // newSessionDatabase.account_user_id;
     newSessionDatabase.token = token;
     newSessionDatabase.account_user_id = account_user_id;
-    session_utils_removeUnusedAccountDatabase(sessionDatabase: newSessionDatabase);
-    final result = await supabase_session.select("id").eq("account_user_id", account_user_id).eq("token", token).limit(1).maybeSingle();
+    session_utils_removeUnusedAccountDatabase(
+        sessionDatabase: newSessionDatabase);
+    final result = await supabase_session
+        .select("id")
+        .eq("account_user_id", account_user_id)
+        .eq("token", token)
+        .limit(1)
+        .maybeSingle();
     if (result == null) {
       return false;
     }
-    final new_update = await supabase_session.update(newSessionDatabase.toJson()).eq("account_user_id", account_user_id).eq("token", token).select().order("id", ascending: true).limit(1).maybeSingle();
+    final new_update = await supabase_session
+        .update(newSessionDatabase.toJson())
+        .eq("account_user_id", account_user_id)
+        .eq("token", token)
+        .select()
+        .order("id", ascending: true)
+        .limit(1)
+        .maybeSingle();
     if (new_update == null) {
       return false;
     }
@@ -122,6 +161,7 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionSession on Base
   }) {
     sessionDatabase.rawData.removeByKeys(["@type", "id"]);
     List keys = SessionDatabase.defaultData.keys.toList();
-    sessionDatabase.rawData.removeWhere((key, value) => keys.contains(key) == false);
+    sessionDatabase.rawData
+        .removeWhere((key, value) => keys.contains(key) == false);
   }
 }

@@ -1,20 +1,13 @@
-name: example
-description: A sample command-line application.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
-publish_to: none
-environment:
-  sdk: ^3.4.4
-
-# Add regular dependencies here.
-dependencies:
-  # path: ^1.8.0
-
-  
+name: 'example'
+description: 'A sample command-line application.'
+version: '1.0.0'
+publish_to: 'none'
+environment: 
+  sdk: '>=3.3.3 <4.0.0'
+dependencies: 
   general: '^0.0.29'
   base_template_general_framework_project_client_database: 
     path: '../../base_template_general_framework_project_client_database'
-  
   base_template_general_framework_project_client: 
     path: '../'
   base_template_general_framework_project_secret: 
@@ -24,7 +17,14 @@ dependencies:
   general_framework: 
     path: '../../../../../'
   general_lib: '^0.0.44'
-  
-dev_dependencies:
-  lints: ^3.0.0
-  test: ^1.24.0
+dev_dependencies: 
+  lints: '^3.0.0'
+  test: '^1.24.0'
+dependency_overrides: 
+  pointycastle: '3.8.0'
+funding: 
+  - 'https://github.com/sponsors/azkadev'
+homepage: 'https://youtube.com/@azkadev'
+repository: 'https://github.com/azkadev/general_framework'
+issue_tracker: 'https://t.me'
+documentation: 'https://youtube.com/@azkadev'

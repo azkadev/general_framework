@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 /* <!-- START LICENSE -->
 
 
@@ -32,3 +34,215 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+
+import 'package:base_template_general_framework_project_client/base_template_general_framework_project_client_core.dart';
+import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
+import 'package:base_template_general_framework_project_flutter/client/client.dart';
+import 'package:base_template_general_framework_project_flutter/page/account/account.dart';
+import 'package:base_template_general_framework_project_flutter/page/chat/chat.dart';
+import 'package:base_template_general_framework_project_flutter/page/home/home.dart';
+import 'package:base_template_general_framework_project_flutter/page/settings/settings.dart';
+import 'package:base_template_general_framework_project_flutter/page/sign/sign.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
+import 'package:base_template_general_framework_project_secret/base_template_general_framework_project_secret.dart';
+import 'package:flutter/material.dart';
+import 'package:general/flutter/general_flutter_core.dart';
+import 'package:general_framework/core/client/options.dart';
+import 'package:general_lib/general_lib.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
+import 'package:general_lib_flutter/widget/widget.dart';
+
+class BaseTemplateGeneralFrameworkProjectFlutter {
+  static final GeneralLibFlutterApp generalLibFlutterApp =
+      GeneralLibFlutterApp();
+  static final GeneralFlutter generalFlutter = GeneralFlutter();
+  static late final BaseTemplateGeneralFrameworkProjectClientFlutter
+      baseTemplateGeneralFrameworkProjectClientFlutter;
+
+  static bool _is_initialized = false;
+
+  static void ensureInitialized({
+    required List<String> arguments,
+    GlobalKey<NavigatorState>? navigatorKey,
+    required BaseTemplateGeneralFrameworkProjectSecretClientSide
+        baseTemplateGeneralFrameworkProjectSecretClientSide,
+  }) {
+    if (_is_initialized) {
+      return;
+    }
+    WidgetsFlutterBinding.ensureInitialized();
+    baseTemplateGeneralFrameworkProjectClientFlutter =
+        BaseTemplateGeneralFrameworkProjectClientFlutter(
+      generalFrameworkClient: BaseTemplateGeneralFrameworkProjectClient(
+        generalLibrary: generalFlutter,
+        generalFrameworkClientInvokeOptions:
+            GeneralFrameworkClientInvokeOptions(
+          networkClientConnectionType: NetworkClientConnectionType.websocket,
+          durationTimeOut: const Duration(minutes: 1),
+          isInvokeThrowOnError: false,
+        ),
+        baseTemplateGeneralFrameworkProjectSecretClientSide:
+            baseTemplateGeneralFrameworkProjectSecretClientSide,
+        generalFrameworkDatabase:
+            BaseTemplateGeneralFrameworkProjectClientDatabase(),
+      ),
+      navigatorKey: navigatorKey ?? GlobalKey<NavigatorState>(),
+      generalLibrary: generalFlutter,
+    );
+    _is_initialized = true;
+  }
+
+  static void run() {
+    runApp(BaseTemplateGeneralFrameworkProjectFlutterApp(
+      generalFrameworkClientFlutter:
+          baseTemplateGeneralFrameworkProjectClientFlutter,
+    ));
+  }
+}
+
+class BaseTemplateGeneralFrameworkProjectFlutterApp
+    extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget {
+  BaseTemplateGeneralFrameworkProjectFlutterApp({
+    super.key,
+    required super.generalFrameworkClientFlutter,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GeneralLibFlutterAppMain(
+      generalLibFlutterApp:
+          BaseTemplateGeneralFrameworkProjectFlutter.generalLibFlutterApp,
+      builder: (themeMode, lightTheme, darkTheme, widget) {
+        final MaterialApp child = MaterialApp(
+          navigatorKey: generalFrameworkClientFlutter.navigatorKey,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: themeMode,
+          onUnknownRoute: route.toOnUnknownRoute,
+          routes: route.toRoutes(),
+        );
+        if (Dart.isDesktop) {}
+
+        return child;
+      },
+    );
+  }
+
+  late final RouteGeneralLibFlutter route = RouteGeneralLibFlutter(
+    key: "BaseTemplateGeneralFrameworkProjectFlutterApp",
+    pageStorageBucket: PageStorageBucket(),
+    onUnknownRoute: (context, routeData) {
+      return HomePage(
+          generalFrameworkClientFlutter: generalFrameworkClientFlutter);
+    },
+    onRoute: () {
+      return {
+        "/": (context, data) {
+          return BaseTemplateGeneralFrameworkProjectFlutterAppMain(
+            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
+          );
+        },
+        "/account": (context, data) {
+          final Account account = data.builder(
+            onBuilder: () {
+              try {
+                return Account(data.body);
+              } catch (e) {}
+
+              return Account({});
+            },
+          );
+
+          return AccountPage(
+            account: account,
+            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
+          );
+        },
+        "/chat": (context, data) {
+          final Account account = data.builder(
+            onBuilder: () {
+              try {
+                return Account(data.body);
+              } catch (e) {}
+
+              return Account({});
+            },
+          );
+          return ChatPage(
+            account: account,
+            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
+          );
+        },
+        "/home": (context, data) {
+          return HomePage(
+            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
+          );
+        },
+        "/settings": (context, data) {
+          return SettingsPage(
+            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
+          );
+        },
+        "/sign": (context, data) {
+          return SignPage(
+            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
+          );
+        },
+      };
+    },
+  );
+}
+
+class BaseTemplateGeneralFrameworkProjectFlutterAppMain
+    extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
+  const BaseTemplateGeneralFrameworkProjectFlutterAppMain(
+      {super.key, required super.generalFrameworkClientFlutter});
+
+  @override
+  State<BaseTemplateGeneralFrameworkProjectFlutterAppMain> createState() =>
+      _BaseTemplateGeneralFrameworkProjectFlutterAppMainState();
+}
+
+class _BaseTemplateGeneralFrameworkProjectFlutterAppMainState
+    extends State<BaseTemplateGeneralFrameworkProjectFlutterAppMain> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      task();
+    });
+  }
+
+  void task() async {
+    Future(() async {
+      await widget.generalFrameworkClientFlutter.ensureInitialized(
+        context: context,
+        onLoading: (textLoading) {},
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: context.height,
+            minWidth: context.width,
+          ),
+          child: const Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: CircularProgressIndicator(),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

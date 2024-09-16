@@ -35,10 +35,14 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 
 import 'package:base_template_general_framework_project_client/base_template_general_framework_project_client_core.dart';
+import 'package:base_template_general_framework_project_flutter/page/home/home.dart';
+import 'package:base_template_general_framework_project_flutter/page/sign/sign.dart';
 import 'package:flutter/material.dart';
 
 import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/flutter/client/base.dart';
+import 'package:general_framework/flutter/widget/core.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 class BaseTemplateGeneralFrameworkProjectClientFlutter
     extends GeneralFrameworkClientFlutter<
@@ -60,6 +64,24 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
       context: context,
       onLoading: onLoading,
     );
+    String token = generalFrameworkClient.sessionDefault.token ?? "";
+    if (token.isNotEmpty) {
+      context.navigator().pushReplacement(MaterialPageRoute(
+        builder: (context) {
+          return HomePage(generalFrameworkClientFlutter: this);
+        },
+      ));
+    } else {
+      context.navigator().pushReplacement(MaterialPageRoute(
+        builder: (context) {
+          return signPage();
+        },
+      ));
+    }
+  }
+
+  Widget signPage() {
+    return SignPage(generalFrameworkClientFlutter: this);
   }
 
   @override
@@ -76,4 +98,22 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
           generalFrameworkClientInvokeOptions) async {
     return null;
   }
+}
+
+abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget<
+        T extends BaseTemplateGeneralFrameworkProjectClientFlutter>
+    extends GeneralFrameworkClientFlutterAppStatefulWidget<T> {
+  const BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget({
+    super.key,
+    required super.generalFrameworkClientFlutter,
+  });
+}
+
+abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget<
+        T extends BaseTemplateGeneralFrameworkProjectClientFlutter>
+    extends GeneralFrameworkClientFlutterAppStatelessWidget<T> {
+  const BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget({
+    super.key,
+    required super.generalFrameworkClientFlutter,
+  });
 }

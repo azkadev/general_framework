@@ -42,7 +42,8 @@ import 'package:base_template_general_framework_project_scheme/database_scheme/d
 import 'package:general_framework/core/api/core.dart';
 import 'package:general_lib/json_scheme/json_scheme.dart';
 
-class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<BaseTemplateGeneralFrameworkProjectApiDatabase> {
+class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<
+    BaseTemplateGeneralFrameworkProjectApiDatabase> {
   BaseTemplateGeneralFrameworkProjectApi({
     required super.generalFrameworkApiDatabase,
   });
@@ -97,13 +98,15 @@ class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<Bas
     /// method use session
     /// check first
     {
-      final JsonScheme? checkValidationSession = invokeRequestData.checkValidationSession();
+      final JsonScheme? checkValidationSession =
+          invokeRequestData.checkValidationSession();
       if (checkValidationSession != null) {
         return checkValidationSession;
       }
     }
 
-    if (RegExp(r"^(getAllMessages)$", caseSensitive: false).hasMatch(requestMethod)) {
+    if (RegExp(r"^(getAllMessages)$", caseSensitive: false)
+        .hasMatch(requestMethod)) {
       return await invokeRequestData.sendBuilder(
         builder: () async {
           return await api_getAllMessages(invokeRequestData: invokeRequestData);
@@ -126,21 +129,24 @@ class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<Bas
       );
     }
 
-    if (RegExp(r"^(getMessage)$", caseSensitive: false).hasMatch(requestMethod)) {
+    if (RegExp(r"^(getMessage)$", caseSensitive: false)
+        .hasMatch(requestMethod)) {
       return await invokeRequestData.sendBuilder(
         builder: () async {
           return await api_getMessage(invokeRequestData: invokeRequestData);
         },
       );
     }
-    if (RegExp(r"^(getMessages)$", caseSensitive: false).hasMatch(requestMethod)) {
+    if (RegExp(r"^(getMessages)$", caseSensitive: false)
+        .hasMatch(requestMethod)) {
       return await invokeRequestData.sendBuilder(
         builder: () async {
           return await api_getMessages(invokeRequestData: invokeRequestData);
         },
       );
     }
-    if (RegExp(r"^(getSessions)$", caseSensitive: false).hasMatch(requestMethod)) {
+    if (RegExp(r"^(getSessions)$", caseSensitive: false)
+        .hasMatch(requestMethod)) {
       return await invokeRequestData.sendBuilder(
         builder: () async {
           return await api_getSessions(invokeRequestData: invokeRequestData);
@@ -148,8 +154,8 @@ class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<Bas
       );
     }
 
-
-    if (RegExp(r"^(getUpdate)$", caseSensitive: false).hasMatch(requestMethod)) {
+    if (RegExp(r"^(getUpdate)$", caseSensitive: false)
+        .hasMatch(requestMethod)) {
       return await invokeRequestData.sendBuilder(
         builder: () async {
           return await api_getUpdate(invokeRequestData: invokeRequestData);
@@ -173,14 +179,17 @@ class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<Bas
       );
     }
 
-    if (RegExp(r"^(searchAccountByUsername)$", caseSensitive: false).hasMatch(requestMethod)) {
+    if (RegExp(r"^(searchAccountByUsername)$", caseSensitive: false)
+        .hasMatch(requestMethod)) {
       return await invokeRequestData.sendBuilder(
         builder: () async {
-          return await api_searchAccountByUsername(invokeRequestData: invokeRequestData);
+          return await api_searchAccountByUsername(
+              invokeRequestData: invokeRequestData);
         },
       );
     }
-    if (RegExp(r"^(searchAccount)$", caseSensitive: false).hasMatch(requestMethod)) {
+    if (RegExp(r"^(searchAccount)$", caseSensitive: false)
+        .hasMatch(requestMethod)) {
       return await invokeRequestData.sendBuilder(
         builder: () async {
           return await api_searchAccount(invokeRequestData: invokeRequestData);
@@ -188,7 +197,8 @@ class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<Bas
       );
     }
 
-    if (RegExp(r"^(sendMessage)$", caseSensitive: false).hasMatch(requestMethod)) {
+    if (RegExp(r"^(sendMessage)$", caseSensitive: false)
+        .hasMatch(requestMethod)) {
       return await invokeRequestData.sendBuilder(
         builder: () async {
           return await api_sendMessage(invokeRequestData: invokeRequestData);
@@ -212,7 +222,8 @@ class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<Bas
       );
     }
 
-    if (RegExp(r"^(setUsername)$", caseSensitive: false).hasMatch(requestMethod)) {
+    if (RegExp(r"^(setUsername)$", caseSensitive: false)
+        .hasMatch(requestMethod)) {
       return await invokeRequestData.sendBuilder(
         builder: () async {
           return await api_setUsername(invokeRequestData: invokeRequestData);
