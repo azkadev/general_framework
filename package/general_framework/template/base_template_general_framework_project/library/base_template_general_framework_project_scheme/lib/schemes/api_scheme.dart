@@ -111,7 +111,6 @@ final List<Map<String, dynamic>> api_schemes = [
 ].map((e) {
   e.general_lib_extension_updateForce(data: {
     "@client_token": "",
-    
   });
   return e;
 }).toList();

@@ -4,6 +4,7 @@ import 'package:base_template_general_framework_project_secret/base_template_gen
 void main(List<String> arguments) async {
   baseTemplateGeneralFrameworkProjectApiServerCli(
     arguments: arguments,
-    baseTemplateGeneralFrameworkProjectSecretServerSide: BaseTemplateGeneralFrameworkProjectSecretServerSide.defaultData(),
+    baseTemplateGeneralFrameworkProjectSecretServerSide:
+        BaseTemplateGeneralFrameworkProjectSecretServerSide.defaultData(),
   );
 }

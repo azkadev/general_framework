@@ -1568,34 +1568,39 @@ class InvokeRequestData {
   JsonScheme? checkValidation() {
     final String special_type = requestMethod();
     if (special_type.isEmpty) {
-      return JsonScheme({
+      return send(
+          result: JsonScheme({
         "@type": "error",
         "message": "method_cant_empty",
-      });
+      }));
     }
     if (BaseTemplateGeneralFrameworkProjectSchemeDefault.api_methods
             .contains(special_type) ==
         false) {
-      return JsonScheme({
+      return send(
+          result: JsonScheme({
         "@type": "error",
         "message": "method_not_found",
-      });
+      }));
     }
     return null;
   }
 
   JsonScheme? checkValidationSession() {
     if (sessionDatabase.rawData.isEmpty) {
-      return JsonScheme({
+      return send(
+          result: JsonScheme({
         "@type": "error",
         "message": "session_not_found",
-      });
+      }));
     }
     if ((sessionDatabase.token ?? "").trim().isEmpty) {
-      return JsonScheme({
-        "@type": "error",
-        "message": "session_not_found",
-      });
+      return send(
+        result: JsonScheme({
+          "@type": "error",
+          "message": "session_not_found",
+        }),
+      );
     }
     return null;
   }
@@ -1616,6 +1621,7 @@ class InvokeRequestData {
     final List<String> keys = [
       "@extra",
       "@client_id",
+      "@client_token",
     ];
     parameters.rawData.forEach((key, value) {
       if (keys.contains(key)) {
@@ -2445,7 +2451,7 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount
   }) async {
     final result = await supabase_account
         .select()
-        .eq("account_user_id", account_user_id)
+        .eq("id", account_user_id)
         .limit(1)
         .maybeSingle();
     if (result == null) {
@@ -3961,17 +3967,17 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
 import 'package:general_framework/core/server/api_server.dart';
-import 'package:general_lib/json_scheme/json_scheme.dart';
 
 class BaseTemplateGeneralFrameworkProjectApiServer
     extends GeneralFrameworkApiServer<BaseTemplateGeneralFrameworkProjectApi> {
-  BaseTemplateGeneralFrameworkProjectApiServer(
-      {required super.generalFrameworkApi, required super.serverUniverse});
+  BaseTemplateGeneralFrameworkProjectApiServer({
+    required super.generalFrameworkApi,
+    required super.serverUniverse,
+  });
 
   @override
   String decryptData({required String data}) {
@@ -3985,11 +3991,6 @@ class BaseTemplateGeneralFrameworkProjectApiServer
     return generalFrameworkApi.generalFrameworkApiDatabase
         .baseTemplateGeneralFrameworkProjectSecretServerSide.crypto
         .encrypt(data: json.encode(data));
-  }
-
-  @override
-  FutureOr<JsonScheme> invoke({required JsonScheme parameters}) {
-    return JsonScheme({"@type": "error", "message": "unimplemented"});
   }
 }
 """,
@@ -4374,6 +4375,314 @@ void main(List<String> arguments) {
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: Directory(
+                "library/base_template_general_framework_project_client/example"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client/example/base_template_general_framework_project_database"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.directory,
+                value: "",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client/example/bin"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.directory,
+                value: "",
+                children: [
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/example/bin/example.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value:
+                        r"""// ignore_for_file: unnecessary_brace_in_string_interps
+
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:base_template_general_framework_project_client/api/api.dart';
+import 'package:base_template_general_framework_project_client/base_template_general_framework_project_client_core.dart';
+import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
+import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
+import 'package:base_template_general_framework_project_scheme/api_scheme/sign_up.dart';
+import 'package:base_template_general_framework_project_secret/base_template_general_framework_project_secret_core.dart';
+import 'package:general/core/core.dart';
+import 'package:general_framework/core/client/options.dart';
+import 'package:general_lib/general_lib.dart';
+
+void main(List<String> arguments) async {
+  print("start");
+  final BaseTemplateGeneralFrameworkProjectClient client =
+      BaseTemplateGeneralFrameworkProjectClient(
+    baseTemplateGeneralFrameworkProjectSecretClientSide:
+        BaseTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
+    generalLibrary: GeneralLibrary(),
+    generalFrameworkClientInvokeOptions: GeneralFrameworkClientInvokeOptions(
+      durationTimeOut: Duration(minutes: 1),
+      isInvokeThrowOnError: false,
+      networkClientConnectionType: NetworkClientConnectionType.websocket,
+    ),
+    generalFrameworkDatabase:
+        BaseTemplateGeneralFrameworkProjectClientDatabase(),
+  );
+  await client.ensureInitialized(
+    onInvokeResult: (result, parameters, generalFrameworkClientInvokeOptions) {
+      // print("${result}");
+    },
+    onInvokeValidation:
+        (parameters, generalFrameworkClientInvokeOptions) async {
+      print("validation: ${parameters}");
+      return null;
+    },
+    currentPath: Directory.current.path,
+  );
+  client.on(
+    event_name: client.eventUpdate,
+    callback: (update) {
+      print("update: ${update}");
+    },
+    onError: (e, stackTrace) {
+      print(e);
+    },
+  );
+
+  stdin.listen((event) async {
+    String text = utf8.decode(event).trim();
+    print("TEXT: ${text}");
+    if (text == "su") {
+      final res = await client.api_signUp(
+        signUpParameters: SignUp.create(
+          username: "azka",
+          password: "slebew",
+        ),
+      );
+      print("result: ${res.toStringifyPretty()}");
+    } else if (text == "si") {
+      final res = await client.api_signIn(
+        signInParameters: SignIn.create(
+          username: "azka",
+          password: "slebew",
+        ),
+      );
+      print("result: ${res.toStringifyPretty()}");
+    } else if (text == "me") {
+      final res = await client.api_getMe(
+        getMeParameters: GetMe.create(),
+      );
+      print("result: ${res.toStringifyPretty()}");
+    }
+    print("done");
+  });
+}
+""",
+                    children: [],
+                  )
+                ],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client/example/lib"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.directory,
+                value: "",
+                children: [
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/example/lib/example.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""int calculate() {
+  return 6 * 7;
+}
+""",
+                    children: [],
+                  )
+                ],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client/example/test"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.directory,
+                value: "",
+                children: [
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/example/test/example_test.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""import 'package:example/example.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('calculate', () {
+    expect(calculate(), 42);
+  });
+}
+""",
+                    children: [],
+                  )
+                ],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/.gitignore"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""# https://dart.dev/guides/libraries/private-files
+# Created by `dart pub`
+.dart_tool/
+""",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/analysis_options.yaml"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value:
+                    r"""# This file configures the static analysis results for your project (errors,
+# warnings, and lints).
+#
+# This enables the 'recommended' set of lints from `package:lints`.
+# This set helps identify many issues that may lead to problems when running
+# or consuming Dart code, and enforces writing Dart using a single, idiomatic
+# style and format.
+#
+# If you want a smaller set of lints you can change this to specify
+# 'package:lints/core.yaml'. These are just the most critical lints
+# (the recommended set includes the core lints).
+# The core lints are also what is used by pub.dev for scoring packages.
+
+include: package:lints/recommended.yaml
+
+# Uncomment the following section to specify additional rules.
+
+# linter:
+#   rules:
+#     - camel_case_types
+
+# analyzer:
+#   exclude:
+#     - path/to/excluded/files/**
+
+# For more information about the core and recommended set of lints, see
+# https://dart.dev/go/core-lints
+
+# For additional information about configuring this file, see
+# https://dart.dev/guides/language/analysis-options
+""",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/CHANGELOG.md"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""## 1.0.0
+
+- Initial version.
+""",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/pubspec.yaml"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""name: example
+description: A sample command-line application.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+publish_to: none
+environment:
+  sdk: ^3.4.4
+
+# Add regular dependencies here.
+dependencies:
+  # path: ^1.8.0
+
+  
+  general: '^0.0.29'
+  base_template_general_framework_project_client_database: 
+    path: '../../base_template_general_framework_project_client_database'
+  
+  base_template_general_framework_project_client: 
+    path: '../'
+  base_template_general_framework_project_secret: 
+    path: '../../base_template_general_framework_project_secret'
+  base_template_general_framework_project_scheme: 
+    path: '../../base_template_general_framework_project_scheme'
+  general_framework: 
+    path: '../../../../../'
+  general_lib: '^0.0.44'
+  
+dev_dependencies:
+  lints: ^3.0.0
+  test: ^1.24.0
+""",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/README.md"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value:
+                    r"""A sample command-line application with an entrypoint in `bin/`, library code
+in `lib/`, and example unit test in `test/`.
+""",
+                children: [],
+              )
+            ],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
                 "library/base_template_general_framework_project_client/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
@@ -4693,6 +5002,7 @@ import 'package:base_template_general_framework_project_client_database/base_tem
 import 'package:base_template_general_framework_project_client_database/session/session.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/account_database.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/session_isar_database.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_template_general_framework_project_secret/base_template_general_framework_project_secret.dart';
 import 'package:general_framework/core/client/client.dart';
 import 'package:general_lib/general_lib.dart';
@@ -4754,6 +5064,15 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
         );
       },
     );
+    loadSessionDefault();
+  }
+
+  void loadSessionDefault() {
+    for (var element
+        in generalFrameworkDatabase.session_getSessionDefault().sessions) {
+      sessionDefault.rawData = element.rawData;
+      break;
+    }
   }
 
   FutureOr<Map?> onInvokeValidationDefault(
@@ -4761,7 +5080,12 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
       GeneralFrameworkClientInvokeOptions
           generalFrameworkClientInvokeOptions) async {
     if (parameters["@client_token"] is String == false) {
-      parameters["@client_token"] = sessionDefault.token;
+      parameters["@client_token"] = sessionDefault.token ?? "";
+    }
+    String client_token = (parameters["@client_token"] as String);
+
+    if (client_token.isEmpty) {
+      parameters["@client_token"] = sessionDefault.token ?? "";
     }
     return null;
   }
@@ -4774,14 +5098,31 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
     final String parameters_special_type =
         parameters["@type"].toString().toLowerCase();
     final String result_special_type = result["@type"].toString().toLowerCase();
+    if (result_special_type == "error") {
+      if (result["message"] == "session_not_found") {
+        if (parameters["@client_token"] is String == false) {
+          parameters["@client_token"] = sessionDefault.token ?? "";
+        }
+        String client_token = (parameters["@client_token"] as String);
+        generalFrameworkDatabase.session_deleteSessionByToken(
+            token: client_token);
+        if (client_token == sessionDefault.token) {
+          sessionDefault.rawData.clear();
+          loadSessionDefault();
+        }
+      }
+    }
     if (parameters_special_type == "signin") {
       if (result_special_type == "session") {
+        Session session = Session(result);
         sessionDefault.rawData = result;
         sessionDefault.is_default = true;
         result["is_default"] = true;
-        generalFrameworkDatabase.session_saveSessionByToken(
-            token: result["token"],
-            newSessionDatabase: SessionIsarDatabase(result));
+        generalFrameworkDatabase.session_saveSession(
+          account_user_id: (session.account_user_id ?? 0).toInt(),
+          token: session.token ?? "",
+          newSessionDatabase: SessionIsarDatabase(result),
+        );
       }
     }
     if (parameters_special_type == "getme") {
@@ -13781,7 +14122,9 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionAccount
   bool account_deleteAccountByUserId({
     required int account_user_id,
   }) {
-    isar_core.accountDatabases.where().idEqualTo(account_user_id).deleteAll();
+    isar_core.write((isar) {
+      isar.accountDatabases.where().idEqualTo(account_user_id).deleteAll();
+    });
     return true;
   }
 }
@@ -13859,12 +14202,14 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int chat_id,
     required int user_id,
   }) {
-    isar_core.messageDatabases
-        .where()
-        .chat_idsElementBetween(chat_id, user_id)
-        .or()
-        .chat_idsElementBetween(user_id, chat_id)
-        .deleteAll();
+    isar_core.write((isar) {
+      isar.messageDatabases
+          .where()
+          .chat_idsElementBetween(chat_id, user_id)
+          .or()
+          .chat_idsElementBetween(user_id, chat_id)
+          .deleteAll();
+    });
     return true;
   }
 
@@ -13873,16 +14218,18 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int user_id,
     required int message_id,
   }) {
-    isar_core.messageDatabases
-        .where()
-        .chat_idsElementBetween(chat_id, user_id)
-        .from_user_idEqualTo(user_id)
-        .message_idEqualTo(message_id)
-        .or()
-        .chat_idsElementBetween(user_id, chat_id)
-        .from_user_idEqualTo(user_id)
-        .message_idEqualTo(message_id)
-        .deleteAll();
+    isar_core.write((isar) {
+      isar.messageDatabases
+          .where()
+          .chat_idsElementBetween(chat_id, user_id)
+          .from_user_idEqualTo(user_id)
+          .message_idEqualTo(message_id)
+          .or()
+          .chat_idsElementBetween(user_id, chat_id)
+          .from_user_idEqualTo(user_id)
+          .message_idEqualTo(message_id)
+          .deleteAll();
+    });
     return true;
   }
 
@@ -13891,14 +14238,16 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int user_id,
     required int message_id,
   }) {
-    isar_core.messageDatabases
-        .where()
-        .chat_idsElementBetween(chat_id, user_id)
-        .message_idEqualTo(message_id)
-        .or()
-        .chat_idsElementBetween(user_id, chat_id)
-        .message_idEqualTo(message_id)
-        .deleteAll();
+    isar_core.write((isar) {
+      isar.messageDatabases
+          .where()
+          .chat_idsElementBetween(chat_id, user_id)
+          .message_idEqualTo(message_id)
+          .or()
+          .chat_idsElementBetween(user_id, chat_id)
+          .message_idEqualTo(message_id)
+          .deleteAll();
+    });
     return true;
   }
 
@@ -14083,7 +14432,6 @@ import 'package:base_template_general_framework_project_client_database/base_tem
 import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/session_isar_database.dart'
     as isar_scheme;
 import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
-// import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/session_isar_database.dart';
 import 'package:general_lib/general_lib.dart';
 
@@ -14125,11 +14473,13 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionSession
     );
   }
 
-  SessionIsarDatabase? session_getSessionByToken({
-    required String token,
+  SessionIsarDatabase? session_getSession({
+    required int account_user_id,
   }) {
-    final result =
-        isar_core.sessionIsarDatabases.where().tokenEqualTo(token).findFirst();
+    final result = isar_core.sessionIsarDatabases
+        .where()
+        .account_user_idEqualTo(account_user_id)
+        .findFirst();
     if (result == null) {
       return null;
     }
@@ -14139,18 +14489,36 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionSession
   bool session_deleteSessionByToken({
     required String token,
   }) {
-    isar_core.sessionIsarDatabases.where().tokenEqualTo(token).deleteAll();
+    isar_core.write((isar) {
+      isar.sessionIsarDatabases.where().tokenEqualTo(token).deleteAll();
+    });
     return true;
   }
 
-  bool session_saveSessionByToken({
+  bool session_deleteSession({
+    required int account_user_id,
+  }) {
+    isar_core.write((isar) {
+      isar.sessionIsarDatabases
+          .where()
+          .account_user_idEqualTo(account_user_id)
+          .deleteAll();
+    });
+    return true;
+  }
+
+  bool session_saveSession({
+    required int account_user_id,
     required String token,
     required SessionIsarDatabase newSessionDatabase,
   }) {
     newSessionDatabase.rawData.removeByKeys(["id"]);
+    newSessionDatabase.account_user_id = account_user_id;
     newSessionDatabase.token = token;
-    final result =
-        isar_core.sessionIsarDatabases.where().tokenEqualTo(token).findFirst();
+    final result = isar_core.sessionIsarDatabases
+        .where()
+        .account_user_idEqualTo(account_user_id)
+        .findFirst();
     if (result == null) {
       isar_scheme.SessionIsarDatabase new_session_isar_database =
           isar_scheme.SessionIsarDatabase();
@@ -25556,6 +25924,7 @@ class GetAllMessages extends JsonScheme {
       "offset": 0,
       "limit": 0,
       "@return_type": "messages",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -25660,6 +26029,21 @@ class GetAllMessages extends JsonScheme {
     rawData["@return_type"] = value;
   }
 
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
+  }
+
   String? get special_platform_id {
     try {
       if (rawData["@platform_id"] is String == false) {
@@ -25742,6 +26126,7 @@ class GetAllMessages extends JsonScheme {
     num? offset,
     num? limit,
     String special_return_type = "messages",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -25755,6 +26140,7 @@ class GetAllMessages extends JsonScheme {
       "offset": offset,
       "limit": limit,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -25800,6 +26186,7 @@ class GetChat extends JsonScheme {
       "@type": "getChat",
       "chat_id": 0,
       "@return_type": "account",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -25872,6 +26259,21 @@ class GetChat extends JsonScheme {
 
   set special_return_type(String? value) {
     rawData["@return_type"] = value;
+  }
+
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
   }
 
   String? get special_platform_id {
@@ -25954,6 +26356,7 @@ class GetChat extends JsonScheme {
     String special_type = "getChat",
     num? chat_id,
     String special_return_type = "account",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -25965,6 +26368,7 @@ class GetChat extends JsonScheme {
       "@type": special_type,
       "chat_id": chat_id,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -26009,6 +26413,7 @@ class GetMe extends JsonScheme {
     return {
       "@type": "getMe",
       "@return_type": "account",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -26066,6 +26471,21 @@ class GetMe extends JsonScheme {
 
   set special_return_type(String? value) {
     rawData["@return_type"] = value;
+  }
+
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
   }
 
   String? get special_platform_id {
@@ -26147,6 +26567,7 @@ class GetMe extends JsonScheme {
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "getMe",
     String special_return_type = "account",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -26157,6 +26578,7 @@ class GetMe extends JsonScheme {
     final Map getMe_data_create_json = {
       "@type": special_type,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -26203,6 +26625,7 @@ class GetMessage extends JsonScheme {
       "chat_id": 0,
       "message_id": 0,
       "@return_type": "message",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -26292,6 +26715,21 @@ class GetMessage extends JsonScheme {
     rawData["@return_type"] = value;
   }
 
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
+  }
+
   String? get special_platform_id {
     try {
       if (rawData["@platform_id"] is String == false) {
@@ -26373,6 +26811,7 @@ class GetMessage extends JsonScheme {
     num? chat_id,
     num? message_id,
     String special_return_type = "message",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -26385,6 +26824,7 @@ class GetMessage extends JsonScheme {
       "chat_id": chat_id,
       "message_id": message_id,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -26431,6 +26871,7 @@ class GetMessages extends JsonScheme {
       "chat_id": 0,
       "message_ids": [0],
       "@return_type": "messages",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -26524,6 +26965,21 @@ class GetMessages extends JsonScheme {
     rawData["@return_type"] = value;
   }
 
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
+  }
+
   String? get special_platform_id {
     try {
       if (rawData["@platform_id"] is String == false) {
@@ -26605,6 +27061,7 @@ class GetMessages extends JsonScheme {
     num? chat_id,
     List<num>? message_ids,
     String special_return_type = "messages",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -26617,6 +27074,7 @@ class GetMessages extends JsonScheme {
       "chat_id": chat_id,
       "message_ids": message_ids,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -26661,6 +27119,7 @@ class GetUpdate extends JsonScheme {
     return {
       "@type": "getUpdate",
       "@return_type": "update",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -26718,6 +27177,21 @@ class GetUpdate extends JsonScheme {
 
   set special_return_type(String? value) {
     rawData["@return_type"] = value;
+  }
+
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
   }
 
   String? get special_platform_id {
@@ -26799,6 +27273,7 @@ class GetUpdate extends JsonScheme {
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "getUpdate",
     String special_return_type = "update",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -26809,6 +27284,7 @@ class GetUpdate extends JsonScheme {
     final Map getUpdate_data_create_json = {
       "@type": special_type,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -26854,6 +27330,7 @@ class GetUser extends JsonScheme {
       "@type": "getUser",
       "user_id": 0,
       "@return_type": "account",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -26926,6 +27403,21 @@ class GetUser extends JsonScheme {
 
   set special_return_type(String? value) {
     rawData["@return_type"] = value;
+  }
+
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
   }
 
   String? get special_platform_id {
@@ -27008,6 +27500,7 @@ class GetUser extends JsonScheme {
     String special_type = "getUser",
     num? user_id,
     String special_return_type = "account",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -27019,6 +27512,7 @@ class GetUser extends JsonScheme {
       "@type": special_type,
       "user_id": user_id,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -27065,6 +27559,7 @@ class SendMessage extends JsonScheme {
       "chat_id": 0,
       "text": "",
       "@return_type": "message",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -27154,6 +27649,21 @@ class SendMessage extends JsonScheme {
     rawData["@return_type"] = value;
   }
 
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
+  }
+
   String? get special_platform_id {
     try {
       if (rawData["@platform_id"] is String == false) {
@@ -27235,6 +27745,7 @@ class SendMessage extends JsonScheme {
     num? chat_id,
     String? text,
     String special_return_type = "message",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -27247,6 +27758,7 @@ class SendMessage extends JsonScheme {
       "chat_id": chat_id,
       "text": text,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -27292,6 +27804,7 @@ class SetBio extends JsonScheme {
       "@type": "setBio",
       "bio": "",
       "@return_type": "ok",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -27364,6 +27877,21 @@ class SetBio extends JsonScheme {
 
   set special_return_type(String? value) {
     rawData["@return_type"] = value;
+  }
+
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
   }
 
   String? get special_platform_id {
@@ -27446,6 +27974,7 @@ class SetBio extends JsonScheme {
     String special_type = "setBio",
     String? bio,
     String special_return_type = "ok",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -27457,6 +27986,7 @@ class SetBio extends JsonScheme {
       "@type": special_type,
       "bio": bio,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -27503,6 +28033,7 @@ class SetName extends JsonScheme {
       "first_name": "",
       "last_name": "",
       "@return_type": "ok",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -27592,6 +28123,21 @@ class SetName extends JsonScheme {
     rawData["@return_type"] = value;
   }
 
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
+  }
+
   String? get special_platform_id {
     try {
       if (rawData["@platform_id"] is String == false) {
@@ -27673,6 +28219,7 @@ class SetName extends JsonScheme {
     String? first_name,
     String? last_name,
     String special_return_type = "ok",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -27685,6 +28232,7 @@ class SetName extends JsonScheme {
       "first_name": first_name,
       "last_name": last_name,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -27730,6 +28278,7 @@ class SetUsername extends JsonScheme {
       "@type": "setUsername",
       "username": "username",
       "@return_type": "ok",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -27802,6 +28351,21 @@ class SetUsername extends JsonScheme {
 
   set special_return_type(String? value) {
     rawData["@return_type"] = value;
+  }
+
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
   }
 
   String? get special_platform_id {
@@ -27884,6 +28448,7 @@ class SetUsername extends JsonScheme {
     String special_type = "setUsername",
     String? username,
     String special_return_type = "ok",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -27895,6 +28460,7 @@ class SetUsername extends JsonScheme {
       "@type": special_type,
       "username": username,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -27941,6 +28507,7 @@ class SignIn extends JsonScheme {
       "username": "",
       "password": "",
       "@return_type": "session",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -28030,6 +28597,21 @@ class SignIn extends JsonScheme {
     rawData["@return_type"] = value;
   }
 
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
+  }
+
   String? get special_platform_id {
     try {
       if (rawData["@platform_id"] is String == false) {
@@ -28111,6 +28693,7 @@ class SignIn extends JsonScheme {
     String? username,
     String? password,
     String special_return_type = "session",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -28123,6 +28706,7 @@ class SignIn extends JsonScheme {
       "username": username,
       "password": password,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -28169,6 +28753,7 @@ class SignUp extends JsonScheme {
       "username": "",
       "password": "",
       "@return_type": "ok",
+      "@client_token": "",
       "@platform_id": "",
       "@platform_username": "",
       "@extra": "",
@@ -28258,6 +28843,21 @@ class SignUp extends JsonScheme {
     rawData["@return_type"] = value;
   }
 
+  String? get special_client_token {
+    try {
+      if (rawData["@client_token"] is String == false) {
+        return null;
+      }
+      return rawData["@client_token"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_client_token(String? value) {
+    rawData["@client_token"] = value;
+  }
+
   String? get special_platform_id {
     try {
       if (rawData["@platform_id"] is String == false) {
@@ -28339,6 +28939,7 @@ class SignUp extends JsonScheme {
     String? username,
     String? password,
     String special_return_type = "ok",
+    String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
     String special_extra = "",
@@ -28351,6 +28952,7 @@ class SignUp extends JsonScheme {
       "username": username,
       "password": password,
       "@return_type": special_return_type,
+      "@client_token": special_client_token,
       "@platform_id": special_platform_id,
       "@platform_username": special_platform_username,
       "@extra": special_extra,
@@ -31036,6 +31638,8 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+import 'package:general_lib/general_lib.dart';
+
 final List<Map<String, dynamic>> api_schemes = [
   {
     "@type": "signUp",
@@ -31109,6 +31713,9 @@ final List<Map<String, dynamic>> api_schemes = [
     "@return_type": "update",
   }
 ].map((e) {
+  e.general_lib_extension_updateForce(data: {
+    "@client_token": "",
+  });
   return e;
 }).toList();
 """,
@@ -32577,8 +33184,9 @@ class BaseTemplateGeneralFrameworkProjectSecretServerSide {
 
   static BaseTemplateGeneralFrameworkProjectSecretServerSide defaultData() {
     return BaseTemplateGeneralFrameworkProjectSecretServerSide(
-      supabaseKey: "",
-      supabaseUrl: "",
+      supabaseUrl: "http://0.0.0.0:6001",
+      supabaseKey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU",
       pathApi: "/api",
       pathWebSocket: "/ws",
       cryptoKey: Crypto.defaultCrypto().defaultKey,

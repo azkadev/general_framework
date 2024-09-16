@@ -9,27 +9,31 @@ import 'package:base_template_general_framework_project_client_database/base_tem
 import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 import 'package:base_template_general_framework_project_scheme/api_scheme/sign_up.dart';
 import 'package:base_template_general_framework_project_secret/base_template_general_framework_project_secret_core.dart';
- import 'package:general/core/core.dart';
+import 'package:general/core/core.dart';
 import 'package:general_framework/core/client/options.dart';
 import 'package:general_lib/general_lib.dart';
 
 void main(List<String> arguments) async {
   print("start");
-  final BaseTemplateGeneralFrameworkProjectClient client = BaseTemplateGeneralFrameworkProjectClient(
-    baseTemplateGeneralFrameworkProjectSecretClientSide: BaseTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
+  final BaseTemplateGeneralFrameworkProjectClient client =
+      BaseTemplateGeneralFrameworkProjectClient(
+    baseTemplateGeneralFrameworkProjectSecretClientSide:
+        BaseTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
     generalLibrary: GeneralLibrary(),
     generalFrameworkClientInvokeOptions: GeneralFrameworkClientInvokeOptions(
       durationTimeOut: Duration(minutes: 1),
       isInvokeThrowOnError: false,
       networkClientConnectionType: NetworkClientConnectionType.websocket,
     ),
-    generalFrameworkDatabase: BaseTemplateGeneralFrameworkProjectClientDatabase(),
+    generalFrameworkDatabase:
+        BaseTemplateGeneralFrameworkProjectClientDatabase(),
   );
   await client.ensureInitialized(
     onInvokeResult: (result, parameters, generalFrameworkClientInvokeOptions) {
       // print("${result}");
     },
-    onInvokeValidation: (parameters, generalFrameworkClientInvokeOptions) async {
+    onInvokeValidation:
+        (parameters, generalFrameworkClientInvokeOptions) async {
       print("validation: ${parameters}");
       return null;
     },
@@ -56,7 +60,7 @@ void main(List<String> arguments) async {
         ),
       );
       print("result: ${res.toStringifyPretty()}");
-    } else  if (text == "si") {
+    } else if (text == "si") {
       final res = await client.api_signIn(
         signInParameters: SignIn.create(
           username: "azka",
@@ -64,10 +68,9 @@ void main(List<String> arguments) async {
         ),
       );
       print("result: ${res.toStringifyPretty()}");
-    } else  if (text == "me") {
+    } else if (text == "me") {
       final res = await client.api_getMe(
-        getMeParameters: GetMe.create( 
-        ),
+        getMeParameters: GetMe.create(),
       );
       print("result: ${res.toStringifyPretty()}");
     }

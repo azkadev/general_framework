@@ -46,12 +46,17 @@ void baseTemplateGeneralFrameworkProjectApiServerCli({
   required List<String> arguments,
   int port = 3000,
   dynamic bindIp = '0.0.0.0',
-  required BaseTemplateGeneralFrameworkProjectSecretServerSide baseTemplateGeneralFrameworkProjectSecretServerSide,
+  required BaseTemplateGeneralFrameworkProjectSecretServerSide
+      baseTemplateGeneralFrameworkProjectSecretServerSide,
 }) async {
-  final BaseTemplateGeneralFrameworkProjectApiServer baseTemplateGeneralFrameworkProjectApiServer = BaseTemplateGeneralFrameworkProjectApiServer(
+  final BaseTemplateGeneralFrameworkProjectApiServer
+      baseTemplateGeneralFrameworkProjectApiServer =
+      BaseTemplateGeneralFrameworkProjectApiServer(
     generalFrameworkApi: BaseTemplateGeneralFrameworkProjectApi(
-      generalFrameworkApiDatabase: BaseTemplateGeneralFrameworkProjectApiDatabase(
-        baseTemplateGeneralFrameworkProjectSecretServerSide: baseTemplateGeneralFrameworkProjectSecretServerSide,
+      generalFrameworkApiDatabase:
+          BaseTemplateGeneralFrameworkProjectApiDatabase(
+        baseTemplateGeneralFrameworkProjectSecretServerSide:
+            baseTemplateGeneralFrameworkProjectSecretServerSide,
       ),
     ),
     serverUniverse: ServerUniverseNative(),

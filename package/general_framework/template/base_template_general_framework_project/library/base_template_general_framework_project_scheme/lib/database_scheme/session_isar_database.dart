@@ -2,21 +2,24 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
- 
 class SessionIsarDatabase extends JsonScheme {
-
-  
   SessionIsarDatabase(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"sessionIsarDatabase","account_user_id":0,"token":"","is_default":false,"from_app_id":"","owner_account_user_id":0};
+    return {
+      "@type": "sessionIsarDatabase",
+      "account_user_id": 0,
+      "token": "",
+      "is_default": false,
+      "from_app_id": "",
+      "owner_account_user_id": 0
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == sessionIsarDatabase
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +33,15 @@ class SessionIsarDatabase extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [SessionIsarDatabase]
-  /// Empty  
+  /// Empty
   static SessionIsarDatabase empty() {
     return SessionIsarDatabase({});
   }
 
-  
-
-  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -52,16 +50,13 @@ class SessionIsarDatabase extends JsonScheme {
     }
   }
 
-  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
-
-  
   num? get account_user_id {
     try {
-      if (rawData["account_user_id"] is num == false){
+      if (rawData["account_user_id"] is num == false) {
         return null;
       }
       return rawData["account_user_id"] as num;
@@ -70,16 +65,13 @@ class SessionIsarDatabase extends JsonScheme {
     }
   }
 
-  
   set account_user_id(num? value) {
     rawData["account_user_id"] = value;
   }
 
-
-  
   String? get token {
     try {
-      if (rawData["token"] is String == false){
+      if (rawData["token"] is String == false) {
         return null;
       }
       return rawData["token"] as String;
@@ -88,16 +80,13 @@ class SessionIsarDatabase extends JsonScheme {
     }
   }
 
-  
   set token(String? value) {
     rawData["token"] = value;
   }
 
-
-  
   bool? get is_default {
     try {
-      if (rawData["is_default"] is bool == false){
+      if (rawData["is_default"] is bool == false) {
         return null;
       }
       return rawData["is_default"] as bool;
@@ -106,16 +95,13 @@ class SessionIsarDatabase extends JsonScheme {
     }
   }
 
-  
   set is_default(bool? value) {
     rawData["is_default"] = value;
   }
 
-
-  
   String? get from_app_id {
     try {
-      if (rawData["from_app_id"] is String == false){
+      if (rawData["from_app_id"] is String == false) {
         return null;
       }
       return rawData["from_app_id"] as String;
@@ -124,16 +110,13 @@ class SessionIsarDatabase extends JsonScheme {
     }
   }
 
-  
   set from_app_id(String? value) {
     rawData["from_app_id"] = value;
   }
 
-
-  
   num? get owner_account_user_id {
     try {
-      if (rawData["owner_account_user_id"] is num == false){
+      if (rawData["owner_account_user_id"] is num == false) {
         return null;
       }
       return rawData["owner_account_user_id"] as num;
@@ -142,38 +125,31 @@ class SessionIsarDatabase extends JsonScheme {
     }
   }
 
-  
   set owner_account_user_id(num? value) {
     rawData["owner_account_user_id"] = value;
   }
 
-
-  
   static SessionIsarDatabase create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "sessionIsarDatabase",
     num? account_user_id,
     String? token,
     bool? is_default,
     String? from_app_id,
     num? owner_account_user_id,
-})  {
+  }) {
     // SessionIsarDatabase sessionIsarDatabase = SessionIsarDatabase({
-final Map sessionIsarDatabase_data_create_json = {
-  
+    final Map sessionIsarDatabase_data_create_json = {
       "@type": special_type,
       "account_user_id": account_user_id,
       "token": token,
       "is_default": is_default,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
+    };
 
-
-};
-
-
-          sessionIsarDatabase_data_create_json.removeWhere((key, value) => value == null);
+    sessionIsarDatabase_data_create_json
+        .removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -182,8 +158,6 @@ final Map sessionIsarDatabase_data_create_json = {
         }
       });
     }
-return SessionIsarDatabase(sessionIsarDatabase_data_create_json);
-
-
-      }
+    return SessionIsarDatabase(sessionIsarDatabase_data_create_json);
+  }
 }

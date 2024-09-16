@@ -124,7 +124,20 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<B
     if (result_special_type == "error") {
       if (result["message"] == "session_not_found") {
         if (parameters["@client_token"] is String == false) {
-          parameters["@client_token"] = sessionDefault.token ?? "";
+          parameters["@client_token"] = "";
+        }
+        String client_token = (parameters["@client_token"] as String);
+        generalFrameworkDatabase.session_deleteSessionByToken(token: client_token);
+        if (client_token == sessionDefault.token) {
+          sessionDefault.rawData.clear();
+          loadSessionDefault();
+        }
+      }
+    }
+    if (parameters_special_type == "logout") {
+      if (result_special_type == "ok") {
+        if (parameters["@client_token"] is String == false) {
+          parameters["@client_token"] = "";
         }
         String client_token = (parameters["@client_token"] as String);
         generalFrameworkDatabase.session_deleteSessionByToken(token: client_token);
