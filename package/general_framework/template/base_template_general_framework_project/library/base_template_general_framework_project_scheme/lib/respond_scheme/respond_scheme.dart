@@ -1,4 +1,5 @@
 export "account.dart";
+export "accounts.dart";
 export "error.dart";
 export "message.dart";
 export "messages.dart";

@@ -173,6 +173,21 @@ class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<Bas
       );
     }
 
+    if (RegExp(r"^(searchAccountByUsername)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_searchAccountByUsername(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+    if (RegExp(r"^(searchAccount)$", caseSensitive: false).hasMatch(requestMethod)) {
+      return await invokeRequestData.sendBuilder(
+        builder: () async {
+          return await api_searchAccount(invokeRequestData: invokeRequestData);
+        },
+      );
+    }
+
     if (RegExp(r"^(sendMessage)$", caseSensitive: false).hasMatch(requestMethod)) {
       return await invokeRequestData.sendBuilder(
         builder: () async {

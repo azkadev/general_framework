@@ -93,7 +93,7 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionSession on Base
     required num account_user_id,
     required String token,
   }) async {
-    final res = await supabase_session.delete().eq("account_user_id", account_user_id).eq("token", token).select();
+    final res = await supabase_session.delete().eq("account_user_id", account_user_id).eq("token", token).select("id");
     return res.isNotEmpty;
   }
 

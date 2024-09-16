@@ -7,6 +7,8 @@ export "get_sessions.dart";
 export "get_update.dart";
 export "get_user.dart";
 export "log_out.dart";
+export "search_account.dart";
+export "search_account_by_username.dart";
 export "send_message.dart";
 export "set_bio.dart";
 export "set_name.dart";

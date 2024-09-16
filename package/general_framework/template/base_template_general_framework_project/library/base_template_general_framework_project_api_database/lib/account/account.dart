@@ -51,9 +51,8 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount on Base
     return AccountDatabase(result);
   }
 
-
   Future<bool> account_deleteAccount({
-    required num account_user_id, 
+    required num account_user_id,
   }) async {
     final res = await supabase_account.delete().eq("account_user_id", account_user_id).select();
     return res.isNotEmpty;
@@ -67,6 +66,37 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount on Base
       return null;
     }
     return AccountDatabase(result);
+  }
+
+  FutureOr<List<AccountDatabase>> account_searchAccount({
+    required String query,
+  }) async {
+    final String search_query = RegExp.escape(query);
+    final Map<int, AccountDatabase> result = {};
+    List<AccountDatabase> converter(List<Map<String, dynamic>> datas) {
+      return datas.map((data) {
+        return AccountDatabase(data);
+      }).toList();
+    }
+
+    for (var element in await supabase_account.select().ilike("first_name", search_query).limit(10).withConverter(converter)) {
+      result.putIfAbsent((element.id ?? 0).toInt(), () {
+        return element;
+      });
+    }
+
+    for (var element in await supabase_account.select().ilike("last_name", search_query).limit(10).withConverter(converter)) {
+      result.putIfAbsent((element.id ?? 0).toInt(), () {
+        return element;
+      });
+    }
+
+    for (var element in await supabase_account.select().ilike("username", search_query).limit(10).withConverter(converter)) {
+      result.putIfAbsent((element.id ?? 0).toInt(), () {
+        return element;
+      });
+    }
+    return result.values.toList();
   }
 
   Future<AccountDatabase?> account_createNewAccount({

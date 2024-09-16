@@ -61,6 +61,15 @@ final List<Map<String, dynamic>> respond_schemes = () {
       ]
     },
     {
+      "@type": "accounts",
+      "total_count": 0,
+      "accounts": [
+        {
+          "@type": "account",
+        }
+      ]
+    },
+    {
       "@type": "sessions",
       "total_count": 0,
       "sessions": [

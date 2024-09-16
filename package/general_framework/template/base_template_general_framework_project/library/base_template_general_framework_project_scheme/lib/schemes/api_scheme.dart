@@ -54,6 +54,16 @@ final List<Map<String, dynamic>> api_schemes = [
     "@return_type": "account",
   },
   {
+    "@type": "searchAccount",
+    "query": "",
+    "@return_type": "accounts",
+  },
+  {
+    "@type": "searchAccountByUsername",
+    "username": "",
+    "@return_type": "account",
+  },
+  {
     "@type": "getChat",
     "chat_id": 0,
     "@return_type": "account",

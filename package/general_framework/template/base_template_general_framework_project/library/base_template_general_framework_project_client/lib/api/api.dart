@@ -50,6 +50,34 @@ extension BaseTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate
   }
 
   /// generate
+  Future<Accounts> api_searchAccount({
+    required SearchAccount searchAccountParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: searchAccountParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Accounts(result);
+      },
+    );
+  }
+
+  /// generate
+  Future<Account> api_searchAccountByUsername({
+    required SearchAccountByUsername searchAccountByUsernameParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: searchAccountByUsernameParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Account(result);
+      },
+    );
+  }
+
+  /// generate
   Future<Account> api_getChat({
     required GetChat getChatParameters,
     GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
