@@ -134,7 +134,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
     }
     tcp_socket_client.host = api_uri.host;
     tcp_socket_client.port = api_uri.port;
-    web_socket_client.url = api_uri.replace(scheme: (api_uri.scheme == "https") ? "wss" : "ws",path: pathWebSocket).toString();
+    web_socket_client.url = api_uri.replace(scheme: (api_uri.scheme == "https") ? "wss" : "ws", path: pathWebSocket).toString();
     this.onInvokeResult = onInvokeResult;
     this.onInvokeValidation = onInvokeValidation;
     this.currentPath = currentPath;
@@ -308,9 +308,9 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
           }
           listener = on(
             event_name: eventInvoke,
-            callback: (update) {
-              if (update["@extra"] == extra_parameters) {
-                completer.complete(update);
+            callback: (update) async{
+              if (update["@extra"] == extra_parameters) { 
+                completer.complete(update.clone());
               }
             },
             onError: (e, stackTrace) {},
@@ -321,11 +321,9 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
             "message": "unimplemented",
           });
         }
-
-        final Map result = await completer.future;
+        final Map result_invoke = await completer.future;
         event_emitter.off(listener: listener);
-        result.removeByKeys(["@extra"]);
-        return result;
+        return result_invoke;
       } catch (e) {
         if (e is Map) {
           if (e["@type"] is String == false) {

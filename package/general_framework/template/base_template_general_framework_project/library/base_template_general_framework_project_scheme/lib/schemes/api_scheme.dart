@@ -34,6 +34,8 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+import 'package:general_lib/general_lib.dart';
+
 final List<Map<String, dynamic>> api_schemes = [
   {
     "@type": "signUp",
@@ -107,5 +109,9 @@ final List<Map<String, dynamic>> api_schemes = [
     "@return_type": "update",
   }
 ].map((e) {
+  e.general_lib_extension_updateForce(data: {
+    "@client_token": "",
+    
+  });
   return e;
 }).toList();

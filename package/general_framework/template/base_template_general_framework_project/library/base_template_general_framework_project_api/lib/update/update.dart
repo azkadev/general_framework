@@ -68,18 +68,14 @@ class InvokeRequestData {
     if (parameters["@client_token"] is String == false) {
       parameters["@client_token"] = "";
     }
-    final String client_token_procces =
-        (parameters["@client_token"] as String).trim();
+    final String client_token_procces = (parameters["@client_token"] as String).trim();
     if (client_token_procces.isNotEmpty) {
-      final SessionDatabase? session_procces =
-          await database.session_getSessionByToken(
+      final SessionDatabase? session_procces = await database.session_getSessionByToken(
         token: client_token_procces,
       );
       if (session_procces != null) {
         sessionDatabase.rawData = session_procces.rawData;
-        final AccountDatabase? account_procces =
-            await database.account_getAccountByUserId(
-                account_user_id: sessionDatabase.account_user_id ?? 0);
+        final AccountDatabase? account_procces = await database.account_getAccountByUserId(account_user_id: sessionDatabase.account_user_id ?? 0);
         if (account_procces != null) {
           accountDatabase.rawData = account_procces.rawData;
         }
@@ -90,34 +86,35 @@ class InvokeRequestData {
   JsonScheme? checkValidation() {
     final String special_type = requestMethod();
     if (special_type.isEmpty) {
-      return JsonScheme({
+      return send(result:JsonScheme({
         "@type": "error",
         "message": "method_cant_empty",
-      });
+      }));
     }
-    if (BaseTemplateGeneralFrameworkProjectSchemeDefault.api_methods
-            .contains(special_type) ==
-        false) {
-      return JsonScheme({
+    if (BaseTemplateGeneralFrameworkProjectSchemeDefault.api_methods.contains(special_type) == false) {
+      return send(result:JsonScheme({
         "@type": "error",
         "message": "method_not_found",
-      });
+      }));
     }
     return null;
   }
 
   JsonScheme? checkValidationSession() {
     if (sessionDatabase.rawData.isEmpty) {
-      return JsonScheme({
+      return send(
+          result: JsonScheme({
         "@type": "error",
         "message": "session_not_found",
-      });
+      }));
     }
     if ((sessionDatabase.token ?? "").trim().isEmpty) {
-      return JsonScheme({
-        "@type": "error",
-        "message": "session_not_found",
-      });
+      return send(
+        result: JsonScheme({
+          "@type": "error",
+          "message": "session_not_found",
+        }),
+      );
     }
     return null;
   }
@@ -138,6 +135,7 @@ class InvokeRequestData {
     final List<String> keys = [
       "@extra",
       "@client_id",
+      "@client_token",
     ];
     parameters.rawData.forEach((key, value) {
       if (keys.contains(key)) {

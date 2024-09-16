@@ -35,26 +35,21 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
-import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/message_database.dart'
-    as isar_scheme;
+import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/message_database.dart' as isar_scheme;
 import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/message_database.dart';
 import 'package:general_lib/extension/map.dart';
 // import 'package:base_template_general_framework_project_scheme/database_scheme/account_database.dart';
 import 'package:isar/isar.dart';
 
-extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
-    on BaseTemplateGeneralFrameworkProjectClientDatabase {
+extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage on BaseTemplateGeneralFrameworkProjectClientDatabase {
   bool message_deleteAllMessage({
     required int chat_id,
     required int user_id,
   }) {
-    isar_core.messageDatabases
-        .where()
-        .chat_idsElementBetween(chat_id, user_id)
-        .or()
-        .chat_idsElementBetween(user_id, chat_id)
-        .deleteAll();
+    isar_core.write((isar) {
+      isar.messageDatabases.where().chat_idsElementBetween(chat_id, user_id).or().chat_idsElementBetween(user_id, chat_id).deleteAll();
+    });
     return true;
   }
 
@@ -63,16 +58,9 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int user_id,
     required int message_id,
   }) {
-    isar_core.messageDatabases
-        .where()
-        .chat_idsElementBetween(chat_id, user_id)
-        .from_user_idEqualTo(user_id)
-        .message_idEqualTo(message_id)
-        .or()
-        .chat_idsElementBetween(user_id, chat_id)
-        .from_user_idEqualTo(user_id)
-        .message_idEqualTo(message_id)
-        .deleteAll();
+    isar_core.write((isar) {
+      isar.messageDatabases.where().chat_idsElementBetween(chat_id, user_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).deleteAll();
+    });
     return true;
   }
 
@@ -81,14 +69,9 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int user_id,
     required int message_id,
   }) {
-    isar_core.messageDatabases
-        .where()
-        .chat_idsElementBetween(chat_id, user_id)
-        .message_idEqualTo(message_id)
-        .or()
-        .chat_idsElementBetween(user_id, chat_id)
-        .message_idEqualTo(message_id)
-        .deleteAll();
+    isar_core.write((isar) {
+    isar.messageDatabases.where().chat_idsElementBetween(chat_id, user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).message_idEqualTo(message_id).deleteAll();
+    });
     return true;
   }
 
@@ -97,16 +80,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int user_id,
     required int message_id,
   }) {
-    final result = isar_core.messageDatabases
-        .where()
-        .chat_idsElementBetween(chat_id, user_id)
-        .from_user_idEqualTo(user_id)
-        .message_idEqualTo(message_id)
-        .or()
-        .chat_idsElementBetween(user_id, chat_id)
-        .from_user_idEqualTo(user_id)
-        .message_idEqualTo(message_id)
-        .findFirst();
+    final result = isar_core.messageDatabases.where().chat_idsElementBetween(chat_id, user_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).findFirst();
     if (result == null) {
       return null;
     }
@@ -118,14 +92,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int user_id,
     required int message_id,
   }) {
-    final result = isar_core.messageDatabases
-        .where()
-        .chat_idsElementBetween(chat_id, user_id)
-        .message_idEqualTo(message_id)
-        .or()
-        .chat_idsElementBetween(user_id, chat_id)
-        .message_idEqualTo(message_id)
-        .findFirst();
+    final result = isar_core.messageDatabases.where().chat_idsElementBetween(chat_id, user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).message_idEqualTo(message_id).findFirst();
     if (result == null) {
       return null;
     }
@@ -141,11 +108,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int? offset,
     required int? limit,
   }) {
-    final isar_builder = isar_core.messageDatabases
-        .where()
-        .chat_idsElementBetween(chat_id, user_id)
-        .or()
-        .chat_idsElementBetween(user_id, chat_id);
+    final isar_builder = isar_core.messageDatabases.where().chat_idsElementBetween(chat_id, user_id).or().chat_idsElementBetween(user_id, chat_id);
     final int message_count = isar_builder.count();
     return (
       message_count: message_count,
@@ -168,22 +131,11 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     ];
     newMessageDatabase.from_user_id = user_id;
     newMessageDatabase.message_id = message_id;
-    final result = isar_core.messageDatabases
-        .where()
-        .chat_idsElementBetween(chat_id, user_id)
-        .from_user_idEqualTo(user_id)
-        .message_idEqualTo(message_id)
-        .or()
-        .chat_idsElementBetween(user_id, chat_id)
-        .from_user_idEqualTo(user_id)
-        .message_idEqualTo(message_id)
-        .findFirst();
+    final result = isar_core.messageDatabases.where().chat_idsElementBetween(chat_id, user_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).findFirst();
     if (result == null) {
-      isar_scheme.MessageDatabase new_message_database_isar =
-          isar_scheme.MessageDatabase();
+      isar_scheme.MessageDatabase new_message_database_isar = isar_scheme.MessageDatabase();
       new_message_database_isar.id = isar_core.messageDatabases.autoIncrement();
-      new_message_database_isar.chat_ids =
-          newMessageDatabase.chat_ids.map((e) => e.toInt()).toList();
+      new_message_database_isar.chat_ids = newMessageDatabase.chat_ids.map((e) => e.toInt()).toList();
       new_message_database_isar.from_user_id = user_id;
       new_message_database_isar.message_id = message_id;
 

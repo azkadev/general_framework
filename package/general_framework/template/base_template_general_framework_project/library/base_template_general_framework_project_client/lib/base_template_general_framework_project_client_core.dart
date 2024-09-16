@@ -42,15 +42,14 @@ import 'package:base_template_general_framework_project_client_database/base_tem
 import 'package:base_template_general_framework_project_client_database/session/session.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/account_database.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/session_isar_database.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_template_general_framework_project_secret/base_template_general_framework_project_secret.dart';
 import 'package:general_framework/core/client/client.dart';
 import 'package:general_lib/general_lib.dart';
 
 /// base template general framework
-class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
-    BaseTemplateGeneralFrameworkProjectClientDatabase> {
-  final BaseTemplateGeneralFrameworkProjectSecretClientSide
-      baseTemplateGeneralFrameworkProjectSecretClientSide;
+class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<BaseTemplateGeneralFrameworkProjectClientDatabase> {
+  final BaseTemplateGeneralFrameworkProjectSecretClientSide baseTemplateGeneralFrameworkProjectSecretClientSide;
   final SessionIsarDatabase sessionDefault = SessionIsarDatabase({});
 
   BaseTemplateGeneralFrameworkProjectClient({
@@ -66,8 +65,7 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
   }) : super(
           apiUrl: baseTemplateGeneralFrameworkProjectSecretClientSide.apiUrl,
           pathApi: baseTemplateGeneralFrameworkProjectSecretClientSide.pathApi,
-          pathWebSocket:
-              baseTemplateGeneralFrameworkProjectSecretClientSide.pathWebSocket,
+          pathWebSocket: baseTemplateGeneralFrameworkProjectSecretClientSide.pathWebSocket,
         );
 
   @override
@@ -78,19 +76,14 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
   }) async {
     await super.ensureInitialized(
       currentPath: currentPath,
-      onInvokeValidation:
-          (parameters, generalFrameworkClientInvokeOptions) async {
-        final Map result = await onInvokeValidationDefault(
-                parameters, generalFrameworkClientInvokeOptions) ??
-            {};
+      onInvokeValidation: (parameters, generalFrameworkClientInvokeOptions) async {
+        final Map result = await onInvokeValidationDefault(parameters, generalFrameworkClientInvokeOptions) ?? {};
         if (result.isNotEmpty) {
           return result;
         }
-        return await onInvokeValidation(
-            parameters, generalFrameworkClientInvokeOptions);
+        return await onInvokeValidation(parameters, generalFrameworkClientInvokeOptions);
       },
-      onInvokeResult:
-          (result, parameters, generalFrameworkClientInvokeOptions) async {
+      onInvokeResult: (result, parameters, generalFrameworkClientInvokeOptions) async {
         await onInvokeResultDefault(
           result,
           parameters,
@@ -103,47 +96,63 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
         );
       },
     );
+    loadSessionDefault();
   }
 
-  FutureOr<Map?> onInvokeValidationDefault(
-      Map<dynamic, dynamic> parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) async {
+  void loadSessionDefault() {
+    for (var element in generalFrameworkDatabase.session_getSessionDefault().sessions) {
+      sessionDefault.rawData = element.rawData;
+      break;
+    }
+  }
+
+  FutureOr<Map?> onInvokeValidationDefault(Map<dynamic, dynamic> parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
     if (parameters["@client_token"] is String == false) {
-      parameters["@client_token"] = sessionDefault.token;
+      parameters["@client_token"] = sessionDefault.token ?? "";
+    }
+    String client_token = (parameters["@client_token"] as String);
+
+    if (client_token.isEmpty) {
+      parameters["@client_token"] = sessionDefault.token ?? "";
     }
     return null;
   }
 
-  FutureOr<dynamic> onInvokeResultDefault(
-      Map<dynamic, dynamic> result,
-      Map<dynamic, dynamic> parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) async {
-    final String parameters_special_type =
-        parameters["@type"].toString().toLowerCase();
+  FutureOr<dynamic> onInvokeResultDefault(Map<dynamic, dynamic> result, Map<dynamic, dynamic> parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
+    final String parameters_special_type = parameters["@type"].toString().toLowerCase();
     final String result_special_type = result["@type"].toString().toLowerCase();
+    if (result_special_type == "error") {
+      if (result["message"] == "session_not_found") {
+        if (parameters["@client_token"] is String == false) {
+          parameters["@client_token"] = sessionDefault.token ?? "";
+        }
+        String client_token = (parameters["@client_token"] as String);
+        generalFrameworkDatabase.session_deleteSessionByToken(token: client_token);
+        if (client_token == sessionDefault.token) {
+          sessionDefault.rawData.clear();
+          loadSessionDefault();
+        }
+      }
+    }
     if (parameters_special_type == "signin") {
       if (result_special_type == "session") {
+        Session session = Session(result);
         sessionDefault.rawData = result;
         sessionDefault.is_default = true;
         result["is_default"] = true;
-        generalFrameworkDatabase.session_saveSessionByToken(
-            token: result["token"],
-            newSessionDatabase: SessionIsarDatabase(result));
+        generalFrameworkDatabase.session_saveSession(
+          account_user_id: (session.account_user_id ?? 0).toInt(),
+          token: session.token ?? "",
+          newSessionDatabase: SessionIsarDatabase(result),
+        );
       }
     }
     if (parameters_special_type == "getme") {
       if (result_special_type == "account") {
-        generalFrameworkDatabase.account_saveAccountByUserId(
-            account_user_id: result["id"],
-            newAccountDatabase: AccountDatabase(result));
+        generalFrameworkDatabase.account_saveAccountByUserId(account_user_id: result["id"], newAccountDatabase: AccountDatabase(result));
       } else if (result_special_type == "error") {
         if (result["message"] == "timeout") {
-          final account_from_database =
-              generalFrameworkDatabase.account_getAccountByUserId(
-                  account_user_id:
-                      (sessionDefault.account_user_id ?? 0).toInt());
+          final account_from_database = generalFrameworkDatabase.account_getAccountByUserId(account_user_id: (sessionDefault.account_user_id ?? 0).toInt());
           if (account_from_database == null) {
             return;
           }
@@ -160,13 +169,11 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
 
   @override
   String decryptData({required String data}) {
-    return baseTemplateGeneralFrameworkProjectSecretClientSide.crypto
-        .decrypt(data_base64: data);
+    return baseTemplateGeneralFrameworkProjectSecretClientSide.crypto.decrypt(data_base64: data);
   }
 
   @override
   String encryptData({required Map data}) {
-    return baseTemplateGeneralFrameworkProjectSecretClientSide.crypto
-        .encrypt(data: json.encode(data));
+    return baseTemplateGeneralFrameworkProjectSecretClientSide.crypto.encrypt(data: json.encode(data));
   }
 }

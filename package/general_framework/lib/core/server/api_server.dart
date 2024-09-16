@@ -107,7 +107,7 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase> impl
             onOpen: (websocket, httpRequest, httpResponse) {},
             onClose: (websocket, httpRequest, httpResponse) {},
             onError: (error, websocket, httpRequest, httpResponse) {},
-            onMessage: (update, websocket, httpRequest, httpResponse) async {
+            onMessage: (update, websocket, httpRequest, httpResponse) async { 
               final Map parameters = () {
                 try {
                   if (update is Uint8List) {

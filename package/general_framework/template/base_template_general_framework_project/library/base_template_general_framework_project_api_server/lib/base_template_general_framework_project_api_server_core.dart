@@ -33,34 +33,25 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
-import 'package:general_framework/core/server/api_server.dart';
-import 'package:general_lib/json_scheme/json_scheme.dart';
+import 'package:general_framework/core/server/api_server.dart'; 
 
-class BaseTemplateGeneralFrameworkProjectApiServer
-    extends GeneralFrameworkApiServer<BaseTemplateGeneralFrameworkProjectApi> {
-  BaseTemplateGeneralFrameworkProjectApiServer(
-      {required super.generalFrameworkApi, required super.serverUniverse});
+class BaseTemplateGeneralFrameworkProjectApiServer extends GeneralFrameworkApiServer<BaseTemplateGeneralFrameworkProjectApi> {
+  BaseTemplateGeneralFrameworkProjectApiServer({
+    required super.generalFrameworkApi,
+    required super.serverUniverse,
+  });
 
   @override
   String decryptData({required String data}) {
-    return generalFrameworkApi.generalFrameworkApiDatabase
-        .baseTemplateGeneralFrameworkProjectSecretServerSide.crypto
-        .decrypt(data_base64: data);
+    return generalFrameworkApi.generalFrameworkApiDatabase.baseTemplateGeneralFrameworkProjectSecretServerSide.crypto.decrypt(data_base64: data);
   }
 
   @override
   String encryptData({required Map data}) {
-    return generalFrameworkApi.generalFrameworkApiDatabase
-        .baseTemplateGeneralFrameworkProjectSecretServerSide.crypto
-        .encrypt(data: json.encode(data));
+    return generalFrameworkApi.generalFrameworkApiDatabase.baseTemplateGeneralFrameworkProjectSecretServerSide.crypto.encrypt(data: json.encode(data));
   }
-
-  @override
-  FutureOr<JsonScheme> invoke({required JsonScheme parameters}) {
-    return JsonScheme({"@type": "error", "message": "unimplemented"});
-  }
+ 
 }

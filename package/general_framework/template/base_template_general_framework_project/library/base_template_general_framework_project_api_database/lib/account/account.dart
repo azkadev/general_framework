@@ -47,7 +47,7 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount
   }) async {
     final result = await supabase_account
         .select()
-        .eq("account_user_id", account_user_id)
+        .eq("id", account_user_id)
         .limit(1)
         .maybeSingle();
     if (result == null) {
