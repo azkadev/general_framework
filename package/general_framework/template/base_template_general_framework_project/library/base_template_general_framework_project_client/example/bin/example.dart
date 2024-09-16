@@ -73,6 +73,16 @@ void main(List<String> arguments) async {
         getMeParameters: GetMe.create(),
       );
       print("result: ${res.toStringifyPretty()}");
+    } else if (text == "lo") {
+      final res = await client.api_logOut(
+        logOutParameters: LogOut.create(),
+      );
+      print("result: ${res.toStringifyPretty()}");
+    } else if (text == "ses") {
+      final res = await client.api_getSessions(
+        getSessionsParameters: GetSessions.create(),
+      );
+      print("result: ${res.rawData.toStringifyPretty()}");
     }
     print("done");
   });

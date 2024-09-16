@@ -42,6 +42,7 @@ import 'package:base_template_general_framework_project_client_database/base_tem
 import 'package:base_template_general_framework_project_client_database/session/session.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/account_database.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/session_isar_database.dart';
+import 'package:base_template_general_framework_project_scheme/extension/map.dart';
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_template_general_framework_project_secret/base_template_general_framework_project_secret.dart';
 import 'package:general_framework/core/client/client.dart';
@@ -107,10 +108,7 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<B
   }
 
   FutureOr<Map?> onInvokeValidationDefault(Map<dynamic, dynamic> parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
-    if (parameters["@client_token"] is String == false) {
-      parameters["@client_token"] = sessionDefault.token ?? "";
-    }
-    String client_token = (parameters["@client_token"] as String);
+    final String client_token = parameters.base_template_general_framework_project_scheme_utils_special_client_token();
 
     if (client_token.isEmpty) {
       parameters["@client_token"] = sessionDefault.token ?? "";
@@ -121,12 +119,9 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<B
   FutureOr<dynamic> onInvokeResultDefault(Map<dynamic, dynamic> result, Map<dynamic, dynamic> parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
     final String parameters_special_type = parameters["@type"].toString().toLowerCase();
     final String result_special_type = result["@type"].toString().toLowerCase();
+    final String client_token = parameters.base_template_general_framework_project_scheme_utils_special_client_token();
     if (result_special_type == "error") {
       if (result["message"] == "session_not_found") {
-        if (parameters["@client_token"] is String == false) {
-          parameters["@client_token"] = "";
-        }
-        String client_token = (parameters["@client_token"] as String);
         generalFrameworkDatabase.session_deleteSessionByToken(token: client_token);
         if (client_token == sessionDefault.token) {
           sessionDefault.rawData.clear();
@@ -136,10 +131,6 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<B
     }
     if (parameters_special_type == "logout") {
       if (result_special_type == "ok") {
-        if (parameters["@client_token"] is String == false) {
-          parameters["@client_token"] = "";
-        }
-        String client_token = (parameters["@client_token"] as String);
         generalFrameworkDatabase.session_deleteSessionByToken(token: client_token);
         if (client_token == sessionDefault.token) {
           sessionDefault.rawData.clear();
@@ -149,14 +140,19 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<B
     }
     if (parameters_special_type == "signin") {
       if (result_special_type == "session") {
-        Session session = Session(result);
-        sessionDefault.rawData = result;
+        final Session session = Session(result);
+        sessionDefault.rawData = session.rawData;
         sessionDefault.is_default = true;
-        result["is_default"] = true;
         generalFrameworkDatabase.session_saveSession(
           account_user_id: (session.account_user_id ?? 0).toInt(),
           token: session.token ?? "",
-          newSessionDatabase: SessionIsarDatabase(result),
+          newSessionDatabase: SessionIsarDatabase(sessionDefault.rawData),
+        );
+        generalFrameworkDatabase.account_saveAccountByUserId(
+          account_user_id: (sessionDefault.account_user_id ?? 0).toInt(),
+          newAccountDatabase: AccountDatabase.create(
+            username: parameters["username"] ?? "",
+          ),
         );
       }
     }

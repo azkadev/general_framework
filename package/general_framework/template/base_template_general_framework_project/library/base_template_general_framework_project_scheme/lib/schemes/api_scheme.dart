@@ -107,7 +107,17 @@ final List<Map<String, dynamic>> api_schemes = [
   {
     "@type": "getUpdate",
     "@return_type": "update",
-  }
+  },
+  {
+    "@type": "getSessions",
+    "offset": 0,
+    "limit": 0,
+    "@return_type": "sessions",
+  },
+  {
+    "@type": "logOut",
+    "@return_type": "ok",
+  },
 ].map((e) {
   e.general_lib_extension_updateForce(data: {
     "@client_token": "",

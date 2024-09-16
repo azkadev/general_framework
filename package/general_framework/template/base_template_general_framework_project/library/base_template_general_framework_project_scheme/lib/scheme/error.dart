@@ -2,17 +2,21 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-class Error extends JsonScheme {
-  Error(super.rawData);
 
+ 
+class Error extends JsonScheme {
+
+  
+  Error(super.rawData);
+  
   /// return default data
-  ///
+  /// 
   static Map get defaultData {
-    return {"@type": "error", "message": ""};
+    return {"@type":"error","message":""};
   }
 
-  /// check data
-  /// if raw data
+  /// check data 
+  /// if raw data 
   /// - rawData["@type"] == error
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -26,15 +30,20 @@ class Error extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
+  
+
   /// create [Error]
-  /// Empty
+  /// Empty  
   static Error empty() {
     return Error({});
   }
 
+  
+
+  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false) {
+      if (rawData["@type"] is String == false){
         return null;
       }
       return rawData["@type"] as String;
@@ -43,13 +52,16 @@ class Error extends JsonScheme {
     }
   }
 
+  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+
+  
   String? get message {
     try {
-      if (rawData["message"] is String == false) {
+      if (rawData["message"] is String == false){
         return null;
       }
       return rawData["message"] as String;
@@ -58,22 +70,30 @@ class Error extends JsonScheme {
     }
   }
 
+  
   set message(String? value) {
     rawData["message"] = value;
   }
 
+
+  
   static Error create({
-    bool schemeUtilsIsSetDefaultData = false,
+              bool schemeUtilsIsSetDefaultData = false,
+
     String special_type = "error",
     String? message,
-  }) {
+})  {
     // Error error = Error({
-    final Map error_data_create_json = {
+final Map error_data_create_json = {
+  
       "@type": special_type,
       "message": message,
-    };
 
-    error_data_create_json.removeWhere((key, value) => value == null);
+
+};
+
+
+          error_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -82,6 +102,8 @@ class Error extends JsonScheme {
         }
       });
     }
-    return Error(error_data_create_json);
-  }
+return Error(error_data_create_json);
+
+
+      }
 }

@@ -2,27 +2,21 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-class AccountDatabase extends JsonScheme {
-  AccountDatabase(super.rawData);
 
+ 
+class AccountDatabase extends JsonScheme {
+
+  
+  AccountDatabase(super.rawData);
+  
   /// return default data
-  ///
+  /// 
   static Map get defaultData {
-    return {
-      "@type": "accountDatabase",
-      "id": 0,
-      "first_name": "",
-      "last_name": "",
-      "username": "",
-      "bio": "",
-      "password": "",
-      "from_app_id": "",
-      "owner_account_user_id": 0
-    };
+    return {"@type":"accountDatabase","id":0,"first_name":"","last_name":"","username":"","bio":"","password":"","from_app_id":"","owner_account_user_id":0};
   }
 
-  /// check data
-  /// if raw data
+  /// check data 
+  /// if raw data 
   /// - rawData["@type"] == accountDatabase
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -36,15 +30,20 @@ class AccountDatabase extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
+  
+
   /// create [AccountDatabase]
-  /// Empty
+  /// Empty  
   static AccountDatabase empty() {
     return AccountDatabase({});
   }
 
+  
+
+  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false) {
+      if (rawData["@type"] is String == false){
         return null;
       }
       return rawData["@type"] as String;
@@ -53,13 +52,16 @@ class AccountDatabase extends JsonScheme {
     }
   }
 
+  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+
+  
   num? get id {
     try {
-      if (rawData["id"] is num == false) {
+      if (rawData["id"] is num == false){
         return null;
       }
       return rawData["id"] as num;
@@ -68,13 +70,16 @@ class AccountDatabase extends JsonScheme {
     }
   }
 
+  
   set id(num? value) {
     rawData["id"] = value;
   }
 
+
+  
   String? get first_name {
     try {
-      if (rawData["first_name"] is String == false) {
+      if (rawData["first_name"] is String == false){
         return null;
       }
       return rawData["first_name"] as String;
@@ -83,13 +88,16 @@ class AccountDatabase extends JsonScheme {
     }
   }
 
+  
   set first_name(String? value) {
     rawData["first_name"] = value;
   }
 
+
+  
   String? get last_name {
     try {
-      if (rawData["last_name"] is String == false) {
+      if (rawData["last_name"] is String == false){
         return null;
       }
       return rawData["last_name"] as String;
@@ -98,13 +106,16 @@ class AccountDatabase extends JsonScheme {
     }
   }
 
+  
   set last_name(String? value) {
     rawData["last_name"] = value;
   }
 
+
+  
   String? get username {
     try {
-      if (rawData["username"] is String == false) {
+      if (rawData["username"] is String == false){
         return null;
       }
       return rawData["username"] as String;
@@ -113,13 +124,16 @@ class AccountDatabase extends JsonScheme {
     }
   }
 
+  
   set username(String? value) {
     rawData["username"] = value;
   }
 
+
+  
   String? get bio {
     try {
-      if (rawData["bio"] is String == false) {
+      if (rawData["bio"] is String == false){
         return null;
       }
       return rawData["bio"] as String;
@@ -128,13 +142,16 @@ class AccountDatabase extends JsonScheme {
     }
   }
 
+  
   set bio(String? value) {
     rawData["bio"] = value;
   }
 
+
+  
   String? get password {
     try {
-      if (rawData["password"] is String == false) {
+      if (rawData["password"] is String == false){
         return null;
       }
       return rawData["password"] as String;
@@ -143,13 +160,16 @@ class AccountDatabase extends JsonScheme {
     }
   }
 
+  
   set password(String? value) {
     rawData["password"] = value;
   }
 
+
+  
   String? get from_app_id {
     try {
-      if (rawData["from_app_id"] is String == false) {
+      if (rawData["from_app_id"] is String == false){
         return null;
       }
       return rawData["from_app_id"] as String;
@@ -158,13 +178,16 @@ class AccountDatabase extends JsonScheme {
     }
   }
 
+  
   set from_app_id(String? value) {
     rawData["from_app_id"] = value;
   }
 
+
+  
   num? get owner_account_user_id {
     try {
-      if (rawData["owner_account_user_id"] is num == false) {
+      if (rawData["owner_account_user_id"] is num == false){
         return null;
       }
       return rawData["owner_account_user_id"] as num;
@@ -173,12 +196,16 @@ class AccountDatabase extends JsonScheme {
     }
   }
 
+  
   set owner_account_user_id(num? value) {
     rawData["owner_account_user_id"] = value;
   }
 
+
+  
   static AccountDatabase create({
-    bool schemeUtilsIsSetDefaultData = false,
+              bool schemeUtilsIsSetDefaultData = false,
+
     String special_type = "accountDatabase",
     num? id,
     String? first_name,
@@ -188,9 +215,10 @@ class AccountDatabase extends JsonScheme {
     String? password,
     String? from_app_id,
     num? owner_account_user_id,
-  }) {
+})  {
     // AccountDatabase accountDatabase = AccountDatabase({
-    final Map accountDatabase_data_create_json = {
+final Map accountDatabase_data_create_json = {
+  
       "@type": special_type,
       "id": id,
       "first_name": first_name,
@@ -200,9 +228,12 @@ class AccountDatabase extends JsonScheme {
       "password": password,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
-    };
 
-    accountDatabase_data_create_json.removeWhere((key, value) => value == null);
+
+};
+
+
+          accountDatabase_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -211,6 +242,8 @@ class AccountDatabase extends JsonScheme {
         }
       });
     }
-    return AccountDatabase(accountDatabase_data_create_json);
-  }
+return AccountDatabase(accountDatabase_data_create_json);
+
+
+      }
 }

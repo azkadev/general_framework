@@ -4,20 +4,20 @@ import "package:general_lib/general_lib.dart";
 
 
  
-class GetMe extends JsonScheme {
+class GetSessions extends JsonScheme {
 
   
-  GetMe(super.rawData);
+  GetSessions(super.rawData);
   
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"getMe","@return_type":"account","@client_token":"","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
+    return {"@type":"getSessions","offset":0,"limit":0,"@return_type":"sessions","@client_token":"","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
   }
 
   /// check data 
   /// if raw data 
-  /// - rawData["@type"] == getMe
+  /// - rawData["@type"] == getSessions
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
     return rawData["@type"] == defaultData["@type"];
@@ -32,10 +32,10 @@ class GetMe extends JsonScheme {
 
   
 
-  /// create [GetMe]
+  /// create [GetSessions]
   /// Empty  
-  static GetMe empty() {
-    return GetMe({});
+  static GetSessions empty() {
+    return GetSessions({});
   }
 
   
@@ -55,6 +55,42 @@ class GetMe extends JsonScheme {
   
   set special_type(String? value) {
     rawData["@type"] = value;
+  }
+
+
+  
+  num? get offset {
+    try {
+      if (rawData["offset"] is num == false){
+        return null;
+      }
+      return rawData["offset"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set offset(num? value) {
+    rawData["offset"] = value;
+  }
+
+
+  
+  num? get limit {
+    try {
+      if (rawData["limit"] is num == false){
+        return null;
+      }
+      return rawData["limit"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  
+  set limit(num? value) {
+    rawData["limit"] = value;
   }
 
 
@@ -185,11 +221,13 @@ class GetMe extends JsonScheme {
 
 
   
-  static GetMe create({
+  static GetSessions create({
               bool schemeUtilsIsSetDefaultData = false,
 
-    String special_type = "getMe",
-    String special_return_type = "account",
+    String special_type = "getSessions",
+    num? offset,
+    num? limit,
+    String special_return_type = "sessions",
     String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
@@ -197,10 +235,12 @@ class GetMe extends JsonScheme {
     String special_expire_date = "",
     String special_token = "",
 })  {
-    // GetMe getMe = GetMe({
-final Map getMe_data_create_json = {
+    // GetSessions getSessions = GetSessions({
+final Map getSessions_data_create_json = {
   
       "@type": special_type,
+      "offset": offset,
+      "limit": limit,
       "@return_type": special_return_type,
       "@client_token": special_client_token,
       "@platform_id": special_platform_id,
@@ -213,16 +253,16 @@ final Map getMe_data_create_json = {
 };
 
 
-          getMe_data_create_json.removeWhere((key, value) => value == null);
+          getSessions_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (getMe_data_create_json.containsKey(key) == false) {
-          getMe_data_create_json[key] = value;
+        if (getSessions_data_create_json.containsKey(key) == false) {
+          getSessions_data_create_json[key] = value;
         }
       });
     }
-return GetMe(getMe_data_create_json);
+return GetSessions(getSessions_data_create_json);
 
 
       }

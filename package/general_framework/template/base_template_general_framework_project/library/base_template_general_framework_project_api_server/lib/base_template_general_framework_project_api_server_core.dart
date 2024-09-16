@@ -38,8 +38,7 @@ import 'dart:convert';
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
 import 'package:general_framework/core/server/api_server.dart';
 
-class BaseTemplateGeneralFrameworkProjectApiServer
-    extends GeneralFrameworkApiServer<BaseTemplateGeneralFrameworkProjectApi> {
+class BaseTemplateGeneralFrameworkProjectApiServer extends GeneralFrameworkApiServer<BaseTemplateGeneralFrameworkProjectApi> {
   BaseTemplateGeneralFrameworkProjectApiServer({
     required super.generalFrameworkApi,
     required super.serverUniverse,
@@ -47,15 +46,11 @@ class BaseTemplateGeneralFrameworkProjectApiServer
 
   @override
   String decryptData({required String data}) {
-    return generalFrameworkApi.generalFrameworkApiDatabase
-        .baseTemplateGeneralFrameworkProjectSecretServerSide.crypto
-        .decrypt(data_base64: data);
+    return generalFrameworkApi.generalFrameworkApiDatabase.baseTemplateGeneralFrameworkProjectSecretServerSide.crypto.decrypt(data_base64: data);
   }
 
   @override
   String encryptData({required Map data}) {
-    return generalFrameworkApi.generalFrameworkApiDatabase
-        .baseTemplateGeneralFrameworkProjectSecretServerSide.crypto
-        .encrypt(data: json.encode(data));
+    return generalFrameworkApi.generalFrameworkApiDatabase.baseTemplateGeneralFrameworkProjectSecretServerSide.crypto.encrypt(data: json.encode(data));
   }
 }

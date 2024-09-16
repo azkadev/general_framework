@@ -188,4 +188,32 @@ extension BaseTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate
       },
     );
   }
+
+  /// generate
+  Future<Sessions> api_getSessions({
+    required GetSessions getSessionsParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: getSessionsParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Sessions(result);
+      },
+    );
+  }
+
+  /// generate
+  Future<Ok> api_logOut({
+    required LogOut logOutParameters,
+    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+  }) async {
+    return await invokeBuilder(
+      parameters: logOutParameters.toJson(),
+      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
+      onResult: (result) {
+        return Ok(result);
+      },
+    );
+  }
 }

@@ -40,30 +40,29 @@ import 'package:base_template_general_framework_project_api_database/base_templa
 import 'package:base_template_general_framework_project_scheme/database_scheme/account_database.dart';
 import 'package:general_lib/extension/map.dart';
 
-extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount
-    on BaseTemplateGeneralFrameworkProjectApiDatabase {
+extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount on BaseTemplateGeneralFrameworkProjectApiDatabase {
   FutureOr<AccountDatabase?> account_getAccountByUserId({
     required num account_user_id,
   }) async {
-    final result = await supabase_account
-        .select()
-        .eq("id", account_user_id)
-        .limit(1)
-        .maybeSingle();
+    final result = await supabase_account.select().eq("id", account_user_id).limit(1).maybeSingle();
     if (result == null) {
       return null;
     }
     return AccountDatabase(result);
   }
 
+
+  Future<bool> account_deleteAccount({
+    required num account_user_id, 
+  }) async {
+    final res = await supabase_account.delete().eq("account_user_id", account_user_id).select();
+    return res.isNotEmpty;
+  }
+
   FutureOr<AccountDatabase?> account_getAccountByUserName({
     required String username,
   }) async {
-    final result = await supabase_account
-        .select()
-        .ilike("username", username)
-        .limit(1)
-        .maybeSingle();
+    final result = await supabase_account.select().ilike("username", username).limit(1).maybeSingle();
     if (result == null) {
       return null;
     }
@@ -75,16 +74,11 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount
     required String password,
     required AccountDatabase newAccountDatabase,
   }) async {
-    account_utils_removeUnusedAccountDatabase(
-        accountDatabase: newAccountDatabase);
+    account_utils_removeUnusedAccountDatabase(accountDatabase: newAccountDatabase);
     newAccountDatabase.username = username;
 
     newAccountDatabase.password = password;
-    final new_data = await supabase_account
-        .insert(newAccountDatabase.toJson())
-        .select()
-        .limit(1)
-        .maybeSingle();
+    final new_data = await supabase_account.insert(newAccountDatabase.toJson()).select().limit(1).maybeSingle();
     if (new_data == null) {
       return null;
     }
@@ -97,23 +91,12 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount
   }) async {
     newAccountDatabase.id = account_user_id;
 
-    account_utils_removeUnusedAccountDatabase(
-        accountDatabase: newAccountDatabase);
-    final result = await supabase_account
-        .select("id")
-        .eq("id", account_user_id)
-        .limit(1)
-        .maybeSingle();
+    account_utils_removeUnusedAccountDatabase(accountDatabase: newAccountDatabase);
+    final result = await supabase_account.select("id").eq("id", account_user_id).limit(1).maybeSingle();
     if (result == null) {
       return false;
     }
-    final new_update = await supabase_account
-        .update(newAccountDatabase.toJson())
-        .eq("id", account_user_id)
-        .select()
-        .order("id", ascending: true)
-        .limit(1)
-        .maybeSingle();
+    final new_update = await supabase_account.update(newAccountDatabase.toJson()).eq("id", account_user_id).select().order("id", ascending: true).limit(1).maybeSingle();
     if (new_update == null) {
       return false;
     }
@@ -125,7 +108,6 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount
   }) {
     accountDatabase.rawData.removeByKeys(["@type", "id"]);
     List keys = AccountDatabase.defaultData.keys.toList();
-    accountDatabase.rawData
-        .removeWhere((key, value) => keys.contains(key) == false);
+    accountDatabase.rawData.removeWhere((key, value) => keys.contains(key) == false);
   }
 }

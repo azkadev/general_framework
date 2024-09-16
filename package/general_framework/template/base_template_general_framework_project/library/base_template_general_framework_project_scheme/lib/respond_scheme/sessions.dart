@@ -2,22 +2,23 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
+import "session.dart";
 
  
-class Error extends JsonScheme {
+class Sessions extends JsonScheme {
 
   
-  Error(super.rawData);
+  Sessions(super.rawData);
   
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"error","message":"","@extra":"","@expire_date":"","@client_id":""};
+    return {"@type":"sessions","total_count":0,"sessions":[{"@type":"session"}],"@extra":"","@expire_date":"","@client_id":""};
   }
 
   /// check data 
   /// if raw data 
-  /// - rawData["@type"] == error
+  /// - rawData["@type"] == sessions
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
     return rawData["@type"] == defaultData["@type"];
@@ -32,10 +33,10 @@ class Error extends JsonScheme {
 
   
 
-  /// create [Error]
+  /// create [Sessions]
   /// Empty  
-  static Error empty() {
-    return Error({});
+  static Sessions empty() {
+    return Sessions({});
   }
 
   
@@ -59,21 +60,40 @@ class Error extends JsonScheme {
 
 
   
-  String? get message {
+  num? get total_count {
     try {
-      if (rawData["message"] is String == false){
+      if (rawData["total_count"] is num == false){
         return null;
       }
-      return rawData["message"] as String;
+      return rawData["total_count"] as num;
     } catch (e) {
       return null;
     }
   }
 
   
-  set message(String? value) {
-    rawData["message"] = value;
+  set total_count(num? value) {
+    rawData["total_count"] = value;
   }
+
+  
+  List<Session> get sessions {
+    try {
+      if (rawData["sessions"] is List == false){
+        return [];
+      }
+      return (rawData["sessions"] as List).map((e) => Session(e as Map)).toList().cast<Session>();
+    } catch (e) {
+      return [];
+    }
+  }
+
+
+  
+  set sessions(List<Session> values) {
+    rawData["sessions"] = values.map((value) => value.toJson()).toList();
+  }
+
 
 
   
@@ -131,20 +151,22 @@ class Error extends JsonScheme {
 
 
   
-  static Error create({
+  static Sessions create({
               bool schemeUtilsIsSetDefaultData = false,
 
-    String special_type = "error",
-    String? message,
+    String special_type = "sessions",
+    num? total_count,
+      List<Session>? sessions,
     String special_extra = "",
     String special_expire_date = "",
     String special_client_id = "",
 })  {
-    // Error error = Error({
-final Map error_data_create_json = {
+    // Sessions sessions = Sessions({
+final Map sessions_data_create_json = {
   
       "@type": special_type,
-      "message": message,
+      "total_count": total_count,
+      "sessions": (sessions != null)? sessions.toJson(): null,
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@client_id": special_client_id,
@@ -153,16 +175,16 @@ final Map error_data_create_json = {
 };
 
 
-          error_data_create_json.removeWhere((key, value) => value == null);
+          sessions_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (error_data_create_json.containsKey(key) == false) {
-          error_data_create_json[key] = value;
+        if (sessions_data_create_json.containsKey(key) == false) {
+          sessions_data_create_json[key] = value;
         }
       });
     }
-return Error(error_data_create_json);
+return Sessions(sessions_data_create_json);
 
 
       }

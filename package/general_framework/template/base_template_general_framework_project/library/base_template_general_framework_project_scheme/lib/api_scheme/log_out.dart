@@ -4,20 +4,20 @@ import "package:general_lib/general_lib.dart";
 
 
  
-class GetMe extends JsonScheme {
+class LogOut extends JsonScheme {
 
   
-  GetMe(super.rawData);
+  LogOut(super.rawData);
   
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"getMe","@return_type":"account","@client_token":"","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
+    return {"@type":"logOut","@return_type":"ok","@client_token":"","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
   }
 
   /// check data 
   /// if raw data 
-  /// - rawData["@type"] == getMe
+  /// - rawData["@type"] == logOut
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
     return rawData["@type"] == defaultData["@type"];
@@ -32,10 +32,10 @@ class GetMe extends JsonScheme {
 
   
 
-  /// create [GetMe]
+  /// create [LogOut]
   /// Empty  
-  static GetMe empty() {
-    return GetMe({});
+  static LogOut empty() {
+    return LogOut({});
   }
 
   
@@ -185,11 +185,11 @@ class GetMe extends JsonScheme {
 
 
   
-  static GetMe create({
+  static LogOut create({
               bool schemeUtilsIsSetDefaultData = false,
 
-    String special_type = "getMe",
-    String special_return_type = "account",
+    String special_type = "logOut",
+    String special_return_type = "ok",
     String special_client_token = "",
     String special_platform_id = "",
     String special_platform_username = "",
@@ -197,8 +197,8 @@ class GetMe extends JsonScheme {
     String special_expire_date = "",
     String special_token = "",
 })  {
-    // GetMe getMe = GetMe({
-final Map getMe_data_create_json = {
+    // LogOut logOut = LogOut({
+final Map logOut_data_create_json = {
   
       "@type": special_type,
       "@return_type": special_return_type,
@@ -213,16 +213,16 @@ final Map getMe_data_create_json = {
 };
 
 
-          getMe_data_create_json.removeWhere((key, value) => value == null);
+          logOut_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (getMe_data_create_json.containsKey(key) == false) {
-          getMe_data_create_json[key] = value;
+        if (logOut_data_create_json.containsKey(key) == false) {
+          logOut_data_create_json[key] = value;
         }
       });
     }
-return GetMe(getMe_data_create_json);
+return LogOut(logOut_data_create_json);
 
 
       }
