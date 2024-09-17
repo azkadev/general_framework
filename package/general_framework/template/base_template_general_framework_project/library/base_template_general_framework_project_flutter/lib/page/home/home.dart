@@ -32,10 +32,13 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+
 import 'package:base_template_general_framework_project_client/api/api.dart';
 import 'package:base_template_general_framework_project_flutter/client/core.dart';
 import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 class HomePage extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
@@ -49,6 +52,7 @@ class _HomePageState extends State<HomePage> {
   final ScrollControllerAutoKeepStateData scrollControllerAutoKeepStateData = ScrollControllerAutoKeepStateData(
     keyId: "home_page",
   );
+
   @override
   void initState() {
     super.initState();
@@ -87,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                   leading: const Icon(Icons.settings),
                   title: const Text("Settings"),
                   onTap: () {
-                    context.routeGeneralLibFlutterPushNamed(
+                    routerGeneralLibFlutter().pushNamed(
                       routeName: "/settings",
                       parameters: null,
                     );
@@ -99,7 +103,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: scrollControllerAutoKeepStateData.builderWidget(
-        builder: (context, pageStorageBucket) {
+        builder: (ctx, pageStorageBucket) {
           return SingleChildScrollView(
             controller: scrollControllerAutoKeepStateData.scroll_controller,
             physics: const BouncingScrollPhysics(
@@ -111,8 +115,20 @@ class _HomePageState extends State<HomePage> {
                 minWidth: context.width,
                 maxWidth: context.width,
               ),
-              child: const Column(
-                children: [],
+              child: Column(
+                children: List.generate(10, (index) {
+                  return ChatMessageGeneralFrameworkWidget(
+                    isLoading: false,
+                    title: "Azka Developer",
+                    message: "hello kamu lagi apa",
+                    unreadCount: 5,
+                    date: DateTime.now(),
+                    onTap: () {
+                      // widget.generalFrameworkClientFlutter.navigatorKey.currentContext!;
+                      routerGeneralLibFlutter().pushNamed(routeName: "/chat", parameters: Account.create(first_name: "Azka Developer"));
+                    },
+                  );
+                }),
               ),
             ),
           );

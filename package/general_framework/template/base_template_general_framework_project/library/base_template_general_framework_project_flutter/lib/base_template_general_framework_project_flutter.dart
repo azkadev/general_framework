@@ -139,9 +139,14 @@ class BaseTemplateGeneralFrameworkProjectFlutterApp extends BaseTemplateGeneralF
         "/account": (context, data) {
           final Account account = data.builder(
             onBuilder: () {
-              try {
+              dynamic body = data.body;
+              if (body is Account) {
+                return body;
+              } else if (body is JsonScheme) {
+                return Account(body.toJson());
+              } else if (body is Map) {
                 return Account(data.body);
-              } catch (e) {}
+              }
 
               return Account({});
             },
@@ -155,9 +160,14 @@ class BaseTemplateGeneralFrameworkProjectFlutterApp extends BaseTemplateGeneralF
         "/chat": (context, data) {
           final Account account = data.builder(
             onBuilder: () {
-              try {
+              dynamic body = data.body;
+              if (body is Account) {
+                return body;
+              } else if (body is JsonScheme) {
+                return Account(body.toJson());
+              } else if (body is Map) {
                 return Account(data.body);
-              } catch (e) {}
+              }
 
               return Account({});
             },

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 /* <!-- START LICENSE -->
 
 
@@ -35,8 +37,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 
 import 'package:base_template_general_framework_project_client/base_template_general_framework_project_client_core.dart';
-import 'package:base_template_general_framework_project_flutter/page/home/home.dart';
-import 'package:base_template_general_framework_project_flutter/page/sign/sign.dart';
+ import 'package:base_template_general_framework_project_flutter/page/sign/sign.dart';
 import 'package:flutter/material.dart';
 
 import 'package:general_framework/core/client/options.dart';
@@ -65,17 +66,10 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkC
     );
     String token = generalFrameworkClient.sessionDefault.token ?? "";
     if (token.isNotEmpty) {
-      context.navigator().pushReplacement(MaterialPageRoute(
-        builder: (context) {
-          return HomePage(generalFrameworkClientFlutter: this);
-        },
-      ));
+      
+      context.routerGeneralLibFlutter().pushNamed(routeName: "/home", parameters: {});
     } else {
-      context.navigator().pushReplacement(MaterialPageRoute(
-        builder: (context) {
-          return signPage();
-        },
-      ));
+      context.routerGeneralLibFlutter().pushNamed(routeName: "/sign", parameters: {});
     }
   }
 
@@ -94,13 +88,8 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkC
         result["message"] = "";
       }
       if (result["message"] == "session_not_found") {
-        context.routeGeneralLibFlutterPushAndRemoveUntil(
-          newRoute: MaterialPageRoute(
-            builder: (context) {
-              return signPage();
-            },
-          ),
-          routeName: "/",
+        context.routerGeneralLibFlutter().pushNamedAndRemoveUntil(
+          routeName: "/sign",
           parameters: {},
         );
         return;

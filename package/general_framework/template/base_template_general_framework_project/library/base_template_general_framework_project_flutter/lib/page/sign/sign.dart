@@ -196,7 +196,7 @@ class _SignPageState extends State<SignPage> {
         );
         res.rawData.printPretty();
         if (res.json_scheme_utils_checkDataIsSameBySpecialType()) {
-          context.routeGeneralLibFlutterPushAndRemoveUntil(
+          context.routerGeneralLibFlutter().pushAndRemoveUntil(
             newRoute: MaterialPageRoute(
               builder: (context) {
                 return HomePage(generalFrameworkClientFlutter: widget.generalFrameworkClientFlutter);
