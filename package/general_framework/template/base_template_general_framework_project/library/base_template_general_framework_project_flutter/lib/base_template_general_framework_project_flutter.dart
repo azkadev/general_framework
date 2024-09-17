@@ -38,19 +38,12 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:base_template_general_framework_project_client/base_template_general_framework_project_client_core.dart';
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
 import 'package:base_template_general_framework_project_flutter/client/client.dart';
-import 'package:base_template_general_framework_project_flutter/page/account/account.dart';
-import 'package:base_template_general_framework_project_flutter/page/chat/chat.dart';
-import 'package:base_template_general_framework_project_flutter/page/home/home.dart';
-import 'package:base_template_general_framework_project_flutter/page/settings/settings.dart';
-import 'package:base_template_general_framework_project_flutter/page/sign/sign.dart';
-import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_template_general_framework_project_secret/base_template_general_framework_project_secret.dart';
 import 'package:flutter/material.dart';
 import 'package:general/flutter/general_flutter_core.dart';
 import 'package:general_framework/core/client/options.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
-import 'package:general_lib_flutter/widget/widget.dart';
 
 class BaseTemplateGeneralFrameworkProjectFlutter {
   static final GeneralLibFlutterApp generalLibFlutterApp = GeneralLibFlutterApp();
@@ -93,7 +86,7 @@ class BaseTemplateGeneralFrameworkProjectFlutter {
 }
 
 class BaseTemplateGeneralFrameworkProjectFlutterApp extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget {
-  BaseTemplateGeneralFrameworkProjectFlutterApp({
+  const BaseTemplateGeneralFrameworkProjectFlutterApp({
     super.key,
     required super.generalFrameworkClientFlutter,
   });
@@ -113,88 +106,17 @@ class BaseTemplateGeneralFrameworkProjectFlutterApp extends BaseTemplateGeneralF
             textTheme: Typography().white,
           ),
           themeMode: themeMode,
-          onUnknownRoute: route.toOnUnknownRoute,
-          routes: route.toRoutes(),
+          onUnknownRoute: generalFrameworkClientFlutter.route.toOnUnknownRoute,
+          routes: generalFrameworkClientFlutter.route.toRoutes(),
         );
-        if (Dart.isDesktop) {}
+        if (Dart.isDebug) {
+          print("debu");
+        }
 
         return child;
       },
     );
   }
-
-  late final RouteGeneralLibFlutter route = RouteGeneralLibFlutter(
-    // key: "BaseTemplateGeneralFrameworkProjectFlutterApp",
-    // pageStorageBucket: PageStorageBucket(),
-    onUnknownRoute: (context, routeData) {
-      return HomePage(generalFrameworkClientFlutter: generalFrameworkClientFlutter);
-    },
-    onRoute: () {
-      return {
-        "/": (context, data) {
-          return BaseTemplateGeneralFrameworkProjectFlutterAppMain(
-            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
-          );
-        },
-        "/account": (context, data) {
-          final Account account = data.builder(
-            onBuilder: () {
-              dynamic body = data.arguments;
-              if (body is Account) {
-                return body;
-              } else if (body is JsonScheme) {
-                return Account(body.toJson());
-              } else if (body is Map) {
-                return Account(body);
-              }
-
-              return Account({});
-            },
-          );
-
-          return AccountPage(
-            account: account,
-            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
-          );
-        },
-        "/chat": (context, data) {
-          final Account account = data.builder(
-            onBuilder: () {
-              final body = data.arguments;
-              if (body is Account) {
-                return body;
-              } else if (body is JsonScheme) {
-                return Account(body.toJson());
-              } else if (body is Map) {
-                return Account(body);
-              }
-
-              return Account({});
-            },
-          );
-          return ChatPage(
-            account: account,
-            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
-          );
-        },
-        "/home": (context, data) {
-          return HomePage(
-            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
-          );
-        },
-        "/settings": (context, data) {
-          return SettingsPage(
-            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
-          );
-        },
-        "/sign": (context, data) {
-          return SignPage(
-            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
-          );
-        },
-      };
-    },
-  );
 }
 
 class BaseTemplateGeneralFrameworkProjectFlutterAppMain extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {

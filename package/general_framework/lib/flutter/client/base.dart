@@ -41,14 +41,18 @@ import 'package:general/flutter/general_flutter_core.dart';
 import 'package:general_framework/core/client/core.dart';
 import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/flutter/client/general_framework_client_flutter_app_directory.dart';
+import 'package:general_lib_flutter/route/route.dart';
 
 abstract class GeneralFrameworkClientFlutterCore {
   FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {}
- 
+
   FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
     return null;
   }
- 
+
+  RouteGeneralLibFlutter get route {
+    throw UnimplementedError();
+  }
 }
 
 abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> implements GeneralFrameworkClientFlutterCore {
@@ -79,7 +83,6 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> i
     await generalFrameworkClient.ensureInitialized(
       onInvokeResult: onInvokeResult,
       currentPath: generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
-
       onInvokeValidation: onInvokeValidation,
     );
     is_initialized = true;

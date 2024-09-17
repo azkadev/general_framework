@@ -37,7 +37,13 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 
 import 'package:base_template_general_framework_project_client/base_template_general_framework_project_client_core.dart';
- import 'package:base_template_general_framework_project_flutter/page/sign/sign.dart';
+import 'package:base_template_general_framework_project_flutter/base_template_general_framework_project_flutter.dart';
+import 'package:base_template_general_framework_project_flutter/page/account/account.dart';
+import 'package:base_template_general_framework_project_flutter/page/chat/chat.dart';
+import 'package:base_template_general_framework_project_flutter/page/home/home.dart';
+import 'package:base_template_general_framework_project_flutter/page/settings/settings.dart';
+import 'package:base_template_general_framework_project_flutter/page/sign/sign.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/account.dart';
 import 'package:flutter/material.dart';
 
 import 'package:general_framework/core/client/options.dart';
@@ -66,7 +72,6 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkC
     );
     String token = generalFrameworkClient.sessionDefault.token ?? "";
     if (token.isNotEmpty) {
-      
       context.routerGeneralLibFlutter().pushNamed(routeName: "/home", parameters: {});
     } else {
       context.routerGeneralLibFlutter().pushNamed(routeName: "/sign", parameters: {});
@@ -102,6 +107,80 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkC
   @override
   FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
     return null;
+  }
+
+  @override
+  RouteGeneralLibFlutter get route {
+    return RouteGeneralLibFlutter( 
+      onUnknownRoute: (context, routeData) {
+        return HomePage(generalFrameworkClientFlutter: this);
+      },
+      onRoute: () {
+        return {
+          "/": (context, data) {
+            return BaseTemplateGeneralFrameworkProjectFlutterAppMain(
+              generalFrameworkClientFlutter: this,
+            );
+          },
+          "/account": (context, data) {
+            final Account account = data.builder<Account>(
+              onBuilder: () {
+                dynamic body = data.arguments;
+                if (body is Account) {
+                  return body;
+                } else if (body is JsonScheme) {
+                  return Account(body.toJson());
+                } else if (body is Map) {
+                  return Account(body);
+                }
+
+                return Account({});
+              },
+            );
+
+            return AccountPage(
+              account: account,
+              generalFrameworkClientFlutter: this,
+            );
+          },
+          "/chat": (context, data) {
+            final Account account = data.builder(
+              onBuilder: () {
+                final body = data.arguments;
+                if (body is Account) {
+                  return body;
+                } else if (body is JsonScheme) {
+                  return Account(body.toJson());
+                } else if (body is Map) {
+                  return Account(body);
+                }
+
+                return Account({});
+              },
+            );
+            return ChatPage(
+              account: account,
+              generalFrameworkClientFlutter: this,
+            );
+          },
+          "/home": (context, data) {
+            return HomePage(
+              generalFrameworkClientFlutter: this,
+            );
+          },
+          "/settings": (context, data) {
+            return SettingsPage(
+              generalFrameworkClientFlutter: this,
+            );
+          },
+          "/sign": (context, data) {
+            return SignPage(
+              generalFrameworkClientFlutter: this,
+            );
+          },
+        };
+      },
+    );
   }
 }
 

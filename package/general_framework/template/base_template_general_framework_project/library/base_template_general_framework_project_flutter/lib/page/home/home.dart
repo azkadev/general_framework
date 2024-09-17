@@ -33,6 +33,8 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 
+import 'dart:math';
+
 import 'package:base_template_general_framework_project_client/api/api.dart';
 import 'package:base_template_general_framework_project_flutter/client/core.dart';
 import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
@@ -61,6 +63,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -116,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                 maxWidth: context.width,
               ),
               child: Column(
-                children: List.generate(10, (index) {
+                children: List.generate(Random().nextInt(50) + 50, (index) {
                   return ChatMessageGeneralFrameworkWidget(
                     isLoading: false,
                     title: "Azka Developer",
@@ -124,8 +127,7 @@ class _HomePageState extends State<HomePage> {
                     unreadCount: 5,
                     date: DateTime.now(),
                     onTap: () {
-                      // widget.generalFrameworkClientFlutter.navigatorKey.currentContext!;
-                      routerGeneralLibFlutter().pushNamed(routeName: "/chat", parameters: Account.create(first_name: "Azka Developer"));
+                       routerGeneralLibFlutter().pushNamed(routeName: "/chat", parameters: Account.create(first_name: "Azka Developer"));
                     },
                   );
                 }),
