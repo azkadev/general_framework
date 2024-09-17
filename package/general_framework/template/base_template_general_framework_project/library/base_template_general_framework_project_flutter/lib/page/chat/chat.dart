@@ -51,7 +51,7 @@ class ChatPage extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatef
 class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
-    print(widget.account);
+    
     return Scaffold(
       appBar: AppBar(
         title: Text("Chat"),

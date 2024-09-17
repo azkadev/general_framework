@@ -49,7 +49,7 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SkeletonizerGeneralFramework(
+     return SkeletonizerGeneralFramework(
       enabled: isLoading,
       child: ListTile(
         contentPadding: contentPadding,

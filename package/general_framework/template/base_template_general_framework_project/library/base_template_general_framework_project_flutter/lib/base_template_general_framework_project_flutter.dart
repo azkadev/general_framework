@@ -124,8 +124,8 @@ class BaseTemplateGeneralFrameworkProjectFlutterApp extends BaseTemplateGeneralF
   }
 
   late final RouteGeneralLibFlutter route = RouteGeneralLibFlutter(
-    key: "BaseTemplateGeneralFrameworkProjectFlutterApp",
-    pageStorageBucket: PageStorageBucket(),
+    // key: "BaseTemplateGeneralFrameworkProjectFlutterApp",
+    // pageStorageBucket: PageStorageBucket(),
     onUnknownRoute: (context, routeData) {
       return HomePage(generalFrameworkClientFlutter: generalFrameworkClientFlutter);
     },
@@ -139,13 +139,13 @@ class BaseTemplateGeneralFrameworkProjectFlutterApp extends BaseTemplateGeneralF
         "/account": (context, data) {
           final Account account = data.builder(
             onBuilder: () {
-              dynamic body = data.body;
+              dynamic body = data.arguments;
               if (body is Account) {
                 return body;
               } else if (body is JsonScheme) {
                 return Account(body.toJson());
               } else if (body is Map) {
-                return Account(data.body);
+                return Account(body);
               }
 
               return Account({});
@@ -160,13 +160,13 @@ class BaseTemplateGeneralFrameworkProjectFlutterApp extends BaseTemplateGeneralF
         "/chat": (context, data) {
           final Account account = data.builder(
             onBuilder: () {
-              dynamic body = data.body;
+              final body = data.arguments;
               if (body is Account) {
                 return body;
               } else if (body is JsonScheme) {
                 return Account(body.toJson());
               } else if (body is Map) {
-                return Account(data.body);
+                return Account(body);
               }
 
               return Account({});
