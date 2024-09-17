@@ -37,13 +37,13 @@ import 'dart:async';
 
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
 import 'package:base_template_general_framework_project_api/update/update.dart';
+import 'package:base_template_general_framework_project_api_database/chat/chat.dart';
 import 'package:base_template_general_framework_project_api_database/message/message.dart';
 import 'package:base_template_general_framework_project_scheme/converter/message.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
-extension BaseTemplateGeneralFrameworkProjectApiExtensionsendMessageMessage
-    on BaseTemplateGeneralFrameworkProjectApi {
+extension BaseTemplateGeneralFrameworkProjectApiExtensionsendMessageMessage on BaseTemplateGeneralFrameworkProjectApi {
   FutureOr<Message> api_sendMessage({
     required InvokeRequestData invokeRequestData,
   }) async {
@@ -73,10 +73,25 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsendMessageMessage
         "message": "text_cant_empty",
       });
     }
-
-    final MessageDatabase? new_message_data =
-        await generalFrameworkApiDatabase.message_createNewMessage(
+    final ChatDatabase? chatDatabase = await generalFrameworkApiDatabase.chat_getChatDatabase(
       chat_id: chat_id_parameters,
+      user_id: invokeRequestData.accountDatabase.id ?? 0,
+    );
+    if (chatDatabase == null) {
+      return Message({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+    final chat_unique_id = chatDatabase.chat_unique_id ?? "";
+    if (chat_unique_id.isEmpty) {
+      return Message({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+    final MessageDatabase? new_message_data = await generalFrameworkApiDatabase.message_createNewMessage(
+      chat_unique_id: chat_unique_id,
       user_id: invokeRequestData.accountDatabase.id ?? 0,
       newMessageDatabase: MessageDatabase.create(
         date: DateTime.now().millisecondsSinceEpoch,
@@ -89,6 +104,8 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsendMessageMessage
         "message": "cant_create_new_message",
       });
     }
-    return new_message_data.toMessage();
+    return new_message_data.toMessage(
+      chat_id: chat_id_parameters,
+    );
   }
 }

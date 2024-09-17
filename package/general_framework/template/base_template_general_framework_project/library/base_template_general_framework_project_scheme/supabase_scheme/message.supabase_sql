@@ -8,7 +8,7 @@ CREATE TABLE message (
   date bigint null default 0,
   update_date bigint null default 0,
   status text null default format(''::text),
-  chat_ids jsonb null default '[0]'::json,
+  chat_unique_id text null default format(''::text),
   from_app_id text null default format(''::text),
   owner_account_user_id bigint null default 0
 );
@@ -24,7 +24,7 @@ ALTER TABLE message ADD COLUMN text text DEFAULT format(''::text);
 ALTER TABLE message ADD COLUMN date bigint DEFAULT 0;
 ALTER TABLE message ADD COLUMN update_date bigint DEFAULT 0;
 ALTER TABLE message ADD COLUMN status text DEFAULT format(''::text);
-ALTER TABLE message ADD COLUMN chat_ids json DEFAULT '[0]';
+ALTER TABLE message ADD COLUMN chat_unique_id text DEFAULT format(''::text);
 ALTER TABLE message ADD COLUMN from_app_id text DEFAULT format(''::text);
 ALTER TABLE message ADD COLUMN owner_account_user_id bigint DEFAULT 0;
 

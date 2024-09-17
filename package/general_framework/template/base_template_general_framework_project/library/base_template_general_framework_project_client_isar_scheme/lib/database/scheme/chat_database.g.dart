@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'session_isar_database.dart';
+part of 'chat_database.dart';
 
 // **************************************************************************
 // _IsarCollectionGenerator
@@ -10,14 +10,13 @@ part of 'session_isar_database.dart';
 // ignore_for_file: duplicate_ignore, invalid_use_of_protected_member, lines_longer_than_80_chars, constant_identifier_names, avoid_js_rounded_ints, no_leading_underscores_for_local_identifiers, require_trailing_commas, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_in_if_null_operators, library_private_types_in_public_api, prefer_const_constructors
 // ignore_for_file: type=lint
 
-extension GetSessionIsarDatabaseCollection on Isar {
-  IsarCollection<int, SessionIsarDatabase> get sessionIsarDatabases =>
-      this.collection();
+extension GetChatDatabaseCollection on Isar {
+  IsarCollection<int, ChatDatabase> get chatDatabases => this.collection();
 }
 
-const SessionIsarDatabaseSchema = IsarGeneratedSchema(
+const ChatDatabaseSchema = IsarGeneratedSchema(
   schema: IsarSchema(
-    name: 'SessionIsarDatabase',
+    name: 'ChatDatabase',
     idName: 'id',
     embedded: false,
     properties: [
@@ -26,16 +25,12 @@ const SessionIsarDatabaseSchema = IsarGeneratedSchema(
         type: IsarType.string,
       ),
       IsarPropertySchema(
-        name: 'account_user_id',
-        type: IsarType.long,
+        name: 'chat_ids',
+        type: IsarType.longList,
       ),
       IsarPropertySchema(
-        name: 'token',
+        name: 'chat_unique_id',
         type: IsarType.string,
-      ),
-      IsarPropertySchema(
-        name: 'is_default',
-        type: IsarType.bool,
       ),
       IsarPropertySchema(
         name: 'from_app_id',
@@ -48,54 +43,88 @@ const SessionIsarDatabaseSchema = IsarGeneratedSchema(
     ],
     indexes: [],
   ),
-  converter: IsarObjectConverter<int, SessionIsarDatabase>(
-    serialize: serializeSessionIsarDatabase,
-    deserialize: deserializeSessionIsarDatabase,
-    deserializeProperty: deserializeSessionIsarDatabaseProp,
+  converter: IsarObjectConverter<int, ChatDatabase>(
+    serialize: serializeChatDatabase,
+    deserialize: deserializeChatDatabase,
+    deserializeProperty: deserializeChatDatabaseProp,
   ),
   embeddedSchemas: [],
 );
 
 @isarProtected
-int serializeSessionIsarDatabase(
-    IsarWriter writer, SessionIsarDatabase object) {
+int serializeChatDatabase(IsarWriter writer, ChatDatabase object) {
   IsarCore.writeString(writer, 1, object.special_type);
-  IsarCore.writeLong(writer, 2, object.account_user_id);
-  IsarCore.writeString(writer, 3, object.token);
-  IsarCore.writeBool(writer, 4, object.is_default);
-  IsarCore.writeString(writer, 5, object.from_app_id);
-  IsarCore.writeLong(writer, 6, object.owner_account_user_id);
+  {
+    final list = object.chat_ids;
+    final listWriter = IsarCore.beginList(writer, 2, list.length);
+    for (var i = 0; i < list.length; i++) {
+      IsarCore.writeLong(listWriter, i, list[i]);
+    }
+    IsarCore.endList(writer, listWriter);
+  }
+  IsarCore.writeString(writer, 3, object.chat_unique_id);
+  IsarCore.writeString(writer, 4, object.from_app_id);
+  IsarCore.writeLong(writer, 5, object.owner_account_user_id);
   return object.id;
 }
 
 @isarProtected
-SessionIsarDatabase deserializeSessionIsarDatabase(IsarReader reader) {
-  final object = SessionIsarDatabase();
+ChatDatabase deserializeChatDatabase(IsarReader reader) {
+  final object = ChatDatabase();
   object.special_type = IsarCore.readString(reader, 1) ?? '';
-  object.account_user_id = IsarCore.readLong(reader, 2);
-  object.token = IsarCore.readString(reader, 3) ?? '';
-  object.is_default = IsarCore.readBool(reader, 4);
-  object.from_app_id = IsarCore.readString(reader, 5) ?? '';
-  object.owner_account_user_id = IsarCore.readLong(reader, 6);
+  {
+    final length = IsarCore.readList(reader, 2, IsarCore.readerPtrPtr);
+    {
+      final reader = IsarCore.readerPtr;
+      if (reader.isNull) {
+        object.chat_ids = const <int>[];
+      } else {
+        final list =
+            List<int>.filled(length, -9223372036854775808, growable: true);
+        for (var i = 0; i < length; i++) {
+          list[i] = IsarCore.readLong(reader, i);
+        }
+        IsarCore.freeReader(reader);
+        object.chat_ids = list;
+      }
+    }
+  }
+  object.chat_unique_id = IsarCore.readString(reader, 3) ?? '';
+  object.from_app_id = IsarCore.readString(reader, 4) ?? '';
+  object.owner_account_user_id = IsarCore.readLong(reader, 5);
   object.id = IsarCore.readId(reader);
   return object;
 }
 
 @isarProtected
-dynamic deserializeSessionIsarDatabaseProp(IsarReader reader, int property) {
+dynamic deserializeChatDatabaseProp(IsarReader reader, int property) {
   switch (property) {
     case 1:
       return IsarCore.readString(reader, 1) ?? '';
     case 2:
-      return IsarCore.readLong(reader, 2);
+      {
+        final length = IsarCore.readList(reader, 2, IsarCore.readerPtrPtr);
+        {
+          final reader = IsarCore.readerPtr;
+          if (reader.isNull) {
+            return const <int>[];
+          } else {
+            final list =
+                List<int>.filled(length, -9223372036854775808, growable: true);
+            for (var i = 0; i < length; i++) {
+              list[i] = IsarCore.readLong(reader, i);
+            }
+            IsarCore.freeReader(reader);
+            return list;
+          }
+        }
+      }
     case 3:
       return IsarCore.readString(reader, 3) ?? '';
     case 4:
-      return IsarCore.readBool(reader, 4);
+      return IsarCore.readString(reader, 4) ?? '';
     case 5:
-      return IsarCore.readString(reader, 5) ?? '';
-    case 6:
-      return IsarCore.readLong(reader, 6);
+      return IsarCore.readLong(reader, 5);
     case 0:
       return IsarCore.readId(reader);
     default:
@@ -103,30 +132,26 @@ dynamic deserializeSessionIsarDatabaseProp(IsarReader reader, int property) {
   }
 }
 
-sealed class _SessionIsarDatabaseUpdate {
+sealed class _ChatDatabaseUpdate {
   bool call({
     required int id,
     String? special_type,
-    int? account_user_id,
-    String? token,
-    bool? is_default,
+    String? chat_unique_id,
     String? from_app_id,
     int? owner_account_user_id,
   });
 }
 
-class _SessionIsarDatabaseUpdateImpl implements _SessionIsarDatabaseUpdate {
-  const _SessionIsarDatabaseUpdateImpl(this.collection);
+class _ChatDatabaseUpdateImpl implements _ChatDatabaseUpdate {
+  const _ChatDatabaseUpdateImpl(this.collection);
 
-  final IsarCollection<int, SessionIsarDatabase> collection;
+  final IsarCollection<int, ChatDatabase> collection;
 
   @override
   bool call({
     required int id,
     Object? special_type = ignore,
-    Object? account_user_id = ignore,
-    Object? token = ignore,
-    Object? is_default = ignore,
+    Object? chat_unique_id = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
   }) {
@@ -134,123 +159,100 @@ class _SessionIsarDatabaseUpdateImpl implements _SessionIsarDatabaseUpdate {
           id
         ], {
           if (special_type != ignore) 1: special_type as String?,
-          if (account_user_id != ignore) 2: account_user_id as int?,
-          if (token != ignore) 3: token as String?,
-          if (is_default != ignore) 4: is_default as bool?,
-          if (from_app_id != ignore) 5: from_app_id as String?,
-          if (owner_account_user_id != ignore) 6: owner_account_user_id as int?,
+          if (chat_unique_id != ignore) 3: chat_unique_id as String?,
+          if (from_app_id != ignore) 4: from_app_id as String?,
+          if (owner_account_user_id != ignore) 5: owner_account_user_id as int?,
         }) >
         0;
   }
 }
 
-sealed class _SessionIsarDatabaseUpdateAll {
+sealed class _ChatDatabaseUpdateAll {
   int call({
     required List<int> id,
     String? special_type,
-    int? account_user_id,
-    String? token,
-    bool? is_default,
+    String? chat_unique_id,
     String? from_app_id,
     int? owner_account_user_id,
   });
 }
 
-class _SessionIsarDatabaseUpdateAllImpl
-    implements _SessionIsarDatabaseUpdateAll {
-  const _SessionIsarDatabaseUpdateAllImpl(this.collection);
+class _ChatDatabaseUpdateAllImpl implements _ChatDatabaseUpdateAll {
+  const _ChatDatabaseUpdateAllImpl(this.collection);
 
-  final IsarCollection<int, SessionIsarDatabase> collection;
+  final IsarCollection<int, ChatDatabase> collection;
 
   @override
   int call({
     required List<int> id,
     Object? special_type = ignore,
-    Object? account_user_id = ignore,
-    Object? token = ignore,
-    Object? is_default = ignore,
+    Object? chat_unique_id = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
   }) {
     return collection.updateProperties(id, {
       if (special_type != ignore) 1: special_type as String?,
-      if (account_user_id != ignore) 2: account_user_id as int?,
-      if (token != ignore) 3: token as String?,
-      if (is_default != ignore) 4: is_default as bool?,
-      if (from_app_id != ignore) 5: from_app_id as String?,
-      if (owner_account_user_id != ignore) 6: owner_account_user_id as int?,
+      if (chat_unique_id != ignore) 3: chat_unique_id as String?,
+      if (from_app_id != ignore) 4: from_app_id as String?,
+      if (owner_account_user_id != ignore) 5: owner_account_user_id as int?,
     });
   }
 }
 
-extension SessionIsarDatabaseUpdate
-    on IsarCollection<int, SessionIsarDatabase> {
-  _SessionIsarDatabaseUpdate get update => _SessionIsarDatabaseUpdateImpl(this);
+extension ChatDatabaseUpdate on IsarCollection<int, ChatDatabase> {
+  _ChatDatabaseUpdate get update => _ChatDatabaseUpdateImpl(this);
 
-  _SessionIsarDatabaseUpdateAll get updateAll =>
-      _SessionIsarDatabaseUpdateAllImpl(this);
+  _ChatDatabaseUpdateAll get updateAll => _ChatDatabaseUpdateAllImpl(this);
 }
 
-sealed class _SessionIsarDatabaseQueryUpdate {
+sealed class _ChatDatabaseQueryUpdate {
   int call({
     String? special_type,
-    int? account_user_id,
-    String? token,
-    bool? is_default,
+    String? chat_unique_id,
     String? from_app_id,
     int? owner_account_user_id,
   });
 }
 
-class _SessionIsarDatabaseQueryUpdateImpl
-    implements _SessionIsarDatabaseQueryUpdate {
-  const _SessionIsarDatabaseQueryUpdateImpl(this.query, {this.limit});
+class _ChatDatabaseQueryUpdateImpl implements _ChatDatabaseQueryUpdate {
+  const _ChatDatabaseQueryUpdateImpl(this.query, {this.limit});
 
-  final IsarQuery<SessionIsarDatabase> query;
+  final IsarQuery<ChatDatabase> query;
   final int? limit;
 
   @override
   int call({
     Object? special_type = ignore,
-    Object? account_user_id = ignore,
-    Object? token = ignore,
-    Object? is_default = ignore,
+    Object? chat_unique_id = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
   }) {
     return query.updateProperties(limit: limit, {
       if (special_type != ignore) 1: special_type as String?,
-      if (account_user_id != ignore) 2: account_user_id as int?,
-      if (token != ignore) 3: token as String?,
-      if (is_default != ignore) 4: is_default as bool?,
-      if (from_app_id != ignore) 5: from_app_id as String?,
-      if (owner_account_user_id != ignore) 6: owner_account_user_id as int?,
+      if (chat_unique_id != ignore) 3: chat_unique_id as String?,
+      if (from_app_id != ignore) 4: from_app_id as String?,
+      if (owner_account_user_id != ignore) 5: owner_account_user_id as int?,
     });
   }
 }
 
-extension SessionIsarDatabaseQueryUpdate on IsarQuery<SessionIsarDatabase> {
-  _SessionIsarDatabaseQueryUpdate get updateFirst =>
-      _SessionIsarDatabaseQueryUpdateImpl(this, limit: 1);
+extension ChatDatabaseQueryUpdate on IsarQuery<ChatDatabase> {
+  _ChatDatabaseQueryUpdate get updateFirst =>
+      _ChatDatabaseQueryUpdateImpl(this, limit: 1);
 
-  _SessionIsarDatabaseQueryUpdate get updateAll =>
-      _SessionIsarDatabaseQueryUpdateImpl(this);
+  _ChatDatabaseQueryUpdate get updateAll => _ChatDatabaseQueryUpdateImpl(this);
 }
 
-class _SessionIsarDatabaseQueryBuilderUpdateImpl
-    implements _SessionIsarDatabaseQueryUpdate {
-  const _SessionIsarDatabaseQueryBuilderUpdateImpl(this.query, {this.limit});
+class _ChatDatabaseQueryBuilderUpdateImpl implements _ChatDatabaseQueryUpdate {
+  const _ChatDatabaseQueryBuilderUpdateImpl(this.query, {this.limit});
 
-  final QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QOperations>
-      query;
+  final QueryBuilder<ChatDatabase, ChatDatabase, QOperations> query;
   final int? limit;
 
   @override
   int call({
     Object? special_type = ignore,
-    Object? account_user_id = ignore,
-    Object? token = ignore,
-    Object? is_default = ignore,
+    Object? chat_unique_id = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
   }) {
@@ -258,11 +260,9 @@ class _SessionIsarDatabaseQueryBuilderUpdateImpl
     try {
       return q.updateProperties(limit: limit, {
         if (special_type != ignore) 1: special_type as String?,
-        if (account_user_id != ignore) 2: account_user_id as int?,
-        if (token != ignore) 3: token as String?,
-        if (is_default != ignore) 4: is_default as bool?,
-        if (from_app_id != ignore) 5: from_app_id as String?,
-        if (owner_account_user_id != ignore) 6: owner_account_user_id as int?,
+        if (chat_unique_id != ignore) 3: chat_unique_id as String?,
+        if (from_app_id != ignore) 4: from_app_id as String?,
+        if (owner_account_user_id != ignore) 5: owner_account_user_id as int?,
       });
     } finally {
       q.close();
@@ -270,18 +270,18 @@ class _SessionIsarDatabaseQueryBuilderUpdateImpl
   }
 }
 
-extension SessionIsarDatabaseQueryBuilderUpdate
-    on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QOperations> {
-  _SessionIsarDatabaseQueryUpdate get updateFirst =>
-      _SessionIsarDatabaseQueryBuilderUpdateImpl(this, limit: 1);
+extension ChatDatabaseQueryBuilderUpdate
+    on QueryBuilder<ChatDatabase, ChatDatabase, QOperations> {
+  _ChatDatabaseQueryUpdate get updateFirst =>
+      _ChatDatabaseQueryBuilderUpdateImpl(this, limit: 1);
 
-  _SessionIsarDatabaseQueryUpdate get updateAll =>
-      _SessionIsarDatabaseQueryBuilderUpdateImpl(this);
+  _ChatDatabaseQueryUpdate get updateAll =>
+      _ChatDatabaseQueryBuilderUpdateImpl(this);
 }
 
-extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
-    SessionIsarDatabase, QFilterCondition> {
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+extension ChatDatabaseQueryFilter
+    on QueryBuilder<ChatDatabase, ChatDatabase, QFilterCondition> {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       special_typeEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -297,7 +297,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       special_typeGreaterThan(
     String value, {
     bool caseSensitive = true,
@@ -313,7 +313,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       special_typeGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -329,7 +329,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       special_typeLessThan(
     String value, {
     bool caseSensitive = true,
@@ -345,7 +345,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       special_typeLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -361,7 +361,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       special_typeBetween(
     String lower,
     String upper, {
@@ -379,7 +379,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       special_typeStartsWith(
     String value, {
     bool caseSensitive = true,
@@ -395,7 +395,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       special_typeEndsWith(
     String value, {
     bool caseSensitive = true,
@@ -411,7 +411,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       special_typeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
@@ -424,7 +424,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       special_typeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
@@ -437,7 +437,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       special_typeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
@@ -449,7 +449,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       special_typeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
@@ -461,8 +461,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      account_user_idEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsElementEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -475,8 +475,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      account_user_idGreaterThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsElementGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -489,8 +489,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      account_user_idGreaterThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsElementGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -503,8 +503,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      account_user_idLessThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsElementLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -517,8 +517,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      account_user_idLessThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsElementLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -531,8 +531,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      account_user_idBetween(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsElementBetween(
     int lower,
     int upper,
   ) {
@@ -547,8 +547,22 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsIsEmpty() {
+    return not().chat_idsIsNotEmpty();
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const GreaterOrEqualCondition(property: 2, value: null),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -563,8 +577,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenGreaterThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -579,8 +593,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenGreaterThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -595,8 +609,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenLessThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -611,8 +625,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenLessThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -627,8 +641,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenBetween(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -645,8 +659,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenStartsWith(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -661,8 +675,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenEndsWith(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -677,8 +691,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -690,8 +704,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -703,8 +717,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenIsEmpty() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -715,8 +729,8 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenIsNotEmpty() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -727,21 +741,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      is_defaultEqualTo(
-    bool value,
-  ) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        EqualCondition(
-          property: 4,
-          value: value,
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       from_app_idEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -749,7 +749,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         EqualCondition(
-          property: 5,
+          property: 4,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -757,7 +757,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       from_app_idGreaterThan(
     String value, {
     bool caseSensitive = true,
@@ -765,7 +765,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterCondition(
-          property: 5,
+          property: 4,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -773,7 +773,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       from_app_idGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -781,7 +781,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterOrEqualCondition(
-          property: 5,
+          property: 4,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -789,7 +789,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       from_app_idLessThan(
     String value, {
     bool caseSensitive = true,
@@ -797,7 +797,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessCondition(
-          property: 5,
+          property: 4,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -805,7 +805,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       from_app_idLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -813,7 +813,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessOrEqualCondition(
-          property: 5,
+          property: 4,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -821,7 +821,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       from_app_idBetween(
     String lower,
     String upper, {
@@ -830,7 +830,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         BetweenCondition(
-          property: 5,
+          property: 4,
           lower: lower,
           upper: upper,
           caseSensitive: caseSensitive,
@@ -839,7 +839,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       from_app_idStartsWith(
     String value, {
     bool caseSensitive = true,
@@ -847,7 +847,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         StartsWithCondition(
-          property: 5,
+          property: 4,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -855,7 +855,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       from_app_idEndsWith(
     String value, {
     bool caseSensitive = true,
@@ -863,7 +863,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         EndsWithCondition(
-          property: 5,
+          property: 4,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -871,12 +871,12 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       from_app_idContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
-          property: 5,
+          property: 4,
           value: value,
           caseSensitive: caseSensitive,
         ),
@@ -884,12 +884,12 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       from_app_idMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
-          property: 5,
+          property: 4,
           wildcard: pattern,
           caseSensitive: caseSensitive,
         ),
@@ -897,101 +897,101 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       from_app_idIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
-          property: 5,
+          property: 4,
           value: '',
         ),
       );
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       from_app_idIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
-          property: 5,
+          property: 4,
           value: '',
         ),
       );
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       owner_account_user_idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         EqualCondition(
-          property: 6,
+          property: 5,
           value: value,
         ),
       );
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       owner_account_user_idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterCondition(
-          property: 6,
+          property: 5,
           value: value,
         ),
       );
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       owner_account_user_idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterOrEqualCondition(
-          property: 6,
+          property: 5,
           value: value,
         ),
       );
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       owner_account_user_idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessCondition(
-          property: 6,
+          property: 5,
           value: value,
         ),
       );
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       owner_account_user_idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessOrEqualCondition(
-          property: 6,
+          property: 5,
           value: value,
         ),
       );
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       owner_account_user_idBetween(
     int lower,
     int upper,
@@ -999,7 +999,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         BetweenCondition(
-          property: 6,
+          property: 5,
           lower: lower,
           upper: upper,
         ),
@@ -1007,8 +1007,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      idEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1021,8 +1020,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      idGreaterThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1035,7 +1033,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       idGreaterThanOrEqualTo(
     int value,
   ) {
@@ -1049,8 +1047,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      idLessThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1063,7 +1060,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
       idLessThanOrEqualTo(
     int value,
   ) {
@@ -1077,8 +1074,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      idBetween(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> idBetween(
     int lower,
     int upper,
   ) {
@@ -1094,13 +1090,13 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
   }
 }
 
-extension SessionIsarDatabaseQueryObject on QueryBuilder<SessionIsarDatabase,
-    SessionIsarDatabase, QFilterCondition> {}
+extension ChatDatabaseQueryObject
+    on QueryBuilder<ChatDatabase, ChatDatabase, QFilterCondition> {}
 
-extension SessionIsarDatabaseQuerySortBy
-    on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QSortBy> {
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortBySpecial_type({bool caseSensitive = true}) {
+extension ChatDatabaseQuerySortBy
+    on QueryBuilder<ChatDatabase, ChatDatabase, QSortBy> {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortBySpecial_type(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1109,8 +1105,8 @@ extension SessionIsarDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortBySpecial_typeDesc({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortBySpecial_typeDesc(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1120,22 +1116,8 @@ extension SessionIsarDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByAccount_user_id() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(2);
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByAccount_user_idDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(2, sort: Sort.desc);
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByToken({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByChat_unique_id(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         3,
@@ -1144,8 +1126,8 @@ extension SessionIsarDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByTokenDesc({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
+      sortByChat_unique_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         3,
@@ -1155,361 +1137,285 @@ extension SessionIsarDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByIs_default() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(4);
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByIs_defaultDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(4, sort: Sort.desc);
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByFrom_app_id(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
-        5,
+        4,
         caseSensitive: caseSensitive,
       );
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByFrom_app_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByFrom_app_idDesc(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
-        5,
+        4,
         sort: Sort.desc,
         caseSensitive: caseSensitive,
       );
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
       sortByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(6);
+      return query.addSortBy(5);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
       sortByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(6, sort: Sort.desc);
+      return query.addSortBy(5, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortById() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByIdDesc() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0, sort: Sort.desc);
     });
   }
 }
 
-extension SessionIsarDatabaseQuerySortThenBy
-    on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QSortThenBy> {
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenBySpecial_type({bool caseSensitive = true}) {
+extension ChatDatabaseQuerySortThenBy
+    on QueryBuilder<ChatDatabase, ChatDatabase, QSortThenBy> {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenBySpecial_type(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenBySpecial_typeDesc({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenBySpecial_typeDesc(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByAccount_user_id() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(2);
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByAccount_user_idDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(2, sort: Sort.desc);
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByToken({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByChat_unique_id(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByTokenDesc({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
+      thenByChat_unique_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByIs_default() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByFrom_app_id(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(4);
+      return query.addSortBy(4, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByIs_defaultDesc() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByFrom_app_idDesc(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(4, sort: Sort.desc);
+      return query.addSortBy(4, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByFrom_app_id({bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(5, caseSensitive: caseSensitive);
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByFrom_app_idDesc({bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(5, sort: Sort.desc, caseSensitive: caseSensitive);
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
       thenByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(6);
+      return query.addSortBy(5);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
       thenByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(6, sort: Sort.desc);
+      return query.addSortBy(5, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenById() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByIdDesc() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0, sort: Sort.desc);
     });
   }
 }
 
-extension SessionIsarDatabaseQueryWhereDistinct
-    on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QDistinct> {
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
+extension ChatDatabaseQueryWhereDistinct
+    on QueryBuilder<ChatDatabase, ChatDatabase, QDistinct> {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
       distinctBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
-      distinctByAccount_user_id() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
+      distinctByChat_ids() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(2);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
-      distinctByToken({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
+      distinctByChat_unique_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(3, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
-      distinctByIs_default() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(4);
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
       distinctByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(5, caseSensitive: caseSensitive);
+      return query.addDistinctBy(4, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
       distinctByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(6);
+      return query.addDistinctBy(5);
     });
   }
 }
 
-extension SessionIsarDatabaseQueryProperty1
-    on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QProperty> {
-  QueryBuilder<SessionIsarDatabase, String, QAfterProperty>
-      special_typeProperty() {
+extension ChatDatabaseQueryProperty1
+    on QueryBuilder<ChatDatabase, ChatDatabase, QProperty> {
+  QueryBuilder<ChatDatabase, String, QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, int, QAfterProperty>
-      account_user_idProperty() {
+  QueryBuilder<ChatDatabase, List<int>, QAfterProperty> chat_idsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, String, QAfterProperty> tokenProperty() {
+  QueryBuilder<ChatDatabase, String, QAfterProperty> chat_unique_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, bool, QAfterProperty> is_defaultProperty() {
+  QueryBuilder<ChatDatabase, String, QAfterProperty> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, String, QAfterProperty>
-      from_app_idProperty() {
+  QueryBuilder<ChatDatabase, int, QAfterProperty>
+      owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, int, QAfterProperty>
-      owner_account_user_idProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addProperty(6);
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, int, QAfterProperty> idProperty() {
+  QueryBuilder<ChatDatabase, int, QAfterProperty> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(0);
     });
   }
 }
 
-extension SessionIsarDatabaseQueryProperty2<R>
-    on QueryBuilder<SessionIsarDatabase, R, QAfterProperty> {
-  QueryBuilder<SessionIsarDatabase, (R, String), QAfterProperty>
+extension ChatDatabaseQueryProperty2<R>
+    on QueryBuilder<ChatDatabase, R, QAfterProperty> {
+  QueryBuilder<ChatDatabase, (R, String), QAfterProperty>
       special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R, int), QAfterProperty>
-      account_user_idProperty() {
+  QueryBuilder<ChatDatabase, (R, List<int>), QAfterProperty>
+      chat_idsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R, String), QAfterProperty>
-      tokenProperty() {
+  QueryBuilder<ChatDatabase, (R, String), QAfterProperty>
+      chat_unique_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R, bool), QAfterProperty>
-      is_defaultProperty() {
+  QueryBuilder<ChatDatabase, (R, String), QAfterProperty>
+      from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R, String), QAfterProperty>
-      from_app_idProperty() {
+  QueryBuilder<ChatDatabase, (R, int), QAfterProperty>
+      owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R, int), QAfterProperty>
-      owner_account_user_idProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addProperty(6);
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, (R, int), QAfterProperty> idProperty() {
+  QueryBuilder<ChatDatabase, (R, int), QAfterProperty> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(0);
     });
   }
 }
 
-extension SessionIsarDatabaseQueryProperty3<R1, R2>
-    on QueryBuilder<SessionIsarDatabase, (R1, R2), QAfterProperty> {
-  QueryBuilder<SessionIsarDatabase, (R1, R2, String), QOperations>
+extension ChatDatabaseQueryProperty3<R1, R2>
+    on QueryBuilder<ChatDatabase, (R1, R2), QAfterProperty> {
+  QueryBuilder<ChatDatabase, (R1, R2, String), QOperations>
       special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R1, R2, int), QOperations>
-      account_user_idProperty() {
+  QueryBuilder<ChatDatabase, (R1, R2, List<int>), QOperations>
+      chat_idsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R1, R2, String), QOperations>
-      tokenProperty() {
+  QueryBuilder<ChatDatabase, (R1, R2, String), QOperations>
+      chat_unique_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R1, R2, bool), QOperations>
-      is_defaultProperty() {
+  QueryBuilder<ChatDatabase, (R1, R2, String), QOperations>
+      from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R1, R2, String), QOperations>
-      from_app_idProperty() {
+  QueryBuilder<ChatDatabase, (R1, R2, int), QOperations>
+      owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R1, R2, int), QOperations>
-      owner_account_user_idProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addProperty(6);
-    });
-  }
-
-  QueryBuilder<SessionIsarDatabase, (R1, R2, int), QOperations> idProperty() {
+  QueryBuilder<ChatDatabase, (R1, R2, int), QOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(0);
     });

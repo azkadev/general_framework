@@ -4,13 +4,13 @@
 
 import 'dart:convert';
 import 'package:isar/isar.dart';
-part "message_database.g.dart";
+part "message_isar_database.g.dart";
 
 @collection
-class MessageDatabase {
+class MessageIsarDatabase {
   // Id id = Isar.autoIncrement;
 
-  String special_type = "messageDatabase";
+  String special_type = "messageIsarDatabase";
 
   bool is_outgoing = false;
 
@@ -26,7 +26,7 @@ class MessageDatabase {
 
   String status = "";
 
-  String chat_unique_id = "";
+  List<int> chat_ids = [0];
 
   String from_app_id = "";
 
@@ -73,8 +73,8 @@ class MessageDatabase {
       this.status = value;
     }
 
-    if (key == "chat_unique_id") {
-      this.chat_unique_id = value;
+    if (key == "chat_ids") {
+      this.chat_ids = value;
     }
 
     if (key == "from_app_id") {
@@ -150,7 +150,7 @@ class MessageDatabase {
       "date": date,
       "update_date": update_date,
       "status": status,
-      "chat_unique_id": chat_unique_id,
+      "chat_ids": chat_ids,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
       "id": id,
@@ -171,7 +171,7 @@ class MessageDatabase {
   /// return original data json
   static Map get defaultData {
     return {
-      "@type": "messageDatabase",
+      "@type": "messageIsarDatabase",
       "is_outgoing": false,
       "message_id": 0,
       "from_user_id": 0,
@@ -179,22 +179,22 @@ class MessageDatabase {
       "date": 0,
       "update_date": 0,
       "status": "",
-      "chat_unique_id": "",
+      "chat_ids": [0],
       "from_app_id": "",
       "owner_account_user_id": 0,
       "id": 0
     };
   }
 
-  static MessageDatabase create({
+  static MessageIsarDatabase create({
     bool utils_is_print_data = false,
   }) {
-    MessageDatabase messageDatabase_data_create = MessageDatabase();
+    MessageIsarDatabase messageIsarDatabase_data_create = MessageIsarDatabase();
 
     if (utils_is_print_data) {
-      // print(messageDatabase_data_create.toStringPretty());
+      // print(messageIsarDatabase_data_create.toStringPretty());
     }
 
-    return messageDatabase_data_create;
+    return messageIsarDatabase_data_create;
   }
 }

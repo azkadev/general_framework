@@ -4,27 +4,15 @@
 
 import 'dart:convert';
 import 'package:isar/isar.dart';
-part "message_database.g.dart";
+part "chat_database.g.dart";
 
 @collection
-class MessageDatabase {
+class ChatDatabase {
   // Id id = Isar.autoIncrement;
 
-  String special_type = "messageDatabase";
+  String special_type = "chatDatabase";
 
-  bool is_outgoing = false;
-
-  int message_id = 0;
-
-  int from_user_id = 0;
-
-  String text = "";
-
-  int date = 0;
-
-  int update_date = 0;
-
-  String status = "";
+  List<int> chat_ids = [0];
 
   String chat_unique_id = "";
 
@@ -45,32 +33,8 @@ class MessageDatabase {
       this.special_type = value;
     }
 
-    if (key == "is_outgoing") {
-      this.is_outgoing = value;
-    }
-
-    if (key == "message_id") {
-      this.message_id = value;
-    }
-
-    if (key == "from_user_id") {
-      this.from_user_id = value;
-    }
-
-    if (key == "text") {
-      this.text = value;
-    }
-
-    if (key == "date") {
-      this.date = value;
-    }
-
-    if (key == "update_date") {
-      this.update_date = value;
-    }
-
-    if (key == "status") {
-      this.status = value;
+    if (key == "chat_ids") {
+      this.chat_ids = value;
     }
 
     if (key == "chat_unique_id") {
@@ -143,13 +107,7 @@ class MessageDatabase {
   Map toJson() {
     return {
       "@type": special_type,
-      "is_outgoing": is_outgoing,
-      "message_id": message_id,
-      "from_user_id": from_user_id,
-      "text": text,
-      "date": date,
-      "update_date": update_date,
-      "status": status,
+      "chat_ids": chat_ids,
       "chat_unique_id": chat_unique_id,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
@@ -171,14 +129,8 @@ class MessageDatabase {
   /// return original data json
   static Map get defaultData {
     return {
-      "@type": "messageDatabase",
-      "is_outgoing": false,
-      "message_id": 0,
-      "from_user_id": 0,
-      "text": "",
-      "date": 0,
-      "update_date": 0,
-      "status": "",
+      "@type": "chatDatabase",
+      "chat_ids": [0],
       "chat_unique_id": "",
       "from_app_id": "",
       "owner_account_user_id": 0,
@@ -186,15 +138,15 @@ class MessageDatabase {
     };
   }
 
-  static MessageDatabase create({
+  static ChatDatabase create({
     bool utils_is_print_data = false,
   }) {
-    MessageDatabase messageDatabase_data_create = MessageDatabase();
+    ChatDatabase chatDatabase_data_create = ChatDatabase();
 
     if (utils_is_print_data) {
-      // print(messageDatabase_data_create.toStringPretty());
+      // print(chatDatabase_data_create.toStringPretty());
     }
 
-    return messageDatabase_data_create;
+    return chatDatabase_data_create;
   }
 }

@@ -36,10 +36,12 @@ import 'package:base_template_general_framework_project_scheme/database_scheme/m
 import 'package:base_template_general_framework_project_scheme/respond_scheme/message.dart';
 
 extension MessageDatabaseExtension on MessageDatabase {
-  Message toMessage() {
+  Message toMessage({
+    required num chat_id,
+  }) {
     return Message.create(
       is_outgoing: is_outgoing,
-      chat_id: chat_ids.firstOrNull,
+      chat_id: chat_id,
       from_user_id: from_user_id,
       date: date,
       update_date: update_date,

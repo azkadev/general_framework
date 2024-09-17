@@ -37,19 +37,18 @@ import 'dart:async';
 
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
 import 'package:base_template_general_framework_project_api/update/update.dart';
+import 'package:base_template_general_framework_project_api_database/chat/chat.dart';
 import 'package:base_template_general_framework_project_api_database/message/message.dart';
 import 'package:base_template_general_framework_project_scheme/converter/message.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 
-extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMessageMessage
-    on BaseTemplateGeneralFrameworkProjectApi {
+extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMessageMessage on BaseTemplateGeneralFrameworkProjectApi {
   FutureOr<Message> api_getMessage({
     required InvokeRequestData invokeRequestData,
   }) async {
-    final GetMessage getMessage =
-        invokeRequestData.parametersBuilder<GetMessage>(
+    final GetMessage getMessage = invokeRequestData.parametersBuilder<GetMessage>(
       builder: (parameters) {
         return GetMessage(parameters.toJson());
       },
@@ -60,10 +59,27 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMessageMessage
         "message": "chat_id_bad_format",
       });
     }
-    final MessageDatabase? message_data =
-        await generalFrameworkApiDatabase.message_getMessageByMessageId(
+
+    final ChatDatabase? chatDatabase = await generalFrameworkApiDatabase.chat_getChatDatabase(
       chat_id: getMessage.chat_id ?? 0,
       user_id: invokeRequestData.accountDatabase.id ?? 0,
+    );
+    if (chatDatabase == null) {
+      return Message({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+    final chat_unique_id = chatDatabase.chat_unique_id ?? "";
+    if (chat_unique_id.isEmpty) {
+      return Message({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+
+    final MessageDatabase? message_data = await generalFrameworkApiDatabase.message_getMessageByMessageId(
+      chat_unique_id: chat_unique_id,
       message_id: getMessage.message_id ?? 0,
     );
     if (message_data == null) {
@@ -73,6 +89,8 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMessageMessage
       });
     }
 
-    return message_data.toMessage();
+    return message_data.toMessage(
+      chat_id: getMessage.chat_id ?? 0,
+    );
   }
 }

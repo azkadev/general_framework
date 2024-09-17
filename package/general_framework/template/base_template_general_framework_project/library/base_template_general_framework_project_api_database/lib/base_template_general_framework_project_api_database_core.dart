@@ -103,6 +103,10 @@ class BaseTemplateGeneralFrameworkProjectApiDatabase
     return supabase_core.from("account");
   }
 
+  SupabaseQueryBuilder get supabase_chat {
+    return supabase_core.from("chat");
+  }
+
   SupabaseQueryBuilder get supabase_message {
     return supabase_core.from("message");
   }

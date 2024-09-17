@@ -4,20 +4,20 @@ import "package:general_lib/general_lib.dart";
 
 
  
-class MessageDatabase extends JsonScheme {
+class MessageIsarDatabase extends JsonScheme {
 
   
-  MessageDatabase(super.rawData);
+  MessageIsarDatabase(super.rawData);
   
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"messageDatabase","is_outgoing":false,"message_id":0,"from_user_id":0,"text":"","date":0,"update_date":0,"status":"","chat_unique_id":"","from_app_id":"","owner_account_user_id":0};
+    return {"@type":"messageIsarDatabase","is_outgoing":false,"message_id":0,"from_user_id":0,"text":"","date":0,"update_date":0,"status":"","chat_ids":[0],"from_app_id":"","owner_account_user_id":0};
   }
 
   /// check data 
   /// if raw data 
-  /// - rawData["@type"] == messageDatabase
+  /// - rawData["@type"] == messageIsarDatabase
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
     return rawData["@type"] == defaultData["@type"];
@@ -32,10 +32,10 @@ class MessageDatabase extends JsonScheme {
 
   
 
-  /// create [MessageDatabase]
+  /// create [MessageIsarDatabase]
   /// Empty  
-  static MessageDatabase empty() {
-    return MessageDatabase({});
+  static MessageIsarDatabase empty() {
+    return MessageIsarDatabase({});
   }
 
   
@@ -185,20 +185,25 @@ class MessageDatabase extends JsonScheme {
 
 
   
-  String? get chat_unique_id {
+  ///
+  /// default:
+  /// 
+  /// 
+  List<num> get chat_ids {
     try {
-      if (rawData["chat_unique_id"] is String == false){
-        return null;
+      if (rawData["chat_ids"] is List == false){
+        return [];
       }
-      return rawData["chat_unique_id"] as String;
+      return (rawData["chat_ids"] as List).cast<num>();
     } catch (e) {
-      return null;
+      return [];
     }
   }
 
+
   
-  set chat_unique_id(String? value) {
-    rawData["chat_unique_id"] = value;
+  set chat_ids(List<num> value) {
+    rawData["chat_ids"] = value;
   }
 
 
@@ -239,10 +244,10 @@ class MessageDatabase extends JsonScheme {
 
 
   
-  static MessageDatabase create({
+  static MessageIsarDatabase create({
               bool schemeUtilsIsSetDefaultData = false,
 
-    String special_type = "messageDatabase",
+    String special_type = "messageIsarDatabase",
     bool? is_outgoing,
     num? message_id,
     num? from_user_id,
@@ -250,12 +255,12 @@ class MessageDatabase extends JsonScheme {
     num? date,
     num? update_date,
     String? status,
-    String? chat_unique_id,
+      List<num>? chat_ids,
     String? from_app_id,
     num? owner_account_user_id,
 })  {
-    // MessageDatabase messageDatabase = MessageDatabase({
-final Map messageDatabase_data_create_json = {
+    // MessageIsarDatabase messageIsarDatabase = MessageIsarDatabase({
+final Map messageIsarDatabase_data_create_json = {
   
       "@type": special_type,
       "is_outgoing": is_outgoing,
@@ -265,7 +270,7 @@ final Map messageDatabase_data_create_json = {
       "date": date,
       "update_date": update_date,
       "status": status,
-      "chat_unique_id": chat_unique_id,
+      "chat_ids": chat_ids,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
 
@@ -273,16 +278,16 @@ final Map messageDatabase_data_create_json = {
 };
 
 
-          messageDatabase_data_create_json.removeWhere((key, value) => value == null);
+          messageIsarDatabase_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (messageDatabase_data_create_json.containsKey(key) == false) {
-          messageDatabase_data_create_json[key] = value;
+        if (messageIsarDatabase_data_create_json.containsKey(key) == false) {
+          messageIsarDatabase_data_create_json[key] = value;
         }
       });
     }
-return MessageDatabase(messageDatabase_data_create_json);
+return MessageIsarDatabase(messageIsarDatabase_data_create_json);
 
 
       }

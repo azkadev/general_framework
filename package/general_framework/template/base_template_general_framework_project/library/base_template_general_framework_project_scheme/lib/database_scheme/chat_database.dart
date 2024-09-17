@@ -4,20 +4,20 @@ import "package:general_lib/general_lib.dart";
 
 
  
-class SessionIsarDatabase extends JsonScheme {
+class ChatDatabase extends JsonScheme {
 
   
-  SessionIsarDatabase(super.rawData);
+  ChatDatabase(super.rawData);
   
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"sessionIsarDatabase","account_user_id":0,"token":"","is_default":false,"from_app_id":"","owner_account_user_id":0};
+    return {"@type":"chatDatabase","chat_ids":[0],"chat_unique_id":"","from_app_id":"","owner_account_user_id":0};
   }
 
   /// check data 
   /// if raw data 
-  /// - rawData["@type"] == sessionIsarDatabase
+  /// - rawData["@type"] == chatDatabase
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
     return rawData["@type"] == defaultData["@type"];
@@ -32,10 +32,10 @@ class SessionIsarDatabase extends JsonScheme {
 
   
 
-  /// create [SessionIsarDatabase]
+  /// create [ChatDatabase]
   /// Empty  
-  static SessionIsarDatabase empty() {
-    return SessionIsarDatabase({});
+  static ChatDatabase empty() {
+    return ChatDatabase({});
   }
 
   
@@ -59,56 +59,43 @@ class SessionIsarDatabase extends JsonScheme {
 
 
   
-  num? get account_user_id {
+  ///
+  /// default:
+  /// 
+  /// 
+  List<num> get chat_ids {
     try {
-      if (rawData["account_user_id"] is num == false){
+      if (rawData["chat_ids"] is List == false){
+        return [];
+      }
+      return (rawData["chat_ids"] as List).cast<num>();
+    } catch (e) {
+      return [];
+    }
+  }
+
+
+  
+  set chat_ids(List<num> value) {
+    rawData["chat_ids"] = value;
+  }
+
+
+  
+  String? get chat_unique_id {
+    try {
+      if (rawData["chat_unique_id"] is String == false){
         return null;
       }
-      return rawData["account_user_id"] as num;
+      return rawData["chat_unique_id"] as String;
     } catch (e) {
       return null;
     }
   }
 
   
-  set account_user_id(num? value) {
-    rawData["account_user_id"] = value;
-  }
-
-
-  
-  String? get token {
-    try {
-      if (rawData["token"] is String == false){
-        return null;
-      }
-      return rawData["token"] as String;
-    } catch (e) {
-      return null;
-    }
-  }
-
-  
-  set token(String? value) {
-    rawData["token"] = value;
-  }
-
-
-  
-  bool? get is_default {
-    try {
-      if (rawData["is_default"] is bool == false){
-        return null;
-      }
-      return rawData["is_default"] as bool;
-    } catch (e) {
-      return null;
-    }
-  }
-
-  
-  set is_default(bool? value) {
-    rawData["is_default"] = value;
+  set chat_unique_id(String? value) {
+    rawData["chat_unique_id"] = value;
   }
 
 
@@ -149,23 +136,21 @@ class SessionIsarDatabase extends JsonScheme {
 
 
   
-  static SessionIsarDatabase create({
+  static ChatDatabase create({
               bool schemeUtilsIsSetDefaultData = false,
 
-    String special_type = "sessionIsarDatabase",
-    num? account_user_id,
-    String? token,
-    bool? is_default,
+    String special_type = "chatDatabase",
+      List<num>? chat_ids,
+    String? chat_unique_id,
     String? from_app_id,
     num? owner_account_user_id,
 })  {
-    // SessionIsarDatabase sessionIsarDatabase = SessionIsarDatabase({
-final Map sessionIsarDatabase_data_create_json = {
+    // ChatDatabase chatDatabase = ChatDatabase({
+final Map chatDatabase_data_create_json = {
   
       "@type": special_type,
-      "account_user_id": account_user_id,
-      "token": token,
-      "is_default": is_default,
+      "chat_ids": chat_ids,
+      "chat_unique_id": chat_unique_id,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
 
@@ -173,16 +158,16 @@ final Map sessionIsarDatabase_data_create_json = {
 };
 
 
-          sessionIsarDatabase_data_create_json.removeWhere((key, value) => value == null);
+          chatDatabase_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (sessionIsarDatabase_data_create_json.containsKey(key) == false) {
-          sessionIsarDatabase_data_create_json[key] = value;
+        if (chatDatabase_data_create_json.containsKey(key) == false) {
+          chatDatabase_data_create_json[key] = value;
         }
       });
     }
-return SessionIsarDatabase(sessionIsarDatabase_data_create_json);
+return ChatDatabase(chatDatabase_data_create_json);
 
 
       }

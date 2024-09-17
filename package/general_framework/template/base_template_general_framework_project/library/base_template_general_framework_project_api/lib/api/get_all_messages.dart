@@ -37,17 +37,18 @@ import 'dart:async';
 
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
 import 'package:base_template_general_framework_project_api/update/update.dart';
+import 'package:base_template_general_framework_project_api_database/chat/chat.dart';
 import 'package:base_template_general_framework_project_api_database/message/message.dart';
+import 'package:base_template_general_framework_project_scheme/converter/message.dart';
+import 'package:base_template_general_framework_project_scheme/database_scheme/chat_database.dart';
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 
-extension BaseTemplateGeneralFrameworkProjectApiExtensiongetAllMessagesMessages
-    on BaseTemplateGeneralFrameworkProjectApi {
+extension BaseTemplateGeneralFrameworkProjectApiExtensiongetAllMessagesMessages on BaseTemplateGeneralFrameworkProjectApi {
   FutureOr<Messages> api_getAllMessages({
     required InvokeRequestData invokeRequestData,
   }) async {
-    final GetAllMessages getAllMessages =
-        invokeRequestData.parametersBuilder<GetAllMessages>(
+    final GetAllMessages getAllMessages = invokeRequestData.parametersBuilder<GetAllMessages>(
       builder: (parameters) {
         return GetAllMessages(parameters.toJson());
       },
@@ -59,14 +60,27 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetAllMessagesMessages
         "message": "chat_id_bad_format",
       });
     }
-    final List<Message> messages =
-        (await generalFrameworkApiDatabase.message_getMessageAllMessage(
-                chat_id: getAllMessages.chat_id ?? 0,
-                user_id: invokeRequestData.accountDatabase.id ?? 0,
-                offset: getAllMessages.offset ?? 0,
-                limit: getAllMessages.limit ?? 100))
-            .map((e) {
-      return Message(e.toJson());
+
+    final ChatDatabase? chatDatabase = await generalFrameworkApiDatabase.chat_getChatDatabase(
+      chat_id: getAllMessages.chat_id ?? 0,
+      user_id: invokeRequestData.accountDatabase.id ?? 0,
+    );
+    if (chatDatabase == null) {
+      return Messages({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+    final chat_unique_id = chatDatabase.chat_unique_id ?? "";
+    if (chat_unique_id.isEmpty) {
+      return Messages({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+
+    final List<Message> messages = (await generalFrameworkApiDatabase.message_getMessageAllMessage(chat_unique_id: chat_unique_id, offset: getAllMessages.offset ?? 0, limit: getAllMessages.limit ?? 100)).map((e) {
+      return e.toMessage(chat_id: getAllMessages.chat_id ?? 0,);
     }).toList();
     return Messages.create(
       total_count: messages.length,
