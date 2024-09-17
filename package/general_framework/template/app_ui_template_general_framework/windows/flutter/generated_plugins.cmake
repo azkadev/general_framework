@@ -3,6 +3,18 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  battery_plus
+  camera_windows
+  flutter_tts
+  gamepads_windows
+  local_auth_windows
+  media_kit_video
+  permission_handler_windows
+  screen_brightness_windows
+  screen_retriever
+  sim_card_info
+  url_launcher_windows
+  window_manager
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
