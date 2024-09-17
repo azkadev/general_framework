@@ -519,7 +519,10 @@ import 'dart:async';
 
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
 import 'package:base_template_general_framework_project_api/update/update.dart';
+import 'package:base_template_general_framework_project_api_database/chat/chat.dart';
 import 'package:base_template_general_framework_project_api_database/message/message.dart';
+import 'package:base_template_general_framework_project_scheme/converter/message.dart';
+import 'package:base_template_general_framework_project_scheme/database_scheme/chat_database.dart';
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 
@@ -541,14 +544,35 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetAllMessagesMessages
         "message": "chat_id_bad_format",
       });
     }
+
+    final ChatDatabase? chatDatabase =
+        await generalFrameworkApiDatabase.chat_getChatDatabase(
+      chat_id: getAllMessages.chat_id ?? 0,
+      user_id: invokeRequestData.accountDatabase.id ?? 0,
+    );
+    if (chatDatabase == null) {
+      return Messages({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+    final chat_unique_id = chatDatabase.chat_unique_id ?? "";
+    if (chat_unique_id.isEmpty) {
+      return Messages({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+
     final List<Message> messages =
         (await generalFrameworkApiDatabase.message_getMessageAllMessage(
-                chat_id: getAllMessages.chat_id ?? 0,
-                user_id: invokeRequestData.accountDatabase.id ?? 0,
+                chat_unique_id: chat_unique_id,
                 offset: getAllMessages.offset ?? 0,
                 limit: getAllMessages.limit ?? 100))
             .map((e) {
-      return Message(e.toJson());
+      return e.toMessage(
+        chat_id: getAllMessages.chat_id ?? 0,
+      );
     }).toList();
     return Messages.create(
       total_count: messages.length,
@@ -749,6 +773,7 @@ import 'dart:async';
 
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
 import 'package:base_template_general_framework_project_api/update/update.dart';
+import 'package:base_template_general_framework_project_api_database/chat/chat.dart';
 import 'package:base_template_general_framework_project_api_database/message/message.dart';
 import 'package:base_template_general_framework_project_scheme/converter/message.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
@@ -772,10 +797,29 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMessageMessage
         "message": "chat_id_bad_format",
       });
     }
-    final MessageDatabase? message_data =
-        await generalFrameworkApiDatabase.message_getMessageByMessageId(
+
+    final ChatDatabase? chatDatabase =
+        await generalFrameworkApiDatabase.chat_getChatDatabase(
       chat_id: getMessage.chat_id ?? 0,
       user_id: invokeRequestData.accountDatabase.id ?? 0,
+    );
+    if (chatDatabase == null) {
+      return Message({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+    final chat_unique_id = chatDatabase.chat_unique_id ?? "";
+    if (chat_unique_id.isEmpty) {
+      return Message({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+
+    final MessageDatabase? message_data =
+        await generalFrameworkApiDatabase.message_getMessageByMessageId(
+      chat_unique_id: chat_unique_id,
       message_id: getMessage.message_id ?? 0,
     );
     if (message_data == null) {
@@ -785,7 +829,9 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMessageMessage
       });
     }
 
-    return message_data.toMessage();
+    return message_data.toMessage(
+      chat_id: getMessage.chat_id ?? 0,
+    );
   }
 }
 """,
@@ -838,8 +884,10 @@ import 'dart:async';
 
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
 import 'package:base_template_general_framework_project_api/update/update.dart';
+import 'package:base_template_general_framework_project_api_database/chat/chat.dart';
 import 'package:base_template_general_framework_project_api_database/message/message.dart';
 import 'package:base_template_general_framework_project_scheme/converter/message.dart';
+import 'package:base_template_general_framework_project_scheme/database_scheme/chat_database.dart';
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 
@@ -862,18 +910,38 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMessagesMessages
         "message": "chat_id_bad_format",
       });
     }
-    final num user_id = invokeRequestData.accountDatabase.id ?? 0;
+
+    final ChatDatabase? chatDatabase =
+        await generalFrameworkApiDatabase.chat_getChatDatabase(
+      chat_id: chat_id,
+      user_id: invokeRequestData.accountDatabase.id ?? 0,
+    );
+    if (chatDatabase == null) {
+      return Messages({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+    final chat_unique_id = chatDatabase.chat_unique_id ?? "";
+    if (chat_unique_id.isEmpty) {
+      return Messages({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+
     for (final num message_id in getMessages.message_ids) {
       final result =
           await generalFrameworkApiDatabase.message_getMessageByMessageId(
-        chat_id: chat_id,
-        user_id: user_id,
+        chat_unique_id: chat_unique_id,
         message_id: message_id,
       );
       if (result == null) {
         continue;
       }
-      messages.add(result.toMessage());
+      messages.add(result.toMessage(
+        chat_id: chat_id,
+      ));
     }
     return Messages.create(
       total_count: messages.length,
@@ -1392,6 +1460,7 @@ import 'dart:async';
 
 import 'package:base_template_general_framework_project_api/base_template_general_framework_project_api_core.dart';
 import 'package:base_template_general_framework_project_api/update/update.dart';
+import 'package:base_template_general_framework_project_api_database/chat/chat.dart';
 import 'package:base_template_general_framework_project_api_database/message/message.dart';
 import 'package:base_template_general_framework_project_scheme/converter/message.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
@@ -1428,10 +1497,27 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsendMessageMessage
         "message": "text_cant_empty",
       });
     }
-
+    final ChatDatabase? chatDatabase =
+        await generalFrameworkApiDatabase.chat_getChatDatabase(
+      chat_id: chat_id_parameters,
+      user_id: invokeRequestData.accountDatabase.id ?? 0,
+    );
+    if (chatDatabase == null) {
+      return Message({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
+    final chat_unique_id = chatDatabase.chat_unique_id ?? "";
+    if (chat_unique_id.isEmpty) {
+      return Message({
+        "@type": "error",
+        "message": "chat_not_found",
+      });
+    }
     final MessageDatabase? new_message_data =
         await generalFrameworkApiDatabase.message_createNewMessage(
-      chat_id: chat_id_parameters,
+      chat_unique_id: chat_unique_id,
       user_id: invokeRequestData.accountDatabase.id ?? 0,
       newMessageDatabase: MessageDatabase.create(
         date: DateTime.now().millisecondsSinceEpoch,
@@ -1444,7 +1530,9 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsendMessageMessage
         "message": "cant_create_new_message",
       });
     }
-    return new_message_data.toMessage();
+    return new_message_data.toMessage(
+      chat_id: chat_id_parameters,
+    );
   }
 }
 """,
@@ -1815,7 +1903,9 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsignInSession
     if (account_data_old == null) {
       return Session({"@type": "error", "message": "account_not_found"});
     }
-
+    if (account_data_old.password != password_parameters) {
+      return Session({"@type": "error", "message": "password_wrong"});
+    }
     final SessionDatabase? session_data_new =
         await generalFrameworkApiDatabase.session_createNewSession(
       account_user_id: account_data_old.id ?? 0,
@@ -2577,7 +2667,7 @@ wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value:
-                r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-16 06:41:53.668372","version":"3.22.3"}""",
+                r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-17 22:44:17.458379","version":"3.22.3"}""",
             children: [],
           ),
           ScriptGenerator(
@@ -3126,6 +3216,140 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount
                 directory_base:
                     Directory("base_template_general_framework_project"),
                 file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api_database/lib/chat"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.directory,
+                value: "",
+                children: [
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_database/lib/chat/chat.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
+// ignore_for_file: non_constant_identifier_names
+
+import 'dart:async';
+
+import 'package:base_template_general_framework_project_api_database/base_template_general_framework_project_api_database_core.dart';
+import 'package:base_template_general_framework_project_scheme/database_scheme/chat_database.dart';
+import 'package:base_template_general_framework_project_scheme/schemes/default_scheme.dart';
+import 'package:general_lib/extension/map.dart';
+
+extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionChat
+    on BaseTemplateGeneralFrameworkProjectApiDatabase {
+  void chat_utils_removeUnusedAccountDatabase({
+    required ChatDatabase chatDatabase,
+  }) {
+    chatDatabase.rawData.removeByKeys(["@type", "id"]);
+    List keys = ChatDatabase.defaultData.keys.toList();
+    chatDatabase.rawData
+        .removeWhere((key, value) => keys.contains(key) == false);
+  }
+
+  Future<String?> chat_generateNewChatUniqueId() async {
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 1));
+      final String new_chat_unique_id =
+          BaseTemplateGeneralFrameworkProjectSchemeDefault
+              .utils_generateSessionToken();
+
+      final result = await supabase_chat
+          .select("id")
+          .eq("chat_unique_id", new_chat_unique_id)
+          .limit(1)
+          .maybeSingle();
+      if (result == null) {
+        return new_chat_unique_id;
+      }
+    }
+  }
+
+  Future<ChatDatabase?> chat_createNewChat({
+    required num chat_id,
+    required num user_id,
+    required ChatDatabase newChatDatabase,
+  }) async {
+    final String new_chat_unique_id =
+        (await chat_generateNewChatUniqueId() ?? "").trim();
+    if (new_chat_unique_id.isEmpty) {
+      return null;
+    }
+    chat_utils_removeUnusedAccountDatabase(chatDatabase: newChatDatabase);
+    newChatDatabase.chat_ids = [chat_id, user_id];
+    newChatDatabase.chat_unique_id = new_chat_unique_id;
+    final new_data = await supabase_chat
+        .insert(newChatDatabase.toJson(), defaultToNull: false)
+        .select()
+        .limit(1)
+        .maybeSingle();
+    if (new_data == null) {
+      return null;
+    }
+    return ChatDatabase(new_data);
+  }
+
+  Future<ChatDatabase?> chat_getChatDatabase({
+    required num chat_id,
+    required num user_id,
+  }) async {
+    final result = await supabase_account
+        .select()
+        .containedBy("chat_ids", [chat_id, user_id])
+        .limit(1)
+        .maybeSingle();
+    if (result == null) {
+      return null;
+    }
+    return ChatDatabase(result);
+  }
+}
+""",
+                    children: [],
+                  )
+                ],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
                     "library/base_template_general_framework_project_api_database/lib/message"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
@@ -3183,28 +3407,26 @@ import 'package:general_lib/extension/map.dart';
 extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
     on BaseTemplateGeneralFrameworkProjectApiDatabase {
   Future<List<MessageDatabase>> message_getMessageAllMessage({
-    required num chat_id,
-    required num user_id,
+    required String chat_unique_id,
     required num offset,
     required num limit,
   }) async {
     return (await supabase_message
             .select()
-            .containedBy("chat_ids", [chat_id, user_id]).range(
-                offset.toInt(), limit.toInt()))
+            .eq("chat_unique_id", chat_unique_id)
+            .range(offset.toInt(), limit.toInt()))
         .map((e) {
       return MessageDatabase(e);
     }).toList();
   }
 
   Future<MessageDatabase?> message_getMessageByMessageId({
-    required num chat_id,
-    required num user_id,
+    required String chat_unique_id,
     required num message_id,
   }) async {
     final result = await supabase_message
         .select()
-        .containedBy("chat_ids", [chat_id, user_id])
+        .eq("chat_unique_id", chat_unique_id)
         .eq("message_id", message_id)
         .limit(1)
         .maybeSingle();
@@ -3215,12 +3437,11 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
   }
 
   Future<int> message_getLastMessageId({
-    required num chat_id,
-    required num user_id,
+    required String chat_unique_id,
   }) async {
     final result = await supabase_message
         .select()
-        .containedBy("chat_ids", [chat_id, user_id])
+        .eq("chat_unique_id", chat_unique_id)
         .order("message_id", ascending: false)
         .limit(1)
         .maybeSingle();
@@ -3232,19 +3453,19 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
   }
 
   Future<bool> message_saveMessage({
-    required num chat_id,
+    required String chat_unique_id,
     required num user_id,
     required num message_id,
     required MessageDatabase newMessageDatabase,
   }) async {
     message_utils_removeUnusedMessageDatabase(
         messageDatabase: newMessageDatabase);
-    newMessageDatabase.chat_ids = [chat_id, user_id];
+    newMessageDatabase.chat_unique_id = chat_unique_id;
     newMessageDatabase.from_user_id = user_id;
     newMessageDatabase.message_id = message_id;
     final result = await supabase_message
         .select()
-        .containedBy("chat_ids", [chat_id, user_id])
+        .eq("chat_unique_id", chat_unique_id)
         .eq("from_user_id", user_id)
         .eq("message_id", message_id)
         .limit(1)
@@ -3265,18 +3486,18 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
   }
 
   Future<MessageDatabase?> message_createNewMessage({
-    required num chat_id,
+    required String chat_unique_id,
     required num user_id,
     required MessageDatabase newMessageDatabase,
   }) async {
     final int new_message_id =
-        await message_utils_newMessageId(chat_id: chat_id, user_id: user_id);
+        await message_utils_newMessageId(chat_unique_id: chat_unique_id);
     if (new_message_id < 1) {
       return null;
     }
     message_utils_removeUnusedMessageDatabase(
         messageDatabase: newMessageDatabase);
-    newMessageDatabase.chat_ids = [chat_id, user_id];
+    newMessageDatabase.chat_unique_id = chat_unique_id;
     newMessageDatabase.from_user_id = user_id;
     newMessageDatabase.message_id = new_message_id;
     final new_data = await supabase_message
@@ -3287,22 +3508,24 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
     if (new_data == null) {
       return null;
     }
-    new_data["chat_ids"] = [chat_id, user_id];
+    new_data["chat_unique_id"] = chat_unique_id;
+    // new_data[newMessageDatabase.chat_unique_id = chat_unique_id;];
+    // new_data["chat_ids"] = [chat_id, user_id];
     return MessageDatabase(new_data);
   }
 
   Future<int> message_utils_newMessageId({
-    required num chat_id,
-    required num user_id,
+    required String chat_unique_id,
   }) async {
-    int new_message_id =
-        (await message_getLastMessageId(chat_id: chat_id, user_id: user_id)) +
-            1;
+    int new_message_id = (await message_getLastMessageId(
+          chat_unique_id: chat_unique_id,
+        )) +
+        1;
     while (true) {
       await Future.delayed(Duration(milliseconds: 1));
       final result = await supabase_message
           .select()
-          .containedBy("chat_ids", [chat_id, user_id])
+          .eq("chat_unique_id", chat_unique_id)
           .eq("message_id", new_message_id)
           .order("message_id", ascending: false)
           .limit(1)
@@ -3564,6 +3787,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 export "base_template_general_framework_project_api_database_core.dart";
 export "account/account.dart";
+export "chat/chat.dart";
 export "message/message.dart";
 export "session/session.dart";
 """,
@@ -3680,6 +3904,10 @@ class BaseTemplateGeneralFrameworkProjectApiDatabase
 
   SupabaseQueryBuilder get supabase_account {
     return supabase_core.from("account");
+  }
+
+  SupabaseQueryBuilder get supabase_chat {
+    return supabase_core.from("chat");
   }
 
   SupabaseQueryBuilder get supabase_message {
@@ -3824,7 +4052,7 @@ wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value:
-                r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-16 06:41:59.048633","version":"3.22.3"}""",
+                r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-17 22:44:29.913392","version":"3.22.3"}""",
             children: [],
           ),
           ScriptGenerator(
@@ -4482,6 +4710,81 @@ void main() {
                 directory_base:
                     Directory("base_template_general_framework_project"),
                 file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/example/.flutter-plugins"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value:
+                    r"""# This is a generated file; do not edit or check into version control.
+battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
+camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
+camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
+camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
+camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
+camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
+file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
+flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
+flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
+flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
+gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
+gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
+gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
+gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
+gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
+gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
+local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
+local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
+local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
+local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
+media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
+package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
+path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
+path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
+path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
+path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
+permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
+permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
+permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
+permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
+safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
+screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
+screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
+screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
+screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
+screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
+sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
+sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
+speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
+url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
+url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
+url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
+url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
+url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
+url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
+url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
+volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
+wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
+""",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/example/.flutter-plugins-dependencies"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value:
+                    r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-17 22:44:26.568764","version":"3.22.3"}""",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
                     "library/base_template_general_framework_project_api_server/example/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
@@ -4899,6 +5202,81 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                 children: [],
               )
             ],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_server/.flutter-plugins"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value:
+                r"""# This is a generated file; do not edit or check into version control.
+battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
+camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
+camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
+camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
+camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
+camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
+file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
+flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
+flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
+flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
+gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
+gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
+gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
+gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
+gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
+gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
+local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
+local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
+local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
+local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
+media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
+package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
+path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
+path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
+path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
+path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
+permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
+permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
+permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
+permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
+safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
+screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
+screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
+screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
+screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
+screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
+sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
+sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
+speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
+url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
+url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
+url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
+url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
+url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
+url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
+url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
+volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
+wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_server/.flutter-plugins-dependencies"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value:
+                r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-17 22:44:22.884861","version":"3.22.3"}""",
+            children: [],
           ),
           ScriptGenerator(
             is_generate: true,
@@ -5637,6 +6015,81 @@ void main() {
                     children: [],
                   )
                 ],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/.flutter-plugins"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value:
+                    r"""# This is a generated file; do not edit or check into version control.
+battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
+camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
+camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
+camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
+camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
+camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
+file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
+flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
+flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
+flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
+gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
+gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
+gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
+gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
+gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
+gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
+local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
+local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
+local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
+local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
+media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
+package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
+path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
+path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
+path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
+path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
+permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
+permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
+permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
+permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
+safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
+screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
+screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
+screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
+screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
+screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
+sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
+sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
+speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
+url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
+url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
+url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
+url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
+url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
+url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
+url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
+volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
+wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
+""",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/.flutter-plugins-dependencies"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value:
+                    r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-17 22:54:23.218152","version":"3.22.3"}""",
+                children: [],
               ),
               ScriptGenerator(
                 is_generate: true,
@@ -6525,7 +6978,7 @@ wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value:
-                r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-16 06:41:35.066055","version":"3.22.3"}""",
+                r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-17 22:54:19.735901","version":"3.22.3"}""",
             children: [],
           ),
           ScriptGenerator(
@@ -10593,41 +11046,7 @@ add_custom_target(flutter_assemble DEPENDS
                             "library/base_template_general_framework_project_client_database/example/linux/flutter/generated_plugin_registrant.cc"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-//
+                        value: r"""//
 //  Generated file. Do not edit.
 //
 
@@ -10695,41 +11114,7 @@ void fl_register_plugins(FlPluginRegistry* registry);
                             "library/base_template_general_framework_project_client_database/example/linux/flutter/generated_plugins.cmake"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-#
+                        value: r"""#
 # Generated file, do not edit.
 #
 
@@ -13535,41 +13920,7 @@ add_custom_target(flutter_assemble DEPENDS
                             "library/base_template_general_framework_project_client_database/example/windows/flutter/generated_plugin_registrant.cc"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-//
+                        value: r"""//
 //  Generated file. Do not edit.
 //
 
@@ -13650,41 +14001,7 @@ void RegisterPlugins(flutter::PluginRegistry* registry);
                             "library/base_template_general_framework_project_client_database/example/windows/flutter/generated_plugins.cmake"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-#
+                        value: r"""#
 # Generated file, do not edit.
 #
 
@@ -15064,7 +15381,7 @@ wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value:
-                    r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"isar_flutter_libs","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-16 06:41:41.924002","version":"3.22.3"}""",
+                    r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"isar_flutter_libs","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-17 22:54:34.801030","version":"3.22.3"}""",
                 children: [],
               ),
               ScriptGenerator(
@@ -15545,12 +15862,10 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
-import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/message_database.dart'
+import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/message_isar_database.dart'
     as isar_scheme;
-import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
-import 'package:base_template_general_framework_project_scheme/database_scheme/message_database.dart';
+import 'package:base_template_general_framework_project_scheme/database_scheme/message_isar_database.dart';
 import 'package:general_lib/extension/map.dart';
-// import 'package:base_template_general_framework_project_scheme/database_scheme/account_database.dart';
 import 'package:isar/isar.dart';
 
 extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
@@ -15560,7 +15875,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int user_id,
   }) {
     isar_core.write((isar) {
-      isar.messageDatabases
+      isar.messageIsarDatabases
           .where()
           .chat_idsElementBetween(chat_id, user_id)
           .or()
@@ -15576,7 +15891,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int message_id,
   }) {
     isar_core.write((isar) {
-      isar.messageDatabases
+      isar.messageIsarDatabases
           .where()
           .chat_idsElementBetween(chat_id, user_id)
           .from_user_idEqualTo(user_id)
@@ -15596,7 +15911,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int message_id,
   }) {
     isar_core.write((isar) {
-      isar.messageDatabases
+      isar.messageIsarDatabases
           .where()
           .chat_idsElementBetween(chat_id, user_id)
           .message_idEqualTo(message_id)
@@ -15608,12 +15923,12 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     return true;
   }
 
-  MessageDatabase? message_getMessage({
+  MessageIsarDatabase? message_getMessage({
     required int chat_id,
     required int user_id,
     required int message_id,
   }) {
-    final result = isar_core.messageDatabases
+    final result = isar_core.messageIsarDatabases
         .where()
         .chat_idsElementBetween(chat_id, user_id)
         .from_user_idEqualTo(user_id)
@@ -15626,15 +15941,15 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     if (result == null) {
       return null;
     }
-    return MessageDatabase(result.toJson());
+    return MessageIsarDatabase(result.toJson());
   }
 
-  MessageDatabase? message_getMessageByMessageId({
+  MessageIsarDatabase? message_getMessageByMessageId({
     required int chat_id,
     required int user_id,
     required int message_id,
   }) {
-    final result = isar_core.messageDatabases
+    final result = isar_core.messageIsarDatabases
         .where()
         .chat_idsElementBetween(chat_id, user_id)
         .message_idEqualTo(message_id)
@@ -15645,19 +15960,19 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     if (result == null) {
       return null;
     }
-    return MessageDatabase(result.toJson());
+    return MessageIsarDatabase(result.toJson());
   }
 
   ({
     int message_count,
-    Iterable<MessageDatabase> messages,
+    Iterable<MessageIsarDatabase> messages,
   }) message_getMessages({
     required int chat_id,
     required int user_id,
     required int? offset,
     required int? limit,
   }) {
-    final isar_builder = isar_core.messageDatabases
+    final isar_builder = isar_core.messageIsarDatabases
         .where()
         .chat_idsElementBetween(chat_id, user_id)
         .or()
@@ -15666,7 +15981,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     return (
       message_count: message_count,
       messages: isar_builder.findAll(offset: offset, limit: limit).map((e) {
-        return MessageDatabase(e.toJson());
+        return MessageIsarDatabase(e.toJson());
       }),
     );
   }
@@ -15675,16 +15990,16 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int chat_id,
     required int user_id,
     required int message_id,
-    required MessageDatabase newMessageDatabase,
+    required MessageIsarDatabase newMessageIsarDatabase,
   }) {
-    newMessageDatabase.rawData.removeByKeys(["id"]);
-    newMessageDatabase.chat_ids = [
+    newMessageIsarDatabase.rawData.removeByKeys(["id"]);
+    newMessageIsarDatabase.chat_ids = [
       chat_id,
       user_id,
     ];
-    newMessageDatabase.from_user_id = user_id;
-    newMessageDatabase.message_id = message_id;
-    final result = isar_core.messageDatabases
+    newMessageIsarDatabase.from_user_id = user_id;
+    newMessageIsarDatabase.message_id = message_id;
+    final result = isar_core.messageIsarDatabases
         .where()
         .chat_idsElementBetween(chat_id, user_id)
         .from_user_idEqualTo(user_id)
@@ -15695,33 +16010,34 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
         .message_idEqualTo(message_id)
         .findFirst();
     if (result == null) {
-      isar_scheme.MessageDatabase new_message_database_isar =
-          isar_scheme.MessageDatabase();
-      new_message_database_isar.id = isar_core.messageDatabases.autoIncrement();
+      isar_scheme.MessageIsarDatabase new_message_database_isar =
+          isar_scheme.MessageIsarDatabase();
+      new_message_database_isar.id =
+          isar_core.messageIsarDatabases.autoIncrement();
       new_message_database_isar.chat_ids =
-          newMessageDatabase.chat_ids.map((e) => e.toInt()).toList();
+          newMessageIsarDatabase.chat_ids.map((e) => e.toInt()).toList();
       new_message_database_isar.from_user_id = user_id;
       new_message_database_isar.message_id = message_id;
 
-      newMessageDatabase.rawData.forEach((key, value) {
+      newMessageIsarDatabase.rawData.forEach((key, value) {
         if (key == "chat_ids") {
           return;
         }
         new_message_database_isar[key] = value;
       });
       isar_core.write((isar) {
-        isar.messageDatabases.put(new_message_database_isar);
+        isar.messageIsarDatabases.put(new_message_database_isar);
       });
       return true;
     }
-    newMessageDatabase.rawData.forEach((key, value) {
+    newMessageIsarDatabase.rawData.forEach((key, value) {
       if (key == "chat_ids") {
         return;
       }
       result[key] = value;
     });
     isar_core.write((isar) {
-      isar.messageDatabases.put(result);
+      isar.messageIsarDatabases.put(result);
     });
     return true;
   }
@@ -16153,7 +16469,7 @@ import 'dart:io';
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database.dart';
 import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/message_database.dart'
     as isar_scheme;
-import 'package:base_template_general_framework_project_scheme/database_scheme/message_database.dart';
+import 'package:base_template_general_framework_project_scheme/database_scheme/message_isar_database.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:http/http.dart';
 import 'package:isar/isar.dart';
@@ -16172,7 +16488,7 @@ void main() async {
     print("Wait");
     await Future.delayed(Duration(seconds: 2));
     int message_id = 1;
-    final MessageDatabase? messageDatabase =
+    final MessageIsarDatabase? messageDatabase =
         database.message_getMessageByMessageId(
       chat_id: chat_id,
       user_id: user_id,
@@ -16274,7 +16590,7 @@ wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value:
-                r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-16 06:41:41.600156","version":"3.22.3"}""",
+                r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-17 22:54:31.355833","version":"3.22.3"}""",
             children: [],
           ),
           ScriptGenerator(
@@ -19158,6 +19474,1671 @@ extension AccountDatabaseQueryProperty3<R1, R2>
                         directory_base: Directory(
                             "base_template_general_framework_project"),
                         file_system_entity: File(
+                            "library/base_template_general_framework_project_client_isar_scheme/lib/database/scheme/chat_database.dart"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.file,
+                        value: r"""/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
+// ignore_for_file: non_constant_identifier_names, unnecessary_this
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+import 'dart:convert';
+import 'package:isar/isar.dart';
+part "chat_database.g.dart";
+
+@collection
+class ChatDatabase {
+  // Id id = Isar.autoIncrement;
+
+  String special_type = "chatDatabase";
+
+  List<int> chat_ids = [0];
+
+  String chat_unique_id = "";
+
+  String from_app_id = "";
+
+  int owner_account_user_id = 0;
+
+  int id = 0;
+
+  /// operator map data
+  operator [](key) {
+    return toJson()[key];
+  }
+
+  /// operator map data
+  void operator []=(key, value) {
+    if (key == "@type") {
+      this.special_type = value;
+    }
+
+    if (key == "chat_ids") {
+      this.chat_ids = value;
+    }
+
+    if (key == "chat_unique_id") {
+      this.chat_unique_id = value;
+    }
+
+    if (key == "from_app_id") {
+      this.from_app_id = value;
+    }
+
+    if (key == "owner_account_user_id") {
+      this.owner_account_user_id = value;
+    }
+
+    if (key == "id") {
+      this.id = value;
+    }
+  }
+
+  /// return original data json
+  Map utils_remove_values_null() {
+    Map rawData = toJson();
+    rawData.forEach((key, value) {
+      if (value == null) {
+        rawData.remove(key);
+      }
+    });
+    return rawData;
+  }
+
+  /// return original data json
+  Map utils_remove_by_values(List values) {
+    Map rawData = toJson();
+    rawData.forEach((key, value) {
+      for (var element in values) {
+        if (value == element) {
+          rawData.remove(key);
+        }
+      }
+    });
+
+    return rawData;
+  }
+
+  /// return original data json
+  Map utils_remove_by_keys(List keys) {
+    Map rawData = toJson();
+    for (var element in keys) {
+      rawData.remove(element);
+    }
+    return rawData;
+  }
+
+  /// return original data json
+  Map utils_filter_by_keys(List keys) {
+    Map rawData = toJson();
+    Map jsonData = {};
+    for (var key in keys) {
+      jsonData[key] = rawData[key];
+    }
+    return jsonData;
+  }
+
+  /// return original data json
+  Map toMap() {
+    return toJson();
+  }
+
+  /// return original data json
+  Map toJson() {
+    return {
+      "@type": special_type,
+      "chat_ids": chat_ids,
+      "chat_unique_id": chat_unique_id,
+      "from_app_id": from_app_id,
+      "owner_account_user_id": owner_account_user_id,
+      "id": id,
+    };
+  }
+
+  /// return string data encode json original data
+  String toStringPretty() {
+    return JsonEncoder.withIndent(" " * 2).convert(toJson());
+  }
+
+  /// return string data encode json original data
+  @override
+  String toString() {
+    return json.encode(toJson());
+  }
+
+  /// return original data json
+  static Map get defaultData {
+    return {
+      "@type": "chatDatabase",
+      "chat_ids": [0],
+      "chat_unique_id": "",
+      "from_app_id": "",
+      "owner_account_user_id": 0,
+      "id": 0
+    };
+  }
+
+  static ChatDatabase create({
+    bool utils_is_print_data = false,
+  }) {
+    ChatDatabase chatDatabase_data_create = ChatDatabase();
+
+    if (utils_is_print_data) {
+      // print(chatDatabase_data_create.toStringPretty());
+    }
+
+    return chatDatabase_data_create;
+  }
+}
+""",
+                        children: [],
+                      ),
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_isar_scheme/lib/database/scheme/chat_database.g.dart"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.file,
+                        value: r"""/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'chat_database.dart';
+
+// **************************************************************************
+// _IsarCollectionGenerator
+// **************************************************************************
+
+// coverage:ignore-file
+// ignore_for_file: duplicate_ignore, invalid_use_of_protected_member, lines_longer_than_80_chars, constant_identifier_names, avoid_js_rounded_ints, no_leading_underscores_for_local_identifiers, require_trailing_commas, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_in_if_null_operators, library_private_types_in_public_api, prefer_const_constructors
+// ignore_for_file: type=lint
+
+extension GetChatDatabaseCollection on Isar {
+  IsarCollection<int, ChatDatabase> get chatDatabases => this.collection();
+}
+
+const ChatDatabaseSchema = IsarGeneratedSchema(
+  schema: IsarSchema(
+    name: 'ChatDatabase',
+    idName: 'id',
+    embedded: false,
+    properties: [
+      IsarPropertySchema(
+        name: 'special_type',
+        type: IsarType.string,
+      ),
+      IsarPropertySchema(
+        name: 'chat_ids',
+        type: IsarType.longList,
+      ),
+      IsarPropertySchema(
+        name: 'chat_unique_id',
+        type: IsarType.string,
+      ),
+      IsarPropertySchema(
+        name: 'from_app_id',
+        type: IsarType.string,
+      ),
+      IsarPropertySchema(
+        name: 'owner_account_user_id',
+        type: IsarType.long,
+      ),
+    ],
+    indexes: [],
+  ),
+  converter: IsarObjectConverter<int, ChatDatabase>(
+    serialize: serializeChatDatabase,
+    deserialize: deserializeChatDatabase,
+    deserializeProperty: deserializeChatDatabaseProp,
+  ),
+  embeddedSchemas: [],
+);
+
+@isarProtected
+int serializeChatDatabase(IsarWriter writer, ChatDatabase object) {
+  IsarCore.writeString(writer, 1, object.special_type);
+  {
+    final list = object.chat_ids;
+    final listWriter = IsarCore.beginList(writer, 2, list.length);
+    for (var i = 0; i < list.length; i++) {
+      IsarCore.writeLong(listWriter, i, list[i]);
+    }
+    IsarCore.endList(writer, listWriter);
+  }
+  IsarCore.writeString(writer, 3, object.chat_unique_id);
+  IsarCore.writeString(writer, 4, object.from_app_id);
+  IsarCore.writeLong(writer, 5, object.owner_account_user_id);
+  return object.id;
+}
+
+@isarProtected
+ChatDatabase deserializeChatDatabase(IsarReader reader) {
+  final object = ChatDatabase();
+  object.special_type = IsarCore.readString(reader, 1) ?? '';
+  {
+    final length = IsarCore.readList(reader, 2, IsarCore.readerPtrPtr);
+    {
+      final reader = IsarCore.readerPtr;
+      if (reader.isNull) {
+        object.chat_ids = const <int>[];
+      } else {
+        final list =
+            List<int>.filled(length, -9223372036854775808, growable: true);
+        for (var i = 0; i < length; i++) {
+          list[i] = IsarCore.readLong(reader, i);
+        }
+        IsarCore.freeReader(reader);
+        object.chat_ids = list;
+      }
+    }
+  }
+  object.chat_unique_id = IsarCore.readString(reader, 3) ?? '';
+  object.from_app_id = IsarCore.readString(reader, 4) ?? '';
+  object.owner_account_user_id = IsarCore.readLong(reader, 5);
+  object.id = IsarCore.readId(reader);
+  return object;
+}
+
+@isarProtected
+dynamic deserializeChatDatabaseProp(IsarReader reader, int property) {
+  switch (property) {
+    case 1:
+      return IsarCore.readString(reader, 1) ?? '';
+    case 2:
+      {
+        final length = IsarCore.readList(reader, 2, IsarCore.readerPtrPtr);
+        {
+          final reader = IsarCore.readerPtr;
+          if (reader.isNull) {
+            return const <int>[];
+          } else {
+            final list =
+                List<int>.filled(length, -9223372036854775808, growable: true);
+            for (var i = 0; i < length; i++) {
+              list[i] = IsarCore.readLong(reader, i);
+            }
+            IsarCore.freeReader(reader);
+            return list;
+          }
+        }
+      }
+    case 3:
+      return IsarCore.readString(reader, 3) ?? '';
+    case 4:
+      return IsarCore.readString(reader, 4) ?? '';
+    case 5:
+      return IsarCore.readLong(reader, 5);
+    case 0:
+      return IsarCore.readId(reader);
+    default:
+      throw ArgumentError('Unknown property: $property');
+  }
+}
+
+sealed class _ChatDatabaseUpdate {
+  bool call({
+    required int id,
+    String? special_type,
+    String? chat_unique_id,
+    String? from_app_id,
+    int? owner_account_user_id,
+  });
+}
+
+class _ChatDatabaseUpdateImpl implements _ChatDatabaseUpdate {
+  const _ChatDatabaseUpdateImpl(this.collection);
+
+  final IsarCollection<int, ChatDatabase> collection;
+
+  @override
+  bool call({
+    required int id,
+    Object? special_type = ignore,
+    Object? chat_unique_id = ignore,
+    Object? from_app_id = ignore,
+    Object? owner_account_user_id = ignore,
+  }) {
+    return collection.updateProperties([
+          id
+        ], {
+          if (special_type != ignore) 1: special_type as String?,
+          if (chat_unique_id != ignore) 3: chat_unique_id as String?,
+          if (from_app_id != ignore) 4: from_app_id as String?,
+          if (owner_account_user_id != ignore) 5: owner_account_user_id as int?,
+        }) >
+        0;
+  }
+}
+
+sealed class _ChatDatabaseUpdateAll {
+  int call({
+    required List<int> id,
+    String? special_type,
+    String? chat_unique_id,
+    String? from_app_id,
+    int? owner_account_user_id,
+  });
+}
+
+class _ChatDatabaseUpdateAllImpl implements _ChatDatabaseUpdateAll {
+  const _ChatDatabaseUpdateAllImpl(this.collection);
+
+  final IsarCollection<int, ChatDatabase> collection;
+
+  @override
+  int call({
+    required List<int> id,
+    Object? special_type = ignore,
+    Object? chat_unique_id = ignore,
+    Object? from_app_id = ignore,
+    Object? owner_account_user_id = ignore,
+  }) {
+    return collection.updateProperties(id, {
+      if (special_type != ignore) 1: special_type as String?,
+      if (chat_unique_id != ignore) 3: chat_unique_id as String?,
+      if (from_app_id != ignore) 4: from_app_id as String?,
+      if (owner_account_user_id != ignore) 5: owner_account_user_id as int?,
+    });
+  }
+}
+
+extension ChatDatabaseUpdate on IsarCollection<int, ChatDatabase> {
+  _ChatDatabaseUpdate get update => _ChatDatabaseUpdateImpl(this);
+
+  _ChatDatabaseUpdateAll get updateAll => _ChatDatabaseUpdateAllImpl(this);
+}
+
+sealed class _ChatDatabaseQueryUpdate {
+  int call({
+    String? special_type,
+    String? chat_unique_id,
+    String? from_app_id,
+    int? owner_account_user_id,
+  });
+}
+
+class _ChatDatabaseQueryUpdateImpl implements _ChatDatabaseQueryUpdate {
+  const _ChatDatabaseQueryUpdateImpl(this.query, {this.limit});
+
+  final IsarQuery<ChatDatabase> query;
+  final int? limit;
+
+  @override
+  int call({
+    Object? special_type = ignore,
+    Object? chat_unique_id = ignore,
+    Object? from_app_id = ignore,
+    Object? owner_account_user_id = ignore,
+  }) {
+    return query.updateProperties(limit: limit, {
+      if (special_type != ignore) 1: special_type as String?,
+      if (chat_unique_id != ignore) 3: chat_unique_id as String?,
+      if (from_app_id != ignore) 4: from_app_id as String?,
+      if (owner_account_user_id != ignore) 5: owner_account_user_id as int?,
+    });
+  }
+}
+
+extension ChatDatabaseQueryUpdate on IsarQuery<ChatDatabase> {
+  _ChatDatabaseQueryUpdate get updateFirst =>
+      _ChatDatabaseQueryUpdateImpl(this, limit: 1);
+
+  _ChatDatabaseQueryUpdate get updateAll => _ChatDatabaseQueryUpdateImpl(this);
+}
+
+class _ChatDatabaseQueryBuilderUpdateImpl implements _ChatDatabaseQueryUpdate {
+  const _ChatDatabaseQueryBuilderUpdateImpl(this.query, {this.limit});
+
+  final QueryBuilder<ChatDatabase, ChatDatabase, QOperations> query;
+  final int? limit;
+
+  @override
+  int call({
+    Object? special_type = ignore,
+    Object? chat_unique_id = ignore,
+    Object? from_app_id = ignore,
+    Object? owner_account_user_id = ignore,
+  }) {
+    final q = query.build();
+    try {
+      return q.updateProperties(limit: limit, {
+        if (special_type != ignore) 1: special_type as String?,
+        if (chat_unique_id != ignore) 3: chat_unique_id as String?,
+        if (from_app_id != ignore) 4: from_app_id as String?,
+        if (owner_account_user_id != ignore) 5: owner_account_user_id as int?,
+      });
+    } finally {
+      q.close();
+    }
+  }
+}
+
+extension ChatDatabaseQueryBuilderUpdate
+    on QueryBuilder<ChatDatabase, ChatDatabase, QOperations> {
+  _ChatDatabaseQueryUpdate get updateFirst =>
+      _ChatDatabaseQueryBuilderUpdateImpl(this, limit: 1);
+
+  _ChatDatabaseQueryUpdate get updateAll =>
+      _ChatDatabaseQueryBuilderUpdateImpl(this);
+}
+
+extension ChatDatabaseQueryFilter
+    on QueryBuilder<ChatDatabase, ChatDatabase, QFilterCondition> {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      special_typeEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      special_typeGreaterThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      special_typeGreaterThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      special_typeLessThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      special_typeLessThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      special_typeBetween(
+    String lower,
+    String upper, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 1,
+          lower: lower,
+          upper: upper,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      special_typeStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        StartsWithCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      special_typeEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EndsWithCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      special_typeContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        ContainsCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      special_typeMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        MatchesCondition(
+          property: 1,
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      special_typeIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const EqualCondition(
+          property: 1,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      special_typeIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const GreaterCondition(
+          property: 1,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsElementEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 2,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsElementGreaterThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 2,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsElementGreaterThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 2,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsElementLessThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 2,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsElementLessThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 2,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsElementBetween(
+    int lower,
+    int upper,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 2,
+          lower: lower,
+          upper: upper,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsIsEmpty() {
+    return not().chat_idsIsNotEmpty();
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_idsIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const GreaterOrEqualCondition(property: 2, value: null),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 3,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idGreaterThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 3,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idGreaterThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 3,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idLessThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 3,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idLessThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 3,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idBetween(
+    String lower,
+    String upper, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 3,
+          lower: lower,
+          upper: upper,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        StartsWithCondition(
+          property: 3,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EndsWithCondition(
+          property: 3,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        ContainsCondition(
+          property: 3,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        MatchesCondition(
+          property: 3,
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const EqualCondition(
+          property: 3,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      chat_unique_idIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const GreaterCondition(
+          property: 3,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      from_app_idEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 4,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      from_app_idGreaterThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 4,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      from_app_idGreaterThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 4,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      from_app_idLessThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 4,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      from_app_idLessThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 4,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      from_app_idBetween(
+    String lower,
+    String upper, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 4,
+          lower: lower,
+          upper: upper,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      from_app_idStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        StartsWithCondition(
+          property: 4,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      from_app_idEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EndsWithCondition(
+          property: 4,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      from_app_idContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        ContainsCondition(
+          property: 4,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      from_app_idMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        MatchesCondition(
+          property: 4,
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      from_app_idIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const EqualCondition(
+          property: 4,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      from_app_idIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const GreaterCondition(
+          property: 4,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      owner_account_user_idEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 5,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      owner_account_user_idGreaterThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 5,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      owner_account_user_idGreaterThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 5,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      owner_account_user_idLessThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 5,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      owner_account_user_idLessThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 5,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      owner_account_user_idBetween(
+    int lower,
+    int upper,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 5,
+          lower: lower,
+          upper: upper,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> idEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 0,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> idGreaterThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 0,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      idGreaterThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 0,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> idLessThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 0,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
+      idLessThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 0,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> idBetween(
+    int lower,
+    int upper,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 0,
+          lower: lower,
+          upper: upper,
+        ),
+      );
+    });
+  }
+}
+
+extension ChatDatabaseQueryObject
+    on QueryBuilder<ChatDatabase, ChatDatabase, QFilterCondition> {}
+
+extension ChatDatabaseQuerySortBy
+    on QueryBuilder<ChatDatabase, ChatDatabase, QSortBy> {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortBySpecial_type(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        1,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortBySpecial_typeDesc(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        1,
+        sort: Sort.desc,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByChat_unique_id(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        3,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
+      sortByChat_unique_idDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        3,
+        sort: Sort.desc,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByFrom_app_id(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        4,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByFrom_app_idDesc(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        4,
+        sort: Sort.desc,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
+      sortByOwner_account_user_id() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(5);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
+      sortByOwner_account_user_idDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(5, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortById() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(0);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(0, sort: Sort.desc);
+    });
+  }
+}
+
+extension ChatDatabaseQuerySortThenBy
+    on QueryBuilder<ChatDatabase, ChatDatabase, QSortThenBy> {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenBySpecial_type(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(1, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenBySpecial_typeDesc(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(1, sort: Sort.desc, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByChat_unique_id(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(3, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
+      thenByChat_unique_idDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(3, sort: Sort.desc, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByFrom_app_id(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(4, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByFrom_app_idDesc(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(4, sort: Sort.desc, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
+      thenByOwner_account_user_id() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(5);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
+      thenByOwner_account_user_idDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(5, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenById() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(0);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(0, sort: Sort.desc);
+    });
+  }
+}
+
+extension ChatDatabaseQueryWhereDistinct
+    on QueryBuilder<ChatDatabase, ChatDatabase, QDistinct> {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
+      distinctBySpecial_type({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(1, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
+      distinctByChat_ids() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(2);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
+      distinctByChat_unique_id({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(3, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
+      distinctByFrom_app_id({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(4, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
+      distinctByOwner_account_user_id() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(5);
+    });
+  }
+}
+
+extension ChatDatabaseQueryProperty1
+    on QueryBuilder<ChatDatabase, ChatDatabase, QProperty> {
+  QueryBuilder<ChatDatabase, String, QAfterProperty> special_typeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(1);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, List<int>, QAfterProperty> chat_idsProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(2);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, String, QAfterProperty> chat_unique_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(3);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, String, QAfterProperty> from_app_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(4);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, int, QAfterProperty>
+      owner_account_user_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(5);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, int, QAfterProperty> idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(0);
+    });
+  }
+}
+
+extension ChatDatabaseQueryProperty2<R>
+    on QueryBuilder<ChatDatabase, R, QAfterProperty> {
+  QueryBuilder<ChatDatabase, (R, String), QAfterProperty>
+      special_typeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(1);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, (R, List<int>), QAfterProperty>
+      chat_idsProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(2);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, (R, String), QAfterProperty>
+      chat_unique_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(3);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, (R, String), QAfterProperty>
+      from_app_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(4);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, (R, int), QAfterProperty>
+      owner_account_user_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(5);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, (R, int), QAfterProperty> idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(0);
+    });
+  }
+}
+
+extension ChatDatabaseQueryProperty3<R1, R2>
+    on QueryBuilder<ChatDatabase, (R1, R2), QAfterProperty> {
+  QueryBuilder<ChatDatabase, (R1, R2, String), QOperations>
+      special_typeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(1);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, (R1, R2, List<int>), QOperations>
+      chat_idsProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(2);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, (R1, R2, String), QOperations>
+      chat_unique_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(3);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, (R1, R2, String), QOperations>
+      from_app_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(4);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, (R1, R2, int), QOperations>
+      owner_account_user_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(5);
+    });
+  }
+
+  QueryBuilder<ChatDatabase, (R1, R2, int), QOperations> idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(0);
+    });
+  }
+}
+""",
+                        children: [],
+                      ),
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
                             "library/base_template_general_framework_project_client_isar_scheme/lib/database/scheme/message_database.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
@@ -19223,7 +21204,7 @@ class MessageDatabase {
 
   String status = "";
 
-  List<int> chat_ids = [0];
+  String chat_unique_id = "";
 
   String from_app_id = "";
 
@@ -19270,8 +21251,8 @@ class MessageDatabase {
       this.status = value;
     }
 
-    if (key == "chat_ids") {
-      this.chat_ids = value;
+    if (key == "chat_unique_id") {
+      this.chat_unique_id = value;
     }
 
     if (key == "from_app_id") {
@@ -19347,7 +21328,7 @@ class MessageDatabase {
       "date": date,
       "update_date": update_date,
       "status": status,
-      "chat_ids": chat_ids,
+      "chat_unique_id": chat_unique_id,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
       "id": id,
@@ -19376,7 +21357,7 @@ class MessageDatabase {
       "date": 0,
       "update_date": 0,
       "status": "",
-      "chat_ids": [0],
+      "chat_unique_id": "",
       "from_app_id": "",
       "owner_account_user_id": 0,
       "id": 0
@@ -19496,8 +21477,8 @@ const MessageDatabaseSchema = IsarGeneratedSchema(
         type: IsarType.string,
       ),
       IsarPropertySchema(
-        name: 'chat_ids',
-        type: IsarType.longList,
+        name: 'chat_unique_id',
+        type: IsarType.string,
       ),
       IsarPropertySchema(
         name: 'from_app_id',
@@ -19528,14 +21509,7 @@ int serializeMessageDatabase(IsarWriter writer, MessageDatabase object) {
   IsarCore.writeLong(writer, 6, object.date);
   IsarCore.writeLong(writer, 7, object.update_date);
   IsarCore.writeString(writer, 8, object.status);
-  {
-    final list = object.chat_ids;
-    final listWriter = IsarCore.beginList(writer, 9, list.length);
-    for (var i = 0; i < list.length; i++) {
-      IsarCore.writeLong(listWriter, i, list[i]);
-    }
-    IsarCore.endList(writer, listWriter);
-  }
+  IsarCore.writeString(writer, 9, object.chat_unique_id);
   IsarCore.writeString(writer, 10, object.from_app_id);
   IsarCore.writeLong(writer, 11, object.owner_account_user_id);
   return object.id;
@@ -19552,23 +21526,7 @@ MessageDatabase deserializeMessageDatabase(IsarReader reader) {
   object.date = IsarCore.readLong(reader, 6);
   object.update_date = IsarCore.readLong(reader, 7);
   object.status = IsarCore.readString(reader, 8) ?? '';
-  {
-    final length = IsarCore.readList(reader, 9, IsarCore.readerPtrPtr);
-    {
-      final reader = IsarCore.readerPtr;
-      if (reader.isNull) {
-        object.chat_ids = const <int>[];
-      } else {
-        final list =
-            List<int>.filled(length, -9223372036854775808, growable: true);
-        for (var i = 0; i < length; i++) {
-          list[i] = IsarCore.readLong(reader, i);
-        }
-        IsarCore.freeReader(reader);
-        object.chat_ids = list;
-      }
-    }
-  }
+  object.chat_unique_id = IsarCore.readString(reader, 9) ?? '';
   object.from_app_id = IsarCore.readString(reader, 10) ?? '';
   object.owner_account_user_id = IsarCore.readLong(reader, 11);
   object.id = IsarCore.readId(reader);
@@ -19595,23 +21553,7 @@ dynamic deserializeMessageDatabaseProp(IsarReader reader, int property) {
     case 8:
       return IsarCore.readString(reader, 8) ?? '';
     case 9:
-      {
-        final length = IsarCore.readList(reader, 9, IsarCore.readerPtrPtr);
-        {
-          final reader = IsarCore.readerPtr;
-          if (reader.isNull) {
-            return const <int>[];
-          } else {
-            final list =
-                List<int>.filled(length, -9223372036854775808, growable: true);
-            for (var i = 0; i < length; i++) {
-              list[i] = IsarCore.readLong(reader, i);
-            }
-            IsarCore.freeReader(reader);
-            return list;
-          }
-        }
-      }
+      return IsarCore.readString(reader, 9) ?? '';
     case 10:
       return IsarCore.readString(reader, 10) ?? '';
     case 11:
@@ -19634,6 +21576,7 @@ sealed class _MessageDatabaseUpdate {
     int? date,
     int? update_date,
     String? status,
+    String? chat_unique_id,
     String? from_app_id,
     int? owner_account_user_id,
   });
@@ -19655,6 +21598,7 @@ class _MessageDatabaseUpdateImpl implements _MessageDatabaseUpdate {
     Object? date = ignore,
     Object? update_date = ignore,
     Object? status = ignore,
+    Object? chat_unique_id = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
   }) {
@@ -19669,6 +21613,7 @@ class _MessageDatabaseUpdateImpl implements _MessageDatabaseUpdate {
           if (date != ignore) 6: date as int?,
           if (update_date != ignore) 7: update_date as int?,
           if (status != ignore) 8: status as String?,
+          if (chat_unique_id != ignore) 9: chat_unique_id as String?,
           if (from_app_id != ignore) 10: from_app_id as String?,
           if (owner_account_user_id != ignore)
             11: owner_account_user_id as int?,
@@ -19688,6 +21633,7 @@ sealed class _MessageDatabaseUpdateAll {
     int? date,
     int? update_date,
     String? status,
+    String? chat_unique_id,
     String? from_app_id,
     int? owner_account_user_id,
   });
@@ -19709,6 +21655,7 @@ class _MessageDatabaseUpdateAllImpl implements _MessageDatabaseUpdateAll {
     Object? date = ignore,
     Object? update_date = ignore,
     Object? status = ignore,
+    Object? chat_unique_id = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
   }) {
@@ -19721,6 +21668,7 @@ class _MessageDatabaseUpdateAllImpl implements _MessageDatabaseUpdateAll {
       if (date != ignore) 6: date as int?,
       if (update_date != ignore) 7: update_date as int?,
       if (status != ignore) 8: status as String?,
+      if (chat_unique_id != ignore) 9: chat_unique_id as String?,
       if (from_app_id != ignore) 10: from_app_id as String?,
       if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
     });
@@ -19744,6 +21692,7 @@ sealed class _MessageDatabaseQueryUpdate {
     int? date,
     int? update_date,
     String? status,
+    String? chat_unique_id,
     String? from_app_id,
     int? owner_account_user_id,
   });
@@ -19765,6 +21714,7 @@ class _MessageDatabaseQueryUpdateImpl implements _MessageDatabaseQueryUpdate {
     Object? date = ignore,
     Object? update_date = ignore,
     Object? status = ignore,
+    Object? chat_unique_id = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
   }) {
@@ -19777,6 +21727,7 @@ class _MessageDatabaseQueryUpdateImpl implements _MessageDatabaseQueryUpdate {
       if (date != ignore) 6: date as int?,
       if (update_date != ignore) 7: update_date as int?,
       if (status != ignore) 8: status as String?,
+      if (chat_unique_id != ignore) 9: chat_unique_id as String?,
       if (from_app_id != ignore) 10: from_app_id as String?,
       if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
     });
@@ -19808,6 +21759,7 @@ class _MessageDatabaseQueryBuilderUpdateImpl
     Object? date = ignore,
     Object? update_date = ignore,
     Object? status = ignore,
+    Object? chat_unique_id = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
   }) {
@@ -19822,6 +21774,7 @@ class _MessageDatabaseQueryBuilderUpdateImpl
         if (date != ignore) 6: date as int?,
         if (update_date != ignore) 7: update_date as int?,
         if (status != ignore) 8: status as String?,
+        if (chat_unique_id != ignore) 9: chat_unique_id as String?,
         if (from_app_id != ignore) 10: from_app_id as String?,
         if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
       });
@@ -20741,101 +22694,181 @@ extension MessageDatabaseQueryFilter
   }
 
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_idsElementEqualTo(
-    int value,
-  ) {
+      chat_unique_idEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         EqualCondition(
           property: 9,
           value: value,
+          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_idsElementGreaterThan(
-    int value,
-  ) {
+      chat_unique_idGreaterThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterCondition(
           property: 9,
           value: value,
+          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_idsElementGreaterThanOrEqualTo(
-    int value,
-  ) {
+      chat_unique_idGreaterThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterOrEqualCondition(
           property: 9,
           value: value,
+          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_idsElementLessThan(
-    int value,
-  ) {
+      chat_unique_idLessThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessCondition(
           property: 9,
           value: value,
+          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_idsElementLessThanOrEqualTo(
-    int value,
-  ) {
+      chat_unique_idLessThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessOrEqualCondition(
           property: 9,
           value: value,
+          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_idsElementBetween(
-    int lower,
-    int upper,
-  ) {
+      chat_unique_idBetween(
+    String lower,
+    String upper, {
+    bool caseSensitive = true,
+  }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         BetweenCondition(
           property: 9,
           lower: lower,
           upper: upper,
+          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_idsIsEmpty() {
-    return not().chat_idsIsNotEmpty();
+      chat_unique_idStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        StartsWithCondition(
+          property: 9,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
   }
 
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_idsIsNotEmpty() {
+      chat_unique_idEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
-        const GreaterOrEqualCondition(property: 9, value: null),
+        EndsWithCondition(
+          property: 9,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
+      chat_unique_idContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        ContainsCondition(
+          property: 9,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
+      chat_unique_idMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        MatchesCondition(
+          property: 9,
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
+      chat_unique_idIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const EqualCondition(
+          property: 9,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
+      chat_unique_idIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const GreaterCondition(
+          property: 9,
+          value: '',
+        ),
       );
     });
   }
@@ -21331,6 +23364,27 @@ extension MessageDatabaseQuerySortBy
   }
 
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
+      sortByChat_unique_id({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        9,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
+      sortByChat_unique_idDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        9,
+        sort: Sort.desc,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
       sortByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
@@ -21492,6 +23546,20 @@ extension MessageDatabaseQuerySortThenBy
   }
 
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
+      thenByChat_unique_id({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(9, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
+      thenByChat_unique_idDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(9, sort: Sort.desc, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
       thenByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(10, caseSensitive: caseSensitive);
@@ -21591,9 +23659,9 @@ extension MessageDatabaseQueryWhereDistinct
   }
 
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
-      distinctByChat_ids() {
+      distinctByChat_unique_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(9);
+      return query.addDistinctBy(9, caseSensitive: caseSensitive);
     });
   }
 
@@ -21662,7 +23730,8 @@ extension MessageDatabaseQueryProperty1
     });
   }
 
-  QueryBuilder<MessageDatabase, List<int>, QAfterProperty> chat_idsProperty() {
+  QueryBuilder<MessageDatabase, String, QAfterProperty>
+      chat_unique_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(9);
     });
@@ -21742,8 +23811,8 @@ extension MessageDatabaseQueryProperty2<R>
     });
   }
 
-  QueryBuilder<MessageDatabase, (R, List<int>), QAfterProperty>
-      chat_idsProperty() {
+  QueryBuilder<MessageDatabase, (R, String), QAfterProperty>
+      chat_unique_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(9);
     });
@@ -21826,8 +23895,8 @@ extension MessageDatabaseQueryProperty3<R1, R2>
     });
   }
 
-  QueryBuilder<MessageDatabase, (R1, R2, List<int>), QOperations>
-      chat_idsProperty() {
+  QueryBuilder<MessageDatabase, (R1, R2, String), QOperations>
+      chat_unique_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(9);
     });
@@ -21848,6 +23917,2729 @@ extension MessageDatabaseQueryProperty3<R1, R2>
   }
 
   QueryBuilder<MessageDatabase, (R1, R2, int), QOperations> idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(0);
+    });
+  }
+}
+""",
+                        children: [],
+                      ),
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_isar_scheme/lib/database/scheme/message_isar_database.dart"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.file,
+                        value: r"""/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
+// ignore_for_file: non_constant_identifier_names, unnecessary_this
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+import 'dart:convert';
+import 'package:isar/isar.dart';
+part "message_isar_database.g.dart";
+
+@collection
+class MessageIsarDatabase {
+  // Id id = Isar.autoIncrement;
+
+  String special_type = "messageIsarDatabase";
+
+  bool is_outgoing = false;
+
+  int message_id = 0;
+
+  int from_user_id = 0;
+
+  String text = "";
+
+  int date = 0;
+
+  int update_date = 0;
+
+  String status = "";
+
+  List<int> chat_ids = [0];
+
+  String from_app_id = "";
+
+  int owner_account_user_id = 0;
+
+  int id = 0;
+
+  /// operator map data
+  operator [](key) {
+    return toJson()[key];
+  }
+
+  /// operator map data
+  void operator []=(key, value) {
+    if (key == "@type") {
+      this.special_type = value;
+    }
+
+    if (key == "is_outgoing") {
+      this.is_outgoing = value;
+    }
+
+    if (key == "message_id") {
+      this.message_id = value;
+    }
+
+    if (key == "from_user_id") {
+      this.from_user_id = value;
+    }
+
+    if (key == "text") {
+      this.text = value;
+    }
+
+    if (key == "date") {
+      this.date = value;
+    }
+
+    if (key == "update_date") {
+      this.update_date = value;
+    }
+
+    if (key == "status") {
+      this.status = value;
+    }
+
+    if (key == "chat_ids") {
+      this.chat_ids = value;
+    }
+
+    if (key == "from_app_id") {
+      this.from_app_id = value;
+    }
+
+    if (key == "owner_account_user_id") {
+      this.owner_account_user_id = value;
+    }
+
+    if (key == "id") {
+      this.id = value;
+    }
+  }
+
+  /// return original data json
+  Map utils_remove_values_null() {
+    Map rawData = toJson();
+    rawData.forEach((key, value) {
+      if (value == null) {
+        rawData.remove(key);
+      }
+    });
+    return rawData;
+  }
+
+  /// return original data json
+  Map utils_remove_by_values(List values) {
+    Map rawData = toJson();
+    rawData.forEach((key, value) {
+      for (var element in values) {
+        if (value == element) {
+          rawData.remove(key);
+        }
+      }
+    });
+
+    return rawData;
+  }
+
+  /// return original data json
+  Map utils_remove_by_keys(List keys) {
+    Map rawData = toJson();
+    for (var element in keys) {
+      rawData.remove(element);
+    }
+    return rawData;
+  }
+
+  /// return original data json
+  Map utils_filter_by_keys(List keys) {
+    Map rawData = toJson();
+    Map jsonData = {};
+    for (var key in keys) {
+      jsonData[key] = rawData[key];
+    }
+    return jsonData;
+  }
+
+  /// return original data json
+  Map toMap() {
+    return toJson();
+  }
+
+  /// return original data json
+  Map toJson() {
+    return {
+      "@type": special_type,
+      "is_outgoing": is_outgoing,
+      "message_id": message_id,
+      "from_user_id": from_user_id,
+      "text": text,
+      "date": date,
+      "update_date": update_date,
+      "status": status,
+      "chat_ids": chat_ids,
+      "from_app_id": from_app_id,
+      "owner_account_user_id": owner_account_user_id,
+      "id": id,
+    };
+  }
+
+  /// return string data encode json original data
+  String toStringPretty() {
+    return JsonEncoder.withIndent(" " * 2).convert(toJson());
+  }
+
+  /// return string data encode json original data
+  @override
+  String toString() {
+    return json.encode(toJson());
+  }
+
+  /// return original data json
+  static Map get defaultData {
+    return {
+      "@type": "messageIsarDatabase",
+      "is_outgoing": false,
+      "message_id": 0,
+      "from_user_id": 0,
+      "text": "",
+      "date": 0,
+      "update_date": 0,
+      "status": "",
+      "chat_ids": [0],
+      "from_app_id": "",
+      "owner_account_user_id": 0,
+      "id": 0
+    };
+  }
+
+  static MessageIsarDatabase create({
+    bool utils_is_print_data = false,
+  }) {
+    MessageIsarDatabase messageIsarDatabase_data_create = MessageIsarDatabase();
+
+    if (utils_is_print_data) {
+      // print(messageIsarDatabase_data_create.toStringPretty());
+    }
+
+    return messageIsarDatabase_data_create;
+  }
+}
+""",
+                        children: [],
+                      ),
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_isar_scheme/lib/database/scheme/message_isar_database.g.dart"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.file,
+                        value: r"""/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'message_isar_database.dart';
+
+// **************************************************************************
+// _IsarCollectionGenerator
+// **************************************************************************
+
+// coverage:ignore-file
+// ignore_for_file: duplicate_ignore, invalid_use_of_protected_member, lines_longer_than_80_chars, constant_identifier_names, avoid_js_rounded_ints, no_leading_underscores_for_local_identifiers, require_trailing_commas, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_in_if_null_operators, library_private_types_in_public_api, prefer_const_constructors
+// ignore_for_file: type=lint
+
+extension GetMessageIsarDatabaseCollection on Isar {
+  IsarCollection<int, MessageIsarDatabase> get messageIsarDatabases =>
+      this.collection();
+}
+
+const MessageIsarDatabaseSchema = IsarGeneratedSchema(
+  schema: IsarSchema(
+    name: 'MessageIsarDatabase',
+    idName: 'id',
+    embedded: false,
+    properties: [
+      IsarPropertySchema(
+        name: 'special_type',
+        type: IsarType.string,
+      ),
+      IsarPropertySchema(
+        name: 'is_outgoing',
+        type: IsarType.bool,
+      ),
+      IsarPropertySchema(
+        name: 'message_id',
+        type: IsarType.long,
+      ),
+      IsarPropertySchema(
+        name: 'from_user_id',
+        type: IsarType.long,
+      ),
+      IsarPropertySchema(
+        name: 'text',
+        type: IsarType.string,
+      ),
+      IsarPropertySchema(
+        name: 'date',
+        type: IsarType.long,
+      ),
+      IsarPropertySchema(
+        name: 'update_date',
+        type: IsarType.long,
+      ),
+      IsarPropertySchema(
+        name: 'status',
+        type: IsarType.string,
+      ),
+      IsarPropertySchema(
+        name: 'chat_ids',
+        type: IsarType.longList,
+      ),
+      IsarPropertySchema(
+        name: 'from_app_id',
+        type: IsarType.string,
+      ),
+      IsarPropertySchema(
+        name: 'owner_account_user_id',
+        type: IsarType.long,
+      ),
+    ],
+    indexes: [],
+  ),
+  converter: IsarObjectConverter<int, MessageIsarDatabase>(
+    serialize: serializeMessageIsarDatabase,
+    deserialize: deserializeMessageIsarDatabase,
+    deserializeProperty: deserializeMessageIsarDatabaseProp,
+  ),
+  embeddedSchemas: [],
+);
+
+@isarProtected
+int serializeMessageIsarDatabase(
+    IsarWriter writer, MessageIsarDatabase object) {
+  IsarCore.writeString(writer, 1, object.special_type);
+  IsarCore.writeBool(writer, 2, object.is_outgoing);
+  IsarCore.writeLong(writer, 3, object.message_id);
+  IsarCore.writeLong(writer, 4, object.from_user_id);
+  IsarCore.writeString(writer, 5, object.text);
+  IsarCore.writeLong(writer, 6, object.date);
+  IsarCore.writeLong(writer, 7, object.update_date);
+  IsarCore.writeString(writer, 8, object.status);
+  {
+    final list = object.chat_ids;
+    final listWriter = IsarCore.beginList(writer, 9, list.length);
+    for (var i = 0; i < list.length; i++) {
+      IsarCore.writeLong(listWriter, i, list[i]);
+    }
+    IsarCore.endList(writer, listWriter);
+  }
+  IsarCore.writeString(writer, 10, object.from_app_id);
+  IsarCore.writeLong(writer, 11, object.owner_account_user_id);
+  return object.id;
+}
+
+@isarProtected
+MessageIsarDatabase deserializeMessageIsarDatabase(IsarReader reader) {
+  final object = MessageIsarDatabase();
+  object.special_type = IsarCore.readString(reader, 1) ?? '';
+  object.is_outgoing = IsarCore.readBool(reader, 2);
+  object.message_id = IsarCore.readLong(reader, 3);
+  object.from_user_id = IsarCore.readLong(reader, 4);
+  object.text = IsarCore.readString(reader, 5) ?? '';
+  object.date = IsarCore.readLong(reader, 6);
+  object.update_date = IsarCore.readLong(reader, 7);
+  object.status = IsarCore.readString(reader, 8) ?? '';
+  {
+    final length = IsarCore.readList(reader, 9, IsarCore.readerPtrPtr);
+    {
+      final reader = IsarCore.readerPtr;
+      if (reader.isNull) {
+        object.chat_ids = const <int>[];
+      } else {
+        final list =
+            List<int>.filled(length, -9223372036854775808, growable: true);
+        for (var i = 0; i < length; i++) {
+          list[i] = IsarCore.readLong(reader, i);
+        }
+        IsarCore.freeReader(reader);
+        object.chat_ids = list;
+      }
+    }
+  }
+  object.from_app_id = IsarCore.readString(reader, 10) ?? '';
+  object.owner_account_user_id = IsarCore.readLong(reader, 11);
+  object.id = IsarCore.readId(reader);
+  return object;
+}
+
+@isarProtected
+dynamic deserializeMessageIsarDatabaseProp(IsarReader reader, int property) {
+  switch (property) {
+    case 1:
+      return IsarCore.readString(reader, 1) ?? '';
+    case 2:
+      return IsarCore.readBool(reader, 2);
+    case 3:
+      return IsarCore.readLong(reader, 3);
+    case 4:
+      return IsarCore.readLong(reader, 4);
+    case 5:
+      return IsarCore.readString(reader, 5) ?? '';
+    case 6:
+      return IsarCore.readLong(reader, 6);
+    case 7:
+      return IsarCore.readLong(reader, 7);
+    case 8:
+      return IsarCore.readString(reader, 8) ?? '';
+    case 9:
+      {
+        final length = IsarCore.readList(reader, 9, IsarCore.readerPtrPtr);
+        {
+          final reader = IsarCore.readerPtr;
+          if (reader.isNull) {
+            return const <int>[];
+          } else {
+            final list =
+                List<int>.filled(length, -9223372036854775808, growable: true);
+            for (var i = 0; i < length; i++) {
+              list[i] = IsarCore.readLong(reader, i);
+            }
+            IsarCore.freeReader(reader);
+            return list;
+          }
+        }
+      }
+    case 10:
+      return IsarCore.readString(reader, 10) ?? '';
+    case 11:
+      return IsarCore.readLong(reader, 11);
+    case 0:
+      return IsarCore.readId(reader);
+    default:
+      throw ArgumentError('Unknown property: $property');
+  }
+}
+
+sealed class _MessageIsarDatabaseUpdate {
+  bool call({
+    required int id,
+    String? special_type,
+    bool? is_outgoing,
+    int? message_id,
+    int? from_user_id,
+    String? text,
+    int? date,
+    int? update_date,
+    String? status,
+    String? from_app_id,
+    int? owner_account_user_id,
+  });
+}
+
+class _MessageIsarDatabaseUpdateImpl implements _MessageIsarDatabaseUpdate {
+  const _MessageIsarDatabaseUpdateImpl(this.collection);
+
+  final IsarCollection<int, MessageIsarDatabase> collection;
+
+  @override
+  bool call({
+    required int id,
+    Object? special_type = ignore,
+    Object? is_outgoing = ignore,
+    Object? message_id = ignore,
+    Object? from_user_id = ignore,
+    Object? text = ignore,
+    Object? date = ignore,
+    Object? update_date = ignore,
+    Object? status = ignore,
+    Object? from_app_id = ignore,
+    Object? owner_account_user_id = ignore,
+  }) {
+    return collection.updateProperties([
+          id
+        ], {
+          if (special_type != ignore) 1: special_type as String?,
+          if (is_outgoing != ignore) 2: is_outgoing as bool?,
+          if (message_id != ignore) 3: message_id as int?,
+          if (from_user_id != ignore) 4: from_user_id as int?,
+          if (text != ignore) 5: text as String?,
+          if (date != ignore) 6: date as int?,
+          if (update_date != ignore) 7: update_date as int?,
+          if (status != ignore) 8: status as String?,
+          if (from_app_id != ignore) 10: from_app_id as String?,
+          if (owner_account_user_id != ignore)
+            11: owner_account_user_id as int?,
+        }) >
+        0;
+  }
+}
+
+sealed class _MessageIsarDatabaseUpdateAll {
+  int call({
+    required List<int> id,
+    String? special_type,
+    bool? is_outgoing,
+    int? message_id,
+    int? from_user_id,
+    String? text,
+    int? date,
+    int? update_date,
+    String? status,
+    String? from_app_id,
+    int? owner_account_user_id,
+  });
+}
+
+class _MessageIsarDatabaseUpdateAllImpl
+    implements _MessageIsarDatabaseUpdateAll {
+  const _MessageIsarDatabaseUpdateAllImpl(this.collection);
+
+  final IsarCollection<int, MessageIsarDatabase> collection;
+
+  @override
+  int call({
+    required List<int> id,
+    Object? special_type = ignore,
+    Object? is_outgoing = ignore,
+    Object? message_id = ignore,
+    Object? from_user_id = ignore,
+    Object? text = ignore,
+    Object? date = ignore,
+    Object? update_date = ignore,
+    Object? status = ignore,
+    Object? from_app_id = ignore,
+    Object? owner_account_user_id = ignore,
+  }) {
+    return collection.updateProperties(id, {
+      if (special_type != ignore) 1: special_type as String?,
+      if (is_outgoing != ignore) 2: is_outgoing as bool?,
+      if (message_id != ignore) 3: message_id as int?,
+      if (from_user_id != ignore) 4: from_user_id as int?,
+      if (text != ignore) 5: text as String?,
+      if (date != ignore) 6: date as int?,
+      if (update_date != ignore) 7: update_date as int?,
+      if (status != ignore) 8: status as String?,
+      if (from_app_id != ignore) 10: from_app_id as String?,
+      if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
+    });
+  }
+}
+
+extension MessageIsarDatabaseUpdate
+    on IsarCollection<int, MessageIsarDatabase> {
+  _MessageIsarDatabaseUpdate get update => _MessageIsarDatabaseUpdateImpl(this);
+
+  _MessageIsarDatabaseUpdateAll get updateAll =>
+      _MessageIsarDatabaseUpdateAllImpl(this);
+}
+
+sealed class _MessageIsarDatabaseQueryUpdate {
+  int call({
+    String? special_type,
+    bool? is_outgoing,
+    int? message_id,
+    int? from_user_id,
+    String? text,
+    int? date,
+    int? update_date,
+    String? status,
+    String? from_app_id,
+    int? owner_account_user_id,
+  });
+}
+
+class _MessageIsarDatabaseQueryUpdateImpl
+    implements _MessageIsarDatabaseQueryUpdate {
+  const _MessageIsarDatabaseQueryUpdateImpl(this.query, {this.limit});
+
+  final IsarQuery<MessageIsarDatabase> query;
+  final int? limit;
+
+  @override
+  int call({
+    Object? special_type = ignore,
+    Object? is_outgoing = ignore,
+    Object? message_id = ignore,
+    Object? from_user_id = ignore,
+    Object? text = ignore,
+    Object? date = ignore,
+    Object? update_date = ignore,
+    Object? status = ignore,
+    Object? from_app_id = ignore,
+    Object? owner_account_user_id = ignore,
+  }) {
+    return query.updateProperties(limit: limit, {
+      if (special_type != ignore) 1: special_type as String?,
+      if (is_outgoing != ignore) 2: is_outgoing as bool?,
+      if (message_id != ignore) 3: message_id as int?,
+      if (from_user_id != ignore) 4: from_user_id as int?,
+      if (text != ignore) 5: text as String?,
+      if (date != ignore) 6: date as int?,
+      if (update_date != ignore) 7: update_date as int?,
+      if (status != ignore) 8: status as String?,
+      if (from_app_id != ignore) 10: from_app_id as String?,
+      if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
+    });
+  }
+}
+
+extension MessageIsarDatabaseQueryUpdate on IsarQuery<MessageIsarDatabase> {
+  _MessageIsarDatabaseQueryUpdate get updateFirst =>
+      _MessageIsarDatabaseQueryUpdateImpl(this, limit: 1);
+
+  _MessageIsarDatabaseQueryUpdate get updateAll =>
+      _MessageIsarDatabaseQueryUpdateImpl(this);
+}
+
+class _MessageIsarDatabaseQueryBuilderUpdateImpl
+    implements _MessageIsarDatabaseQueryUpdate {
+  const _MessageIsarDatabaseQueryBuilderUpdateImpl(this.query, {this.limit});
+
+  final QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QOperations>
+      query;
+  final int? limit;
+
+  @override
+  int call({
+    Object? special_type = ignore,
+    Object? is_outgoing = ignore,
+    Object? message_id = ignore,
+    Object? from_user_id = ignore,
+    Object? text = ignore,
+    Object? date = ignore,
+    Object? update_date = ignore,
+    Object? status = ignore,
+    Object? from_app_id = ignore,
+    Object? owner_account_user_id = ignore,
+  }) {
+    final q = query.build();
+    try {
+      return q.updateProperties(limit: limit, {
+        if (special_type != ignore) 1: special_type as String?,
+        if (is_outgoing != ignore) 2: is_outgoing as bool?,
+        if (message_id != ignore) 3: message_id as int?,
+        if (from_user_id != ignore) 4: from_user_id as int?,
+        if (text != ignore) 5: text as String?,
+        if (date != ignore) 6: date as int?,
+        if (update_date != ignore) 7: update_date as int?,
+        if (status != ignore) 8: status as String?,
+        if (from_app_id != ignore) 10: from_app_id as String?,
+        if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
+      });
+    } finally {
+      q.close();
+    }
+  }
+}
+
+extension MessageIsarDatabaseQueryBuilderUpdate
+    on QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QOperations> {
+  _MessageIsarDatabaseQueryUpdate get updateFirst =>
+      _MessageIsarDatabaseQueryBuilderUpdateImpl(this, limit: 1);
+
+  _MessageIsarDatabaseQueryUpdate get updateAll =>
+      _MessageIsarDatabaseQueryBuilderUpdateImpl(this);
+}
+
+extension MessageIsarDatabaseQueryFilter on QueryBuilder<MessageIsarDatabase,
+    MessageIsarDatabase, QFilterCondition> {
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      special_typeEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      special_typeGreaterThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      special_typeGreaterThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      special_typeLessThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      special_typeLessThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      special_typeBetween(
+    String lower,
+    String upper, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 1,
+          lower: lower,
+          upper: upper,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      special_typeStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        StartsWithCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      special_typeEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EndsWithCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      special_typeContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        ContainsCondition(
+          property: 1,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      special_typeMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        MatchesCondition(
+          property: 1,
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      special_typeIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const EqualCondition(
+          property: 1,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      special_typeIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const GreaterCondition(
+          property: 1,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      is_outgoingEqualTo(
+    bool value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 2,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      message_idEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 3,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      message_idGreaterThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 3,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      message_idGreaterThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 3,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      message_idLessThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 3,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      message_idLessThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 3,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      message_idBetween(
+    int lower,
+    int upper,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 3,
+          lower: lower,
+          upper: upper,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_user_idEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 4,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_user_idGreaterThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 4,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_user_idGreaterThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 4,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_user_idLessThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 4,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_user_idLessThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 4,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_user_idBetween(
+    int lower,
+    int upper,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 4,
+          lower: lower,
+          upper: upper,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      textEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 5,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      textGreaterThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 5,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      textGreaterThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 5,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      textLessThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 5,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      textLessThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 5,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      textBetween(
+    String lower,
+    String upper, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 5,
+          lower: lower,
+          upper: upper,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      textStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        StartsWithCondition(
+          property: 5,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      textEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EndsWithCondition(
+          property: 5,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      textContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        ContainsCondition(
+          property: 5,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      textMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        MatchesCondition(
+          property: 5,
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      textIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const EqualCondition(
+          property: 5,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      textIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const GreaterCondition(
+          property: 5,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      dateEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 6,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      dateGreaterThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 6,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      dateGreaterThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 6,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      dateLessThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 6,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      dateLessThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 6,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      dateBetween(
+    int lower,
+    int upper,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 6,
+          lower: lower,
+          upper: upper,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      update_dateEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 7,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      update_dateGreaterThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 7,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      update_dateGreaterThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 7,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      update_dateLessThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 7,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      update_dateLessThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 7,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      update_dateBetween(
+    int lower,
+    int upper,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 7,
+          lower: lower,
+          upper: upper,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      statusEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 8,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      statusGreaterThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 8,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      statusGreaterThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 8,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      statusLessThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 8,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      statusLessThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 8,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      statusBetween(
+    String lower,
+    String upper, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 8,
+          lower: lower,
+          upper: upper,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      statusStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        StartsWithCondition(
+          property: 8,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      statusEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EndsWithCondition(
+          property: 8,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      statusContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        ContainsCondition(
+          property: 8,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      statusMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        MatchesCondition(
+          property: 8,
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      statusIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const EqualCondition(
+          property: 8,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      statusIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const GreaterCondition(
+          property: 8,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      chat_idsElementEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 9,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      chat_idsElementGreaterThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 9,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      chat_idsElementGreaterThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 9,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      chat_idsElementLessThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 9,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      chat_idsElementLessThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 9,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      chat_idsElementBetween(
+    int lower,
+    int upper,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 9,
+          lower: lower,
+          upper: upper,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      chat_idsIsEmpty() {
+    return not().chat_idsIsNotEmpty();
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      chat_idsIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const GreaterOrEqualCondition(property: 9, value: null),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_app_idEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 10,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_app_idGreaterThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 10,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_app_idGreaterThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 10,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_app_idLessThan(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 10,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_app_idLessThanOrEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 10,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_app_idBetween(
+    String lower,
+    String upper, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 10,
+          lower: lower,
+          upper: upper,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_app_idStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        StartsWithCondition(
+          property: 10,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_app_idEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EndsWithCondition(
+          property: 10,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_app_idContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        ContainsCondition(
+          property: 10,
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_app_idMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        MatchesCondition(
+          property: 10,
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_app_idIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const EqualCondition(
+          property: 10,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      from_app_idIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        const GreaterCondition(
+          property: 10,
+          value: '',
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      owner_account_user_idEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 11,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      owner_account_user_idGreaterThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 11,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      owner_account_user_idGreaterThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 11,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      owner_account_user_idLessThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 11,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      owner_account_user_idLessThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 11,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      owner_account_user_idBetween(
+    int lower,
+    int upper,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 11,
+          lower: lower,
+          upper: upper,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      idEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 0,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      idGreaterThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterCondition(
+          property: 0,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      idGreaterThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        GreaterOrEqualCondition(
+          property: 0,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      idLessThan(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessCondition(
+          property: 0,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      idLessThanOrEqualTo(
+    int value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        LessOrEqualCondition(
+          property: 0,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      idBetween(
+    int lower,
+    int upper,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        BetweenCondition(
+          property: 0,
+          lower: lower,
+          upper: upper,
+        ),
+      );
+    });
+  }
+}
+
+extension MessageIsarDatabaseQueryObject on QueryBuilder<MessageIsarDatabase,
+    MessageIsarDatabase, QFilterCondition> {}
+
+extension MessageIsarDatabaseQuerySortBy
+    on QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QSortBy> {
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortBySpecial_type({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        1,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortBySpecial_typeDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        1,
+        sort: Sort.desc,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByIs_outgoing() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(2);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByIs_outgoingDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(2, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByMessage_id() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(3);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByMessage_idDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(3, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByFrom_user_id() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(4);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByFrom_user_idDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(4, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByText({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        5,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByTextDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        5,
+        sort: Sort.desc,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByDate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(6);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByDateDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(6, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByUpdate_date() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(7);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByUpdate_dateDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(7, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByStatus({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        8,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByStatusDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        8,
+        sort: Sort.desc,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByFrom_app_id({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        10,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByFrom_app_idDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(
+        10,
+        sort: Sort.desc,
+        caseSensitive: caseSensitive,
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByOwner_account_user_id() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(11);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByOwner_account_user_idDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(11, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortById() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(0);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(0, sort: Sort.desc);
+    });
+  }
+}
+
+extension MessageIsarDatabaseQuerySortThenBy
+    on QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QSortThenBy> {
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenBySpecial_type({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(1, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenBySpecial_typeDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(1, sort: Sort.desc, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByIs_outgoing() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(2);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByIs_outgoingDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(2, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByMessage_id() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(3);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByMessage_idDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(3, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByFrom_user_id() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(4);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByFrom_user_idDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(4, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByText({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(5, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByTextDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(5, sort: Sort.desc, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByDate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(6);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByDateDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(6, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByUpdate_date() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(7);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByUpdate_dateDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(7, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByStatus({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(8, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByStatusDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(8, sort: Sort.desc, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByFrom_app_id({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(10, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByFrom_app_idDesc({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(10, sort: Sort.desc, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByOwner_account_user_id() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(11);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByOwner_account_user_idDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(11, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenById() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(0);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(0, sort: Sort.desc);
+    });
+  }
+}
+
+extension MessageIsarDatabaseQueryWhereDistinct
+    on QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QDistinct> {
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterDistinct>
+      distinctBySpecial_type({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(1, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterDistinct>
+      distinctByIs_outgoing() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(2);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterDistinct>
+      distinctByMessage_id() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(3);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterDistinct>
+      distinctByFrom_user_id() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(4);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterDistinct>
+      distinctByText({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(5, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterDistinct>
+      distinctByDate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(6);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterDistinct>
+      distinctByUpdate_date() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(7);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterDistinct>
+      distinctByStatus({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(8, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterDistinct>
+      distinctByChat_ids() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(9);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterDistinct>
+      distinctByFrom_app_id({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(10, caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterDistinct>
+      distinctByOwner_account_user_id() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(11);
+    });
+  }
+}
+
+extension MessageIsarDatabaseQueryProperty1
+    on QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QProperty> {
+  QueryBuilder<MessageIsarDatabase, String, QAfterProperty>
+      special_typeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(1);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, bool, QAfterProperty>
+      is_outgoingProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(2);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, int, QAfterProperty> message_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(3);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, int, QAfterProperty>
+      from_user_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(4);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, String, QAfterProperty> textProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(5);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, int, QAfterProperty> dateProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(6);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, int, QAfterProperty> update_dateProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(7);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, String, QAfterProperty> statusProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(8);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, List<int>, QAfterProperty>
+      chat_idsProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(9);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, String, QAfterProperty>
+      from_app_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(10);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, int, QAfterProperty>
+      owner_account_user_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(11);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, int, QAfterProperty> idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(0);
+    });
+  }
+}
+
+extension MessageIsarDatabaseQueryProperty2<R>
+    on QueryBuilder<MessageIsarDatabase, R, QAfterProperty> {
+  QueryBuilder<MessageIsarDatabase, (R, String), QAfterProperty>
+      special_typeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(1);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R, bool), QAfterProperty>
+      is_outgoingProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(2);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R, int), QAfterProperty>
+      message_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(3);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R, int), QAfterProperty>
+      from_user_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(4);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R, String), QAfterProperty>
+      textProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(5);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R, int), QAfterProperty> dateProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(6);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R, int), QAfterProperty>
+      update_dateProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(7);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R, String), QAfterProperty>
+      statusProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(8);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R, List<int>), QAfterProperty>
+      chat_idsProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(9);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R, String), QAfterProperty>
+      from_app_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(10);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R, int), QAfterProperty>
+      owner_account_user_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(11);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R, int), QAfterProperty> idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(0);
+    });
+  }
+}
+
+extension MessageIsarDatabaseQueryProperty3<R1, R2>
+    on QueryBuilder<MessageIsarDatabase, (R1, R2), QAfterProperty> {
+  QueryBuilder<MessageIsarDatabase, (R1, R2, String), QOperations>
+      special_typeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(1);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R1, R2, bool), QOperations>
+      is_outgoingProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(2);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R1, R2, int), QOperations>
+      message_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(3);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R1, R2, int), QOperations>
+      from_user_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(4);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R1, R2, String), QOperations>
+      textProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(5);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R1, R2, int), QOperations> dateProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(6);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R1, R2, int), QOperations>
+      update_dateProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(7);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R1, R2, String), QOperations>
+      statusProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(8);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R1, R2, List<int>), QOperations>
+      chat_idsProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(9);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R1, R2, String), QOperations>
+      from_app_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(10);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R1, R2, int), QOperations>
+      owner_account_user_idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(11);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R1, R2, int), QOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(0);
     });
@@ -30028,18 +34820,6 @@ set(CMAKE_SYSTEM_LOADED 1)
                                     directory_base: Directory(
                                         "base_template_general_framework_project"),
                                     file_system_entity: Directory(
-                                        "library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch"),
-                                    state_data: {},
-                                    file_system_entity_type:
-                                        FileSystemEntityType.directory,
-                                    value: "",
-                                    children: [],
-                                  ),
-                                  ScriptGenerator(
-                                    is_generate: true,
-                                    directory_base: Directory(
-                                        "base_template_general_framework_project"),
-                                    file_system_entity: Directory(
                                         "library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/example.dir"),
                                     state_data: {},
                                     file_system_entity_type:
@@ -30169,8 +34949,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-YB73rF"
-      binary: "/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-YB73rF"
+      source: "/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-H9HvKk"
+      binary: "/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-H9HvKk"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
       CMAKE_CXX_FLAGS: ""
@@ -30180,10 +34960,10 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-YB73rF'
+        Change Dir: '/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-H9HvKk'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_a31e2
-        [1/2] /usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /usr/bin/ninja -v cmTC_a31db
+        [1/2] /usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
         Ubuntu clang version 18.1.3 (1ubuntu1)
         Target: x86_64-pc-linux-gnu
         Thread model: posix
@@ -30194,7 +34974,7 @@ events:
         Candidate multilib: .;@m64
         Selected multilib: .;@m64
          (in-process)
-         "/usr/lib/llvm-18/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-YB73rF -v -fcoverage-compilation-dir=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-YB73rF -resource-dir /usr/lib/llvm-18/lib/clang/18 -dependency-file CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/x86_64-linux-gnu/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/backward -internal-isystem /usr/lib/llvm-18/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+         "/usr/lib/llvm-18/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-H9HvKk -v -fcoverage-compilation-dir=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-H9HvKk -resource-dir /usr/lib/llvm-18/lib/clang/18 -dependency-file CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/x86_64-linux-gnu/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/backward -internal-isystem /usr/lib/llvm-18/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
         clang -cc1 version 18.1.3 based upon LLVM 18.1.3 default target x86_64-pc-linux-gnu
         ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"
         ignoring nonexistent directory "/include"
@@ -30208,7 +34988,7 @@ events:
          /usr/include/x86_64-linux-gnu
          /usr/include
         End of search list.
-        [2/2] : && /usr/bin/clang++  -v CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_a31e2   && :
+        [2/2] : && /usr/bin/clang++  -v CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_a31db   && :
         Ubuntu clang version 18.1.3 (1ubuntu1)
         Target: x86_64-pc-linux-gnu
         Thread model: posix
@@ -30218,7 +34998,7 @@ events:
         Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/13
         Candidate multilib: .;@m64
         Selected multilib: .;@m64
-         "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_a31e2 /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-18/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtendS.o /lib/x86_64-linux-gnu/crtn.o
+         "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_a31db /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-18/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtendS.o /lib/x86_64-linux-gnu/crtn.o
         
       exitCode: 0
   -
@@ -30258,10 +35038,10 @@ events:
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-YB73rF']
+        ignore line: [Change Dir: '/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-H9HvKk']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_a31e2]
-        ignore line: [[1/2] /usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_a31db]
+        ignore line: [[1/2] /usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Ubuntu clang version 18.1.3 (1ubuntu1)]
         ignore line: [Target: x86_64-pc-linux-gnu]
         ignore line: [Thread model: posix]
@@ -30274,7 +35054,7 @@ events:
         ignore line: [Selected multilib: .]
         ignore line: [@m64]
         ignore line: [ (in-process)]
-        ignore line: [ "/usr/lib/llvm-18/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-YB73rF -v -fcoverage-compilation-dir=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-YB73rF -resource-dir /usr/lib/llvm-18/lib/clang/18 -dependency-file CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/x86_64-linux-gnu/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/backward -internal-isystem /usr/lib/llvm-18/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [ "/usr/lib/llvm-18/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-H9HvKk -v -fcoverage-compilation-dir=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-H9HvKk -resource-dir /usr/lib/llvm-18/lib/clang/18 -dependency-file CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/x86_64-linux-gnu/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/backward -internal-isystem /usr/lib/llvm-18/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [clang -cc1 version 18.1.3 based upon LLVM 18.1.3 default target x86_64-pc-linux-gnu]
         ignore line: [ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"]
         ignore line: [ignoring nonexistent directory "/include"]
@@ -30288,7 +35068,7 @@ events:
         ignore line: [ /usr/include/x86_64-linux-gnu]
         ignore line: [ /usr/include]
         ignore line: [End of search list.]
-        ignore line: [[2/2] : && /usr/bin/clang++  -v CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_a31e2   && :]
+        ignore line: [[2/2] : && /usr/bin/clang++  -v CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_a31db   && :]
         ignore line: [Ubuntu clang version 18.1.3 (1ubuntu1)]
         ignore line: [Target: x86_64-pc-linux-gnu]
         ignore line: [Thread model: posix]
@@ -30300,7 +35080,7 @@ events:
         ignore line: [@m64]
         ignore line: [Selected multilib: .]
         ignore line: [@m64]
-        link line: [ "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_a31e2 /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-18/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtendS.o /lib/x86_64-linux-gnu/crtn.o]
+        link line: [ "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_a31db /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-18/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtendS.o /lib/x86_64-linux-gnu/crtn.o]
           arg [/usr/bin/ld] ==> ignore
           arg [-zrelro] ==> ignore
           arg [--hash-style=gnu] ==> ignore
@@ -30312,7 +35092,7 @@ events:
           arg [-dynamic-linker] ==> ignore
           arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_a31e2] ==> ignore
+          arg [cmTC_a31db] ==> ignore
           arg [/lib/x86_64-linux-gnu/Scrt1.o] ==> obj [/lib/x86_64-linux-gnu/Scrt1.o]
           arg [/lib/x86_64-linux-gnu/crti.o] ==> obj [/lib/x86_64-linux-gnu/crti.o]
           arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o] ==> obj [/usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o]
@@ -30325,7 +35105,7 @@ events:
           arg [-L/usr/lib/llvm-18/bin/../lib] ==> dir [/usr/lib/llvm-18/bin/../lib]
           arg [-L/lib] ==> dir [/lib]
           arg [-L/usr/lib] ==> dir [/usr/lib]
-          arg [CMakeFiles/cmTC_a31e2.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_a31db.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc_s] ==> lib [gcc_s]
@@ -31257,45 +36037,72 @@ endif()
                                 file_system_entity_type:
                                     FileSystemEntityType.file,
                                 value: r"""# ninja log v5
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_engine.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_method_call.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_method_response.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_value.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_view.h	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/flutter_linux.h	356865517bf6a4bb
-2	16836	0	flutter/_phony_	356865517bf6a4bb
-2	16836	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/flutter/_phony_	356865517bf6a4bb
-16837	17579	1726514565788091317	plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/utils.cc.o	5dad263b95b19287
-16839	17739	1726514565945091310	plugins/sim_card_info/CMakeFiles/sim_card_info_plugin.dir/sim_card_info_plugin.cc.o	53437a70628863da
-16837	17747	1726514565956091309	CMakeFiles/example.dir/flutter/generated_plugin_registrant.cc.o	cf2273774263dff9
-16836	17845	1726514566051091305	CMakeFiles/example.dir/main.cc.o	9807f5c353de23e9
-16840	17922	1726514566129091301	plugins/url_launcher_linux/CMakeFiles/url_launcher_linux_plugin.dir/url_launcher_plugin.cc.o	f158a1c2d0312a04
-17741	17922	1726514566136091301	plugins/sim_card_info/libsim_card_info_plugin.so	d04092ccc68be462
-16836	17947	1726514566153091300	CMakeFiles/example.dir/my_application.cc.o	59997b41380e292f
-17922	18079	1726514566293091294	plugins/url_launcher_linux/liburl_launcher_linux_plugin.so	bc0d21accc624199
-16837	18134	1726514566341091291	plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/gamepad.cc.o	b30cb6a4e098dd26
-16838	18187	1726514566395091289	plugins/media_kit_video/CMakeFiles/media_kit_video_plugin.dir/media_kit_video_plugin.cc.o	b859a556e2054201
-16837	18327	1726514566535091283	plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/connection_listener.cc.o	e790a5f53aa32d6f
-18187	18331	1726514566545091282	plugins/media_kit_video/libmedia_kit_video_plugin.so	55cc1e0f858ba961
-16837	19140	1726514567341091245	plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/gamepads_linux_plugin.cc.o	a2e673d6ab41aff6
-19140	19314	1726514567526091237	plugins/gamepads_linux/libgamepads_linux_plugin.so	108a2004d7c0d4a9
-19314	19491	1726514567704091229	intermediates_do_not_run/example	c7b07e126662bc88
-19491	19652	0	CMakeFiles/install.util	d1e7307fb1f229c7
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h	356865517bf6a4bb
+17420	18973	1726568471212502694	plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/connection_listener.cc.o	e790a5f53aa32d6f
+17421	18959	1726568471196502694	plugins/media_kit_video/CMakeFiles/media_kit_video_plugin.dir/media_kit_video_plugin.cc.o	b859a556e2054201
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h	356865517bf6a4bb
+4	5414	0	flutter/_phony_	356865517bf6a4bb
+17421	18083	1726568470324502694	plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/utils.cc.o	5dad263b95b19287
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h	356865517bf6a4bb
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_value.h	356865517bf6a4bb
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so	356865517bf6a4bb
+5975	6454	1726573327717268521	plugins/url_launcher_linux/liburl_launcher_linux_plugin.so	a525c503ef149246
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h	356865517bf6a4bb
+17422	18610	1726568470845502694	plugins/sim_card_info/CMakeFiles/sim_card_info_plugin.dir/sim_card_info_plugin.cc.o	53437a70628863da
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h	356865517bf6a4bb
+17419	18579	1726568470814502694	CMakeFiles/example.dir/main.cc.o	9807f5c353de23e9
+5975	6435	1726573327696268521	plugins/media_kit_video/libmedia_kit_video_plugin.so	3ce96303d5c2f3a7
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h	356865517bf6a4bb
+5414	6051	1726574391377256694	CMakeFiles/example.dir/my_application.cc.o	59997b41380e292f
+5975	6442	1726573327705268521	plugins/sim_card_info/libsim_card_info_plugin.so	6748e91ffbe28244
+17423	18621	1726568470858502694	plugins/url_launcher_linux/CMakeFiles/url_launcher_linux_plugin.dir/url_launcher_plugin.cc.o	f158a1c2d0312a04
+17420	19784	1726568472014502694	plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/gamepads_linux_plugin.cc.o	a2e673d6ab41aff6
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h	356865517bf6a4bb
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/flutter_linux.h	356865517bf6a4bb
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h	356865517bf6a4bb
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h	356865517bf6a4bb
+5415	5995	1726574391322256694	CMakeFiles/example.dir/flutter/generated_plugin_registrant.cc.o	cf2273774263dff9
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_view.h	356865517bf6a4bb
+17420	18874	1726568471113502694	plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/gamepad.cc.o	b30cb6a4e098dd26
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h	356865517bf6a4bb
+6222	6388	0	CMakeFiles/install.util	d1e7307fb1f229c7
+6051	6222	1726574391553256692	intermediates_do_not_run/example	34b58623ec223972
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_method_call.h	356865517bf6a4bb
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h	356865517bf6a4bb
+5975	6472	1726573327736268521	plugins/gamepads_linux/libgamepads_linux_plugin.so	f8f71271585195e
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_method_response.h	356865517bf6a4bb
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h	356865517bf6a4bb
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h	356865517bf6a4bb
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/flutter/_phony_	356865517bf6a4bb
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h	356865517bf6a4bb
+4	5414	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_engine.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_engine.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_method_call.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_method_response.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_value.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/fl_view.h	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/flutter_linux/flutter_linux.h	356865517bf6a4bb
+5	5360	0	flutter/_phony_	356865517bf6a4bb
+5	5360	0	/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/flutter/_phony_	356865517bf6a4bb
+5361	5947	1726574759456252601	CMakeFiles/example.dir/flutter/generated_plugin_registrant.cc.o	cf2273774263dff9
+5360	5981	1726574759488252600	CMakeFiles/example.dir/my_application.cc.o	59997b41380e292f
+5981	6152	1726574759663252598	intermediates_do_not_run/example	34b58623ec223972
+6152	6331	0	CMakeFiles/install.util	d1e7307fb1f229c7
 """,
                                 children: [],
                               ),
@@ -31366,8 +36173,6 @@ build CMakeFiles/example.dir/main.cc.o: CXX_COMPILER__example_unscanned_Debug /h
   INCLUDES = -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux/include -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/media_kit_video/linux/include -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/sim_card_info/linux/include -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/linux/include -isystem /usr/include/gtk-3.0 -isystem /usr/include/pango-1.0 -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/harfbuzz -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/fribidi -isystem /usr/include/cairo -isystem /usr/include/pixman-1 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/webp -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/atk-1.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include
   OBJECT_DIR = CMakeFiles/example.dir
   OBJECT_FILE_DIR = CMakeFiles/example.dir
-  TARGET_COMPILE_PDB = CMakeFiles/example.dir/
-  TARGET_PDB = intermediates_do_not_run/example.pdb
 
 build CMakeFiles/example.dir/my_application.cc.o: CXX_COMPILER__example_unscanned_Debug /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/my_application.cc || cmake_object_order_depends_target_example
   DEFINES = -DAPPLICATION_ID=\"com.example.example\"
@@ -31376,8 +36181,6 @@ build CMakeFiles/example.dir/my_application.cc.o: CXX_COMPILER__example_unscanne
   INCLUDES = -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux/include -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/media_kit_video/linux/include -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/sim_card_info/linux/include -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/linux/include -isystem /usr/include/gtk-3.0 -isystem /usr/include/pango-1.0 -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/harfbuzz -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/fribidi -isystem /usr/include/cairo -isystem /usr/include/pixman-1 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/webp -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/atk-1.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include
   OBJECT_DIR = CMakeFiles/example.dir
   OBJECT_FILE_DIR = CMakeFiles/example.dir
-  TARGET_COMPILE_PDB = CMakeFiles/example.dir/
-  TARGET_PDB = intermediates_do_not_run/example.pdb
 
 build CMakeFiles/example.dir/flutter/generated_plugin_registrant.cc.o: CXX_COMPILER__example_unscanned_Debug /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugin_registrant.cc || cmake_object_order_depends_target_example
   DEFINES = -DAPPLICATION_ID=\"com.example.example\"
@@ -31386,8 +36189,6 @@ build CMakeFiles/example.dir/flutter/generated_plugin_registrant.cc.o: CXX_COMPI
   INCLUDES = -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux/include -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/media_kit_video/linux/include -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/sim_card_info/linux/include -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/linux/include -isystem /usr/include/gtk-3.0 -isystem /usr/include/pango-1.0 -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/harfbuzz -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/fribidi -isystem /usr/include/cairo -isystem /usr/include/pixman-1 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/webp -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/atk-1.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include
   OBJECT_DIR = CMakeFiles/example.dir
   OBJECT_FILE_DIR = CMakeFiles/example.dir/flutter
-  TARGET_COMPILE_PDB = CMakeFiles/example.dir/
-  TARGET_PDB = intermediates_do_not_run/example.pdb
 
 
 # =============================================================================
@@ -31399,14 +36200,12 @@ build CMakeFiles/example.dir/flutter/generated_plugin_registrant.cc.o: CXX_COMPI
 
 build intermediates_do_not_run/example: CXX_EXECUTABLE_LINKER__example_Debug CMakeFiles/example.dir/main.cc.o CMakeFiles/example.dir/my_application.cc.o CMakeFiles/example.dir/flutter/generated_plugin_registrant.cc.o | plugins/gamepads_linux/libgamepads_linux_plugin.so plugins/media_kit_video/libmedia_kit_video_plugin.so plugins/sim_card_info/libsim_card_info_plugin.so plugins/url_launcher_linux/liburl_launcher_linux_plugin.so /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so /usr/lib/x86_64-linux-gnu/libgtk-3.so /usr/lib/x86_64-linux-gnu/libgdk-3.so /usr/lib/x86_64-linux-gnu/libz.so /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so /usr/lib/x86_64-linux-gnu/libpango-1.0.so /usr/lib/x86_64-linux-gnu/libharfbuzz.so /usr/lib/x86_64-linux-gnu/libatk-1.0.so /usr/lib/x86_64-linux-gnu/libcairo-gobject.so /usr/lib/x86_64-linux-gnu/libcairo.so /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so /usr/lib/x86_64-linux-gnu/libgio-2.0.so /usr/lib/x86_64-linux-gnu/libgobject-2.0.so /usr/lib/x86_64-linux-gnu/libglib-2.0.so || flutter/flutter_assemble plugins/gamepads_linux/libgamepads_linux_plugin.so plugins/media_kit_video/libmedia_kit_video_plugin.so plugins/sim_card_info/libsim_card_info_plugin.so plugins/url_launcher_linux/liburl_launcher_linux_plugin.so
   FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/plugins/gamepads_linux:/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/plugins/media_kit_video:/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/plugins/sim_card_info:/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/plugins/url_launcher_linux:/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral:  plugins/gamepads_linux/libgamepads_linux_plugin.so  plugins/media_kit_video/libmedia_kit_video_plugin.so  plugins/sim_card_info/libsim_card_info_plugin.so  plugins/url_launcher_linux/liburl_launcher_linux_plugin.so  -lflutter_linux_gtk  /usr/lib/x86_64-linux-gnu/libgtk-3.so  /usr/lib/x86_64-linux-gnu/libgdk-3.so  /usr/lib/x86_64-linux-gnu/libz.so  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so  /usr/lib/x86_64-linux-gnu/libpango-1.0.so  /usr/lib/x86_64-linux-gnu/libharfbuzz.so  /usr/lib/x86_64-linux-gnu/libatk-1.0.so  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so  /usr/lib/x86_64-linux-gnu/libcairo.so  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so  /usr/lib/x86_64-linux-gnu/libgio-2.0.so  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so  /usr/lib/x86_64-linux-gnu/libglib-2.0.so
-  LINK_PATH = -L/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral
+  LINK_LIBRARIES = -Wl,-rpath,/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/plugins/gamepads_linux:/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/plugins/media_kit_video:/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/plugins/sim_card_info:/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/build/linux/x64/debug/plugins/url_launcher_linux:/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral:  plugins/gamepads_linux/libgamepads_linux_plugin.so  plugins/media_kit_video/libmedia_kit_video_plugin.so  plugins/sim_card_info/libsim_card_info_plugin.so  plugins/url_launcher_linux/liburl_launcher_linux_plugin.so  /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so  /usr/lib/x86_64-linux-gnu/libgtk-3.so  /usr/lib/x86_64-linux-gnu/libgdk-3.so  /usr/lib/x86_64-linux-gnu/libz.so  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so  /usr/lib/x86_64-linux-gnu/libpango-1.0.so  /usr/lib/x86_64-linux-gnu/libharfbuzz.so  /usr/lib/x86_64-linux-gnu/libatk-1.0.so  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so  /usr/lib/x86_64-linux-gnu/libcairo.so  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so  /usr/lib/x86_64-linux-gnu/libgio-2.0.so  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so  /usr/lib/x86_64-linux-gnu/libglib-2.0.so
   OBJECT_DIR = CMakeFiles/example.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/example.dir/
   TARGET_FILE = intermediates_do_not_run/example
-  TARGET_PDB = intermediates_do_not_run/example.pdb
+  TARGET_PDB = example.dbg
 
 
 #############################################
@@ -31585,8 +36384,6 @@ build plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/gamepads_linux
   INCLUDES = -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/gtk-3.0 -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/fribidi -isystem /usr/include/cairo -isystem /usr/include/pixman-1 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/webp -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/atk-1.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include
   OBJECT_DIR = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir
   OBJECT_FILE_DIR = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir
-  TARGET_COMPILE_PDB = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/
-  TARGET_PDB = plugins/gamepads_linux/libgamepads_linux_plugin.pdb
 
 build plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/gamepad.cc.o: CXX_COMPILER__gamepads_linux_plugin_unscanned_Debug /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux/gamepad.cc || cmake_object_order_depends_target_gamepads_linux_plugin
   DEFINES = -DAPPLICATION_ID=\"com.example.example\" -DFLUTTER_PLUGIN_IMPL -Dgamepads_linux_plugin_EXPORTS
@@ -31595,8 +36392,6 @@ build plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/gamepad.cc.o: 
   INCLUDES = -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/gtk-3.0 -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/fribidi -isystem /usr/include/cairo -isystem /usr/include/pixman-1 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/webp -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/atk-1.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include
   OBJECT_DIR = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir
   OBJECT_FILE_DIR = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir
-  TARGET_COMPILE_PDB = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/
-  TARGET_PDB = plugins/gamepads_linux/libgamepads_linux_plugin.pdb
 
 build plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/connection_listener.cc.o: CXX_COMPILER__gamepads_linux_plugin_unscanned_Debug /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux/connection_listener.cc || cmake_object_order_depends_target_gamepads_linux_plugin
   DEFINES = -DAPPLICATION_ID=\"com.example.example\" -DFLUTTER_PLUGIN_IMPL -Dgamepads_linux_plugin_EXPORTS
@@ -31605,8 +36400,6 @@ build plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/connection_lis
   INCLUDES = -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/gtk-3.0 -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/fribidi -isystem /usr/include/cairo -isystem /usr/include/pixman-1 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/webp -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/atk-1.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include
   OBJECT_DIR = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir
   OBJECT_FILE_DIR = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir
-  TARGET_COMPILE_PDB = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/
-  TARGET_PDB = plugins/gamepads_linux/libgamepads_linux_plugin.pdb
 
 build plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/utils.cc.o: CXX_COMPILER__gamepads_linux_plugin_unscanned_Debug /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux/utils.cc || cmake_object_order_depends_target_gamepads_linux_plugin
   DEFINES = -DAPPLICATION_ID=\"com.example.example\" -DFLUTTER_PLUGIN_IMPL -Dgamepads_linux_plugin_EXPORTS
@@ -31615,8 +36408,6 @@ build plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/utils.cc.o: CX
   INCLUDES = -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/gtk-3.0 -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/fribidi -isystem /usr/include/cairo -isystem /usr/include/pixman-1 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/webp -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/atk-1.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include
   OBJECT_DIR = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir
   OBJECT_FILE_DIR = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir
-  TARGET_COMPILE_PDB = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/
-  TARGET_PDB = plugins/gamepads_linux/libgamepads_linux_plugin.pdb
 
 
 # =============================================================================
@@ -31628,16 +36419,14 @@ build plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/utils.cc.o: CX
 
 build plugins/gamepads_linux/libgamepads_linux_plugin.so: CXX_SHARED_LIBRARY_LINKER__gamepads_linux_plugin_Debug plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/gamepads_linux_plugin.cc.o plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/gamepad.cc.o plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/connection_listener.cc.o plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/utils.cc.o | /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so /usr/lib/x86_64-linux-gnu/libgtk-3.so /usr/lib/x86_64-linux-gnu/libgdk-3.so /usr/lib/x86_64-linux-gnu/libz.so /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so /usr/lib/x86_64-linux-gnu/libpango-1.0.so /usr/lib/x86_64-linux-gnu/libharfbuzz.so /usr/lib/x86_64-linux-gnu/libatk-1.0.so /usr/lib/x86_64-linux-gnu/libcairo-gobject.so /usr/lib/x86_64-linux-gnu/libcairo.so /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so /usr/lib/x86_64-linux-gnu/libgio-2.0.so /usr/lib/x86_64-linux-gnu/libgobject-2.0.so /usr/lib/x86_64-linux-gnu/libglib-2.0.so || flutter/flutter_assemble
   LANGUAGE_COMPILE_FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral  -lglib-2.0  -lflutter_linux_gtk  /usr/lib/x86_64-linux-gnu/libgtk-3.so  /usr/lib/x86_64-linux-gnu/libgdk-3.so  /usr/lib/x86_64-linux-gnu/libz.so  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so  /usr/lib/x86_64-linux-gnu/libpango-1.0.so  /usr/lib/x86_64-linux-gnu/libharfbuzz.so  /usr/lib/x86_64-linux-gnu/libatk-1.0.so  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so  /usr/lib/x86_64-linux-gnu/libcairo.so  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so  /usr/lib/x86_64-linux-gnu/libgio-2.0.so  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so  /usr/lib/x86_64-linux-gnu/libglib-2.0.so
-  LINK_PATH = -L/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral
+  LINK_LIBRARIES = -Wl,-rpath,/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral  -lglib-2.0  /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so  /usr/lib/x86_64-linux-gnu/libgtk-3.so  /usr/lib/x86_64-linux-gnu/libgdk-3.so  /usr/lib/x86_64-linux-gnu/libz.so  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so  /usr/lib/x86_64-linux-gnu/libpango-1.0.so  /usr/lib/x86_64-linux-gnu/libharfbuzz.so  /usr/lib/x86_64-linux-gnu/libatk-1.0.so  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so  /usr/lib/x86_64-linux-gnu/libcairo.so  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so  /usr/lib/x86_64-linux-gnu/libgio-2.0.so  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so  /usr/lib/x86_64-linux-gnu/libglib-2.0.so
   OBJECT_DIR = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir
   POST_BUILD = :
   PRE_LINK = :
   SONAME = libgamepads_linux_plugin.so
   SONAME_FLAG = -Wl,-soname,
-  TARGET_COMPILE_PDB = plugins/gamepads_linux/CMakeFiles/gamepads_linux_plugin.dir/
   TARGET_FILE = plugins/gamepads_linux/libgamepads_linux_plugin.so
-  TARGET_PDB = plugins/gamepads_linux/libgamepads_linux_plugin.pdb
+  TARGET_PDB = gamepads_linux_plugin.so.dbg
 
 
 #############################################
@@ -31725,8 +36514,6 @@ build plugins/media_kit_video/CMakeFiles/media_kit_video_plugin.dir/media_kit_vi
   INCLUDES = -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral -isystem /usr/include/gtk-3.0 -isystem /usr/include/pango-1.0 -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/harfbuzz -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/fribidi -isystem /usr/include/cairo -isystem /usr/include/pixman-1 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/webp -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/atk-1.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include
   OBJECT_DIR = plugins/media_kit_video/CMakeFiles/media_kit_video_plugin.dir
   OBJECT_FILE_DIR = plugins/media_kit_video/CMakeFiles/media_kit_video_plugin.dir
-  TARGET_COMPILE_PDB = plugins/media_kit_video/CMakeFiles/media_kit_video_plugin.dir/
-  TARGET_PDB = plugins/media_kit_video/libmedia_kit_video_plugin.pdb
 
 
 # =============================================================================
@@ -31738,16 +36525,14 @@ build plugins/media_kit_video/CMakeFiles/media_kit_video_plugin.dir/media_kit_vi
 
 build plugins/media_kit_video/libmedia_kit_video_plugin.so: CXX_SHARED_LIBRARY_LINKER__media_kit_video_plugin_Debug plugins/media_kit_video/CMakeFiles/media_kit_video_plugin.dir/media_kit_video_plugin.cc.o | /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so /usr/lib/x86_64-linux-gnu/libgtk-3.so /usr/lib/x86_64-linux-gnu/libgdk-3.so /usr/lib/x86_64-linux-gnu/libz.so /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so /usr/lib/x86_64-linux-gnu/libpango-1.0.so /usr/lib/x86_64-linux-gnu/libharfbuzz.so /usr/lib/x86_64-linux-gnu/libatk-1.0.so /usr/lib/x86_64-linux-gnu/libcairo-gobject.so /usr/lib/x86_64-linux-gnu/libcairo.so /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so /usr/lib/x86_64-linux-gnu/libgio-2.0.so /usr/lib/x86_64-linux-gnu/libgobject-2.0.so /usr/lib/x86_64-linux-gnu/libglib-2.0.so || flutter/flutter_assemble
   LANGUAGE_COMPILE_FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral  -lflutter_linux_gtk  /usr/lib/x86_64-linux-gnu/libgtk-3.so  /usr/lib/x86_64-linux-gnu/libgdk-3.so  /usr/lib/x86_64-linux-gnu/libz.so  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so  /usr/lib/x86_64-linux-gnu/libpango-1.0.so  /usr/lib/x86_64-linux-gnu/libharfbuzz.so  /usr/lib/x86_64-linux-gnu/libatk-1.0.so  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so  /usr/lib/x86_64-linux-gnu/libcairo.so  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so  /usr/lib/x86_64-linux-gnu/libgio-2.0.so  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so  /usr/lib/x86_64-linux-gnu/libglib-2.0.so
-  LINK_PATH = -L/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral
+  LINK_LIBRARIES = -Wl,-rpath,/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral  /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so  /usr/lib/x86_64-linux-gnu/libgtk-3.so  /usr/lib/x86_64-linux-gnu/libgdk-3.so  /usr/lib/x86_64-linux-gnu/libz.so  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so  /usr/lib/x86_64-linux-gnu/libpango-1.0.so  /usr/lib/x86_64-linux-gnu/libharfbuzz.so  /usr/lib/x86_64-linux-gnu/libatk-1.0.so  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so  /usr/lib/x86_64-linux-gnu/libcairo.so  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so  /usr/lib/x86_64-linux-gnu/libgio-2.0.so  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so  /usr/lib/x86_64-linux-gnu/libglib-2.0.so
   OBJECT_DIR = plugins/media_kit_video/CMakeFiles/media_kit_video_plugin.dir
   POST_BUILD = :
   PRE_LINK = :
   SONAME = libmedia_kit_video_plugin.so
   SONAME_FLAG = -Wl,-soname,
-  TARGET_COMPILE_PDB = plugins/media_kit_video/CMakeFiles/media_kit_video_plugin.dir/
   TARGET_FILE = plugins/media_kit_video/libmedia_kit_video_plugin.so
-  TARGET_PDB = plugins/media_kit_video/libmedia_kit_video_plugin.pdb
+  TARGET_PDB = media_kit_video_plugin.so.dbg
 
 
 #############################################
@@ -31835,8 +36620,6 @@ build plugins/sim_card_info/CMakeFiles/sim_card_info_plugin.dir/sim_card_info_pl
   INCLUDES = -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral -isystem /usr/include/gtk-3.0 -isystem /usr/include/pango-1.0 -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/harfbuzz -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/fribidi -isystem /usr/include/cairo -isystem /usr/include/pixman-1 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/webp -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/atk-1.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include
   OBJECT_DIR = plugins/sim_card_info/CMakeFiles/sim_card_info_plugin.dir
   OBJECT_FILE_DIR = plugins/sim_card_info/CMakeFiles/sim_card_info_plugin.dir
-  TARGET_COMPILE_PDB = plugins/sim_card_info/CMakeFiles/sim_card_info_plugin.dir/
-  TARGET_PDB = plugins/sim_card_info/libsim_card_info_plugin.pdb
 
 
 # =============================================================================
@@ -31848,16 +36631,14 @@ build plugins/sim_card_info/CMakeFiles/sim_card_info_plugin.dir/sim_card_info_pl
 
 build plugins/sim_card_info/libsim_card_info_plugin.so: CXX_SHARED_LIBRARY_LINKER__sim_card_info_plugin_Debug plugins/sim_card_info/CMakeFiles/sim_card_info_plugin.dir/sim_card_info_plugin.cc.o | /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so /usr/lib/x86_64-linux-gnu/libgtk-3.so /usr/lib/x86_64-linux-gnu/libgdk-3.so /usr/lib/x86_64-linux-gnu/libz.so /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so /usr/lib/x86_64-linux-gnu/libpango-1.0.so /usr/lib/x86_64-linux-gnu/libharfbuzz.so /usr/lib/x86_64-linux-gnu/libatk-1.0.so /usr/lib/x86_64-linux-gnu/libcairo-gobject.so /usr/lib/x86_64-linux-gnu/libcairo.so /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so /usr/lib/x86_64-linux-gnu/libgio-2.0.so /usr/lib/x86_64-linux-gnu/libgobject-2.0.so /usr/lib/x86_64-linux-gnu/libglib-2.0.so || flutter/flutter_assemble
   LANGUAGE_COMPILE_FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral  -lflutter_linux_gtk  /usr/lib/x86_64-linux-gnu/libgtk-3.so  /usr/lib/x86_64-linux-gnu/libgdk-3.so  /usr/lib/x86_64-linux-gnu/libz.so  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so  /usr/lib/x86_64-linux-gnu/libpango-1.0.so  /usr/lib/x86_64-linux-gnu/libharfbuzz.so  /usr/lib/x86_64-linux-gnu/libatk-1.0.so  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so  /usr/lib/x86_64-linux-gnu/libcairo.so  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so  /usr/lib/x86_64-linux-gnu/libgio-2.0.so  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so  /usr/lib/x86_64-linux-gnu/libglib-2.0.so
-  LINK_PATH = -L/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral
+  LINK_LIBRARIES = -Wl,-rpath,/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral  /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so  /usr/lib/x86_64-linux-gnu/libgtk-3.so  /usr/lib/x86_64-linux-gnu/libgdk-3.so  /usr/lib/x86_64-linux-gnu/libz.so  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so  /usr/lib/x86_64-linux-gnu/libpango-1.0.so  /usr/lib/x86_64-linux-gnu/libharfbuzz.so  /usr/lib/x86_64-linux-gnu/libatk-1.0.so  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so  /usr/lib/x86_64-linux-gnu/libcairo.so  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so  /usr/lib/x86_64-linux-gnu/libgio-2.0.so  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so  /usr/lib/x86_64-linux-gnu/libglib-2.0.so
   OBJECT_DIR = plugins/sim_card_info/CMakeFiles/sim_card_info_plugin.dir
   POST_BUILD = :
   PRE_LINK = :
   SONAME = libsim_card_info_plugin.so
   SONAME_FLAG = -Wl,-soname,
-  TARGET_COMPILE_PDB = plugins/sim_card_info/CMakeFiles/sim_card_info_plugin.dir/
   TARGET_FILE = plugins/sim_card_info/libsim_card_info_plugin.so
-  TARGET_PDB = plugins/sim_card_info/libsim_card_info_plugin.pdb
+  TARGET_PDB = sim_card_info_plugin.so.dbg
 
 
 #############################################
@@ -31945,8 +36726,6 @@ build plugins/url_launcher_linux/CMakeFiles/url_launcher_linux_plugin.dir/url_la
   INCLUDES = -I/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral -isystem /usr/include/gtk-3.0 -isystem /usr/include/pango-1.0 -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/harfbuzz -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/fribidi -isystem /usr/include/cairo -isystem /usr/include/pixman-1 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/webp -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/atk-1.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include
   OBJECT_DIR = plugins/url_launcher_linux/CMakeFiles/url_launcher_linux_plugin.dir
   OBJECT_FILE_DIR = plugins/url_launcher_linux/CMakeFiles/url_launcher_linux_plugin.dir
-  TARGET_COMPILE_PDB = plugins/url_launcher_linux/CMakeFiles/url_launcher_linux_plugin.dir/
-  TARGET_PDB = plugins/url_launcher_linux/liburl_launcher_linux_plugin.pdb
 
 
 # =============================================================================
@@ -31958,16 +36737,14 @@ build plugins/url_launcher_linux/CMakeFiles/url_launcher_linux_plugin.dir/url_la
 
 build plugins/url_launcher_linux/liburl_launcher_linux_plugin.so: CXX_SHARED_LIBRARY_LINKER__url_launcher_linux_plugin_Debug plugins/url_launcher_linux/CMakeFiles/url_launcher_linux_plugin.dir/url_launcher_plugin.cc.o | /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so /usr/lib/x86_64-linux-gnu/libgtk-3.so /usr/lib/x86_64-linux-gnu/libgdk-3.so /usr/lib/x86_64-linux-gnu/libz.so /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so /usr/lib/x86_64-linux-gnu/libpango-1.0.so /usr/lib/x86_64-linux-gnu/libharfbuzz.so /usr/lib/x86_64-linux-gnu/libatk-1.0.so /usr/lib/x86_64-linux-gnu/libcairo-gobject.so /usr/lib/x86_64-linux-gnu/libcairo.so /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so /usr/lib/x86_64-linux-gnu/libgio-2.0.so /usr/lib/x86_64-linux-gnu/libgobject-2.0.so /usr/lib/x86_64-linux-gnu/libglib-2.0.so || flutter/flutter_assemble
   LANGUAGE_COMPILE_FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral  -lflutter_linux_gtk  /usr/lib/x86_64-linux-gnu/libgtk-3.so  /usr/lib/x86_64-linux-gnu/libgdk-3.so  /usr/lib/x86_64-linux-gnu/libz.so  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so  /usr/lib/x86_64-linux-gnu/libpango-1.0.so  /usr/lib/x86_64-linux-gnu/libharfbuzz.so  /usr/lib/x86_64-linux-gnu/libatk-1.0.so  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so  /usr/lib/x86_64-linux-gnu/libcairo.so  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so  /usr/lib/x86_64-linux-gnu/libgio-2.0.so  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so  /usr/lib/x86_64-linux-gnu/libglib-2.0.so
-  LINK_PATH = -L/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral
+  LINK_LIBRARIES = -Wl,-rpath,/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral  /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/libflutter_linux_gtk.so  /usr/lib/x86_64-linux-gnu/libgtk-3.so  /usr/lib/x86_64-linux-gnu/libgdk-3.so  /usr/lib/x86_64-linux-gnu/libz.so  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so  /usr/lib/x86_64-linux-gnu/libpango-1.0.so  /usr/lib/x86_64-linux-gnu/libharfbuzz.so  /usr/lib/x86_64-linux-gnu/libatk-1.0.so  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so  /usr/lib/x86_64-linux-gnu/libcairo.so  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so  /usr/lib/x86_64-linux-gnu/libgio-2.0.so  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so  /usr/lib/x86_64-linux-gnu/libglib-2.0.so
   OBJECT_DIR = plugins/url_launcher_linux/CMakeFiles/url_launcher_linux_plugin.dir
   POST_BUILD = :
   PRE_LINK = :
   SONAME = liburl_launcher_linux_plugin.so
   SONAME_FLAG = -Wl,-soname,
-  TARGET_COMPILE_PDB = plugins/url_launcher_linux/CMakeFiles/url_launcher_linux_plugin.dir/
   TARGET_FILE = plugins/url_launcher_linux/liburl_launcher_linux_plugin.so
-  TARGET_PDB = plugins/url_launcher_linux/liburl_launcher_linux_plugin.pdb
+  TARGET_PDB = url_launcher_linux_plugin.so.dbg
 
 
 #############################################
@@ -32109,14 +36886,14 @@ build plugins/url_launcher_linux/all: phony plugins/url_launcher_linux/liburl_la
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/media_kit_video/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/sim_card_info/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/generated_config.cmake /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugins.cmake /usr/share/cmake-3.28/Modules/CMakeCXXCompiler.cmake.in /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp /usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.28/Modules/CMakeCompilerIdDetection.cmake /usr/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake /usr/share/cmake-3.28/Modules/CMakeDetermineCompileFeatures.cmake /usr/share/cmake-3.28/Modules/CMakeDetermineCompiler.cmake /usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake /usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake /usr/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake /usr/share/cmake-3.28/Modules/CMakeFindBinUtils.cmake /usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.28/Modules/CMakeNinjaFindMake.cmake /usr/share/cmake-3.28/Modules/CMakeParseImplicitIncludeInfo.cmake /usr/share/cmake-3.28/Modules/CMakeParseImplicitLinkInfo.cmake /usr/share/cmake-3.28/Modules/CMakeParseLibraryArchitecture.cmake /usr/share/cmake-3.28/Modules/CMakeSystem.cmake.in /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake /usr/share/cmake-3.28/Modules/CMakeTestCompilerCommon.cmake /usr/share/cmake-3.28/Modules/Compiler/ADSP-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/ARMCC-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/ARMClang-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/AppleClang-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Borland-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang-FindBinUtils.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang.cmake /usr/share/cmake-3.28/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Cray-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/CrayClang-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/GHS-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU.cmake /usr/share/cmake-3.28/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/IAR-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /usr/share/cmake-3.28/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Intel-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/MSVC-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/NVHPC-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/OrangeC-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/PGI-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/PathScale-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/SCO-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/TI-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Tasking-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Watcom-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/ExternalProject/shared_internal_commands.cmake /usr/share/cmake-3.28/Modules/FetchContent.cmake /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.28/Modules/FindPackageMessage.cmake /usr/share/cmake-3.28/Modules/FindPkgConfig.cmake /usr/share/cmake-3.28/Modules/Internal/FeatureTesting.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-Determine-CXX.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake-3.28/Modules/Platform/Linux.cmake /usr/share/cmake-3.28/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.28.3/CMakeCXXCompiler.cmake CMakeFiles/3.28.3/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/media_kit_video/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/sim_card_info/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/generated_config.cmake /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugins.cmake /usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU.cmake /usr/share/cmake-3.28/Modules/ExternalProject/shared_internal_commands.cmake /usr/share/cmake-3.28/Modules/FetchContent.cmake /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.28/Modules/FindPackageMessage.cmake /usr/share/cmake-3.28/Modules/FindPkgConfig.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake-3.28/Modules/Platform/Linux.cmake /usr/share/cmake-3.28/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.28.3/CMakeCXXCompiler.cmake CMakeFiles/3.28.3/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/media_kit_video/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/sim_card_info/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/generated_config.cmake /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugins.cmake /usr/share/cmake-3.28/Modules/CMakeCXXCompiler.cmake.in /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp /usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.28/Modules/CMakeCompilerIdDetection.cmake /usr/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake /usr/share/cmake-3.28/Modules/CMakeDetermineCompileFeatures.cmake /usr/share/cmake-3.28/Modules/CMakeDetermineCompiler.cmake /usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake /usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake /usr/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake /usr/share/cmake-3.28/Modules/CMakeFindBinUtils.cmake /usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.28/Modules/CMakeNinjaFindMake.cmake /usr/share/cmake-3.28/Modules/CMakeParseImplicitIncludeInfo.cmake /usr/share/cmake-3.28/Modules/CMakeParseImplicitLinkInfo.cmake /usr/share/cmake-3.28/Modules/CMakeParseLibraryArchitecture.cmake /usr/share/cmake-3.28/Modules/CMakeSystem.cmake.in /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake /usr/share/cmake-3.28/Modules/CMakeTestCompilerCommon.cmake /usr/share/cmake-3.28/Modules/Compiler/ADSP-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/ARMCC-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/ARMClang-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/AppleClang-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Borland-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang-FindBinUtils.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang.cmake /usr/share/cmake-3.28/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Cray-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/CrayClang-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/GHS-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU.cmake /usr/share/cmake-3.28/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/IAR-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /usr/share/cmake-3.28/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Intel-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/MSVC-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/NVHPC-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/OrangeC-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/PGI-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/PathScale-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/SCO-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/TI-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Tasking-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/Watcom-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /usr/share/cmake-3.28/Modules/ExternalProject/shared_internal_commands.cmake /usr/share/cmake-3.28/Modules/FetchContent.cmake /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.28/Modules/FindPackageMessage.cmake /usr/share/cmake-3.28/Modules/FindPkgConfig.cmake /usr/share/cmake-3.28/Modules/Internal/FeatureTesting.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-Determine-CXX.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake-3.28/Modules/Platform/Linux.cmake /usr/share/cmake-3.28/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.28.3/CMakeCXXCompiler.cmake CMakeFiles/3.28.3/CMakeSystem.cmake: phony
+build /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/gamepads_linux/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/media_kit_video/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/sim_card_info/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/linux/CMakeLists.txt /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral/generated_config.cmake /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugins.cmake /usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake-3.28/Modules/Compiler/Clang.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU.cmake /usr/share/cmake-3.28/Modules/ExternalProject/shared_internal_commands.cmake /usr/share/cmake-3.28/Modules/FetchContent.cmake /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.28/Modules/FindPackageMessage.cmake /usr/share/cmake-3.28/Modules/FindPkgConfig.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.28/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake-3.28/Modules/Platform/Linux.cmake /usr/share/cmake-3.28/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.28.3/CMakeCXXCompiler.cmake CMakeFiles/3.28.3/CMakeSystem.cmake: phony
 
 
 #############################################
@@ -38900,41 +43677,7 @@ add_custom_target(flutter_assemble DEPENDS
                             "library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugin_registrant.cc"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-//
+                        value: r"""//
 //  Generated file. Do not edit.
 //
 
@@ -38998,41 +43741,7 @@ void fl_register_plugins(FlPluginRegistry* registry);
                             "library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugins.cmake"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-#
+                        value: r"""#
 # Generated file, do not edit.
 #
 
@@ -41748,41 +46457,7 @@ add_custom_target(flutter_assemble DEPENDS
                             "library/base_template_general_framework_project_flutter/example/windows/flutter/generated_plugin_registrant.cc"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-//
+                        value: r"""//
 //  Generated file. Do not edit.
 //
 
@@ -41860,41 +46535,7 @@ void RegisterPlugins(flutter::PluginRegistry* registry);
                             "library/base_template_general_framework_project_flutter/example/windows/flutter/generated_plugins.cmake"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-#
+                        value: r"""#
 # Generated file, do not edit.
 #
 
@@ -43272,7 +47913,7 @@ wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value:
-                    r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-17 02:22:26.630081","version":"3.22.3"}""",
+                    r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-17 22:44:13.722992","version":"3.22.3"}""",
                 children: [],
               ),
               ScriptGenerator(
@@ -43634,7 +48275,10 @@ export "core.dart";
                         "library/base_template_general_framework_project_flutter/lib/client/core.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
+                    value:
+                        r"""// ignore_for_file: use_build_context_synchronously
+
+/* <!-- START LICENSE -->
 
 
 This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
@@ -43671,13 +48315,19 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 
 import 'package:base_template_general_framework_project_client/base_template_general_framework_project_client_core.dart';
+import 'package:base_template_general_framework_project_flutter/base_template_general_framework_project_flutter.dart';
+import 'package:base_template_general_framework_project_flutter/page/account/account.dart';
+import 'package:base_template_general_framework_project_flutter/page/chat/chat.dart';
 import 'package:base_template_general_framework_project_flutter/page/home/home.dart';
+import 'package:base_template_general_framework_project_flutter/page/settings/settings.dart';
 import 'package:base_template_general_framework_project_flutter/page/sign/sign.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/account.dart';
 import 'package:flutter/material.dart';
 
 import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/flutter/client/base.dart';
 import 'package:general_framework/flutter/widget/core.dart';
+import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 class BaseTemplateGeneralFrameworkProjectClientFlutter
@@ -43702,17 +48352,13 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
     );
     String token = generalFrameworkClient.sessionDefault.token ?? "";
     if (token.isNotEmpty) {
-      context.navigator().pushReplacement(MaterialPageRoute(
-        builder: (context) {
-          return HomePage(generalFrameworkClientFlutter: this);
-        },
-      ));
+      context
+          .routerGeneralLibFlutter()
+          .pushNamed(routeName: "/home", parameters: {});
     } else {
-      context.navigator().pushReplacement(MaterialPageRoute(
-        builder: (context) {
-          return signPage();
-        },
-      ));
+      context
+          .routerGeneralLibFlutter()
+          .pushNamed(routeName: "/sign", parameters: {});
     }
   }
 
@@ -43725,7 +48371,30 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
       Map result,
       Map parameters,
       GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) async {}
+          generalFrameworkClientInvokeOptions) async {
+    if (result["@type"] == "error") {
+      final context = navigatorKey.currentContext;
+      if (context == null) {
+        return;
+      }
+      if (result["message"] is String == false) {
+        result["message"] = "";
+      }
+      if (result["message"] == "session_not_found") {
+        context.routerGeneralLibFlutter().pushNamedAndRemoveUntil(
+          routeName: "/sign",
+          parameters: {},
+        );
+        return;
+      }
+      final String message = (result["message"] as String)
+          .trim()
+          .split("_")
+          .map((e) => e.toLowerCase().toUpperCaseFirstData())
+          .join(" ");
+      context.showSnackBar("Error: ${message}");
+    }
+  }
 
   @override
   FutureOr<Map?> onInvokeValidation(
@@ -43733,6 +48402,80 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
       GeneralFrameworkClientInvokeOptions
           generalFrameworkClientInvokeOptions) async {
     return null;
+  }
+
+  @override
+  RouteGeneralLibFlutter get route {
+    return RouteGeneralLibFlutter(
+      onUnknownRoute: (context, routeData) {
+        return HomePage(generalFrameworkClientFlutter: this);
+      },
+      onRoute: () {
+        return {
+          "/": (context, data) {
+            return BaseTemplateGeneralFrameworkProjectFlutterAppMain(
+              generalFrameworkClientFlutter: this,
+            );
+          },
+          "/account": (context, data) {
+            final Account account = data.builder<Account>(
+              onBuilder: () {
+                dynamic body = data.arguments;
+                if (body is Account) {
+                  return body;
+                } else if (body is JsonScheme) {
+                  return Account(body.toJson());
+                } else if (body is Map) {
+                  return Account(body);
+                }
+
+                return Account({});
+              },
+            );
+
+            return AccountPage(
+              account: account,
+              generalFrameworkClientFlutter: this,
+            );
+          },
+          "/chat": (context, data) {
+            final Account account = data.builder(
+              onBuilder: () {
+                final body = data.arguments;
+                if (body is Account) {
+                  return body;
+                } else if (body is JsonScheme) {
+                  return Account(body.toJson());
+                } else if (body is Map) {
+                  return Account(body);
+                }
+
+                return Account({});
+              },
+            );
+            return ChatPage(
+              account: account,
+              generalFrameworkClientFlutter: this,
+            );
+          },
+          "/home": (context, data) {
+            return HomePage(
+              generalFrameworkClientFlutter: this,
+            );
+          },
+          "/settings": (context, data) {
+            return SettingsPage(
+              generalFrameworkClientFlutter: this,
+            );
+          },
+          "/sign": (context, data) {
+            return SignPage(
+              generalFrameworkClientFlutter: this,
+            );
+          },
+        };
+      },
+    );
   }
 }
 
@@ -43840,7 +48583,6 @@ class AccountPage
 class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
-    PageStorage.of(context);
     return Container();
   }
 }
@@ -43921,7 +48663,13 @@ class ChatPage
 class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    print(widget.account);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Chat"),
+      ),
+    );
   }
 }
 """,
@@ -43981,8 +48729,16 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+
+import 'dart:math';
+
+import 'package:base_template_general_framework_project_client/api/api.dart';
 import 'package:base_template_general_framework_project_flutter/client/core.dart';
+import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
+import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/flutter.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 class HomePage
     extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
@@ -43993,9 +48749,104 @@ class HomePage
 }
 
 class _HomePageState extends State<HomePage> {
+  final ScrollControllerAutoKeepStateData scrollControllerAutoKeepStateData =
+      ScrollControllerAutoKeepStateData(
+    keyId: "home_page",
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {});
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Home"),
+        backgroundColor: context.theme.primaryColor,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.search,
+            ),
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        width: context.width / 2,
+        backgroundColor: context.theme.primaryColor,
+        child: SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: context.height,
+              minWidth: context.width / 2,
+              maxWidth: context.width / 2,
+            ),
+            child: Column(
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text("Settings"),
+                  onTap: () {
+                    routerGeneralLibFlutter().pushNamed(
+                      routeName: "/settings",
+                      parameters: null,
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      body: scrollControllerAutoKeepStateData.builderWidget(
+        builder: (ctx, pageStorageBucket) {
+          return SingleChildScrollView(
+            controller: scrollControllerAutoKeepStateData.scroll_controller,
+            physics: const BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics(),
+            ),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: context.height,
+                minWidth: context.width,
+                maxWidth: context.width,
+              ),
+              child: Column(
+                children: List.generate(Random().nextInt(50) + 50, (index) {
+                  return ChatMessageGeneralFrameworkWidget(
+                    isLoading: false,
+                    title: "Azka Developer",
+                    message: "hello kamu lagi apa",
+                    unreadCount: 5,
+                    date: DateTime.now(),
+                    onTap: () {
+                      routerGeneralLibFlutter().pushNamed(
+                          routeName: "/chat",
+                          parameters:
+                              Account.create(first_name: "Azka Developer"));
+                    },
+                  );
+                }),
+              ),
+            ),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          widget.generalFrameworkClientFlutter.generalFrameworkClient
+              .api_getMe(getMeParameters: GetMe.create());
+        },
+        child: const Icon(
+          Icons.message,
+        ),
+      ),
+    );
   }
 }
 """,
@@ -44069,7 +48920,12 @@ class SettingsPage
 class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Settings Page"),
+      ),
+    );
   }
 }
 """,
@@ -44095,7 +48951,9 @@ class _SettingsPageState extends State<SettingsPage> {
                             "library/base_template_general_framework_project_flutter/lib/page/sign/sign.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""/* <!-- START LICENSE -->
+                        value: r"""// ignore_for_file: constant_identifier_names
+
+/* <!-- START LICENSE -->
 
 
 This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
@@ -44129,9 +48987,27 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+import 'package:base_template_general_framework_project_client/api/api.dart';
 import 'package:base_template_general_framework_project_flutter/client/core.dart';
+import 'package:base_template_general_framework_project_flutter/page/home/home.dart';
+import 'package:base_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/widget/text_form_field.dart';
+import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
+
+enum SignPageType {
+  sign_in,
+  sign_up,
+  reset_password;
+
+  String title() {
+    return name
+        .split("_")
+        .map((e) => e.toLowerCase().toUpperCaseFirstData())
+        .join(" ");
+  }
+}
 
 class SignPage
     extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
@@ -44142,28 +49018,171 @@ class SignPage
 }
 
 class _SignPageState extends State<SignPage> {
+  SignPageType signPageType = SignPageType.sign_in;
+  final TextEditingController usernameTextEditingController =
+      TextEditingController();
+  final TextEditingController passwordTextEditingController =
+      TextEditingController();
+  final TextEditingController newPasswordTextEditingController =
+      TextEditingController();
+
+  final TextEditingController secretWordsTextEditingController =
+      TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    usernameTextEditingController.dispose();
+    passwordTextEditingController.dispose();
+    newPasswordTextEditingController.dispose();
+    secretWordsTextEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sign Page"),
+        centerTitle: true,
+        title: Text(signPageType.title()),
       ),
       body: RefreshIndicator(
         onRefresh: () async {},
         color: context.theme.indicatorColor,
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: ConstrainedBox(
             constraints: BoxConstraints(
               minHeight: context.height,
               minWidth: context.width,
             ),
             child: Column(
-              children: [],
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                usernameFieldWidget(),
+                if (signPageType == SignPageType.sign_in) ...[
+                  passwordFieldWidget(),
+                ] else ...[
+                  newPasswordFieldWidget(),
+                ],
+                Container(
+                  width: context.width,
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: context.theme.primaryColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: MaterialButton(
+                    onPressed: () {
+                      signButton();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(signPageType.title()),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: context.mediaQueryData.padding.bottom,
+                ),
+              ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  Widget usernameFieldWidget() {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: TextFormFieldGeneralFrameworkWidget(
+        prefixIconData: Icons.person,
+        controller: usernameTextEditingController,
+        labelText: "Username",
+        hintText: "username",
+        onChanged: (value) {},
+      ),
+    );
+  }
+
+  Widget passwordFieldWidget() {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: TextFormFieldGeneralFrameworkWidget(
+        prefixIconData: Icons.key,
+        controller: passwordTextEditingController,
+        labelText: "Password",
+        hintText: "password",
+        onChanged: (value) {},
+      ),
+    );
+  }
+
+  Widget newPasswordFieldWidget() {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: TextFormFieldGeneralFrameworkWidget(
+        prefixIconData: Icons.key,
+        controller: passwordTextEditingController,
+        labelText: "Password",
+        hintText: "password",
+        onChanged: (value) {},
+      ),
+    );
+  }
+
+  Future<void> signButton() async {
+    await Future(() async {
+      final String username = usernameTextEditingController.text.trim();
+      final String password = passwordTextEditingController.text.trim();
+      final String newPassword = newPasswordTextEditingController.text.trim();
+      final String secretWords = secretWordsTextEditingController.text.trim();
+      if (username.isEmpty) {}
+      if (signPageType == SignPageType.sign_in) {
+        final res = await widget
+            .generalFrameworkClientFlutter.generalFrameworkClient
+            .api_signIn(
+          signInParameters: SignIn.create(
+            username: username,
+            password: password,
+          ),
+        );
+        res.rawData.printPretty();
+        if (res.json_scheme_utils_checkDataIsSameBySpecialType()) {
+          context.routerGeneralLibFlutter().pushAndRemoveUntil(
+            newRoute: MaterialPageRoute(
+              builder: (context) {
+                return HomePage(
+                    generalFrameworkClientFlutter:
+                        widget.generalFrameworkClientFlutter);
+              },
+            ),
+            routeName: "/",
+            parameters: {},
+          );
+        }
+      } else if (signPageType == SignPageType.sign_up) {
+        await widget.generalFrameworkClientFlutter.generalFrameworkClient
+            .api_signUp(
+          signUpParameters: SignUp.create(
+            username: username,
+            password: newPassword,
+          ),
+        );
+      } else if (signPageType == SignPageType.reset_password) {
+        secretWords;
+      }
+    });
   }
 }
 """,
@@ -44182,7 +49201,53 @@ class _SignPageState extends State<SignPage> {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
-                children: [],
+                children: [
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/lib/widget/widget.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
+""",
+                    children: [],
+                  )
+                ],
               ),
               ScriptGenerator(
                 is_generate: true,
@@ -44232,19 +49297,12 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:base_template_general_framework_project_client/base_template_general_framework_project_client_core.dart';
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
 import 'package:base_template_general_framework_project_flutter/client/client.dart';
-import 'package:base_template_general_framework_project_flutter/page/account/account.dart';
-import 'package:base_template_general_framework_project_flutter/page/chat/chat.dart';
-import 'package:base_template_general_framework_project_flutter/page/home/home.dart';
-import 'package:base_template_general_framework_project_flutter/page/settings/settings.dart';
-import 'package:base_template_general_framework_project_flutter/page/sign/sign.dart';
-import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_template_general_framework_project_secret/base_template_general_framework_project_secret.dart';
 import 'package:flutter/material.dart';
 import 'package:general/flutter/general_flutter_core.dart';
 import 'package:general_framework/core/client/options.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
-import 'package:general_lib_flutter/widget/widget.dart';
 
 class BaseTemplateGeneralFrameworkProjectFlutter {
   static final GeneralLibFlutterApp generalLibFlutterApp =
@@ -44296,7 +49354,7 @@ class BaseTemplateGeneralFrameworkProjectFlutter {
 
 class BaseTemplateGeneralFrameworkProjectFlutterApp
     extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget {
-  BaseTemplateGeneralFrameworkProjectFlutterApp({
+  const BaseTemplateGeneralFrameworkProjectFlutterApp({
     super.key,
     required super.generalFrameworkClientFlutter,
   });
@@ -44308,83 +49366,26 @@ class BaseTemplateGeneralFrameworkProjectFlutterApp
           BaseTemplateGeneralFrameworkProjectFlutter.generalLibFlutterApp,
       builder: (themeMode, lightTheme, darkTheme, widget) {
         final MaterialApp child = MaterialApp(
+          debugShowCheckedModeBanner: false,
           navigatorKey: generalFrameworkClientFlutter.navigatorKey,
-          theme: lightTheme,
-          darkTheme: darkTheme,
+          theme: lightTheme.copyWith(
+            textTheme: Typography().black,
+          ),
+          darkTheme: darkTheme.copyWith(
+            textTheme: Typography().white,
+          ),
           themeMode: themeMode,
-          onUnknownRoute: route.toOnUnknownRoute,
-          routes: route.toRoutes(),
+          onUnknownRoute: generalFrameworkClientFlutter.route.toOnUnknownRoute,
+          routes: generalFrameworkClientFlutter.route.toRoutes(),
         );
-        if (Dart.isDesktop) {}
+        if (Dart.isDebug) {
+          print("debu");
+        }
 
         return child;
       },
     );
   }
-
-  late final RouteGeneralLibFlutter route = RouteGeneralLibFlutter(
-    key: "BaseTemplateGeneralFrameworkProjectFlutterApp",
-    pageStorageBucket: PageStorageBucket(),
-    onUnknownRoute: (context, routeData) {
-      return HomePage(
-          generalFrameworkClientFlutter: generalFrameworkClientFlutter);
-    },
-    onRoute: () {
-      return {
-        "/": (context, data) {
-          return BaseTemplateGeneralFrameworkProjectFlutterAppMain(
-            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
-          );
-        },
-        "/account": (context, data) {
-          final Account account = data.builder(
-            onBuilder: () {
-              try {
-                return Account(data.body);
-              } catch (e) {}
-
-              return Account({});
-            },
-          );
-
-          return AccountPage(
-            account: account,
-            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
-          );
-        },
-        "/chat": (context, data) {
-          final Account account = data.builder(
-            onBuilder: () {
-              try {
-                return Account(data.body);
-              } catch (e) {}
-
-              return Account({});
-            },
-          );
-          return ChatPage(
-            account: account,
-            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
-          );
-        },
-        "/home": (context, data) {
-          return HomePage(
-            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
-          );
-        },
-        "/settings": (context, data) {
-          return SettingsPage(
-            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
-          );
-        },
-        "/sign": (context, data) {
-          return SignPage(
-            generalFrameworkClientFlutter: generalFrameworkClientFlutter,
-          );
-        },
-      };
-    },
-  );
 }
 
 class BaseTemplateGeneralFrameworkProjectFlutterAppMain
@@ -44517,7 +49518,7 @@ wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value:
-                r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-16 22:08:14.110910","version":"3.22.3"}""",
+                r"""{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-17 22:44:10.222127","version":"3.22.3"}""",
             children: [],
           ),
           ScriptGenerator(
@@ -51615,10 +56616,12 @@ import 'package:base_template_general_framework_project_scheme/database_scheme/m
 import 'package:base_template_general_framework_project_scheme/respond_scheme/message.dart';
 
 extension MessageDatabaseExtension on MessageDatabase {
-  Message toMessage() {
+  Message toMessage({
+    required num chat_id,
+  }) {
     return Message.create(
       is_outgoing: is_outgoing,
-      chat_id: chat_ids.firstOrNull,
+      chat_id: chat_id,
       from_user_id: from_user_id,
       date: date,
       update_date: update_date,
@@ -51964,6 +56967,199 @@ class AccountDatabase extends JsonScheme {
                     directory_base:
                         Directory("base_template_general_framework_project"),
                     file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/database_scheme/chat_database.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
+// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+class ChatDatabase extends JsonScheme {
+  ChatDatabase(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "chatDatabase",
+      "chat_ids": [0],
+      "chat_unique_id": "",
+      "from_app_id": "",
+      "owner_account_user_id": 0
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == chatDatabase
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [ChatDatabase]
+  /// Empty
+  static ChatDatabase empty() {
+    return ChatDatabase({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  ///
+  /// default:
+  ///
+  ///
+  List<num> get chat_ids {
+    try {
+      if (rawData["chat_ids"] is List == false) {
+        return [];
+      }
+      return (rawData["chat_ids"] as List).cast<num>();
+    } catch (e) {
+      return [];
+    }
+  }
+
+  set chat_ids(List<num> value) {
+    rawData["chat_ids"] = value;
+  }
+
+  String? get chat_unique_id {
+    try {
+      if (rawData["chat_unique_id"] is String == false) {
+        return null;
+      }
+      return rawData["chat_unique_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set chat_unique_id(String? value) {
+    rawData["chat_unique_id"] = value;
+  }
+
+  String? get from_app_id {
+    try {
+      if (rawData["from_app_id"] is String == false) {
+        return null;
+      }
+      return rawData["from_app_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set from_app_id(String? value) {
+    rawData["from_app_id"] = value;
+  }
+
+  num? get owner_account_user_id {
+    try {
+      if (rawData["owner_account_user_id"] is num == false) {
+        return null;
+      }
+      return rawData["owner_account_user_id"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set owner_account_user_id(num? value) {
+    rawData["owner_account_user_id"] = value;
+  }
+
+  static ChatDatabase create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "chatDatabase",
+    List<num>? chat_ids,
+    String? chat_unique_id,
+    String? from_app_id,
+    num? owner_account_user_id,
+  }) {
+    // ChatDatabase chatDatabase = ChatDatabase({
+    final Map chatDatabase_data_create_json = {
+      "@type": special_type,
+      "chat_ids": chat_ids,
+      "chat_unique_id": chat_unique_id,
+      "from_app_id": from_app_id,
+      "owner_account_user_id": owner_account_user_id,
+    };
+
+    chatDatabase_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (chatDatabase_data_create_json.containsKey(key) == false) {
+          chatDatabase_data_create_json[key] = value;
+        }
+      });
+    }
+    return ChatDatabase(chatDatabase_data_create_json);
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
                         "library/base_template_general_framework_project_scheme/lib/database_scheme/database_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
@@ -52002,7 +57198,9 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 export "account_database.dart";
+export "chat_database.dart";
 export "message_database.dart";
+export "message_isar_database.dart";
 export "session_database.dart";
 export "session_isar_database.dart";
 """,
@@ -52069,7 +57267,7 @@ class MessageDatabase extends JsonScheme {
       "date": 0,
       "update_date": 0,
       "status": "",
-      "chat_ids": [0],
+      "chat_unique_id": "",
       "from_app_id": "",
       "owner_account_user_id": 0
     };
@@ -52094,6 +57292,303 @@ class MessageDatabase extends JsonScheme {
   /// Empty
   static MessageDatabase empty() {
     return MessageDatabase({});
+  }
+
+  String? get special_type {
+    try {
+      if (rawData["@type"] is String == false) {
+        return null;
+      }
+      return rawData["@type"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set special_type(String? value) {
+    rawData["@type"] = value;
+  }
+
+  bool? get is_outgoing {
+    try {
+      if (rawData["is_outgoing"] is bool == false) {
+        return null;
+      }
+      return rawData["is_outgoing"] as bool;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set is_outgoing(bool? value) {
+    rawData["is_outgoing"] = value;
+  }
+
+  num? get message_id {
+    try {
+      if (rawData["message_id"] is num == false) {
+        return null;
+      }
+      return rawData["message_id"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set message_id(num? value) {
+    rawData["message_id"] = value;
+  }
+
+  num? get from_user_id {
+    try {
+      if (rawData["from_user_id"] is num == false) {
+        return null;
+      }
+      return rawData["from_user_id"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set from_user_id(num? value) {
+    rawData["from_user_id"] = value;
+  }
+
+  String? get text {
+    try {
+      if (rawData["text"] is String == false) {
+        return null;
+      }
+      return rawData["text"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set text(String? value) {
+    rawData["text"] = value;
+  }
+
+  num? get date {
+    try {
+      if (rawData["date"] is num == false) {
+        return null;
+      }
+      return rawData["date"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set date(num? value) {
+    rawData["date"] = value;
+  }
+
+  num? get update_date {
+    try {
+      if (rawData["update_date"] is num == false) {
+        return null;
+      }
+      return rawData["update_date"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set update_date(num? value) {
+    rawData["update_date"] = value;
+  }
+
+  String? get status {
+    try {
+      if (rawData["status"] is String == false) {
+        return null;
+      }
+      return rawData["status"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set status(String? value) {
+    rawData["status"] = value;
+  }
+
+  String? get chat_unique_id {
+    try {
+      if (rawData["chat_unique_id"] is String == false) {
+        return null;
+      }
+      return rawData["chat_unique_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set chat_unique_id(String? value) {
+    rawData["chat_unique_id"] = value;
+  }
+
+  String? get from_app_id {
+    try {
+      if (rawData["from_app_id"] is String == false) {
+        return null;
+      }
+      return rawData["from_app_id"] as String;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set from_app_id(String? value) {
+    rawData["from_app_id"] = value;
+  }
+
+  num? get owner_account_user_id {
+    try {
+      if (rawData["owner_account_user_id"] is num == false) {
+        return null;
+      }
+      return rawData["owner_account_user_id"] as num;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  set owner_account_user_id(num? value) {
+    rawData["owner_account_user_id"] = value;
+  }
+
+  static MessageDatabase create({
+    bool schemeUtilsIsSetDefaultData = false,
+    String special_type = "messageDatabase",
+    bool? is_outgoing,
+    num? message_id,
+    num? from_user_id,
+    String? text,
+    num? date,
+    num? update_date,
+    String? status,
+    String? chat_unique_id,
+    String? from_app_id,
+    num? owner_account_user_id,
+  }) {
+    // MessageDatabase messageDatabase = MessageDatabase({
+    final Map messageDatabase_data_create_json = {
+      "@type": special_type,
+      "is_outgoing": is_outgoing,
+      "message_id": message_id,
+      "from_user_id": from_user_id,
+      "text": text,
+      "date": date,
+      "update_date": update_date,
+      "status": status,
+      "chat_unique_id": chat_unique_id,
+      "from_app_id": from_app_id,
+      "owner_account_user_id": owner_account_user_id,
+    };
+
+    messageDatabase_data_create_json.removeWhere((key, value) => value == null);
+
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (messageDatabase_data_create_json.containsKey(key) == false) {
+          messageDatabase_data_create_json[key] = value;
+        }
+      });
+    }
+    return MessageDatabase(messageDatabase_data_create_json);
+  }
+}
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/database_scheme/message_isar_database.dart"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
+// ignore_for_file: non_constant_identifier_names, unused_import
+import "package:general_lib/general_lib.dart";
+// import "dart:convert";
+
+class MessageIsarDatabase extends JsonScheme {
+  MessageIsarDatabase(super.rawData);
+
+  /// return default data
+  ///
+  static Map get defaultData {
+    return {
+      "@type": "messageIsarDatabase",
+      "is_outgoing": false,
+      "message_id": 0,
+      "from_user_id": 0,
+      "text": "",
+      "date": 0,
+      "update_date": 0,
+      "status": "",
+      "chat_ids": [0],
+      "from_app_id": "",
+      "owner_account_user_id": 0
+    };
+  }
+
+  /// check data
+  /// if raw data
+  /// - rawData["@type"] == messageIsarDatabase
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  /// create [MessageIsarDatabase]
+  /// Empty
+  static MessageIsarDatabase empty() {
+    return MessageIsarDatabase({});
   }
 
   String? get special_type {
@@ -52265,9 +57760,9 @@ class MessageDatabase extends JsonScheme {
     rawData["owner_account_user_id"] = value;
   }
 
-  static MessageDatabase create({
+  static MessageIsarDatabase create({
     bool schemeUtilsIsSetDefaultData = false,
-    String special_type = "messageDatabase",
+    String special_type = "messageIsarDatabase",
     bool? is_outgoing,
     num? message_id,
     num? from_user_id,
@@ -52279,8 +57774,8 @@ class MessageDatabase extends JsonScheme {
     String? from_app_id,
     num? owner_account_user_id,
   }) {
-    // MessageDatabase messageDatabase = MessageDatabase({
-    final Map messageDatabase_data_create_json = {
+    // MessageIsarDatabase messageIsarDatabase = MessageIsarDatabase({
+    final Map messageIsarDatabase_data_create_json = {
       "@type": special_type,
       "is_outgoing": is_outgoing,
       "message_id": message_id,
@@ -52294,16 +57789,17 @@ class MessageDatabase extends JsonScheme {
       "owner_account_user_id": owner_account_user_id,
     };
 
-    messageDatabase_data_create_json.removeWhere((key, value) => value == null);
+    messageIsarDatabase_data_create_json
+        .removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (messageDatabase_data_create_json.containsKey(key) == false) {
-          messageDatabase_data_create_json[key] = value;
+        if (messageIsarDatabase_data_create_json.containsKey(key) == false) {
+          messageIsarDatabase_data_create_json[key] = value;
         }
       });
     }
-    return MessageDatabase(messageDatabase_data_create_json);
+    return MessageIsarDatabase(messageIsarDatabase_data_create_json);
   }
 }
 """,
@@ -55418,6 +60914,10 @@ final List<Map<String, dynamic>> database_schemes = () {
         generalLibSchemeType: generalLibSchemeType),
     BaseTemplateGeneralFrameworkProjectSchemeDefault.message(
         generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.chat(
+        generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.message(
+        generalLibSchemeType: GeneralLibSchemeType.isar),
     BaseTemplateGeneralFrameworkProjectSchemeDefault.session(
         generalLibSchemeType: generalLibSchemeType),
     BaseTemplateGeneralFrameworkProjectSchemeDefault.session(
@@ -55525,6 +61025,26 @@ class BaseTemplateGeneralFrameworkProjectSchemeDefault {
     return json_data;
   }
 
+  static Map<String, dynamic> chat({
+    required GeneralLibSchemeType generalLibSchemeType,
+  }) {
+    final Map<String, dynamic> json_data = {
+      "@type": "chat${generalLibSchemeType.toSpesialType()}",
+    };
+
+    if (generalLibSchemeType == GeneralLibSchemeType.database) {
+      json_data.general_lib_extension_updateForce(data: <String, dynamic>{
+        "chat_ids": [0],
+        "chat_unique_id": "",
+      });
+    } else if (generalLibSchemeType == GeneralLibSchemeType.scheme) {
+      json_data.general_lib_extension_updateForce(data: <String, dynamic>{
+        "chat_id": 0,
+      });
+    }
+    return json_data;
+  }
+
   static Map<String, dynamic> message({
     required GeneralLibSchemeType generalLibSchemeType,
   }) {
@@ -55540,6 +61060,11 @@ class BaseTemplateGeneralFrameworkProjectSchemeDefault {
     };
 
     if (generalLibSchemeType == GeneralLibSchemeType.database) {
+      json_data.general_lib_extension_updateForce(data: <String, dynamic>{
+        // "chat_ids": [0],
+        "chat_unique_id": "",
+      });
+    } else if (generalLibSchemeType == GeneralLibSchemeType.isar) {
       json_data.general_lib_extension_updateForce(data: <String, dynamic>{
         "chat_ids": [0],
       });
@@ -56357,6 +61882,35 @@ ALTER TABLE account ADD COLUMN owner_account_user_id bigint DEFAULT 0;
                 directory_base:
                     Directory("base_template_general_framework_project"),
                 file_system_entity: File(
+                    "library/base_template_general_framework_project_scheme/supabase_scheme/chat.supabase_sql"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""-- 1. Create table
+CREATE TABLE chat ( 
+  id bigint generated by default as identity primary key,
+  chat_ids jsonb null default '[0]'::json,
+  chat_unique_id text null default format(''::text),
+  from_app_id text null default format(''::text),
+  owner_account_user_id bigint null default 0
+);
+
+-- 2. Enable RLS
+alter table chat enable row level security;
+
+-- 3. ADD Column in Tabble Exist (Optional)
+ALTER TABLE chat ADD COLUMN chat_ids json DEFAULT '[0]';
+ALTER TABLE chat ADD COLUMN chat_unique_id text DEFAULT format(''::text);
+ALTER TABLE chat ADD COLUMN from_app_id text DEFAULT format(''::text);
+ALTER TABLE chat ADD COLUMN owner_account_user_id bigint DEFAULT 0;
+
+-- Recommendation""",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
                     "library/base_template_general_framework_project_scheme/supabase_scheme/message.supabase_sql"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
@@ -56370,7 +61924,7 @@ CREATE TABLE message (
   date bigint null default 0,
   update_date bigint null default 0,
   status text null default format(''::text),
-  chat_ids jsonb null default '[0]'::json,
+  chat_unique_id text null default format(''::text),
   from_app_id text null default format(''::text),
   owner_account_user_id bigint null default 0
 );
@@ -56386,9 +61940,50 @@ ALTER TABLE message ADD COLUMN text text DEFAULT format(''::text);
 ALTER TABLE message ADD COLUMN date bigint DEFAULT 0;
 ALTER TABLE message ADD COLUMN update_date bigint DEFAULT 0;
 ALTER TABLE message ADD COLUMN status text DEFAULT format(''::text);
-ALTER TABLE message ADD COLUMN chat_ids json DEFAULT '[0]';
+ALTER TABLE message ADD COLUMN chat_unique_id text DEFAULT format(''::text);
 ALTER TABLE message ADD COLUMN from_app_id text DEFAULT format(''::text);
 ALTER TABLE message ADD COLUMN owner_account_user_id bigint DEFAULT 0;
+
+-- Recommendation""",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_scheme/supabase_scheme/message_isar.supabase_sql"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""-- 1. Create table
+CREATE TABLE message_isar ( 
+  id bigint generated by default as identity primary key,
+  is_outgoing boolean null default false,
+  message_id bigint null default 0,
+  from_user_id bigint null default 0,
+  text text null default format(''::text),
+  date bigint null default 0,
+  update_date bigint null default 0,
+  status text null default format(''::text),
+  chat_ids jsonb null default '[0]'::json,
+  from_app_id text null default format(''::text),
+  owner_account_user_id bigint null default 0
+);
+
+-- 2. Enable RLS
+alter table message_isar enable row level security;
+
+-- 3. ADD Column in Tabble Exist (Optional)
+ALTER TABLE message_isar ADD COLUMN is_outgoing boolean DEFAULT false;
+ALTER TABLE message_isar ADD COLUMN message_id bigint DEFAULT 0;
+ALTER TABLE message_isar ADD COLUMN from_user_id bigint DEFAULT 0;
+ALTER TABLE message_isar ADD COLUMN text text DEFAULT format(''::text);
+ALTER TABLE message_isar ADD COLUMN date bigint DEFAULT 0;
+ALTER TABLE message_isar ADD COLUMN update_date bigint DEFAULT 0;
+ALTER TABLE message_isar ADD COLUMN status text DEFAULT format(''::text);
+ALTER TABLE message_isar ADD COLUMN chat_ids json DEFAULT '[0]';
+ALTER TABLE message_isar ADD COLUMN from_app_id text DEFAULT format(''::text);
+ALTER TABLE message_isar ADD COLUMN owner_account_user_id bigint DEFAULT 0;
 
 -- Recommendation""",
                 children: [],
@@ -61039,41 +66634,7 @@ add_custom_target(flutter_assemble DEPENDS
                         "production/base_template_general_framework_project_production_app/linux/flutter/generated_plugin_registrant.cc"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-//
+                    value: r"""//
 //  Generated file. Do not edit.
 //
 
@@ -61121,41 +66682,7 @@ void fl_register_plugins(FlPluginRegistry* registry);
                         "production/base_template_general_framework_project_production_app/linux/flutter/generated_plugins.cmake"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-#
+                    value: r"""#
 # Generated file, do not edit.
 #
 
@@ -63909,41 +69436,7 @@ add_custom_target(flutter_assemble DEPENDS
                         "production/base_template_general_framework_project_production_app/windows/flutter/generated_plugin_registrant.cc"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-//
+                    value: r"""//
 //  Generated file. Do not edit.
 //
 
@@ -63991,41 +69484,7 @@ void RegisterPlugins(flutter::PluginRegistry* registry);
                         "production/base_template_general_framework_project_production_app/windows/flutter/generated_plugins.cmake"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
-#
+                    value: r"""#
 # Generated file, do not edit.
 #
 

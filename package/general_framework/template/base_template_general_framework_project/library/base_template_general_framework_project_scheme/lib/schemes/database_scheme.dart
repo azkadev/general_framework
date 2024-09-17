@@ -38,13 +38,20 @@ import 'package:base_template_general_framework_project_scheme/schemes/default_s
 import 'package:general_lib/general_lib.dart';
 
 final List<Map<String, dynamic>> database_schemes = () {
-  final GeneralLibSchemeType generalLibSchemeType = GeneralLibSchemeType.database;
+  final GeneralLibSchemeType generalLibSchemeType =
+      GeneralLibSchemeType.database;
   return [
-    BaseTemplateGeneralFrameworkProjectSchemeDefault.account(generalLibSchemeType: generalLibSchemeType),
-    BaseTemplateGeneralFrameworkProjectSchemeDefault.message(generalLibSchemeType: generalLibSchemeType),
-    BaseTemplateGeneralFrameworkProjectSchemeDefault.chat(generalLibSchemeType: generalLibSchemeType),
-    BaseTemplateGeneralFrameworkProjectSchemeDefault.message(generalLibSchemeType: GeneralLibSchemeType.isar),
-    BaseTemplateGeneralFrameworkProjectSchemeDefault.session(generalLibSchemeType: generalLibSchemeType),
-    BaseTemplateGeneralFrameworkProjectSchemeDefault.session(generalLibSchemeType: GeneralLibSchemeType.isar),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.account(
+        generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.message(
+        generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.chat(
+        generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.message(
+        generalLibSchemeType: GeneralLibSchemeType.isar),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.session(
+        generalLibSchemeType: generalLibSchemeType),
+    BaseTemplateGeneralFrameworkProjectSchemeDefault.session(
+        generalLibSchemeType: GeneralLibSchemeType.isar),
   ];
 }();

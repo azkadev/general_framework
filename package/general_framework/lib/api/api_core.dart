@@ -36,7 +36,11 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 import 'dart:async';
 
+import 'package:general_framework/templates/app_template_general_framework_project_template.dart'; 
+import 'package:general_framework/templates/app_ui_template_general_framework_template.dart';
 import 'package:general_framework/templates/base_template_general_framework_project_template.dart';
+import 'package:general_framework/templates/telegram_bot_template_general_framework_project_template.dart';
+import 'package:general_framework/templates/telegram_userbot_template_general_framework_project_template.dart';
 import 'package:general_lib/extension/string.dart';
 import 'package:general_lib/script_generate/script_generate.dart';
 import "package:path/path.dart" as path;
@@ -47,7 +51,11 @@ class GeneralFrameworkApi {
 
   Map<String, List<ScriptGenerator>> get templates {
     return {
+      "app": app_template_general_framework_project_script_generators,
+      "app_ui": app_ui_template_general_framework_script_generators,
       "base": base_template_general_framework_project_script_generators,
+      "telegram_bot": telegram_bot_template_general_framework_project_script_generators,
+      "telegram_userbot": telegram_userbot_template_general_framework_project_script_generators,
     };
   }
 

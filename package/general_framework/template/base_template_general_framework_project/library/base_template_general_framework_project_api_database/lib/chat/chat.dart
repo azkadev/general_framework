@@ -41,21 +41,29 @@ import 'package:base_template_general_framework_project_scheme/database_scheme/c
 import 'package:base_template_general_framework_project_scheme/schemes/default_scheme.dart';
 import 'package:general_lib/extension/map.dart';
 
-extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionChat on BaseTemplateGeneralFrameworkProjectApiDatabase {
+extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionChat
+    on BaseTemplateGeneralFrameworkProjectApiDatabase {
   void chat_utils_removeUnusedAccountDatabase({
     required ChatDatabase chatDatabase,
   }) {
     chatDatabase.rawData.removeByKeys(["@type", "id"]);
     List keys = ChatDatabase.defaultData.keys.toList();
-    chatDatabase.rawData.removeWhere((key, value) => keys.contains(key) == false);
+    chatDatabase.rawData
+        .removeWhere((key, value) => keys.contains(key) == false);
   }
 
   Future<String?> chat_generateNewChatUniqueId() async {
     while (true) {
       await Future.delayed(Duration(milliseconds: 1));
-      final String new_chat_unique_id = BaseTemplateGeneralFrameworkProjectSchemeDefault.utils_generateSessionToken();
+      final String new_chat_unique_id =
+          BaseTemplateGeneralFrameworkProjectSchemeDefault
+              .utils_generateSessionToken();
 
-      final result = await supabase_chat.select("id").eq("chat_unique_id", new_chat_unique_id).limit(1).maybeSingle();
+      final result = await supabase_chat
+          .select("id")
+          .eq("chat_unique_id", new_chat_unique_id)
+          .limit(1)
+          .maybeSingle();
       if (result == null) {
         return new_chat_unique_id;
       }
@@ -67,14 +75,19 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionChat on BaseTem
     required num user_id,
     required ChatDatabase newChatDatabase,
   }) async {
-    final String new_chat_unique_id = (await chat_generateNewChatUniqueId() ?? "").trim();
+    final String new_chat_unique_id =
+        (await chat_generateNewChatUniqueId() ?? "").trim();
     if (new_chat_unique_id.isEmpty) {
       return null;
     }
     chat_utils_removeUnusedAccountDatabase(chatDatabase: newChatDatabase);
     newChatDatabase.chat_ids = [chat_id, user_id];
     newChatDatabase.chat_unique_id = new_chat_unique_id;
-    final new_data = await supabase_chat.insert(newChatDatabase.toJson(), defaultToNull: false).select().limit(1).maybeSingle();
+    final new_data = await supabase_chat
+        .insert(newChatDatabase.toJson(), defaultToNull: false)
+        .select()
+        .limit(1)
+        .maybeSingle();
     if (new_data == null) {
       return null;
     }
@@ -84,8 +97,12 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionChat on BaseTem
   Future<ChatDatabase?> chat_getChatDatabase({
     required num chat_id,
     required num user_id,
-   }) async {
-    final result = await supabase_account.select().containedBy("chat_ids", [chat_id, user_id]).limit(1).maybeSingle();
+  }) async {
+    final result = await supabase_account
+        .select()
+        .containedBy("chat_ids", [chat_id, user_id])
+        .limit(1)
+        .maybeSingle();
     if (result == null) {
       return null;
     }

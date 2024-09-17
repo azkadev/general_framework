@@ -46,31 +46,38 @@ import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 class BaseTemplateGeneralFrameworkProjectFlutter {
-  static final GeneralLibFlutterApp generalLibFlutterApp = GeneralLibFlutterApp();
+  static final GeneralLibFlutterApp generalLibFlutterApp =
+      GeneralLibFlutterApp();
   static final GeneralFlutter generalFlutter = GeneralFlutter();
-  static late final BaseTemplateGeneralFrameworkProjectClientFlutter baseTemplateGeneralFrameworkProjectClientFlutter;
+  static late final BaseTemplateGeneralFrameworkProjectClientFlutter
+      baseTemplateGeneralFrameworkProjectClientFlutter;
 
   static bool _is_initialized = false;
 
   static void ensureInitialized({
     required List<String> arguments,
     GlobalKey<NavigatorState>? navigatorKey,
-    required BaseTemplateGeneralFrameworkProjectSecretClientSide baseTemplateGeneralFrameworkProjectSecretClientSide,
+    required BaseTemplateGeneralFrameworkProjectSecretClientSide
+        baseTemplateGeneralFrameworkProjectSecretClientSide,
   }) {
     if (_is_initialized) {
       return;
     }
     WidgetsFlutterBinding.ensureInitialized();
-    baseTemplateGeneralFrameworkProjectClientFlutter = BaseTemplateGeneralFrameworkProjectClientFlutter(
+    baseTemplateGeneralFrameworkProjectClientFlutter =
+        BaseTemplateGeneralFrameworkProjectClientFlutter(
       generalFrameworkClient: BaseTemplateGeneralFrameworkProjectClient(
         generalLibrary: generalFlutter,
-        generalFrameworkClientInvokeOptions: GeneralFrameworkClientInvokeOptions(
+        generalFrameworkClientInvokeOptions:
+            GeneralFrameworkClientInvokeOptions(
           networkClientConnectionType: NetworkClientConnectionType.websocket,
           durationTimeOut: const Duration(minutes: 1),
           isInvokeThrowOnError: false,
         ),
-        baseTemplateGeneralFrameworkProjectSecretClientSide: baseTemplateGeneralFrameworkProjectSecretClientSide,
-        generalFrameworkDatabase: BaseTemplateGeneralFrameworkProjectClientDatabase(),
+        baseTemplateGeneralFrameworkProjectSecretClientSide:
+            baseTemplateGeneralFrameworkProjectSecretClientSide,
+        generalFrameworkDatabase:
+            BaseTemplateGeneralFrameworkProjectClientDatabase(),
       ),
       navigatorKey: navigatorKey ?? GlobalKey<NavigatorState>(),
       generalLibrary: generalFlutter,
@@ -80,12 +87,14 @@ class BaseTemplateGeneralFrameworkProjectFlutter {
 
   static void run() {
     runApp(BaseTemplateGeneralFrameworkProjectFlutterApp(
-      generalFrameworkClientFlutter: baseTemplateGeneralFrameworkProjectClientFlutter,
+      generalFrameworkClientFlutter:
+          baseTemplateGeneralFrameworkProjectClientFlutter,
     ));
   }
 }
 
-class BaseTemplateGeneralFrameworkProjectFlutterApp extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget {
+class BaseTemplateGeneralFrameworkProjectFlutterApp
+    extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget {
   const BaseTemplateGeneralFrameworkProjectFlutterApp({
     super.key,
     required super.generalFrameworkClientFlutter,
@@ -94,7 +103,8 @@ class BaseTemplateGeneralFrameworkProjectFlutterApp extends BaseTemplateGeneralF
   @override
   Widget build(BuildContext context) {
     return GeneralLibFlutterAppMain(
-      generalLibFlutterApp: BaseTemplateGeneralFrameworkProjectFlutter.generalLibFlutterApp,
+      generalLibFlutterApp:
+          BaseTemplateGeneralFrameworkProjectFlutter.generalLibFlutterApp,
       builder: (themeMode, lightTheme, darkTheme, widget) {
         final MaterialApp child = MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -119,14 +129,18 @@ class BaseTemplateGeneralFrameworkProjectFlutterApp extends BaseTemplateGeneralF
   }
 }
 
-class BaseTemplateGeneralFrameworkProjectFlutterAppMain extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
-  const BaseTemplateGeneralFrameworkProjectFlutterAppMain({super.key, required super.generalFrameworkClientFlutter});
+class BaseTemplateGeneralFrameworkProjectFlutterAppMain
+    extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
+  const BaseTemplateGeneralFrameworkProjectFlutterAppMain(
+      {super.key, required super.generalFrameworkClientFlutter});
 
   @override
-  State<BaseTemplateGeneralFrameworkProjectFlutterAppMain> createState() => _BaseTemplateGeneralFrameworkProjectFlutterAppMainState();
+  State<BaseTemplateGeneralFrameworkProjectFlutterAppMain> createState() =>
+      _BaseTemplateGeneralFrameworkProjectFlutterAppMainState();
 }
 
-class _BaseTemplateGeneralFrameworkProjectFlutterAppMainState extends State<BaseTemplateGeneralFrameworkProjectFlutterAppMain> {
+class _BaseTemplateGeneralFrameworkProjectFlutterAppMainState
+    extends State<BaseTemplateGeneralFrameworkProjectFlutterAppMain> {
   @override
   void initState() {
     super.initState();

@@ -36,7 +36,8 @@ import 'package:base_template_general_framework_project_flutter/client/core.dart
 import 'package:base_template_general_framework_project_scheme/respond_scheme/account.dart';
 import 'package:flutter/material.dart';
 
-class ChatPage extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
+class ChatPage
+    extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
   final Account account;
   const ChatPage({
     super.key,

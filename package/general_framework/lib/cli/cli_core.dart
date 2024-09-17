@@ -41,7 +41,7 @@ import 'dart:io';
 
 import 'package:general_framework/api/api_core.dart';
 import 'package:general_framework/packagex/packagex.dart';
- import 'package:general_lib/general_lib.dart';
+import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/script_generate/script_generate.dart';
 import 'package:mason_logger/mason_logger.dart';
 import "package:path/path.dart" as path;
@@ -171,7 +171,7 @@ Commands:
               choices: generalFrameworkApi.templates.keys.toList(),
               defaultValue: generalFrameworkApi.templates.keys.firstOrNull,
               display: (choice) {
-                return choice.split(" ").map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
+                return choice.split(RegExp("([ ]+|_)")).map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
               },
             );
             final List<ScriptGenerator>? template_project_procces = generalFrameworkApi.templates[template_project_name_procces];
@@ -201,7 +201,7 @@ Commands:
       }
       await generalFrameworkApi.createProject(
         name_project: name_project,
-        is_force: args.contains(["--force","-force", "-f", "-F"]),
+        is_force: args.contains(["--force", "-force", "-f", "-F"]),
         template_project: template_project_procces,
         current_path: Directory.current.path,
         onStatus: (status) {
