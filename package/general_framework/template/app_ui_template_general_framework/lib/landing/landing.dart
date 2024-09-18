@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, empty_catches
 
+import 'package:app_ui_template_general_framework/landing/about/about.dart';
+import 'package:app_ui_template_general_framework/landing/home/home.dart';
 import 'package:app_ui_template_general_framework/main.dart';
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/widget/widget.dart';
@@ -10,21 +12,6 @@ class LandingPage extends StatefulWidget {
 
   @override
   State<LandingPage> createState() => _LandingPageState();
-}
-
-class CrossFadeStateData extends ChangeNotifier {
-  CrossFadeState crossFadeState = CrossFadeState.showFirst;
-
-  void change({
-    required bool isScrolling,
-  }) {
-    if (isScrolling) {
-      crossFadeState = CrossFadeState.showSecond;
-    } else {
-      crossFadeState = CrossFadeState.showFirst;
-    }
-    notifyListeners();
-  }
 }
 
 class CrossFadeStateController extends ChangeNotifier {
@@ -70,14 +57,14 @@ class _LandingPageState extends State<LandingPage> {
     super.dispose();
   }
 
-  final CrossFadeStateData crossFadeStateData = CrossFadeStateData();
+  final CrossFadeStateController crossFadeStateData = CrossFadeStateController();
   void scrollListener({
     required ScrollController scrollController,
   }) {
     scrollController.onScrolling((isScrolling) {
       Future.delayed(Durations.short1, () async {
         try {
-          crossFadeStateData.change(isScrolling: isScrolling);
+          crossFadeStateData.change(isShowSecond: isScrolling);
         } catch (e) {}
       });
     });
@@ -88,7 +75,7 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( 
+    return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(450),
         child: ListenableBuilder(
@@ -100,8 +87,18 @@ class _LandingPageState extends State<LandingPage> {
               duration: Durations.short4,
               firstChild: Container(
                 key: status_bar_global_key,
+                margin: const EdgeInsets.only(
+                  bottom: 5,
+                ),
                 decoration: BoxDecoration(
-                  color: context.theme.primaryColor,
+                  color: context.theme.primaryColor, 
+                  boxShadow: [
+                    BoxShadow(
+                      color: context.theme.shadowColor,
+                      blurRadius: 1.5,
+                      spreadRadius: 1.5, 
+                    ),
+                  ],
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -135,7 +132,7 @@ class _LandingPageState extends State<LandingPage> {
                               ),
                               IconButton(
                                 onPressed: () {
-                                  crossFadeStatusBar.autoChange(); 
+                                  crossFadeStatusBar.autoChange();
                                 },
                                 icon: const RotatedBox(
                                   quarterTurns: 3,
@@ -236,27 +233,61 @@ class _LandingPageState extends State<LandingPage> {
             minWidth: context.width,
           ),
           child: Column(
-            children: [ 
+            children: [
               contentWidget(
                 globalKey: home_global_key,
                 context: context,
                 contentBuilder: (context) {
-                  return Container(
-                    height: context.height,
-                    width: context.width,
-                    color: Colors.green,
-                  );
+                  return const HomeContentLandingPageWidget();
+                },
+              ),
+              contentWidget(
+                globalKey: about_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return const AboutContentLandingPageWidget();
+                },
+              ),
+              contentWidget(
+                globalKey: blog_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return const AboutContentLandingPageWidget();
                 },
               ),
               contentWidget(
                 globalKey: contact_global_key,
                 context: context,
                 contentBuilder: (context) {
-                  return Container(
-                    height: context.height,
-                    width: context.width,
-                    color: Colors.red,
-                  );
+                  return const AboutContentLandingPageWidget();
+                },
+              ),
+              contentWidget(
+                globalKey: documentation_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return const AboutContentLandingPageWidget();
+                },
+              ),
+              contentWidget(
+                globalKey: pricing_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return const AboutContentLandingPageWidget();
+                },
+              ),
+              contentWidget(
+                globalKey: privacy_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return const AboutContentLandingPageWidget();
+                },
+              ),
+              contentWidget(
+                globalKey: terms_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return const AboutContentLandingPageWidget();
                 },
               ),
               SizedBox(
