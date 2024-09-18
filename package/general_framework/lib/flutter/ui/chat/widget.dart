@@ -35,11 +35,13 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 // ignore_for_file: unused_element, empty_catches
 
 import 'package:flutter/material.dart';
+import 'package:general_framework/extension/extension.dart';
 import 'package:general_framework/flutter/fork/skeletonizer/lib/skeletonizer.dart';
 import 'package:general_framework/utils/utils.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:intl/intl.dart' as intl;
 
+/// create chat message on main screen
 class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
   final bool isLoading;
   final Color? unreadCountColor;
@@ -59,6 +61,7 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
   final void Function()? onLongPress;
   final void Function(bool value)? onFocusChange;
   final EdgeInsetsGeometry? contentPadding;
+  final String? locale;
   const ChatMessageGeneralFrameworkWidget({
     super.key,
     required this.isLoading,
@@ -79,11 +82,12 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
     this.onLongPress,
     this.onTap,
     this.onFocusChange,
+    this.locale,
   });
 
   @override
   Widget build(BuildContext context) {
-     return SkeletonizerGeneralFramework(
+    return SkeletonizerGeneralFramework(
       enabled: isLoading,
       child: ListTile(
         contentPadding: contentPadding,
@@ -182,9 +186,9 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
     return Text(
       () {
         if (date.extensionGeneralFrameworkToThisDay().isAtSameMomentAs(DateTime.now().extensionGeneralFrameworkToThisDay())) {
-          return intl.DateFormat("hh.mm").format(date);
+          return intl.DateFormat("hh.mm", locale).format(date);
         } else {
-          return intl.DateFormat("dd/mm/yy").format(date);
+          return intl.DateFormat("dd/mm/yy", locale).format(date);
         }
       }(),
       style: context.theme.textTheme.bodySmall,
@@ -207,18 +211,6 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
         "$unreadCount",
         style: context.theme.textTheme.bodySmall,
       ),
-    );
-  }
-}
-
-extension DateTimeExtensionGeneralFramework on DateTime {
-  DateTime extensionGeneralFrameworkToThisDay() {
-    return copyWith(
-      hour: 0,
-      minute: 0,
-      second: 0,
-      microsecond: 0,
-      millisecond: 0,
     );
   }
 }
