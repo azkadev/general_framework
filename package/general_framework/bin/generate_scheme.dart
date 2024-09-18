@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 /* <!-- START LICENSE -->
 
 
@@ -32,3 +34,21 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+import 'dart:io';
+
+import 'package:general_lib/general_lib.dart';
+import 'package:path/path.dart' as path;
+import 'package:server_universe/schemes/schemes.dart';
+// import 'package:universal_io/io.dart';
+
+void main(List<String> args) async {
+  final Directory directory_lib_scheme = Directory(path.join(Directory.current.path, "lib", "scheme"));
+  if (directory_lib_scheme.existsSync()) {
+    directory_lib_scheme.deleteSync(recursive: true);
+  }
+  directory_lib_scheme.createSync(recursive: true);
+  await jsonToScripts(
+    schemes,
+    directory: directory_lib_scheme,
+  );
+}

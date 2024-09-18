@@ -4,6 +4,7 @@ import 'package:app_ui_template_general_framework/landing/about/about.dart';
 import 'package:app_ui_template_general_framework/landing/home/home.dart';
 import 'package:app_ui_template_general_framework/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:general_framework/flutter/widget/widget.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
@@ -91,12 +92,12 @@ class _LandingPageState extends State<LandingPage> {
                   bottom: 5,
                 ),
                 decoration: BoxDecoration(
-                  color: context.theme.primaryColor, 
+                  color: context.theme.primaryColor,
                   boxShadow: [
                     BoxShadow(
                       color: context.theme.shadowColor,
                       blurRadius: 1.5,
-                      spreadRadius: 1.5, 
+                      spreadRadius: 1.5,
                     ),
                   ],
                 ),
@@ -290,6 +291,7 @@ class _LandingPageState extends State<LandingPage> {
                   return const AboutContentLandingPageWidget();
                 },
               ),
+              footerWidget(context: context),
               SizedBox(
                 height: context.mediaQueryData.padding.bottom,
               ),
@@ -448,6 +450,46 @@ class _LandingPageState extends State<LandingPage> {
         child: Builder(
           builder: contentBuilder,
         ),
+      ),
+    );
+  }
+
+  Widget footerWidget({
+    required BuildContext context,
+  }) {
+
+    return Container(
+      width: context.width,
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: context.theme.dialogBackgroundColor,
+        // color: (AppUiTemplateGeneralFrameworkMain.generalLibFlutterApp.themeMode == ThemeMode.dark) ?context.theme.primaryColor:context.theme.primaryColor,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: context.theme.shadowColor,
+            blurRadius: 1.5,
+            spreadRadius: 1.5,
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text("sa"),
+          SizedBox(
+            height: 50,
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          SizedBox(
+            height: 50,
+          ),
+        ],
       ),
     );
   }
