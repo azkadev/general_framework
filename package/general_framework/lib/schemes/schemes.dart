@@ -8,9 +8,9 @@ final List<Map<String, dynamic>> schemes = [
     "author_url_social_medias": [
       "url",
     ],
-    "docs": [
+    "documentations": [
       {
-        "@type": "generalFrameworkDocumentationDocs",
+        "@type": "generalFrameworkDocumentationDocumentation",
         "doc_id": "",
         "title": "",
         "description": "",
@@ -19,7 +19,7 @@ final List<Map<String, dynamic>> schemes = [
         ],
         "contents": [
           {
-            "@type": "generalFrameworkDocumentationDocsContents",
+            "@type": "generalFrameworkDocumentationDocumentationsContent",
             "content_id": "",
             "content": "",
           },
@@ -27,14 +27,14 @@ final List<Map<String, dynamic>> schemes = [
       },
     ],
     "footer": {
-      "@type": "generalFrameworkDocumentationDocsFooterData",
+      "@type": "generalFrameworkDocumentationFooter",
       "footers": [
         {
-          "@type": "footersData",
+          "@type": "generalFrameworkDocumentationFooterData",
           "title": "",
           "footer": [
             {
-              "@type": "footerData",
+              "@type": "generalFrameworkDocumentationFooterSubData",
               "text": "",
               "url": "",
             }
@@ -59,32 +59,11 @@ final List<Map<String, dynamic>> schemes = [
         "value": "",
       },
     ]
-  },
-  {
-    "@type": "docsData",
-    "doc_id": "",
-    "title": "",
-    "description": "",
-    "sidebars": [
-      docSideBar,
-    ],
-    "contents": [
-      {
-        "@type": "docContents",
-        "content_id": "",
-        "content": "",
-      },
-    ],
-  },
-  {
-    "@type": "footerData",
-    "title": "",
-    "url": "",
-  },
+  }, 
 ];
 
 Map docSideBar = {
-  "@type": "generalFrameworkDocumentationDocsSideBar",
+  "@type": "generalFrameworkDocumentationDocumentationSideBar",
   "title": "",
   "navigate_content_id": "content",
 };

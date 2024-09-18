@@ -36,9 +36,9 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 import 'dart:io';
 
+import 'package:general_framework/schemes/schemes.dart';
 import 'package:general_lib/general_lib.dart';
-import 'package:path/path.dart' as path;
-import 'package:server_universe/schemes/schemes.dart';
+import 'package:path/path.dart' as path; 
 // import 'package:universal_io/io.dart';
 
 void main(List<String> args) async {
