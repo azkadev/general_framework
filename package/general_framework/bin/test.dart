@@ -34,17 +34,33 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 import 'dart:io';
 
-import 'package:general_framework/templates/base_template_general_framework_project_template.dart';
+import 'package:general_framework/api/api_core.dart';
 import 'package:general_lib/script_generate/script_generate.dart';
 import "package:path/path.dart" as path;
 
-void main(List<String> args) {
-  Directory directory = Directory(path.join(Directory.current.path, "temp", "azka_project"));
-  if (directory.existsSync()) {
-    directory.deleteSync(recursive: true);
+void main(List<String> args) async {
+  GeneralFrameworkApi generalFrameworkApi = GeneralFrameworkApi();
+
+  Directory directory = Directory(path.join(
+    Directory.current.path,
+    "temp",
+  ));
+
+  if (directory.existsSync() == false) {
+    directory.createSync(recursive: true);
   }
-  directory.createSync(recursive: true);
-  base_template_general_framework_project_script_generators.generateToDirectory(directoryBase: directory).listen((e) {
-    print(e.text);
-  });
+  // generalFrameworkApi.templates.entries;
+  for (var element in generalFrameworkApi.templates.entries) {
+    Directory directory_project = Directory(path.join(Directory.current.path, "temp", "azka_${element.key}_project"));
+    if (directory_project.existsSync()) {
+      directory_project.deleteSync(recursive: true);
+    }
+    directory_project.createSync(recursive: true);
+    await for (var e in element.value.generateToDirectory(directoryBase: directory_project)) {
+      print(e.text);
+    }
+    ;
+  }
+
+  exit(0);
 }

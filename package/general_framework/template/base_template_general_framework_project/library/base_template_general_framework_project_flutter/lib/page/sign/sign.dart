@@ -207,16 +207,15 @@ class _SignPageState extends State<SignPage> {
         res.rawData.printPretty();
         if (res.json_scheme_utils_checkDataIsSameBySpecialType()) {
           context.routerGeneralLibFlutter().pushAndRemoveUntil(
-            newRoute: MaterialPageRoute(
-              builder: (context) {
-                return HomePage(
-                    generalFrameworkClientFlutter:
-                        widget.generalFrameworkClientFlutter);
-              },
-            ),
-            routeName: "/",
-            parameters: {},
-          );
+                newRoute: MaterialPageRoute(
+                  builder: (context) {
+                    return HomePage(
+                        generalFrameworkClientFlutter:
+                            widget.generalFrameworkClientFlutter);
+                  },
+                ),
+                routeName: "/",
+              );
         }
       } else if (signPageType == SignPageType.sign_up) {
         await widget.generalFrameworkClientFlutter.generalFrameworkClient

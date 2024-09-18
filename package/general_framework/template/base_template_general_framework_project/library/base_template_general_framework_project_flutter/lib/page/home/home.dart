@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     routerGeneralLibFlutter().pushNamed(
                       routeName: "/settings",
-                      parameters: null,
+                      arguments: null,
                     );
                   },
                 ),
@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       routerGeneralLibFlutter().pushNamed(
                           routeName: "/chat",
-                          parameters:
+                          arguments:
                               Account.create(first_name: "Azka Developer"));
                     },
                   );

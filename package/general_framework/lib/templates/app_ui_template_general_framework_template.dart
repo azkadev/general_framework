@@ -29,8 +29,8 @@ final List<ScriptGenerator>
                 ".github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value:
-                r"""# Generate Automatic By GLOBAL CORPORATION / GENERAL CORPORATION
+            value: r"""
+# Generate Automatic By GLOBAL CORPORATION / GENERAL CORPORATION
 # 
 # DEVELOPER:
 # 
@@ -79,6 +79,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
 """,
             children: [],
           )
@@ -90,8 +91,10 @@ jobs:
         file_system_entity: File(".github/FUNDING.yaml"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""github: 
+        value: r"""
+github: 
   - 'azkadev'
+
 """,
         children: [],
       )
@@ -119,7 +122,8 @@ jobs:
             file_system_entity: File(".idea/libraries/Dart_SDK.xml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""<component name="libraryTable">
+            value: r"""
+<component name="libraryTable">
   <library name="Dart SDK">
     <CLASSES>
       <root url="file:///home/galaxeus/development/flutter/bin/cache/dart-sdk/lib/async" />
@@ -137,7 +141,8 @@ jobs:
     <JAVADOC />
     <SOURCES />
   </library>
-</component>""",
+</component>
+""",
             children: [],
           ),
           ScriptGenerator(
@@ -146,7 +151,8 @@ jobs:
             file_system_entity: File(".idea/libraries/KotlinJavaRuntime.xml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""<component name="libraryTable">
+            value: r"""
+<component name="libraryTable">
   <library name="KotlinJavaRuntime">
     <CLASSES>
       <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-stdlib.jar!/" />
@@ -161,6 +167,7 @@ jobs:
     </SOURCES>
   </library>
 </component>
+
 """,
             children: [],
           )
@@ -180,12 +187,14 @@ jobs:
             file_system_entity: File(".idea/runConfigurations/main_dart.xml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""<component name="ProjectRunConfigurationManager">
+            value: r"""
+<component name="ProjectRunConfigurationManager">
   <configuration default="false" name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
     <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
     <method />
   </configuration>
-</component>""",
+</component>
+""",
             children: [],
           )
         ],
@@ -196,7 +205,8 @@ jobs:
         file_system_entity: File(".idea/modules.xml"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""<?xml version="1.0" encoding="UTF-8"?>
+        value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
@@ -205,6 +215,7 @@ jobs:
     </modules>
   </component>
 </project>
+
 """,
         children: [],
       ),
@@ -214,7 +225,8 @@ jobs:
         file_system_entity: File(".idea/workspace.xml"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""<?xml version="1.0" encoding="UTF-8"?>
+        value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FileEditorManager">
     <leaf>
@@ -250,6 +262,7 @@ jobs:
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
 </project>
+
 """,
         children: [],
       )
@@ -295,14 +308,15 @@ jobs:
                         File("android/app/src/debug/AndroidManifest.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value:
-                        r"""<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+                    value: r"""
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- The INTERNET permission is required for development. Specifically,
          the Flutter tool needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
+
 """,
                     children: [],
                   )
@@ -316,6 +330,188 @@ jobs:
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("app_ui_template_general_framework"),
+                    file_system_entity: Directory("android/app/src/main/java"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.directory,
+                    value: "",
+                    children: [
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base:
+                            Directory("app_ui_template_general_framework"),
+                        file_system_entity:
+                            Directory("android/app/src/main/java/io"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.directory,
+                        value: "",
+                        children: [
+                          ScriptGenerator(
+                            is_generate: true,
+                            directory_base:
+                                Directory("app_ui_template_general_framework"),
+                            file_system_entity: Directory(
+                                "android/app/src/main/java/io/flutter"),
+                            state_data: {},
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
+                            value: "",
+                            children: [
+                              ScriptGenerator(
+                                is_generate: true,
+                                directory_base: Directory(
+                                    "app_ui_template_general_framework"),
+                                file_system_entity: Directory(
+                                    "android/app/src/main/java/io/flutter/plugins"),
+                                state_data: {},
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
+                                value: "",
+                                children: [
+                                  ScriptGenerator(
+                                    is_generate: true,
+                                    directory_base: Directory(
+                                        "app_ui_template_general_framework"),
+                                    file_system_entity: File(
+                                        "android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java"),
+                                    state_data: {},
+                                    file_system_entity_type:
+                                        FileSystemEntityType.file,
+                                    value: r"""
+package io.flutter.plugins;
+
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import io.flutter.Log;
+
+import io.flutter.embedding.engine.FlutterEngine;
+
+/**
+ * Generated file. Do not edit.
+ * This file is generated by the Flutter tool based on the
+ * plugins that support the Android platform.
+ */
+@Keep
+public final class GeneratedPluginRegistrant {
+  private static final String TAG = "GeneratedPluginRegistrant";
+  public static void registerWith(@NonNull FlutterEngine flutterEngine) {
+    try {
+      flutterEngine.getPlugins().add(new dev.fluttercommunity.plus.battery.BatteryPlusPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin battery_plus, dev.fluttercommunity.plus.battery.BatteryPlusPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new io.flutter.plugins.camerax.CameraAndroidCameraxPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin camera_android_camerax, io.flutter.plugins.camerax.CameraAndroidCameraxPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.mr.flutter.plugin.filepicker.FilePickerPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin file_picker, com.mr.flutter.plugin.filepicker.FilePickerPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new de.julianassmann.flutter_background.FlutterBackgroundPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin flutter_background, de.julianassmann.flutter_background.FlutterBackgroundPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new io.flutter.plugins.flutter_plugin_android_lifecycle.FlutterAndroidLifecyclePlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin flutter_plugin_android_lifecycle, io.flutter.plugins.flutter_plugin_android_lifecycle.FlutterAndroidLifecyclePlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.tundralabs.fluttertts.FlutterTtsPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin flutter_tts, com.tundralabs.fluttertts.FlutterTtsPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new org.flame_engine.gamepads_android.GamepadsAndroidPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin gamepads_android, org.flame_engine.gamepads_android.GamepadsAndroidPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new io.flutter.plugins.localauth.LocalAuthPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin local_auth_android, io.flutter.plugins.localauth.LocalAuthPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.alexmercerind.media_kit_video.MediaKitVideoPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin media_kit_video, com.alexmercerind.media_kit_video.MediaKitVideoPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new dev.fluttercommunity.plus.packageinfo.PackageInfoPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin package_info_plus, dev.fluttercommunity.plus.packageinfo.PackageInfoPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new io.flutter.plugins.pathprovider.PathProviderPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin path_provider_android, io.flutter.plugins.pathprovider.PathProviderPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.baseflow.permissionhandler.PermissionHandlerPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin permission_handler_android, com.baseflow.permissionhandler.PermissionHandlerPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.xamdesign.safe_device.SafeDevicePlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin safe_device, com.xamdesign.safe_device.SafeDevicePlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.aaassseee.screen_brightness_android.ScreenBrightnessAndroidPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin screen_brightness_android, com.aaassseee.screen_brightness_android.ScreenBrightnessAndroidPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.wsc.sim_card_info.SimCardInfoPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin sim_card_info, com.wsc.sim_card_info.SimCardInfoPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.elyudde.sms_flutter.SmsFlutterPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin sms_flutter, com.elyudde.sms_flutter.SmsFlutterPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.csdcorp.speech_to_text.SpeechToTextPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin speech_to_text, com.csdcorp.speech_to_text.SpeechToTextPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new io.flutter.plugins.urllauncher.UrlLauncherPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin url_launcher_android, io.flutter.plugins.urllauncher.UrlLauncherPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.kurenai7968.volume_controller.VolumeControllerPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin volume_controller, com.kurenai7968.volume_controller.VolumeControllerPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new dev.fluttercommunity.plus.wakelock.WakelockPlusPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin wakelock_plus, dev.fluttercommunity.plus.wakelock.WakelockPlusPlugin", e);
+    }
+  }
+}
+
+""",
+                                    children: [],
+                                  )
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                   ScriptGenerator(
                     is_generate: true,
                     directory_base:
@@ -378,12 +574,45 @@ jobs:
                                         state_data: {},
                                         file_system_entity_type:
                                             FileSystemEntityType.file,
-                                        value:
-                                            r"""package global_corporation.azkadev.general_framework.app_ui_template_general_framework
+                                        value: r"""
+package global_corporation.azkadev.general_framework.app_ui_template_general_framework
 
+import android.hardware.input.InputManager
+import android.os.Handler
+import android.view.InputDevice
+import android.view.KeyEvent
+import android.view.MotionEvent
 import io.flutter.embedding.android.FlutterActivity
+import org.flame_engine.gamepads_android.GamepadsCompatibleActivity
+import io.flutter.embedding.android.FlutterFragmentActivity
 
-class MainActivity: FlutterActivity()
+class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
+    var keyListener: ((KeyEvent) -> Boolean)? = null
+    var motionListener: ((MotionEvent) -> Boolean)? = null
+
+    override fun dispatchGenericMotionEvent(motionEvent: MotionEvent): Boolean {
+        return motionListener?.invoke(motionEvent) ?: false
+    }
+    
+    override fun dispatchKeyEvent(keyEvent: KeyEvent): Boolean {
+        return keyListener?.invoke(keyEvent) ?: false
+    }
+
+    override fun registerInputDeviceListener(
+      listener: InputManager.InputDeviceListener, handler: Handler?) {
+        val inputManager = getSystemService(INPUT_SERVICE) as InputManager
+        inputManager.registerInputDeviceListener(listener, null)
+    }
+
+    override fun registerKeyEventHandler(handler: (KeyEvent) -> Boolean) {
+        keyListener = handler
+    }
+
+    override fun registerMotionEventHandler(handler: (MotionEvent) -> Boolean) {
+        motionListener = handler
+    }
+}
+
 """,
                                         children: [],
                                       )
@@ -424,7 +653,8 @@ class MainActivity: FlutterActivity()
                                 "android/app/src/main/res/drawable/launch_background.xml"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
-                            value: r"""<?xml version="1.0" encoding="utf-8"?>
+                            value: r"""
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Modify this file to customize your launch splash screen -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@android:color/white" />
@@ -436,6 +666,7 @@ class MainActivity: FlutterActivity()
             android:src="@mipmap/launch_image" />
     </item> -->
 </layer-list>
+
 """,
                             children: [],
                           )
@@ -459,7 +690,8 @@ class MainActivity: FlutterActivity()
                                 "android/app/src/main/res/drawable-v21/launch_background.xml"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
-                            value: r"""<?xml version="1.0" encoding="utf-8"?>
+                            value: r"""
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Modify this file to customize your launch splash screen -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="?android:colorBackground" />
@@ -471,6 +703,7 @@ class MainActivity: FlutterActivity()
             android:src="@mipmap/launch_image" />
     </item> -->
 </layer-list>
+
 """,
                             children: [],
                           )
@@ -549,7 +782,8 @@ class MainActivity: FlutterActivity()
                                 "android/app/src/main/res/values/styles.xml"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
-                            value: r"""<?xml version="1.0" encoding="utf-8"?>
+                            value: r"""
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is off -->
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
@@ -567,6 +801,7 @@ class MainActivity: FlutterActivity()
         <item name="android:windowBackground">?android:colorBackground</item>
     </style>
 </resources>
+
 """,
                             children: [],
                           )
@@ -590,7 +825,8 @@ class MainActivity: FlutterActivity()
                                 "android/app/src/main/res/values-night/styles.xml"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
-                            value: r"""<?xml version="1.0" encoding="utf-8"?>
+                            value: r"""
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is on -->
     <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
@@ -608,6 +844,7 @@ class MainActivity: FlutterActivity()
         <item name="android:windowBackground">?android:colorBackground</item>
     </style>
 </resources>
+
 """,
                             children: [],
                           )
@@ -623,8 +860,8 @@ class MainActivity: FlutterActivity()
                         File("android/app/src/main/AndroidManifest.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value:
-                        r"""<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+                    value: r"""
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:label="app_ui_template_general_framework"
         android:name="${applicationName}"
@@ -669,6 +906,7 @@ class MainActivity: FlutterActivity()
         </intent>
     </queries>
 </manifest>
+
 """,
                     children: [],
                   )
@@ -690,14 +928,15 @@ class MainActivity: FlutterActivity()
                         File("android/app/src/profile/AndroidManifest.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value:
-                        r"""<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+                    value: r"""
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- The INTERNET permission is required for development. Specifically,
          the Flutter tool needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
+
 """,
                     children: [],
                   )
@@ -711,7 +950,8 @@ class MainActivity: FlutterActivity()
             file_system_entity: File("android/app/build.gradle"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""plugins {
+            value: r"""
+plugins {
     id "com.android.application"
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
@@ -738,7 +978,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace = "global_corporation.azkadev.general_framework.app_ui_template_general_framework"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk 34
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -751,8 +991,8 @@ android {
         applicationId = "global_corporation.azkadev.general_framework.app_ui_template_general_framework"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdk 23
+        targetSdk 34
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
     }
@@ -797,11 +1037,13 @@ flutter {
                     File("android/gradle/wrapper/gradle-wrapper.properties"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
-                value: r"""distributionBase=GRADLE_USER_HOME
+                value: r"""
+distributionBase=GRADLE_USER_HOME
 distributionPath=wrapper/dists
 zipStoreBase=GRADLE_USER_HOME
 zipStorePath=wrapper/dists
 distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.3-all.zip
+
 """,
                 children: [],
               )
@@ -815,7 +1057,8 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.3-all.zip
         file_system_entity: File("android/.gitignore"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""gradle-wrapper.jar
+        value: r"""
+gradle-wrapper.jar
 /.gradle
 /captures/
 /gradlew
@@ -847,7 +1090,8 @@ linux/flutter/ephemeral
 macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
-temp/""",
+temp/
+""",
         children: [],
       ),
       ScriptGenerator(
@@ -857,7 +1101,8 @@ temp/""",
             File("android/app_ui_template_general_framework_android.iml"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""<?xml version="1.0" encoding="UTF-8"?>
+        value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="android" name="Android">
@@ -886,6 +1131,7 @@ temp/""",
     <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
   </component>
 </module>
+
 """,
         children: [],
       ),
@@ -895,7 +1141,8 @@ temp/""",
         file_system_entity: File("android/build.gradle"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""allprojects {
+        value: r"""
+allprojects {
     repositories {
         google()
         mavenCentral()
@@ -913,6 +1160,7 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
 """,
         children: [],
       ),
@@ -922,9 +1170,11 @@ tasks.register("clean", Delete) {
         file_system_entity: File("android/gradle.properties"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""org.gradle.jvmargs=-Xmx4G -XX:+HeapDumpOnOutOfMemoryError
+        value: r"""
+org.gradle.jvmargs=-Xmx4G -XX:+HeapDumpOnOutOfMemoryError
 android.useAndroidX=true
 android.enableJetifier=true
+
 """,
         children: [],
       ),
@@ -934,7 +1184,8 @@ android.enableJetifier=true
         file_system_entity: File("android/gradlew"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""#!/usr/bin/env bash
+        value: r"""
+#!/usr/bin/env bash
 
 ##############################################################################
 ##
@@ -1094,6 +1345,7 @@ eval splitJvmOpts $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS
 JVM_OPTS[${#JVM_OPTS[*]}]="-Dorg.gradle.appname=$APP_BASE_NAME"
 
 exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
+
 """,
         children: [],
       ),
@@ -1103,7 +1355,8 @@ exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.Grad
         file_system_entity: File("android/gradlew.bat"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""@if "%DEBUG%" == "" @echo off
+        value: r"""
+@if "%DEBUG%" == "" @echo off
 @rem ##########################################################################
 @rem
 @rem  Gradle startup script for Windows
@@ -1193,6 +1446,7 @@ exit /b 1
 if "%OS%"=="Windows_NT" endlocal
 
 :omega
+
 """,
         children: [],
       ),
@@ -1202,8 +1456,10 @@ if "%OS%"=="Windows_NT" endlocal
         file_system_entity: File("android/local.properties"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""sdk.dir=/home/galaxeus/Android/Sdk
-flutter.sdk=/home/galaxeus/development/flutter""",
+        value: r"""
+sdk.dir=/home/galaxeus/Android/Sdk
+flutter.sdk=/home/galaxeus/development/flutter
+""",
         children: [],
       ),
       ScriptGenerator(
@@ -1212,7 +1468,8 @@ flutter.sdk=/home/galaxeus/development/flutter""",
         file_system_entity: File("android/settings.gradle"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""pluginManagement {
+        value: r"""
+pluginManagement {
     def flutterSdkPath = {
         def properties = new Properties()
         file("local.properties").withInputStream { properties.load(it) }
@@ -1233,7 +1490,7 @@ flutter.sdk=/home/galaxeus/development/flutter""",
 plugins {
     id "dev.flutter.flutter-plugin-loader" version "1.0.0"
     id "com.android.application" version "7.3.0" apply false
-    id "org.jetbrains.kotlin.android" version "1.7.10" apply false
+    id "org.jetbrains.kotlin.android" version "1.9.22" apply false
 }
 
 include ":app"
@@ -1264,7 +1521,8 @@ include ":app"
             file_system_entity: File("ios/Flutter/AppFrameworkInfo.plist"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""<?xml version="1.0" encoding="UTF-8"?>
+            value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -1290,6 +1548,7 @@ include ":app"
   <string>12.0</string>
 </dict>
 </plist>
+
 """,
             children: [],
           ),
@@ -1299,7 +1558,9 @@ include ":app"
             file_system_entity: File("ios/Flutter/Debug.xcconfig"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""#include "Generated.xcconfig"
+            value: r"""
+#include "Generated.xcconfig"
+
 """,
             children: [],
           ),
@@ -1309,7 +1570,9 @@ include ":app"
             file_system_entity: File("ios/Flutter/Release.xcconfig"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""#include "Generated.xcconfig"
+            value: r"""
+#include "Generated.xcconfig"
+
 """,
             children: [],
           )
@@ -1348,7 +1611,8 @@ include ":app"
                         "ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""{
+                    value: r"""
+{
   "images" : [
     {
       "size" : "20x20",
@@ -1470,6 +1734,7 @@ include ":app"
     "author" : "xcode"
   }
 }
+
 """,
                     children: [],
                   )
@@ -1492,7 +1757,8 @@ include ":app"
                         "ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""{
+                    value: r"""
+{
   "images" : [
     {
       "idiom" : "universal",
@@ -1515,6 +1781,7 @@ include ":app"
     "author" : "xcode"
   }
 }
+
 """,
                     children: [],
                   ),
@@ -1526,11 +1793,13 @@ include ":app"
                         "ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""# Launch Screen Assets
+                    value: r"""
+# Launch Screen Assets
 
 You can customize the launch screen with your own desired assets by replacing the image files in this directory.
 
-You can also do it by opening your Flutter project's Xcode project with `open ios/Runner.xcworkspace`, selecting `Runner/Assets.xcassets` in the Project Navigator and dropping in the desired images.""",
+You can also do it by opening your Flutter project's Xcode project with `open ios/Runner.xcworkspace`, selecting `Runner/Assets.xcassets` in the Project Navigator and dropping in the desired images.
+""",
                     children: [],
                   )
                 ],
@@ -1552,8 +1821,8 @@ You can also do it by opening your Flutter project's Xcode project with `open io
                     File("ios/Runner/Base.lproj/LaunchScreen.storyboard"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
-                value:
-                    r"""<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                value: r"""
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
@@ -1590,6 +1859,7 @@ You can also do it by opening your Flutter project's Xcode project with `open io
         <image name="LaunchImage" width="168" height="185"/>
     </resources>
 </document>
+
 """,
                 children: [],
               ),
@@ -1600,8 +1870,8 @@ You can also do it by opening your Flutter project's Xcode project with `open io
                     File("ios/Runner/Base.lproj/Main.storyboard"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
-                value:
-                    r"""<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                value: r"""
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
@@ -1627,6 +1897,7 @@ You can also do it by opening your Flutter project's Xcode project with `open io
         </scene>
     </scenes>
 </document>
+
 """,
                 children: [],
               )
@@ -1638,7 +1909,8 @@ You can also do it by opening your Flutter project's Xcode project with `open io
             file_system_entity: File("ios/Runner/AppDelegate.swift"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""import Flutter
+            value: r"""
+import Flutter
 import UIKit
 
 @UIApplicationMain
@@ -1651,6 +1923,188 @@ import UIKit
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }
+
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: File("ios/Runner/GeneratedPluginRegistrant.h"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+//
+//  Generated file. Do not edit.
+//
+
+// clang-format off
+
+#ifndef GeneratedPluginRegistrant_h
+#define GeneratedPluginRegistrant_h
+
+#import <Flutter/Flutter.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface GeneratedPluginRegistrant : NSObject
++ (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry;
+@end
+
+NS_ASSUME_NONNULL_END
+#endif /* GeneratedPluginRegistrant_h */
+
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: File("ios/Runner/GeneratedPluginRegistrant.m"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+//
+//  Generated file. Do not edit.
+//
+
+// clang-format off
+
+#import "GeneratedPluginRegistrant.h"
+
+#if __has_include(<battery_plus/FPPBatteryPlusPlugin.h>)
+#import <battery_plus/FPPBatteryPlusPlugin.h>
+#else
+@import battery_plus;
+#endif
+
+#if __has_include(<camera_avfoundation/CameraPlugin.h>)
+#import <camera_avfoundation/CameraPlugin.h>
+#else
+@import camera_avfoundation;
+#endif
+
+#if __has_include(<file_picker/FilePickerPlugin.h>)
+#import <file_picker/FilePickerPlugin.h>
+#else
+@import file_picker;
+#endif
+
+#if __has_include(<flutter_tts/FlutterTtsPlugin.h>)
+#import <flutter_tts/FlutterTtsPlugin.h>
+#else
+@import flutter_tts;
+#endif
+
+#if __has_include(<gamepads_ios/GamepadsIosPlugin.h>)
+#import <gamepads_ios/GamepadsIosPlugin.h>
+#else
+@import gamepads_ios;
+#endif
+
+#if __has_include(<local_auth_darwin/FLALocalAuthPlugin.h>)
+#import <local_auth_darwin/FLALocalAuthPlugin.h>
+#else
+@import local_auth_darwin;
+#endif
+
+#if __has_include(<media_kit_video/MediaKitVideoPlugin.h>)
+#import <media_kit_video/MediaKitVideoPlugin.h>
+#else
+@import media_kit_video;
+#endif
+
+#if __has_include(<package_info_plus/FPPPackageInfoPlusPlugin.h>)
+#import <package_info_plus/FPPPackageInfoPlusPlugin.h>
+#else
+@import package_info_plus;
+#endif
+
+#if __has_include(<path_provider_foundation/PathProviderPlugin.h>)
+#import <path_provider_foundation/PathProviderPlugin.h>
+#else
+@import path_provider_foundation;
+#endif
+
+#if __has_include(<permission_handler_apple/PermissionHandlerPlugin.h>)
+#import <permission_handler_apple/PermissionHandlerPlugin.h>
+#else
+@import permission_handler_apple;
+#endif
+
+#if __has_include(<safe_device/SafeDevicePlugin.h>)
+#import <safe_device/SafeDevicePlugin.h>
+#else
+@import safe_device;
+#endif
+
+#if __has_include(<screen_brightness_ios/ScreenBrightnessIosPlugin.h>)
+#import <screen_brightness_ios/ScreenBrightnessIosPlugin.h>
+#else
+@import screen_brightness_ios;
+#endif
+
+#if __has_include(<sim_card_info/SimCardInfoPlugin.h>)
+#import <sim_card_info/SimCardInfoPlugin.h>
+#else
+@import sim_card_info;
+#endif
+
+#if __has_include(<sms_flutter/UssdAdvancedPlugin.h>)
+#import <sms_flutter/UssdAdvancedPlugin.h>
+#else
+@import sms_flutter;
+#endif
+
+#if __has_include(<speech_to_text/SpeechToTextPlugin.h>)
+#import <speech_to_text/SpeechToTextPlugin.h>
+#else
+@import speech_to_text;
+#endif
+
+#if __has_include(<url_launcher_ios/URLLauncherPlugin.h>)
+#import <url_launcher_ios/URLLauncherPlugin.h>
+#else
+@import url_launcher_ios;
+#endif
+
+#if __has_include(<volume_controller/VolumeControllerPlugin.h>)
+#import <volume_controller/VolumeControllerPlugin.h>
+#else
+@import volume_controller;
+#endif
+
+#if __has_include(<wakelock_plus/WakelockPlusPlugin.h>)
+#import <wakelock_plus/WakelockPlusPlugin.h>
+#else
+@import wakelock_plus;
+#endif
+
+@implementation GeneratedPluginRegistrant
+
++ (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
+  [FPPBatteryPlusPlugin registerWithRegistrar:[registry registrarForPlugin:@"FPPBatteryPlusPlugin"]];
+  [CameraPlugin registerWithRegistrar:[registry registrarForPlugin:@"CameraPlugin"]];
+  [FilePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FilePickerPlugin"]];
+  [FlutterTtsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterTtsPlugin"]];
+  [GamepadsIosPlugin registerWithRegistrar:[registry registrarForPlugin:@"GamepadsIosPlugin"]];
+  [FLALocalAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLALocalAuthPlugin"]];
+  [MediaKitVideoPlugin registerWithRegistrar:[registry registrarForPlugin:@"MediaKitVideoPlugin"]];
+  [FPPPackageInfoPlusPlugin registerWithRegistrar:[registry registrarForPlugin:@"FPPPackageInfoPlusPlugin"]];
+  [PathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"PathProviderPlugin"]];
+  [PermissionHandlerPlugin registerWithRegistrar:[registry registrarForPlugin:@"PermissionHandlerPlugin"]];
+  [SafeDevicePlugin registerWithRegistrar:[registry registrarForPlugin:@"SafeDevicePlugin"]];
+  [ScreenBrightnessIosPlugin registerWithRegistrar:[registry registrarForPlugin:@"ScreenBrightnessIosPlugin"]];
+  [SimCardInfoPlugin registerWithRegistrar:[registry registrarForPlugin:@"SimCardInfoPlugin"]];
+  [UssdAdvancedPlugin registerWithRegistrar:[registry registrarForPlugin:@"UssdAdvancedPlugin"]];
+  [SpeechToTextPlugin registerWithRegistrar:[registry registrarForPlugin:@"SpeechToTextPlugin"]];
+  [URLLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"URLLauncherPlugin"]];
+  [VolumeControllerPlugin registerWithRegistrar:[registry registrarForPlugin:@"VolumeControllerPlugin"]];
+  [WakelockPlusPlugin registerWithRegistrar:[registry registrarForPlugin:@"WakelockPlusPlugin"]];
+}
+
+@end
+
 """,
             children: [],
           ),
@@ -1660,7 +2114,8 @@ import UIKit
             file_system_entity: File("ios/Runner/Info.plist"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""<?xml version="1.0" encoding="UTF-8"?>
+            value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -1709,6 +2164,7 @@ import UIKit
 	<true/>
 </dict>
 </plist>
+
 """,
             children: [],
           ),
@@ -1718,7 +2174,9 @@ import UIKit
             file_system_entity: File("ios/Runner/Runner-Bridging-Header.h"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""#import "GeneratedPluginRegistrant.h"
+            value: r"""
+#import "GeneratedPluginRegistrant.h"
+
 """,
             children: [],
           )
@@ -1758,7 +2216,8 @@ import UIKit
                         "ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""<?xml version="1.0" encoding="UTF-8"?>
+                    value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -1766,6 +2225,7 @@ import UIKit
 	<true/>
 </dict>
 </plist>
+
 """,
                     children: [],
                   ),
@@ -1777,7 +2237,8 @@ import UIKit
                         "ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""<?xml version="1.0" encoding="UTF-8"?>
+                    value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -1785,6 +2246,7 @@ import UIKit
 	<false/>
 </dict>
 </plist>
+
 """,
                     children: [],
                   )
@@ -1797,13 +2259,15 @@ import UIKit
                     "ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
-                value: r"""<?xml version="1.0" encoding="UTF-8"?>
+                value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
    <FileRef
       location = "self:">
    </FileRef>
 </Workspace>
+
 """,
                 children: [],
               )
@@ -1834,7 +2298,8 @@ import UIKit
                         "ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""<?xml version="1.0" encoding="UTF-8"?>
+                    value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1510"
    version = "1.3">
@@ -1932,6 +2397,7 @@ import UIKit
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
+
 """,
                     children: [],
                   )
@@ -1945,7 +2411,8 @@ import UIKit
             file_system_entity: File("ios/Runner.xcodeproj/project.pbxproj"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""// !$*UTF8*$!
+            value: r"""
+// !$*UTF8*$!
 {
 	archiveVersion = 1;
 	classes = {
@@ -2561,6 +3028,7 @@ import UIKit
 	};
 	rootObject = 97C146E61CF9000F007C117D /* Project object */;
 }
+
 """,
             children: [],
           )
@@ -2590,7 +3058,8 @@ import UIKit
                     "ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
-                value: r"""<?xml version="1.0" encoding="UTF-8"?>
+                value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -2598,6 +3067,7 @@ import UIKit
 	<true/>
 </dict>
 </plist>
+
 """,
                 children: [],
               ),
@@ -2608,7 +3078,8 @@ import UIKit
                     "ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
-                value: r"""<?xml version="1.0" encoding="UTF-8"?>
+                value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -2616,6 +3087,7 @@ import UIKit
 	<false/>
 </dict>
 </plist>
+
 """,
                 children: [],
               )
@@ -2628,13 +3100,15 @@ import UIKit
                 File("ios/Runner.xcworkspace/contents.xcworkspacedata"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""<?xml version="1.0" encoding="UTF-8"?>
+            value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
    <FileRef
       location = "group:Runner.xcodeproj">
    </FileRef>
 </Workspace>
+
 """,
             children: [],
           )
@@ -2654,7 +3128,8 @@ import UIKit
             file_system_entity: File("ios/RunnerTests/RunnerTests.swift"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""import Flutter
+            value: r"""
+import Flutter
 import UIKit
 import XCTest
 
@@ -2666,6 +3141,7 @@ class RunnerTests: XCTestCase {
   }
 
 }
+
 """,
             children: [],
           )
@@ -2677,7 +3153,8 @@ class RunnerTests: XCTestCase {
         file_system_entity: File("ios/.gitignore"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""**/dgph
+        value: r"""
+**/dgph
 *.mode1v3
 *.mode2v3
 *.moved-aside
@@ -2730,7 +3207,8 @@ linux/flutter/ephemeral
 macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
-temp/""",
+temp/
+""",
         children: [],
       )
     ],
@@ -2746,134 +3224,1307 @@ temp/""",
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("app_ui_template_general_framework"),
-        file_system_entity: File("lib/main.dart"),
+        file_system_entity: Directory("lib/landing"),
         state_data: {},
-        file_system_entity_type: FileSystemEntityType.file,
-        value: r"""import 'package:flutter/material.dart';
+        file_system_entity_type: FileSystemEntityType.directory,
+        value: "",
+        children: [
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: File("lib/landing/landing.dart"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+// ignore_for_file: non_constant_identifier_names, empty_catches
 
-void main() {
-  runApp(const MyApp());
+import 'package:app_ui_template_general_framework/main.dart';
+import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/widget/widget.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
+
+class LandingPage extends StatefulWidget {
+  const LandingPage({super.key});
+
+  @override
+  State<LandingPage> createState() => _LandingPageState();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CrossFadeStateData extends ChangeNotifier {
+  CrossFadeState crossFadeState = CrossFadeState.showFirst;
 
-  // This widget is the root of your application.
+  void change({
+    required bool isScrolling,
+  }) {
+    if (isScrolling) {
+      crossFadeState = CrossFadeState.showSecond;
+    } else {
+      crossFadeState = CrossFadeState.showFirst;
+    }
+    notifyListeners();
+  }
+}
+
+class CrossFadeStateController extends ChangeNotifier {
+  CrossFadeState crossFadeState = CrossFadeState.showFirst;
+
+  void autoChange() {
+    change(isShowSecond: crossFadeState == CrossFadeState.showFirst);
+  }
+
+  void change({
+    required bool isShowSecond,
+  }) {
+    if (isShowSecond) {
+      crossFadeState = CrossFadeState.showSecond;
+    } else {
+      crossFadeState = CrossFadeState.showFirst;
+    }
+    notifyListeners();
+  }
+}
+
+class _LandingPageState extends State<LandingPage> {
+  final ScrollController scrollController = ScrollController();
+  final GlobalKey home_global_key = GlobalKey();
+  final GlobalKey about_global_key = GlobalKey();
+  final GlobalKey blog_global_key = GlobalKey();
+  final GlobalKey documentation_global_key = GlobalKey();
+  final GlobalKey contact_global_key = GlobalKey();
+  final GlobalKey pricing_global_key = GlobalKey();
+  final GlobalKey privacy_global_key = GlobalKey();
+  final GlobalKey terms_global_key = GlobalKey();
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      scrollListener(scrollController: scrollController);
+    });
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  final CrossFadeStateData crossFadeStateData = CrossFadeStateData();
+  void scrollListener({
+    required ScrollController scrollController,
+  }) {
+    scrollController.onScrolling((isScrolling) {
+      Future.delayed(Durations.short1, () async {
+        try {
+          crossFadeStateData.change(isScrolling: isScrolling);
+        } catch (e) {}
+      });
+    });
+  }
+
+  final CrossFadeStateController crossFadeStatusBar =
+      CrossFadeStateController();
+  final GlobalKey status_bar_global_key = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return Scaffold(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(450),
+        child: ListenableBuilder(
+          listenable: crossFadeStateData,
+          builder: (context, child) {
+            return AnimatedCrossFade(
+              crossFadeState: crossFadeStateData.crossFadeState,
+              secondChild: const SizedBox.shrink(),
+              duration: Durations.short4,
+              firstChild: Container(
+                key: status_bar_global_key,
+                decoration: BoxDecoration(
+                  color: context.theme.primaryColor,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      height: context.mediaQueryData.padding.top,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: TextButton(
+                            onPressed: () {
+                              setState(() {});
+                            },
+                            child: Text(
+                              "App Ui Template General Framework",
+                              style: context.theme.textTheme.titleSmall,
+                            ),
+                          ),
+                        ),
+                        if (context.orientation.isPortrait) ...[
+                          Row(
+                            children: [
+                              ThemeChangeGeneralFrameworkWidget(
+                                generalLibFlutterApp:
+                                    AppUiTemplateGeneralFrameworkMain
+                                        .generalLibFlutterApp,
+                                onChanged: () {
+                                  setState(() {});
+                                },
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  crossFadeStatusBar.autoChange();
+                                },
+                                icon: const RotatedBox(
+                                  quarterTurns: 3,
+                                  child: Icon(
+                                    Icons.more_horiz_outlined,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ] else ...[
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Flexible(
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: statusBarWidget(
+                                        context: context,
+                                        onPressed: () {
+                                          crossFadeStatusBar.autoChange();
+                                        },
+                                      ).map((e) {
+                                        return Align(
+                                          alignment: Alignment.center,
+                                          child: e,
+                                        );
+                                      }).toList(),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(2.5),
+                                  child: ThemeChangeGeneralFrameworkWidget(
+                                    generalLibFlutterApp:
+                                        AppUiTemplateGeneralFrameworkMain
+                                            .generalLibFlutterApp,
+                                    onChanged: () {
+                                      setState(() {});
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                    if (context.orientation.isPortrait) ...[
+                      Flexible(
+                        child: SizedBox(
+                          width: context.width,
+                          child: SingleChildScrollView(
+                            child: ListenableBuilder(
+                              listenable: crossFadeStatusBar,
+                              builder: (context, child) {
+                                return AnimatedCrossFade(
+                                  crossFadeState:
+                                      crossFadeStatusBar.crossFadeState,
+                                  firstChild: const SizedBox.shrink(),
+                                  duration: Durations.short4,
+                                  secondChild: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: statusBarWidget(
+                                      context: context,
+                                      onPressed: () {
+                                        crossFadeStatusBar.autoChange();
+                                      },
+                                    ).map((e) {
+                                      return Align(
+                                        alignment: Alignment.center,
+                                        child: e,
+                                      );
+                                    }).toList(),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      body: SingleChildScrollView(
+        controller: scrollController,
+        physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics()),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: context.height,
+            minWidth: context.width,
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: status_bar_global_key.sizeRenderBox().height,
+              ),
+              contentWidget(
+                globalKey: home_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return Container(
+                    height: context.height,
+                    width: context.width,
+                    color: Colors.green,
+                  );
+                },
+              ),
+              contentWidget(
+                globalKey: contact_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return Container(
+                    height: context.height,
+                    width: context.width,
+                    color: Colors.red,
+                  );
+                },
+              ),
+              SizedBox(
+                height: context.mediaQueryData.padding.bottom,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  List<Widget> statusBarWidget({
+    required BuildContext context,
+    required void Function() onPressed,
+  }) {
+    return [
+      Padding(
+        padding: const EdgeInsets.all(2.5),
+        child: TextButton(
+          onPressed: () {
+            onPressed();
+            scrollController.scrollToGlobalKey(globalKey: home_global_key);
+          },
+          child: Text(
+            "Home",
+            style: context.theme.textTheme.labelSmall,
+          ),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(2.5),
+        child: TextButton(
+          onPressed: () {
+            onPressed();
+            scrollController.scrollToGlobalKey(globalKey: about_global_key);
+          },
+          child: Text(
+            "About",
+            style: context.theme.textTheme.labelSmall,
+          ),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(2.5),
+        child: TextButton(
+          onPressed: () {
+            onPressed();
+            scrollController.scrollToGlobalKey(globalKey: blog_global_key);
+          },
+          child: Text(
+            "Blog",
+            style: context.theme.textTheme.labelSmall,
+          ),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(2.5),
+        child: TextButton(
+          onPressed: () {
+            onPressed();
+            scrollController.scrollToGlobalKey(
+                globalKey: documentation_global_key);
+          },
+          child: Text(
+            "Documentation",
+            style: context.theme.textTheme.labelSmall,
+          ),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(2.5),
+        child: TextButton(
+          onPressed: () {
+            onPressed();
+            scrollController.scrollToGlobalKey(globalKey: contact_global_key);
+          },
+          child: Text(
+            "Contact",
+            style: context.theme.textTheme.labelSmall,
+          ),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(2.5),
+        child: TextButton(
+          onPressed: () {
+            onPressed();
+            scrollController.scrollToGlobalKey(globalKey: pricing_global_key);
+          },
+          child: Text(
+            "Pricing",
+            style: context.theme.textTheme.labelSmall,
+          ),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(2.5),
+        child: TextButton(
+          onPressed: () {
+            onPressed();
+            scrollController.scrollToGlobalKey(globalKey: privacy_global_key);
+          },
+          child: Text(
+            "Privacy",
+            style: context.theme.textTheme.labelSmall,
+          ),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(2.5),
+        child: TextButton(
+          onPressed: () {
+            onPressed();
+            scrollController.scrollToGlobalKey(globalKey: terms_global_key);
+          },
+          child: Text(
+            "Terms",
+            style: context.theme.textTheme.labelSmall,
+          ),
+        ),
+      ),
+      MaterialButton(
+        onPressed: () {
+          onPressed();
+          context.routerGeneralLibFlutter().pushNamed(routeName: "/sign");
+        },
+        child: const Padding(
+          padding: EdgeInsets.all(5),
+          child: CircleAvatar(
+            radius: 15,
+            child: Icon(
+              Icons.person,
+              size: 15,
+            ),
+          ),
+        ),
+      ),
+    ];
+  }
+
+  Widget contentWidget({
+    required GlobalKey globalKey,
+    required BuildContext context,
+    required WidgetBuilder contentBuilder,
+  }) {
+    final Size size = Size(
+        context.width,
+        context.height -
+            (status_bar_global_key.sizeRenderBox().height +
+                context.mediaQueryData.padding.bottom));
+    return ConstrainedBox(
+      key: globalKey,
+      constraints: BoxConstraints(
+        minHeight: size.height,
+        minWidth: size.width,
+        maxHeight: size.height,
+        maxWidth: size.width,
+      ),
+      child: MediaQuery(
+        data: context.mediaQueryData.copyWith(size: size),
+        child: Builder(
+          builder: contentBuilder,
+        ),
+      ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+""",
+            children: [],
+          )
+        ],
+      ),
+      ScriptGenerator(
+        is_generate: true,
+        directory_base: Directory("app_ui_template_general_framework"),
+        file_system_entity: Directory("lib/page"),
+        state_data: {},
+        file_system_entity_type: FileSystemEntityType.directory,
+        value: "",
+        children: [
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/page/account"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [
+              ScriptGenerator(
+                is_generate: true,
+                directory_base: Directory("app_ui_template_general_framework"),
+                file_system_entity: File("lib/page/account/account.dart"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""
+import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/ui/ui.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class AccountPage extends StatefulWidget {
+  const AccountPage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<AccountPage> createState() => _AccountPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _AccountPageState extends State<AccountPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Home"),
+        backgroundColor: context.theme.primaryColor,
+      ),
+      drawer: Drawer(
+        width: () {
+          if (context.orientation.isLandscape) {
+            return context.width / 4;
+          }
+          return context.width / 2;
+        }(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: context.mediaQueryData.padding.top,
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text("Settings"),
+                onTap: () {
+                  context
+                      .routerGeneralLibFlutter()
+                      .pushNamed(routeName: "/settings");
+                },
+              ),
+              SizedBox(
+                height: context.mediaQueryData.padding.bottom,
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: context.height,
+            minWidth: context.width,
+          ),
+          child: Column(
+            children: [
+              ChatMessageGeneralFrameworkWidget(
+                isLoading: false,
+                title: "",
+                message: "",
+                unreadCount: 0,
+                date: DateTime.now(),
+                contentPadding: EdgeInsets.all(5),
+                onTap: () {},
+              ),
+              ChatMessageGeneralFrameworkWidget(
+                isLoading: false,
+                title: "",
+                message: "",
+                unreadCount: 0,
+                date: DateTime.now(),
+                contentPadding: EdgeInsets.all(5),
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 
-  void _incrementCounter() {
+""",
+                children: [],
+              )
+            ],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/page/chat"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [
+              ScriptGenerator(
+                is_generate: true,
+                directory_base: Directory("app_ui_template_general_framework"),
+                file_system_entity: File("lib/page/chat/chat.dart"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""
+import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/ui/ui.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
+
+class ChatPage extends StatefulWidget {
+  const ChatPage({super.key});
+
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Home"),
+        backgroundColor: context.theme.primaryColor,
+      ),
+      drawer: Drawer(
+        width: () {
+          if (context.orientation.isLandscape) {
+            return context.width / 4;
+          }
+          return context.width / 2;
+        }(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: context.mediaQueryData.padding.top,
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text("Settings"),
+                onTap: () {
+                  context
+                      .routerGeneralLibFlutter()
+                      .pushNamed(routeName: "/settings");
+                },
+              ),
+              SizedBox(
+                height: context.mediaQueryData.padding.bottom,
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: context.height,
+            minWidth: context.width,
+          ),
+          child: Column(
+            children: [
+              ChatMessageGeneralFrameworkWidget(
+                isLoading: false,
+                title: "",
+                message: "",
+                unreadCount: 0,
+                date: DateTime.now(),
+                contentPadding: EdgeInsets.all(5),
+                onTap: () {},
+              ),
+              ChatMessageGeneralFrameworkWidget(
+                isLoading: false,
+                title: "",
+                message: "",
+                unreadCount: 0,
+                date: DateTime.now(),
+                contentPadding: EdgeInsets.all(5),
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+""",
+                children: [],
+              )
+            ],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/page/home"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [
+              ScriptGenerator(
+                is_generate: true,
+                directory_base: Directory("app_ui_template_general_framework"),
+                file_system_entity: File("lib/page/home/home.dart"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""
+import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/ui/ui.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Home"),
+        backgroundColor: context.theme.primaryColor,
+      ),
+      drawer: Drawer(
+        width: () {
+          if (context.orientation.isLandscape) {
+            return context.width / 4;
+          }
+          return context.width / 2;
+        }(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: context.mediaQueryData.padding.top,
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text("Settings"),
+                onTap: () {
+                  context
+                      .routerGeneralLibFlutter()
+                      .pushNamed(routeName: "/settings");
+                },
+              ),
+              SizedBox(
+                height: context.mediaQueryData.padding.bottom,
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: context.height,
+            minWidth: context.width,
+          ),
+          child: Column(
+            children: [
+              ChatMessageGeneralFrameworkWidget(
+                isLoading: false,
+                title: "",
+                message: "",
+                unreadCount: 0,
+                date: DateTime.now(),
+                contentPadding: EdgeInsets.all(5),
+                onTap: () {},
+              ),
+              ChatMessageGeneralFrameworkWidget(
+                isLoading: false,
+                title: "",
+                message: "",
+                unreadCount: 0,
+                date: DateTime.now(),
+                contentPadding: EdgeInsets.all(5),
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+""",
+                children: [],
+              )
+            ],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/page/settings"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [
+              ScriptGenerator(
+                is_generate: true,
+                directory_base: Directory("app_ui_template_general_framework"),
+                file_system_entity: File("lib/page/settings/settings.dart"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""
+import 'package:flutter/material.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
+
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
+
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Settings"),
+        backgroundColor: context.theme.primaryColor,
+        centerTitle: true,
+        actions: [
+          PopupMenuButton(
+            position: PopupMenuPosition.under,
+            color: context.theme.primaryColor,
+            icon: const RotatedBox(
+              quarterTurns: 3,
+              child: Icon(Icons.more_horiz_outlined),
+            ),
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem(
+                  onTap: () {
+                    context.routerGeneralLibFlutter().pushNamedAndRemoveUntil(
+                        routeName: "/sign",
+                        arguments: null,
+                        removeRouteName: "/");
+                  },
+                  child: Text("Logout"),
+                ),
+              ];
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+""",
+                children: [],
+              )
+            ],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/page/sign"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [
+              ScriptGenerator(
+                is_generate: true,
+                directory_base: Directory("app_ui_template_general_framework"),
+                file_system_entity: File("lib/page/sign/sign.dart"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""
+// ignore_for_file: non_constant_identifier_names
+
+import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/widget/text_form_field.dart';
+import 'package:general_framework/flutter/widget/widget.dart';
+import 'package:general_lib/general_lib.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
+
+enum SignPageType {
+  sign_in,
+  sign_up,
+  reset,
+}
+
+class SignPage extends StatefulWidget {
+  const SignPage({super.key});
+
+  @override
+  State<SignPage> createState() => _SignPageState();
+}
+
+class _SignPageState extends State<SignPage> {
+  SignPageType signPageType = SignPageType.sign_in;
+  final TextEditingController username_text_editing_controller =
+      TextEditingController();
+  final TextEditingController password_text_editing_controller =
+      TextEditingController();
+  final TextEditingController new_password_text_editing_controller =
+      TextEditingController();
+  final TextEditingController secret_words_text_editing_controller =
+      TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {});
+  }
+
+  @override
+  void dispose() {
+    username_text_editing_controller.dispose();
+    password_text_editing_controller.dispose();
+    new_password_text_editing_controller.dispose();
+    secret_words_text_editing_controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Sign"),
+        backgroundColor: context.theme.primaryColor,
+      ),
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: context.height -
+                context.mediaQueryData.padding.top -
+                context.mediaQueryData.padding.bottom,
+            minWidth: context.width,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: context.mediaQueryData.padding.top,
+              ),
+              if (signPageType == SignPageType.sign_in) ...[
+                usernameFormWidget(),
+                passwordFormWidget(),
+              ] else if (signPageType == SignPageType.sign_up) ...[
+                usernameFormWidget(),
+                newPasswordFormWidget(),
+              ] else if (signPageType == SignPageType.reset) ...[
+                usernameFormWidget(),
+                newPasswordFormWidget(),
+              ],
+              ButtonGeneralFrameworkWidget(
+                width: context.width,
+                onPressed: () {
+                  onSignPressed();
+                },
+                child: Text(
+                  signPageType.name
+                      .split("_")
+                      .map((e) => e.toLowerCase().toUpperCaseFirstData())
+                      .join(" "),
+                ),
+              ),
+              SizedBox(
+                height: context.mediaQueryData.padding.bottom,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void onSignPressed() {
+    context.routerGeneralLibFlutter().pushReplacementNamed(routeName: "/home");
+  }
+
+  Widget usernameFormWidget() {
+    return textFormFieldWidget(
+      controller: username_text_editing_controller,
+      labelText: "Username",
+      hintText: "username",
+    );
+  }
+
+  Widget passwordFormWidget() {
+    return textFormFieldWidget(
+        controller: password_text_editing_controller,
+        labelText: "Password",
+        hintText: "password 121301301 0");
+  }
+
+  Widget newPasswordFormWidget() {
+    return textFormFieldWidget();
+  }
+
+  Widget secretWordsFormWidget() {
+    return textFormFieldWidget(
+      controller: secret_words_text_editing_controller,
+    );
+  }
+
+  Widget textFormFieldWidget({
+    EdgeInsetsGeometry? padding,
+    String? hintText,
+    String? labelText,
+    IconData prefixIconData = Icons.people,
+    Color color = Colors.white,
+    TextEditingController? controller,
+    String? Function(String?)? validator,
+    bool readOnly = false,
+    bool obscureText = false,
+    Widget? suffixIcon,
+  }) {
+    return Padding(
+      padding: padding ?? const EdgeInsets.all(10),
+      child: TextFormFieldGeneralFrameworkWidget(
+        labelText: labelText,
+        hintText: hintText,
+        controller: controller,
+        onChanged: (value) {},
+      ),
+    );
+  }
+}
+
+""",
+                children: [],
+              )
+            ],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/page/story"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [
+              ScriptGenerator(
+                is_generate: true,
+                directory_base: Directory("app_ui_template_general_framework"),
+                file_system_entity: File("lib/page/story/story.dart"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""
+import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/ui/ui.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
+
+class StoryPage extends StatefulWidget {
+  const StoryPage({super.key});
+
+  @override
+  State<StoryPage> createState() => _StoryPageState();
+}
+
+class _StoryPageState extends State<StoryPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Home"),
+        backgroundColor: context.theme.primaryColor,
+      ),
+      drawer: Drawer(
+        width: () {
+          if (context.orientation.isLandscape) {
+            return context.width / 4;
+          }
+          return context.width / 2;
+        }(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: context.mediaQueryData.padding.top,
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text("Settings"),
+                onTap: () {
+                  context
+                      .routerGeneralLibFlutter()
+                      .pushNamed(routeName: "/settings");
+                },
+              ),
+              SizedBox(
+                height: context.mediaQueryData.padding.bottom,
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: context.height,
+            minWidth: context.width,
+          ),
+          child: Column(
+            children: [
+              ChatMessageGeneralFrameworkWidget(
+                isLoading: false,
+                title: "",
+                message: "",
+                unreadCount: 0,
+                date: DateTime.now(),
+                contentPadding: EdgeInsets.all(5),
+                onTap: () {},
+              ),
+              ChatMessageGeneralFrameworkWidget(
+                isLoading: false,
+                title: "",
+                message: "",
+                unreadCount: 0,
+                date: DateTime.now(),
+                contentPadding: EdgeInsets.all(5),
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+""",
+                children: [],
+              )
+            ],
+          )
+        ],
+      ),
+      ScriptGenerator(
+        is_generate: true,
+        directory_base: Directory("app_ui_template_general_framework"),
+        file_system_entity: Directory("lib/widget"),
+        state_data: {},
+        file_system_entity_type: FileSystemEntityType.directory,
+        value: "",
+        children: [],
+      ),
+      ScriptGenerator(
+        is_generate: true,
+        directory_base: Directory("app_ui_template_general_framework"),
+        file_system_entity: File("lib/app.dart"),
+        state_data: {},
+        file_system_entity_type: FileSystemEntityType.file,
+        value: r"""
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:flutter/material.dart';
+import 'package:general_lib/general_lib.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
+
+class AppUiTemplateGeneralFramework extends StatefulWidget {
+  const AppUiTemplateGeneralFramework({super.key});
+
+  @override
+  State<AppUiTemplateGeneralFramework> createState() =>
+      _AppUiTemplateGeneralFrameworkState();
+}
+
+class _AppUiTemplateGeneralFrameworkState
+    extends State<AppUiTemplateGeneralFramework> {
+  bool is_loading = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      load();
+    });
+  }
+
+  void load() async {
+    if (is_loading) {
+      return;
+    }
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      is_loading = true;
+    });
+    Future(() async {
+      await Future.delayed(Durations.extralong4);
+
+      context
+          .routerGeneralLibFlutter()
+          .pushReplacementNamed(routeName: "/landing");
+      return;
+      if (Dart.isWeb) {
+        context
+            .routerGeneralLibFlutter()
+            .pushReplacementNamed(routeName: "/landing");
+      } else {
+        context
+            .routerGeneralLibFlutter()
+            .pushReplacementNamed(routeName: "/sign");
+      }
+      return;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        child: CircularProgressIndicator(
+          color: context.theme.indicatorColor,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
+""",
+        children: [],
+      ),
+      ScriptGenerator(
+        is_generate: true,
+        directory_base: Directory("app_ui_template_general_framework"),
+        file_system_entity: File("lib/main.dart"),
+        state_data: {},
+        file_system_entity_type: FileSystemEntityType.file,
+        value: r"""
+import 'package:app_ui_template_general_framework/app.dart';
+import 'package:app_ui_template_general_framework/landing/landing.dart';
+import 'package:app_ui_template_general_framework/page/account/account.dart';
+import 'package:app_ui_template_general_framework/page/chat/chat.dart';
+import 'package:app_ui_template_general_framework/page/home/home.dart';
+import 'package:app_ui_template_general_framework/page/settings/settings.dart';
+import 'package:app_ui_template_general_framework/page/sign/sign.dart';
+import 'package:app_ui_template_general_framework/page/story/story.dart';
+import 'package:flutter/material.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
+import 'package:general_lib_flutter/widget/widget.dart';
+import "package:general_lib/general_lib.dart";
+import 'package:simulate/simulate_core.dart';
+
+void main(List<String> args) async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Simulate.ensureInitialized();
+
+  runApp(AppUiTemplateGeneralFrameworkMain());
+}
+
+class AppUiTemplateGeneralFrameworkMain extends StatelessWidget {
+  static GeneralLibFlutterApp generalLibFlutterApp = GeneralLibFlutterApp();
+  AppUiTemplateGeneralFrameworkMain({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GeneralLibFlutterAppMain(
+      generalLibFlutterApp: generalLibFlutterApp,
+      builder: (themeMode, lightTheme, darkTheme, widget) {
+        final MaterialApp child = route.toMaterialApp(
+          debugShowCheckedModeBanner: false,
+          darkTheme: darkTheme,
+          theme: lightTheme,
+          themeMode: themeMode,
+          initialRoute: "/",
+        );
+        if (Dart.isDebug) {
+          if (Dart.isDesktop && Dart.isWeb == false) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              darkTheme: darkTheme,
+              theme: lightTheme,
+              themeMode: themeMode,
+              home: SimulateApp(
+                home: (context) {
+                  return child;
+                },
+                generalLibFlutterApp: generalLibFlutterApp,
+              ),
+            );
+          }
+        }
+        return child;
+      },
+    );
+  }
+
+  final RouteGeneralLibFlutter route = RouteGeneralLibFlutter(
+    onUnknownRoute: (context, routeData) {
+      return const AppUiTemplateGeneralFramework();
+    },
+    onRoute: () {
+      return {
+        "/": (context, data) {
+          return const AppUiTemplateGeneralFramework();
+        },
+        "/landing": (context, data) {
+          return const LandingPage();
+        },
+        "/account": (context, data) {
+          return const AccountPage();
+        },
+        "/chat": (context, data) {
+          return const ChatPage();
+        },
+        "/home": (context, data) {
+          return const HomePage();
+        },
+        "/settings": (context, data) {
+          return const SettingsPage();
+        },
+        "/sign": (context, data) {
+          return const SignPage();
+        },
+        "/story": (context, data) {
+          return const StoryPage();
+        },
+      };
+    },
+  );
+}
+
 """,
         children: [],
       )
@@ -2901,8 +4552,8 @@ class _MyHomePageState extends State<MyHomePage> {
             file_system_entity: File("linux/flutter/CMakeLists.txt"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value:
-                r"""# This file controls Flutter-level build steps. It should not be edited.
+            value: r"""
+# This file controls Flutter-level build steps. It should not be edited.
 cmake_minimum_required(VERSION 3.10)
 
 set(EPHEMERAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ephemeral")
@@ -2990,6 +4641,121 @@ add_custom_target(flutter_assemble DEPENDS
   "${FLUTTER_LIBRARY}"
   ${FLUTTER_LIBRARY_HEADERS}
 )
+
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity:
+                File("linux/flutter/generated_plugin_registrant.cc"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+//
+//  Generated file. Do not edit.
+//
+
+// clang-format off
+
+#include "generated_plugin_registrant.h"
+
+#include <gamepads_linux/gamepads_linux_plugin.h>
+#include <media_kit_video/media_kit_video_plugin.h>
+#include <screen_retriever/screen_retriever_plugin.h>
+#include <sim_card_info/sim_card_info_plugin.h>
+#include <url_launcher_linux/url_launcher_plugin.h>
+#include <window_manager/window_manager_plugin.h>
+
+void fl_register_plugins(FlPluginRegistry* registry) {
+  g_autoptr(FlPluginRegistrar) gamepads_linux_registrar =
+      fl_plugin_registry_get_registrar_for_plugin(registry, "GamepadsLinuxPlugin");
+  gamepads_linux_plugin_register_with_registrar(gamepads_linux_registrar);
+  g_autoptr(FlPluginRegistrar) media_kit_video_registrar =
+      fl_plugin_registry_get_registrar_for_plugin(registry, "MediaKitVideoPlugin");
+  media_kit_video_plugin_register_with_registrar(media_kit_video_registrar);
+  g_autoptr(FlPluginRegistrar) screen_retriever_registrar =
+      fl_plugin_registry_get_registrar_for_plugin(registry, "ScreenRetrieverPlugin");
+  screen_retriever_plugin_register_with_registrar(screen_retriever_registrar);
+  g_autoptr(FlPluginRegistrar) sim_card_info_registrar =
+      fl_plugin_registry_get_registrar_for_plugin(registry, "SimCardInfoPlugin");
+  sim_card_info_plugin_register_with_registrar(sim_card_info_registrar);
+  g_autoptr(FlPluginRegistrar) url_launcher_linux_registrar =
+      fl_plugin_registry_get_registrar_for_plugin(registry, "UrlLauncherPlugin");
+  url_launcher_plugin_register_with_registrar(url_launcher_linux_registrar);
+  g_autoptr(FlPluginRegistrar) window_manager_registrar =
+      fl_plugin_registry_get_registrar_for_plugin(registry, "WindowManagerPlugin");
+  window_manager_plugin_register_with_registrar(window_manager_registrar);
+}
+
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity:
+                File("linux/flutter/generated_plugin_registrant.h"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+//
+//  Generated file. Do not edit.
+//
+
+// clang-format off
+
+#ifndef GENERATED_PLUGIN_REGISTRANT_
+#define GENERATED_PLUGIN_REGISTRANT_
+
+#include <flutter_linux/flutter_linux.h>
+
+// Registers Flutter plugins.
+void fl_register_plugins(FlPluginRegistry* registry);
+
+#endif  // GENERATED_PLUGIN_REGISTRANT_
+
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: File("linux/flutter/generated_plugins.cmake"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+#
+# Generated file, do not edit.
+#
+
+list(APPEND FLUTTER_PLUGIN_LIST
+  gamepads_linux
+  media_kit_video
+  screen_retriever
+  sim_card_info
+  url_launcher_linux
+  window_manager
+)
+
+list(APPEND FLUTTER_FFI_PLUGIN_LIST
+)
+
+set(PLUGIN_BUNDLED_LIBRARIES)
+
+foreach(plugin ${FLUTTER_PLUGIN_LIST})
+  add_subdirectory(flutter/ephemeral/.plugin_symlinks/${plugin}/linux plugins/${plugin})
+  target_link_libraries(${BINARY_NAME} PRIVATE ${plugin}_plugin)
+  list(APPEND PLUGIN_BUNDLED_LIBRARIES $<TARGET_FILE:${plugin}_plugin>)
+  list(APPEND PLUGIN_BUNDLED_LIBRARIES ${${plugin}_bundled_libraries})
+endforeach(plugin)
+
+foreach(ffi_plugin ${FLUTTER_FFI_PLUGIN_LIST})
+  add_subdirectory(flutter/ephemeral/.plugin_symlinks/${ffi_plugin}/linux plugins/${ffi_plugin})
+  list(APPEND PLUGIN_BUNDLED_LIBRARIES ${${ffi_plugin}_bundled_libraries})
+endforeach(ffi_plugin)
+
 """,
             children: [],
           )
@@ -3001,7 +4767,8 @@ add_custom_target(flutter_assemble DEPENDS
         file_system_entity: File("linux/.gitignore"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""flutter/ephemeral
+        value: r"""
+flutter/ephemeral
 *.exe
 *.deb
 *.sqlite-*
@@ -3020,7 +4787,8 @@ linux/flutter/ephemeral
 macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
-temp/""",
+temp/
+""",
         children: [],
       ),
       ScriptGenerator(
@@ -3029,7 +4797,8 @@ temp/""",
         file_system_entity: File("linux/CMakeLists.txt"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""# Project-level configuration.
+        value: r"""
+# Project-level configuration.
 cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
@@ -3174,6 +4943,7 @@ if(NOT CMAKE_BUILD_TYPE MATCHES "Debug")
   install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
     COMPONENT Runtime)
 endif()
+
 """,
         children: [],
       ),
@@ -3183,12 +4953,14 @@ endif()
         file_system_entity: File("linux/main.cc"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""#include "my_application.h"
+        value: r"""
+#include "my_application.h"
 
 int main(int argc, char** argv) {
   g_autoptr(MyApplication) app = my_application_new();
   return g_application_run(G_APPLICATION(app), argc, argv);
 }
+
 """,
         children: [],
       ),
@@ -3198,7 +4970,8 @@ int main(int argc, char** argv) {
         file_system_entity: File("linux/my_application.cc"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""#include "my_application.h"
+        value: r"""
+#include "my_application.h"
 
 #include <flutter_linux/flutter_linux.h>
 #ifdef GDK_WINDOWING_X11
@@ -3322,6 +5095,7 @@ MyApplication* my_application_new() {
                                      "flags", G_APPLICATION_NON_UNIQUE,
                                      nullptr));
 }
+
 """,
         children: [],
       ),
@@ -3331,7 +5105,8 @@ MyApplication* my_application_new() {
         file_system_entity: File("linux/my_application.h"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""#ifndef FLUTTER_MY_APPLICATION_H_
+        value: r"""
+#ifndef FLUTTER_MY_APPLICATION_H_
 #define FLUTTER_MY_APPLICATION_H_
 
 #include <gtk/gtk.h>
@@ -3349,6 +5124,7 @@ G_DECLARE_FINAL_TYPE(MyApplication, my_application, MY, APPLICATION,
 MyApplication* my_application_new();
 
 #endif  // FLUTTER_MY_APPLICATION_H_
+
 """,
         children: [],
       )
@@ -3376,7 +5152,9 @@ MyApplication* my_application_new();
             file_system_entity: File("macos/Flutter/Flutter-Debug.xcconfig"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""#include "ephemeral/Flutter-Generated.xcconfig"
+            value: r"""
+#include "ephemeral/Flutter-Generated.xcconfig"
+
 """,
             children: [],
           ),
@@ -3386,7 +5164,59 @@ MyApplication* my_application_new();
             file_system_entity: File("macos/Flutter/Flutter-Release.xcconfig"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""#include "ephemeral/Flutter-Generated.xcconfig"
+            value: r"""
+#include "ephemeral/Flutter-Generated.xcconfig"
+
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity:
+                File("macos/Flutter/GeneratedPluginRegistrant.swift"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+//
+//  Generated file. Do not edit.
+//
+
+import FlutterMacOS
+import Foundation
+
+import battery_plus
+import flutter_tts
+import gamepads_darwin
+import local_auth_darwin
+import media_kit_video
+import package_info_plus
+import path_provider_foundation
+import screen_brightness_macos
+import screen_retriever
+import sim_card_info
+import speech_to_text
+import url_launcher_macos
+import wakelock_plus
+import window_manager
+
+func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
+  BatteryPlusMacosPlugin.register(with: registry.registrar(forPlugin: "BatteryPlusMacosPlugin"))
+  FlutterTtsPlugin.register(with: registry.registrar(forPlugin: "FlutterTtsPlugin"))
+  GamepadsDarwinPlugin.register(with: registry.registrar(forPlugin: "GamepadsDarwinPlugin"))
+  FLALocalAuthPlugin.register(with: registry.registrar(forPlugin: "FLALocalAuthPlugin"))
+  MediaKitVideoPlugin.register(with: registry.registrar(forPlugin: "MediaKitVideoPlugin"))
+  FPPPackageInfoPlusPlugin.register(with: registry.registrar(forPlugin: "FPPPackageInfoPlusPlugin"))
+  PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
+  ScreenBrightnessMacosPlugin.register(with: registry.registrar(forPlugin: "ScreenBrightnessMacosPlugin"))
+  ScreenRetrieverPlugin.register(with: registry.registrar(forPlugin: "ScreenRetrieverPlugin"))
+  SimCardInfoPlugin.register(with: registry.registrar(forPlugin: "SimCardInfoPlugin"))
+  SpeechToTextPlugin.register(with: registry.registrar(forPlugin: "SpeechToTextPlugin"))
+  UrlLauncherPlugin.register(with: registry.registrar(forPlugin: "UrlLauncherPlugin"))
+  WakelockPlusMacosPlugin.register(with: registry.registrar(forPlugin: "WakelockPlusMacosPlugin"))
+  WindowManagerPlugin.register(with: registry.registrar(forPlugin: "WindowManagerPlugin"))
+}
+
 """,
             children: [],
           )
@@ -3425,7 +5255,8 @@ MyApplication* my_application_new();
                         "macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""{
+                    value: r"""
+{
   "images" : [
     {
       "size" : "16x16",
@@ -3493,6 +5324,7 @@ MyApplication* my_application_new();
     "author" : "xcode"
   }
 }
+
 """,
                     children: [],
                   )
@@ -3515,7 +5347,8 @@ MyApplication* my_application_new();
                     File("macos/Runner/Base.lproj/MainMenu.xib"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
-                value: r"""<?xml version="1.0" encoding="UTF-8"?>
+                value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
@@ -3858,6 +5691,7 @@ MyApplication* my_application_new();
         </window>
     </objects>
 </document>
+
 """,
                 children: [],
               )
@@ -3878,7 +5712,8 @@ MyApplication* my_application_new();
                     File("macos/Runner/Configs/AppInfo.xcconfig"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
-                value: r"""// Application-level settings for the Runner target.
+                value: r"""
+// Application-level settings for the Runner target.
 //
 // This may be replaced with something auto-generated from metadata (e.g., pubspec.yaml) in the
 // future. If not, the values below would default to using the project name when this becomes a
@@ -3892,6 +5727,7 @@ PRODUCT_BUNDLE_IDENTIFIER = globalcorporation.azkadev.generalframework.appUiTemp
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2024 global_corporation.azkadev.general_framework. All rights reserved.
+
 """,
                 children: [],
               ),
@@ -3901,8 +5737,10 @@ PRODUCT_COPYRIGHT = Copyright © 2024 global_corporation.azkadev.general_framewo
                 file_system_entity: File("macos/Runner/Configs/Debug.xcconfig"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
-                value: r"""#include "../../Flutter/Flutter-Debug.xcconfig"
+                value: r"""
+#include "../../Flutter/Flutter-Debug.xcconfig"
 #include "Warnings.xcconfig"
+
 """,
                 children: [],
               ),
@@ -3913,8 +5751,10 @@ PRODUCT_COPYRIGHT = Copyright © 2024 global_corporation.azkadev.general_framewo
                     File("macos/Runner/Configs/Release.xcconfig"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
-                value: r"""#include "../../Flutter/Flutter-Release.xcconfig"
+                value: r"""
+#include "../../Flutter/Flutter-Release.xcconfig"
 #include "Warnings.xcconfig"
+
 """,
                 children: [],
               ),
@@ -3925,8 +5765,8 @@ PRODUCT_COPYRIGHT = Copyright © 2024 global_corporation.azkadev.general_framewo
                     File("macos/Runner/Configs/Warnings.xcconfig"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
-                value:
-                    r"""WARNING_CFLAGS = -Wall -Wconditional-uninitialized -Wnullable-to-nonnull-conversion -Wmissing-method-return-type -Woverlength-strings
+                value: r"""
+WARNING_CFLAGS = -Wall -Wconditional-uninitialized -Wnullable-to-nonnull-conversion -Wmissing-method-return-type -Woverlength-strings
 GCC_WARN_UNDECLARED_SELECTOR = YES
 CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES
 CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE
@@ -3939,6 +5779,7 @@ CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES
 CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES
 GCC_WARN_SHADOW = YES
 CLANG_WARN_UNREACHABLE_CODE = YES
+
 """,
                 children: [],
               )
@@ -3950,7 +5791,8 @@ CLANG_WARN_UNREACHABLE_CODE = YES
             file_system_entity: File("macos/Runner/AppDelegate.swift"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""import Cocoa
+            value: r"""
+import Cocoa
 import FlutterMacOS
 
 @NSApplicationMain
@@ -3959,6 +5801,7 @@ class AppDelegate: FlutterAppDelegate {
     return true
   }
 }
+
 """,
             children: [],
           ),
@@ -3968,7 +5811,8 @@ class AppDelegate: FlutterAppDelegate {
             file_system_entity: File("macos/Runner/DebugProfile.entitlements"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""<?xml version="1.0" encoding="UTF-8"?>
+            value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -3980,6 +5824,7 @@ class AppDelegate: FlutterAppDelegate {
 	<true/>
 </dict>
 </plist>
+
 """,
             children: [],
           ),
@@ -3989,7 +5834,8 @@ class AppDelegate: FlutterAppDelegate {
             file_system_entity: File("macos/Runner/Info.plist"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""<?xml version="1.0" encoding="UTF-8"?>
+            value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -4021,6 +5867,7 @@ class AppDelegate: FlutterAppDelegate {
 	<string>NSApplication</string>
 </dict>
 </plist>
+
 """,
             children: [],
           ),
@@ -4030,7 +5877,8 @@ class AppDelegate: FlutterAppDelegate {
             file_system_entity: File("macos/Runner/MainFlutterWindow.swift"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""import Cocoa
+            value: r"""
+import Cocoa
 import FlutterMacOS
 
 class MainFlutterWindow: NSWindow {
@@ -4045,6 +5893,7 @@ class MainFlutterWindow: NSWindow {
     super.awakeFromNib()
   }
 }
+
 """,
             children: [],
           ),
@@ -4054,7 +5903,8 @@ class MainFlutterWindow: NSWindow {
             file_system_entity: File("macos/Runner/Release.entitlements"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""<?xml version="1.0" encoding="UTF-8"?>
+            value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -4062,6 +5912,7 @@ class MainFlutterWindow: NSWindow {
 	<true/>
 </dict>
 </plist>
+
 """,
             children: [],
           )
@@ -4101,7 +5952,8 @@ class MainFlutterWindow: NSWindow {
                         "macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""<?xml version="1.0" encoding="UTF-8"?>
+                    value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -4109,6 +5961,7 @@ class MainFlutterWindow: NSWindow {
 	<true/>
 </dict>
 </plist>
+
 """,
                     children: [],
                   )
@@ -4142,7 +5995,8 @@ class MainFlutterWindow: NSWindow {
                         "macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""<?xml version="1.0" encoding="UTF-8"?>
+                    value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1510"
    version = "1.3">
@@ -4240,6 +6094,7 @@ class MainFlutterWindow: NSWindow {
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
+
 """,
                     children: [],
                   )
@@ -4253,7 +6108,8 @@ class MainFlutterWindow: NSWindow {
             file_system_entity: File("macos/Runner.xcodeproj/project.pbxproj"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""// !$*UTF8*$!
+            value: r"""
+// !$*UTF8*$!
 {
 	archiveVersion = 1;
 	classes = {
@@ -4958,6 +6814,7 @@ class MainFlutterWindow: NSWindow {
 	};
 	rootObject = 33CC10E52044A3C60003C045 /* Project object */;
 }
+
 """,
             children: [],
           )
@@ -4987,7 +6844,8 @@ class MainFlutterWindow: NSWindow {
                     "macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
-                value: r"""<?xml version="1.0" encoding="UTF-8"?>
+                value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -4995,6 +6853,7 @@ class MainFlutterWindow: NSWindow {
 	<true/>
 </dict>
 </plist>
+
 """,
                 children: [],
               )
@@ -5007,13 +6866,15 @@ class MainFlutterWindow: NSWindow {
                 File("macos/Runner.xcworkspace/contents.xcworkspacedata"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""<?xml version="1.0" encoding="UTF-8"?>
+            value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
    <FileRef
       location = "group:Runner.xcodeproj">
    </FileRef>
 </Workspace>
+
 """,
             children: [],
           )
@@ -5033,7 +6894,8 @@ class MainFlutterWindow: NSWindow {
             file_system_entity: File("macos/RunnerTests/RunnerTests.swift"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""import Cocoa
+            value: r"""
+import Cocoa
 import FlutterMacOS
 import XCTest
 
@@ -5045,6 +6907,7 @@ class RunnerTests: XCTestCase {
   }
 
 }
+
 """,
             children: [],
           )
@@ -5056,7 +6919,8 @@ class RunnerTests: XCTestCase {
         file_system_entity: File("macos/.gitignore"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""# Flutter-related
+        value: r"""
+# Flutter-related
 **/Flutter/ephemeral/
 **/Pods/
 
@@ -5082,55 +6946,7 @@ linux/flutter/ephemeral
 macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
-temp/""",
-        children: [],
-      )
-    ],
-  ),
-  ScriptGenerator(
-    is_generate: true,
-    directory_base: Directory("app_ui_template_general_framework"),
-    file_system_entity: Directory("test"),
-    state_data: {},
-    file_system_entity_type: FileSystemEntityType.directory,
-    value: "",
-    children: [
-      ScriptGenerator(
-        is_generate: true,
-        directory_base: Directory("app_ui_template_general_framework"),
-        file_system_entity: File("test/widget_test.dart"),
-        state_data: {},
-        file_system_entity_type: FileSystemEntityType.file,
-        value: r"""// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-
-import 'package:app_ui_template_general_framework/main.dart';
-
-void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
-}
+temp/
 """,
         children: [],
       )
@@ -5159,7 +6975,8 @@ void main() {
         file_system_entity: File("web/index.html"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""<!DOCTYPE html>
+        value: r"""
+<!DOCTYPE html>
 <html>
 <head>
   <!--
@@ -5197,6 +7014,7 @@ void main() {
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
+
 """,
         children: [],
       ),
@@ -5206,7 +7024,8 @@ void main() {
         file_system_entity: File("web/manifest.json"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""{
+        value: r"""
+{
     "name": "app_ui_template_general_framework",
     "short_name": "app_ui_template_general_framework",
     "start_url": ".",
@@ -5241,6 +7060,7 @@ void main() {
         }
     ]
 }
+
 """,
         children: [],
       )
@@ -5268,8 +7088,8 @@ void main() {
             file_system_entity: File("windows/flutter/CMakeLists.txt"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value:
-                r"""# This file controls Flutter-level build steps. It should not be edited.
+            value: r"""
+# This file controls Flutter-level build steps. It should not be edited.
 cmake_minimum_required(VERSION 3.14)
 
 set(EPHEMERAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ephemeral")
@@ -5378,6 +7198,139 @@ add_custom_target(flutter_assemble DEPENDS
   ${CPP_WRAPPER_SOURCES_PLUGIN}
   ${CPP_WRAPPER_SOURCES_APP}
 )
+
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity:
+                File("windows/flutter/generated_plugin_registrant.cc"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+//
+//  Generated file. Do not edit.
+//
+
+// clang-format off
+
+#include "generated_plugin_registrant.h"
+
+#include <battery_plus/battery_plus_windows_plugin.h>
+#include <camera_windows/camera_windows.h>
+#include <flutter_tts/flutter_tts_plugin.h>
+#include <gamepads_windows/gamepads_windows_plugin_c_api.h>
+#include <local_auth_windows/local_auth_plugin.h>
+#include <media_kit_video/media_kit_video_plugin_c_api.h>
+#include <permission_handler_windows/permission_handler_windows_plugin.h>
+#include <screen_brightness_windows/screen_brightness_windows_plugin.h>
+#include <screen_retriever/screen_retriever_plugin.h>
+#include <sim_card_info/sim_card_info_plugin_c_api.h>
+#include <url_launcher_windows/url_launcher_windows.h>
+#include <window_manager/window_manager_plugin.h>
+
+void RegisterPlugins(flutter::PluginRegistry* registry) {
+  BatteryPlusWindowsPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("BatteryPlusWindowsPlugin"));
+  CameraWindowsRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("CameraWindows"));
+  FlutterTtsPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("FlutterTtsPlugin"));
+  GamepadsWindowsPluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("GamepadsWindowsPluginCApi"));
+  LocalAuthPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("LocalAuthPlugin"));
+  MediaKitVideoPluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("MediaKitVideoPluginCApi"));
+  PermissionHandlerWindowsPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("PermissionHandlerWindowsPlugin"));
+  ScreenBrightnessWindowsPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("ScreenBrightnessWindowsPlugin"));
+  ScreenRetrieverPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("ScreenRetrieverPlugin"));
+  SimCardInfoPluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("SimCardInfoPluginCApi"));
+  UrlLauncherWindowsRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("UrlLauncherWindows"));
+  WindowManagerPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("WindowManagerPlugin"));
+}
+
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity:
+                File("windows/flutter/generated_plugin_registrant.h"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+//
+//  Generated file. Do not edit.
+//
+
+// clang-format off
+
+#ifndef GENERATED_PLUGIN_REGISTRANT_
+#define GENERATED_PLUGIN_REGISTRANT_
+
+#include <flutter/plugin_registry.h>
+
+// Registers Flutter plugins.
+void RegisterPlugins(flutter::PluginRegistry* registry);
+
+#endif  // GENERATED_PLUGIN_REGISTRANT_
+
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: File("windows/flutter/generated_plugins.cmake"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+#
+# Generated file, do not edit.
+#
+
+list(APPEND FLUTTER_PLUGIN_LIST
+  battery_plus
+  camera_windows
+  flutter_tts
+  gamepads_windows
+  local_auth_windows
+  media_kit_video
+  permission_handler_windows
+  screen_brightness_windows
+  screen_retriever
+  sim_card_info
+  url_launcher_windows
+  window_manager
+)
+
+list(APPEND FLUTTER_FFI_PLUGIN_LIST
+)
+
+set(PLUGIN_BUNDLED_LIBRARIES)
+
+foreach(plugin ${FLUTTER_PLUGIN_LIST})
+  add_subdirectory(flutter/ephemeral/.plugin_symlinks/${plugin}/windows plugins/${plugin})
+  target_link_libraries(${BINARY_NAME} PRIVATE ${plugin}_plugin)
+  list(APPEND PLUGIN_BUNDLED_LIBRARIES $<TARGET_FILE:${plugin}_plugin>)
+  list(APPEND PLUGIN_BUNDLED_LIBRARIES ${${plugin}_bundled_libraries})
+endforeach(plugin)
+
+foreach(ffi_plugin ${FLUTTER_FFI_PLUGIN_LIST})
+  add_subdirectory(flutter/ephemeral/.plugin_symlinks/${ffi_plugin}/windows plugins/${ffi_plugin})
+  list(APPEND PLUGIN_BUNDLED_LIBRARIES ${${ffi_plugin}_bundled_libraries})
+endforeach(ffi_plugin)
+
 """,
             children: [],
           )
@@ -5406,7 +7359,8 @@ add_custom_target(flutter_assemble DEPENDS
             file_system_entity: File("windows/runner/CMakeLists.txt"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""cmake_minimum_required(VERSION 3.14)
+            value: r"""
+cmake_minimum_required(VERSION 3.14)
 project(runner LANGUAGES CXX)
 
 # Define the application target. To change its name, change BINARY_NAME in the
@@ -5446,6 +7400,7 @@ target_include_directories(${BINARY_NAME} PRIVATE "${CMAKE_SOURCE_DIR}")
 
 # Run the Flutter tool portions of the build. This must not be removed.
 add_dependencies(${BINARY_NAME} flutter_assemble)
+
 """,
             children: [],
           ),
@@ -5455,7 +7410,8 @@ add_dependencies(${BINARY_NAME} flutter_assemble)
             file_system_entity: File("windows/runner/flutter_window.cpp"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""#include "flutter_window.h"
+            value: r"""
+#include "flutter_window.h"
 
 #include <optional>
 
@@ -5526,6 +7482,7 @@ FlutterWindow::MessageHandler(HWND hwnd, UINT const message,
 
   return Win32Window::MessageHandler(hwnd, message, wparam, lparam);
 }
+
 """,
             children: [],
           ),
@@ -5535,7 +7492,8 @@ FlutterWindow::MessageHandler(HWND hwnd, UINT const message,
             file_system_entity: File("windows/runner/flutter_window.h"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""#ifndef RUNNER_FLUTTER_WINDOW_H_
+            value: r"""
+#ifndef RUNNER_FLUTTER_WINDOW_H_
 #define RUNNER_FLUTTER_WINDOW_H_
 
 #include <flutter/dart_project.h>
@@ -5568,6 +7526,7 @@ class FlutterWindow : public Win32Window {
 };
 
 #endif  // RUNNER_FLUTTER_WINDOW_H_
+
 """,
             children: [],
           ),
@@ -5577,7 +7536,8 @@ class FlutterWindow : public Win32Window {
             file_system_entity: File("windows/runner/main.cpp"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""#include <flutter/dart_project.h>
+            value: r"""
+#include <flutter/dart_project.h>
 #include <flutter/flutter_view_controller.h>
 #include <windows.h>
 
@@ -5620,6 +7580,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   ::CoUninitialize();
   return EXIT_SUCCESS;
 }
+
 """,
             children: [],
           ),
@@ -5629,7 +7590,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
             file_system_entity: File("windows/runner/resource.h"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""//{{NO_DEPENDENCIES}}
+            value: r"""
+//{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
 // Used by Runner.rc
 //
@@ -5645,6 +7607,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
+
 """,
             children: [],
           ),
@@ -5654,7 +7617,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
             file_system_entity: File("windows/runner/runner.exe.manifest"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+            value: r"""
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
   <application xmlns="urn:schemas-microsoft-com:asm.v3">
     <windowsSettings>
@@ -5674,6 +7638,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
     </application>
   </compatibility>
 </assembly>
+
 """,
             children: [],
           ),
@@ -5683,7 +7648,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
             file_system_entity: File("windows/runner/Runner.rc"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""// Microsoft Visual C++ generated resource script.
+            value: r"""
+// Microsoft Visual C++ generated resource script.
 //
 #pragma code_page(65001)
 #include "resource.h"
@@ -5804,6 +7770,7 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
+
 """,
             children: [],
           ),
@@ -5813,7 +7780,8 @@ END
             file_system_entity: File("windows/runner/utils.cpp"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""#include "utils.h"
+            value: r"""
+#include "utils.h"
 
 #include <flutter_windows.h>
 #include <io.h>
@@ -5878,6 +7846,7 @@ std::string Utf8FromUtf16(const wchar_t* utf16_string) {
   }
   return utf8_string;
 }
+
 """,
             children: [],
           ),
@@ -5887,7 +7856,8 @@ std::string Utf8FromUtf16(const wchar_t* utf16_string) {
             file_system_entity: File("windows/runner/utils.h"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""#ifndef RUNNER_UTILS_H_
+            value: r"""
+#ifndef RUNNER_UTILS_H_
 #define RUNNER_UTILS_H_
 
 #include <string>
@@ -5906,6 +7876,7 @@ std::string Utf8FromUtf16(const wchar_t* utf16_string);
 std::vector<std::string> GetCommandLineArguments();
 
 #endif  // RUNNER_UTILS_H_
+
 """,
             children: [],
           ),
@@ -5915,7 +7886,8 @@ std::vector<std::string> GetCommandLineArguments();
             file_system_entity: File("windows/runner/win32_window.cpp"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""#include "win32_window.h"
+            value: r"""
+#include "win32_window.h"
 
 #include <dwmapi.h>
 #include <flutter_windows.h>
@@ -6203,6 +8175,7 @@ void Win32Window::UpdateTheme(HWND const window) {
                           &enable_dark_mode, sizeof(enable_dark_mode));
   }
 }
+
 """,
             children: [],
           ),
@@ -6212,7 +8185,8 @@ void Win32Window::UpdateTheme(HWND const window) {
             file_system_entity: File("windows/runner/win32_window.h"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""#ifndef RUNNER_WIN32_WINDOW_H_
+            value: r"""
+#ifndef RUNNER_WIN32_WINDOW_H_
 #define RUNNER_WIN32_WINDOW_H_
 
 #include <windows.h>
@@ -6314,6 +8288,7 @@ class Win32Window {
 };
 
 #endif  // RUNNER_WIN32_WINDOW_H_
+
 """,
             children: [],
           )
@@ -6325,7 +8300,8 @@ class Win32Window {
         file_system_entity: File("windows/.gitignore"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""flutter/ephemeral/
+        value: r"""
+flutter/ephemeral/
 
 # Visual Studio user-specific files.
 *.suo
@@ -6361,7 +8337,8 @@ linux/flutter/ephemeral
 macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
-temp/""",
+temp/
+""",
         children: [],
       ),
       ScriptGenerator(
@@ -6370,7 +8347,8 @@ temp/""",
         file_system_entity: File("windows/CMakeLists.txt"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""# Project-level configuration.
+        value: r"""
+# Project-level configuration.
 cmake_minimum_required(VERSION 3.14)
 project(app_ui_template_general_framework LANGUAGES CXX)
 
@@ -6478,6 +8456,7 @@ install(DIRECTORY "${PROJECT_BUILD_DIR}/${FLUTTER_ASSET_DIR_NAME}"
 install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
   CONFIGURATIONS Profile;Release
   COMPONENT Runtime)
+
 """,
         children: [],
       )
@@ -6489,7 +8468,8 @@ install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
     file_system_entity: File(".gitignore"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: r"""# Miscellaneous
+    value: r"""
+# Miscellaneous
 *.class
 *.log
 *.pyc
@@ -6549,7 +8529,8 @@ linux/flutter/ephemeral
 macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
-temp/""",
+temp/
+""",
     children: [],
   ),
   ScriptGenerator(
@@ -6558,7 +8539,8 @@ temp/""",
     file_system_entity: File(".metadata"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: r"""# This file tracks properties of this Flutter project.
+    value: r"""
+# This file tracks properties of this Flutter project.
 # Used by Flutter tool to assess capabilities and perform upgrades etc.
 #
 # This file should be version controlled and should not be manually edited.
@@ -6603,6 +8585,7 @@ migration:
   unmanaged_files:
     - 'lib/main.dart'
     - 'ios/Runner.xcodeproj/project.pbxproj'
+
 """,
     children: [],
   ),
@@ -6612,8 +8595,8 @@ migration:
     file_system_entity: File("analysis_options.yaml"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value:
-        r"""# This file configures the analyzer, which statically analyzes Dart code to
+    value: r"""
+# This file configures the analyzer, which statically analyzes Dart code to
 # check for errors, warnings, and lints.
 #
 # The issues identified by the analyzer are surfaced in the UI of Dart-enabled
@@ -6641,6 +8624,7 @@ linter:
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+
 """,
     children: [],
   ),
@@ -6650,7 +8634,8 @@ linter:
     file_system_entity: File("app_ui_template_general_framework.iml"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: r"""<?xml version="1.0" encoding="UTF-8"?>
+    value: r"""
+<?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -6667,6 +8652,503 @@ linter:
     <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>
+
+""",
+    children: [],
+  ),
+  ScriptGenerator(
+    is_generate: true,
+    directory_base: Directory("app_ui_template_general_framework"),
+    file_system_entity: File("guide-dart-general-library.md"),
+    state_data: {},
+    file_system_entity_type: FileSystemEntityType.file,
+    value: r"""
+# General 
+
+General Library Dokumentasi
+
+Silahkan buka masing masing folder ya!
+
+
+## Rekomendasi Full Config Flutter Platform Project
+
+
+1. Android
+
+- Change MainActivty.kt
+
+```kotlin
+
+import android.hardware.input.InputManager
+import android.os.Handler
+import android.view.InputDevice
+import android.view.KeyEvent
+import android.view.MotionEvent
+import io.flutter.embedding.android.FlutterActivity
+import org.flame_engine.gamepads_android.GamepadsCompatibleActivity
+import io.flutter.embedding.android.FlutterFragmentActivity
+
+class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
+    var keyListener: ((KeyEvent) -> Boolean)? = null
+    var motionListener: ((MotionEvent) -> Boolean)? = null
+
+    override fun dispatchGenericMotionEvent(motionEvent: MotionEvent): Boolean {
+        return motionListener?.invoke(motionEvent) ?: false
+    }
+    
+    override fun dispatchKeyEvent(keyEvent: KeyEvent): Boolean {
+        return keyListener?.invoke(keyEvent) ?: false
+    }
+
+    override fun registerInputDeviceListener(
+      listener: InputManager.InputDeviceListener, handler: Handler?) {
+        val inputManager = getSystemService(INPUT_SERVICE) as InputManager
+        inputManager.registerInputDeviceListener(listener, null)
+    }
+
+    override fun registerKeyEventHandler(handler: (KeyEvent) -> Boolean) {
+        keyListener = handler
+    }
+
+    override fun registerMotionEventHandler(handler: (MotionEvent) -> Boolean) {
+        motionListener = handler
+    }
+}
+
+```
+
+
+- Change Android Manifest
+
+
+```bash
+code android/settings.gradle
+```
+
+```bash
+plugins {
+    # bla bla bla
+    # change this
+    id "org.jetbrains.kotlin.android" version "1.9.22" apply false
+}
+```
+
+
+- Change Android Manifest
+
+
+```bash
+code android/app/src/main/AndroidManifest.xml
+```
+
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  
+     <!-- copy from this -->
+
+     
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    
+    <queries>
+      <intent>
+        <action android:name="android.speech.RecognitionService" />
+      </intent>
+    </queries>
+
+   <queries>
+     <intent>
+       <action android:name="android.intent.action.TTS_SERVICE" />
+     </intent>
+    </queries>
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <!--
+    Internet permissions do not affect the `permission_handler` plugin, but are required if your app needs access to
+    the internet.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Permissions options for the `contacts` group -->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+    <!-- Permissions options for the `storage` group -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- Read storage permission for Android 12 and lower -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!--
+      Granular media permissions for Android 13 and newer.
+      See https://developer.android.com/about/versions/13/behavior-changes-13#granular-media-permissions
+      for more information.
+    -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+
+    <!-- Permissions options for the `camera` group -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <!-- Permissions options for the `sms` group -->
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH"/>
+    <uses-permission android:name="android.permission.RECEIVE_MMS"/>
+
+    <!-- Permissions options for the `phone` group -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.ADD_VOICEMAIL"/>
+    <uses-permission android:name="android.permission.USE_SIP"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
+    <uses-permission android:name="android.permission.BIND_CALL_REDIRECTION_SERVICE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+
+    <!-- Permissions options for the `calendar` group -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <!-- Permissions options for the `location` group -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <!-- Permissions options for the `microphone` or `speech` group -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Permissions options for the `sensors` group -->
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+    <uses-permission android:name="android.permission.BODY_SENSORS_BACKGROUND" />
+
+    <!-- Permissions options for the `accessMediaLocation` group -->
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+
+    <!-- Permissions options for the `activityRecognition` group -->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
+    <!-- Permissions options for the `ignoreBatteryOptimizations` group -->
+    <!-- <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" /> -->
+
+    <!-- Permissions options for the `nearby devices` group -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
+
+    <!-- Permissions options for the `manage external storage` group -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <!-- Permissions options for the `system alert windows` group -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- Permissions options for the `request install packages` group -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!-- Permissions options for the `access notification policy` group -->
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
+
+    <!-- Permissions options for the `notification` group -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <!-- Permissions options for the `alarm` group -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+     
+     <!-- finished copy -->
+
+
+    <application
+        android:label="Example App"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <!-- Specifies an Android theme to apply to this Activity as soon as
+                 the Android process has started. This theme is visible to the user
+                 while the Flutter UI initializes. After that, this theme continues
+                 to determine the Window background behind the Flutter UI. -->
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!-- Don't delete the meta-data below.
+             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+             <!-- copy this -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+            
+        <!-- Adapt to the foreground service type(s) desired, these are just examples -->
+        <service
+            android:name="de.julianassmann.flutter_background.IsolateHolderService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync|specialUse|..." />
+
+          <!-- finished copy -->
+    </application>
+</manifest>
+
+```
+<!-- START GLOBAL CORPORATION -->
+<h3 align="center">
+  Global Corporation
+
+  ![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/global_corporation.png)
+</h3>
+
+
+<h3 align="center">
+  Welcome to Global Corporation profile!
+  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="28">
+</h3>
+
+<!-- Social icons section -->
+<p align="center">
+  <a href="https://www.instagram.com/global__corporation/"><img width="32px" alt="Instagram" title="Telegram" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"/></a>
+  &#8287;&#8287;&#8287;&#8287;&#8287;
+  <a href="https://t.me/GLOBAL_CORPORATION_ORG"><img width="32px" alt="Twitter" title="Telegram" src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"/></a>
+  &#8287;&#8287;&#8287;&#8287;&#8287;
+  <a href="https://twitter.com/global_corp_org"><img width="32px" alt="Twitter" title="Twitter" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg"/></a>
+  &#8287;&#8287;&#8287;&#8287;&#8287;
+  <a href="https://www.youtube.com/@global_Corporation"><img width="32px" alt="Youtube" title="Youtube" src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png"/></a>
+  &#8287;&#8287;&#8287;&#8287;&#8287;
+</p>
+
+**Global Corporation** Is a **leading company** that takes a leading role in **accelerating** and **maintaining** enterprise security. 
+
+With a sharp focus on innovation and technological excellence
+
+**Global Corporation** providing effective proactive solutions to secure company operations and prevent potential adverse risks. 
+
+With a committed team of experts, advanced technology, and a holistic approach to corporate security, Global Corporation has become a benchmark for other companies that prioritize security and safety as a top priority in their business.
+
+[![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/powered.png)](https://www.youtube.com/@Global_Corporation)
+
+## Application / Product / Project Official
+
+<h3 align="center">
+  Global App
+
+  ![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/global_corporation.png)
+</h3>
+
+  Super Cross-platform application allows you to do social media / chat as well as a place for buying and selling businesses to find work
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/global_app)
+
+<h3 align="center">
+  Global Bot App
+
+  ![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/global_corporation.png)
+</h3>
+
+  Super cross-platform application allows you to handle lots of bots / userbots / AI for your assistants, making it easier for you in all your affairs
+  
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/global_bot_app)
+
+### Global Studio Developer
+
+  The cross-platform Studio Developer application allows you to code on various platforms
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/global_bot_app)
+
+<h3 align="center">
+  Ads Gateway
+
+  ![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/ads_gateway.png)
+</h3>
+
+  **Applikasi** Cross platform advertising allows you to advertise on various platforms easily
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/coinlox)
+
+<h3 align="center">
+  Archivon
+
+  ![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/archivon.png)
+</h3>
+
+  **Applikasi** Linux based operating system which will be released
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/coinlox)
+
+<h3 align="center">
+  Coinlox
+
+  ![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/coinlox.png)
+</h3>
+
+  **Applikasi** Cross Platform Wallet allows you to store money on the internet safely
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/coinlox)
+
+
+
+### Global Bot Telegram
+
+  Super Bot Telegram allows you to manage various chat groups / private / channels as well as a place to buy and sell the products we sell, you can buy this service from
+  IDR: 25k / bulan
+  $: 1,5 Dollar
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/global_bot_telegram)
+
+### Global Userbot Telegram
+
+  Super Bot Telegram allows you to manage various chat groups / private / channels as well as a place to buy and sell the products we sell, you can buy this service from
+  IDR: 25k / bulan
+  $: 1,5 Dollar
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/global_userbot_telegram)
+
+### Global Bot Whatsapp
+
+  Super Bot Telegram allows you to manage various chat groups / private / channels as well as a place to buy and sell the products we sell, you can buy this service from
+  IDR: 25k / bulan
+  $: 1,5 Dollar
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/global_bot_whatsapp)
+
+## Social Media
+
+<h3 align="center">
+  Telegram
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" width="20">
+</h3>
+
+1. [Group Developer Global Public](https://t.me/DEVELOPER_GLOBAL_PUBLIC)
+
+## Product / Services
+
+1. **Clone Bot / Userbot**
+  Hi, do you want to have a bot / userbot with lots of features?. 
+  - **Features**:
+    - **Repeat Message**
+    - **Manage Chat Private / Channel / Group**
+  - **Platform Support**:
+    - **Telegram**
+    - **Whatsapp**
+    - **Twitter**
+    - **Github**
+    - **Google** 
+1. **Products**
+    - **Black Products**
+    - **Group / Channel**
+    - **Nsfw**
+    - **Payment Gateway**
+    - **Paid Promote**
+    - **Pre Release / Beta**
+    - **Promo Cheap**
+    - **Source Code Bot / USerbot**
+    - **Trade**
+2. **Services**
+    - **Developer**
+    - **Goal**
+    - **Partner**
+    - **Promote**
+    - **Recommendation**
+    - **Sortcut Cheat Sheet**
+    - **Terminate**
+    - **Upgrade**
+
+## How To Buy Services Or Products | Cara Beli Jasa Atau Products
+
+- **Via Telegram Bot**
+
+  - **Englisth**
+     
+     If you want to buy, you can use Telegram to automatically process the payment
+     (if the long process is not a **SCAM!!** it's possible that the **server is down** so the process could take longer. If in doubt, tap the report menu then fill in a complaint)
+
+     - Open Bot: https://t.me/GLOBAL_CORP_ORG_BOT
+     - Fill in personal data / subscribe to the channel
+     - Tap Main menu select services / products
+     - Select Products / Services
+     - Make sure there are enough coins
+     - Fill in the required data
+
+
+  - **Indonesia**
+
+     Jika kamu ingin membeli bisa lewat telegram automatis pembayaran hingga proses
+     (jika proses lama itu bukan **SCAM !!** kemungkinan **server down** jadi proses bisa lebih lama jika ragu tap menu report lalu isi keluhan)
+     -  Buka Bot: https://t.me/GLOBAL_CORP_ORG_BOT
+     -  Isi data pribadi / subscribe channel
+     -  Tap Main menu pilih services / products
+     -  Pilih Product / Services
+     -  Pastikan coin mencukupi
+     -  Isi data yang di butuhkan
+
+- **Via Telegram USER**
+  
+  -  Buka: https://t.me/general_user
+  -  Ucapin apapun yang kamu butuh jasa dev / apapun
+
+  
+Video Tutorial
+[![Watch the video](https://img.youtube.com/vi/TY0Y21C6asM/maxresdefault.jpg)](https://www.youtube.com/watch?v=TY0Y21C6asM)
+
+- **Lewat App**
+
+  - **English** 
+
+    If you want to see a product/service with a full demo, you can buy it via the app
+
+  - **Indonesia**
+
+    jika kamu ingin melihat product / jasa dengan full demo kamu bisa beli lewat app
+
+## 📺 Latest YouTube Videos
+
+  <!-- prettier-ignore-start -->
+  <!-- BEGIN YOUTUBE-CARDS -->
+[![Userbot LIFE TIME Subsription Telegram Murah Unlimited Akun Ultra FAST | Global Corporation](https://ytcards.demolab.com/?id=LfNt8A2fCLQ&title=Userbot+LIFE+TIME+Subsription+Telegram+Murah+Unlimited+Akun+Ultra+FAST+%7C+Global+Corporation&lang=id&timestamp=1712129787&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5 "Userbot LIFE TIME Subsription Telegram Murah Unlimited Akun Ultra FAST | Global Corporation")](https://www.youtube.com/watch?v=LfNt8A2fCLQ)
+[![Tolong 😭 Siapapun beli satu jasa aku ntr aku kasih harga seiklasnya / ada yang mau donasi | GLOBAL](https://ytcards.demolab.com/?id=BFl2AT_pdOw&title=Tolong+%F0%9F%98%AD+Siapapun+beli+satu+jasa+aku+ntr+aku+kasih+harga+seiklasnya+%2F+ada+yang+mau+donasi+%7C+GLOBAL&lang=id&timestamp=1710988807&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5 "Tolong 😭 Siapapun beli satu jasa aku ntr aku kasih harga seiklasnya / ada yang mau donasi | GLOBAL")](https://www.youtube.com/watch?v=BFl2AT_pdOw)
+[![Cara beli ai telegram versi bot dan cara pakai| Global Corporation](https://ytcards.demolab.com/?id=7LZhoklvS9A&title=Cara+beli+ai+telegram+versi+bot+dan+cara+pakai%7C+Global+Corporation&lang=id&timestamp=1710937415&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5 "Cara beli ai telegram versi bot dan cara pakai| Global Corporation")](https://www.youtube.com/watch?v=7LZhoklvS9A)
+[![Ai Userbot Telegram Demo Cara Pakai Dan Beli | Global Corporation](https://ytcards.demolab.com/?id=4mAZ6EgAhUo&title=Ai+Userbot+Telegram+Demo+Cara+Pakai+Dan+Beli+%7C+Global+Corporation&lang=id&timestamp=1710936251&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5 "Ai Userbot Telegram Demo Cara Pakai Dan Beli | Global Corporation")](https://www.youtube.com/watch?v=4mAZ6EgAhUo)
+[![CARA BELI USERBOT TELEGRAM CLOUD  | Global Corporation](https://ytcards.demolab.com/?id=uiDJwK9r3Cg&title=CARA+BELI+USERBOT+TELEGRAM+CLOUD++%7C+Global+Corporation&lang=id&timestamp=1710900440&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5 "CARA BELI USERBOT TELEGRAM CLOUD  | Global Corporation")](https://www.youtube.com/watch?v=uiDJwK9r3Cg)
+[![Cara Top Up Automatis Menggunakan Payment Gateway Di GLOBAL BOT APP](https://ytcards.demolab.com/?id=ADqzS5ORJsU&title=Cara+Top+Up+Automatis+Menggunakan+Payment+Gateway+Di+GLOBAL+BOT+APP&lang=id&timestamp=1710721879&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5 "Cara Top Up Automatis Menggunakan Payment Gateway Di GLOBAL BOT APP")](https://www.youtube.com/watch?v=ADqzS5ORJsU)
+<!-- END YOUTUBE-CARDS -->
+  <!-- prettier-ignore-end -->
+
+<!-- END GLOBAL CORPORATION -->
+
 """,
     children: [],
   ),
@@ -6677,7 +9159,9 @@ linter:
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
     value: r"""
+
 Copyright (c) 2024 GLOBAL CORPORATION.
+
 
 """,
     children: [],
@@ -6688,7 +9172,8 @@ Copyright (c) 2024 GLOBAL CORPORATION.
     file_system_entity: File("pubspec.yaml"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: r"""name: 'app_ui_template_general_framework'
+    value: r"""
+name: 'app_ui_template_general_framework'
 description: 'A new Flutter project.'
 publish_to: 'none'
 version: '1.0.0+1'
@@ -6698,6 +9183,11 @@ dependencies:
   flutter: 
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
+  general_lib_flutter: '^0.0.25'
+  general_lib: '^0.0.44'
+  simulate: '^0.0.40'
+  general_framework: 
+    path: '../../'
 dev_dependencies: 
   flutter_test: 
     sdk: 'flutter'
@@ -6712,6 +9202,7 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+
 """,
     children: [],
   ),
@@ -6721,7 +9212,8 @@ documentation: 'https://youtube.com/@azkadev'
     file_system_entity: File("README.md"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: r"""# app_ui_template_general_framework
+    value: r"""
+# app_ui_template_general_framework
 
 A new Flutter project.
 
@@ -6737,6 +9229,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
 """,
     children: [],
   )

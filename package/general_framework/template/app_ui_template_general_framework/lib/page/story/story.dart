@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/ui/ui.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class StoryPage extends StatefulWidget {
+  const StoryPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<StoryPage> createState() => _StoryPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _StoryPageState extends State<StoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

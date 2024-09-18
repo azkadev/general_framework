@@ -76,11 +76,11 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
     if (token.isNotEmpty) {
       context
           .routerGeneralLibFlutter()
-          .pushNamed(routeName: "/home", parameters: {});
+          .pushNamed(routeName: "/home", arguments: {});
     } else {
       context
           .routerGeneralLibFlutter()
-          .pushNamed(routeName: "/sign", parameters: {});
+          .pushNamed(routeName: "/sign", arguments: {});
     }
   }
 
@@ -104,9 +104,9 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
       }
       if (result["message"] == "session_not_found") {
         context.routerGeneralLibFlutter().pushNamedAndRemoveUntil(
-          routeName: "/sign",
-          parameters: {},
-        );
+              routeName: "/sign",
+              removeRouteName: "/",
+            );
         return;
       }
       final String message = (result["message"] as String)

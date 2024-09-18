@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/ui/ui.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class AccountPage extends StatefulWidget {
+  const AccountPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<AccountPage> createState() => _AccountPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

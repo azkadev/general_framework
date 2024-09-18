@@ -32,8 +32,8 @@ final List<ScriptGenerator>
                 ".github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value:
-                r"""# Generate Automatic By GLOBAL CORPORATION / GENERAL CORPORATION
+            value: r"""
+# Generate Automatic By GLOBAL CORPORATION / GENERAL CORPORATION
 # 
 # DEVELOPER:
 # 
@@ -82,6 +82,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
 """,
             children: [],
           )
@@ -94,8 +95,10 @@ jobs:
         file_system_entity: File(".github/FUNDING.yaml"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""github: 
+        value: r"""
+github: 
   - 'azkadev'
+
 """,
         children: [],
       )
@@ -118,13 +121,14 @@ jobs:
             "example/telegram_bot_template_general_framework_project_example.dart"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value:
-            r"""import 'package:telegram_bot_template_general_framework_project/telegram_bot_template_general_framework_project.dart';
+        value: r"""
+import 'package:telegram_bot_template_general_framework_project/telegram_bot_template_general_framework_project.dart';
 
 void main() {
   var awesome = Awesome();
   print('awesome: ${awesome.isAwesome}');
 }
+
 """,
         children: [],
       )
@@ -156,12 +160,14 @@ void main() {
                 "lib/src/telegram_bot_template_general_framework_project_base.dart"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
-            value: r"""// TODO: Put public facing types in this file.
+            value: r"""
+// TODO: Put public facing types in this file.
 
 /// Checks if you are awesome. Spoiler: you are.
 class Awesome {
   bool get isAwesome => true;
 }
+
 """,
             children: [],
           )
@@ -175,7 +181,8 @@ class Awesome {
             File("lib/telegram_bot_template_general_framework_project.dart"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value: r"""/// Support for doing something awesome.
+        value: r"""
+/// Support for doing something awesome.
 ///
 /// More dartdocs go here.
 library;
@@ -183,6 +190,7 @@ library;
 export 'src/telegram_bot_template_general_framework_project_base.dart';
 
 // TODO: Export any libraries intended for clients of this package.
+
 """,
         children: [],
       )
@@ -205,8 +213,8 @@ export 'src/telegram_bot_template_general_framework_project_base.dart';
             "test/telegram_bot_template_general_framework_project_test.dart"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
-        value:
-            r"""import 'package:telegram_bot_template_general_framework_project/telegram_bot_template_general_framework_project.dart';
+        value: r"""
+import 'package:telegram_bot_template_general_framework_project/telegram_bot_template_general_framework_project.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -222,6 +230,7 @@ void main() {
     });
   });
 }
+
 """,
         children: [],
       )
@@ -234,7 +243,8 @@ void main() {
     file_system_entity: File(".gitignore"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: r"""# https://dart.dev/guides/libraries/private-files
+    value: r"""
+# https://dart.dev/guides/libraries/private-files
 # Created by `dart pub`
 .dart_tool/
 
@@ -259,7 +269,8 @@ linux/flutter/ephemeral
 macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
-temp/""",
+temp/
+""",
     children: [],
   ),
   ScriptGenerator(
@@ -269,8 +280,8 @@ temp/""",
     file_system_entity: File("analysis_options.yaml"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value:
-        r"""# This file configures the static analysis results for your project (errors,
+    value: r"""
+# This file configures the static analysis results for your project (errors,
 # warnings, and lints).
 #
 # This enables the 'recommended' set of lints from `package:lints`.
@@ -300,6 +311,7 @@ include: package:lints/recommended.yaml
 
 # For additional information about configuring this file, see
 # https://dart.dev/guides/language/analysis-options
+
 """,
     children: [],
   ),
@@ -310,9 +322,11 @@ include: package:lints/recommended.yaml
     file_system_entity: File("CHANGELOG.md"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: r"""## 1.0.0
+    value: r"""
+## 1.0.0
 
 - Initial version.
+
 """,
     children: [],
   ),
@@ -323,11 +337,13 @@ include: package:lints/recommended.yaml
     file_system_entity: File("generate_glx_commands_dart_pub_get.sh"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: r"""#!/bin/sh
+    value: r"""
+#!/bin/sh
 
 echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/telegram_bot_template_general_framework_project/"
 cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/telegram_bot_template_general_framework_project/
 dart pub get --offline
+
 """,
     children: [],
   ),
@@ -338,11 +354,13 @@ dart pub get --offline
     file_system_entity: File("generate_glx_commands_flutter_clean.sh"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: r"""#!/bin/sh
+    value: r"""
+#!/bin/sh
 
 echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/telegram_bot_template_general_framework_project/"
 cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/telegram_bot_template_general_framework_project/
 flutter clean
+
 """,
     children: [],
   ),
@@ -353,11 +371,13 @@ flutter clean
     file_system_entity: File("generate_glx_commands_flutter_pub_get.sh"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: r"""#!/bin/sh
+    value: r"""
+#!/bin/sh
 
 echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/telegram_bot_template_general_framework_project/"
 cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/telegram_bot_template_general_framework_project/
 flutter pub get --offline
+
 """,
     children: [],
   ),
@@ -369,7 +389,9 @@ flutter pub get --offline
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
     value: r"""
+
 Copyright (c) 2024 GLOBAL CORPORATION.
+
 
 """,
     children: [],
@@ -381,7 +403,8 @@ Copyright (c) 2024 GLOBAL CORPORATION.
     file_system_entity: File("pubspec.yaml"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: r"""name: 'telegram_bot_template_general_framework_project'
+    value: r"""
+name: 'telegram_bot_template_general_framework_project'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
 environment: 
@@ -398,6 +421,7 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+
 """,
     children: [],
   ),
@@ -408,7 +432,8 @@ documentation: 'https://youtube.com/@azkadev'
     file_system_entity: File("README.md"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
-    value: r"""<!-- 
+    value: r"""
+<!-- 
 This README describes the package. If you publish this package to pub.dev,
 this README's contents appear on the landing page for your package.
 
@@ -447,6 +472,7 @@ const like = 'sample';
 TODO: Tell users more about the package: where to find more information, how to 
 contribute to the package, how to file issues, what response they can expect 
 from the package authors, and more.
+
 """,
     children: [],
   )

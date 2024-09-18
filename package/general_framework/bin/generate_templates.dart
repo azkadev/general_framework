@@ -48,7 +48,7 @@ void main(List<String> args) async {
     "format",
     directory_template.uri.toFilePath(),
   ]);
-  List<FileSystemEntity> fileSystemEntitys = directory_template.listSync().where((element) => element.statSync().type == FileSystemEntityType.directory).toList();
+  final List<FileSystemEntity> fileSystemEntitys = directory_template.listSync().where((element) => element.statSync().type == FileSystemEntityType.directory).toList();
   fileSystemEntitys.sort((a, b) => a.path.compareTo(b.path));
   for (var element in fileSystemEntitys) {
     final String base_name = "${path.basename(element.path)}";
