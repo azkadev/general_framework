@@ -85,6 +85,162 @@ jobs:
 
 """,
             children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("telegram_bot_template_general_framework_project"),
+            file_system_entity: File(
+                ".github/workflows/general_workflow_release_app_development.yaml"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("telegram_bot_template_general_framework_project"),
+            file_system_entity: File(
+                ".github/workflows/general_workflow_release_app_production.yaml"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+            children: [],
           )
         ],
       ),
@@ -98,6 +254,7 @@ jobs:
         value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
         children: [],
@@ -334,57 +491,6 @@ include: package:lints/recommended.yaml
     is_generate: true,
     directory_base:
         Directory("telegram_bot_template_general_framework_project"),
-    file_system_entity: File("generate_glx_commands_dart_pub_get.sh"),
-    state_data: {},
-    file_system_entity_type: FileSystemEntityType.file,
-    value: r"""
-#!/bin/sh
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/telegram_bot_template_general_framework_project/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/telegram_bot_template_general_framework_project/
-dart pub get --offline
-
-""",
-    children: [],
-  ),
-  ScriptGenerator(
-    is_generate: true,
-    directory_base:
-        Directory("telegram_bot_template_general_framework_project"),
-    file_system_entity: File("generate_glx_commands_flutter_clean.sh"),
-    state_data: {},
-    file_system_entity_type: FileSystemEntityType.file,
-    value: r"""
-#!/bin/sh
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/telegram_bot_template_general_framework_project/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/telegram_bot_template_general_framework_project/
-flutter clean
-
-""",
-    children: [],
-  ),
-  ScriptGenerator(
-    is_generate: true,
-    directory_base:
-        Directory("telegram_bot_template_general_framework_project"),
-    file_system_entity: File("generate_glx_commands_flutter_pub_get.sh"),
-    state_data: {},
-    file_system_entity_type: FileSystemEntityType.file,
-    value: r"""
-#!/bin/sh
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/telegram_bot_template_general_framework_project/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/telegram_bot_template_general_framework_project/
-flutter pub get --offline
-
-""",
-    children: [],
-  ),
-  ScriptGenerator(
-    is_generate: true,
-    directory_base:
-        Directory("telegram_bot_template_general_framework_project"),
     file_system_entity: File("LICENSE"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
@@ -411,16 +517,17 @@ environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
     children: [],

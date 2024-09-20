@@ -82,6 +82,160 @@ jobs:
 
 """,
             children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: File(
+                ".github/workflows/general_workflow_release_app_development.yaml"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: File(
+                ".github/workflows/general_workflow_release_app_production.yaml"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+            children: [],
           )
         ],
       ),
@@ -94,6 +248,7 @@ jobs:
         value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
         children: [],
@@ -107,166 +262,7 @@ github:
     state_data: {},
     file_system_entity_type: FileSystemEntityType.directory,
     value: "",
-    children: [
-      ScriptGenerator(
-        is_generate: true,
-        directory_base: Directory("app_ui_template_general_framework"),
-        file_system_entity: Directory(".idea/libraries"),
-        state_data: {},
-        file_system_entity_type: FileSystemEntityType.directory,
-        value: "",
-        children: [
-          ScriptGenerator(
-            is_generate: true,
-            directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity: File(".idea/libraries/Dart_SDK.xml"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-<component name="libraryTable">
-  <library name="Dart SDK">
-    <CLASSES>
-      <root url="file:///home/galaxeus/development/flutter/bin/cache/dart-sdk/lib/async" />
-      <root url="file:///home/galaxeus/development/flutter/bin/cache/dart-sdk/lib/collection" />
-      <root url="file:///home/galaxeus/development/flutter/bin/cache/dart-sdk/lib/convert" />
-      <root url="file:///home/galaxeus/development/flutter/bin/cache/dart-sdk/lib/core" />
-      <root url="file:///home/galaxeus/development/flutter/bin/cache/dart-sdk/lib/developer" />
-      <root url="file:///home/galaxeus/development/flutter/bin/cache/dart-sdk/lib/html" />
-      <root url="file:///home/galaxeus/development/flutter/bin/cache/dart-sdk/lib/io" />
-      <root url="file:///home/galaxeus/development/flutter/bin/cache/dart-sdk/lib/isolate" />
-      <root url="file:///home/galaxeus/development/flutter/bin/cache/dart-sdk/lib/math" />
-      <root url="file:///home/galaxeus/development/flutter/bin/cache/dart-sdk/lib/mirrors" />
-      <root url="file:///home/galaxeus/development/flutter/bin/cache/dart-sdk/lib/typed_data" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity: File(".idea/libraries/KotlinJavaRuntime.xml"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-<component name="libraryTable">
-  <library name="KotlinJavaRuntime">
-    <CLASSES>
-      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-stdlib.jar!/" />
-      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-reflect.jar!/" />
-      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-test.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES>
-      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-stdlib-sources.jar!/" />
-      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-reflect-sources.jar!/" />
-      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-test-sources.jar!/" />
-    </SOURCES>
-  </library>
-</component>
-
-""",
-            children: [],
-          )
-        ],
-      ),
-      ScriptGenerator(
-        is_generate: true,
-        directory_base: Directory("app_ui_template_general_framework"),
-        file_system_entity: Directory(".idea/runConfigurations"),
-        state_data: {},
-        file_system_entity_type: FileSystemEntityType.directory,
-        value: "",
-        children: [
-          ScriptGenerator(
-            is_generate: true,
-            directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity: File(".idea/runConfigurations/main_dart.xml"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
-    <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
-    <method />
-  </configuration>
-</component>
-""",
-            children: [],
-          )
-        ],
-      ),
-      ScriptGenerator(
-        is_generate: true,
-        directory_base: Directory("app_ui_template_general_framework"),
-        file_system_entity: File(".idea/modules.xml"),
-        state_data: {},
-        file_system_entity_type: FileSystemEntityType.file,
-        value: r"""
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/app_ui_template_general_framework.iml" filepath="$PROJECT_DIR$/app_ui_template_general_framework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/app_ui_template_general_framework_android.iml" filepath="$PROJECT_DIR$/android/app_ui_template_general_framework_android.iml" />
-    </modules>
-  </component>
-</project>
-
-""",
-        children: [],
-      ),
-      ScriptGenerator(
-        is_generate: true,
-        directory_base: Directory("app_ui_template_general_framework"),
-        file_system_entity: File(".idea/workspace.xml"),
-        state_data: {},
-        file_system_entity_type: FileSystemEntityType.file,
-        value: r"""
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/main.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="ToolWindowManager">
-    <editor active="true" />
-    <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-    </layout>
-  </component>
-  <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <option name="show-excluded-files" value="false" />
-      </pane>
-    </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="dart.analysis.tool.window.force.activate" value="true" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
-  </component>
-</project>
-
-""",
-        children: [],
-      )
-    ],
+    children: [],
   ),
   ScriptGenerator(
     is_generate: true,
@@ -1091,47 +1087,6 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
-""",
-        children: [],
-      ),
-      ScriptGenerator(
-        is_generate: true,
-        directory_base: Directory("app_ui_template_general_framework"),
-        file_system_entity:
-            File("android/app_ui_template_general_framework_android.iml"),
-        state_data: {},
-        file_system_entity_type: FileSystemEntityType.file,
-        value: r"""
-<?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
-  <component name="FacetManager">
-    <facet type="android" name="Android">
-      <configuration>
-        <option name="ALLOW_USER_CONFIGURATION" value="false" />
-        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/gen" />
-        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/gen" />
-        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/app/src/main/AndroidManifest.xml" />
-        <option name="RES_FOLDER_RELATIVE_PATH" value="/app/src/main/res" />
-        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/app/src/main/assets" />
-        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/app/src/main/libs" />
-        <option name="PROGUARD_LOGS_FOLDER_RELATIVE_PATH" value="/app/src/main/proguard_logs" />
-      </configuration>
-    </facet>
-  </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
-    <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/app/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/app/src/main/kotlin" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
-    </content>
-    <orderEntry type="jdk" jdkName="Android API 29 Platform" jdkType="Android SDK" />
-    <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Flutter for Android" level="project" />
-    <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
-  </component>
-</module>
-
 """,
         children: [],
       ),
@@ -3232,14 +3187,147 @@ temp/
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/landing/about"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [
+              ScriptGenerator(
+                is_generate: true,
+                directory_base: Directory("app_ui_template_general_framework"),
+                file_system_entity: File("lib/landing/about/about.dart"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""
+import 'package:flutter/material.dart';
+
+class AboutContentLandingPageWidget extends StatefulWidget {
+  const AboutContentLandingPageWidget({super.key});
+
+  @override
+  State<AboutContentLandingPageWidget> createState() =>
+      _AboutContentLandingPageWidgetState();
+}
+
+class _AboutContentLandingPageWidgetState
+    extends State<AboutContentLandingPageWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+""",
+                children: [],
+              )
+            ],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/landing/blog"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/landing/contact"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/landing/documentation"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/landing/home"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [
+              ScriptGenerator(
+                is_generate: true,
+                directory_base: Directory("app_ui_template_general_framework"),
+                file_system_entity: File("lib/landing/home/home.dart"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""
+import 'package:flutter/material.dart';
+
+class HomeContentLandingPageWidget extends StatefulWidget {
+  const HomeContentLandingPageWidget({super.key});
+
+  @override
+  State<HomeContentLandingPageWidget> createState() =>
+      _HomeContentLandingPageWidgetState();
+}
+
+class _HomeContentLandingPageWidgetState
+    extends State<HomeContentLandingPageWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+""",
+                children: [],
+              )
+            ],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/landing/pricing"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/landing/privacy"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
+            file_system_entity: Directory("lib/landing/terms"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.directory,
+            value: "",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base: Directory("app_ui_template_general_framework"),
             file_system_entity: File("lib/landing/landing.dart"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
 // ignore_for_file: non_constant_identifier_names, empty_catches
 
+import 'package:app_ui_template_general_framework/landing/about/about.dart';
+import 'package:app_ui_template_general_framework/landing/home/home.dart';
 import 'package:app_ui_template_general_framework/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:general_framework/flutter/widget/widget.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
@@ -3248,21 +3336,6 @@ class LandingPage extends StatefulWidget {
 
   @override
   State<LandingPage> createState() => _LandingPageState();
-}
-
-class CrossFadeStateData extends ChangeNotifier {
-  CrossFadeState crossFadeState = CrossFadeState.showFirst;
-
-  void change({
-    required bool isScrolling,
-  }) {
-    if (isScrolling) {
-      crossFadeState = CrossFadeState.showSecond;
-    } else {
-      crossFadeState = CrossFadeState.showFirst;
-    }
-    notifyListeners();
-  }
 }
 
 class CrossFadeStateController extends ChangeNotifier {
@@ -3308,14 +3381,15 @@ class _LandingPageState extends State<LandingPage> {
     super.dispose();
   }
 
-  final CrossFadeStateData crossFadeStateData = CrossFadeStateData();
+  final CrossFadeStateController crossFadeStateData =
+      CrossFadeStateController();
   void scrollListener({
     required ScrollController scrollController,
   }) {
     scrollController.onScrolling((isScrolling) {
       Future.delayed(Durations.short1, () async {
         try {
-          crossFadeStateData.change(isScrolling: isScrolling);
+          crossFadeStateData.change(isShowSecond: isScrolling);
         } catch (e) {}
       });
     });
@@ -3328,8 +3402,6 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
-      extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(450),
         child: ListenableBuilder(
@@ -3341,8 +3413,18 @@ class _LandingPageState extends State<LandingPage> {
               duration: Durations.short4,
               firstChild: Container(
                 key: status_bar_global_key,
+                margin: const EdgeInsets.only(
+                  bottom: 5,
+                ),
                 decoration: BoxDecoration(
                   color: context.theme.primaryColor,
+                  boxShadow: [
+                    BoxShadow(
+                      color: context.theme.shadowColor,
+                      blurRadius: 1.5,
+                      spreadRadius: 1.5,
+                    ),
+                  ],
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -3485,31 +3567,63 @@ class _LandingPageState extends State<LandingPage> {
           ),
           child: Column(
             children: [
-              SizedBox(
-                height: status_bar_global_key.sizeRenderBox().height,
-              ),
               contentWidget(
                 globalKey: home_global_key,
                 context: context,
                 contentBuilder: (context) {
-                  return Container(
-                    height: context.height,
-                    width: context.width,
-                    color: Colors.green,
-                  );
+                  return const HomeContentLandingPageWidget();
+                },
+              ),
+              contentWidget(
+                globalKey: about_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return const AboutContentLandingPageWidget();
+                },
+              ),
+              contentWidget(
+                globalKey: blog_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return const AboutContentLandingPageWidget();
                 },
               ),
               contentWidget(
                 globalKey: contact_global_key,
                 context: context,
                 contentBuilder: (context) {
-                  return Container(
-                    height: context.height,
-                    width: context.width,
-                    color: Colors.red,
-                  );
+                  return const AboutContentLandingPageWidget();
                 },
               ),
+              contentWidget(
+                globalKey: documentation_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return const AboutContentLandingPageWidget();
+                },
+              ),
+              contentWidget(
+                globalKey: pricing_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return const AboutContentLandingPageWidget();
+                },
+              ),
+              contentWidget(
+                globalKey: privacy_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return const AboutContentLandingPageWidget();
+                },
+              ),
+              contentWidget(
+                globalKey: terms_global_key,
+                context: context,
+                contentBuilder: (context) {
+                  return const AboutContentLandingPageWidget();
+                },
+              ),
+              footerWidget(context: context),
               SizedBox(
                 height: context.mediaQueryData.padding.bottom,
               ),
@@ -3654,11 +3768,8 @@ class _LandingPageState extends State<LandingPage> {
     required BuildContext context,
     required WidgetBuilder contentBuilder,
   }) {
-    final Size size = Size(
-        context.width,
-        context.height -
-            (status_bar_global_key.sizeRenderBox().height +
-                context.mediaQueryData.padding.bottom));
+    final Size size = Size(context.width, context.height);
+    // final Size size = Size(context.width, context.height - (status_bar_global_key.sizeRenderBox().height + context.mediaQueryData.padding.bottom));
     return ConstrainedBox(
       key: globalKey,
       constraints: BoxConstraints(
@@ -3672,6 +3783,45 @@ class _LandingPageState extends State<LandingPage> {
         child: Builder(
           builder: contentBuilder,
         ),
+      ),
+    );
+  }
+
+  Widget footerWidget({
+    required BuildContext context,
+  }) {
+    return Container(
+      width: context.width,
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: context.theme.dialogBackgroundColor,
+        // color: (AppUiTemplateGeneralFrameworkMain.generalLibFlutterApp.themeMode == ThemeMode.dark) ?context.theme.primaryColor:context.theme.primaryColor,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: context.theme.shadowColor,
+            blurRadius: 1.5,
+            spreadRadius: 1.5,
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text("sa"),
+          SizedBox(
+            height: 50,
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          SizedBox(
+            height: 50,
+          ),
+        ],
       ),
     );
   }
@@ -4393,10 +4543,8 @@ class _AppUiTemplateGeneralFrameworkState
     Future(() async {
       await Future.delayed(Durations.extralong4);
 
-      context
-          .routerGeneralLibFlutter()
-          .pushReplacementNamed(routeName: "/landing");
-      return;
+      // context.routerGeneralLibFlutter().pushReplacementNamed(routeName: "/landing");
+      // return;
       if (Dart.isWeb) {
         context
             .routerGeneralLibFlutter()
@@ -8631,34 +8779,6 @@ linter:
   ScriptGenerator(
     is_generate: true,
     directory_base: Directory("app_ui_template_general_framework"),
-    file_system_entity: File("app_ui_template_general_framework.iml"),
-    state_data: {},
-    file_system_entity_type: FileSystemEntityType.file,
-    value: r"""
-<?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
-    <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/lib" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/.idea" />
-      <excludeFolder url="file://$MODULE_DIR$/build" />
-    </content>
-    <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Dart SDK" level="project" />
-    <orderEntry type="library" name="Flutter Plugins" level="project" />
-    <orderEntry type="library" name="Dart Packages" level="project" />
-  </component>
-</module>
-
-""",
-    children: [],
-  ),
-  ScriptGenerator(
-    is_generate: true,
-    directory_base: Directory("app_ui_template_general_framework"),
     file_system_entity: File("guide-dart-general-library.md"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
@@ -9191,17 +9311,18 @@ dependencies:
 dev_dependencies: 
   flutter_test: 
     sdk: 'flutter'
-  flutter_lints: '^3.0.0'
+  flutter_lints: '^4.0.0'
 flutter: 
   uses-material-design: true
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
     children: [],

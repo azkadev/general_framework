@@ -20,10 +20,10 @@ return {
   "version": "0.0.0",
   "homepage": "https://youtube.com/@azkadev",
   "repository": "https://github.com/azkadev/general_framework",
-  "issue_tracker": "https://t.me",
   "documentation": "https://youtube.com/@azkadev",
   "funding": [
-    "https://github.com/sponsors/azkadev"
+    "https://github.com/sponsors/azkadev",
+    "https://github.com/sponsors/generalfoss"
   ],
   "platforms": {
     "android": null,
@@ -37,10 +37,10 @@ return {
     "general_framework": "general_framework"
   },
   "dependency_overrides": {
-    "meta": "^1.12.0",
     "pointycastle": "3.8.0"
   },
   "publish_to": "none",
+  "issue_tracker": "https://t.me/DEVELOPER_GLOBAL_PUBLIC",
   "obfuscate": true,
   "split-debug-info": "0.0.0",
   "build-name": "0.0.0",

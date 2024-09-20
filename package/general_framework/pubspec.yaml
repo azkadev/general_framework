@@ -3,10 +3,10 @@ description: 'General Framework Library for help you create project more easy wi
 version: '0.0.0'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 platforms: 
   android: null
   ios: null
@@ -21,7 +21,6 @@ environment:
 dependencies: 
   flutter: 
     sdk: 'flutter'
-  meta: '^1.11.0'
   path: '^1.9.0'
   mason_logger: '^0.2.15'
   general_lib: '^0.0.44'
@@ -38,7 +37,6 @@ dependencies:
   markdown_flutter: '^0.0.7'
   markdown_widget: '^2.3.2+6'
 dependency_overrides: 
-  meta: '^1.12.0'
   pointycastle: '3.8.0'
 dev_dependencies: 
   flutter_lints: '^4.0.0'
@@ -67,3 +65,4 @@ packagex:
 msix_config: 
   display_name: 'general_framework'
   install_certificate: false
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'

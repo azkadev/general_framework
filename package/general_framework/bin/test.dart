@@ -51,7 +51,7 @@ void main(List<String> args) async {
   }
   // generalFrameworkApi.templates.entries;
   for (var element in generalFrameworkApi.templates.entries) {
-    Directory directory_project = Directory(path.join(Directory.current.path, "temp", "azka_${element.key}_project"));
+    Directory directory_project = Directory(path.join(directory.uri.toFilePath(),"azka_${element.key}_project"));
     if (directory_project.existsSync()) {
       directory_project.deleteSync(recursive: true);
     }
@@ -59,7 +59,7 @@ void main(List<String> args) async {
     await for (var e in element.value.generateToDirectory(directoryBase: directory_project)) {
       print(e.text);
     }
-    ;
+    
   }
 
   exit(0);

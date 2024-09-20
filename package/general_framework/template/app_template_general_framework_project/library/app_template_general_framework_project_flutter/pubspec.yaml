@@ -11,12 +11,13 @@ dependencies:
 dev_dependencies: 
   flutter_test: 
     sdk: 'flutter'
-  flutter_lints: '^3.0.0'
+  flutter_lints: '^4.0.0'
 flutter: null
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'

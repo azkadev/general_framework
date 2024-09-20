@@ -8,10 +8,12 @@ class AppUiTemplateGeneralFramework extends StatefulWidget {
   const AppUiTemplateGeneralFramework({super.key});
 
   @override
-  State<AppUiTemplateGeneralFramework> createState() => _AppUiTemplateGeneralFrameworkState();
+  State<AppUiTemplateGeneralFramework> createState() =>
+      _AppUiTemplateGeneralFrameworkState();
 }
 
-class _AppUiTemplateGeneralFrameworkState extends State<AppUiTemplateGeneralFramework> {
+class _AppUiTemplateGeneralFrameworkState
+    extends State<AppUiTemplateGeneralFramework> {
   bool is_loading = false;
   @override
   void initState() {
@@ -35,9 +37,13 @@ class _AppUiTemplateGeneralFrameworkState extends State<AppUiTemplateGeneralFram
       // context.routerGeneralLibFlutter().pushReplacementNamed(routeName: "/landing");
       // return;
       if (Dart.isWeb) {
-        context.routerGeneralLibFlutter().pushReplacementNamed(routeName: "/landing");
+        context
+            .routerGeneralLibFlutter()
+            .pushReplacementNamed(routeName: "/landing");
       } else {
-        context.routerGeneralLibFlutter().pushReplacementNamed(routeName: "/sign");
+        context
+            .routerGeneralLibFlutter()
+            .pushReplacementNamed(routeName: "/sign");
       }
       return;
     });

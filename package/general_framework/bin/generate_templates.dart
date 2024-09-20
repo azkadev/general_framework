@@ -54,7 +54,12 @@ void main(List<String> args) async {
     final String base_name = "${path.basename(element.path)}";
 
     if (element is Directory) {
-      final List<ScriptGenerator> scirpts = element.listSync().toScriptGenerate();
+      final List<ScriptGenerator> scirpts = element.listSync().toScriptGenerate(
+            scriptGeneratorOptions: ScriptGeneratorOptions(
+              fileSystemEntityIgnore: "",
+              isVerbose: false,
+            ),
+          );
       final String script = scirpts.toScriptDart(scriptName: base_name);
       final File file = File(path.join(Directory.current.path, "lib", "templates", "${base_name}_template.dart"));
       if (file.parent.existsSync() == false) {

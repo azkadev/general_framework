@@ -58,7 +58,8 @@ class _LandingPageState extends State<LandingPage> {
     super.dispose();
   }
 
-  final CrossFadeStateController crossFadeStateData = CrossFadeStateController();
+  final CrossFadeStateController crossFadeStateData =
+      CrossFadeStateController();
   void scrollListener({
     required ScrollController scrollController,
   }) {
@@ -71,7 +72,8 @@ class _LandingPageState extends State<LandingPage> {
     });
   }
 
-  final CrossFadeStateController crossFadeStatusBar = CrossFadeStateController();
+  final CrossFadeStateController crossFadeStatusBar =
+      CrossFadeStateController();
   final GlobalKey status_bar_global_key = GlobalKey();
 
   @override
@@ -126,7 +128,9 @@ class _LandingPageState extends State<LandingPage> {
                           Row(
                             children: [
                               ThemeChangeGeneralFrameworkWidget(
-                                generalLibFlutterApp: AppUiTemplateGeneralFrameworkMain.generalLibFlutterApp,
+                                generalLibFlutterApp:
+                                    AppUiTemplateGeneralFrameworkMain
+                                        .generalLibFlutterApp,
                                 onChanged: () {
                                   setState(() {});
                                 },
@@ -172,7 +176,9 @@ class _LandingPageState extends State<LandingPage> {
                                 Padding(
                                   padding: const EdgeInsets.all(2.5),
                                   child: ThemeChangeGeneralFrameworkWidget(
-                                    generalLibFlutterApp: AppUiTemplateGeneralFrameworkMain.generalLibFlutterApp,
+                                    generalLibFlutterApp:
+                                        AppUiTemplateGeneralFrameworkMain
+                                            .generalLibFlutterApp,
                                     onChanged: () {
                                       setState(() {});
                                     },
@@ -193,12 +199,14 @@ class _LandingPageState extends State<LandingPage> {
                               listenable: crossFadeStatusBar,
                               builder: (context, child) {
                                 return AnimatedCrossFade(
-                                  crossFadeState: crossFadeStatusBar.crossFadeState,
+                                  crossFadeState:
+                                      crossFadeStatusBar.crossFadeState,
                                   firstChild: const SizedBox.shrink(),
                                   duration: Durations.short4,
                                   secondChild: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: statusBarWidget(
                                       context: context,
                                       onPressed: () {
@@ -227,7 +235,8 @@ class _LandingPageState extends State<LandingPage> {
       ),
       body: SingleChildScrollView(
         controller: scrollController,
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics()),
         child: ConstrainedBox(
           constraints: BoxConstraints(
             minHeight: context.height,
@@ -351,7 +360,8 @@ class _LandingPageState extends State<LandingPage> {
         child: TextButton(
           onPressed: () {
             onPressed();
-            scrollController.scrollToGlobalKey(globalKey: documentation_global_key);
+            scrollController.scrollToGlobalKey(
+                globalKey: documentation_global_key);
           },
           child: Text(
             "Documentation",
@@ -457,7 +467,6 @@ class _LandingPageState extends State<LandingPage> {
   Widget footerWidget({
     required BuildContext context,
   }) {
-
     return Container(
       width: context.width,
       margin: EdgeInsets.all(5),

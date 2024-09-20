@@ -83,6 +83,162 @@ jobs:
 
 """,
             children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                ".github/workflows/general_workflow_release_app_development.yaml"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+            children: [],
+          ),
+          ScriptGenerator(
+            is_generate: true,
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                ".github/workflows/general_workflow_release_app_production.yaml"),
+            state_data: {},
+            file_system_entity_type: FileSystemEntityType.file,
+            value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+            children: [],
           )
         ],
       ),
@@ -95,6 +251,7 @@ jobs:
         value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
         children: [],
@@ -316,6 +473,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -330,6 +643,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -2656,83 +2970,6 @@ void main() {
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
-                "library/base_template_general_framework_project_api/.flutter-plugins"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-# This is a generated file; do not edit or check into version control.
-battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
-camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
-camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
-camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
-camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
-camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
-file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
-flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
-flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
-flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
-gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
-gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
-gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
-gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
-gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
-gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
-local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
-local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
-local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
-local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
-media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
-package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
-path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
-path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
-path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
-path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
-path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
-permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
-permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
-permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
-permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
-permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
-safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
-screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
-screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
-screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
-screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
-screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
-sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
-sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
-speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
-url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
-url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
-url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
-url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
-url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
-url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
-url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
-volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
-wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
-                "library/base_template_general_framework_project_api/.flutter-plugins-dependencies"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-18 21:25:37.503252","version":"3.22.3"}
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
                 "library/base_template_general_framework_project_api/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -2826,60 +3063,6 @@ include: package:lints/recommended.yaml
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
-                "library/base_template_general_framework_project_api/generate_glx_commands_dart_pub_get.sh"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-#!/bin/sh
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
-dart pub get --offline
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
-                "library/base_template_general_framework_project_api/generate_glx_commands_flutter_clean.sh"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-#!/bin/sh
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
-flutter clean
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
-                "library/base_template_general_framework_project_api/generate_glx_commands_flutter_pub_get.sh"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-#!/bin/sh
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
-flutter pub get --offline
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
                 "library/base_template_general_framework_project_api/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -2929,16 +3112,17 @@ dependencies:
     path: '../../../../'
   general_lib: '^0.0.44'
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -3050,6 +3234,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_database/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_database/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -3064,6 +3404,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -4075,83 +4416,6 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
-                "library/base_template_general_framework_project_api_database/.flutter-plugins"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-# This is a generated file; do not edit or check into version control.
-battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
-camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
-camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
-camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
-camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
-camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
-file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
-flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
-flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
-flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
-gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
-gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
-gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
-gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
-gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
-gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
-local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
-local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
-local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
-local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
-media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
-package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
-path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
-path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
-path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
-path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
-path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
-permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
-permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
-permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
-permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
-permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
-safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
-screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
-screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
-screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
-screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
-screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
-sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
-sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
-speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
-url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
-url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
-url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
-url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
-url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
-url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
-url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
-volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
-wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
-                "library/base_template_general_framework_project_api_database/.flutter-plugins-dependencies"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-18 21:25:51.192743","version":"3.22.3"}
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
                 "library/base_template_general_framework_project_api_database/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -4299,16 +4563,17 @@ dependencies:
   yet_another_json_isolate: '^2.0.0'
   supabase: '^2.3.0'
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -4420,6 +4685,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_server/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_server/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -4434,6 +4855,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -4590,6 +5012,162 @@ jobs:
 
 """,
                         children: [],
+                      ),
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_api_server/example/.github/workflows/general_workflow_release_app_development.yaml"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.file,
+                        value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                        children: [],
+                      ),
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_api_server/example/.github/workflows/general_workflow_release_app_production.yaml"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.file,
+                        value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                        children: [],
                       )
                     ],
                   ),
@@ -4604,6 +5182,7 @@ jobs:
                     value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                     children: [],
@@ -4824,83 +5403,6 @@ void main() {
                 directory_base:
                     Directory("base_template_general_framework_project"),
                 file_system_entity: File(
-                    "library/base_template_general_framework_project_api_server/example/.flutter-plugins"),
-                state_data: {},
-                file_system_entity_type: FileSystemEntityType.file,
-                value: r"""
-# This is a generated file; do not edit or check into version control.
-battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
-camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
-camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
-camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
-camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
-camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
-file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
-flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
-flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
-flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
-gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
-gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
-gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
-gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
-gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
-gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
-local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
-local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
-local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
-local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
-media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
-package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
-path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
-path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
-path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
-path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
-path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
-permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
-permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
-permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
-permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
-permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
-safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
-screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
-screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
-screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
-screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
-screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
-sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
-sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
-speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
-url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
-url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
-url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
-url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
-url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
-url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
-url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
-volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
-wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
-
-""",
-                children: [],
-              ),
-              ScriptGenerator(
-                is_generate: true,
-                directory_base:
-                    Directory("base_template_general_framework_project"),
-                file_system_entity: File(
-                    "library/base_template_general_framework_project_api_server/example/.flutter-plugins-dependencies"),
-                state_data: {},
-                file_system_entity_type: FileSystemEntityType.file,
-                value: r"""
-{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-18 21:25:47.504002","version":"3.22.3"}
-""",
-                children: [],
-              ),
-              ScriptGenerator(
-                is_generate: true,
-                directory_base:
-                    Directory("base_template_general_framework_project"),
-                file_system_entity: File(
                     "library/base_template_general_framework_project_api_server/example/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
@@ -5028,16 +5530,17 @@ dependencies:
   base_template_general_framework_project_scheme: 
     path: '../../base_template_general_framework_project_scheme'
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
                 children: [],
@@ -5342,83 +5845,6 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
-                "library/base_template_general_framework_project_api_server/.flutter-plugins"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-# This is a generated file; do not edit or check into version control.
-battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
-camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
-camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
-camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
-camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
-camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
-file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
-flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
-flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
-flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
-gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
-gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
-gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
-gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
-gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
-gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
-local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
-local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
-local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
-local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
-media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
-package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
-path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
-path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
-path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
-path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
-path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
-permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
-permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
-permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
-permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
-permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
-safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
-screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
-screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
-screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
-screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
-screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
-sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
-sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
-speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
-url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
-url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
-url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
-url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
-url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
-url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
-url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
-volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
-wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
-                "library/base_template_general_framework_project_api_server/.flutter-plugins-dependencies"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-18 21:25:43.458985","version":"3.22.3"}
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
                 "library/base_template_general_framework_project_api_server/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -5568,16 +5994,17 @@ dependencies:
   general_framework: 
     path: '../../../../'
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -5689,6 +6116,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -5703,6 +6286,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -5866,6 +6450,162 @@ jobs:
 
 """,
                         children: [],
+                      ),
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client/example/.github/workflows/general_workflow_release_app_development.yaml"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.file,
+                        value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                        children: [],
+                      ),
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client/example/.github/workflows/general_workflow_release_app_production.yaml"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.file,
+                        value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                        children: [],
                       )
                     ],
                   ),
@@ -5880,6 +6620,7 @@ jobs:
                     value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                     children: [],
@@ -6179,83 +6920,6 @@ void main() {
                 directory_base:
                     Directory("base_template_general_framework_project"),
                 file_system_entity: File(
-                    "library/base_template_general_framework_project_client/example/.flutter-plugins"),
-                state_data: {},
-                file_system_entity_type: FileSystemEntityType.file,
-                value: r"""
-# This is a generated file; do not edit or check into version control.
-battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
-camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
-camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
-camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
-camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
-camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
-file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
-flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
-flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
-flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
-gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
-gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
-gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
-gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
-gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
-gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
-local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
-local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
-local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
-local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
-media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
-package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
-path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
-path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
-path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
-path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
-path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
-permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
-permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
-permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
-permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
-permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
-safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
-screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
-screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
-screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
-screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
-screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
-sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
-sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
-speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
-url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
-url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
-url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
-url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
-url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
-url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
-url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
-volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
-wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
-
-""",
-                children: [],
-              ),
-              ScriptGenerator(
-                is_generate: true,
-                directory_base:
-                    Directory("base_template_general_framework_project"),
-                file_system_entity: File(
-                    "library/base_template_general_framework_project_client/example/.flutter-plugins-dependencies"),
-                state_data: {},
-                file_system_entity_type: FileSystemEntityType.file,
-                value: r"""
-{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-18 21:25:09.015365","version":"3.22.3"}
-""",
-                children: [],
-              ),
-              ScriptGenerator(
-                is_generate: true,
-                directory_base:
-                    Directory("base_template_general_framework_project"),
-                file_system_entity: File(
                     "library/base_template_general_framework_project_client/example/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
@@ -6389,16 +7053,17 @@ dependencies:
     path: '../../../../../'
   general_lib: '^0.0.44'
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
                 children: [],
@@ -7089,83 +7754,6 @@ void main() {
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
-                "library/base_template_general_framework_project_client/.flutter-plugins"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-# This is a generated file; do not edit or check into version control.
-battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
-camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
-camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
-camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
-camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
-camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
-file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
-flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
-flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
-flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
-gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
-gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
-gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
-gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
-gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
-gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
-local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
-local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
-local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
-local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
-media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
-package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
-path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
-path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
-path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
-path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
-path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
-permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
-permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
-permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
-permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
-permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
-safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
-screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
-screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
-screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
-screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
-screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
-sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
-sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
-speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
-url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
-url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
-url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
-url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
-url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
-url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
-url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
-volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
-wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
-                "library/base_template_general_framework_project_client/.flutter-plugins-dependencies"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-18 21:25:05.006808","version":"3.22.3"}
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
                 "library/base_template_general_framework_project_client/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -7312,16 +7900,17 @@ dependencies:
   general_framework: 
     path: '../../../../'
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -7433,6 +8022,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -7447,6 +8192,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -7626,6 +8372,162 @@ jobs:
 
 """,
                         children: [],
+                      ),
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/.github/workflows/general_workflow_release_app_development.yaml"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.file,
+                        value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                        children: [],
+                      ),
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/.github/workflows/general_workflow_release_app_production.yaml"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.file,
+                        value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                        children: [],
                       )
                     ],
                   ),
@@ -7640,6 +8542,7 @@ jobs:
                     value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                     children: [],
@@ -9163,59 +10066,6 @@ include ":app"
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
 #include "Generated.xcconfig"
-
-""",
-                        children: [],
-                      ),
-                      ScriptGenerator(
-                        is_generate: true,
-                        directory_base: Directory(
-                            "base_template_general_framework_project"),
-                        file_system_entity: File(
-                            "library/base_template_general_framework_project_client_database/example/ios/Flutter/flutter_export_environment.sh"),
-                        state_data: {},
-                        file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""
-#!/bin/sh
-# This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/home/galaxeus/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/example"
-export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_TARGET=lib/main.dart"
-export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=1.0.0"
-export "FLUTTER_BUILD_NUMBER=1"
-export "DART_OBFUSCATION=false"
-export "TRACK_WIDGET_CREATION=true"
-export "TREE_SHAKE_ICONS=false"
-export "PACKAGE_CONFIG=.dart_tool/package_config.json"
-
-""",
-                        children: [],
-                      ),
-                      ScriptGenerator(
-                        is_generate: true,
-                        directory_base: Directory(
-                            "base_template_general_framework_project"),
-                        file_system_entity: File(
-                            "library/base_template_general_framework_project_client_database/example/ios/Flutter/Generated.xcconfig"),
-                        state_data: {},
-                        file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""
-// This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/home/galaxeus/development/flutter
-FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/example
-COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=lib/main.dart
-FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=1.0.0
-FLUTTER_BUILD_NUMBER=1
-EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
-EXCLUDED_ARCHS[sdk=iphoneos*]=armv7
-DART_OBFUSCATION=false
-TRACK_WIDGET_CREATION=true
-TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.dart_tool/package_config.json
 
 """,
                         children: [],
@@ -11211,17 +12061,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         is_generate: true,
                         directory_base: Directory(
                             "base_template_general_framework_project"),
-                        file_system_entity: Directory(
-                            "library/base_template_general_framework_project_client_database/example/linux/flutter/ephemeral"),
-                        state_data: {},
-                        file_system_entity_type: FileSystemEntityType.directory,
-                        value: "",
-                        children: [],
-                      ),
-                      ScriptGenerator(
-                        is_generate: true,
-                        directory_base: Directory(
-                            "base_template_general_framework_project"),
                         file_system_entity: File(
                             "library/base_template_general_framework_project_client_database/example/linux/flutter/CMakeLists.txt"),
                         state_data: {},
@@ -11901,67 +12740,6 @@ MyApplication* my_application_new();
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
-                      ScriptGenerator(
-                        is_generate: true,
-                        directory_base: Directory(
-                            "base_template_general_framework_project"),
-                        file_system_entity: Directory(
-                            "library/base_template_general_framework_project_client_database/example/macos/Flutter/ephemeral"),
-                        state_data: {},
-                        file_system_entity_type: FileSystemEntityType.directory,
-                        value: "",
-                        children: [
-                          ScriptGenerator(
-                            is_generate: true,
-                            directory_base: Directory(
-                                "base_template_general_framework_project"),
-                            file_system_entity: File(
-                                "library/base_template_general_framework_project_client_database/example/macos/Flutter/ephemeral/Flutter-Generated.xcconfig"),
-                            state_data: {},
-                            file_system_entity_type: FileSystemEntityType.file,
-                            value: r"""
-// This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/home/galaxeus/development/flutter
-FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/example
-COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=1.0.0
-FLUTTER_BUILD_NUMBER=1
-DART_OBFUSCATION=false
-TRACK_WIDGET_CREATION=true
-TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.dart_tool/package_config.json
-
-""",
-                            children: [],
-                          ),
-                          ScriptGenerator(
-                            is_generate: true,
-                            directory_base: Directory(
-                                "base_template_general_framework_project"),
-                            file_system_entity: File(
-                                "library/base_template_general_framework_project_client_database/example/macos/Flutter/ephemeral/flutter_export_environment.sh"),
-                            state_data: {},
-                            file_system_entity_type: FileSystemEntityType.file,
-                            value: r"""
-#!/bin/sh
-# This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/home/galaxeus/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/example"
-export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=1.0.0"
-export "FLUTTER_BUILD_NUMBER=1"
-export "DART_OBFUSCATION=false"
-export "TRACK_WIDGET_CREATION=true"
-export "TREE_SHAKE_ICONS=false"
-export "PACKAGE_CONFIG=.dart_tool/package_config.json"
-
-""",
-                            children: [],
-                          )
-                        ],
-                      ),
                       ScriptGenerator(
                         is_generate: true,
                         directory_base: Directory(
@@ -14124,17 +14902,6 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                         is_generate: true,
                         directory_base: Directory(
                             "base_template_general_framework_project"),
-                        file_system_entity: Directory(
-                            "library/base_template_general_framework_project_client_database/example/windows/flutter/ephemeral"),
-                        state_data: {},
-                        file_system_entity_type: FileSystemEntityType.directory,
-                        value: "",
-                        children: [],
-                      ),
-                      ScriptGenerator(
-                        is_generate: true,
-                        directory_base: Directory(
-                            "base_template_general_framework_project"),
                         file_system_entity: File(
                             "library/base_template_general_framework_project_client_database/example/windows/flutter/CMakeLists.txt"),
                         state_data: {},
@@ -15684,84 +16451,6 @@ install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
                 directory_base:
                     Directory("base_template_general_framework_project"),
                 file_system_entity: File(
-                    "library/base_template_general_framework_project_client_database/example/.flutter-plugins"),
-                state_data: {},
-                file_system_entity_type: FileSystemEntityType.file,
-                value: r"""
-# This is a generated file; do not edit or check into version control.
-battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
-camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
-camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
-camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
-camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
-camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
-file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
-flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
-flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
-flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
-gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
-gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
-gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
-gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
-gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
-gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
-isar_flutter_libs=/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/
-local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
-local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
-local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
-local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
-media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
-package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
-path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
-path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
-path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
-path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
-path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
-permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
-permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
-permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
-permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
-permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
-safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
-screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
-screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
-screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
-screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
-screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
-sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
-sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
-speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
-url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
-url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
-url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
-url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
-url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
-url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
-url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
-volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
-wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
-
-""",
-                children: [],
-              ),
-              ScriptGenerator(
-                is_generate: true,
-                directory_base:
-                    Directory("base_template_general_framework_project"),
-                file_system_entity: File(
-                    "library/base_template_general_framework_project_client_database/example/.flutter-plugins-dependencies"),
-                state_data: {},
-                file_system_entity_type: FileSystemEntityType.file,
-                value: r"""
-{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"isar_flutter_libs","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/isar_flutter_libs-4.0.0-dev.14/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"isar_flutter_libs","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-18 21:25:21.764174","version":"3.22.3"}
-""",
-                children: [],
-              ),
-              ScriptGenerator(
-                is_generate: true,
-                directory_base:
-                    Directory("base_template_general_framework_project"),
-                file_system_entity: File(
                     "library/base_template_general_framework_project_client_database/example/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
@@ -16003,17 +16692,18 @@ dependencies:
 dev_dependencies: 
   flutter_test: 
     sdk: 'flutter'
-  flutter_lints: '^3.0.0'
+  flutter_lints: '^4.0.0'
 flutter: 
   uses-material-design: true
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
                 children: [],
@@ -16919,83 +17609,6 @@ void main() async {
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
-                "library/base_template_general_framework_project_client_database/.flutter-plugins"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-# This is a generated file; do not edit or check into version control.
-battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
-camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
-camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
-camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
-camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
-camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
-file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
-flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
-flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
-flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
-gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
-gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
-gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
-gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
-gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
-gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
-local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
-local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
-local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
-local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
-media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
-package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
-path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
-path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
-path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
-path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
-path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
-permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
-permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
-permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
-permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
-permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
-safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
-screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
-screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
-screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
-screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
-screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
-sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
-sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
-speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
-url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
-url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
-url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
-url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
-url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
-url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
-url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
-volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
-wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
-                "library/base_template_general_framework_project_client_database/.flutter-plugins-dependencies"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-18 21:25:17.792405","version":"3.22.3"}
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
                 "library/base_template_general_framework_project_client_database/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -17142,16 +17755,17 @@ dependencies:
     path: '../base_template_general_framework_project_client_isar_scheme'
   isar: '^4.0.0-dev.14'
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -17263,6 +17877,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_isar_scheme/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_isar_scheme/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -17277,6 +18047,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -30701,17 +31472,18 @@ dependencies:
     path: '../base_template_general_framework_project_scheme'
   isar: '^4.0.0-dev.14'
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
   build_runner: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -30823,6 +31595,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -30837,6 +31765,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -31059,6 +31988,162 @@ jobs:
 
 """,
                         children: [],
+                      ),
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/.github/workflows/general_workflow_release_app_development.yaml"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.file,
+                        value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                        children: [],
+                      ),
+                      ScriptGenerator(
+                        is_generate: true,
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/.github/workflows/general_workflow_release_app_production.yaml"),
+                        state_data: {},
+                        file_system_entity_type: FileSystemEntityType.file,
+                        value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                        children: [],
                       )
                     ],
                   ),
@@ -31073,6 +32158,7 @@ jobs:
                     value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                     children: [],
@@ -32580,59 +33666,6 @@ include ":app"
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
 #include "Generated.xcconfig"
-
-""",
-                        children: [],
-                      ),
-                      ScriptGenerator(
-                        is_generate: true,
-                        directory_base: Directory(
-                            "base_template_general_framework_project"),
-                        file_system_entity: File(
-                            "library/base_template_general_framework_project_flutter/example/ios/Flutter/flutter_export_environment.sh"),
-                        state_data: {},
-                        file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""
-#!/bin/sh
-# This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/home/galaxeus/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example"
-export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_TARGET=lib/main.dart"
-export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=1.0.0"
-export "FLUTTER_BUILD_NUMBER=1"
-export "DART_OBFUSCATION=false"
-export "TRACK_WIDGET_CREATION=true"
-export "TREE_SHAKE_ICONS=false"
-export "PACKAGE_CONFIG=.dart_tool/package_config.json"
-
-""",
-                        children: [],
-                      ),
-                      ScriptGenerator(
-                        is_generate: true,
-                        directory_base: Directory(
-                            "base_template_general_framework_project"),
-                        file_system_entity: File(
-                            "library/base_template_general_framework_project_flutter/example/ios/Flutter/Generated.xcconfig"),
-                        state_data: {},
-                        file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""
-// This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/home/galaxeus/development/flutter
-FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example
-COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=lib/main.dart
-FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=1.0.0
-FLUTTER_BUILD_NUMBER=1
-EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
-EXCLUDED_ARCHS[sdk=iphoneos*]=armv7
-DART_OBFUSCATION=false
-TRACK_WIDGET_CREATION=true
-TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.dart_tool/package_config.json
 
 """,
                         children: [],
@@ -34502,17 +35535,6 @@ void main(List<String> args) {
                         is_generate: true,
                         directory_base: Directory(
                             "base_template_general_framework_project"),
-                        file_system_entity: Directory(
-                            "library/base_template_general_framework_project_flutter/example/linux/flutter/ephemeral"),
-                        state_data: {},
-                        file_system_entity_type: FileSystemEntityType.directory,
-                        value: "",
-                        children: [],
-                      ),
-                      ScriptGenerator(
-                        is_generate: true,
-                        directory_base: Directory(
-                            "base_template_general_framework_project"),
                         file_system_entity: File(
                             "library/base_template_general_framework_project_flutter/example/linux/flutter/CMakeLists.txt"),
                         state_data: {},
@@ -35187,67 +36209,6 @@ MyApplication* my_application_new();
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
-                      ScriptGenerator(
-                        is_generate: true,
-                        directory_base: Directory(
-                            "base_template_general_framework_project"),
-                        file_system_entity: Directory(
-                            "library/base_template_general_framework_project_flutter/example/macos/Flutter/ephemeral"),
-                        state_data: {},
-                        file_system_entity_type: FileSystemEntityType.directory,
-                        value: "",
-                        children: [
-                          ScriptGenerator(
-                            is_generate: true,
-                            directory_base: Directory(
-                                "base_template_general_framework_project"),
-                            file_system_entity: File(
-                                "library/base_template_general_framework_project_flutter/example/macos/Flutter/ephemeral/Flutter-Generated.xcconfig"),
-                            state_data: {},
-                            file_system_entity_type: FileSystemEntityType.file,
-                            value: r"""
-// This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/home/galaxeus/development/flutter
-FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example
-COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=1.0.0
-FLUTTER_BUILD_NUMBER=1
-DART_OBFUSCATION=false
-TRACK_WIDGET_CREATION=true
-TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.dart_tool/package_config.json
-
-""",
-                            children: [],
-                          ),
-                          ScriptGenerator(
-                            is_generate: true,
-                            directory_base: Directory(
-                                "base_template_general_framework_project"),
-                            file_system_entity: File(
-                                "library/base_template_general_framework_project_flutter/example/macos/Flutter/ephemeral/flutter_export_environment.sh"),
-                            state_data: {},
-                            file_system_entity_type: FileSystemEntityType.file,
-                            value: r"""
-#!/bin/sh
-# This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/home/galaxeus/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example"
-export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=1.0.0"
-export "FLUTTER_BUILD_NUMBER=1"
-export "DART_OBFUSCATION=false"
-export "TRACK_WIDGET_CREATION=true"
-export "TREE_SHAKE_ICONS=false"
-export "PACKAGE_CONFIG=.dart_tool/package_config.json"
-
-""",
-                            children: [],
-                          )
-                        ],
-                      ),
                       ScriptGenerator(
                         is_generate: true,
                         directory_base: Directory(
@@ -37319,17 +38280,6 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                         is_generate: true,
                         directory_base: Directory(
                             "base_template_general_framework_project"),
-                        file_system_entity: Directory(
-                            "library/base_template_general_framework_project_flutter/example/windows/flutter/ephemeral"),
-                        state_data: {},
-                        file_system_entity_type: FileSystemEntityType.directory,
-                        value: "",
-                        children: [],
-                      ),
-                      ScriptGenerator(
-                        is_generate: true,
-                        directory_base: Directory(
-                            "base_template_general_framework_project"),
                         file_system_entity: File(
                             "library/base_template_general_framework_project_flutter/example/windows/flutter/CMakeLists.txt"),
                         state_data: {},
@@ -38875,83 +39825,6 @@ install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
                 directory_base:
                     Directory("base_template_general_framework_project"),
                 file_system_entity: File(
-                    "library/base_template_general_framework_project_flutter/example/.flutter-plugins"),
-                state_data: {},
-                file_system_entity_type: FileSystemEntityType.file,
-                value: r"""
-# This is a generated file; do not edit or check into version control.
-battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
-camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
-camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
-camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
-camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
-camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
-file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
-flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
-flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
-flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
-gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
-gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
-gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
-gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
-gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
-gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
-local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
-local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
-local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
-local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
-media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
-package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
-path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
-path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
-path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
-path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
-path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
-permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
-permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
-permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
-permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
-permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
-safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
-screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
-screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
-screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
-screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
-screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
-sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
-sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
-speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
-url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
-url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
-url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
-url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
-url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
-url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
-url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
-volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
-wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
-
-""",
-                children: [],
-              ),
-              ScriptGenerator(
-                is_generate: true,
-                directory_base:
-                    Directory("base_template_general_framework_project"),
-                file_system_entity: File(
-                    "library/base_template_general_framework_project_flutter/example/.flutter-plugins-dependencies"),
-                state_data: {},
-                file_system_entity_type: FileSystemEntityType.file,
-                value: r"""
-{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-18 21:25:33.521261","version":"3.22.3"}
-""",
-                children: [],
-              ),
-              ScriptGenerator(
-                is_generate: true,
-                directory_base:
-                    Directory("base_template_general_framework_project"),
-                file_system_entity: File(
                     "library/base_template_general_framework_project_flutter/example/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
@@ -39198,17 +40071,18 @@ dependencies:
 dev_dependencies: 
   flutter_test: 
     sdk: 'flutter'
-  flutter_lints: '^3.0.0'
+  flutter_lints: '^4.0.0'
 flutter: 
   uses-material-design: true
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
                 children: [],
@@ -40510,83 +41384,6 @@ class _BaseTemplateGeneralFrameworkProjectFlutterAppMainState
             directory_base:
                 Directory("base_template_general_framework_project"),
             file_system_entity: File(
-                "library/base_template_general_framework_project_flutter/.flutter-plugins"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-# This is a generated file; do not edit or check into version control.
-battery_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/
-camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
-camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/
-camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/
-camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/
-camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/
-file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/
-flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
-flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/
-flutter_tts=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/
-gamepads=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads-0.1.2/
-gamepads_android=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/
-gamepads_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/
-gamepads_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/
-gamepads_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/
-gamepads_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/
-local_auth=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth-2.3.0/
-local_auth_android=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/
-local_auth_darwin=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/
-local_auth_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/
-media_kit_video=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/
-package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
-path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
-path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
-path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
-path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
-path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
-permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
-permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/
-permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
-permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/
-permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
-safe_device=/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/
-screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
-screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
-screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
-screen_brightness_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/
-screen_brightness_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/
-sim_card_info=/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/
-sms_flutter=/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/
-speech_to_text=/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/
-url_launcher=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
-url_launcher_android=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/
-url_launcher_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
-url_launcher_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
-url_launcher_macos=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
-url_launcher_web=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
-url_launcher_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
-volume_controller=/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/
-wakelock_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
-                "library/base_template_general_framework_project_flutter/.flutter-plugins-dependencies"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_avfoundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+1/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_ios-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"permission_handler_apple","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_ios","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"android":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_android_camerax","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.7+2/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/","native_build":true,"dependencies":[]},{"name":"flutter_plugin_android_lifecycle","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21/","native_build":true,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_android-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/","native_build":true,"dependencies":["flutter_plugin_android_lifecycle"]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus","volume_controller"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/","native_build":true,"dependencies":[]},{"name":"permission_handler_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7/","native_build":true,"dependencies":[]},{"name":"safe_device","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/safe_device-1.1.8/","native_build":true,"dependencies":[]},{"name":"screen_brightness_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","native_build":true,"dependencies":[]},{"name":"url_launcher_android","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.8/","native_build":true,"dependencies":[]},{"name":"volume_controller","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/volume_controller-2.0.7/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"macos":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_darwin-0.1.2/","native_build":true,"dependencies":[]},{"name":"local_auth_darwin","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_darwin-1.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":true,"dependencies":[]},{"name":"path_provider_foundation","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"screen_brightness_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_macos-0.1.0+1/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","shared_darwin_source":true,"native_build":true,"dependencies":[]},{"name":"url_launcher_macos","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":true,"dependencies":["package_info_plus"]}],"linux":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":false,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"gamepads_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_linux-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/","native_build":false,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_linux","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"windows":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","native_build":true,"dependencies":[]},{"name":"camera_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.5/","native_build":true,"dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","native_build":false,"dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","native_build":true,"dependencies":[]},{"name":"gamepads_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/gamepads_windows-0.1.1+1/","native_build":true,"dependencies":[]},{"name":"local_auth_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/local_auth_windows-1.0.11/","native_build":true,"dependencies":[]},{"name":"media_kit_video","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video-1.2.5/","native_build":true,"dependencies":["wakelock_plus"]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","native_build":false,"dependencies":[]},{"name":"path_provider_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/","native_build":false,"dependencies":[]},{"name":"permission_handler_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/","native_build":true,"dependencies":[]},{"name":"screen_brightness_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_windows-0.1.3/","native_build":true,"dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","native_build":true,"dependencies":[]},{"name":"url_launcher_windows","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/","native_build":true,"dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","native_build":false,"dependencies":["package_info_plus"]}],"web":[{"name":"battery_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/battery_plus-6.0.3/","dependencies":[]},{"name":"camera_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.4/","dependencies":[]},{"name":"file_picker","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.1.2/","dependencies":[]},{"name":"flutter_tts","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_tts-4.0.2/","dependencies":[]},{"name":"package_info_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/","dependencies":[]},{"name":"permission_handler_html","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+2/","dependencies":[]},{"name":"sim_card_info","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sim_card_info-1.0.2/","dependencies":[]},{"name":"sms_flutter","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/sms_flutter-0.0.0/","dependencies":[]},{"name":"speech_to_text","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/speech_to_text-7.0.0/","dependencies":[]},{"name":"url_launcher_web","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/","dependencies":[]},{"name":"wakelock_plus","path":"/home/galaxeus/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.8/","dependencies":["package_info_plus"]}]},"dependencyGraph":[{"name":"battery_plus","dependencies":[]},{"name":"camera","dependencies":["camera_android_camerax","camera_avfoundation","camera_web","flutter_plugin_android_lifecycle"]},{"name":"camera_android_camerax","dependencies":[]},{"name":"camera_avfoundation","dependencies":[]},{"name":"camera_web","dependencies":[]},{"name":"camera_windows","dependencies":[]},{"name":"file_picker","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"flutter_background","dependencies":[]},{"name":"flutter_plugin_android_lifecycle","dependencies":[]},{"name":"flutter_tts","dependencies":[]},{"name":"gamepads","dependencies":["gamepads_android","gamepads_darwin","gamepads_ios","gamepads_linux","gamepads_windows"]},{"name":"gamepads_android","dependencies":[]},{"name":"gamepads_darwin","dependencies":[]},{"name":"gamepads_ios","dependencies":[]},{"name":"gamepads_linux","dependencies":[]},{"name":"gamepads_windows","dependencies":[]},{"name":"local_auth","dependencies":["local_auth_android","local_auth_darwin","local_auth_windows"]},{"name":"local_auth_android","dependencies":["flutter_plugin_android_lifecycle"]},{"name":"local_auth_darwin","dependencies":[]},{"name":"local_auth_windows","dependencies":[]},{"name":"media_kit_video","dependencies":["wakelock_plus","screen_brightness","volume_controller"]},{"name":"package_info_plus","dependencies":[]},{"name":"path_provider","dependencies":["path_provider_android","path_provider_foundation","path_provider_linux","path_provider_windows"]},{"name":"path_provider_android","dependencies":[]},{"name":"path_provider_foundation","dependencies":[]},{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"permission_handler","dependencies":["permission_handler_android","permission_handler_apple","permission_handler_html","permission_handler_windows"]},{"name":"permission_handler_android","dependencies":[]},{"name":"permission_handler_apple","dependencies":[]},{"name":"permission_handler_html","dependencies":[]},{"name":"permission_handler_windows","dependencies":[]},{"name":"safe_device","dependencies":[]},{"name":"screen_brightness","dependencies":["screen_brightness_android","screen_brightness_ios","screen_brightness_macos","screen_brightness_windows"]},{"name":"screen_brightness_android","dependencies":[]},{"name":"screen_brightness_ios","dependencies":[]},{"name":"screen_brightness_macos","dependencies":[]},{"name":"screen_brightness_windows","dependencies":[]},{"name":"sim_card_info","dependencies":[]},{"name":"sms_flutter","dependencies":["url_launcher"]},{"name":"speech_to_text","dependencies":[]},{"name":"url_launcher","dependencies":["url_launcher_android","url_launcher_ios","url_launcher_linux","url_launcher_macos","url_launcher_web","url_launcher_windows"]},{"name":"url_launcher_android","dependencies":[]},{"name":"url_launcher_ios","dependencies":[]},{"name":"url_launcher_linux","dependencies":[]},{"name":"url_launcher_macos","dependencies":[]},{"name":"url_launcher_web","dependencies":[]},{"name":"url_launcher_windows","dependencies":[]},{"name":"volume_controller","dependencies":[]},{"name":"wakelock_plus","dependencies":["package_info_plus"]}],"date_created":"2024-09-18 21:25:29.397794","version":"3.22.3"}
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
                 "library/base_template_general_framework_project_flutter/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
@@ -40724,75 +41521,6 @@ include: package:flutter_lints/flutter.yaml
 ## 0.0.1
 
 * TODO: Describe initial release.
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
-                "library/base_template_general_framework_project_flutter/generate_glx_commands_dart_pub_get.sh"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-#!/bin/sh
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/
-dart pub get --offline
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
-                "library/base_template_general_framework_project_flutter/generate_glx_commands_flutter_clean.sh"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-#!/bin/sh
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/
-flutter clean
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base:
-                Directory("base_template_general_framework_project"),
-            file_system_entity: File(
-                "library/base_template_general_framework_project_flutter/generate_glx_commands_flutter_pub_get.sh"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-#!/bin/sh
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/example/
-flutter pub get --offline
 
 """,
             children: [],
@@ -41362,15 +42090,16 @@ dependencies:
 dev_dependencies: 
   flutter_test: 
     sdk: 'flutter'
-  flutter_lints: '^3.0.0'
+  flutter_lints: '^4.0.0'
 flutter: null
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -41519,6 +42248,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_language/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_language/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -41533,6 +42418,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -41859,16 +42745,17 @@ environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -41980,6 +42867,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_media_server/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_media_server/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -41994,6 +43037,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -42334,16 +43378,17 @@ environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -42455,6 +43500,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -42469,6 +43670,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -53436,16 +54638,17 @@ dependencies:
   path: '^1.9.0'
   general_lib: '^0.0.44'
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -53557,6 +54760,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_secret/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_secret/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -53571,6 +54930,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -53955,16 +55315,17 @@ environment:
 dependencies: 
   general_lib: '^0.0.44'
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -54086,6 +55447,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_api_server/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_api_server/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -54100,6 +55617,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -54472,16 +55990,17 @@ environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -54593,6 +56112,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -54607,6 +56282,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -56008,59 +57684,6 @@ include ":app"
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
 #include "Generated.xcconfig"
-
-""",
-                    children: [],
-                  ),
-                  ScriptGenerator(
-                    is_generate: true,
-                    directory_base:
-                        Directory("base_template_general_framework_project"),
-                    file_system_entity: File(
-                        "production/base_template_general_framework_project_production_app/ios/Flutter/flutter_export_environment.sh"),
-                    state_data: {},
-                    file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""
-#!/bin/sh
-# This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/home/galaxeus/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app"
-export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_TARGET=lib/main.dart"
-export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=1.0.0"
-export "FLUTTER_BUILD_NUMBER=1"
-export "DART_OBFUSCATION=false"
-export "TRACK_WIDGET_CREATION=true"
-export "TREE_SHAKE_ICONS=false"
-export "PACKAGE_CONFIG=.dart_tool/package_config.json"
-
-""",
-                    children: [],
-                  ),
-                  ScriptGenerator(
-                    is_generate: true,
-                    directory_base:
-                        Directory("base_template_general_framework_project"),
-                    file_system_entity: File(
-                        "production/base_template_general_framework_project_production_app/ios/Flutter/Generated.xcconfig"),
-                    state_data: {},
-                    file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""
-// This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/home/galaxeus/development/flutter
-FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app
-COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=lib/main.dart
-FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=1.0.0
-FLUTTER_BUILD_NUMBER=1
-EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
-EXCLUDED_ARCHS[sdk=iphoneos*]=armv7
-DART_OBFUSCATION=false
-TRACK_WIDGET_CREATION=true
-TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.dart_tool/package_config.json
 
 """,
                     children: [],
@@ -58562,67 +60185,6 @@ MyApplication* my_application_new();
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
-                  ScriptGenerator(
-                    is_generate: true,
-                    directory_base:
-                        Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory(
-                        "production/base_template_general_framework_project_production_app/macos/Flutter/ephemeral"),
-                    state_data: {},
-                    file_system_entity_type: FileSystemEntityType.directory,
-                    value: "",
-                    children: [
-                      ScriptGenerator(
-                        is_generate: true,
-                        directory_base: Directory(
-                            "base_template_general_framework_project"),
-                        file_system_entity: File(
-                            "production/base_template_general_framework_project_production_app/macos/Flutter/ephemeral/Flutter-Generated.xcconfig"),
-                        state_data: {},
-                        file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""
-// This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/home/galaxeus/development/flutter
-FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app
-COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=1.0.0
-FLUTTER_BUILD_NUMBER=1
-DART_OBFUSCATION=false
-TRACK_WIDGET_CREATION=true
-TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.dart_tool/package_config.json
-
-""",
-                        children: [],
-                      ),
-                      ScriptGenerator(
-                        is_generate: true,
-                        directory_base: Directory(
-                            "base_template_general_framework_project"),
-                        file_system_entity: File(
-                            "production/base_template_general_framework_project_production_app/macos/Flutter/ephemeral/flutter_export_environment.sh"),
-                        state_data: {},
-                        file_system_entity_type: FileSystemEntityType.file,
-                        value: r"""
-#!/bin/sh
-# This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/home/galaxeus/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app"
-export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=1.0.0"
-export "FLUTTER_BUILD_NUMBER=1"
-export "DART_OBFUSCATION=false"
-export "TRACK_WIDGET_CREATION=true"
-export "TREE_SHAKE_ICONS=false"
-export "PACKAGE_CONFIG=.dart_tool/package_config.json"
-
-""",
-                        children: [],
-                      )
-                    ],
-                  ),
                   ScriptGenerator(
                     is_generate: true,
                     directory_base:
@@ -62539,17 +64101,18 @@ dependencies:
 dev_dependencies: 
   flutter_test: 
     sdk: 'flutter'
-  flutter_lints: '^3.0.0'
+  flutter_lints: '^4.0.0'
 flutter: 
   uses-material-design: true
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -62675,6 +64238,162 @@ jobs:
 
 """,
                     children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_media_server/.github/workflows/general_workflow_release_app_development.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_development
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_development
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
+                  ),
+                  ScriptGenerator(
+                    is_generate: true,
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_media_server/.github/workflows/general_workflow_release_app_production.yaml"),
+                    state_data: {},
+                    file_system_entity_type: FileSystemEntityType.file,
+                    value: r"""
+name: app_release_type_production
+on: 
+  # push:
+  # # [push, workflow_dispatch]
+  # schedule: [{cron: "0 0 * * 0"}] 
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    name: app_release_type_production
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Print
+        run: |
+          ls
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.3"
+          channel: "stable"
+      - name: check dart version
+        run: dart --version
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake clang libc++-dev libc++abi-dev php-cli cmake g++
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          # mpv
+          sudo apt-get install -y libmpv-dev mpv
+        shell: bash
+      - name: Mkdir result
+        run: mkdir result
+      - name: Set Flutter enable devices
+        continue-on-error: true
+        run: |
+          flutter config --enable-web
+          flutter config --enable-linux-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-windows-desktop
+          flutter config --enable-android
+          flutter config --enable-ios
+      
+      # General Bot App
+      - name: Pub General Machine System Services
+        run: |
+         cd general_machine_system_services/apps/global_app
+         flutter clean
+         flutter pub get
+         
+      - name: Publish General Machine System Services Linux
+        env:
+          packagex_github_token: ${{ secrets.TOKEN_GITHUB }}
+        run: |
+         cd general_machine_system_services/apps/global_app
+         dart run packagex publish
+""",
+                    children: [],
                   )
                 ],
               ),
@@ -62689,6 +64408,7 @@ jobs:
                 value: r"""
 github: 
   - 'azkadev'
+  - 'generalfoss'
 
 """,
                 children: [],
@@ -63061,16 +64781,17 @@ environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
             children: [],
@@ -63184,249 +64905,6 @@ include: package:lints/recommended.yaml
   ScriptGenerator(
     is_generate: true,
     directory_base: Directory("base_template_general_framework_project"),
-    file_system_entity: File("generate_glx_commands_dart_pub_get.sh"),
-    state_data: {},
-    file_system_entity_type: FileSystemEntityType.file,
-    value: r"""
-#!/bin/sh
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/
-dart pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/
-dart pub get --offline
-
-""",
-    children: [],
-  ),
-  ScriptGenerator(
-    is_generate: true,
-    directory_base: Directory("base_template_general_framework_project"),
-    file_system_entity: File("generate_glx_commands_flutter_clean.sh"),
-    state_data: {},
-    file_system_entity_type: FileSystemEntityType.file,
-    value: r"""
-#!/bin/sh
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/
-flutter clean
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/
-flutter clean
-
-""",
-    children: [],
-  ),
-  ScriptGenerator(
-    is_generate: true,
-    directory_base: Directory("base_template_general_framework_project"),
-    file_system_entity: File("generate_glx_commands_flutter_pub_get.sh"),
-    state_data: {},
-    file_system_entity_type: FileSystemEntityType.file,
-    value: r"""
-#!/bin/sh
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_app/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_api_server/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/production/base_template_general_framework_project_production_media_server/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_media_server/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_database/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_secret/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_flutter/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_server/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_api_database/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_client_isar_scheme/
-flutter pub get --offline
-
-
-echo "pub get v2: /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/"
-cd /home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_template_general_framework_project/library/base_template_general_framework_project_scheme/
-flutter pub get --offline
-
-""",
-    children: [],
-  ),
-  ScriptGenerator(
-    is_generate: true,
-    directory_base: Directory("base_template_general_framework_project"),
     file_system_entity: File("LICENSE"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
@@ -63469,16 +64947,17 @@ dependencies:
   path: '^1.9.0'
   general_lib: '^0.0.44'
 dev_dependencies: 
-  lints: '^3.0.0'
-  test: '^1.24.0'
+  lints: '^4.0.0'
+  test: 'any'
 dependency_overrides: 
   pointycastle: '3.8.0'
 funding: 
   - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
-issue_tracker: 'https://t.me'
 documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 
 """,
     children: [],
