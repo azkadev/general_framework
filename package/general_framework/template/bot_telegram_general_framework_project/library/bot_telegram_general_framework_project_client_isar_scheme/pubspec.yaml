@@ -1,15 +1,18 @@
-name: bot_telegram_general_framework_project_client_isar_scheme
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
-
-environment:
-  sdk: ^3.4.4
-
-# Add regular dependencies here.
-dependencies:
-  # path: ^1.8.0
-
-dev_dependencies:
-  lints: ^3.0.0
-  test: ^1.24.0
+name: 'bot_telegram_general_framework_project_client_isar_scheme'
+description: 'A starting point for Dart libraries or applications.'
+version: '1.0.0'
+environment: 
+  sdk: '>=3.3.3 <4.0.0'
+dependencies: {}
+dev_dependencies: 
+  lints: '^4.0.0'
+  test: 'any'
+dependency_overrides: 
+  pointycastle: '3.8.0'
+funding: 
+  - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
+homepage: 'https://youtube.com/@azkadev'
+repository: 'https://github.com/azkadev/general_framework'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+documentation: 'https://youtube.com/@azkadev'
