@@ -8960,11 +8960,6 @@ public final class GeneratedPluginRegistrant {
       Log.e(TAG, "Error registering plugin sim_card_info, com.wsc.sim_card_info.SimCardInfoPlugin", e);
     }
     try {
-      flutterEngine.getPlugins().add(new com.elyudde.sms_flutter.SmsFlutterPlugin());
-    } catch (Exception e) {
-      Log.e(TAG, "Error registering plugin sms_flutter, com.elyudde.sms_flutter.SmsFlutterPlugin", e);
-    }
-    try {
       flutterEngine.getPlugins().add(new com.csdcorp.speech_to_text.SpeechToTextPlugin());
     } catch (Exception e) {
       Log.e(TAG, "Error registering plugin speech_to_text, com.csdcorp.speech_to_text.SpeechToTextPlugin", e);
@@ -10653,12 +10648,6 @@ NS_ASSUME_NONNULL_END
 @import sim_card_info;
 #endif
 
-#if __has_include(<sms_flutter/UssdAdvancedPlugin.h>)
-#import <sms_flutter/UssdAdvancedPlugin.h>
-#else
-@import sms_flutter;
-#endif
-
 #if __has_include(<speech_to_text/SpeechToTextPlugin.h>)
 #import <speech_to_text/SpeechToTextPlugin.h>
 #else
@@ -10700,7 +10689,6 @@ NS_ASSUME_NONNULL_END
   [SafeDevicePlugin registerWithRegistrar:[registry registrarForPlugin:@"SafeDevicePlugin"]];
   [ScreenBrightnessIosPlugin registerWithRegistrar:[registry registrarForPlugin:@"ScreenBrightnessIosPlugin"]];
   [SimCardInfoPlugin registerWithRegistrar:[registry registrarForPlugin:@"SimCardInfoPlugin"]];
-  [UssdAdvancedPlugin registerWithRegistrar:[registry registrarForPlugin:@"UssdAdvancedPlugin"]];
   [SpeechToTextPlugin registerWithRegistrar:[registry registrarForPlugin:@"SpeechToTextPlugin"]];
   [URLLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"URLLauncherPlugin"]];
   [VolumeControllerPlugin registerWithRegistrar:[registry registrarForPlugin:@"VolumeControllerPlugin"]];
@@ -32571,11 +32559,6 @@ public final class GeneratedPluginRegistrant {
       Log.e(TAG, "Error registering plugin sim_card_info, com.wsc.sim_card_info.SimCardInfoPlugin", e);
     }
     try {
-      flutterEngine.getPlugins().add(new com.elyudde.sms_flutter.SmsFlutterPlugin());
-    } catch (Exception e) {
-      Log.e(TAG, "Error registering plugin sms_flutter, com.elyudde.sms_flutter.SmsFlutterPlugin", e);
-    }
-    try {
       flutterEngine.getPlugins().add(new com.csdcorp.speech_to_text.SpeechToTextPlugin());
     } catch (Exception e) {
       Log.e(TAG, "Error registering plugin speech_to_text, com.csdcorp.speech_to_text.SpeechToTextPlugin", e);
@@ -34247,12 +34230,6 @@ NS_ASSUME_NONNULL_END
 @import sim_card_info;
 #endif
 
-#if __has_include(<sms_flutter/UssdAdvancedPlugin.h>)
-#import <sms_flutter/UssdAdvancedPlugin.h>
-#else
-@import sms_flutter;
-#endif
-
 #if __has_include(<speech_to_text/SpeechToTextPlugin.h>)
 #import <speech_to_text/SpeechToTextPlugin.h>
 #else
@@ -34293,7 +34270,6 @@ NS_ASSUME_NONNULL_END
   [SafeDevicePlugin registerWithRegistrar:[registry registrarForPlugin:@"SafeDevicePlugin"]];
   [ScreenBrightnessIosPlugin registerWithRegistrar:[registry registrarForPlugin:@"ScreenBrightnessIosPlugin"]];
   [SimCardInfoPlugin registerWithRegistrar:[registry registrarForPlugin:@"SimCardInfoPlugin"]];
-  [UssdAdvancedPlugin registerWithRegistrar:[registry registrarForPlugin:@"UssdAdvancedPlugin"]];
   [SpeechToTextPlugin registerWithRegistrar:[registry registrarForPlugin:@"SpeechToTextPlugin"]];
   [URLLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"URLLauncherPlugin"]];
   [VolumeControllerPlugin registerWithRegistrar:[registry registrarForPlugin:@"VolumeControllerPlugin"]];
