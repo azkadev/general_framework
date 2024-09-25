@@ -10,9 +10,9 @@ dependencies:
   flutter: 
     sdk: 'flutter'
   path: '^1.9.0'
-  general_lib: '^0.0.44'
-  general_lib_flutter: '^0.0.25'
-  general: '^0.0.29'
+  general_lib: '^0.0.46'
+  general_lib_flutter: '^0.0.27'
+  general: '^0.0.30'
   base_template_general_framework_project_scheme: 
     path: '../base_template_general_framework_project_scheme'
   base_template_general_framework_project_client_database: 
