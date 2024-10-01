@@ -3,7 +3,13 @@ description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
 environment: 
   sdk: '>=3.3.3 <4.0.0'
-dependencies: {}
+dependencies: 
+  path: '^1.9.0'
+  general_lib: '^0.0.46'
+  general: '^0.0.30'
+  server_universe: '^0.0.22'
+  mason_logger: '^0.3.1'
+  whatsapp_client: '^1.0.24'
 dev_dependencies: 
   lints: '^4.0.0'
   test: 'any'
