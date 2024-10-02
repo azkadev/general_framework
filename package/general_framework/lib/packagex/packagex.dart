@@ -17,7 +17,7 @@ class PackagexProjectGeneralFramework {
 return {
   "name": "general_framework",
   "description": "General Framework Library for help you create project more easy with general standarization style code base",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "homepage": "https://youtube.com/@azkadev",
   "repository": "https://github.com/azkadev/general_framework",
   "documentation": "https://youtube.com/@azkadev",

@@ -60,6 +60,7 @@ packagex:
   project_id: 'azkadev.packagex'
   github_username: 'azkadev'
   github_is_org: false
+  is_app_auto_clean_up_folder: true
 msix_config: 
   display_name: 'general_framework'
   install_certificate: false
