@@ -42,7 +42,6 @@ dev_dependencies:
 flutter: 
   assets: 
     - 'README.md'
-publish_to: 'none'
 packagex: 
   name: 'general_framework'
   dart_target: 'general_framework'
