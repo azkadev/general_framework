@@ -5,8 +5,7 @@ environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: 
   isar: '^4.0.0-dev.14'
-dev_dependencies:
-
+dev_dependencies: 
   lints: '^4.0.0'
   test: 'any'
   build_runner: 'any'
