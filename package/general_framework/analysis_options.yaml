@@ -3,3 +3,10 @@ include: package:general_framework/lints/lints.yaml
 linter: 
   rules:
     # - prefer
+
+
+
+analyzer:
+  exclude:
+    - bin/
+    - template/

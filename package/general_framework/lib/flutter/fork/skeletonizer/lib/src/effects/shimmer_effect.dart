@@ -125,10 +125,12 @@ class _ShimmerEffect extends ShimmerEffect {
   final AlignmentGeometry end;
 
   @override
-  final List<double> stops = const [0.1, 0.3, 0.4];
+   // ignore: avoid_field_initializers_in_const_classes
+   final List<double> stops = const [0.1, 0.3, 0.4];
 
   @override
-  final TileMode tileMode = TileMode.clamp;
+  // ignore: avoid_field_initializers_in_const_classes
+  final TileMode tileMode =  TileMode.clamp;
 
   @override
   bool operator ==(Object other) =>

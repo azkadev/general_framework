@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 /* <!-- START LICENSE -->
 
 
@@ -51,12 +53,12 @@ void main(List<String> args) async {
   }
   // generalFrameworkApi.templates.entries;
   for (var element in generalFrameworkApi.templates.entries) {
-    Directory directory_project = Directory(path.join(directory.uri.toFilePath(),"azka_${element.key}_project"));
-    if (directory_project.existsSync()) {
-      directory_project.deleteSync(recursive: true);
+    Directory directoryProject = Directory(path.join(directory.uri.toFilePath(),"azka_${element.key}_project"));
+    if (directoryProject.existsSync()) {
+      directoryProject.deleteSync(recursive: true);
     }
-    directory_project.createSync(recursive: true);
-    await for (var e in element.value.generateToDirectory(directoryBase: directory_project)) {
+    directoryProject.createSync(recursive: true);
+    await for (var e in element.value.generateToDirectory(directoryBase: directoryProject)) {
       print(e.text);
     }
     
