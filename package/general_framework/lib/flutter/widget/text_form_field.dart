@@ -77,7 +77,7 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
             blurRadius: 4,
             offset: const Offset(0, 3), // changes position of shadow
           ),
-        ], 
+        ],
       ),
       onChanged: onChanged,
       clipBehavior: Clip.antiAlias,
@@ -86,7 +86,7 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
         hintText: hintText,
         labelText: labelText,
         labelStyle: context.theme.textTheme.labelSmall,
-        hintStyle: TextStyle( 
+        hintStyle: TextStyle(
           fontSize: 14.0,
           shadows: [
             BoxShadow(

@@ -41,6 +41,6 @@ class GeneralFrameworkUtils {
     required int max,
     required int min,
   }) {
-    return generateUuid(Random().nextInt(max) + min) ;
+    return generateUuid(Random().nextInt(max) + min);
   }
 }

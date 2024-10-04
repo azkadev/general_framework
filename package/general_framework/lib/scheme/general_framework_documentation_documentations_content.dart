@@ -2,21 +2,21 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
- 
 class GeneralFrameworkDocumentationDocumentationsContent extends JsonScheme {
-
-  
   GeneralFrameworkDocumentationDocumentationsContent(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"generalFrameworkDocumentationDocumentationsContent","content_id":"","content":""};
+    return {
+      "@type": "generalFrameworkDocumentationDocumentationsContent",
+      "content_id": "",
+      "content": ""
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == generalFrameworkDocumentationDocumentationsContent
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +30,15 @@ class GeneralFrameworkDocumentationDocumentationsContent extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [GeneralFrameworkDocumentationDocumentationsContent]
-  /// Empty  
+  /// Empty
   static GeneralFrameworkDocumentationDocumentationsContent empty() {
     return GeneralFrameworkDocumentationDocumentationsContent({});
   }
 
-  
-
-  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -52,16 +47,13 @@ class GeneralFrameworkDocumentationDocumentationsContent extends JsonScheme {
     }
   }
 
-  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
-
-  
   String? get content_id {
     try {
-      if (rawData["content_id"] is String == false){
+      if (rawData["content_id"] is String == false) {
         return null;
       }
       return rawData["content_id"] as String;
@@ -70,16 +62,13 @@ class GeneralFrameworkDocumentationDocumentationsContent extends JsonScheme {
     }
   }
 
-  
   set content_id(String? value) {
     rawData["content_id"] = value;
   }
 
-
-  
   String? get content {
     try {
-      if (rawData["content"] is String == false){
+      if (rawData["content"] is String == false) {
         return null;
       }
       return rawData["content"] as String;
@@ -88,42 +77,38 @@ class GeneralFrameworkDocumentationDocumentationsContent extends JsonScheme {
     }
   }
 
-  
   set content(String? value) {
     rawData["content"] = value;
   }
 
-
-  
   static GeneralFrameworkDocumentationDocumentationsContent create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "generalFrameworkDocumentationDocumentationsContent",
     String? content_id,
     String? content,
-})  {
+  }) {
     // GeneralFrameworkDocumentationDocumentationsContent generalFrameworkDocumentationDocumentationsContent = GeneralFrameworkDocumentationDocumentationsContent({
-final Map generalFrameworkDocumentationDocumentationsContent_data_create_json = {
-  
+    final Map
+        generalFrameworkDocumentationDocumentationsContent_data_create_json = {
       "@type": special_type,
       "content_id": content_id,
       "content": content,
+    };
 
-
-};
-
-
-          generalFrameworkDocumentationDocumentationsContent_data_create_json.removeWhere((key, value) => value == null);
+    generalFrameworkDocumentationDocumentationsContent_data_create_json
+        .removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (generalFrameworkDocumentationDocumentationsContent_data_create_json.containsKey(key) == false) {
-          generalFrameworkDocumentationDocumentationsContent_data_create_json[key] = value;
+        if (generalFrameworkDocumentationDocumentationsContent_data_create_json
+                .containsKey(key) ==
+            false) {
+          generalFrameworkDocumentationDocumentationsContent_data_create_json[
+              key] = value;
         }
       });
     }
-return GeneralFrameworkDocumentationDocumentationsContent(generalFrameworkDocumentationDocumentationsContent_data_create_json);
-
-
-      }
+    return GeneralFrameworkDocumentationDocumentationsContent(
+        generalFrameworkDocumentationDocumentationsContent_data_create_json);
+  }
 }

@@ -5,7 +5,8 @@ import "dart:io";
 import "package:path/path.dart" as path;
 
 void main() async {
-  final Directory directory_template = Directory(path.join(Directory.current.path, "template"));
+  final Directory directory_template =
+      Directory(path.join(Directory.current.path, "template"));
   final TemplateGenerator templateGenerator = TemplateGenerator(
     name: "bot_discord",
     isApplication: false,
@@ -16,7 +17,6 @@ void main() async {
   await templateGenerator.start();
   exit(0);
 }
-
 
 class TemplateGenerator {
   final String name;
@@ -72,20 +72,25 @@ class TemplateGenerator {
       ],
     ];
   }
-  
 
   Future<void> start() async {
     final String name_template = nameTemplate;
-    if (await shell(executable: "dart", arguments: ["create", name_template, "--no-pub", "--force"], workingDirectory: directoryBase.path) != 0) {
+    if (await shell(
+            executable: "dart",
+            arguments: ["create", name_template, "--no-pub", "--force"],
+            workingDirectory: directoryBase.path) !=
+        0) {
       exit(1);
     }
-    final Directory directory_project_library = Directory(path.join(directoryBase.path, name_template, "library"));
+    final Directory directory_project_library =
+        Directory(path.join(directoryBase.path, name_template, "library"));
     if (directory_project_library.existsSync() == false) {
       directory_project_library.createSync(recursive: true);
     }
     {
       for (final projectTemplate in projectTemplates) {
-        final bool is_flutter = RegExp("flutter", caseSensitive: false).hasMatch(projectTemplate);
+        final bool is_flutter =
+            RegExp("flutter", caseSensitive: false).hasMatch(projectTemplate);
         if (await shell(
                 executable: is_flutter ? "flutter" : "dart",
                 arguments: [

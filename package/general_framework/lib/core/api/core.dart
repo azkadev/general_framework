@@ -40,24 +40,18 @@ import 'package:http/http.dart';
 
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
-abstract class GeneralFrameworkApiBaseCore{
-
-  
-
+abstract class GeneralFrameworkApiBaseCore {
   FutureOr<JsonScheme> invoke({
     required JsonScheme parameters,
   }) async {
-    return JsonScheme({
-      "@type": "error",
-      "message": "unimplemented"
-    });
+    return JsonScheme({"@type": "error", "message": "unimplemented"});
   }
-  
 }
 
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
-abstract class GeneralFrameworkApiBase<D extends GeneralFrameworkDatabase>  implements GeneralFrameworkApiBaseCore{
+abstract class GeneralFrameworkApiBase<D extends GeneralFrameworkDatabase>
+    implements GeneralFrameworkApiBaseCore {
   final D generalFrameworkApiDatabase;
   GeneralFrameworkApiBase({
     required this.generalFrameworkApiDatabase,

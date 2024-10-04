@@ -47,7 +47,8 @@ abstract class GeneralFrameworkDatabaseCore {
   void ensureInitializedDatabase() {}
 }
 
-abstract class GeneralFrameworkDatabase implements GeneralFrameworkDatabaseCore {
+abstract class GeneralFrameworkDatabase
+    implements GeneralFrameworkDatabaseCore {
   late final String currentPath;
   bool _is_initialized = false;
   late final Client httpClient;

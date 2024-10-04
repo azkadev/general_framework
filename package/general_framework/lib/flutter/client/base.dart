@@ -44,9 +44,14 @@ import 'package:general_framework/flutter/client/general_framework_client_flutte
 import 'package:general_lib_flutter/route/route.dart';
 
 abstract class GeneralFrameworkClientFlutterCore {
-  FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {}
+  FutureOr<dynamic> onInvokeResult(
+      Map result,
+      Map parameters,
+      GeneralFrameworkClientInvokeOptions
+          generalFrameworkClientInvokeOptions) {}
 
-  FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
+  FutureOr<Map?> onInvokeValidation(Map parameters,
+      GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
     return null;
   }
 
@@ -55,12 +60,15 @@ abstract class GeneralFrameworkClientFlutterCore {
   }
 }
 
-abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> implements GeneralFrameworkClientFlutterCore {
+abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
+    implements GeneralFrameworkClientFlutterCore {
   final GlobalKey<NavigatorState> navigatorKey;
   final GeneralFlutter generalLibrary;
   final T generalFrameworkClient;
 
-  final GeneralFrameworkClientFlutterAppDirectory generalFrameworkClientFlutterAppDirectory = GeneralFrameworkClientFlutterAppDirectory();
+  final GeneralFrameworkClientFlutterAppDirectory
+      generalFrameworkClientFlutterAppDirectory =
+      GeneralFrameworkClientFlutterAppDirectory();
   GeneralFrameworkClientFlutter({
     required this.navigatorKey,
     required this.generalLibrary,
@@ -82,7 +90,8 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> i
     );
     await generalFrameworkClient.ensureInitialized(
       onInvokeResult: onInvokeResult,
-      currentPath: generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
+      currentPath:
+          generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
       onInvokeValidation: onInvokeValidation,
     );
     is_initialized = true;

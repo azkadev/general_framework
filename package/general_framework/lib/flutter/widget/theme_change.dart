@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
+
 enum ThemeChangeGeneralFrameworkWidgetStyle {
   minimalist,
   full,
 }
+
 class ThemeChangeGeneralFrameworkWidget extends StatelessWidget {
   final GeneralLibFlutterApp generalLibFlutterApp;
   final void Function() onChanged;

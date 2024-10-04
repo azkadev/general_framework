@@ -59,7 +59,7 @@ final List<Map<String, dynamic>> schemes = [
         "value": "",
       },
     ]
-  }, 
+  },
 ];
 
 Map docSideBar = {
