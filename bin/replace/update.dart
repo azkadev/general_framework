@@ -42,7 +42,7 @@ import "package:path/path.dart" as path;
 import "package:yaml/yaml.dart" as yaml;
 import "package:yaml_writer/yaml_writer.dart";
 
-String version_package = "0.0.0";
+String version_package = "0.0.3";
 Future<void> pubspecUpdate({
   required File filePubspec,
   required List<String> librarys,
@@ -56,7 +56,7 @@ Future<void> pubspecUpdate({
       "version": version_package,
       "repository": "https://github.com/azkadev/general_framework",
       "homepage": "https://github.com/azkadev/general_framework",
-      "issue_tracker": "https://github.com/azkadev/general_framework/issues",
+      // "issue_tracker": "https://github.com/azkadev/general_framework/issues",
       "documentation": "https://github.com/azkadev/general_framework/tree/main/docs",
       "funding": [
         "https://github.com/sponsors/azkadev",
@@ -74,21 +74,15 @@ Future<void> pubspecUpdate({
     yaml_code_clone.removeByKeys([
       "publish_to",
     ]);
-    if (yaml_code_clone["dependencies"] is Map) {
-      (yaml_code_clone["dependencies"] as Map).forEach((key, value) {
-        if (librarys.contains(key)) {
-          yaml_code_clone["dependencies"][key] = "^${version_package}";
-        }
-      });
-      (yaml_code_clone["dependencies"] as Map).forEach((key, value) {
-        if (key == "general_lib") {
-          yaml_code_clone["dependencies"][key] = "^0.0.36";
-        }
-        if (key == "general_lib_flutter") {
-          yaml_code_clone["dependencies"][key] = "^0.0.19";
-        }
-      });
-    }
+    // if (yaml_code_clone["dependencies"] is Map) {
+    //   (yaml_code_clone["dependencies"] as Map).forEach((key, value) {
+    //     if (librarys.contains(key)) {
+    //       yaml_code_clone["dependencies"][key] = "^${version_package}";
+    //     }
+    //   });
+    //   (yaml_code_clone["dependencies"] as Map).forEach((key, value) { 
+    //   });
+    // }
     var yamlDoc = YamlWriter().write(yaml_code_clone);
 
     await filePubspec.writeAsString(yamlDoc);

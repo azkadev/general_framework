@@ -1,13 +1,12 @@
 name: 'general_framework_project'
 description: 'General Framework Library for help you create project more easy with general standarization style code base'
-version: '0.0.0'
+version: '0.0.3'
 repository: 'https://github.com/azkadev/general_framework'
 homepage: 'https://github.com/azkadev/general_framework'
 issue_tracker: 'https://github.com/azkadev/general_framework/issues'
 documentation: 'https://github.com/azkadev/general_framework/tree/main/docs'
 funding: 
   - 'https://github.com/sponsors/azkadev'
-  - 'https://github.com/sponsors/generalfoss'
 platforms: 
   android: null
   ios: null
@@ -29,6 +28,5 @@ dependencies:
 dev_dependencies: 
   lints: '^4.0.0'
   test: 'any'
-publish_to: 'none'
 dependency_overrides: 
   pointycastle: '3.8.0'
