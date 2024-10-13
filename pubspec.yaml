@@ -4,7 +4,7 @@ version: '0.0.4'
 repository: 'https://github.com/azkadev/general_framework'
 homepage: 'https://github.com/azkadev/general_framework'
 issue_tracker: 'https://github.com/azkadev/general_framework/issues'
-documentation: 'https://github.com/azkadev/general_framework/tree/main/docs'
+documentation: 'https://azkadev.github.io/general_framework/'
 funding: 
   - 'https://github.com/sponsors/azkadev'
 platforms: 

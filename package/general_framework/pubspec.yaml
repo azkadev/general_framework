@@ -3,7 +3,7 @@ description: 'General Framework Library for help you create project more easy wi
 version: '0.0.3'
 homepage: 'https://github.com/azkadev/general_framework'
 repository: 'https://github.com/azkadev/general_framework'
-documentation: 'https://github.com/azkadev/general_framework/tree/main/docs'
+documentation: 'https://azkadev.github.io/general_framework/'
 funding: 
   - 'https://github.com/sponsors/azkadev'
 platforms: 
