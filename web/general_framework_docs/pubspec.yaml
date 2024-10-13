@@ -1,0 +1,29 @@
+name: 'general_framework_docs'
+description: 'A new Flutter project.'
+publish_to: 'none'
+version: '1.0.0+1'
+environment: 
+  sdk: '>=3.3.3 <4.0.0'
+dependencies: 
+  flutter: 
+    sdk: 'flutter'
+  cupertino_icons: '^1.0.6'
+  general_lib_flutter: '^0.0.27'
+  general_lib: '^0.0.46'
+  simulate: '^0.0.41'
+  general_framework: '^0.0.3'
+dev_dependencies: 
+  flutter_test: 
+    sdk: 'flutter'
+  flutter_lints: '^4.0.0'
+flutter: 
+  uses-material-design: true
+dependency_overrides: 
+  pointycastle: '3.8.0'
+funding: 
+  - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
+homepage: 'https://youtube.com/@azkadev'
+repository: 'https://github.com/azkadev/general_framework'
+documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
