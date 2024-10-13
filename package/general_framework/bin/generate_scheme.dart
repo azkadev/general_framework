@@ -42,8 +42,7 @@ import 'package:path/path.dart' as path;
 // import 'package:universal_io/io.dart';
 
 void main(List<String> args) async {
-  final Directory directory_lib_scheme =
-      Directory(path.join(Directory.current.path, "lib", "scheme"));
+  final Directory directory_lib_scheme = Directory(path.join(Directory.current.path, "lib", "scheme"));
   if (directory_lib_scheme.existsSync()) {
     directory_lib_scheme.deleteSync(recursive: true);
   }
