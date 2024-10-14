@@ -7,7 +7,8 @@ CREATE TABLE account (
   bio text null default format(''::text),
   password text null default format(''::text),
   from_app_id text null default format(''::text),
-  owner_account_user_id bigint null default 0
+  owner_account_user_id bigint null default 0,
+  is_test boolean null default false
 );
 
 -- 2. Enable RLS
@@ -21,5 +22,6 @@ ALTER TABLE account ADD COLUMN bio text DEFAULT format(''::text);
 ALTER TABLE account ADD COLUMN password text DEFAULT format(''::text);
 ALTER TABLE account ADD COLUMN from_app_id text DEFAULT format(''::text);
 ALTER TABLE account ADD COLUMN owner_account_user_id bigint DEFAULT 0;
+ALTER TABLE account ADD COLUMN is_test boolean DEFAULT false;
 
 -- Recommendation

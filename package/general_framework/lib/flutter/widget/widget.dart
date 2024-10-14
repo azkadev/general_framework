@@ -35,4 +35,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 export "button.dart";
 export "core.dart";
 export "text_form_field.dart";
+export "profile_picture.dart";
 export "theme_change.dart";
+
+export "material_outline_button.dart";

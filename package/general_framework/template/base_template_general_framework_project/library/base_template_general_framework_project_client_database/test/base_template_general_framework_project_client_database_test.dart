@@ -35,7 +35,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:io';
 
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database.dart';
-import 'package:base_template_general_framework_project_client_isar_scheme/database/scheme/message_database.dart'
+import 'package:base_template_general_framework_project_isar_scheme/database/scheme/message_database.dart'
     as isar_scheme;
 import 'package:base_template_general_framework_project_scheme/database_scheme/message_isar_database.dart';
 import 'package:general_lib/general_lib.dart';

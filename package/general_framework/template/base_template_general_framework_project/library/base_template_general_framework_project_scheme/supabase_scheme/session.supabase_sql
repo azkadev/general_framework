@@ -4,7 +4,8 @@ CREATE TABLE session (
   account_user_id bigint null default 0,
   token text null default format(''::text),
   from_app_id text null default format(''::text),
-  owner_account_user_id bigint null default 0
+  owner_account_user_id bigint null default 0,
+  is_test boolean null default false
 );
 
 -- 2. Enable RLS
@@ -15,5 +16,6 @@ ALTER TABLE session ADD COLUMN account_user_id bigint DEFAULT 0;
 ALTER TABLE session ADD COLUMN token text DEFAULT format(''::text);
 ALTER TABLE session ADD COLUMN from_app_id text DEFAULT format(''::text);
 ALTER TABLE session ADD COLUMN owner_account_user_id bigint DEFAULT 0;
+ALTER TABLE session ADD COLUMN is_test boolean DEFAULT false;
 
 -- Recommendation

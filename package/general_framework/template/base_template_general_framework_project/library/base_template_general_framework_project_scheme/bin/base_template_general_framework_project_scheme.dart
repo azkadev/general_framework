@@ -444,7 +444,7 @@ Future<void> generateIsarDatabase() async {
   final Directory directory = Directory(path.join(
     Directory.current.path,
     "..",
-    "base_template_general_framework_project_client_isar_scheme",
+    "base_template_general_framework_project_isar_scheme",
   ));
 
   if (directory.existsSync() == false) {

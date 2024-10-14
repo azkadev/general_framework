@@ -4,7 +4,8 @@ CREATE TABLE chat (
   chat_ids jsonb null default '[0]'::json,
   chat_unique_id text null default format(''::text),
   from_app_id text null default format(''::text),
-  owner_account_user_id bigint null default 0
+  owner_account_user_id bigint null default 0,
+  is_test boolean null default false
 );
 
 -- 2. Enable RLS
@@ -15,5 +16,6 @@ ALTER TABLE chat ADD COLUMN chat_ids json DEFAULT '[0]';
 ALTER TABLE chat ADD COLUMN chat_unique_id text DEFAULT format(''::text);
 ALTER TABLE chat ADD COLUMN from_app_id text DEFAULT format(''::text);
 ALTER TABLE chat ADD COLUMN owner_account_user_id bigint DEFAULT 0;
+ALTER TABLE chat ADD COLUMN is_test boolean DEFAULT false;
 
 -- Recommendation

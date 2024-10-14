@@ -5,7 +5,8 @@ CREATE TABLE session_isar (
   token text null default format(''::text),
   is_default boolean null default false,
   from_app_id text null default format(''::text),
-  owner_account_user_id bigint null default 0
+  owner_account_user_id bigint null default 0,
+  is_test boolean null default false
 );
 
 -- 2. Enable RLS
@@ -17,5 +18,6 @@ ALTER TABLE session_isar ADD COLUMN token text DEFAULT format(''::text);
 ALTER TABLE session_isar ADD COLUMN is_default boolean DEFAULT false;
 ALTER TABLE session_isar ADD COLUMN from_app_id text DEFAULT format(''::text);
 ALTER TABLE session_isar ADD COLUMN owner_account_user_id bigint DEFAULT 0;
+ALTER TABLE session_isar ADD COLUMN is_test boolean DEFAULT false;
 
 -- Recommendation

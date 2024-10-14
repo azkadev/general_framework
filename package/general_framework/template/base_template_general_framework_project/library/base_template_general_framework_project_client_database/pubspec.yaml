@@ -13,8 +13,8 @@ dependencies:
   http: '^1.2.2'
   general_framework: 
     path: '../../../../'
-  base_template_general_framework_project_client_isar_scheme: 
-    path: '../base_template_general_framework_project_client_isar_scheme'
+  base_template_general_framework_project_isar_scheme: 
+    path: '../base_template_general_framework_project_isar_scheme'
   isar: '^4.0.0-dev.14'
 dev_dependencies: 
   lints: '^4.0.0'
