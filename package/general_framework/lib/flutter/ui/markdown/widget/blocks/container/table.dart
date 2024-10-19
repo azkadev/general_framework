@@ -42,7 +42,7 @@ class TableConfig implements ContainerConfig {
 }
 
 class TableNode extends ElementNode {
-  final MarkdownConfig config;
+  final MarkdownConfigGeneralFramework config;
 
   TableNode(this.config);
 
@@ -78,7 +78,7 @@ class TableNode extends ElementNode {
 }
 
 class THeadNode extends ElementNode {
-  final MarkdownConfig config;
+  final MarkdownConfigGeneralFramework config;
   final WidgetVisitor visitor;
 
   THeadNode(this.config, this.visitor);
@@ -107,7 +107,7 @@ class THeadNode extends ElementNode {
 }
 
 class TBodyNode extends ElementNode {
-  final MarkdownConfig config;
+  final MarkdownConfigGeneralFramework config;
   final WidgetVisitor visitor;
 
   TBodyNode(this.config, this.visitor);

@@ -11,7 +11,7 @@ class MarkdownGeneralFrameworkWidget extends StatefulWidget {
   final String data;
 
   ///if [tocController] is not null, you can use [tocListener] to get current TOC index
-  final TocController? tocController;
+  final TocControllerGeneralFrameworkWidget? tocController;
 
   ///set the desired scroll physics for the markdown item list
   final ScrollPhysics? physics;
@@ -26,7 +26,7 @@ class MarkdownGeneralFrameworkWidget extends StatefulWidget {
   final bool selectable;
 
   ///the configs of markdown
-  final MarkdownConfig? config;
+  final MarkdownConfigGeneralFramework? config;
 
   ///config for [MarkdownGeneralFrameworkGenerator]
   final MarkdownGeneralFrameworkGenerator? markdownGenerator;
@@ -54,8 +54,8 @@ class MarkdownGeneralFrameworkWidgetState extends State<MarkdownGeneralFramework
   ///The markdown string converted by MarkdownGeneralFrameworkGenerator will be retained in the [_widgets]
   final List<Widget> _widgets = [];
 
-  ///[TocController] combines [TocWidget] and [MarkdownGeneralFrameworkWidget]
-  TocController? _tocController;
+  ///[TocControllerGeneralFrameworkWidget] combines [TocWidget] and [MarkdownGeneralFrameworkWidget]
+  TocControllerGeneralFrameworkWidget? _tocController;
 
   ///[AutoScrollController] provides the scroll to index mechanism
   final AutoScrollController controller = AutoScrollController();

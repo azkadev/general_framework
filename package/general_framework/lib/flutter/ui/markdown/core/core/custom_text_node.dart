@@ -4,7 +4,7 @@
 
 // class CustomTextNode extends ElementNode {
 //   final String text;
-//   final MarkdownConfig config;
+//   final MarkdownConfigGeneralFramework config;
 //   final WidgetVisitor visitor;
 
 //   CustomTextNode(this.text, this.config, this.visitor);
@@ -34,7 +34,7 @@ import 'package:markdown/markdown.dart' as m;
 
 class CustomTextNode extends ElementNode {
   final String text;
-  final MarkdownConfig config;
+  final MarkdownConfigGeneralFramework config;
   final WidgetVisitor visitor;
   final double? fontSize;
 

@@ -8,10 +8,10 @@ import '../widget/blocks/leaf/heading.dart';
 import '../widget/markdown.dart';
 import '../widget/proxy_rich_text.dart';
 
-///[TocController] combines [TocWidget] and [MarkdownGeneralFrameworkWidget],
+///[TocControllerGeneralFrameworkWidget] combines [TocWidget] and [MarkdownGeneralFrameworkWidget],
 ///you can use it to control the jump between the two,
 /// and each [TocWidget] corresponds to a [MarkdownGeneralFrameworkWidget].
-class TocController {
+class TocControllerGeneralFrameworkWidget {
   ///key is index of widgets, value is [Toc]
   final LinkedHashMap<int, Toc> _index2toc = LinkedHashMap();
 
@@ -57,7 +57,7 @@ class Toc {
   ///index of [MarkdownGeneralFrameworkGenerator]'s _children
   final int widgetIndex;
 
-  ///index of [TocController.tocList]
+  ///index of [TocControllerGeneralFrameworkWidget.tocList]
   final int selfIndex;
 
   Toc({
@@ -69,7 +69,7 @@ class Toc {
 
 class TocWidget extends StatefulWidget {
   ///[controller] must not be null
-  final TocController controller;
+  final TocControllerGeneralFrameworkWidget controller;
 
   ///set the desired scroll physics for the markdown item list
   final ScrollPhysics? physics;
@@ -101,7 +101,7 @@ class _TocWidgetState extends State<TocWidget> {
   int currentIndex = 0;
   final List<Toc> _tocList = [];
 
-  TocController get tocController => widget.controller;
+  TocControllerGeneralFrameworkWidget get tocController => widget.controller;
 
   void refresh() {
     if (mounted) setState(() {});

@@ -5,7 +5,7 @@ import '../../markdown_widget.dart';
 ///Tag: [MarkdownTag.img]
 class ImageNode extends MarkdownSpanNodeGeneralFrameworkWidget {
   final Map<String, String> attributes;
-  final MarkdownConfig config;
+  final MarkdownConfigGeneralFramework config;
   final WidgetVisitor visitor;
 
   ImgConfig get imgConfig => config.img;

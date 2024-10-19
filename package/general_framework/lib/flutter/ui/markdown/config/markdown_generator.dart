@@ -35,8 +35,8 @@ class MarkdownGeneralFrameworkGenerator {
 
   ///convert [data] to widgets
   ///[onTocList] can provider [Toc] list
-  List<Widget> buildWidgets(String data, {ValueCallback<List<Toc>>? onTocList, MarkdownConfig? config}) {
-    final mdConfig = config ?? MarkdownConfig.defaultConfig;
+  List<Widget> buildWidgets(String data, {ValueCallback<List<Toc>>? onTocList, MarkdownConfigGeneralFramework? config}) {
+    final mdConfig = config ?? MarkdownConfigGeneralFramework.defaultConfig;
     final m.Document document = m.Document(
       extensionSet: extensionSet ?? m.ExtensionSet.gitHubFlavored,
       encodeHtml: false,

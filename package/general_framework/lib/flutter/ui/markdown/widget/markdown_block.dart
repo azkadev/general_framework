@@ -13,7 +13,7 @@ class MarkdownBlockGeneralFrameworkWidget extends StatelessWidget {
   final bool selectable;
 
   ///the configs of markdown
-  final MarkdownConfig? config;
+  final MarkdownConfigGeneralFramework? config;
 
   ///to generator markdown data
   final MarkdownGeneralFrameworkGenerator? generator;

@@ -45,7 +45,7 @@ class MenuContainerBuilderGeneralFrameworkWidget extends StatelessWidget {
         constraints: constraints,
         transform: transform,
         transformAlignment: transformAlignment,
-        margin: margin ?? const EdgeInsets.all(5),
+        margin: margin ?? const EdgeInsets.all(10),
         padding: padding,
         decoration: decorationBuilder(
           context,

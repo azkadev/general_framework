@@ -18,8 +18,8 @@ class WidgetVisitor implements m.NodeVisitor {
   ///[visitElementAfter] will pop the last [MarkdownSpanNodeGeneralFrameworkWidget] off
   final List<MarkdownSpanNodeGeneralFrameworkWidget> _spansStack = [];
 
-  ///[MarkdownConfig] is used to define the UI display
-  late MarkdownConfig config;
+  ///[MarkdownConfigGeneralFramework] is used to define the UI display
+  late MarkdownConfigGeneralFramework config;
 
   /// add your custom [MarkdownSpanNodeGeneralFrameworkWidgetGeneratorWithTag] to [generators]
   /// that you can customize the conversion of Nodes
@@ -40,14 +40,14 @@ class WidgetVisitor implements m.NodeVisitor {
   static RegExp defaultSplitRegExp = RegExp(r'(\r?\n)|(\r)');
 
   WidgetVisitor({
-    MarkdownConfig? config,
+    MarkdownConfigGeneralFramework? config,
     this.generators = const [],
     this.onNodeAccepted,
     this.textGenerator,
     this.richTextBuilder,
     this.splitRegExp,
   }) {
-    this.config = config ?? MarkdownConfig.defaultConfig;
+    this.config = config ?? MarkdownConfigGeneralFramework.defaultConfig;
     for (var e in generators) {
       _tag2node[e.tag] = e.generator;
     }
@@ -130,16 +130,16 @@ class WidgetVisitor implements m.NodeVisitor {
     MarkdownTag.img.name: (e, config, visitor) => ImageNode(e.attributes, config, visitor),
   };
 
-  MarkdownSpanNodeGeneralFrameworkWidget getNodeByElement(m.Element element, MarkdownConfig config) {
+  MarkdownSpanNodeGeneralFrameworkWidget getNodeByElement(m.Element element, MarkdownConfigGeneralFramework config) {
     return _tag2node[element.tag]?.call(element, config, this) ?? textGenerator?.call(element, config, this) ?? TextNode(text: element.textContent);
   }
 }
 
 ///use [MarkdownSpanNodeGeneralFrameworkWidgetGenerator] will return a [MarkdownSpanNodeGeneralFrameworkWidget]
-typedef MarkdownSpanNodeGeneralFrameworkWidgetGenerator = MarkdownSpanNodeGeneralFrameworkWidget Function(m.Element e, MarkdownConfig config, WidgetVisitor visitor);
+typedef MarkdownSpanNodeGeneralFrameworkWidgetGenerator = MarkdownSpanNodeGeneralFrameworkWidget Function(m.Element e, MarkdownConfigGeneralFramework config, WidgetVisitor visitor);
 
 ///use [TextNodeGenerator] to custom your own [TextNode]
-typedef TextNodeGenerator = MarkdownSpanNodeGeneralFrameworkWidget? Function(m.Node node, MarkdownConfig config, WidgetVisitor visitor);
+typedef TextNodeGenerator = MarkdownSpanNodeGeneralFrameworkWidget? Function(m.Node node, MarkdownConfigGeneralFramework config, WidgetVisitor visitor);
 
 ///when a [SpanNope] is visited, this callback will be triggered
 typedef MarkdownSpanNodeGeneralFrameworkWidgetAcceptCallback = void Function(MarkdownSpanNodeGeneralFrameworkWidget node, int nodeIndex);

@@ -7,11 +7,11 @@ import 'custom_text_node.dart';
 
 import '../../markdown_widget.dart';
 
-MarkdownConfig markdownFlutterConfig({
+MarkdownConfigGeneralFramework markdownFlutterConfig({
   required BuildContext context,
   void Function(String)? onTap,
 }) {
-  return MarkdownConfig.defaultConfig.copy(
+  return MarkdownConfigGeneralFramework.defaultConfig.copy(
     configs: [
       const PreConfig().copy(
         styleNotMatched: const TextStyle(
@@ -117,10 +117,10 @@ class MarkdownFlutterWidget extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final bool shrinkWrap;
   final bool selectable;
-  final MarkdownConfig? config;
+  final MarkdownConfigGeneralFramework? config;
   final MarkdownGeneralFrameworkGenerator? markdownGeneratorConfig;
   final ScrollPhysics? physics;
-  final TocController? tocController;
+  final TocControllerGeneralFrameworkWidget? tocController;
   const MarkdownFlutterWidget({
     super.key,
     this.padding,

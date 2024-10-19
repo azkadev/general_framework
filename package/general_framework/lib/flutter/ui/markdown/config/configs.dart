@@ -100,8 +100,8 @@ enum MarkdownTag {
   other
 }
 
-///use [MarkdownConfig] to set various configurations for [MarkdownGeneralFrameworkWidget]
-class MarkdownConfig {
+///use [MarkdownConfigGeneralFramework] to set various configurations for [MarkdownGeneralFrameworkWidget]
+class MarkdownConfigGeneralFramework {
   HrConfig get hr => _getConfig<HrConfig>(MarkdownTag.hr, const HrConfig());
 
   HeadingConfig get h1 => _getConfig<HeadingConfig>(MarkdownTag.h1, const H1Config());
@@ -142,11 +142,11 @@ class MarkdownConfig {
     return config as T;
   }
 
-  ///default [MarkdownConfig] for [MarkdownGeneralFrameworkWidget]
-  static MarkdownConfig get defaultConfig => MarkdownConfig();
+  ///default [MarkdownConfigGeneralFramework] for [MarkdownGeneralFrameworkWidget]
+  static MarkdownConfigGeneralFramework get defaultConfig => MarkdownConfigGeneralFramework();
 
   ///[darkConfig] is used for dark mode
-  static MarkdownConfig get darkConfig => MarkdownConfig(configs: [
+  static MarkdownConfigGeneralFramework get darkConfig => MarkdownConfigGeneralFramework(configs: [
         HrConfig.darkConfig,
         H1Config.darkConfig,
         H2Config.darkConfig,
@@ -163,16 +163,16 @@ class MarkdownConfig {
   ///the key of [_tag2Config] is tag, the value is [MarkdownWidgetConfig]
   final Map<String, MarkdownWidgetConfig> _tag2Config = {};
 
-  MarkdownConfig({List<MarkdownWidgetConfig> configs = const []}) {
+  MarkdownConfigGeneralFramework({List<MarkdownWidgetConfig> configs = const []}) {
     for (final config in configs) {
       _tag2Config[config.tag] = config;
     }
   }
 
-  MarkdownConfig copy({List<MarkdownWidgetConfig> configs = const []}) {
+  MarkdownConfigGeneralFramework copy({List<MarkdownWidgetConfig> configs = const []}) {
     for (final config in configs) {
       _tag2Config[config.tag] = config;
     }
-    return MarkdownConfig(configs: _tag2Config.values.toList());
+    return MarkdownConfigGeneralFramework(configs: _tag2Config.values.toList());
   }
 }

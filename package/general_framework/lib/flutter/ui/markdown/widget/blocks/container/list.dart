@@ -59,7 +59,7 @@ class UlOrOLNode extends ElementNode {
 /// A list is a sequence of one or more list items of the same type.
 /// The list items may be separated by any number of blank lines.
 class ListNode extends ElementNode {
-  final MarkdownConfig config;
+  final MarkdownConfigGeneralFramework config;
   final WidgetVisitor visitor;
 
   ListNode(this.config, this.visitor);
@@ -216,7 +216,7 @@ class _OlMarker extends StatelessWidget {
 }
 
 ///get default marker for list
-Widget getDefaultMarker(bool isOrdered, int depth, Color? color, int index, double paddingTop, MarkdownConfig config) {
+Widget getDefaultMarker(bool isOrdered, int depth, Color? color, int index, double paddingTop, MarkdownConfigGeneralFramework config) {
   Widget marker;
   if (isOrdered) {
     marker = Container(alignment: Alignment.topRight, padding: const EdgeInsets.only(right: 1), child: _OlMarker(depth: depth, index: index, color: color, config: config.p));

@@ -7,7 +7,7 @@ import '../span_node.dart';
 ///Tag: [MarkdownTag.input]
 class InputNode extends MarkdownSpanNodeGeneralFrameworkWidget {
   final Map<String, String> attr;
-  final MarkdownConfig config;
+  final MarkdownConfigGeneralFramework config;
 
   InputNode(this.attr, this.config);
 
