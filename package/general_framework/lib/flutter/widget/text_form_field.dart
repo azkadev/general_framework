@@ -39,6 +39,7 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
   final String? hintText;
   final String? labelText;
   final IconData prefixIconData;
+  final Widget Function(BuildContext context, Widget child)? prefixIconBuilder;
   final Color color;
   final TextEditingController? controller;
   final String? Function(String? data)? validator;
@@ -50,6 +51,7 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
     super.key,
     this.hintText,
     this.labelText,
+    this.prefixIconBuilder,
     this.prefixIconData = Icons.people,
     this.color = Colors.white,
     this.controller,
@@ -97,19 +99,26 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
             ),
           ],
         ),
-        prefixIcon: Icon(
-          prefixIconData,
-          color: context.theme.indicatorColor,
-          size: 18,
-          shadows: [
-            BoxShadow(
-              color: context.theme.shadowColor.withAlpha(110),
-              spreadRadius: 1,
-              blurRadius: 4,
-              offset: const Offset(0, 3), // changes position of shadow
-            ),
-          ],
-        ),
+        prefixIcon: () {
+          final Widget child = Icon(
+            prefixIconData,
+            color: context.theme.indicatorColor,
+            size: 18,
+            shadows: [
+              BoxShadow(
+                color: context.theme.shadowColor.withAlpha(110),
+                spreadRadius: 1,
+                blurRadius: 4,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          );
+          final prefixIconBuilder = this.prefixIconBuilder;
+          if (prefixIconBuilder != null) {
+            return prefixIconBuilder(context, child);
+          }
+          return child;
+        }(),
         suffixIcon: suffixIcon,
         disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
