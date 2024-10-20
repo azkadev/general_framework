@@ -102,7 +102,7 @@ enum MarkdownTag {
 
 ///use [MarkdownConfigGeneralFramework] to set various configurations for [MarkdownGeneralFrameworkWidget]
 class MarkdownConfigGeneralFramework {
-  HrConfig get hr => _getConfig<HrConfig>(MarkdownTag.hr, const HrConfig());
+  HorizontalRulesConfig get hr => _getConfig<HorizontalRulesConfig>(MarkdownTag.hr, const HorizontalRulesConfig());
 
   HeadingConfig get h1 => _getConfig<HeadingConfig>(MarkdownTag.h1, const H1Config());
 
@@ -120,7 +120,7 @@ class MarkdownConfigGeneralFramework {
 
   LinkConfig get a => _getConfig<LinkConfig>(MarkdownTag.a, const LinkConfig());
 
-  PConfig get p => _getConfig<PConfig>(MarkdownTag.p, const PConfig());
+  ParagraphMarkdownConfig get p => _getConfig<ParagraphMarkdownConfig>(MarkdownTag.p, const ParagraphMarkdownConfig());
 
   BlockquoteConfig get blockquote => _getConfig<BlockquoteConfig>(MarkdownTag.blockquote, const BlockquoteConfig());
 
@@ -147,7 +147,7 @@ class MarkdownConfigGeneralFramework {
 
   ///[darkConfig] is used for dark mode
   static MarkdownConfigGeneralFramework get darkConfig => MarkdownConfigGeneralFramework(configs: [
-        HrConfig.darkConfig,
+        HorizontalRulesConfig.darkConfig,
         H1Config.darkConfig,
         H2Config.darkConfig,
         H3Config.darkConfig,
@@ -155,7 +155,7 @@ class MarkdownConfigGeneralFramework {
         H5Config.darkConfig,
         H6Config.darkConfig,
         PreConfig.darkConfig,
-        PConfig.darkConfig,
+        ParagraphMarkdownConfig.darkConfig,
         CodeConfig.darkConfig,
         BlockquoteConfig.darkConfig,
       ]);

@@ -8,31 +8,32 @@ import '../../span_node.dart';
 ///
 ///the horizontal rules widget
 ///eg: `---`, `_ _ _`, `*  *  *`, etc.
-class HrNode extends MarkdownSpanNodeGeneralFrameworkWidget {
-  final HrConfig hrConfig;
+class HorizontalRulesNode extends MarkdownSpanNodeGeneralFrameworkWidget {
+  final HorizontalRulesConfig hrConfig;
 
-  HrNode(this.hrConfig);
+  HorizontalRulesNode(this.hrConfig);
 
   @override
   InlineSpan build() {
     return WidgetSpan(
-        child: Container(
-      height: hrConfig.height,
-      color: hrConfig.color,
-    ));
+      child: Container(
+        height: hrConfig.height,
+        color: hrConfig.color,
+      ),
+    );
   }
 }
 
-///config class for [HrNode]
-class HrConfig implements LeafConfig {
+///config class for [HorizontalRulesNode]
+class HorizontalRulesConfig implements LeafConfig {
   final double height;
   final Color color;
 
-  const HrConfig({this.height = 2, this.color = const Color(0xFFd0d7de)});
+  const HorizontalRulesConfig({this.height = 2, this.color = const Color(0xFFd0d7de)});
 
   @nonVirtual
   @override
   String get tag => MarkdownTag.hr.name;
 
-  static HrConfig get darkConfig => const HrConfig(color: Colors.white);
+  static HorizontalRulesConfig get darkConfig => const HorizontalRulesConfig(color: Colors.white);
 }

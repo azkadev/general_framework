@@ -205,7 +205,7 @@ class _OlMarker extends StatelessWidget {
   final int depth;
   final int index;
   final Color? color;
-  final PConfig config;
+  final ParagraphMarkdownConfig config;
 
   const _OlMarker({super.key, this.depth = 0, this.color, this.index = 1, required this.config});
 

@@ -112,7 +112,7 @@ class WidgetVisitor implements m.NodeVisitor {
     MarkdownTag.ul.name: (e, config, visitor) => UlOrOLNode(e.tag, e.attributes, config.li, visitor),
     MarkdownTag.blockquote.name: (e, config, visitor) => BlockquoteNode(config.blockquote, visitor),
     MarkdownTag.pre.name: (e, config, visitor) => CodeBlockNode(e, config.pre, visitor),
-    MarkdownTag.hr.name: (e, config, visitor) => HrNode(config.hr),
+    MarkdownTag.hr.name: (e, config, visitor) => HorizontalRulesNode(config.hr),
     MarkdownTag.table.name: (e, config, visitor) => TableNode(config),
     MarkdownTag.thead.name: (e, config, visitor) => THeadNode(config, visitor),
     MarkdownTag.tbody.name: (e, config, visitor) => TBodyNode(config, visitor),
