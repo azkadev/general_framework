@@ -37,6 +37,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:flutter/material.dart';
 import 'package:general_framework/extension/extension.dart';
 import 'package:general_framework/flutter/fork/skeletonizer/lib/skeletonizer.dart';
+import 'package:general_framework/flutter/widget/widget.dart';
 import 'package:general_framework/utils/utils.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:intl/intl.dart' as intl;
@@ -57,15 +58,28 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
   final WidgetBuilder? dateBuilder;
   final WidgetBuilder? unreadCountBuilder;
   final double spaceTrailing;
+  final void Function()? profilePictureOnTap;
+  final void Function()? profilePictureOnLongPress;
   final void Function()? onTap;
   final void Function()? onLongPress;
   final void Function(bool value)? onFocusChange;
   final EdgeInsetsGeometry? contentPadding;
   final String? locale;
+
+  final bool profilePictureIsUseShadow;
+  final bool profilePictureIsWithBorder;
+  final BorderRadiusGeometry? profilePictureBorderRadius;
+  final EdgeInsetsGeometry? profilePictureMargin;
   const ChatMessageGeneralFrameworkWidget({
     super.key,
     required this.isLoading,
+    this.profilePictureMargin,
+    this.profilePictureBorderRadius,
+    this.profilePictureOnLongPress,
+    this.profilePictureIsUseShadow = false,
+    this.profilePictureIsWithBorder = false,
     this.profilePicture,
+    this.profilePictureOnTap,
     this.profilePictureBuilder,
     required this.title,
     required this.message,
@@ -125,16 +139,18 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
     if (profilePictureBuilder != null) {
       return profilePictureBuilder!(context);
     }
-    return CircleAvatar(
-      child: Text(
-        () {
-          try {
-            return title.substring(0, 1);
-          } catch (e) {}
-          return "";
-        }(),
-        style: context.theme.textTheme.titleSmall,
-      ),
+    final sizeProcces = context.extensionGeneralLibFlutterSizePhotoSmall();
+    return ProfilePictureGeneralFrameworkWidget(
+      height: sizeProcces.height,
+      width: sizeProcces.width,
+      pathImage: profilePicture,
+      nick_name: title,
+      margin: profilePictureMargin,
+      borderRadius: profilePictureBorderRadius,
+      onPressed: profilePictureOnTap,
+      onLongPress: profilePictureOnLongPress,
+      isUseShadow: profilePictureIsUseShadow,
+      isWithBorder: profilePictureIsWithBorder,
     );
   }
 
@@ -151,7 +167,7 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
               max: 15,
               min: 5,
             ),
-      style: context.theme.textTheme.titleMedium,
+      style: context.theme.textTheme.titleSmall,
     );
   }
 
@@ -185,8 +201,7 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
     }
     return Text(
       () {
-        if (date.extensionGeneralFrameworkToThisDay().isAtSameMomentAs(
-            DateTime.now().extensionGeneralFrameworkToThisDay())) {
+        if (date.extensionGeneralFrameworkToThisDay().isAtSameMomentAs(DateTime.now().extensionGeneralFrameworkToThisDay())) {
           return intl.DateFormat("hh.mm", locale).format(date);
         } else {
           return intl.DateFormat("dd/mm/yy", locale).format(date);

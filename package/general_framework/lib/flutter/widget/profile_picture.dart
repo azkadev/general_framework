@@ -3,29 +3,31 @@
 // import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:general_framework/flutter/image/image_core.dart';
-import 'package:general_framework/flutter/utils/utils.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePictureGeneralFrameworkWidget extends StatelessWidget {
+  final Color? color;
   final dynamic pathImage;
   final String nick_name;
   final double width;
   final double height;
+
+  final EdgeInsetsGeometry? margin;
   final BorderRadiusGeometry? borderRadius;
   final void Function()? onPressed;
   final void Function()? onLongPress;
   final void Function(bool data)? onHighlightChanged;
   final bool isWithBorder;
-  final bool is_loading;
   final void Function(Object e, StackTrace? stackTrace)? onError;
   final Widget Function(BuildContext context, Object error, StackTrace? stackTrace)? errorBuilder;
   final bool isUseShadow;
   const ProfilePictureGeneralFrameworkWidget({
     super.key,
     this.onError,
+    this.color,
+    this.margin,
     this.isUseShadow = true,
-    this.is_loading = false,
     this.isWithBorder = false,
     required this.pathImage,
     required this.width,
@@ -38,128 +40,67 @@ class ProfilePictureGeneralFrameworkWidget extends StatelessWidget {
     required this.onPressed,
   });
 
-  String get path_image {
-    if (pathImage is String) {
-      return pathImage.toString().trim();
-    }
-    return "";
-  }
-
   @override
   Widget build(BuildContext context) {
-    final DecorationImage image = ImageGeneralUiGeneralFramework.decorationImage(
+    final decorationImageOrNull = ImageGeneralUiGeneralFramework.decorationImageOrNull(
       pathImage: pathImage,
-      onError: (error, stackTrace) {
-        if (onError != null) {
-          onError!(error, stackTrace);
-        }
-      },
-      imageGeneralUiOptions: ImageGeneralUiGeneralFrameworkOptions(
-        height: height,
-        width: width,
-        errorBuilder: errorBuilder ??
-            (_, __, ___) {
-              return const SizedBox.shrink();
-            },
+      onError: onError,
+      imageGeneralUiOptions: const ImageGeneralUiGeneralFrameworkOptions(
         fit: BoxFit.cover,
       ),
     );
-
-    final Widget child = Container(
-      width: width,
+    final child = Container(
       height: height,
+      width: width,
+      margin: () {
+        if (isWithBorder) {
+          return null;
+        }
+        return margin;
+      }(),
       decoration: BoxDecoration(
-        color: GeneralFrameworkFlutterUtils.randomColors(),
-        borderRadius: borderRadius ??
-            BorderRadius.circular(
-              15,
-            ),
-        image: image,
-        gradient: (isWithBorder)
-            ? null
-            : const LinearGradient(
-                colors: [
-                  Colors.pinkAccent,
-                  Colors.blue,
-                ],
-              ),
+        color: color ?? context.theme.primaryColor,
+        borderRadius: borderRadius ?? BorderRadius.circular(25),
+        image: decorationImageOrNull,
         boxShadow: () {
+          if (isWithBorder) {
+            return null;
+          }
           if (isUseShadow) {
-            return (isWithBorder)
-                ? [
-                    BoxShadow(
-                      color: context.theme.shadowColor.withAlpha(110),
-
-                      spreadRadius: 1,
-                      blurRadius: 7,
-                      offset: const Offset(0, 3), // changes position of shadow
-                    ),
-                  ]
-                : const [
-                    BoxShadow(
-                      color: Colors.pink,
-                      offset: Offset(-2, 0),
-                      blurRadius: 15,
-                    ),
-                    BoxShadow(
-                      color: Colors.blue,
-                      offset: Offset(2, 0),
-                      blurRadius: 15,
-                    ),
-                  ];
+            return context.extensionGeneralLibFlutterBoxShadows();
           }
           return null;
         }(),
       ),
       clipBehavior: Clip.antiAlias,
       child: MaterialButton(
-        clipBehavior: Clip.antiAlias,
         minWidth: 0,
+        clipBehavior: Clip.antiAlias,
         onPressed: onPressed,
         onLongPress: onLongPress,
         onHighlightChanged: onHighlightChanged,
         highlightColor: Colors.transparent,
-        child: Visibility(
-          visible: path_image.isEmpty,
-          child: Center(
+        child: () {
+          if (decorationImageOrNull != null) {
+            return null;
+          }
+          return Center(
             child: Text(
               nick_name.characters.firstOrNull ?? "-",
-              style: const TextStyle(
-                fontWeight: FontWeight.w800,
-              ),
+              style: context.theme.textTheme.titleSmall,
             ),
-          ),
-        ),
+          );
+        }(),
       ),
     );
     if (isWithBorder) {
       return Container(
         padding: const EdgeInsets.all(2),
-        // alignment: Alignment.center,
+        margin: margin,
         decoration: BoxDecoration(
-          color: context.theme.scaffoldBackgroundColor,
-          borderRadius: borderRadius ??
-              BorderRadius.circular(
-                15,
-              ),
-          border: Border.all(
-            color: context.theme.indicatorColor,
-            width: 1.5,
-          ),
-          boxShadow: () {
-            if (isUseShadow) {
-              return [
-                BoxShadow(
-                  color: context.theme.shadowColor.withAlpha(110),
-
-                  spreadRadius: 1,
-                  blurRadius: 7,
-                  offset: const Offset(0, 3), // changes position of shadow
-                ),
-              ];
-            }
-            return null;
-          }(),
+          borderRadius: borderRadius ?? BorderRadius.circular(25),
+          border: context.extensionGeneralLibFlutterBorderAll(),
+          boxShadow: isUseShadow ? context.extensionGeneralLibFlutterBoxShadows() : null,
         ),
         child: child,
       );

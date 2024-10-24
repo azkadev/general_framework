@@ -52,9 +52,7 @@ import 'package:general_framework/flutter/widget/core.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class BaseTemplateGeneralFrameworkProjectClientFlutter
-    extends GeneralFrameworkClientFlutter<
-        BaseTemplateGeneralFrameworkProjectClient> {
+class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkClientFlutter<BaseTemplateGeneralFrameworkProjectClient> {
   BaseTemplateGeneralFrameworkProjectClientFlutter({
     required super.navigatorKey,
     required super.generalLibrary,
@@ -74,13 +72,9 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
     );
     String token = generalFrameworkClient.sessionDefault.token ?? "";
     if (token.isNotEmpty) {
-      context
-          .routerGeneralLibFlutter()
-          .pushNamed(routeName: "/home", arguments: {});
+      context.routerGeneralLibFlutter().pushNamed(routeName: "/home", arguments: {});
     } else {
-      context
-          .routerGeneralLibFlutter()
-          .pushNamed(routeName: "/sign", arguments: {});
+      context.routerGeneralLibFlutter().pushNamed(routeName: "/sign", arguments: {});
     }
   }
 
@@ -89,11 +83,7 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
   }
 
   @override
-  FutureOr<dynamic> onInvokeResult(
-      Map result,
-      Map parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) async {
+  FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
     if (result["@type"] == "error") {
       final context = navigatorKey.currentContext;
       if (context == null) {
@@ -109,20 +99,13 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
             );
         return;
       }
-      final String message = (result["message"] as String)
-          .trim()
-          .split("_")
-          .map((e) => e.toLowerCase().toUpperCaseFirstData())
-          .join(" ");
+      final String message = (result["message"] as String).trim().split("_").map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
       context.showSnackBar("Error: ${message}");
     }
   }
 
   @override
-  FutureOr<Map?> onInvokeValidation(
-      Map parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) async {
+  FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
     return null;
   }
 
@@ -201,18 +184,14 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
   }
 }
 
-abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget<
-        T extends BaseTemplateGeneralFrameworkProjectClientFlutter>
-    extends GeneralFrameworkClientFlutterAppStatefulWidget<T> {
+abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget<T extends BaseTemplateGeneralFrameworkProjectClientFlutter> extends GeneralFrameworkClientFlutterAppStatefulWidget<T> {
   const BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget({
     super.key,
     required super.generalFrameworkClientFlutter,
   });
 }
 
-abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget<
-        T extends BaseTemplateGeneralFrameworkProjectClientFlutter>
-    extends GeneralFrameworkClientFlutterAppStatelessWidget<T> {
+abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget<T extends BaseTemplateGeneralFrameworkProjectClientFlutter> extends GeneralFrameworkClientFlutterAppStatelessWidget<T> {
   const BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget({
     super.key,
     required super.generalFrameworkClientFlutter,

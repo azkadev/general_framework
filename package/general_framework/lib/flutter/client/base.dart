@@ -41,39 +41,46 @@ import 'package:general/flutter/general_flutter_core.dart';
 import 'package:general_framework/core/client/core.dart';
 import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/flutter/client/general_framework_client_flutter_app_directory.dart';
+
 import 'package:general_lib_flutter/route/route.dart';
 
 abstract class GeneralFrameworkClientFlutterCore {
-  FutureOr<dynamic> onInvokeResult(
-      Map result,
-      Map parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) {}
+  FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {}
 
-  FutureOr<Map?> onInvokeValidation(Map parameters,
-      GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
+  FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
     return null;
   }
 
-  RouteGeneralLibFlutter get route {
+  Widget onErrorRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
     throw UnimplementedError();
   }
+
+  Widget onNotFoundRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+    throw UnimplementedError();
+  }
+
+  void ensureInitializedRoute() {}
 }
 
-abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
-    implements GeneralFrameworkClientFlutterCore {
+abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> implements GeneralFrameworkClientFlutterCore {
   final GlobalKey<NavigatorState> navigatorKey;
   final GeneralFlutter generalLibrary;
   final T generalFrameworkClient;
 
-  final GeneralFrameworkClientFlutterAppDirectory
-      generalFrameworkClientFlutterAppDirectory =
-      GeneralFrameworkClientFlutterAppDirectory();
+  late final RouteGeneralLibFlutter routeGeneralLibFlutter = RouteGeneralLibFlutter(
+    onErrorRoute: onErrorRoute,
+    onNotFoundRoute: onNotFoundRoute,
+  );
+
+  final GeneralFrameworkClientFlutterAppDirectory generalFrameworkClientFlutterAppDirectory = GeneralFrameworkClientFlutterAppDirectory();
   GeneralFrameworkClientFlutter({
     required this.navigatorKey,
     required this.generalLibrary,
     required this.generalFrameworkClient,
-  });
+  }){
+
+    ensureInitializedRoute();
+  }
 
   bool is_initialized = false;
   FutureOr<void> ensureInitialized({
@@ -90,8 +97,7 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
     );
     await generalFrameworkClient.ensureInitialized(
       onInvokeResult: onInvokeResult,
-      currentPath:
-          generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
+      currentPath: generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
       onInvokeValidation: onInvokeValidation,
     );
     is_initialized = true;

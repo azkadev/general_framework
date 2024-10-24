@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import "package:general_lib_flutter/general_lib_flutter.dart";
 
-typedef DecorationBuilderGeneralFrameworkWidget = Decoration Function(BuildContext context, BoxDecoration decoration);
-
+ 
 class MenuContainerBuilderGeneralFrameworkWidget extends StatelessWidget {
   final bool isLoading;
   final double? width;
@@ -16,8 +15,12 @@ class MenuContainerBuilderGeneralFrameworkWidget extends StatelessWidget {
   final Clip? clipBehavior;
   final DecorationBuilderGeneralFrameworkWidget decorationBuilder;
   final WidgetBuilder builder;
+  final bool isWithBorder;
+  final bool isWithShadow;
   const MenuContainerBuilderGeneralFrameworkWidget({
     super.key,
+    required this.isWithBorder,
+    required this.isWithShadow,
     required this.isLoading,
     required this.width,
     required this.height,
@@ -30,10 +33,7 @@ class MenuContainerBuilderGeneralFrameworkWidget extends StatelessWidget {
     required this.clipBehavior,
     required this.builder,
   });
-
-  static Decoration decorationBuilderDefault(BuildContext context, BoxDecoration decoration) {
-    return decoration;
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -52,14 +52,18 @@ class MenuContainerBuilderGeneralFrameworkWidget extends StatelessWidget {
           BoxDecoration(
             color: context.theme.primaryColor,
             borderRadius: BorderRadius.circular(5),
-            boxShadow: [
-              BoxShadow(
-                color: context.theme.shadowColor.withAlpha(110),
-                spreadRadius: 2.5,
-                blurRadius: 3,
-                offset: const Offset(0, 0), // changes position of shadow
-              ),
-            ],
+            border: () {
+              if (isWithBorder) {
+                return context.extensionGeneralLibFlutterBorderAll();
+              }
+              return null;
+            }(),
+            boxShadow: () {
+              if (isWithShadow) {
+                return context.extensionGeneralLibFlutterBoxShadows();
+              }
+              return null;
+            }(),
           ),
         ),
         clipBehavior: clipBehavior ?? Clip.antiAlias,
@@ -85,8 +89,13 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   final CrossAxisAlignment crossAxisAlignment;
   final List<Widget> Function(BuildContext context) menuBuilder;
+
+  final bool isWithBorder;
+  final bool isWithShadow;
   const MenuContainerGeneralFrameworkWidget({
     super.key,
+    this.isWithBorder = true,
+    this.isWithShadow = true,
     required this.isLoading,
     this.width,
     this.height,
@@ -123,6 +132,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
       onLongPress: onLongPress,
       onPressed: onTap,
       color: (isSelected) ? context.theme.highlightColor : null,
+      highlightColor: Colors.transparent,
       child: ListTile(
         contentPadding: contentPadding ?? const EdgeInsets.only(),
         leading: leading,
@@ -185,7 +195,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
       transform: transform,
       transformAlignment: transformAlignment,
       margin: margin,
-      decorationBuilder: decorationBuilder ?? MenuContainerBuilderGeneralFrameworkWidget.decorationBuilderDefault,
+      decorationBuilder: decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault,
       padding: padding,
       clipBehavior: clipBehavior,
       builder: (context) {
@@ -195,7 +205,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
           mainAxisAlignment: mainAxisAlignment,
           children: menuBuilder(context),
         );
-      },
+      }, isWithBorder: isWithBorder, isWithShadow: isWithShadow,
     );
   }
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ImageGeneralUiGeneralFrameworkOptions {
   final double? height;
@@ -53,6 +54,32 @@ class ImageGeneralUiGeneralFramework {
     );
   }
 
+  static DecorationImage? decorationImageOrNull({
+    required dynamic pathImage,
+    ImageGeneralUiGeneralFrameworkOptions? imageGeneralUiOptions,
+    void Function(Object error, StackTrace? stackTrace)? onError,
+  }) {
+    try {
+      final ImageGeneralUiGeneralFrameworkOptions imageGeneralUiGeneralFrameworkOptions = getImageGeneralUiGeneralFrameworkOptions(
+        imageGeneralUiOptions: imageGeneralUiOptions,
+      );
+      final image = imageOrNull(
+        pathImage: pathImage,
+        imageGeneralUiOptions: imageGeneralUiGeneralFrameworkOptions,
+      );
+      if (image == null) {
+        return null;
+      }
+      return DecorationImage(
+        onError: onError,
+        fit: imageGeneralUiGeneralFrameworkOptions.fit,
+        image: image.image,
+      );
+    } catch (e) {
+      return null;
+    }
+  }
+
   static Image image({
     required dynamic pathImage,
     ImageGeneralUiGeneralFrameworkOptions? imageGeneralUiOptions,
@@ -72,63 +99,79 @@ class ImageGeneralUiGeneralFramework {
     required dynamic pathImage,
     ImageGeneralUiGeneralFrameworkOptions? imageGeneralUiOptions,
   }) {
-    final ImageGeneralUiGeneralFrameworkOptions imageGeneralUiGeneralFrameworkOptions = getImageGeneralUiGeneralFrameworkOptions(imageGeneralUiOptions: imageGeneralUiOptions);
-    if (pathImage is String) {
-      if (pathImage.isNotEmpty) {
-        if (RegExp("^(assets|package)").hasMatch(pathImage)) {
-          return Image.asset(
-            pathImage,
-            errorBuilder: imageGeneralUiGeneralFrameworkOptions.errorBuilder,
-            width: imageGeneralUiGeneralFrameworkOptions.width,
-            height: imageGeneralUiGeneralFrameworkOptions.height,
-            fit: imageGeneralUiGeneralFrameworkOptions.fit,
-          );
-        } else if (RegExp("^(http)").hasMatch(pathImage)) {
-          return Image.network(
-            pathImage,
-            errorBuilder: imageGeneralUiGeneralFrameworkOptions.errorBuilder,
-            width: imageGeneralUiGeneralFrameworkOptions.width,
-            height: imageGeneralUiGeneralFrameworkOptions.height,
-            fit: imageGeneralUiGeneralFrameworkOptions.fit,
-          );
-        } else {
-          return Image.file(
-            File(pathImage),
-            errorBuilder: imageGeneralUiGeneralFrameworkOptions.errorBuilder,
-            width: imageGeneralUiGeneralFrameworkOptions.width,
-            height: imageGeneralUiGeneralFrameworkOptions.height,
-            fit: imageGeneralUiGeneralFrameworkOptions.fit,
-          );
+    try {
+      final ImageGeneralUiGeneralFrameworkOptions imageGeneralUiGeneralFrameworkOptions = getImageGeneralUiGeneralFrameworkOptions(imageGeneralUiOptions: imageGeneralUiOptions);
+      final errorBuilder = imageGeneralUiGeneralFrameworkOptions.errorBuilder;
+      if (pathImage is String) {
+        if (pathImage.isNotEmpty) {
+          if (RegExp("^(assets|package)").hasMatch(pathImage)) {
+            
+            return Image.asset(
+              pathImage,
+              errorBuilder: errorBuilder,
+              width: imageGeneralUiGeneralFrameworkOptions.width,
+              height: imageGeneralUiGeneralFrameworkOptions.height,
+              fit: imageGeneralUiGeneralFrameworkOptions.fit,
+            );
+          } else if (RegExp("^(http)").hasMatch(pathImage)) {
+            return Image.network(
+              pathImage,
+              errorBuilder: errorBuilder,
+              width: imageGeneralUiGeneralFrameworkOptions.width,
+              height: imageGeneralUiGeneralFrameworkOptions.height,
+              fit: imageGeneralUiGeneralFrameworkOptions.fit,
+            );
+          } else {
+            final file = File(pathImage);
+            if (file.existsSync() == false) {
+              return null;
+            }
+            return Image.file(
+              file,
+              errorBuilder: errorBuilder,
+              width: imageGeneralUiGeneralFrameworkOptions.width,
+              height: imageGeneralUiGeneralFrameworkOptions.height,
+              fit: imageGeneralUiGeneralFrameworkOptions.fit,
+            );
+          }
         }
+      } else if (pathImage is List<int> || pathImage is Uint8List) {
+        if (pathImage is List && pathImage.isEmpty) {
+          return null;
+        }
+        return Image.network(
+          pathImage,
+          errorBuilder: errorBuilder,
+          width: imageGeneralUiGeneralFrameworkOptions.width,
+          height: imageGeneralUiGeneralFrameworkOptions.height,
+          fit: imageGeneralUiGeneralFrameworkOptions.fit,
+        );
+      } else if (pathImage is Widget) {
+        return Image.asset(
+          "",
+          errorBuilder: (context, error, stackTrace) {
+            return pathImage;
+          },
+          fit: imageGeneralUiGeneralFrameworkOptions.fit,
+          width: imageGeneralUiGeneralFrameworkOptions.width,
+          height: imageGeneralUiGeneralFrameworkOptions.height,
+        );
+      } else if (pathImage is File) {
+        if (pathImage.existsSync() == false) {
+          return null;
+        }
+        return Image.file(
+          pathImage,
+          errorBuilder: errorBuilder,
+          fit: imageGeneralUiGeneralFrameworkOptions.fit,
+          width: imageGeneralUiGeneralFrameworkOptions.width,
+          height: imageGeneralUiGeneralFrameworkOptions.height,
+        );
       }
-    } else if (pathImage is List<int> || pathImage is Uint8List) {
-      return Image.network(
-        pathImage,
-        errorBuilder: imageGeneralUiGeneralFrameworkOptions.errorBuilder,
-        width: imageGeneralUiGeneralFrameworkOptions.width,
-        height: imageGeneralUiGeneralFrameworkOptions.height,
-        fit: imageGeneralUiGeneralFrameworkOptions.fit,
-      );
-    } else if (pathImage is Widget) {
-      return Image.asset(
-        "",
-        errorBuilder: (context, error, stackTrace) {
-          return pathImage;
-        },
-        fit: imageGeneralUiGeneralFrameworkOptions.fit,
-        width: imageGeneralUiGeneralFrameworkOptions.width,
-        height: imageGeneralUiGeneralFrameworkOptions.height,
-      );
-    } else if (pathImage is File) {
-      return Image.file(
-        pathImage,
-        errorBuilder: imageGeneralUiGeneralFrameworkOptions.errorBuilder,
-        fit: imageGeneralUiGeneralFrameworkOptions.fit,
-        width: imageGeneralUiGeneralFrameworkOptions.width,
-        height: imageGeneralUiGeneralFrameworkOptions.height,
-      );
-    }
 
-    return null;
+      return null;
+    } catch (e) {
+      return null;
+    }
   }
 }

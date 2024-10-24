@@ -63,6 +63,7 @@ class MarkdownFlutterGeneralFrameworkWidget extends StatelessWidget {
         ParagraphMarkdownConfig(
           textStyle: (context.theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
             color: context.theme.indicatorColor,
+            shadows: context.extensionGeneralLibFlutterShadows(),
           ),
         ),
         preConfig.copy(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
-import 'package:general_lib_flutter/general_lib_flutter.dart'; 
+import 'package:general_lib_flutter/general_lib_flutter.dart';
+ 
 
 class MaterialOutlineGeneralFrameworkBuilderGeneralWidget extends StatelessWidget {
   final double? width;
@@ -32,18 +33,9 @@ class MaterialOutlineGeneralFrameworkBuilderGeneralWidget extends StatelessWidge
       margin: margin,
       decoration: BoxDecoration(
         borderRadius: borderRadius,
-        border: Border.all(
-          color: context.theme.shadowColor.withAlpha(255),
-        ),
         color: color ?? context.theme.scaffoldBackgroundColor,
-        boxShadow: [
-          BoxShadow(
-            color: context.theme.shadowColor.withAlpha(110),
-            spreadRadius: 2.5,
-            blurRadius: 3,
-            offset: const Offset(0, 0), // changes position of shadow
-          ),
-        ],
+        border: context.extensionGeneralLibFlutterBorderAll(),
+        boxShadow: context.extensionGeneralLibFlutterBoxShadows(),
       ),
       clipBehavior: Clip.antiAlias,
       child: SkeletonizerGeneralFramework(
@@ -88,7 +80,10 @@ class MaterialOutlineGeneralFrameworkButtonBuilderGeneralWidget extends Stateles
       borderRadius: borderRadius,
       isLoading: isLoading,
       child: MaterialButton(
+        clipBehavior: Clip.antiAlias,
+        minWidth: 0,
         onPressed: onPressed,
+        highlightColor: Colors.transparent,
         child: child,
       ),
     );

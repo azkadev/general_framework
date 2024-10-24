@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 /* <!-- START LICENSE -->
 
 
@@ -38,10 +40,47 @@ import 'package:general_framework/flutter/ui/markdown/core/core/markdown_flutter
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:flutter/material.dart';
 
-class MarkdownFlutterPageGeneralFramework extends StatefulWidget {
-  
+typedef MarkdownFlutterContentGeneralFrameworkFunction<T extends TermsOfServicesPageState> = FutureOr<MarkdownFlutterContentGeneralFramework> Function(BuildContext context, T termsOfServicesPageState);
+typedef MarkdownFlutterOnUrlPressedGeneralFrameworkFunction<T extends TermsOfServicesPageState> = void Function(BuildContext context, String url, T termsOfServicesPageState);
+typedef MarkdownFlutterAppBarActionsGeneralFrameworkFunction<T extends TermsOfServicesPageState> = List<Widget> Function(BuildContext context, T termsOfServicesPageState);
+typedef MarkdownFlutterPopupMenuItemsGeneralFrameworkFunction<T extends TermsOfServicesPageState> = List<PopupMenuEntry<dynamic>> Function(BuildContext context, T termsOfServicesPageState, TextStyle textStyle);
+
+class MarkdownFlutterContentGeneralFramework {
+  final String title;
+  final String content;
+  final String languageCodeId;
+  const MarkdownFlutterContentGeneralFramework({required this.title, required this.content, required this.languageCodeId});
+  static MarkdownFlutterContentGeneralFramework empty() {
+    return const MarkdownFlutterContentGeneralFramework(title: "", content: "", languageCodeId: "");
+  }
+
+  MarkdownFlutterContentGeneralFramework copyWith({
+    String? title,
+    String? content,
+    String? languageCodeId,
+  }) {
+    return MarkdownFlutterContentGeneralFramework(
+      title: title ?? this.title,
+      content: content ?? this.content,
+      languageCodeId: languageCodeId ?? this.languageCodeId,
+    );
+  }
+}
+
+class MarkdownFlutterPageGeneralFramework<T extends TermsOfServicesPageState> extends StatefulWidget {
+  final String title;
+  final MarkdownFlutterOnUrlPressedGeneralFrameworkFunction onUrlPressedBuilder;
+  final MarkdownFlutterContentGeneralFrameworkFunction<T> markdownFlutterContentGeneralFrameworkBuilder;
+  final MarkdownFlutterPopupMenuItemsGeneralFrameworkFunction<T> markdownFlutterPopupMenuItemsGeneralFrameworkBuilder;
+
+  final MarkdownFlutterAppBarActionsGeneralFrameworkFunction<T> markdownFlutterAppBarActionsGeneralFrameworkFunctionBuilder;
   const MarkdownFlutterPageGeneralFramework({
     super.key,
+    required this.title,
+    required this.markdownFlutterContentGeneralFrameworkBuilder,
+    required this.onUrlPressedBuilder,
+    required this.markdownFlutterPopupMenuItemsGeneralFrameworkBuilder,
+    required this.markdownFlutterAppBarActionsGeneralFrameworkFunctionBuilder,
   });
 
   @override
@@ -52,18 +91,24 @@ class MarkdownFlutterPageGeneralFramework extends StatefulWidget {
     required bool isLoading,
     required BuildContext context,
     required T termsOfServicesPageState,
-    required HandleFunctionGeneralLibFlutter handleFunction,
   }) {
+    final bodySmall = (context.theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
+      color: context.theme.indicatorColor,
+      shadows: context.extensionGeneralLibFlutterShadows(),
+    );
     return AppBar(
       key: key,
       centerTitle: true,
       leading: (isLoading) ? const SizedBox.shrink() : null,
       title: Text(
-        "Terms Of Services Page",
-        style: context.theme.textTheme.titleLarge,
+        termsOfServicesPageState.widget.title.trim(),
+        style: context.theme.textTheme.titleLarge?.copyWith(
+          shadows: context.extensionGeneralLibFlutterShadows(),
+        ),
       ),
       backgroundColor: context.theme.primaryColor,
       actions: [
+        ...termsOfServicesPageState.widget.markdownFlutterAppBarActionsGeneralFrameworkFunctionBuilder(context, termsOfServicesPageState),
         PopupMenuButton(
           iconSize: 20,
           position: PopupMenuPosition.under,
@@ -75,7 +120,11 @@ class MarkdownFlutterPageGeneralFramework extends StatefulWidget {
                   if (isLoading) {
                     return;
                   }
-                  
+                  termsOfServicesPageState.handleFunction(
+                    onFunction: (context, statefulWidget) async {
+                      await termsOfServicesPageState.refresh();
+                    },
+                  );
                 },
                 child: () {
                   if (isLoading) {
@@ -83,14 +132,83 @@ class MarkdownFlutterPageGeneralFramework extends StatefulWidget {
                       color: context.theme.indicatorColor,
                     );
                   }
-                  return const Row(
+                  return Row(
                     children: [
-                      IconButton(onPressed: null, icon: Icon(Icons.speaker)),
-                      Text("Speak"),
+                      IconButton(
+                        onPressed: null,
+                        icon: Icon(
+                          Icons.refresh,
+                          color: context.theme.indicatorColor,
+                          shadows: context.extensionGeneralLibFlutterShadows(),
+                        ),
+                      ),
+                      Text(
+                        "Refresh / Reload",
+                        style: bodySmall,
+                      ),
                     ],
                   );
                 }(),
               ),
+              PopupMenuItem(
+                onTap: () {
+                  if (isLoading) {
+                    return;
+                  }
+                },
+                child: () {
+                  if (isLoading) {
+                    return CircularProgressIndicator(
+                      color: context.theme.indicatorColor,
+                    );
+                  }
+                  return Row(
+                    children: [
+                      IconButton(
+                        onPressed: null,
+                        icon: Icon(
+                          Icons.speaker,
+                          color: context.theme.indicatorColor,
+                          shadows: context.extensionGeneralLibFlutterShadows(),
+                        ),
+                      ),
+                      Text(
+                        "Speak",
+                        style: bodySmall,
+                      ),
+                    ],
+                  );
+                }(),
+              ),
+              PopupMenuItem(
+                onTap: () {
+                  if (isLoading) {
+                    return;
+                  }
+                },
+                child: () {
+                  if (isLoading) {
+                    return CircularProgressIndicator(
+                      color: context.theme.indicatorColor,
+                    );
+                  }
+                  return Row(
+                    children: [
+                      IconButton(
+                          onPressed: null,
+                          icon: Icon(
+                            Icons.translate,
+                            color: context.theme.indicatorColor,
+                          )),
+                      Text(
+                        "Translate",
+                        style: bodySmall,
+                      ),
+                    ],
+                  );
+                }(),
+              ),
+              ...termsOfServicesPageState.widget.markdownFlutterPopupMenuItemsGeneralFrameworkBuilder(context, termsOfServicesPageState, bodySmall),
             ];
           },
         ),
@@ -108,15 +226,20 @@ class TermsOfServicesPageState extends State<MarkdownFlutterPageGeneralFramework
     });
   }
 
-  bool is_loading = false; 
+  MarkdownFlutterContentGeneralFramework markdownFlutterContentGeneralFramework = MarkdownFlutterContentGeneralFramework.empty();
+
+  bool is_loading = false;
   Future<void> refresh() async {
     if (is_loading) {
       return;
     }
     setState(() {
       is_loading = true;
+      markdownFlutterContentGeneralFramework = MarkdownFlutterContentGeneralFramework.empty();
     });
-    await Future(() async {});
+    await Future(() async { 
+      markdownFlutterContentGeneralFramework = await widget.markdownFlutterContentGeneralFrameworkBuilder(context, this);
+    });
     setState(() {
       is_loading = false;
     });
@@ -124,17 +247,16 @@ class TermsOfServicesPageState extends State<MarkdownFlutterPageGeneralFramework
 
   @override
   Widget build(BuildContext context) {
+    final title = markdownFlutterContentGeneralFramework.title.trim();
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: MarkdownFlutterPageGeneralFramework.appBar(
         context: context,
         termsOfServicesPageState: this,
-        handleFunction: handleFunction,
         isLoading: is_loading,
       ),
       body: RefreshIndicator(
         color: context.theme.indicatorColor,
-        onRefresh: () async {},
+        onRefresh: refresh,
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
           child: ConstrainedBox(
@@ -144,52 +266,25 @@ class TermsOfServicesPageState extends State<MarkdownFlutterPageGeneralFramework
             ),
             child: Column(
               children: [
+                if (title.isNotEmpty) ...[
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        title,
+                        style: context.theme.textTheme.titleMedium?.copyWith(
+                          shadows: context.extensionGeneralLibFlutterShadows(),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
                 MarkdownFlutterGeneralFrameworkWidget(
-                  data: """
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
-```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
-
-
-"""
-                      .trim(),
-                  onUrlPressed: (url) {},
+                  data: markdownFlutterContentGeneralFramework.content.trim(),
+                  onUrlPressed: (url) {
+                    widget.onUrlPressedBuilder(context, url, this);
+                  },
                   shrinkWrap: true,
                 ),
               ],

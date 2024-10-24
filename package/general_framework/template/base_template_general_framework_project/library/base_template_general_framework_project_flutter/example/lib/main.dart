@@ -38,8 +38,7 @@ import 'package:base_template_general_framework_project_secret/base_template_gen
 void main(List<String> args) {
   BaseTemplateGeneralFrameworkProjectFlutter.ensureInitialized(
     arguments: args,
-    baseTemplateGeneralFrameworkProjectSecretClientSide:
-        BaseTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
+    baseTemplateGeneralFrameworkProjectSecretClientSide: BaseTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
   );
   BaseTemplateGeneralFrameworkProjectFlutter.run();
 }
