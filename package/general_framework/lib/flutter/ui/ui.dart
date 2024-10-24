@@ -34,5 +34,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 export "blog/blog.dart";
 export "chat/chat.dart";
+export "alert/alert.dart";
+export "dialog/dialog.dart";
 export "documentation/documentation.dart";
 export "license/license.dart";
