@@ -34,6 +34,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 export "change_notifier/change_notifier.dart";
 export "client/client.dart";
+export "extension/extension.dart";
 export "fork/fork.dart";
 export "ui/ui.dart";
 export "widget/widget.dart";

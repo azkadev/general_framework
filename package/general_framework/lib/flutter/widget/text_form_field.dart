@@ -33,6 +33,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/typedef/typedef.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
@@ -40,6 +41,7 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
   final String? labelText;
   final IconData prefixIconData;
   final Widget Function(BuildContext context, Widget child)? prefixIconBuilder;
+  final InputDecorationBuilderGeneralFrameworkWidget? inputDecorationBuilder;
   final Color color;
   final TextEditingController? controller;
   final String? Function(String? data)? validator;
@@ -47,8 +49,15 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
   final bool obscureText;
   final Widget? suffixIcon;
   final void Function(String value)? onChanged;
+
+      final int? minLines;
+      final int? maxLength;
+      final int? maxLines ;
   const TextFormFieldGeneralFrameworkWidget({
     super.key,
+    this.minLines,
+    this.maxLength,
+    this.maxLines =1,
     this.hintText,
     this.labelText,
     this.prefixIconBuilder,
@@ -59,6 +68,7 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
     this.readOnly = false,
     this.obscureText = false,
     this.suffixIcon,
+    this.inputDecorationBuilder,
     required this.onChanged,
   });
 
@@ -70,6 +80,9 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: validator,
       readOnly: readOnly,
+      minLines: minLines,
+      maxLength:maxLength ,
+      maxLines: maxLines,
       obscureText: obscureText,
       style: TextStyle(
         shadows: [
@@ -83,27 +96,16 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
       ),
       onChanged: onChanged,
       clipBehavior: Clip.antiAlias,
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.all(0.0),
-        hintText: hintText,
-        labelText: labelText,
-        labelStyle: context.theme.textTheme.labelSmall,
-        hintStyle: TextStyle(
-          fontSize: 14.0,
-          shadows: [
-            BoxShadow(
-              color: context.theme.shadowColor.withAlpha(110),
-              spreadRadius: 1,
-              blurRadius: 4,
-              offset: const Offset(0, 3), // changes position of shadow
-            ),
-          ],
-        ),
-        prefixIcon: () {
-          final Widget child = Icon(
-            prefixIconData,
-            color: context.theme.indicatorColor,
-            size: 18,
+      decoration: (inputDecorationBuilder ?? inputDecorationBuilderGeneralFrameworkWidgetDefault)(
+        context,
+        InputDecoration(
+          contentPadding: const EdgeInsets.all(0.0),
+        
+          hintText: hintText,
+          labelText: labelText,
+          labelStyle: context.theme.textTheme.labelSmall,
+          hintStyle: TextStyle(
+            fontSize: 14.0,
             shadows: [
               BoxShadow(
                 color: context.theme.shadowColor.withAlpha(110),
@@ -112,49 +114,64 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
                 offset: const Offset(0, 3), // changes position of shadow
               ),
             ],
-          );
-          final prefixIconBuilder = this.prefixIconBuilder;
-          if (prefixIconBuilder != null) {
-            return prefixIconBuilder(context, child);
-          }
-          return child;
-        }(),
-        suffixIcon: suffixIcon,
-        disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: context.theme.focusColor,
-            width: 2,
           ),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: context.theme.focusColor,
-            width: 2,
+          prefixIcon: () {
+            final Widget child = Icon(
+              prefixIconData,
+              color: context.theme.indicatorColor,
+              size: 18,
+              shadows: [
+                BoxShadow(
+                  color: context.theme.shadowColor.withAlpha(110),
+                  spreadRadius: 1,
+                  blurRadius: 4,
+                  offset: const Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            );
+            final prefixIconBuilder = this.prefixIconBuilder;
+            if (prefixIconBuilder != null) {
+              return prefixIconBuilder(context, child);
+            }
+            return child;
+          }(),
+          suffixIcon: suffixIcon,
+          disabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: context.theme.focusColor,
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(10.0),
           ),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        floatingLabelStyle: context.theme.textTheme.labelMedium,
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: context.theme.focusColor,
-            width: 1.5,
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: context.theme.focusColor,
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(10.0),
           ),
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: context.theme.focusColor,
-            width: 1.5,
+          floatingLabelStyle: context.theme.textTheme.labelMedium,
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: context.theme.focusColor,
+              width: 1.5,
+            ),
+            borderRadius: BorderRadius.circular(15.0),
           ),
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: context.theme.indicatorColor,
-            width: 1.5,
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: context.theme.focusColor,
+              width: 1.5,
+            ),
+            borderRadius: BorderRadius.circular(15.0),
           ),
-          borderRadius: BorderRadius.circular(15.0),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: context.theme.indicatorColor,
+              width: 1.5,
+            ),
+            borderRadius: BorderRadius.circular(15.0),
+          ),
         ),
       ),
     );

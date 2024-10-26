@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import "package:general_lib_flutter/general_lib_flutter.dart";
 
- 
 class MenuContainerBuilderGeneralFrameworkWidget extends StatelessWidget {
   final bool isLoading;
   final double? width;
@@ -33,42 +32,45 @@ class MenuContainerBuilderGeneralFrameworkWidget extends StatelessWidget {
     required this.clipBehavior,
     required this.builder,
   });
- 
 
   @override
   Widget build(BuildContext context) {
+    final child = Container(
+      width: width,
+      height: height,
+      constraints: constraints,
+      transform: transform,
+      transformAlignment: transformAlignment,
+      margin: margin ?? const EdgeInsets.all(10),
+      padding: padding,
+      decoration: decorationBuilder(
+        context,
+        BoxDecoration(
+          color: context.theme.primaryColor,
+          borderRadius: BorderRadius.circular(5),
+          border: () {
+            if (isWithBorder) {
+              return context.extensionGeneralLibFlutterBorderAll();
+            }
+            return null;
+          }(),
+          boxShadow: () {
+            if (isWithShadow) {
+              return context.extensionGeneralLibFlutterBoxShadows();
+            }
+            return null;
+          }(),
+        ),
+      ),
+      clipBehavior: clipBehavior ?? Clip.antiAlias,
+      child: builder(context),
+    );
+    if (isLoading == false) {
+      return child;
+    }
     return SkeletonizerGeneralFramework(
       enabled: isLoading,
-      child: Container(
-        width: width,
-        height: height,
-        constraints: constraints,
-        transform: transform,
-        transformAlignment: transformAlignment,
-        margin: margin ?? const EdgeInsets.all(10),
-        padding: padding,
-        decoration: decorationBuilder(
-          context,
-          BoxDecoration(
-            color: context.theme.primaryColor,
-            borderRadius: BorderRadius.circular(5),
-            border: () {
-              if (isWithBorder) {
-                return context.extensionGeneralLibFlutterBorderAll();
-              }
-              return null;
-            }(),
-            boxShadow: () {
-              if (isWithShadow) {
-                return context.extensionGeneralLibFlutterBoxShadows();
-              }
-              return null;
-            }(),
-          ),
-        ),
-        clipBehavior: clipBehavior ?? Clip.antiAlias,
-        child: builder(context),
-      ),
+      child: child,
     );
   }
 }
@@ -205,7 +207,9 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
           mainAxisAlignment: mainAxisAlignment,
           children: menuBuilder(context),
         );
-      }, isWithBorder: isWithBorder, isWithShadow: isWithShadow,
+      },
+      isWithBorder: isWithBorder,
+      isWithShadow: isWithShadow,
     );
   }
 }

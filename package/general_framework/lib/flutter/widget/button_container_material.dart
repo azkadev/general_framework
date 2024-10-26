@@ -54,9 +54,8 @@ class ButtonContainerMaterialGeneralFrameworkWidget extends StatelessWidget {
           boxShadow: isWithBorder ? context.extensionGeneralLibFlutterBoxShadows() : null,
         ),
       ),
-      child: SkeletonizerGeneralFramework(
-        enabled: isLoading,
-        child: MaterialButton(
+      child: () {
+        final child = MaterialButton(
           clipBehavior: clipBehavior,
           onPressed: onPressed,
           minWidth: 0,
@@ -64,8 +63,15 @@ class ButtonContainerMaterialGeneralFrameworkWidget extends StatelessWidget {
           highlightColor: Colors.transparent,
           onLongPress: onLongPress,
           child: builder(context),
-        ),
-      ),
+        );
+        if (isLoading) {
+          return SkeletonizerGeneralFramework(
+            enabled: isLoading,
+            child: child,
+          );
+        }
+        return child;
+      }(),
     );
   }
 }
