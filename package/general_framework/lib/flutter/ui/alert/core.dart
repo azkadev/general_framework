@@ -218,7 +218,7 @@ class _AlertGeneralFrameworkWidgetState extends State<AlertGeneralFrameworkWidge
                       builder: (context) {
                         return Padding(
                           padding: const EdgeInsets.all(10),
-                          child: Text(widget.alertGeneralFrameworkOptions.confirmText.trim()),
+                          child: Text(widget.alertGeneralFrameworkOptions.cancelText.trim()),
                         );
                       },
                       isLoading: false,
