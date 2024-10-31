@@ -53,7 +53,7 @@ class HeadingNode extends ElementNode {
 class _Divider extends StatelessWidget {
   final HeadingDivider divider;
 
-  const _Divider({super.key, required this.divider});
+  const _Divider({required this.divider});
 
   @override
   Widget build(BuildContext context) {

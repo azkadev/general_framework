@@ -27,7 +27,7 @@ class CodeConfig implements InlineConfig {
       {this.style = const TextStyle(backgroundColor: Color(0xCCeff1f3))});
 
   static CodeConfig get darkConfig =>
-      CodeConfig(style: const TextStyle(backgroundColor: Color(0xCC555555)));
+      const CodeConfig(style: TextStyle(backgroundColor: Color(0xCC555555)));
 
   @nonVirtual
   @override

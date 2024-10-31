@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class LoadingGeneralFrameworkController extends ChangeNotifier {
-  String loading_text;
+  String loadingText;
   LoadingGeneralFrameworkController({
-    required this.loading_text,
+    required this.loadingText,
   });
 
   void update({
     required String loadingText,
   }) {
-    loading_text = loadingText;
+    this.loadingText = loadingText;
     notifyListeners();
   }
 }

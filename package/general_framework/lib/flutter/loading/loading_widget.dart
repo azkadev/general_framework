@@ -16,7 +16,7 @@ class LoadingGeneralFrameworkWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListenableBuilder(
       listenable: loadingGeneralFrameworkController,
-      builder: (context, child_or_null) {
+      builder: (context, childOrNull) {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -58,7 +58,7 @@ class LoadingGeneralFrameworkWidget extends StatelessWidget {
             }(),
             () {
               final Widget child = Text(
-                loadingGeneralFrameworkController.loading_text.trim(),
+                loadingGeneralFrameworkController.loadingText.trim(),
                 style: TextStyle(
                   color: context.theme.indicatorColor,
                   fontSize: 12,

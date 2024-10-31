@@ -281,7 +281,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
       anchorPoint: anchorPoint,
       traversalEdgeBehavior: traversalEdgeBehavior,
       builder: (context, setState) {
-        final Size size_max = Size(context.width, context.height - (context.mediaQueryData.padding.bottom + context.mediaQueryData.padding.top));
+        final Size sizeMax = Size(context.width, context.height - (context.mediaQueryData.padding.bottom + context.mediaQueryData.padding.top));
         // print(size_max.height);
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -292,12 +292,12 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
             Flexible(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxHeight: size_max.height,
-                  maxWidth: size_max.width,
+                  maxHeight: sizeMax.height,
+                  maxWidth: sizeMax.width,
                 ),
                 child: MediaQuery(
                   data: context.mediaQueryData.copyWith(
-                    size: size_max,
+                    size: sizeMax,
                   ),
                   child: Builder(
                     builder: (context) {
@@ -328,15 +328,15 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     final RenderBox button = findRenderObject()! as RenderBox;
     final RenderBox overlay = Navigator.of(this).overlay!.context.findRenderObject()! as RenderBox;
     final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(this);
-
-    final PopupMenuPosition popup_menu_position = popupMenuPosition ?? popupMenuTheme.position ?? PopupMenuPosition.over;
+ 
+    popupMenuPosition ??= popupMenuTheme.position ?? PopupMenuPosition.over;
 
     // Offset offset = Offset(
     //   0,
     //   button.size.height,
     // );
     late Offset offset;
-    switch (popup_menu_position) {
+    switch (popupMenuPosition) {
       case PopupMenuPosition.over:
         offset = popUpOffset;
       case PopupMenuPosition.under:

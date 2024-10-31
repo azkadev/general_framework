@@ -1,3 +1,5 @@
+// ignore_for_file: empty_catches
+
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/ui/dialog/core.dart';
 import 'package:general_framework/flutter/widget/menu_container.dart';
@@ -45,9 +47,9 @@ class LanguageGeneralFrameworkOptions {
       if (countryCodes.isNotEmpty) {
         final List<MapEntry<String, LanguageCodeDataDetail>> results = [];
 
-        for (final country_code in countryCodes) {
+        for (final countryCode in countryCodes) {
           for (var element in languageCodeDetailData.entries.toList()) {
-            if (element.key == country_code) {
+            if (element.key == countryCode) {
               results.add(element);
             }
           }
@@ -63,12 +65,12 @@ class LanguageGeneralFrameworkOptions {
     required List<MapEntry<String, LanguageCodeDataDetail>> languageCodeDatas,
     required String value,
   }) {
-    final List<MapEntry<String, LanguageCodeDataDetail>> language_code_results = [];
+    final List<MapEntry<String, LanguageCodeDataDetail>> languageCodeResults = [];
 
     for (final element in languageCodeDatas) {
       try {
         if (RegExp("^(([0-9]+))", caseSensitive: false).hasMatch(value)) {
-          if (!RegExp("^(${value})", caseSensitive: false).hasMatch((element.value.dial_code ?? "").replaceAll(RegExp("([+])"), ""))) {
+          if (!RegExp("^($value)", caseSensitive: false).hasMatch((element.value.dial_code ?? "").replaceAll(RegExp("([+])"), ""))) {
             continue;
           }
         } else {
@@ -76,15 +78,15 @@ class LanguageGeneralFrameworkOptions {
             continue;
           }
         }
-        if (!language_code_results.contains(element)) {
-          language_code_results.add(element);
+        if (!languageCodeResults.contains(element)) {
+          languageCodeResults.add(element);
         }
       } catch (e) {}
     }
     sort(
-      languages: language_code_results,
+      languages: languageCodeResults,
     );
-    return language_code_results;
+    return languageCodeResults;
   }
 
   static void sort({

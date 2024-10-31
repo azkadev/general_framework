@@ -95,7 +95,7 @@ class LicenseGeneralFrameworkPage extends StatefulWidget {
 }
 
 class _LicenseGeneralFrameworkPageState extends State<LicenseGeneralFrameworkPage> {
-  final LicenseDetailData license_detail_data = LicenseDetailData();
+  final LicenseDetailData licenseDetailData = LicenseDetailData();
   @override
   void initState() {
     super.initState();
@@ -106,25 +106,25 @@ class _LicenseGeneralFrameworkPageState extends State<LicenseGeneralFrameworkPag
 
   @override
   void dispose() {
-    license_detail_data.dispose();
+    licenseDetailData.dispose();
     super.dispose();
   }
 
-  bool is_loading = false;
+  bool isLoading = false;
 
   Future<void> refresh() async {
-    if (is_loading) {
+    if (isLoading) {
       return;
     }
     setState(() {
-      is_loading = true;
+      isLoading = true;
     });
     await Future(() async {
-      await license_detail_data.refresh();
+      await licenseDetailData.refresh();
       // license_detail_data = await LicenseDetailData.init();
     });
     setState(() {
-      is_loading = false;
+      isLoading = false;
     });
   }
 
@@ -157,7 +157,7 @@ class _LicenseGeneralFrameworkPageState extends State<LicenseGeneralFrameworkPag
       poweredBy: widget.poweredBy,
     );
 
-    if (is_loading) {
+    if (isLoading) {
       return SingleChildScrollView(
         child: Column(
           children: [
@@ -168,7 +168,7 @@ class _LicenseGeneralFrameworkPageState extends State<LicenseGeneralFrameworkPag
       );
     }
     return ListenableBuilder(
-      listenable: license_detail_data,
+      listenable: licenseDetailData,
       builder: (context, child) {
         return RefreshIndicator(
           onRefresh: refresh,
@@ -178,11 +178,11 @@ class _LicenseGeneralFrameworkPageState extends State<LicenseGeneralFrameworkPag
             child: Column(
               children: [
                 about,
-                for (var index = 0; index < license_detail_data.packages.length; index++) ...[
+                for (var index = 0; index < licenseDetailData.packages.length; index++) ...[
                   () {
-                    final String packageName = license_detail_data.packages[index];
-                    final List<int> bindings = license_detail_data.packageLicenseBindings[packageName]!;
-                    final bool isSelected = isLandscape && index == (license_detail_data.current_selected_package_index ?? 0);
+                    final String packageName = licenseDetailData.packages[index];
+                    final List<int> bindings = licenseDetailData.packageLicenseBindings[packageName]!;
+                    final bool isSelected = isLandscape && index == (licenseDetailData.currentSelectedPackageIndex ?? 0);
                     return Ink(
                       color: (isSelected) ? context.theme.highlightColor : null,
                       child: ListTile(
@@ -201,12 +201,12 @@ class _LicenseGeneralFrameworkPageState extends State<LicenseGeneralFrameworkPag
                           ),
                         ),
                         onTap: () {
-                          license_detail_data.setindex(index);
+                          licenseDetailData.setindex(index);
                           // selectedId.value = index;
                           // license_detail_data;
                           MasterDetailFlowWidget.of(context).openDetailPage(_DetailArguments(
                             packageName,
-                            bindings.map((int i) => license_detail_data.licenses[i]).toList(growable: false),
+                            bindings.map((int i) => licenseDetailData.licenses[i]).toList(growable: false),
                           ));
                         },
                       ),
@@ -296,13 +296,13 @@ class LicenseDetailData extends ChangeNotifier {
   final List<LicenseEntry> licenses = <LicenseEntry>[];
   final Map<String, List<int>> packageLicenseBindings = <String, List<int>>{};
   final List<String> packages = <String>[];
-  int? current_selected_package_index;
+  int? currentSelectedPackageIndex;
   // Special treatment for the first package since it should be the package
   // for delivered application.
   // String? firstPackage;
 
   Future<void> refresh() async {
-    current_selected_package_index = 0;
+    currentSelectedPackageIndex = 0;
     licenses.clear();
     packageLicenseBindings.clear();
     packages.clear();
@@ -315,7 +315,7 @@ class LicenseDetailData extends ChangeNotifier {
   }
 
   void setindex(int index) {
-    current_selected_package_index = index;
+    currentSelectedPackageIndex = index;
     notifyListeners();
   }
 
@@ -538,7 +538,7 @@ class PackageLicenseLandscapeGeneralUiPageState extends State<PackageLicenseLand
             automaticallyImplyLeading: false,
             pinned: true,
             centerTitle: true,
-            backgroundColor: theme.primaryColor, 
+            backgroundColor: theme.primaryColor,
             title: PackageLicenseLandscapeGeneralUiPageTitle(
               title: title,
               subtitle: subtitle,
@@ -865,7 +865,7 @@ class MasterDetailFlowWidgetState extends State<MasterDetailFlowWidget> implemen
   MaterialPageRoute<void> detailPageRoute(Object? arguments) {
     return MaterialPageRoute<dynamic>(builder: (BuildContext context) {
       return PopScope(
-        onPopInvoked: (bool didPop) {
+        onPopInvokedWithResult: (bool didPop, _) {
           // No need for setState() as rebuild happens on navigation pop.
           focus = FocusLicenseType.master;
         },
@@ -991,24 +991,23 @@ class MasterDetailScaffoldWidgetState extends State<MasterDetailScaffoldWidget> 
           appBar: AppBar(
             title: widget.title,
             centerTitle: true,
-          leading: IconButton(
-            onPressed: () {
-              context.navigator().pop();
-            },
-            padding: const EdgeInsets.all(15),
-            icon: Icon(
-              Icons.arrow_back,
-              shadows: [
-                BoxShadow(
-                  color: context.theme.shadowColor.withAlpha(110),
-                  spreadRadius: 1,
-                  blurRadius: 4,
-                  offset: const Offset(0, 3),
-                ),
-              ],
+            leading: IconButton(
+              onPressed: () {
+                context.navigator().pop();
+              },
+              padding: const EdgeInsets.all(15),
+              icon: Icon(
+                Icons.arrow_back,
+                shadows: [
+                  BoxShadow(
+                    color: context.theme.shadowColor.withAlpha(110),
+                    spreadRadius: 1,
+                    blurRadius: 4,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
             ),
-          ),
-          
             actions: widget.actionBuilder!(context, ActionLevelType.top),
             backgroundColor: context.theme.primaryColor,
             bottom: PreferredSize(

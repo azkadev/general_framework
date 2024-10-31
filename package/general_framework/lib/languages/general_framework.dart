@@ -14,7 +14,14 @@ final Map<String, Map> general_framework_language_scheme = () {
       },
     },
     /// sign: end
-    
+    /// ads: start
+    "ads": {
+      "title": {
+        "en": "Ads",
+        "id": "Iklan"
+      },
+    },
+    // ads: end
   }.map((key, value) {
     return MapEntry(
       "general_framework_${key}",

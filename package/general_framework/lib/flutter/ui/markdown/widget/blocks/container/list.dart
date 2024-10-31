@@ -168,7 +168,7 @@ class _UlMarker extends StatelessWidget {
   final int depth;
   final Color? color;
 
-  const _UlMarker({super.key, this.depth = 0, this.color});
+  const _UlMarker({this.depth = 0, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -207,7 +207,7 @@ class _OlMarker extends StatelessWidget {
   final Color? color;
   final ParagraphMarkdownConfig config;
 
-  const _OlMarker({super.key, this.depth = 0, this.color, this.index = 1, required this.config});
+  const _OlMarker({this.depth = 0, this.color, this.index = 1, required this.config});
 
   @override
   Widget build(BuildContext context) {
