@@ -14,8 +14,7 @@ dependencies:
     path: '../base_template_general_framework_project_scheme'
   base_template_general_framework_project_secret: 
     path: '../base_template_general_framework_project_secret'
-  general_framework: 
-    path: '../../../../'
+  general_framework: '^0.0.4'
 dev_dependencies: 
   lints: '^4.0.0'
   test: 'any'

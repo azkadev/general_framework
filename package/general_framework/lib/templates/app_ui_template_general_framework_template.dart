@@ -395,11 +395,6 @@ public final class GeneratedPluginRegistrant {
   private static final String TAG = "GeneratedPluginRegistrant";
   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
     try {
-      flutterEngine.getPlugins().add(new dev.fluttercommunity.plus.battery.BatteryPlusPlugin());
-    } catch (Exception e) {
-      Log.e(TAG, "Error registering plugin battery_plus, dev.fluttercommunity.plus.battery.BatteryPlusPlugin", e);
-    }
-    try {
       flutterEngine.getPlugins().add(new io.flutter.plugins.camerax.CameraAndroidCameraxPlugin());
     } catch (Exception e) {
       Log.e(TAG, "Error registering plugin camera_android_camerax, io.flutter.plugins.camerax.CameraAndroidCameraxPlugin", e);
@@ -2193,12 +2188,6 @@ NS_ASSUME_NONNULL_END
 
 #import "GeneratedPluginRegistrant.h"
 
-#if __has_include(<battery_plus/FPPBatteryPlusPlugin.h>)
-#import <battery_plus/FPPBatteryPlusPlugin.h>
-#else
-@import battery_plus;
-#endif
-
 #if __has_include(<camera_avfoundation/CameraPlugin.h>)
 #import <camera_avfoundation/CameraPlugin.h>
 #else
@@ -2298,7 +2287,6 @@ NS_ASSUME_NONNULL_END
 @implementation GeneratedPluginRegistrant
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
-  [FPPBatteryPlusPlugin registerWithRegistrar:[registry registrarForPlugin:@"FPPBatteryPlusPlugin"]];
   [CameraPlugin registerWithRegistrar:[registry registrarForPlugin:@"CameraPlugin"]];
   [FilePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FilePickerPlugin"]];
   [FlutterTtsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterTtsPlugin"]];
@@ -5592,7 +5580,6 @@ MyApplication* my_application_new();
 import FlutterMacOS
 import Foundation
 
-import battery_plus
 import flutter_tts
 import gamepads_darwin
 import local_auth_darwin
@@ -5608,7 +5595,6 @@ import wakelock_plus
 import window_manager
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-  BatteryPlusMacosPlugin.register(with: registry.registrar(forPlugin: "BatteryPlusMacosPlugin"))
   FlutterTtsPlugin.register(with: registry.registrar(forPlugin: "FlutterTtsPlugin"))
   GamepadsDarwinPlugin.register(with: registry.registrar(forPlugin: "GamepadsDarwinPlugin"))
   FLALocalAuthPlugin.register(with: registry.registrar(forPlugin: "FLALocalAuthPlugin"))
@@ -7625,7 +7611,6 @@ add_custom_target(flutter_assemble DEPENDS
 
 #include "generated_plugin_registrant.h"
 
-#include <battery_plus/battery_plus_windows_plugin.h>
 #include <camera_windows/camera_windows.h>
 #include <flutter_tts/flutter_tts_plugin.h>
 #include <gamepads_windows/gamepads_windows_plugin_c_api.h>
@@ -7639,8 +7624,6 @@ add_custom_target(flutter_assemble DEPENDS
 #include <window_manager/window_manager_plugin.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
-  BatteryPlusWindowsPluginRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("BatteryPlusWindowsPlugin"));
   CameraWindowsRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("CameraWindows"));
   FlutterTtsPluginRegisterWithRegistrar(
@@ -7707,7 +7690,6 @@ void RegisterPlugins(flutter::PluginRegistry* registry);
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  battery_plus
   camera_windows
   flutter_tts
   gamepads_windows
@@ -9565,8 +9547,7 @@ dependencies:
   general_lib_flutter: '^0.0.27'
   general_lib: '^0.0.46'
   simulate: '^0.0.41'
-  general_framework: 
-    path: '../../'
+  general_framework: '^0.0.4'
 dev_dependencies: 
   flutter_test: 
     sdk: 'flutter'

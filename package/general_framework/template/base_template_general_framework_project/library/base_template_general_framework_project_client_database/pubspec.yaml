@@ -11,8 +11,7 @@ dependencies:
   general_lib: '^0.0.46'
   path: '^1.9.0'
   http: '^1.2.2'
-  general_framework: 
-    path: '../../../../'
+  general_framework: '^0.0.4'
   base_template_general_framework_project_isar_scheme: 
     path: '../base_template_general_framework_project_isar_scheme'
   isar: '^4.0.0-dev.14'
