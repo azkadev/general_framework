@@ -1,6 +1,117 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/typedef/typedef.dart';
 import 'package:general_framework/flutter/widget/menu_container.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
+
+class DialogGeneralFramework {
+  static Future<T?> showBuilder<T>({
+    required BuildContext context,
+    required WidgetBuilder builder,
+    required bool barrierDismissible,
+    required Color? barrierColor,
+    required String? barrierLabel,
+    required bool useSafeArea,
+    required bool useRootNavigator,
+    required RouteSettings? routeSettings,
+    required Offset? anchorPoint,
+    required TraversalEdgeBehavior? traversalEdgeBehavior,
+  }) async {
+    return await showDialog<T>(
+      context: context,
+      barrierDismissible: barrierDismissible,
+      barrierColor: barrierColor,
+      barrierLabel: barrierLabel,
+      useSafeArea: useSafeArea,
+      useRootNavigator: useRootNavigator,
+      routeSettings: routeSettings,
+      anchorPoint: anchorPoint,
+      traversalEdgeBehavior: traversalEdgeBehavior,
+      builder: (context) {
+        return ScaffoldMessenger(
+          child: Builder(
+            builder: builder,
+          ),
+        );
+      },
+    );
+  }
+
+  static Future<T?> show<T>({
+    required BuildContext context,
+    required bool isWithBlur,
+    required StatefulWidgetBuilder builder,
+    bool isCanShowSnackBar = false,
+    ImageFilter? blurFilter,
+    BlendMode blurBlendMode = BlendMode.srcOver,
+    bool barrierDismissible = true,
+    Color? barrierColor,
+    String? barrierLabel,
+    bool useSafeArea = true,
+    bool useRootNavigator = false,
+    RouteSettings? routeSettings,
+    Offset? anchorPoint,
+    TraversalEdgeBehavior? traversalEdgeBehavior,
+    ShapeBorderBuilderGeneralFrameworkWidget? dialogShapeBuilder,
+  }) async {
+    return await showBuilder<T>(
+      context: context,
+      builder: (context) {
+        if (isWithBlur) {
+          final child = BackdropFilter(
+            filter: blurFilter ?? ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+            blendMode: blurBlendMode,
+            child: Dialog(
+              shape: (dialogShapeBuilder ?? shapeBorderBuilderGeneralFrameworkWidgetDefault)(
+                context,
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+              backgroundColor: Colors.transparent,
+              child: StatefulBuilder(
+                builder: (context, setState) {
+                  return builder(context, setState);
+                },
+              ),
+            ),
+          );
+          if (isCanShowSnackBar) {
+            return Scaffold(
+              backgroundColor: Colors.transparent,
+              body: child,
+            );
+          }
+          return child;
+        }
+        final child = Dialog(
+          backgroundColor: Colors.transparent,
+          child: StatefulBuilder(
+            builder: (context, setState) {
+              return builder(context, setState);
+            },
+          ),
+        );
+          if (isCanShowSnackBar) {
+            return Scaffold(
+              backgroundColor: Colors.transparent,
+              body: child,
+            );
+          }
+          return child;
+      },
+      barrierDismissible: barrierDismissible,
+      barrierColor: barrierColor,
+      barrierLabel: barrierLabel,
+      useSafeArea: useSafeArea,
+      useRootNavigator: useRootNavigator,
+      routeSettings: routeSettings,
+      anchorPoint: anchorPoint,
+      traversalEdgeBehavior: traversalEdgeBehavior,
+    );
+  }
+}
 
 extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
   Future<B?> showDialogBuilderWithTitleGeneralFramework<B>({
@@ -16,10 +127,13 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
     Color? color,
+    bool isWithBlur = true,
   }) async {
     // return showDialogWithTitleGeneralFramework(title: title, children: children)
     return await showDialogGeneralFramework<B>(
       barrierDismissible: barrierDismissible,
+      
+      isWithBlur: isWithBlur,
       barrierColor: barrierColor,
       barrierLabel: barrierLabel,
       useSafeArea: useSafeArea,
@@ -116,7 +230,10 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
 
   Future<B?> showDialogGeneralFramework<B>({
     required Widget Function(BuildContext context, void Function(void Function()) setState) builder,
-    // required List<Widget> children,
+    bool isWithBlur = false,
+    bool       isCanShowSnackBar = false,
+    ImageFilter? blurFilter,
+    BlendMode blurBlendMode = BlendMode.srcOver,
     bool barrierDismissible = true,
     Color? barrierColor,
     String? barrierLabel,
@@ -125,9 +242,12 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     RouteSettings? routeSettings,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
+    ShapeBorder Function(BuildContext, ShapeBorder)? dialogShapeBuilder,
   }) async {
-    // StatefulWidget();
-    return await this.showDialog<B>(
+    return await DialogGeneralFramework.show<B>(
+      context: this,
+      isWithBlur: isWithBlur,
+      isCanShowSnackBar:       isCanShowSnackBar,
       barrierDismissible: barrierDismissible,
       barrierColor: barrierColor,
       barrierLabel: barrierLabel,
@@ -136,21 +256,13 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
       routeSettings: routeSettings,
       anchorPoint: anchorPoint,
       traversalEdgeBehavior: traversalEdgeBehavior,
-      builder: (context) {
-        return Dialog(
-          backgroundColor: Colors.transparent,
-          child: StatefulBuilder(
-            builder: (context, setState) {
-              return builder(context, setState);
-            },
-          ),
-        );
-      },
+      builder: builder,
     );
   }
 
   Future<T?> showDialogFloatingGeneralFramework<T>({
     required Widget Function(BuildContext context, void Function(void Function()) setState) builder,
+    bool isWithBlur = true,
     bool barrierDismissible = true,
     Color? barrierColor,
     String? barrierLabel,
@@ -201,6 +313,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
           ],
         );
       },
+      isWithBlur: isWithBlur,
     );
   }
 

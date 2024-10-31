@@ -11,6 +11,7 @@ extension AlertGeneralFrameworkExtensionBuildContext on BuildContext {
     return await showDialogGeneralFramework<T>(
       useRootNavigator: alertGeneralFrameworkOptions.useRootNavigator,
       barrierDismissible: alertGeneralFrameworkOptions.barrierDismissible,
+      isWithBlur: alertGeneralFrameworkOptions.isWithBlur,
       builder: (context, setState) {
         return AlertGeneralFrameworkWidget(
           alertGeneralFrameworkOptions: alertGeneralFrameworkOptions,
@@ -22,6 +23,7 @@ extension AlertGeneralFrameworkExtensionBuildContext on BuildContext {
 
 class AlertGeneralFrameworkOptions {
   final String title;
+  final bool isWithBlur;
   final AlertGeneralFrameworkButtonFunction<dynamic> builder;
   final String confirmText;
   final String cancelText;
@@ -38,6 +40,7 @@ class AlertGeneralFrameworkOptions {
   AlertGeneralFrameworkOptions({
     required this.title,
     required this.builder,
+    this.isWithBlur = false,
     this.isAutoCloseOnConfirmBtnPressed = true,
     this.color,
     this.borderRadius,
@@ -116,8 +119,8 @@ class _AlertGeneralFrameworkWidgetState extends State<AlertGeneralFrameworkWidge
     final dynamic body = widget.alertGeneralFrameworkOptions.builder(context, widget.alertGeneralFrameworkOptions);
 
     return MenuContainerBuilderGeneralFrameworkWidget(
-      isWithBorder: false,
-      isWithShadow: false,
+      isWithBorder: true,
+      isWithShadow: true,
       isLoading: false,
       width: null,
       height: null,

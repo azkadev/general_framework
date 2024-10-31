@@ -116,13 +116,19 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     return textStyle;
   }
 
+  static Widget titleBuilderDefault(BuildContext context, Text child) {
+    return child;
+  }
+
   static Widget lisTile({
     required BuildContext context,
+    bool isLoading = false,
     Widget? leading,
     Widget? trailing,
     bool isSelected = false,
     EdgeInsetsGeometry? contentPadding,
     required String title,
+    Widget Function(BuildContext context, Text child)? titleBuilder,
     String subtitle = "",
     TextOverflow? subtitleTextOverflow,
     int? subtitleMaxLines,
@@ -130,17 +136,21 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     void Function()? onTap,
     TextStyle Function(BuildContext context, TextStyle textStyle)? textStyleBuilder,
   }) {
-    return MaterialButton(
+    final child = MaterialButton(
       onLongPress: onLongPress,
       onPressed: onTap,
       color: (isSelected) ? context.theme.highlightColor : null,
       highlightColor: Colors.transparent,
       child: ListTile(
+        
         contentPadding: contentPadding ?? const EdgeInsets.only(),
         leading: leading,
-        title: Text(
-          title,
-          style: (textStyleBuilder ?? textStyleBuilderDefault).call(context, (context.theme.textTheme.bodyMedium ?? const TextStyle().copyWith(color: context.theme.indicatorColor))),
+        title: (titleBuilder ?? titleBuilderDefault).call(
+          context,
+          Text(
+            title,
+            style: (textStyleBuilder ?? textStyleBuilderDefault).call(context, (context.theme.textTheme.bodyMedium ?? const TextStyle().copyWith(color: context.theme.indicatorColor))),
+          ),
         ),
         subtitle: () {
           if (subtitle.trim().isNotEmpty) {
@@ -156,6 +166,13 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
         trailing: trailing,
       ),
     );
+    if (isLoading) {
+      return SkeletonizerGeneralFramework(
+        enabled: isLoading,
+        child: child,
+      );
+    }
+    return child;
   }
 
   static Widget title({

@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, overridden_fields
+// ignore_for_file: non_constant_identifier_names, overridden_fields, empty_catches
 
 /* <!-- START LICENSE -->
 
@@ -37,6 +37,9 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:general/core/player/player_controller.dart';
+import 'package:general/core/player/player_core.dart';
+import 'package:general/core/player/player_model_data.dart';
 import 'package:general/flutter/general_flutter_core.dart';
 import 'package:general_framework/core/client/core.dart';
 import 'package:general_framework/core/client/options.dart';
@@ -72,13 +75,16 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> i
     onNotFoundRoute: onNotFoundRoute,
   );
 
+  late final GeneralLibraryPlayerBase _player = generalLibrary.player();
+  late final GeneralLibraryPlayerControllerBase _player_notification;
+
   final GeneralFrameworkClientFlutterAppDirectory generalFrameworkClientFlutterAppDirectory = GeneralFrameworkClientFlutterAppDirectory();
+
   GeneralFrameworkClientFlutter({
     required this.navigatorKey,
     required this.generalLibrary,
     required this.generalFrameworkClient,
-  }){
-
+  }) {
     ensureInitializedRoute();
   }
 
@@ -100,6 +106,31 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> i
       currentPath: generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
       onInvokeValidation: onInvokeValidation,
     );
+
+    try {
+      _player.ensureInitialized();
+      
+      
+        _player_notification = player().createPlayer(player_id: "app_notification");
+      
+    } catch (e) {}
+
     is_initialized = true;
+  }
+
+  GeneralLibraryPlayerBase player() {
+    return _player;
+  }
+
+  GeneralLibraryPlayerControllerBase playerNotification() {
+    return _player_notification;
+  }
+
+  Future<void> playSoundNotification({
+    required String soundNotification,
+  }) async {
+    try {
+      await playerNotification().open(GeneralLibraryPlayerMediaBase(soundNotification));
+    } catch (e) {}
   }
 }
