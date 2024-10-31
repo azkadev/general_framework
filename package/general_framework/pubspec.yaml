@@ -39,6 +39,7 @@ dependencies:
   scroll_to_index: '^3.0.1'
   media_kit_video: '^1.2.4'
   html: '^0.15.4'
+  translate_client: '^0.0.2'
 dependency_overrides: 
   pointycastle: '3.8.0'
 dev_dependencies: 
