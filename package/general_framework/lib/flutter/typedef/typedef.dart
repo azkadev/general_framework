@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+typedef WidgetBuilderGeneralFrameworkWidget = Widget Function(BuildContext context, Widget child);
+Widget widgetBuilderGeneralFrameworkWidgetDefault(BuildContext context, Widget child) {
+  return child;
+}
+
 typedef DecorationBuilderGeneralFrameworkWidget = Decoration Function(BuildContext context, BoxDecoration decoration);
 typedef ShapeBorderBuilderGeneralFrameworkWidget = ShapeBorder Function(BuildContext context, ShapeBorder shapeBorder);
 

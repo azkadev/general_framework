@@ -40,10 +40,10 @@ import 'package:general_framework/flutter/ui/markdown/core/core/markdown_flutter
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:flutter/material.dart';
 
-typedef MarkdownFlutterContentGeneralFrameworkFunction<T extends TermsOfServicesPageState> = FutureOr<MarkdownFlutterContentGeneralFramework> Function(BuildContext context, T termsOfServicesPageState);
-typedef MarkdownFlutterOnUrlPressedGeneralFrameworkFunction<T extends TermsOfServicesPageState> = void Function(BuildContext context, String url, T termsOfServicesPageState);
-typedef MarkdownFlutterAppBarActionsGeneralFrameworkFunction<T extends TermsOfServicesPageState> = List<Widget> Function(BuildContext context, T termsOfServicesPageState);
-typedef MarkdownFlutterPopupMenuItemsGeneralFrameworkFunction<T extends TermsOfServicesPageState> = List<PopupMenuEntry<dynamic>> Function(BuildContext context, T termsOfServicesPageState, TextStyle textStyle);
+typedef MarkdownFlutterContentGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = FutureOr<MarkdownFlutterContentGeneralFramework> Function(BuildContext context, T termsOfServicesPageState);
+typedef MarkdownFlutterOnUrlPressedGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = void Function(BuildContext context, String url, T termsOfServicesPageState);
+typedef MarkdownFlutterAppBarActionsGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = List<Widget> Function(BuildContext context, T termsOfServicesPageState);
+typedef MarkdownFlutterPopupMenuItemsGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = List<PopupMenuEntry<dynamic>> Function(BuildContext context, T termsOfServicesPageState, TextStyle textStyle);
 
 class MarkdownFlutterContentGeneralFramework {
   final String title;
@@ -67,7 +67,7 @@ class MarkdownFlutterContentGeneralFramework {
   }
 }
 
-class MarkdownFlutterPageGeneralFramework<T extends TermsOfServicesPageState> extends StatefulWidget {
+class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGeneralFramework> extends StatefulWidget {
   final String title;
   final MarkdownFlutterOnUrlPressedGeneralFrameworkFunction onUrlPressedBuilder;
   final MarkdownFlutterContentGeneralFrameworkFunction<T> markdownFlutterContentGeneralFrameworkBuilder;
@@ -84,9 +84,9 @@ class MarkdownFlutterPageGeneralFramework<T extends TermsOfServicesPageState> ex
   });
 
   @override
-  State<MarkdownFlutterPageGeneralFramework> createState() => TermsOfServicesPageState();
+  State<MarkdownFlutterPageGeneralFramework> createState() => MarkdownFlutterPageStateGeneralFramework();
 
-  static AppBar appBar<T extends TermsOfServicesPageState>({
+  static AppBar appBar<T extends MarkdownFlutterPageStateGeneralFramework>({
     Key? key,
     required bool isLoading,
     required BuildContext context,
@@ -217,7 +217,7 @@ class MarkdownFlutterPageGeneralFramework<T extends TermsOfServicesPageState> ex
   }
 }
 
-class TermsOfServicesPageState extends State<MarkdownFlutterPageGeneralFramework> {
+class MarkdownFlutterPageStateGeneralFramework extends State<MarkdownFlutterPageGeneralFramework> {
   @override
   void initState() {
     super.initState();

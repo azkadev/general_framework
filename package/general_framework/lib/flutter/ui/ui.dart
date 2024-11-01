@@ -43,5 +43,6 @@ export "dialog/dialog.dart";
 export "documentation/documentation.dart";
 export "language/language.dart";
 export "license/license.dart";
+export "stories/stories.dart";
 
 export "markdown/markdown_widget.dart";

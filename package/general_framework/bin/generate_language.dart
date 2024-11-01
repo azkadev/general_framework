@@ -8,18 +8,7 @@ import 'package:general_lib/general_lib.dart';
 import "package:path/path.dart" as path;
 import 'package:translate_client/translate_client.dart';
 import 'package:universal_io/io.dart';
-
-extension DirectoryExtension on Directory {
-  Directory recreate() {
-    if (existsSync()) {
-      deleteSync(recursive: true);
-    }
-    createSync(recursive: true);
-    return this;
-    // Directory(path.join(Directory.current.path, "lib", "language"));
-  }
-}
-
+import "extension.dart";
 void main(List<String> args) async {
   final directory_lib_language= Directory(path.join(
     Directory.current.path,

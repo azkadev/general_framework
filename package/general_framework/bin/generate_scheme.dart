@@ -36,19 +36,38 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 import 'dart:io';
 
+import 'package:general_framework/general/schemes/api_schemes.dart';
+import 'package:general_framework/schemes/api_schemes.dart';
 import 'package:general_framework/schemes/schemes.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:path/path.dart' as path;
 // import 'package:universal_io/io.dart';
+import "extension.dart";
 
 void main(List<String> args) async {
-  final Directory directory_lib_scheme = Directory(path.join(Directory.current.path, "lib", "scheme"));
-  if (directory_lib_scheme.existsSync()) {
-    directory_lib_scheme.deleteSync(recursive: true);
+  {
+    final Directory directory_lib_scheme = Directory(path.join(Directory.current.path, "lib", "scheme")).recreate();
+
+    ///
+
+    await jsonToScripts(
+      api_schemes,
+      directory: Directory(path.join(directory_lib_scheme.path, "api_scheme")).recreate(),
+    );
+    await jsonToScripts(
+      schemes,
+      directory: Directory(path.join(directory_lib_scheme.path, "scheme")).recreate(),
+    );
   }
-  directory_lib_scheme.createSync(recursive: true);
-  await jsonToScripts(
-    schemes,
-    directory: directory_lib_scheme,
-  );
+
+  {
+    final Directory directory_lib_scheme = Directory(path.join(Directory.current.path, "lib", "general", "scheme")).recreate();
+
+    ///
+
+    await jsonToScripts(
+      general_api_schemes,
+      directory: Directory(path.join(directory_lib_scheme.path, "api_scheme")).recreate(),
+    ); 
+  }
 }
