@@ -33,6 +33,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 export "button_container_material.dart";
+export "button_flexible.dart";
 export "button.dart";
 export "core.dart";
 export "text_form_field.dart";

@@ -2,6 +2,9 @@
 
 // import 'package:hive_flutter/hive_flutter.dart';
 
+import 'dart:ui';
+
+import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_framework/flutter/image/image_core.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +25,12 @@ class ProfilePictureGeneralFrameworkWidget extends StatelessWidget {
   final void Function(Object e, StackTrace? stackTrace)? onError;
   final Widget Function(BuildContext context, Object error, StackTrace? stackTrace)? errorBuilder;
   final bool isUseShadow;
+  final bool isLoading;
+  final ColorFilter? colorFilter;
   const ProfilePictureGeneralFrameworkWidget({
     super.key,
+    this.colorFilter,
+    this.isLoading = false,
     this.onError,
     this.color,
     this.margin,
@@ -40,12 +47,12 @@ class ProfilePictureGeneralFrameworkWidget extends StatelessWidget {
     required this.onPressed,
   });
 
-  @override
-  Widget build(BuildContext context) {
+  Widget body(BuildContext context) {
     final decorationImageOrNull = ImageGeneralUiGeneralFramework.decorationImageOrNull(
       pathImage: pathImage,
       onError: onError,
-      imageGeneralUiOptions: const ImageGeneralUiGeneralFrameworkOptions(
+      imageGeneralUiOptions: ImageGeneralUiGeneralFrameworkOptions(
+        colorFilter: colorFilter,
         fit: BoxFit.cover,
       ),
     );
@@ -102,6 +109,18 @@ class ProfilePictureGeneralFrameworkWidget extends StatelessWidget {
           border: context.extensionGeneralLibFlutterBorderAll(),
           boxShadow: isUseShadow ? context.extensionGeneralLibFlutterBoxShadows() : null,
         ),
+        child: child,
+      );
+    }
+    return child;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final child = body(context);
+    if (isLoading) {
+      return SkeletonizerGeneralFramework(
+        enabled: isLoading,
         child: child,
       );
     }

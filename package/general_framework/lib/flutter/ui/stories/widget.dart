@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_framework/flutter/typedef/typedef.dart';
 import 'package:general_framework/flutter/widget/profile_picture.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
@@ -19,13 +22,23 @@ class StoriesGeneralFrameworkWidget extends StatelessWidget {
   final void Function()? profileOnPressed;
   final void Function()? onPressed;
   final BorderRadiusGeometry? borderRadius;
-
+  final bool isWithBlur;
   final bool profileIsUseShadow;
   final bool profileIsWithBorder;
   final bool isUseShadow;
   final bool isWithBorder;
+  final bool isLoading;
+
+  final ImageFilter? blurFilter;
+  final BlendMode blurBlendMode;
+  final ColorFilter? contentColorFilter;
   const StoriesGeneralFrameworkWidget({
     super.key,
+    this.blurFilter,
+    this.contentColorFilter,
+    this.blurBlendMode = BlendMode.srcOver,
+    this.isWithBlur = false,
+    this.isLoading = false,
     this.profileIsUseShadow = true,
     this.profileIsWithBorder = true,
     this.contentBuilder,
@@ -41,9 +54,20 @@ class StoriesGeneralFrameworkWidget extends StatelessWidget {
     required this.onPressed,
     required this.storiesGeneralFrameworkWidgetStyle,
   });
-
   @override
   Widget build(BuildContext context) {
+    final child = body(context);
+    if (isLoading) {
+      return SkeletonizerGeneralFramework(
+        enabled: isLoading,
+        child: child,
+      );
+    }
+    return child;
+  }
+  
+
+  Widget body(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -58,6 +82,7 @@ class StoriesGeneralFrameworkWidget extends StatelessWidget {
             width: context.width,
             height: context.height,
             onPressed: onPressed,
+            colorFilter: contentColorFilter ?? const ColorFilter.mode(Color.fromARGB(100, 0, 0, 0), BlendMode.srcOver),
           ),
         ),
         Positioned(

@@ -45,6 +45,9 @@ import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/scheme/socket_connection.dart';
 import 'package:http/http.dart';
 
+
+typedef GeneralFrameworkClientFunction<T extends GeneralFrameworkClient> = T Function();
+
 typedef InvokeClientValidationFunction<T> = FutureOr<T> Function(
   Map parameters,
   GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions,
@@ -121,6 +124,15 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
     );
   }
 
+  Language language({
+    String? languageCodeId,
+  }) {
+    return Language(
+      languageCode: languageCodeId ?? "",
+      regexpReplaces: [],
+    );
+  }
+  
   bool is_initialized = false;
 
   /// call this method
@@ -156,6 +168,8 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
       await web_socket_client.connect(onSocketData: onSocketData, onSocketConnection: onSocketConnection);
     }
   }
+
+
 
   Future<void> onSocketData(dynamic data) async {
     final Map result = await Future(() async {

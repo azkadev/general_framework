@@ -32,3 +32,34 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+
+import 'package:flutter/material.dart';
+import 'package:general_framework/flutter/ui/chat/controller.dart';
+
+class ChatPageGeneralFramework extends StatefulWidget {
+  final ChatControllerGeneralFramework chatControllerGeneralFramework;
+  const ChatPageGeneralFramework({
+    super.key,
+    required this.chatControllerGeneralFramework,
+  });
+
+  @override
+  State<ChatPageGeneralFramework> createState() => _ChatPageGeneralFrameworkState();
+}
+
+class _ChatPageGeneralFrameworkState extends State<ChatPageGeneralFramework> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold();
+  }
+}

@@ -8,9 +8,11 @@ class ImageGeneralUiGeneralFrameworkOptions {
   final double? height;
   final double? width;
   final BoxFit? fit;
+  final ColorFilter? colorFilter;
 
   final Widget Function(BuildContext context, Object error, StackTrace? stackTrace)? errorBuilder;
   const ImageGeneralUiGeneralFrameworkOptions({
+    this.colorFilter,
     this.width,
     this.height,
     this.errorBuilder,
@@ -72,6 +74,7 @@ class ImageGeneralUiGeneralFramework {
       }
       return DecorationImage(
         onError: onError,
+        colorFilter: imageGeneralUiGeneralFrameworkOptions.colorFilter,
         fit: imageGeneralUiGeneralFrameworkOptions.fit,
         image: image.image,
       );
@@ -105,7 +108,6 @@ class ImageGeneralUiGeneralFramework {
       if (pathImage is String) {
         if (pathImage.isNotEmpty) {
           if (RegExp("^(assets|package)").hasMatch(pathImage)) {
-            
             return Image.asset(
               pathImage,
               errorBuilder: errorBuilder,
@@ -139,7 +141,8 @@ class ImageGeneralUiGeneralFramework {
         if (pathImage is List && pathImage.isEmpty) {
           return null;
         }
-        return Image.network(
+        
+        return Image.memory(
           pathImage,
           errorBuilder: errorBuilder,
           width: imageGeneralUiGeneralFrameworkOptions.width,

@@ -46,6 +46,7 @@ import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/flutter/client/general_framework_client_flutter_app_directory.dart';
 
 import 'package:general_lib_flutter/route/route.dart';
+typedef GeneralFrameworkClientFlutterFunction<T extends GeneralFrameworkClientFlutter> = T Function();
 
 abstract class GeneralFrameworkClientFlutterCore {
   FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {}
@@ -87,6 +88,9 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> i
   }) {
     ensureInitializedRoute();
   }
+
+  
+
 
   bool is_initialized = false;
   FutureOr<void> ensureInitialized({

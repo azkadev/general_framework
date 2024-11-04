@@ -32,5 +32,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+export "controller.dart";
+export "message.dart";
 export "page.dart";
 export "widget.dart";
