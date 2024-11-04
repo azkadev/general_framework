@@ -7,6 +7,7 @@ class ButtonContainerMaterialGeneralFrameworkWidget extends StatelessWidget {
   final double? width;
 
   final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
   final BorderRadiusGeometry? borderRadius;
 
   final Clip clipBehavior;
@@ -25,6 +26,7 @@ class ButtonContainerMaterialGeneralFrameworkWidget extends StatelessWidget {
     this.height,
     this.width,
     this.margin,
+    this.padding,
     this.borderRadius,
     this.clipBehavior = Clip.antiAlias,
     this.isWithBorder = false,
@@ -57,7 +59,9 @@ class ButtonContainerMaterialGeneralFrameworkWidget extends StatelessWidget {
       child: () {
         final child = MaterialButton(
           clipBehavior: clipBehavior,
+          padding: padding ?? const EdgeInsets.all(0),
           onPressed: onPressed,
+          
           minWidth: 0,
           onHighlightChanged: onHighlightChanged,
           highlightColor: Colors.transparent,

@@ -43,3 +43,4 @@ export "theme_change.dart";
 export "tabbar.dart";
 export "material_outline_button.dart";
 export "menu_container.dart";
+export "content_media_picture_simple_with_button.dart";

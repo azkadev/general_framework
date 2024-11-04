@@ -44,8 +44,10 @@ import 'package:general/flutter/general_flutter_core.dart';
 import 'package:general_framework/core/client/core.dart';
 import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/flutter/client/general_framework_client_flutter_app_directory.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 import 'package:general_lib_flutter/route/route.dart';
+
 typedef GeneralFrameworkClientFlutterFunction<T extends GeneralFrameworkClientFlutter> = T Function();
 
 abstract class GeneralFrameworkClientFlutterCore {
@@ -64,6 +66,10 @@ abstract class GeneralFrameworkClientFlutterCore {
   }
 
   void ensureInitializedRoute() {}
+
+  GeneralLibFlutterApp generalLibFlutterAppFunction() {
+    throw UnimplementedError();
+  }
 }
 
 abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> implements GeneralFrameworkClientFlutterCore {
@@ -89,9 +95,6 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> i
     ensureInitializedRoute();
   }
 
-  
-
-
   bool is_initialized = false;
   FutureOr<void> ensureInitialized({
     required BuildContext context,
@@ -113,10 +116,8 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> i
 
     try {
       _player.ensureInitialized();
-      
-      
-        _player_notification = player().createPlayer(player_id: "app_notification");
-      
+
+      _player_notification = player().createPlayer(player_id: "app_notification");
     } catch (e) {}
 
     is_initialized = true;

@@ -3,9 +3,57 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_framework/general_services_public/dart/client/base.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
 import "package:path/path.dart" as path;
 
-abstract class GeneralServicePublicClientFlutterBaseCore {}
+abstract class GeneralServicePublicClientFlutterBaseCore {
+  dynamic home(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
+
+  dynamic ads(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
+
+  dynamic adsCreate(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
+  dynamic bot(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
+  dynamic developer(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
+  dynamic unban(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
+
+  dynamic sign(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
+
+}
 
 abstract class GeneralServicePublicClientFlutter<T extends GeneralFrameworkClientFlutter, K extends GeneralServicePublicClient> implements GeneralServicePublicClientFlutterBaseCore {
   final GeneralFrameworkClientFlutterFunction<T> generalFrameworkClientFlutterFunction;
@@ -33,16 +81,13 @@ abstract class GeneralServicePublicClientFlutter<T extends GeneralFrameworkClien
   }
 
   void ensureInitializedRoute() {
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/home", (context, data) {});
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/ads", (context, data) {});
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/create_ads", (context, data) {});
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/bot", (context, data) {});
-
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/developer", (context, data) {});
-
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/unban", (context, data) {});
-
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/sign", (context, data) {});
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/home", home);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/ads", ads);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/ads/create", adsCreate);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/bot", bot);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/developer", developer);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/unban", unban);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/sign", sign);
   }
 }
 
