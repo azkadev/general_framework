@@ -7,6 +7,14 @@ import 'package:general_lib_flutter/general_lib_flutter.dart';
 import "package:path/path.dart" as path;
 
 abstract class GeneralServicePublicClientFlutterBaseCore {
+  Widget profileAccount<T extends StatefulWidget>({
+    required BuildContext context,
+    required bool isLoading,
+    required State<T> pageState,
+  }) {
+    throw UnimplementedError("");
+  }
+
   dynamic home(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
@@ -27,18 +35,21 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
   ) {
     throw UnimplementedError("");
   }
+
   dynamic bot(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
   ) {
     throw UnimplementedError("");
   }
+
   dynamic developer(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
   ) {
     throw UnimplementedError("");
   }
+
   dynamic unban(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
@@ -52,7 +63,6 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
   ) {
     throw UnimplementedError("");
   }
-
 }
 
 abstract class GeneralServicePublicClientFlutter<T extends GeneralFrameworkClientFlutter, K extends GeneralServicePublicClient> implements GeneralServicePublicClientFlutterBaseCore {

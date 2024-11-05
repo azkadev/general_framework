@@ -82,7 +82,7 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> i
     onNotFoundRoute: onNotFoundRoute,
   );
 
-  late final GeneralLibraryPlayerBase _player = generalLibrary.player();
+  late final GeneralLibraryPlayerBase _player = generalLibrary.media_player;
   late final GeneralLibraryPlayerControllerBase _player_notification;
 
   final GeneralFrameworkClientFlutterAppDirectory generalFrameworkClientFlutterAppDirectory = GeneralFrameworkClientFlutterAppDirectory();

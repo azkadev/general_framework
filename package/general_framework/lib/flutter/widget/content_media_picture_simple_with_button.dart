@@ -79,7 +79,8 @@ class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget extends Stateles
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Padding(
+                        Flexible(
+                                child: Padding(
                           padding: const EdgeInsets.symmetric(
                             vertical: 5,
                             horizontal: 15,
@@ -94,12 +95,14 @@ class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget extends Stateles
                                 overflow: TextOverflow.ellipsis,
                               ),
                               Text(
-                                subtitle,
-                                style: context.theme.textTheme.bodySmall,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                                  subtitle,
+                                  style: context.theme.textTheme.bodySmall,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              
                             ],
                           ),
+                        ),
                         ),
                         Container(
                           decoration: BoxDecoration(
