@@ -217,6 +217,9 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              SizedBox(
+                height: context.mediaQueryData.padding.top,
+              ),
               Flexible(
                 child: Padding(
                   padding: const EdgeInsets.all(10),

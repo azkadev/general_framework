@@ -37,6 +37,7 @@ export "ads/ads.dart";
 export "blog/blog.dart";
 export "carousel/carousel.dart";
 export "chat/chat.dart";
+export "faqs/faqs.dart";
 
 export "alert/alert.dart";
 export "dialog/dialog.dart";
