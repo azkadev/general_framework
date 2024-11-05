@@ -1,12 +1,12 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, implementation_imports, empty_catches
 
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/src/scheduler/ticker.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
-import "core.dart";
-import "widget.dart";
+
 class FaqsGeneralFrameworkPage extends StatefulWidget {
   final FutureOr<FaqGeneralFrameworkOptions> Function(BuildContext context) onFaqs;
   const FaqsGeneralFrameworkPage({
@@ -18,7 +18,16 @@ class FaqsGeneralFrameworkPage extends StatefulWidget {
   State<FaqsGeneralFrameworkPage> createState() => _FaqsGeneralFrameworkPageState();
 }
 
-class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage> {
+class _TickerProviderEmpty extends TickerProvider {
+  @override
+  Ticker createTicker(TickerCallback onTick) {
+    return Ticker(onTick);
+  }
+}
+
+class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage> with TickerProviderStateMixin {
+  TabController tabController = TabController(length: 1, vsync: _TickerProviderEmpty());
+  int tabIndex = 0;
   @override
   void initState() {
     // TODO: implement initState
@@ -30,6 +39,8 @@ class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage> {
 
   @override
   void dispose() {
+    tabController.dispose();
+    faqGeneralFrameworkOptions.faqs.clear();
     super.dispose();
   }
 
@@ -42,10 +53,13 @@ class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage> {
     }
     setState(() {
       isLoading = true;
+      tabIndex = 0;
       faqGeneralFrameworkOptions.faqs.clear();
+      tabController.dispose();
     });
     await Future(() async {
       faqGeneralFrameworkOptions = await widget.onFaqs(context);
+      tabController = TabController(length: faqGeneralFrameworkOptions.faqs.length, vsync: this);
     });
     setState(() {
       isLoading = false;
@@ -91,14 +105,43 @@ class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage> {
             constraints: BoxConstraints(minHeight: context.height, minWidth: context.width),
             child: Column(
               children: [
-                for (final element in faqGeneralFrameworkOptions.faqs) ...[
-                  FaqGeneralFrameworkWidget(
-                    faq: element,
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 10,
+                if (isLoading == false) ...[
+                  if (faqGeneralFrameworkOptions.faqs.isNotEmpty) ...[
+                    TabbarGeneralFrameworkWidget(
+                      controller: tabController,
+                      tabAlignment: TabAlignment.start,
+                      onTap: (index) {
+                        setState(() {
+                          tabIndex = index;
+                        });
+                      },
+                      tabs: [
+                        for (int i = 0; i < faqGeneralFrameworkOptions.faqs.length; i++) ...[
+                          () {
+                            final e = faqGeneralFrameworkOptions.faqs[i];
+                            return Text(
+                              e.title,
+                              style: (i == tabIndex)?context.theme.textTheme.titleSmall:context.theme.textTheme.bodySmall,
+                            );
+                          }(),
+                        ],
+                      ],
                     ),
-                  ),
+                    for (final FaqGeneralFrameworkSubData element in () {
+                      try {
+                        return faqGeneralFrameworkOptions.faqs[tabIndex].data;
+                      } catch (e) {}
+                      return <FaqGeneralFrameworkSubData>[];
+                    }()) ...[
+                      FaqGeneralFrameworkWidget(
+                        faq: element,
+                        margin: const EdgeInsets.symmetric(
+                          vertical: 5,
+                          horizontal: 10,
+                        ),
+                      ),
+                    ],
+                  ],
                 ],
               ],
             ),

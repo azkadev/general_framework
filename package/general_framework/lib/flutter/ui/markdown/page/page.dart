@@ -56,7 +56,7 @@ class MarkdownFlutterContentGeneralFramework {
   final String languageCodeId;
   const MarkdownFlutterContentGeneralFramework({required this.title, required this.content, required this.languageCodeId});
   static MarkdownFlutterContentGeneralFramework empty() {
-    return MarkdownFlutterContentGeneralFramework(title: "", content: "", languageCodeId: "");
+    return const MarkdownFlutterContentGeneralFramework(title: "", content: "", languageCodeId: "");
   }
 
   MarkdownFlutterContentGeneralFramework copyWith({

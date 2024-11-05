@@ -4,7 +4,8 @@ import "package:general_lib_flutter/general_lib_flutter.dart";
 import "core.dart";
 class FaqGeneralFrameworkWidget extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
-  final FaqGeneralFrameworkData faq;
+  final FaqGeneralFrameworkSubData faq;
+  
   const FaqGeneralFrameworkWidget({
     super.key,
     required this.margin,

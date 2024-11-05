@@ -1,4 +1,3 @@
-
 class FaqGeneralFrameworkOptions {
   final List<FaqGeneralFrameworkData> faqs;
   final String languageCodeId;
@@ -13,12 +12,23 @@ class FaqGeneralFrameworkOptions {
     );
   }
 }
+// MarkdownFlutterContentGeneralFramework
 
 class FaqGeneralFrameworkData {
+  final String title;
+  final List<FaqGeneralFrameworkSubData> data;
+  FaqGeneralFrameworkData({
+    required this.title,
+    
+    required this.data,
+  });
+}
+
+class FaqGeneralFrameworkSubData {
   final String question;
   final String answer;
 
-  FaqGeneralFrameworkData({
+  FaqGeneralFrameworkSubData({
     required this.question,
     required this.answer,
   });
