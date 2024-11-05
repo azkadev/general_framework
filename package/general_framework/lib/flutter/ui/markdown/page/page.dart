@@ -36,14 +36,19 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 import 'dart:async';
 
-import 'package:general_framework/flutter/ui/markdown/core/core/markdown_flutter_widget.dart';
+import 'package:general/flutter/general_flutter_core.dart';
+import 'package:general/flutter/text_to_speech/text_to_speech.dart';
+import 'package:general_framework/flutter/flutter.dart';
+import 'package:general_framework/flutter/loading/loading_controller.dart';
+import 'package:general_framework/flutter/loading/loading_core.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:translate_client/translate_client_core.dart';
 
-typedef MarkdownFlutterContentGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = FutureOr<MarkdownFlutterContentGeneralFramework> Function(BuildContext context, T termsOfServicesPageState);
-typedef MarkdownFlutterOnUrlPressedGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = void Function(BuildContext context, String url, T termsOfServicesPageState);
-typedef MarkdownFlutterAppBarActionsGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = List<Widget> Function(BuildContext context, T termsOfServicesPageState);
-typedef MarkdownFlutterPopupMenuItemsGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = List<PopupMenuEntry<dynamic>> Function(BuildContext context, T termsOfServicesPageState, TextStyle textStyle);
+typedef MarkdownFlutterContentGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = FutureOr<MarkdownFlutterContentGeneralFramework> Function(BuildContext context, T markdownFlutterPageStateGeneralFramework);
+typedef MarkdownFlutterOnUrlPressedGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = void Function(BuildContext context, String url, T markdownFlutterPageStateGeneralFramework);
+typedef MarkdownFlutterAppBarActionsGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = List<Widget> Function(BuildContext context, T markdownFlutterPageStateGeneralFramework);
+typedef MarkdownFlutterPopupMenuItemsGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = List<PopupMenuEntry<dynamic>> Function(BuildContext context, T markdownFlutterPageStateGeneralFramework, TextStyle textStyle);
 
 class MarkdownFlutterContentGeneralFramework {
   final String title;
@@ -51,7 +56,7 @@ class MarkdownFlutterContentGeneralFramework {
   final String languageCodeId;
   const MarkdownFlutterContentGeneralFramework({required this.title, required this.content, required this.languageCodeId});
   static MarkdownFlutterContentGeneralFramework empty() {
-    return const MarkdownFlutterContentGeneralFramework(title: "", content: "", languageCodeId: "");
+    return MarkdownFlutterContentGeneralFramework(title: "", content: "", languageCodeId: "");
   }
 
   MarkdownFlutterContentGeneralFramework copyWith({
@@ -90,7 +95,7 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
     Key? key,
     required bool isLoading,
     required BuildContext context,
-    required T termsOfServicesPageState,
+    required T markdownFlutterPageStateGeneralFramework,
   }) {
     final bodySmall = (context.theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
       color: context.theme.indicatorColor,
@@ -101,14 +106,14 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
       centerTitle: true,
       leading: (isLoading) ? const SizedBox.shrink() : null,
       title: Text(
-        termsOfServicesPageState.widget.title.trim(),
+        markdownFlutterPageStateGeneralFramework.widget.title.trim(),
         style: context.theme.textTheme.titleLarge?.copyWith(
           shadows: context.extensionGeneralLibFlutterShadows(),
         ),
       ),
       backgroundColor: context.theme.primaryColor,
       actions: [
-        ...termsOfServicesPageState.widget.markdownFlutterAppBarActionsGeneralFrameworkFunctionBuilder(context, termsOfServicesPageState),
+        ...markdownFlutterPageStateGeneralFramework.widget.markdownFlutterAppBarActionsGeneralFrameworkFunctionBuilder(context, markdownFlutterPageStateGeneralFramework),
         PopupMenuButton(
           iconSize: 20,
           position: PopupMenuPosition.under,
@@ -120,9 +125,9 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
                   if (isLoading) {
                     return;
                   }
-                  termsOfServicesPageState.handleFunction(
+                  markdownFlutterPageStateGeneralFramework.handleFunction(
                     onFunction: (context, statefulWidget) async {
-                      await termsOfServicesPageState.refresh();
+                      await markdownFlutterPageStateGeneralFramework.refresh();
                     },
                   );
                 },
@@ -155,6 +160,32 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
                   if (isLoading) {
                     return;
                   }
+                  markdownFlutterPageStateGeneralFramework.handleFunction(
+                    onFunction: (context, statefulWidget) async {
+                      if (markdownFlutterPageStateGeneralFramework.textToSpeech.isSupport() == false) {
+                        context.showAlertGeneralFramework(
+                          alertGeneralFrameworkOptions: AlertGeneralFrameworkOptions(
+                            title: "Unsupported",
+                            isShowCancelButton: false,
+                            isShowCloseButton: false,
+                            builder: (context, alertGeneralFrameworkOptions) {
+                              return "Maaf device anda saat ini tidak support text to speech, tunggu beberapa hari ya sampai kami bisa develop text to speech pada device anda";
+                            },
+                          ),
+                        );
+                        return;
+                      }
+
+                      for (final element in [
+                        markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.title.trim(),
+                        markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.content.trim(),
+                      ]) {
+                        if (element.isNotEmpty) {
+                          await markdownFlutterPageStateGeneralFramework.textToSpeech.speak(text: element);
+                        }
+                      }
+                    },
+                  );
                 },
                 child: () {
                   if (isLoading) {
@@ -185,6 +216,59 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
                   if (isLoading) {
                     return;
                   }
+
+                  markdownFlutterPageStateGeneralFramework.handleFunction(onFunction: (context, statefulWidget) async {
+                    final LanguageGeneralFrameworkController languageGeneralFrameworkController = LanguageGeneralFrameworkController(
+                      countryCodeId: markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.languageCodeId,
+                      languageSupports: [],
+                    );
+                    await LanguageGeneralFramework.show(
+                      context: context,
+                      languageGeneralFrameworkOptions: LanguageGeneralFrameworkOptions(
+                        languageGeneralFrameworkType: LanguageGeneralFrameworkType.dialog,
+                        onSelect: (context, languageCodeDataDetail) async {
+                          if (markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.languageCodeId == languageCodeDataDetail.code) {
+                            context.navigator().pop();
+
+                            return;
+                          }
+                          final LoadingGeneralFrameworkController loadingGeneralFrameworkController = LoadingGeneralFrameworkController(
+                            loadingText: "Translating",
+                          );
+                          LoadingGeneralFramework.show(
+                            context: context,
+                            loadingGeneralFrameworkController: loadingGeneralFrameworkController,
+                          );
+                          loadingGeneralFrameworkController.update(loadingText: "Translating Title to ${languageCodeDataDetail.flag} ${languageCodeDataDetail.name}");
+                          final title_translate = await TranslateClient.translate(
+                            text: markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.content,
+                            toLanguageCode: languageCodeDataDetail.code ?? "",
+                            ignoreError: true,
+                          );
+                          loadingGeneralFrameworkController.update(loadingText: "Translating Content to ${languageCodeDataDetail.flag} ${languageCodeDataDetail.name}");
+
+                          final content_translate = await TranslateClient.translate(
+                            text: markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.content,toLanguageCode: languageCodeDataDetail.code ?? "",
+                            ignoreError: true,
+                          );
+                          loadingGeneralFrameworkController.update(loadingText: "Finished Translate to ${languageCodeDataDetail.flag} ${languageCodeDataDetail.name}");
+
+                          markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework = MarkdownFlutterContentGeneralFramework(
+                            title: title_translate,
+                            content: content_translate,
+                            languageCodeId: languageCodeDataDetail.code ?? "",
+                          );
+                          context.navigator().pop();
+                          context.navigator().pop();
+                          markdownFlutterPageStateGeneralFramework.setStateWithIgnoreError(
+                            fn: () {},
+                          );
+                        },
+                        languageGeneralFrameworkController: languageGeneralFrameworkController,
+                      ),
+                    );
+                    languageGeneralFrameworkController.dispose();
+                  });
                 },
                 child: () {
                   if (isLoading) {
@@ -208,7 +292,7 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
                   );
                 }(),
               ),
-              ...termsOfServicesPageState.widget.markdownFlutterPopupMenuItemsGeneralFrameworkBuilder(context, termsOfServicesPageState, bodySmall),
+              ...markdownFlutterPageStateGeneralFramework.widget.markdownFlutterPopupMenuItemsGeneralFrameworkBuilder(context, markdownFlutterPageStateGeneralFramework, bodySmall),
             ];
           },
         ),
@@ -218,12 +302,22 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
 }
 
 class MarkdownFlutterPageStateGeneralFramework extends State<MarkdownFlutterPageGeneralFramework> {
+  final GeneralFlutter generalFlutter = const GeneralFlutter();
+
+  late final GeneralLibraryTextToSpeechBaseFlutter textToSpeech = generalFlutter.text_to_speech;
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await refresh();
     });
+  }
+
+  @override
+  void dispose() {
+    textToSpeech.dispose();
+    super.dispose();
   }
 
   MarkdownFlutterContentGeneralFramework markdownFlutterContentGeneralFramework = MarkdownFlutterContentGeneralFramework.empty();
@@ -237,7 +331,8 @@ class MarkdownFlutterPageStateGeneralFramework extends State<MarkdownFlutterPage
       is_loading = true;
       markdownFlutterContentGeneralFramework = MarkdownFlutterContentGeneralFramework.empty();
     });
-    await Future(() async { 
+    await Future(() async {
+      await textToSpeech.initialized();
       markdownFlutterContentGeneralFramework = await widget.markdownFlutterContentGeneralFrameworkBuilder(context, this);
     });
     setState(() {
@@ -251,7 +346,7 @@ class MarkdownFlutterPageStateGeneralFramework extends State<MarkdownFlutterPage
     return Scaffold(
       appBar: MarkdownFlutterPageGeneralFramework.appBar(
         context: context,
-        termsOfServicesPageState: this,
+        markdownFlutterPageStateGeneralFramework: this,
         isLoading: is_loading,
       ),
       body: RefreshIndicator(

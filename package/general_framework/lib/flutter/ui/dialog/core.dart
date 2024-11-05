@@ -242,7 +242,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     RouteSettings? routeSettings,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
-    ShapeBorder Function(BuildContext, ShapeBorder)? dialogShapeBuilder,
+    ShapeBorderBuilderGeneralFrameworkWidget? dialogShapeBuilder,
   }) async {
     return await DialogGeneralFramework.show<B>(
       context: this,
@@ -255,6 +255,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
       useRootNavigator: useRootNavigator,
       routeSettings: routeSettings,
       anchorPoint: anchorPoint,
+      dialogShapeBuilder: dialogShapeBuilder,
       traversalEdgeBehavior: traversalEdgeBehavior,
       builder: builder,
     );

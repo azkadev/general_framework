@@ -7,7 +7,7 @@ Widget widgetBuilderGeneralFrameworkWidgetDefault(BuildContext context, Widget c
 }
 
 typedef DecorationBuilderGeneralFrameworkWidget = Decoration Function(BuildContext context, BoxDecoration decoration);
-typedef ShapeBorderBuilderGeneralFrameworkWidget = ShapeBorder Function(BuildContext context, ShapeBorder shapeBorder);
+typedef ShapeBorderBuilderGeneralFrameworkWidget = ShapeBorder Function(BuildContext context, RoundedRectangleBorder shapeBorder);
 
 typedef InputDecorationBuilderGeneralFrameworkWidget = InputDecoration Function(BuildContext context, InputDecoration inputDecoration);
 
@@ -19,6 +19,6 @@ Decoration decorationBuilderGeneralFrameworkWidgetDefault(BuildContext context, 
   return decoration;
 }
 
-ShapeBorder shapeBorderBuilderGeneralFrameworkWidgetDefault(BuildContext context, ShapeBorder shapeBorder) {
+ShapeBorder shapeBorderBuilderGeneralFrameworkWidgetDefault(BuildContext context, RoundedRectangleBorder shapeBorder) {
   return shapeBorder;
 }

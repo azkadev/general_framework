@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/ui/dialog/core.dart';
 import 'package:general_framework/flutter/widget/menu_container.dart';
+import 'package:general_framework/flutter/widget/text_form_field.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/scheme/language_code_data_detail.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
@@ -137,9 +138,17 @@ class LanguageGeneralFramework extends StatefulWidget {
     return await context.showDialogGeneralFramework<T>(
       isWithBlur: true,
       useRootNavigator: false,
+      dialogShapeBuilder: (context, shapeBorder) {
+        return shapeBorder.copyWith(
+          borderRadius: BorderRadius.circular(20),
+        );
+      },
       builder: (context, setState) {
-        return LanguageGeneralFramework(
-          languageGeneralFrameworkOptions: languageGeneralFrameworkOptions,
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: LanguageGeneralFramework(
+            languageGeneralFrameworkOptions: languageGeneralFrameworkOptions,
+          ),
         );
       },
     );
@@ -193,10 +202,47 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
   }
 
   final GlobalKey appBarGlobalKey = GlobalKey();
-  AppBar appBar({
+  PreferredSizeWidget appBar({
     required BuildContext context,
   }) {
     final languageGeneralFrameworkOptions = widget.languageGeneralFrameworkOptions;
+
+    if (isShowSearch) {
+      return PreferredSize(
+        preferredSize: const Size.fromHeight(450),
+        child: Container(
+          key: appBarGlobalKey,
+          width: context.width,
+          decoration: BoxDecoration(color: context.theme.primaryColor),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: TextFormFieldGeneralFrameworkWidget(
+                    controller: searchTextEditingController,
+                    prefixIconData: Icons.search,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        reset(); 
+                      },
+                      icon: Icon(
+                        Icons.close,
+                        color: context.theme.indicatorColor,
+                      ),
+                    ),
+                    onChanged: (value) {
+                      search(value: value);
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
 
     return AppBar(
       key: appBarGlobalKey,
@@ -223,7 +269,11 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              isShowSearch = true;
+            });
+          },
           icon: Icon(
             Icons.search,
             color: context.theme.indicatorColor,
@@ -282,7 +332,10 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
         padding: null,
         clipBehavior: null,
         builder: (context) {
-          return body(context: context);
+          return ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: body(context: context),
+          );
         },
       );
     }
