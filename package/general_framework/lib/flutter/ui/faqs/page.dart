@@ -121,7 +121,7 @@ class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage> wit
                             final e = faqGeneralFrameworkOptions.faqs[i];
                             return Text(
                               e.title,
-                              style: (i == tabIndex)?context.theme.textTheme.titleSmall:context.theme.textTheme.bodySmall,
+                              style: (i == tabIndex) ? context.theme.textTheme.titleSmall : context.theme.textTheme.bodySmall,
                             );
                           }(),
                         ],

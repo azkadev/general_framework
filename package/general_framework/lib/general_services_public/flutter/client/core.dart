@@ -63,6 +63,13 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
   ) {
     throw UnimplementedError("");
   }
+
+  dynamic generalAppPublicAuthor(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
 }
 
 abstract class GeneralServicePublicClientFlutter<T extends GeneralFrameworkClientFlutter, K extends GeneralServicePublicClient> implements GeneralServicePublicClientFlutterBaseCore {
@@ -92,12 +99,16 @@ abstract class GeneralServicePublicClientFlutter<T extends GeneralFrameworkClien
 
   void ensureInitializedRoute() {
     generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/home", home);
+
     generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/ads", ads);
     generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/ads/create", adsCreate);
     generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/bot", bot);
     generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/developer", developer);
     generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/unban", unban);
     generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/sign", sign);
+    //
+    //
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/author", generalAppPublicAuthor);
   }
 }
 

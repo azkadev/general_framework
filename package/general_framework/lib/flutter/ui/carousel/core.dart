@@ -39,6 +39,7 @@ import 'package:general_lib_flutter/general_lib_flutter.dart';
 ///  * [PageView], which is a scrollable list that works page by page.
 class CarouselGeneralFrameworkView extends StatefulWidget {
   final BoxConstraints constraints;
+  // final bool isShowAll;
 
   /// Creates a Material Design carousel.
   const CarouselGeneralFrameworkView({
@@ -52,6 +53,7 @@ class CarouselGeneralFrameworkView extends StatefulWidget {
     this.controller,
     this.scrollDirection = Axis.horizontal,
     this.reverse = false,
+    // this.isShowAll = false,
     required this.constraints,
     required this.onBuilder,
   });
@@ -201,55 +203,55 @@ class _CarouselGeneralFrameworkViewState extends State<CarouselGeneralFrameworkV
   Widget build(BuildContext context) {
     final AxisDirection axisDirection = _getDirection(context);
     const CarouselGeneralFrameworkScrollPhysics physics = CarouselGeneralFrameworkScrollPhysics();
+    // final ScrollPhysics physics = (widget.isShowAll) ? ScrollConfiguration.of(context).getScrollPhysics(context) : const CarouselGeneralFrameworkScrollPhysics();
 
     final EdgeInsets effectivePadding = widget.padding ?? const EdgeInsets.all(4.0);
 
     return ConstrainedBox(
       constraints: widget.constraints,
       child: MediaQuery(
-        data: context.mediaQueryData.copyWith(
-          size: Size(widget.constraints.maxWidth, widget.constraints.maxHeight)
-        ),
+        data: context.mediaQueryData.copyWith(size: Size(widget.constraints.maxWidth, widget.constraints.maxHeight)),
         child: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          final double mainAxisExtent = switch (widget.scrollDirection) {
-            Axis.horizontal => constraints.maxWidth,
-            Axis.vertical => constraints.maxHeight,
-          };
-          _itemExtent = clampDouble(_itemExtent, 0, mainAxisExtent);
+          builder: (BuildContext context, BoxConstraints constraints) {
+            final double mainAxisExtent = switch (widget.scrollDirection) {
+              Axis.horizontal => constraints.maxWidth,
+              Axis.vertical => constraints.maxHeight,
+            };
+            _itemExtent = clampDouble(_itemExtent, 0, mainAxisExtent);
 
-          return Scrollable(
-            axisDirection: axisDirection,
-            controller: _controller,
-            physics: physics,
-            viewportBuilder: (BuildContext context, ViewportOffset position) {
-              final children = widget.onBuilder(context);
-              return Viewport(
-                cacheExtent: 0.0,
-                cacheExtentStyle: CacheExtentStyle.viewport,
-                axisDirection: axisDirection,
-                offset: position,
-                clipBehavior: Clip.antiAlias,
-                slivers: <Widget>[
-                  _SliverFixedExtentCarouselGeneralFramework(
-                    itemExtent: _itemExtent,
-                    minExtent: widget.shrinkExtent,
-                    delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                        return Padding(
-                          padding: effectivePadding,
-                          child: children.elementAt(index),
-                        );
-                      },
-                      childCount: children.length,
+            return Scrollable(
+              axisDirection: axisDirection,
+              controller: _controller,
+              physics: physics,
+              viewportBuilder: (BuildContext context, ViewportOffset position) {
+                final children = widget.onBuilder(context);
+                return Viewport(
+                  cacheExtent: 0.0,
+                  cacheExtentStyle: CacheExtentStyle.viewport,
+                  axisDirection: axisDirection,
+                  offset: position,
+                  clipBehavior: Clip.antiAlias,
+                  slivers: <Widget>[
+                    _SliverFixedExtentCarouselGeneralFramework(
+                      itemExtent: _itemExtent,
+                      minExtent: widget.shrinkExtent,
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          return Padding(
+                            padding: effectivePadding,
+                            child: children.elementAt(index),
+                          );
+                        },
+                        childCount: children.length,
+                      ),
                     ),
-                  ),
-                ],
-              );
-            },
-          );
-        },
-      ),),
+                  ],
+                );
+              },
+            );
+          },
+        ),
+      ),
     );
   }
 }
