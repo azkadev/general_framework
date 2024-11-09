@@ -50,14 +50,18 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
   final Widget? suffixIcon;
   final void Function(String value)? onChanged;
 
-      final int? minLines;
-      final int? maxLength;
-      final int? maxLines ;
+  final int? minLines;
+  final int? maxLength;
+  final int? maxLines;
+  final bool autofocus;
+  final FocusNode? focusNode;
   const TextFormFieldGeneralFrameworkWidget({
     super.key,
+    this.autofocus = false,
+    this.focusNode,
     this.minLines,
     this.maxLength,
-    this.maxLines =1,
+    this.maxLines = 1,
     this.hintText,
     this.labelText,
     this.prefixIconBuilder,
@@ -75,13 +79,15 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: autofocus,
+      focusNode: focusNode,
       cursorColor: context.theme.indicatorColor,
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: validator,
       readOnly: readOnly,
       minLines: minLines,
-      maxLength:maxLength ,
+      maxLength: maxLength,
       maxLines: maxLines,
       obscureText: obscureText,
       style: TextStyle(
@@ -100,7 +106,6 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
         context,
         InputDecoration(
           contentPadding: const EdgeInsets.all(0.0),
-        
           hintText: hintText,
           labelText: labelText,
           labelStyle: context.theme.textTheme.labelSmall,
