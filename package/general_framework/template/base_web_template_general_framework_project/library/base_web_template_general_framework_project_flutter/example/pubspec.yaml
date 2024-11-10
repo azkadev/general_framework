@@ -1,0 +1,35 @@
+name: 'example'
+description: 'A new Flutter project.'
+publish_to: 'none'
+version: '1.0.0+1'
+environment: 
+  sdk: '>=3.3.3 <4.0.0'
+dependencies: 
+  flutter: 
+    sdk: 'flutter'
+  cupertino_icons: '^1.0.6'
+  path: '^1.9.0'
+  general_lib: '^0.0.46'
+  general: '^0.0.30'
+  base_web_template_general_framework_project_flutter: 
+    path: '../'
+  base_web_template_general_framework_project_client: 
+    path: '../../base_web_template_general_framework_project_client'
+  base_web_template_general_framework_project_secret: 
+    path: '../../base_web_template_general_framework_project_secret'
+  general_framework: '^0.0.4'
+dev_dependencies: 
+  flutter_test: 
+    sdk: 'flutter'
+  flutter_lints: '^4.0.0'
+flutter: 
+  uses-material-design: true
+dependency_overrides: 
+  pointycastle: '3.8.0'
+funding: 
+  - 'https://github.com/sponsors/azkadev'
+  - 'https://github.com/sponsors/generalfoss'
+homepage: 'https://youtube.com/@azkadev'
+repository: 'https://github.com/azkadev/general_framework'
+documentation: 'https://youtube.com/@azkadev'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
