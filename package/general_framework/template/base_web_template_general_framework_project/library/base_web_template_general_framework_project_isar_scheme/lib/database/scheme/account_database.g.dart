@@ -1,37 +1,3 @@
-/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'account_database.dart';
@@ -87,6 +53,10 @@ const AccountDatabaseSchema = IsarGeneratedSchema(
         name: 'owner_account_user_id',
         type: IsarType.long,
       ),
+      IsarPropertySchema(
+        name: 'is_test',
+        type: IsarType.bool,
+      ),
     ],
     indexes: [],
   ),
@@ -108,6 +78,7 @@ int serializeAccountDatabase(IsarWriter writer, AccountDatabase object) {
   IsarCore.writeString(writer, 6, object.password);
   IsarCore.writeString(writer, 7, object.from_app_id);
   IsarCore.writeLong(writer, 8, object.owner_account_user_id);
+  IsarCore.writeBool(writer, 9, object.is_test);
   return object.id;
 }
 
@@ -123,6 +94,7 @@ AccountDatabase deserializeAccountDatabase(IsarReader reader) {
   object.password = IsarCore.readString(reader, 6) ?? '';
   object.from_app_id = IsarCore.readString(reader, 7) ?? '';
   object.owner_account_user_id = IsarCore.readLong(reader, 8);
+  object.is_test = IsarCore.readBool(reader, 9);
   return object;
 }
 
@@ -147,6 +119,8 @@ dynamic deserializeAccountDatabaseProp(IsarReader reader, int property) {
       return IsarCore.readString(reader, 7) ?? '';
     case 8:
       return IsarCore.readLong(reader, 8);
+    case 9:
+      return IsarCore.readBool(reader, 9);
     default:
       throw ArgumentError('Unknown property: $property');
   }
@@ -163,6 +137,7 @@ sealed class _AccountDatabaseUpdate {
     String? password,
     String? from_app_id,
     int? owner_account_user_id,
+    bool? is_test,
   });
 }
 
@@ -182,6 +157,7 @@ class _AccountDatabaseUpdateImpl implements _AccountDatabaseUpdate {
     Object? password = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     return collection.updateProperties([
           id
@@ -194,6 +170,7 @@ class _AccountDatabaseUpdateImpl implements _AccountDatabaseUpdate {
           if (password != ignore) 6: password as String?,
           if (from_app_id != ignore) 7: from_app_id as String?,
           if (owner_account_user_id != ignore) 8: owner_account_user_id as int?,
+          if (is_test != ignore) 9: is_test as bool?,
         }) >
         0;
   }
@@ -210,6 +187,7 @@ sealed class _AccountDatabaseUpdateAll {
     String? password,
     String? from_app_id,
     int? owner_account_user_id,
+    bool? is_test,
   });
 }
 
@@ -229,6 +207,7 @@ class _AccountDatabaseUpdateAllImpl implements _AccountDatabaseUpdateAll {
     Object? password = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     return collection.updateProperties(id, {
       if (special_type != ignore) 1: special_type as String?,
@@ -239,6 +218,7 @@ class _AccountDatabaseUpdateAllImpl implements _AccountDatabaseUpdateAll {
       if (password != ignore) 6: password as String?,
       if (from_app_id != ignore) 7: from_app_id as String?,
       if (owner_account_user_id != ignore) 8: owner_account_user_id as int?,
+      if (is_test != ignore) 9: is_test as bool?,
     });
   }
 }
@@ -260,6 +240,7 @@ sealed class _AccountDatabaseQueryUpdate {
     String? password,
     String? from_app_id,
     int? owner_account_user_id,
+    bool? is_test,
   });
 }
 
@@ -279,6 +260,7 @@ class _AccountDatabaseQueryUpdateImpl implements _AccountDatabaseQueryUpdate {
     Object? password = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     return query.updateProperties(limit: limit, {
       if (special_type != ignore) 1: special_type as String?,
@@ -289,6 +271,7 @@ class _AccountDatabaseQueryUpdateImpl implements _AccountDatabaseQueryUpdate {
       if (password != ignore) 6: password as String?,
       if (from_app_id != ignore) 7: from_app_id as String?,
       if (owner_account_user_id != ignore) 8: owner_account_user_id as int?,
+      if (is_test != ignore) 9: is_test as bool?,
     });
   }
 }
@@ -318,6 +301,7 @@ class _AccountDatabaseQueryBuilderUpdateImpl
     Object? password = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     final q = query.build();
     try {
@@ -330,6 +314,7 @@ class _AccountDatabaseQueryBuilderUpdateImpl
         if (password != ignore) 6: password as String?,
         if (from_app_id != ignore) 7: from_app_id as String?,
         if (owner_account_user_id != ignore) 8: owner_account_user_id as int?,
+        if (is_test != ignore) 9: is_test as bool?,
       });
     } finally {
       q.close();
@@ -1779,6 +1764,20 @@ extension AccountDatabaseQueryFilter
       );
     });
   }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
+      is_testEqualTo(
+    bool value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 9,
+          value: value,
+        ),
+      );
+    });
+  }
 }
 
 extension AccountDatabaseQueryObject
@@ -1958,6 +1957,19 @@ extension AccountDatabaseQuerySortBy
       return query.addSortBy(8, sort: Sort.desc);
     });
   }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByIs_test() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(9);
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
+      sortByIs_testDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(9, sort: Sort.desc);
+    });
+  }
 }
 
 extension AccountDatabaseQuerySortThenBy
@@ -2085,6 +2097,19 @@ extension AccountDatabaseQuerySortThenBy
       return query.addSortBy(8, sort: Sort.desc);
     });
   }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByIs_test() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(9);
+    });
+  }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
+      thenByIs_testDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(9, sort: Sort.desc);
+    });
+  }
 }
 
 extension AccountDatabaseQueryWhereDistinct
@@ -2144,6 +2169,13 @@ extension AccountDatabaseQueryWhereDistinct
       return query.addDistinctBy(8);
     });
   }
+
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
+      distinctByIs_test() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(9);
+    });
+  }
 }
 
 extension AccountDatabaseQueryProperty1
@@ -2200,6 +2232,12 @@ extension AccountDatabaseQueryProperty1
       owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(8);
+    });
+  }
+
+  QueryBuilder<AccountDatabase, bool, QAfterProperty> is_testProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(9);
     });
   }
 }
@@ -2266,6 +2304,12 @@ extension AccountDatabaseQueryProperty2<R>
       return query.addProperty(8);
     });
   }
+
+  QueryBuilder<AccountDatabase, (R, bool), QAfterProperty> is_testProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(9);
+    });
+  }
 }
 
 extension AccountDatabaseQueryProperty3<R1, R2>
@@ -2328,6 +2372,12 @@ extension AccountDatabaseQueryProperty3<R1, R2>
       owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(8);
+    });
+  }
+
+  QueryBuilder<AccountDatabase, (R1, R2, bool), QOperations> is_testProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(9);
     });
   }
 }

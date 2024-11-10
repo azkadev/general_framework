@@ -38,6 +38,8 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 import 'dart:io';
 
+import 'package:base_web_template_general_framework_project_scheme/database_scheme/database_mini_schema.dart';
+import 'package:base_web_template_general_framework_project_scheme/scheme/application_configuration.dart';
 import 'package:base_web_template_general_framework_project_secret/base_web_template_general_framework_project_secret_core.dart';
 import 'package:general_framework/core/database/database_core.dart';
 import 'package:general_lib/database/database_core.dart';
@@ -56,8 +58,7 @@ class BaseWebTemplateGeneralFrameworkProjectClientDatabase extends GeneralFramew
     required this.baseWebTemplateGeneralFrameworkProjectSecretClientSide,
   }) : databaseGeneralLib = databaseGeneralLib ?? DatabaseGeneralLib();
 
-  late final DatabaseMiniGeneralLibrary accounts_database_mini_library;
-  late final DatabaseMiniGeneralLibrary sessions_database_mini_library;
+  late final DatabaseMiniGeneralLibrary cores_database_mini_library;
   late final DatabaseMiniGeneralLibrary messages_database_mini_library;
 
   @override
@@ -106,13 +107,8 @@ class BaseWebTemplateGeneralFrameworkProjectClientDatabase extends GeneralFramew
   }) async {
     await super.ensureInitialized(currentPath: currentPath, httpClient: httpClient);
     {
-      accounts_database_mini_library = await databaseGeneralLib.openDatabaseMiniAsync(
-        key: "accounts",
-        databaseMiniGeneralLibraryBaseOptions: databaseMiniGeneralLibraryBaseOptions,
-        defaultData: {},
-      );
-      sessions_database_mini_library = await databaseGeneralLib.openDatabaseMiniAsync(
-        key: "sessions",
+      cores_database_mini_library = await databaseGeneralLib.openDatabaseMiniAsync(
+        key: "database_core",
         databaseMiniGeneralLibraryBaseOptions: databaseMiniGeneralLibraryBaseOptions,
         defaultData: {},
       );
@@ -122,5 +118,26 @@ class BaseWebTemplateGeneralFrameworkProjectClientDatabase extends GeneralFramew
         defaultData: {},
       );
     }
+  }
+
+  DatabaseMiniSchema coreDatabaseValue() {
+    return cores_database_mini_library.valueBuilder(
+      builder: (db) {
+        return DatabaseMiniSchema(db.stateData);
+      },
+    );
+  }
+
+  ApplicationConfiguration get application_configuration {
+    final value = coreDatabaseValue();
+    if (value["application_configuration"] is Map == false) {
+      value["application_configuration"] = {};
+    }
+
+    return ApplicationConfiguration(value.application_configuration.toJson());
+  }
+
+  FutureOr<void> saveCoreDatabase() async {
+    await cores_database_mini_library.write();
   }
 }

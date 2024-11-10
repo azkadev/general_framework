@@ -41,12 +41,10 @@ final List<Map<String, dynamic>> respond_schemes = () {
   final GeneralLibSchemeType generalLibSchemeType = GeneralLibSchemeType.scheme;
 
   return [
-    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.account(
-        generalLibSchemeType: generalLibSchemeType),
-    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.message(
-        generalLibSchemeType: generalLibSchemeType),
-    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.session(
-        generalLibSchemeType: generalLibSchemeType),
+    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.account(generalLibSchemeType: generalLibSchemeType),
+    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.message(generalLibSchemeType: generalLibSchemeType),
+    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.session(generalLibSchemeType: generalLibSchemeType),
+    
     {
       "@type": "ok",
     },

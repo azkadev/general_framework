@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 /* <!-- START LICENSE -->
 
 
@@ -32,12 +34,20 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-final List<Map<String, dynamic>> schemes = [
-  {
-    "@type": "ok",
-  },
-  {
-    "@type": "error",
-    "message": "",
-  },
-];
+import 'package:base_web_template_general_framework_project_scheme/schemes/default_scheme.dart';
+import 'package:general_lib/general_lib_core.dart';
+
+final List<Map<String, dynamic>> schemes = () {
+  final GeneralLibSchemeType generalLibSchemeType = GeneralLibSchemeType.scheme;
+
+  return [
+    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.applicationConfiguration(generalLibSchemeType: generalLibSchemeType),
+    {
+      "@type": "ok",
+    },
+    {
+      "@type": "error",
+      "message": "",
+    },
+  ];
+}();

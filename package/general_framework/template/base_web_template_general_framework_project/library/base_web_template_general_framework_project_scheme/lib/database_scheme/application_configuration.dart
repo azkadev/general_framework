@@ -4,20 +4,20 @@ import "package:general_lib/general_lib.dart";
 
 
  
-class Error extends JsonScheme {
+class ApplicationConfiguration extends JsonScheme {
 
   
-  Error(super.rawData);
+  ApplicationConfiguration(super.rawData);
   
   /// return default data
   /// 
   static Map get defaultData {
-    return {"@type":"error","message":""};
+    return {"@type":"applicationConfiguration"};
   }
 
   /// check data 
   /// if raw data 
-  /// - rawData["@type"] == error
+  /// - rawData["@type"] == applicationConfiguration
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
     return rawData["@type"] == defaultData["@type"];
@@ -32,10 +32,10 @@ class Error extends JsonScheme {
 
   
 
-  /// create [Error]
+  /// create [ApplicationConfiguration]
   /// Empty  
-  static Error empty() {
-    return Error({});
+  static ApplicationConfiguration empty() {
+    return ApplicationConfiguration({});
   }
 
   
@@ -59,50 +59,30 @@ class Error extends JsonScheme {
 
 
   
-  String? get message {
-    try {
-      if (rawData["message"] is String == false){
-        return null;
-      }
-      return rawData["message"] as String;
-    } catch (e) {
-      return null;
-    }
-  }
-
-  
-  set message(String? value) {
-    rawData["message"] = value;
-  }
-
-
-  
-  static Error create({
+  static ApplicationConfiguration create({
               bool schemeUtilsIsSetDefaultData = false,
 
-    String special_type = "error",
-    String? message,
+    String special_type = "applicationConfiguration",
 })  {
-    // Error error = Error({
-final Map error_data_create_json = {
+    // ApplicationConfiguration applicationConfiguration = ApplicationConfiguration({
+final Map applicationConfiguration_data_create_json = {
   
       "@type": special_type,
-      "message": message,
 
 
 };
 
 
-          error_data_create_json.removeWhere((key, value) => value == null);
+          applicationConfiguration_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (error_data_create_json.containsKey(key) == false) {
-          error_data_create_json[key] = value;
+        if (applicationConfiguration_data_create_json.containsKey(key) == false) {
+          applicationConfiguration_data_create_json[key] = value;
         }
       });
     }
-return Error(error_data_create_json);
+return ApplicationConfiguration(applicationConfiguration_data_create_json);
 
 
       }

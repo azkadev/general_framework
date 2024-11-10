@@ -2,23 +2,21 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-class Error extends JsonScheme {
-  Error(super.rawData);
 
+ 
+class Error extends JsonScheme {
+
+  
+  Error(super.rawData);
+  
   /// return default data
-  ///
+  /// 
   static Map get defaultData {
-    return {
-      "@type": "error",
-      "message": "",
-      "@extra": "",
-      "@expire_date": "",
-      "@client_id": ""
-    };
+    return {"@type":"error","message":"","@extra":"","@expire_date":"","@client_id":""};
   }
 
-  /// check data
-  /// if raw data
+  /// check data 
+  /// if raw data 
   /// - rawData["@type"] == error
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -32,15 +30,20 @@ class Error extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
+  
+
   /// create [Error]
-  /// Empty
+  /// Empty  
   static Error empty() {
     return Error({});
   }
 
+  
+
+  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false) {
+      if (rawData["@type"] is String == false){
         return null;
       }
       return rawData["@type"] as String;
@@ -49,13 +52,16 @@ class Error extends JsonScheme {
     }
   }
 
+  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+
+  
   String? get message {
     try {
-      if (rawData["message"] is String == false) {
+      if (rawData["message"] is String == false){
         return null;
       }
       return rawData["message"] as String;
@@ -64,13 +70,16 @@ class Error extends JsonScheme {
     }
   }
 
+  
   set message(String? value) {
     rawData["message"] = value;
   }
 
+
+  
   String? get special_extra {
     try {
-      if (rawData["@extra"] is String == false) {
+      if (rawData["@extra"] is String == false){
         return null;
       }
       return rawData["@extra"] as String;
@@ -79,13 +88,16 @@ class Error extends JsonScheme {
     }
   }
 
+  
   set special_extra(String? value) {
     rawData["@extra"] = value;
   }
 
+
+  
   String? get special_expire_date {
     try {
-      if (rawData["@expire_date"] is String == false) {
+      if (rawData["@expire_date"] is String == false){
         return null;
       }
       return rawData["@expire_date"] as String;
@@ -94,13 +106,16 @@ class Error extends JsonScheme {
     }
   }
 
+  
   set special_expire_date(String? value) {
     rawData["@expire_date"] = value;
   }
 
+
+  
   String? get special_client_id {
     try {
-      if (rawData["@client_id"] is String == false) {
+      if (rawData["@client_id"] is String == false){
         return null;
       }
       return rawData["@client_id"] as String;
@@ -109,28 +124,36 @@ class Error extends JsonScheme {
     }
   }
 
+  
   set special_client_id(String? value) {
     rawData["@client_id"] = value;
   }
 
+
+  
   static Error create({
-    bool schemeUtilsIsSetDefaultData = false,
+              bool schemeUtilsIsSetDefaultData = false,
+
     String special_type = "error",
     String? message,
     String special_extra = "",
     String special_expire_date = "",
     String special_client_id = "",
-  }) {
+})  {
     // Error error = Error({
-    final Map error_data_create_json = {
+final Map error_data_create_json = {
+  
       "@type": special_type,
       "message": message,
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@client_id": special_client_id,
-    };
 
-    error_data_create_json.removeWhere((key, value) => value == null);
+
+};
+
+
+          error_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -139,6 +162,8 @@ class Error extends JsonScheme {
         }
       });
     }
-    return Error(error_data_create_json);
-  }
+return Error(error_data_create_json);
+
+
+      }
 }

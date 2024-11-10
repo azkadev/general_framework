@@ -41,16 +41,34 @@ import 'package:base_web_template_general_framework_project_scheme/database_sche
 import 'package:general_lib/general_lib.dart';
 
 extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionSession on BaseWebTemplateGeneralFrameworkProjectClientDatabase {
+  List<SessionIsarDatabase> get coreDatabaseSessions {
+    final value = coreDatabaseValue();
+    if (value["sessions"] is List == false) {
+      value["sessions"] = [];
+    }
+
+    return value.sessions;
+  }
+
   ({
     int total_count,
     Iterable<SessionIsarDatabase> sessions,
   }) session_getSessions({
     required int? offset,
     required int? limit,
-  }) { 
+  }) {
+    final sessions = coreDatabaseSessions;
     return (
-      total_count: 0,
-      sessions: [],
+      total_count: sessions.length,
+      sessions: () sync* {
+        for (int i = (offset ?? 0); i < (limit ?? sessions.length); i++) {
+          try {
+            yield sessions[i];
+          } catch (e) {
+            break;
+          }
+        }
+      }(),
     );
   }
 
@@ -60,28 +78,50 @@ extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionSession o
   }) session_getSessionDefault({
     int? offset,
     int? limit,
-  }) { 
+  }) {
+    final sessions = coreDatabaseSessions;
     return (
-      total_count: 0,
-      sessions: []
+      total_count: sessions.length,
+      sessions: () sync* {
+        for (int i = (offset ?? 0); i < (limit ?? sessions.length); i++) {
+          try {
+            final session = sessions[i];
+            if (session.is_default == true) {
+              yield session;
+            }
+            continue;
+          } catch (e) {
+            break;
+          }
+        }
+      }(),
     );
   }
 
   SessionIsarDatabase? session_getSession({
     required int account_user_id,
-  }) { 
-    return SessionIsarDatabase({});
+  }) {
+    for (final element in coreDatabaseSessions) {
+      if (element.account_user_id == account_user_id) {
+        return element;
+      }
+    }
+    return null;
   }
 
   bool session_deleteSessionByToken({
     required String token,
-  }) { 
+  }) {
+    coreDatabaseSessions.removeWhere((e) => e.token == token);
+    saveCoreDatabase();
     return true;
   }
 
   bool session_deleteSession({
     required int account_user_id,
-  }) { 
+  }) {
+    coreDatabaseSessions.removeWhere((e) => e.account_user_id == account_user_id);
+    saveCoreDatabase();
     return true;
   }
 
@@ -93,7 +133,20 @@ extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionSession o
     newSessionDatabase.rawData.removeByKeys(["id"]);
     newSessionDatabase.account_user_id = account_user_id;
     newSessionDatabase.token = token;
-    
+    final sessions = coreDatabaseSessions;
+
+    for (final element in sessions) {
+      if (element.account_user_id == account_user_id) {
+        newSessionDatabase.rawData.forEach((key, value) {
+          element[key] = value;
+        });
+        saveCoreDatabase();
+        return true;
+      }
+    }
+    sessions.add(newSessionDatabase);
+    coreDatabaseValue().sessions = sessions;
+    saveCoreDatabase();
     return true;
   }
 }

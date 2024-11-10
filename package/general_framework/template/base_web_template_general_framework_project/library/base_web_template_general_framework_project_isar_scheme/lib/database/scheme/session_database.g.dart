@@ -1,37 +1,3 @@
-/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'session_database.dart';
@@ -75,6 +41,10 @@ const SessionDatabaseSchema = IsarGeneratedSchema(
         name: 'owner_account_user_id',
         type: IsarType.long,
       ),
+      IsarPropertySchema(
+        name: 'is_test',
+        type: IsarType.bool,
+      ),
     ],
     indexes: [],
   ),
@@ -93,6 +63,7 @@ int serializeSessionDatabase(IsarWriter writer, SessionDatabase object) {
   IsarCore.writeString(writer, 3, object.token);
   IsarCore.writeString(writer, 4, object.from_app_id);
   IsarCore.writeLong(writer, 5, object.owner_account_user_id);
+  IsarCore.writeBool(writer, 6, object.is_test);
   return object.id;
 }
 
@@ -104,6 +75,7 @@ SessionDatabase deserializeSessionDatabase(IsarReader reader) {
   object.token = IsarCore.readString(reader, 3) ?? '';
   object.from_app_id = IsarCore.readString(reader, 4) ?? '';
   object.owner_account_user_id = IsarCore.readLong(reader, 5);
+  object.is_test = IsarCore.readBool(reader, 6);
   object.id = IsarCore.readId(reader);
   return object;
 }
@@ -121,6 +93,8 @@ dynamic deserializeSessionDatabaseProp(IsarReader reader, int property) {
       return IsarCore.readString(reader, 4) ?? '';
     case 5:
       return IsarCore.readLong(reader, 5);
+    case 6:
+      return IsarCore.readBool(reader, 6);
     case 0:
       return IsarCore.readId(reader);
     default:
@@ -136,6 +110,7 @@ sealed class _SessionDatabaseUpdate {
     String? token,
     String? from_app_id,
     int? owner_account_user_id,
+    bool? is_test,
   });
 }
 
@@ -152,6 +127,7 @@ class _SessionDatabaseUpdateImpl implements _SessionDatabaseUpdate {
     Object? token = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     return collection.updateProperties([
           id
@@ -161,6 +137,7 @@ class _SessionDatabaseUpdateImpl implements _SessionDatabaseUpdate {
           if (token != ignore) 3: token as String?,
           if (from_app_id != ignore) 4: from_app_id as String?,
           if (owner_account_user_id != ignore) 5: owner_account_user_id as int?,
+          if (is_test != ignore) 6: is_test as bool?,
         }) >
         0;
   }
@@ -174,6 +151,7 @@ sealed class _SessionDatabaseUpdateAll {
     String? token,
     String? from_app_id,
     int? owner_account_user_id,
+    bool? is_test,
   });
 }
 
@@ -190,6 +168,7 @@ class _SessionDatabaseUpdateAllImpl implements _SessionDatabaseUpdateAll {
     Object? token = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     return collection.updateProperties(id, {
       if (special_type != ignore) 1: special_type as String?,
@@ -197,6 +176,7 @@ class _SessionDatabaseUpdateAllImpl implements _SessionDatabaseUpdateAll {
       if (token != ignore) 3: token as String?,
       if (from_app_id != ignore) 4: from_app_id as String?,
       if (owner_account_user_id != ignore) 5: owner_account_user_id as int?,
+      if (is_test != ignore) 6: is_test as bool?,
     });
   }
 }
@@ -215,6 +195,7 @@ sealed class _SessionDatabaseQueryUpdate {
     String? token,
     String? from_app_id,
     int? owner_account_user_id,
+    bool? is_test,
   });
 }
 
@@ -231,6 +212,7 @@ class _SessionDatabaseQueryUpdateImpl implements _SessionDatabaseQueryUpdate {
     Object? token = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     return query.updateProperties(limit: limit, {
       if (special_type != ignore) 1: special_type as String?,
@@ -238,6 +220,7 @@ class _SessionDatabaseQueryUpdateImpl implements _SessionDatabaseQueryUpdate {
       if (token != ignore) 3: token as String?,
       if (from_app_id != ignore) 4: from_app_id as String?,
       if (owner_account_user_id != ignore) 5: owner_account_user_id as int?,
+      if (is_test != ignore) 6: is_test as bool?,
     });
   }
 }
@@ -264,6 +247,7 @@ class _SessionDatabaseQueryBuilderUpdateImpl
     Object? token = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     final q = query.build();
     try {
@@ -273,6 +257,7 @@ class _SessionDatabaseQueryBuilderUpdateImpl
         if (token != ignore) 3: token as String?,
         if (from_app_id != ignore) 4: from_app_id as String?,
         if (owner_account_user_id != ignore) 5: owner_account_user_id as int?,
+        if (is_test != ignore) 6: is_test as bool?,
       });
     } finally {
       q.close();
@@ -1004,6 +989,20 @@ extension SessionDatabaseQueryFilter
   }
 
   QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
+      is_testEqualTo(
+    bool value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 6,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
       idEqualTo(
     int value,
   ) {
@@ -1186,6 +1185,19 @@ extension SessionDatabaseQuerySortBy
     });
   }
 
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortByIs_test() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(6);
+    });
+  }
+
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
+      sortByIs_testDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(6, sort: Sort.desc);
+    });
+  }
+
   QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0);
@@ -1271,6 +1283,19 @@ extension SessionDatabaseQuerySortThenBy
     });
   }
 
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenByIs_test() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(6);
+    });
+  }
+
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
+      thenByIs_testDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(6, sort: Sort.desc);
+    });
+  }
+
   QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0);
@@ -1320,6 +1345,13 @@ extension SessionDatabaseQueryWhereDistinct
       return query.addDistinctBy(5);
     });
   }
+
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct>
+      distinctByIs_test() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(6);
+    });
+  }
 }
 
 extension SessionDatabaseQueryProperty1
@@ -1352,6 +1384,12 @@ extension SessionDatabaseQueryProperty1
       owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
+    });
+  }
+
+  QueryBuilder<SessionDatabase, bool, QAfterProperty> is_testProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(6);
     });
   }
 
@@ -1398,6 +1436,12 @@ extension SessionDatabaseQueryProperty2<R>
     });
   }
 
+  QueryBuilder<SessionDatabase, (R, bool), QAfterProperty> is_testProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(6);
+    });
+  }
+
   QueryBuilder<SessionDatabase, (R, int), QAfterProperty> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(0);
@@ -1438,6 +1482,12 @@ extension SessionDatabaseQueryProperty3<R1, R2>
       owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
+    });
+  }
+
+  QueryBuilder<SessionDatabase, (R1, R2, bool), QOperations> is_testProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(6);
     });
   }
 

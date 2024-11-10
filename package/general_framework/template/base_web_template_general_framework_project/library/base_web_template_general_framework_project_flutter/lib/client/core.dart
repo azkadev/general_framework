@@ -41,6 +41,7 @@ import 'package:base_web_template_general_framework_project_flutter/base_web_tem
 import 'package:base_web_template_general_framework_project_flutter/page/account/account.dart';
 import 'package:base_web_template_general_framework_project_flutter/page/chat/chat.dart';
 import 'package:base_web_template_general_framework_project_flutter/page/home/home.dart';
+import 'package:base_web_template_general_framework_project_flutter/page/landing/landing.dart';
 import 'package:base_web_template_general_framework_project_flutter/page/settings/settings.dart';
 import 'package:base_web_template_general_framework_project_flutter/page/sign/sign.dart';
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/account.dart';
@@ -60,7 +61,7 @@ class BaseWebTemplateGeneralFrameworkProjectClientFlutter extends GeneralFramewo
   });
 
   static final GeneralLibFlutterApp generalLibFlutterApp = GeneralLibFlutterApp();
-
+  bool _isInitialized = false;
   @override
   FutureOr<void> ensureInitialized({
     required BuildContext context,
@@ -72,16 +73,29 @@ class BaseWebTemplateGeneralFrameworkProjectClientFlutter extends GeneralFramewo
       context: context,
       onLoading: onLoading,
     );
-    String token = generalFrameworkClient.sessionDefault.token ?? "";
-    if (token.isNotEmpty) {
-      context.routerGeneralLibFlutter().pushNamed(routeName: "/home", arguments: {});
-    } else {
-      context.routerGeneralLibFlutter().pushNamed(routeName: "/sign", arguments: {});
+    if (_isInitialized) {
+      return;
     }
+
+    ensureInitializedNavigatorPush(context: context);
+    _isInitialized = true;
+  }
+
+  void ensureInitializedNavigatorPush({
+    required BuildContext context,
+  }) async {
+    context.routerGeneralLibFlutter().pushReplacementNamed(routeName: "/", arguments: {});
+     // if (token.isNotEmpty) {
+    //   context.routerGeneralLibFlutter().pushReplacementNamed(routeName: "/home", arguments: {});
+    // } else {
+    //   context.routerGeneralLibFlutter().pushReplacementNamed(routeName: "/", arguments: {});
+    // }
   }
 
   Widget signPage() {
-    return SignPage(generalFrameworkClientFlutter: this);
+    return SignPage(
+      generalFrameworkClientFlutter: this,
+    );
   }
 
   @override
@@ -95,10 +109,7 @@ class BaseWebTemplateGeneralFrameworkProjectClientFlutter extends GeneralFramewo
         result["message"] = "";
       }
       if (result["message"] == "session_not_found") {
-        context.routerGeneralLibFlutter().pushNamedAndRemoveUntil(
-              routeName: "/sign",
-              removeRouteName: "/",
-            );
+        context.routerGeneralLibFlutter().pushNamedAndRemoveUntil(routeName: "/sign", removeRouteName: "/");
         return;
       }
       final String message = (result["message"] as String).trim().split("_").map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
@@ -114,7 +125,12 @@ class BaseWebTemplateGeneralFrameworkProjectClientFlutter extends GeneralFramewo
   @override
   void ensureInitializedRoute() {
     routeGeneralLibFlutter.all("/", (context, data) {
-      return BaseWebTemplateGeneralFrameworkProjectFlutterAppMain(
+      if (_isInitialized == false) {
+        return BaseWebTemplateGeneralFrameworkProjectFlutterAppMain(
+          generalFrameworkClientFlutter: this,
+        );
+      }
+      return LandingPage(
         generalFrameworkClientFlutter: this,
       );
     });

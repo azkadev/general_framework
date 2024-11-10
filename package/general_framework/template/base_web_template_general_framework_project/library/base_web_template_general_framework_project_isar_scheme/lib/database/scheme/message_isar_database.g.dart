@@ -1,37 +1,3 @@
-/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'message_isar_database.dart';
@@ -99,6 +65,10 @@ const MessageIsarDatabaseSchema = IsarGeneratedSchema(
         name: 'owner_account_user_id',
         type: IsarType.long,
       ),
+      IsarPropertySchema(
+        name: 'is_test',
+        type: IsarType.bool,
+      ),
     ],
     indexes: [],
   ),
@@ -131,6 +101,7 @@ int serializeMessageIsarDatabase(
   }
   IsarCore.writeString(writer, 10, object.from_app_id);
   IsarCore.writeLong(writer, 11, object.owner_account_user_id);
+  IsarCore.writeBool(writer, 12, object.is_test);
   return object.id;
 }
 
@@ -164,6 +135,7 @@ MessageIsarDatabase deserializeMessageIsarDatabase(IsarReader reader) {
   }
   object.from_app_id = IsarCore.readString(reader, 10) ?? '';
   object.owner_account_user_id = IsarCore.readLong(reader, 11);
+  object.is_test = IsarCore.readBool(reader, 12);
   object.id = IsarCore.readId(reader);
   return object;
 }
@@ -209,6 +181,8 @@ dynamic deserializeMessageIsarDatabaseProp(IsarReader reader, int property) {
       return IsarCore.readString(reader, 10) ?? '';
     case 11:
       return IsarCore.readLong(reader, 11);
+    case 12:
+      return IsarCore.readBool(reader, 12);
     case 0:
       return IsarCore.readId(reader);
     default:
@@ -229,6 +203,7 @@ sealed class _MessageIsarDatabaseUpdate {
     String? status,
     String? from_app_id,
     int? owner_account_user_id,
+    bool? is_test,
   });
 }
 
@@ -250,6 +225,7 @@ class _MessageIsarDatabaseUpdateImpl implements _MessageIsarDatabaseUpdate {
     Object? status = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     return collection.updateProperties([
           id
@@ -265,6 +241,7 @@ class _MessageIsarDatabaseUpdateImpl implements _MessageIsarDatabaseUpdate {
           if (from_app_id != ignore) 10: from_app_id as String?,
           if (owner_account_user_id != ignore)
             11: owner_account_user_id as int?,
+          if (is_test != ignore) 12: is_test as bool?,
         }) >
         0;
   }
@@ -283,6 +260,7 @@ sealed class _MessageIsarDatabaseUpdateAll {
     String? status,
     String? from_app_id,
     int? owner_account_user_id,
+    bool? is_test,
   });
 }
 
@@ -305,6 +283,7 @@ class _MessageIsarDatabaseUpdateAllImpl
     Object? status = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     return collection.updateProperties(id, {
       if (special_type != ignore) 1: special_type as String?,
@@ -317,6 +296,7 @@ class _MessageIsarDatabaseUpdateAllImpl
       if (status != ignore) 8: status as String?,
       if (from_app_id != ignore) 10: from_app_id as String?,
       if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
+      if (is_test != ignore) 12: is_test as bool?,
     });
   }
 }
@@ -341,6 +321,7 @@ sealed class _MessageIsarDatabaseQueryUpdate {
     String? status,
     String? from_app_id,
     int? owner_account_user_id,
+    bool? is_test,
   });
 }
 
@@ -363,6 +344,7 @@ class _MessageIsarDatabaseQueryUpdateImpl
     Object? status = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     return query.updateProperties(limit: limit, {
       if (special_type != ignore) 1: special_type as String?,
@@ -375,6 +357,7 @@ class _MessageIsarDatabaseQueryUpdateImpl
       if (status != ignore) 8: status as String?,
       if (from_app_id != ignore) 10: from_app_id as String?,
       if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
+      if (is_test != ignore) 12: is_test as bool?,
     });
   }
 }
@@ -407,6 +390,7 @@ class _MessageIsarDatabaseQueryBuilderUpdateImpl
     Object? status = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     final q = query.build();
     try {
@@ -421,6 +405,7 @@ class _MessageIsarDatabaseQueryBuilderUpdateImpl
         if (status != ignore) 8: status as String?,
         if (from_app_id != ignore) 10: from_app_id as String?,
         if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
+        if (is_test != ignore) 12: is_test as bool?,
       });
     } finally {
       q.close();
@@ -1704,6 +1689,20 @@ extension MessageIsarDatabaseQueryFilter on QueryBuilder<MessageIsarDatabase,
   }
 
   QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
+      is_testEqualTo(
+    bool value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 12,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterFilterCondition>
       idEqualTo(
     int value,
   ) {
@@ -1964,6 +1963,20 @@ extension MessageIsarDatabaseQuerySortBy
   }
 
   QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByIs_test() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(12);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      sortByIs_testDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(12, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
       sortById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0);
@@ -2121,6 +2134,20 @@ extension MessageIsarDatabaseQuerySortThenBy
   }
 
   QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByIs_test() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(12);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
+      thenByIs_testDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(12, sort: Sort.desc);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterSortBy>
       thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0);
@@ -2213,6 +2240,13 @@ extension MessageIsarDatabaseQueryWhereDistinct
       return query.addDistinctBy(11);
     });
   }
+
+  QueryBuilder<MessageIsarDatabase, MessageIsarDatabase, QAfterDistinct>
+      distinctByIs_test() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(12);
+    });
+  }
 }
 
 extension MessageIsarDatabaseQueryProperty1
@@ -2286,6 +2320,12 @@ extension MessageIsarDatabaseQueryProperty1
       owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(11);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, bool, QAfterProperty> is_testProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(12);
     });
   }
 
@@ -2374,6 +2414,13 @@ extension MessageIsarDatabaseQueryProperty2<R>
     });
   }
 
+  QueryBuilder<MessageIsarDatabase, (R, bool), QAfterProperty>
+      is_testProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(12);
+    });
+  }
+
   QueryBuilder<MessageIsarDatabase, (R, int), QAfterProperty> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(0);
@@ -2456,6 +2503,13 @@ extension MessageIsarDatabaseQueryProperty3<R1, R2>
       owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(11);
+    });
+  }
+
+  QueryBuilder<MessageIsarDatabase, (R1, R2, bool), QOperations>
+      is_testProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(12);
     });
   }
 

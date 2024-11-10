@@ -2,27 +2,21 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-class SearchAccountByUsername extends JsonScheme {
-  SearchAccountByUsername(super.rawData);
 
+ 
+class SearchAccountByUsername extends JsonScheme {
+
+  
+  SearchAccountByUsername(super.rawData);
+  
   /// return default data
-  ///
+  /// 
   static Map get defaultData {
-    return {
-      "@type": "searchAccountByUsername",
-      "username": "",
-      "@return_type": "account",
-      "@client_token": "",
-      "@platform_id": "",
-      "@platform_username": "",
-      "@extra": "",
-      "@expire_date": "",
-      "@token": ""
-    };
+    return {"@type":"searchAccountByUsername","username":"","@return_type":"account","@client_token":"","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
   }
 
-  /// check data
-  /// if raw data
+  /// check data 
+  /// if raw data 
   /// - rawData["@type"] == searchAccountByUsername
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -36,15 +30,20 @@ class SearchAccountByUsername extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
+  
+
   /// create [SearchAccountByUsername]
-  /// Empty
+  /// Empty  
   static SearchAccountByUsername empty() {
     return SearchAccountByUsername({});
   }
 
+  
+
+  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false) {
+      if (rawData["@type"] is String == false){
         return null;
       }
       return rawData["@type"] as String;
@@ -53,13 +52,16 @@ class SearchAccountByUsername extends JsonScheme {
     }
   }
 
+  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+
+  
   String? get username {
     try {
-      if (rawData["username"] is String == false) {
+      if (rawData["username"] is String == false){
         return null;
       }
       return rawData["username"] as String;
@@ -68,13 +70,16 @@ class SearchAccountByUsername extends JsonScheme {
     }
   }
 
+  
   set username(String? value) {
     rawData["username"] = value;
   }
 
+
+  
   String? get special_return_type {
     try {
-      if (rawData["@return_type"] is String == false) {
+      if (rawData["@return_type"] is String == false){
         return null;
       }
       return rawData["@return_type"] as String;
@@ -83,13 +88,16 @@ class SearchAccountByUsername extends JsonScheme {
     }
   }
 
+  
   set special_return_type(String? value) {
     rawData["@return_type"] = value;
   }
 
+
+  
   String? get special_client_token {
     try {
-      if (rawData["@client_token"] is String == false) {
+      if (rawData["@client_token"] is String == false){
         return null;
       }
       return rawData["@client_token"] as String;
@@ -98,13 +106,16 @@ class SearchAccountByUsername extends JsonScheme {
     }
   }
 
+  
   set special_client_token(String? value) {
     rawData["@client_token"] = value;
   }
 
+
+  
   String? get special_platform_id {
     try {
-      if (rawData["@platform_id"] is String == false) {
+      if (rawData["@platform_id"] is String == false){
         return null;
       }
       return rawData["@platform_id"] as String;
@@ -113,13 +124,16 @@ class SearchAccountByUsername extends JsonScheme {
     }
   }
 
+  
   set special_platform_id(String? value) {
     rawData["@platform_id"] = value;
   }
 
+
+  
   String? get special_platform_username {
     try {
-      if (rawData["@platform_username"] is String == false) {
+      if (rawData["@platform_username"] is String == false){
         return null;
       }
       return rawData["@platform_username"] as String;
@@ -128,13 +142,16 @@ class SearchAccountByUsername extends JsonScheme {
     }
   }
 
+  
   set special_platform_username(String? value) {
     rawData["@platform_username"] = value;
   }
 
+
+  
   String? get special_extra {
     try {
-      if (rawData["@extra"] is String == false) {
+      if (rawData["@extra"] is String == false){
         return null;
       }
       return rawData["@extra"] as String;
@@ -143,13 +160,16 @@ class SearchAccountByUsername extends JsonScheme {
     }
   }
 
+  
   set special_extra(String? value) {
     rawData["@extra"] = value;
   }
 
+
+  
   String? get special_expire_date {
     try {
-      if (rawData["@expire_date"] is String == false) {
+      if (rawData["@expire_date"] is String == false){
         return null;
       }
       return rawData["@expire_date"] as String;
@@ -158,13 +178,16 @@ class SearchAccountByUsername extends JsonScheme {
     }
   }
 
+  
   set special_expire_date(String? value) {
     rawData["@expire_date"] = value;
   }
 
+
+  
   String? get special_token {
     try {
-      if (rawData["@token"] is String == false) {
+      if (rawData["@token"] is String == false){
         return null;
       }
       return rawData["@token"] as String;
@@ -173,12 +196,16 @@ class SearchAccountByUsername extends JsonScheme {
     }
   }
 
+  
   set special_token(String? value) {
     rawData["@token"] = value;
   }
 
+
+  
   static SearchAccountByUsername create({
-    bool schemeUtilsIsSetDefaultData = false,
+              bool schemeUtilsIsSetDefaultData = false,
+
     String special_type = "searchAccountByUsername",
     String? username,
     String special_return_type = "account",
@@ -188,9 +215,10 @@ class SearchAccountByUsername extends JsonScheme {
     String special_extra = "",
     String special_expire_date = "",
     String special_token = "",
-  }) {
+})  {
     // SearchAccountByUsername searchAccountByUsername = SearchAccountByUsername({
-    final Map searchAccountByUsername_data_create_json = {
+final Map searchAccountByUsername_data_create_json = {
+  
       "@type": special_type,
       "username": username,
       "@return_type": special_return_type,
@@ -200,19 +228,22 @@ class SearchAccountByUsername extends JsonScheme {
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@token": special_token,
-    };
 
-    searchAccountByUsername_data_create_json
-        .removeWhere((key, value) => value == null);
+
+};
+
+
+          searchAccountByUsername_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (searchAccountByUsername_data_create_json.containsKey(key) ==
-            false) {
+        if (searchAccountByUsername_data_create_json.containsKey(key) == false) {
           searchAccountByUsername_data_create_json[key] = value;
         }
       });
     }
-    return SearchAccountByUsername(searchAccountByUsername_data_create_json);
-  }
+return SearchAccountByUsername(searchAccountByUsername_data_create_json);
+
+
+      }
 }

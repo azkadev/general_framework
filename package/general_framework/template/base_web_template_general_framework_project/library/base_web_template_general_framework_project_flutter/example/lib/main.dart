@@ -38,8 +38,7 @@ import 'package:base_web_template_general_framework_project_secret/base_web_temp
 void main(List<String> args) {
   BaseWebTemplateGeneralFrameworkProjectFlutter.ensureInitialized(
     arguments: args,
-    baseTemplateGeneralFrameworkProjectSecretClientSide:
-        BaseWebTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
+    baseTemplateGeneralFrameworkProjectSecretClientSide: BaseWebTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
   );
   BaseWebTemplateGeneralFrameworkProjectFlutter.run();
 }

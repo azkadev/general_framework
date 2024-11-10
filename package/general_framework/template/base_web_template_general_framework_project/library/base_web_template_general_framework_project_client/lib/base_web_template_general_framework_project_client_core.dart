@@ -56,7 +56,7 @@ class BaseWebTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClien
   BaseWebTemplateGeneralFrameworkProjectClient({
     required this.baseTemplateGeneralFrameworkProjectSecretClientSide,
     required super.generalLibrary,
-    super.networkClientConnectionType = NetworkClientConnectionType.websocket,
+    super.networkClientConnectionType = NetworkClientConnectionType.http,
     required super.generalFrameworkClientInvokeOptions,
     required super.generalFrameworkDatabase,
     super.eventEmitter,

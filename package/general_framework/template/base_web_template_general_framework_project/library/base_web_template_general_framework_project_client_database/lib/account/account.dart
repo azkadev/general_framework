@@ -38,28 +38,67 @@ import 'package:base_web_template_general_framework_project_client_database/base
 import 'package:base_web_template_general_framework_project_scheme/database_scheme/account_database.dart';
 
 extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionAccount on BaseWebTemplateGeneralFrameworkProjectClientDatabase {
+  
+  List<AccountDatabase> get coreDatabaseAccounts {
+    final value = coreDatabaseValue();
+    if (value["accounts"] is List == false) {
+      value["accounts"] = [];
+    }
+
+    return value.accounts;
+  }
   AccountDatabase? account_getAccountByUserId({
     required int account_user_id,
   }) {
-    return AccountDatabase({});
+    for (final element in coreDatabaseAccounts) {
+      if (element.id == account_user_id) {
+        return element;
+      }
+    }
+    return null;
   }
 
   AccountDatabase? account_getAccountByUserName({
     required String username,
   }) {
-    return AccountDatabase({});
+    for (final element in coreDatabaseAccounts) {
+      final String element_username = (element.username ?? "").trim();
+      if (element_username.isEmpty) {
+        continue;
+      }
+      if (RegExp("^(${RegExp.escape(username)})\$", caseSensitive: false).hasMatch(element_username)) {
+        return element;
+      }
+    }
+    return null;
   }
 
   bool account_saveAccountByUserId({
     required int account_user_id,
     required AccountDatabase newAccountDatabase,
   }) {
+    newAccountDatabase.id = account_user_id;
+    final accounts = coreDatabaseAccounts;
+    for (final element in accounts) {
+      if (element.id == account_user_id) {
+        newAccountDatabase.rawData.forEach((key, value) {
+          element[key] = value;
+        });
+        saveCoreDatabase();
+        return true;
+      }
+    }
+    accounts.add(newAccountDatabase);
+    coreDatabaseValue().accounts = accounts;
+    saveCoreDatabase();
     return true;
   }
 
   bool account_deleteAccountByUserId({
     required int account_user_id,
-  }) { 
+  }) {
+    coreDatabaseAccounts.removeWhere((e) => e.id == account_user_id);
+    saveCoreDatabase();
     return true;
   }
 }

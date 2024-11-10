@@ -45,8 +45,7 @@ import 'package:general_framework/core/client/options.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class BaseWebTemplateGeneralFrameworkProjectFlutter {
-  static final GeneralLibFlutterApp generalLibFlutterApp = GeneralLibFlutterApp();
+class BaseWebTemplateGeneralFrameworkProjectFlutter { 
   static const GeneralFlutter generalFlutter = GeneralFlutter();
   static late final BaseWebTemplateGeneralFrameworkProjectClientFlutter baseTemplateGeneralFrameworkProjectClientFlutter;
 
@@ -96,7 +95,7 @@ class BaseWebTemplateGeneralFrameworkProjectFlutterApp extends BaseWebTemplateGe
   @override
   Widget build(BuildContext context) {
     return GeneralLibFlutterAppMain(
-      generalLibFlutterApp: BaseWebTemplateGeneralFrameworkProjectFlutter.generalLibFlutterApp,
+      generalLibFlutterApp: BaseWebTemplateGeneralFrameworkProjectClientFlutter.generalLibFlutterApp,
       builder: (themeMode, lightTheme, darkTheme, widget) {
         final MaterialApp child = MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -109,9 +108,8 @@ class BaseWebTemplateGeneralFrameworkProjectFlutterApp extends BaseWebTemplateGe
           ),
           themeMode: themeMode,
           onUnknownRoute: generalFrameworkClientFlutter.routeGeneralLibFlutter.route,
-
+          
         );
-        
 
         return child;
       },
@@ -136,7 +134,7 @@ class _BaseWebTemplateGeneralFrameworkProjectFlutterAppMainState extends State<B
   }
 
   void task() async {
-    Future(() async {
+    Future(() async { 
       await widget.generalFrameworkClientFlutter.ensureInitialized(
         context: context,
         onLoading: (textLoading) {},

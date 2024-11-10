@@ -39,10 +39,38 @@ import 'package:base_web_template_general_framework_project_scheme/schemes/api_s
 import 'package:general_lib/general_lib.dart';
 
 class BaseWebTemplateGeneralFrameworkProjectSchemeDefault {
-  static final List<String> api_methods =
-      api_schemes.map((e) => e["@type"].toString()).toList();
+  static final List<String> api_methods = api_schemes.map((e) => e["@type"].toString()).toList();
   static String utils_generateSessionToken() {
     return generateUuid(25, text: "0123456789abcdefghijklmnopqrstuvwxyz-_");
+  }
+
+  static Map<String, dynamic> applicationConfiguration({
+    required GeneralLibSchemeType generalLibSchemeType,
+  }) {
+    final Map<String, dynamic> json_data = {
+      "@type": "applicationConfiguration${generalLibSchemeType.toSpesialType()}",
+      "is_lite": false,
+      // notification: start
+      "is_notification": true,
+      "notification_sound": "",
+      "is_notification_private": true,
+      "notification_private_sound": "",
+      "is_notification_group": true,
+      "notification_group_sound": "",
+      "is_notification_channel": true,
+      "notification_channel_sound": "",
+
+      "is_notification_bot": true,
+      "notification_bot_sound": "",
+      "is_notification_calling": true,
+      "notification_calling_sound": "",
+
+      // language: start
+      "language_code_id": "",
+      // language: end
+    };
+
+    return json_data;
   }
 
   static Map<String, dynamic> account({

@@ -1,37 +1,3 @@
-/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'message_database.dart';
@@ -99,6 +65,10 @@ const MessageDatabaseSchema = IsarGeneratedSchema(
         name: 'owner_account_user_id',
         type: IsarType.long,
       ),
+      IsarPropertySchema(
+        name: 'is_test',
+        type: IsarType.bool,
+      ),
     ],
     indexes: [],
   ),
@@ -123,6 +93,7 @@ int serializeMessageDatabase(IsarWriter writer, MessageDatabase object) {
   IsarCore.writeString(writer, 9, object.chat_unique_id);
   IsarCore.writeString(writer, 10, object.from_app_id);
   IsarCore.writeLong(writer, 11, object.owner_account_user_id);
+  IsarCore.writeBool(writer, 12, object.is_test);
   return object.id;
 }
 
@@ -140,6 +111,7 @@ MessageDatabase deserializeMessageDatabase(IsarReader reader) {
   object.chat_unique_id = IsarCore.readString(reader, 9) ?? '';
   object.from_app_id = IsarCore.readString(reader, 10) ?? '';
   object.owner_account_user_id = IsarCore.readLong(reader, 11);
+  object.is_test = IsarCore.readBool(reader, 12);
   object.id = IsarCore.readId(reader);
   return object;
 }
@@ -169,6 +141,8 @@ dynamic deserializeMessageDatabaseProp(IsarReader reader, int property) {
       return IsarCore.readString(reader, 10) ?? '';
     case 11:
       return IsarCore.readLong(reader, 11);
+    case 12:
+      return IsarCore.readBool(reader, 12);
     case 0:
       return IsarCore.readId(reader);
     default:
@@ -190,6 +164,7 @@ sealed class _MessageDatabaseUpdate {
     String? chat_unique_id,
     String? from_app_id,
     int? owner_account_user_id,
+    bool? is_test,
   });
 }
 
@@ -212,6 +187,7 @@ class _MessageDatabaseUpdateImpl implements _MessageDatabaseUpdate {
     Object? chat_unique_id = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     return collection.updateProperties([
           id
@@ -228,6 +204,7 @@ class _MessageDatabaseUpdateImpl implements _MessageDatabaseUpdate {
           if (from_app_id != ignore) 10: from_app_id as String?,
           if (owner_account_user_id != ignore)
             11: owner_account_user_id as int?,
+          if (is_test != ignore) 12: is_test as bool?,
         }) >
         0;
   }
@@ -247,6 +224,7 @@ sealed class _MessageDatabaseUpdateAll {
     String? chat_unique_id,
     String? from_app_id,
     int? owner_account_user_id,
+    bool? is_test,
   });
 }
 
@@ -269,6 +247,7 @@ class _MessageDatabaseUpdateAllImpl implements _MessageDatabaseUpdateAll {
     Object? chat_unique_id = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     return collection.updateProperties(id, {
       if (special_type != ignore) 1: special_type as String?,
@@ -282,6 +261,7 @@ class _MessageDatabaseUpdateAllImpl implements _MessageDatabaseUpdateAll {
       if (chat_unique_id != ignore) 9: chat_unique_id as String?,
       if (from_app_id != ignore) 10: from_app_id as String?,
       if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
+      if (is_test != ignore) 12: is_test as bool?,
     });
   }
 }
@@ -306,6 +286,7 @@ sealed class _MessageDatabaseQueryUpdate {
     String? chat_unique_id,
     String? from_app_id,
     int? owner_account_user_id,
+    bool? is_test,
   });
 }
 
@@ -328,6 +309,7 @@ class _MessageDatabaseQueryUpdateImpl implements _MessageDatabaseQueryUpdate {
     Object? chat_unique_id = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     return query.updateProperties(limit: limit, {
       if (special_type != ignore) 1: special_type as String?,
@@ -341,6 +323,7 @@ class _MessageDatabaseQueryUpdateImpl implements _MessageDatabaseQueryUpdate {
       if (chat_unique_id != ignore) 9: chat_unique_id as String?,
       if (from_app_id != ignore) 10: from_app_id as String?,
       if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
+      if (is_test != ignore) 12: is_test as bool?,
     });
   }
 }
@@ -373,6 +356,7 @@ class _MessageDatabaseQueryBuilderUpdateImpl
     Object? chat_unique_id = ignore,
     Object? from_app_id = ignore,
     Object? owner_account_user_id = ignore,
+    Object? is_test = ignore,
   }) {
     final q = query.build();
     try {
@@ -388,6 +372,7 @@ class _MessageDatabaseQueryBuilderUpdateImpl
         if (chat_unique_id != ignore) 9: chat_unique_id as String?,
         if (from_app_id != ignore) 10: from_app_id as String?,
         if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
+        if (is_test != ignore) 12: is_test as bool?,
       });
     } finally {
       q.close();
@@ -1751,6 +1736,20 @@ extension MessageDatabaseQueryFilter
   }
 
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
+      is_testEqualTo(
+    bool value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 12,
+          value: value,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
       idEqualTo(
     int value,
   ) {
@@ -2030,6 +2029,19 @@ extension MessageDatabaseQuerySortBy
     });
   }
 
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByIs_test() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(12);
+    });
+  }
+
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
+      sortByIs_testDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(12, sort: Sort.desc);
+    });
+  }
+
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0);
@@ -2198,6 +2210,19 @@ extension MessageDatabaseQuerySortThenBy
     });
   }
 
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByIs_test() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(12);
+    });
+  }
+
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
+      thenByIs_testDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(12, sort: Sort.desc);
+    });
+  }
+
   QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0);
@@ -2289,6 +2314,13 @@ extension MessageDatabaseQueryWhereDistinct
       return query.addDistinctBy(11);
     });
   }
+
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
+      distinctByIs_test() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(12);
+    });
+  }
 }
 
 extension MessageDatabaseQueryProperty1
@@ -2358,6 +2390,12 @@ extension MessageDatabaseQueryProperty1
       owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(11);
+    });
+  }
+
+  QueryBuilder<MessageDatabase, bool, QAfterProperty> is_testProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(12);
     });
   }
 
@@ -2443,6 +2481,12 @@ extension MessageDatabaseQueryProperty2<R>
     });
   }
 
+  QueryBuilder<MessageDatabase, (R, bool), QAfterProperty> is_testProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(12);
+    });
+  }
+
   QueryBuilder<MessageDatabase, (R, int), QAfterProperty> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(0);
@@ -2524,6 +2568,12 @@ extension MessageDatabaseQueryProperty3<R1, R2>
       owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(11);
+    });
+  }
+
+  QueryBuilder<MessageDatabase, (R1, R2, bool), QOperations> is_testProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(12);
     });
   }
 
