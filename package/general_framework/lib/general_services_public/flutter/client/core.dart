@@ -7,13 +7,22 @@ import 'package:general_lib_flutter/general_lib_flutter.dart';
 import "package:path/path.dart" as path;
 
 abstract class GeneralServicePublicClientFlutterBaseCore {
-  Widget profileAccount<T extends StatefulWidget>({
+  bool checkIsLoggin({
     required BuildContext context,
-    required bool isLoading,
-    required State<T> pageState,
+    required bool isReplace,
+    required bool isUseSignPathName,    required void Function(BuildContext context)? onSuccesSign,
+
   }) {
-    throw UnimplementedError("");
+    throw UnimplementedError();
   }
+
+  // Widget profileAccount<T extends StatefulWidget>({
+  //   required BuildContext context,
+  //   required bool isLoading,
+  //   required State<T> pageState,
+  // }) {
+  //   throw UnimplementedError("");
+  // }
 
   dynamic home(
     BuildContext context,
