@@ -91,11 +91,14 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   final CrossAxisAlignment crossAxisAlignment;
   final List<Widget> Function(BuildContext context) menuBuilder;
-
+  final Axis axis;
+  final MainAxisSize mainAxisSize;
   final bool isWithBorder;
   final bool isWithShadow;
   const MenuContainerGeneralFrameworkWidget({
     super.key,
+    this.mainAxisSize = MainAxisSize.min,
+    this.axis = Axis.vertical,
     this.isWithBorder = true,
     this.isWithShadow = true,
     required this.isLoading,
@@ -142,7 +145,6 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
       color: (isSelected) ? context.theme.highlightColor : null,
       highlightColor: Colors.transparent,
       child: ListTile(
-        
         contentPadding: contentPadding ?? const EdgeInsets.only(),
         leading: leading,
         title: (titleBuilder ?? titleBuilderDefault).call(
@@ -218,8 +220,15 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
       padding: padding,
       clipBehavior: clipBehavior,
       builder: (context) {
+        if (axis == Axis.horizontal) {
+          return Row(
+mainAxisSize: mainAxisSize,            crossAxisAlignment: crossAxisAlignment,
+            mainAxisAlignment: mainAxisAlignment,
+            children: menuBuilder(context),
+          );
+        }
         return Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: mainAxisSize,
           crossAxisAlignment: crossAxisAlignment,
           mainAxisAlignment: mainAxisAlignment,
           children: menuBuilder(context),

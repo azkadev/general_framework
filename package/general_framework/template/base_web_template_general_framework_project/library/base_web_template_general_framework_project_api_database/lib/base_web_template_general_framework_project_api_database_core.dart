@@ -44,9 +44,11 @@ import 'package:http/http.dart';
 import "package:path/path.dart" as path;
 import 'package:supabase/supabase.dart';
 
-class BaseWebTemplateGeneralFrameworkProjectApiDatabase extends GeneralFrameworkDatabase {
+class BaseWebTemplateGeneralFrameworkProjectApiDatabase
+    extends GeneralFrameworkDatabase {
   late final SupabaseClient supabase_core;
-  final BaseWebTemplateGeneralFrameworkProjectSecretServerSide baseTemplateGeneralFrameworkProjectSecretServerSide;
+  final BaseWebTemplateGeneralFrameworkProjectSecretServerSide
+      baseTemplateGeneralFrameworkProjectSecretServerSide;
 
   BaseWebTemplateGeneralFrameworkProjectApiDatabase({
     required this.baseTemplateGeneralFrameworkProjectSecretServerSide,
@@ -62,7 +64,8 @@ class BaseWebTemplateGeneralFrameworkProjectApiDatabase extends GeneralFramework
   }
 
   Directory get directory_database {
-    final Directory directory = Directory(path.join(directory_base.path, "base_web_template_general_framework_project_database"));
+    final Directory directory = Directory(path.join(directory_base.path,
+        "base_web_template_general_framework_project_database"));
     if (directory.existsSync() == false) {
       directory.createSync(recursive: true);
     }
@@ -83,7 +86,8 @@ class BaseWebTemplateGeneralFrameworkProjectApiDatabase extends GeneralFramework
     required String currentPath,
     required Client httpClient,
   }) async {
-    await super.ensureInitialized(currentPath: currentPath, httpClient: httpClient);
+    await super
+        .ensureInitialized(currentPath: currentPath, httpClient: httpClient);
     if (_is_initialized) {
       return;
     }

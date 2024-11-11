@@ -33,53 +33,267 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 
-import 'dart:math';
-
-import 'package:base_web_template_general_framework_project_client/api/api.dart';
 import 'package:base_web_template_general_framework_project_flutter/client/core.dart';
-import 'package:base_web_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
-import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class LandingPage extends BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
+class LandingPage
+    extends BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
   const LandingPage({super.key, required super.generalFrameworkClientFlutter});
 
   @override
   State<LandingPage> createState() => _LandingPageState();
 }
 
-class _LandingPageState extends State<LandingPage> {
-  final ScrollControllerAutoKeepStateData scrollControllerAutoKeepStateData = ScrollControllerAutoKeepStateData(
+class _LandingPageState extends State<LandingPage>
+    with GeneralLibFlutterStatefulWidget {
+  final ScrollControllerAutoKeepStateData scrollControllerAutoKeepStateData =
+      ScrollControllerAutoKeepStateData(
     keyId: "home_page",
   );
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {});
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      refresh();
+    });
+  }
+
+  @override
+  Future<void> refresh() async {
+    if (isLoading) {
+      return;
+    }
+    setState(() {
+      isLoading = true;
+    });
+    await Future(() async {
+      //
+    });
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  double getActualHeight() {
+    return context.height - appBarGlobalKey.sizeRenderBox().height;
+  }
+
+  bool isShowMenuTopBar = false;
+  List<Widget> contentTopBarChildren({
+    required BuildContext context,
+  }) {
+    final isLandscape = context.orientation.isLandscape;
+    return [
+      if (isLandscape == false) ...[
+        SizedBox(
+          height: context.mediaQueryData.padding.top,
+        ),
+      ],
+      contentTopBarWidget(
+        context: context,
+        isLoading: isLoading,
+        isLandscape: isLandscape,
+        iconData: Icons.home,
+        text: "Home",
+        onPressed: () {},
+      ),
+      contentTopBarWidget(
+        context: context,
+        isLoading: isLoading,
+        isLandscape: isLandscape,
+        iconData: Icons.book,
+        text: "About",
+        onPressed: () {},
+      ),
+      contentTopBarWidget(
+        context: context,
+        isLoading: isLoading,
+        isLandscape: isLandscape,
+        iconData: Icons.browse_gallery_rounded,
+        text: "Blog",
+        onPressed: () {},
+      ),
+      contentTopBarWidget(
+        context: context,
+        isLoading: isLoading,
+        isLandscape: isLandscape,
+        iconData: Icons.document_scanner,
+        text: "Documentation",
+        onPressed: () {},
+      ),
+      contentTopBarWidget(
+        context: context,
+        isLoading: isLoading,
+        isLandscape: isLandscape,
+        iconData: Icons.price_change,
+        text: "Pricing",
+        onPressed: () {},
+      ),
+      contentTopBarWidget(
+        context: context,
+        isLoading: isLoading,
+        isLandscape: isLandscape,
+        iconData: Icons.security,
+        text: "Policy",
+        onPressed: () {},
+      ),
+      SkeletonizerGeneralFramework(
+        enabled: isLoading,
+        child: ThemeChangeGeneralFrameworkWidget(
+          themeChangeGeneralFrameworkWidgetStyle: (isLandscape)
+              ? ThemeChangeGeneralFrameworkWidgetStyle.minimalist
+              : ThemeChangeGeneralFrameworkWidgetStyle.listTile,
+          generalLibFlutterApp: widget.generalFrameworkClientFlutter
+              .generalLibFlutterAppFunction(),
+          onChanged: () {},
+        ),
+      ),
+      if (isLandscape == false) ...[
+        SizedBox(
+          height: context.mediaQueryData.padding.bottom,
+        ),
+      ],
+    ];
+  }
+
+  Widget contentTopBarWidget({
+    required BuildContext context,
+    required bool isLoading,
+    required String text,
+    required bool isLandscape,
+    required IconData iconData,
+    required void Function()? onPressed,
+  }) {
+    return SkeletonizerGeneralFramework(
+      enabled: isLoading,
+      child: () {
+        final child = Text(
+          text,
+          style:
+              (context.theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
+            color: context.theme.indicatorColor,
+          ),
+        );
+        if (isLandscape) {
+          return TextButton(onPressed: onPressed, child: child);
+        }
+        return MaterialButton(
+          onPressed: onPressed,
+          minWidth: context.width,
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  onPressed: null,
+                  icon: Icon(
+                    iconData,
+                    color: context.theme.indicatorColor,
+                  ),
+                ),
+                child,
+                IconButton(
+                  onPressed: null,
+                  icon: Icon(
+                    Icons.navigate_next,
+                    color: context.theme.indicatorColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      }(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    final actualHeight = getActualHeight();
+
+    final mediaQueryData = context.mediaQueryData.copyWith(
+      size: Size(context.width, actualHeight),
+    );
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          "Home",
-          style: context.theme.textTheme.titleLarge,
-        ),
-        backgroundColor: context.theme.primaryColor,
-        actions: [
-          ThemeChangeGeneralFrameworkWidget(
-            themeChangeGeneralFrameworkWidgetStyle: ThemeChangeGeneralFrameworkWidgetStyle.minimalist,
-            generalLibFlutterApp: widget.generalFrameworkClientFlutter.generalLibFlutterAppFunction(),
-            onChanged:() { 
-            },
+      backgroundColor: context.theme.colorScheme.surface,
+      appBar: () {
+        final AppBar child = AppBar(
+          key: appBarGlobalKey,
+          centerTitle: true,
+          title: Text(
+            "Home",
+            style: context.theme.textTheme.titleLarge,
           ),
-        ],
-      ),
+          backgroundColor: context.theme.primaryColor,
+          actions: [
+            if (context.orientation.isLandscape) ...[
+              ...contentTopBarChildren(context: context),
+            ] else ...[
+              SkeletonizerGeneralFramework(
+                enabled: isLoading,
+                // child: ThemeChangeGeneralFrameworkWidget(
+                //   themeChangeGeneralFrameworkWidgetStyle: ThemeChangeGeneralFrameworkWidgetStyle.minimalist,
+                //   generalLibFlutterApp: widget.generalFrameworkClientFlutter.generalLibFlutterAppFunction(),
+                //   onChanged: () {},
+                // ),
+                child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isShowMenuTopBar = !isShowMenuTopBar;
+                    });
+                  },
+                  icon: Icon(
+                    Icons.menu,
+                    color: context.theme.indicatorColor,
+                  ),
+                ),
+              ),
+            ],
+            ProfilePictureGeneralFrameworkWidget(
+              pathImage: "",
+              margin: const EdgeInsets.symmetric(
+                horizontal: 5,
+              ),
+              isWithBorder: true,
+              isLoading: isLoading,
+              width: 30,
+              height: 30,
+              onPressed: () {},
+            ),
+          ],
+        );
+        if (isShowMenuTopBar == false || context.orientation.isLandscape) {
+          return child;
+        }
+        return PreferredSize(
+          preferredSize: Size.fromHeight(context.height),
+          child: Container(
+            decoration: BoxDecoration(
+              color: context.theme.primaryColor,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                child,
+                Flexible(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: contentTopBarChildren(
+                        context: context,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      }(),
       body: scrollControllerAutoKeepStateData.builderWidget(
         builder: (ctx, pageStorageBucket) {
           return SingleChildScrollView(
@@ -89,35 +303,34 @@ class _LandingPageState extends State<LandingPage> {
             ),
             child: ConstrainedBox(
               constraints: BoxConstraints(
-                minHeight: context.height,
+                minHeight: actualHeight,
                 minWidth: context.width,
                 maxWidth: context.width,
               ),
               child: Column(
-                children: List.generate(Random().nextInt(50) + 50, (index) {
-                  return ChatMessageGeneralFrameworkWidget(
-                    isLoading: false,
-                    title: "Azka Developer",
-                    message: "hello kamu lagi apa",
-                    unreadCount: 5,
-                    date: DateTime.now(),
-                    onTap: () {
-                      routerGeneralLibFlutter().pushNamed(routeName: "/chat", arguments: Account.create(first_name: "Azka Developer"));
+                children: [
+                  MediaQuerGeneralFrameworkWidget(
+                    mediaQueryData: mediaQueryData,
+                    builder: (context) {
+                      return Column(
+                        children: [
+                          Text(
+                            "Website Name",
+                            style: (context.theme.textTheme.titleLarge ??
+                                    const TextStyle())
+                                .copyWith(
+                              fontSize: 70,
+                            ),
+                          ),
+                        ],
+                      );
                     },
-                  );
-                }),
+                  ),
+                ],
               ),
             ),
           );
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          widget.generalFrameworkClientFlutter.generalFrameworkClient.api_getMe(getMeParameters: GetMe.create());
-        },
-        child: const Icon(
-          Icons.message,
-        ),
       ),
     );
   }

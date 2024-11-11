@@ -38,15 +38,24 @@ import 'package:base_web_template_general_framework_project_scheme/schemes/defau
 import 'package:general_lib/general_lib.dart';
 
 final List<Map<String, dynamic>> database_schemes = () {
-  final GeneralLibSchemeType generalLibSchemeType = GeneralLibSchemeType.database;
-  final accountSchema = BaseWebTemplateGeneralFrameworkProjectSchemeDefault.account(generalLibSchemeType: generalLibSchemeType);
-final sessionIsarSchema =   BaseWebTemplateGeneralFrameworkProjectSchemeDefault.session(generalLibSchemeType: GeneralLibSchemeType.isar);
+  final GeneralLibSchemeType generalLibSchemeType =
+      GeneralLibSchemeType.database;
+  final accountSchema =
+      BaseWebTemplateGeneralFrameworkProjectSchemeDefault.account(
+          generalLibSchemeType: generalLibSchemeType);
+  final sessionIsarSchema =
+      BaseWebTemplateGeneralFrameworkProjectSchemeDefault.session(
+          generalLibSchemeType: GeneralLibSchemeType.isar);
   return [
     accountSchema,
-    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.message(generalLibSchemeType: generalLibSchemeType),
-    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.chat(generalLibSchemeType: generalLibSchemeType),
-    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.message(generalLibSchemeType: GeneralLibSchemeType.isar),
-    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.session(generalLibSchemeType: generalLibSchemeType),
+    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.message(
+        generalLibSchemeType: generalLibSchemeType),
+    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.chat(
+        generalLibSchemeType: generalLibSchemeType),
+    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.message(
+        generalLibSchemeType: GeneralLibSchemeType.isar),
+    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.session(
+        generalLibSchemeType: generalLibSchemeType),
     sessionIsarSchema,
     {
       "@type": "databaseMiniSchema",

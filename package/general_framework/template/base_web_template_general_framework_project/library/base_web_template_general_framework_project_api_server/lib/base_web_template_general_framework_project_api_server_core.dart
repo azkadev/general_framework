@@ -39,7 +39,8 @@ import 'package:base_web_template_general_framework_project_api/base_web_templat
 import 'package:general_framework/core/server/api_server.dart';
 
 class BaseWebTemplateGeneralFrameworkProjectApiServer
-    extends GeneralFrameworkApiServer<BaseWebTemplateGeneralFrameworkProjectApi> {
+    extends GeneralFrameworkApiServer<
+        BaseWebTemplateGeneralFrameworkProjectApi> {
   BaseWebTemplateGeneralFrameworkProjectApiServer({
     required super.generalFrameworkApi,
     required super.serverUniverse,

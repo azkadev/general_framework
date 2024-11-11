@@ -35,7 +35,8 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 // ignore_for_file: non_constant_identifier_names
 
 extension MapExtensionScheme on Map {
-  String base_web_template_general_framework_project_scheme_utils_special_extra() {
+  String
+      base_web_template_general_framework_project_scheme_utils_special_extra() {
     if (this["@extra"] is String == false) {
       this["@extra"] = "";
     }

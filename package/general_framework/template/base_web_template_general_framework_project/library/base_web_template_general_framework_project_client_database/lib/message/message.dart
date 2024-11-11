@@ -35,7 +35,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:base_web_template_general_framework_project_client_database/base_web_template_general_framework_project_client_database_core.dart';
- 
+
 import 'package:base_web_template_general_framework_project_scheme/database_scheme/message_isar_database.dart';
 
 extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
@@ -43,7 +43,7 @@ extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
   bool message_deleteAllMessage({
     required int chat_id,
     required int user_id,
-  }) { 
+  }) {
     return true;
   }
 
@@ -51,7 +51,7 @@ extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int chat_id,
     required int user_id,
     required int message_id,
-  }) { 
+  }) {
     return true;
   }
 
@@ -59,7 +59,7 @@ extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int chat_id,
     required int user_id,
     required int message_id,
-  }) { 
+  }) {
     return true;
   }
 
@@ -67,7 +67,7 @@ extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int chat_id,
     required int user_id,
     required int message_id,
-  }) { 
+  }) {
     return MessageIsarDatabase({});
   }
 
@@ -75,7 +75,7 @@ extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int chat_id,
     required int user_id,
     required int message_id,
-  }) { 
+  }) {
     return MessageIsarDatabase({});
   }
 
@@ -87,7 +87,7 @@ extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int user_id,
     required int? offset,
     required int? limit,
-  }) { 
+  }) {
     return (
       message_count: 0,
       messages: [],
@@ -100,8 +100,6 @@ extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
     required int message_id,
     required MessageIsarDatabase newMessageIsarDatabase,
   }) {
-    
-
     return true;
   }
 }

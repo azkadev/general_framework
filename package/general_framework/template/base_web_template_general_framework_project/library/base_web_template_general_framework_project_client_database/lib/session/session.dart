@@ -40,7 +40,8 @@ import 'package:base_web_template_general_framework_project_scheme/database_sche
 import 'package:base_web_template_general_framework_project_scheme/database_scheme/session_isar_database.dart';
 import 'package:general_lib/general_lib.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionSession on BaseWebTemplateGeneralFrameworkProjectClientDatabase {
+extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionSession
+    on BaseWebTemplateGeneralFrameworkProjectClientDatabase {
   List<SessionIsarDatabase> get coreDatabaseSessions {
     final value = coreDatabaseValue();
     if (value["sessions"] is List == false) {
@@ -120,7 +121,8 @@ extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionSession o
   bool session_deleteSession({
     required int account_user_id,
   }) {
-    coreDatabaseSessions.removeWhere((e) => e.account_user_id == account_user_id);
+    coreDatabaseSessions
+        .removeWhere((e) => e.account_user_id == account_user_id);
     saveCoreDatabase();
     return true;
   }

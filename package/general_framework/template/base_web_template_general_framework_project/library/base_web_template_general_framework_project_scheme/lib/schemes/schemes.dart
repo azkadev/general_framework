@@ -41,7 +41,8 @@ final List<Map<String, dynamic>> schemes = () {
   final GeneralLibSchemeType generalLibSchemeType = GeneralLibSchemeType.scheme;
 
   return [
-    BaseWebTemplateGeneralFrameworkProjectSchemeDefault.applicationConfiguration(generalLibSchemeType: generalLibSchemeType),
+    BaseWebTemplateGeneralFrameworkProjectSchemeDefault
+        .applicationConfiguration(generalLibSchemeType: generalLibSchemeType),
     {
       "@type": "ok",
     },

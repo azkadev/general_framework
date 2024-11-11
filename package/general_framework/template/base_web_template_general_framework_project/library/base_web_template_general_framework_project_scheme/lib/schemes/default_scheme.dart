@@ -39,7 +39,8 @@ import 'package:base_web_template_general_framework_project_scheme/schemes/api_s
 import 'package:general_lib/general_lib.dart';
 
 class BaseWebTemplateGeneralFrameworkProjectSchemeDefault {
-  static final List<String> api_methods = api_schemes.map((e) => e["@type"].toString()).toList();
+  static final List<String> api_methods =
+      api_schemes.map((e) => e["@type"].toString()).toList();
   static String utils_generateSessionToken() {
     return generateUuid(25, text: "0123456789abcdefghijklmnopqrstuvwxyz-_");
   }
@@ -48,7 +49,8 @@ class BaseWebTemplateGeneralFrameworkProjectSchemeDefault {
     required GeneralLibSchemeType generalLibSchemeType,
   }) {
     final Map<String, dynamic> json_data = {
-      "@type": "applicationConfiguration${generalLibSchemeType.toSpesialType()}",
+      "@type":
+          "applicationConfiguration${generalLibSchemeType.toSpesialType()}",
       "is_lite": false,
       // notification: start
       "is_notification": true,

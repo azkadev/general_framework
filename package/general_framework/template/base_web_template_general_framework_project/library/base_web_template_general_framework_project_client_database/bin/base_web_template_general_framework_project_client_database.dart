@@ -39,8 +39,12 @@ import 'package:base_web_template_general_framework_project_secret/base_web_temp
 import 'package:http/http.dart';
 
 void main(List<String> arguments) {
-  final BaseWebTemplateGeneralFrameworkProjectClientDatabase baseTemplateGeneralFrameworkProjectClientDatabase = BaseWebTemplateGeneralFrameworkProjectClientDatabase(
-    baseWebTemplateGeneralFrameworkProjectSecretClientSide: BaseWebTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
+  final BaseWebTemplateGeneralFrameworkProjectClientDatabase
+      baseTemplateGeneralFrameworkProjectClientDatabase =
+      BaseWebTemplateGeneralFrameworkProjectClientDatabase(
+    baseWebTemplateGeneralFrameworkProjectSecretClientSide:
+        BaseWebTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
   );
-  baseTemplateGeneralFrameworkProjectClientDatabase.ensureInitialized(currentPath: Directory.current.path, httpClient: Client());
+  baseTemplateGeneralFrameworkProjectClientDatabase.ensureInitialized(
+      currentPath: Directory.current.path, httpClient: Client());
 }

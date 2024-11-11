@@ -63,7 +63,7 @@ class BaseWebTemplateGeneralFrameworkProjectSecret {
       supabaseUrl: supabaseUrl,
       supabaseKey: supabaseKey,
       pathApi: pathApi,
-      pathWebSocket: pathWebSocket, 
+      pathWebSocket: pathWebSocket,
       crypto: crypto,
       cryptoDatabase: cryptoDatabase,
     );
@@ -133,8 +133,8 @@ class BaseWebTemplateGeneralFrameworkProjectSecretServerSide {
     String? supabaseKey,
     String? pathApi,
     String? pathWebSocket,
-  required Crypto crypto,
-  required Crypto cryptoDatabase,
+    required Crypto crypto,
+    required Crypto cryptoDatabase,
   }) {
     return BaseWebTemplateGeneralFrameworkProjectSecretServerSide(
       supabaseUrl: supabaseUrl ?? this.supabaseUrl,
@@ -149,7 +149,8 @@ class BaseWebTemplateGeneralFrameworkProjectSecretServerSide {
   static BaseWebTemplateGeneralFrameworkProjectSecretServerSide defaultData() {
     return BaseWebTemplateGeneralFrameworkProjectSecretServerSide(
       supabaseUrl: "http://0.0.0.0:6001",
-      supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU",
+      supabaseKey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU",
       pathApi: "/api",
       pathWebSocket: "/ws",
       crypto: const Crypto.defaultCrypto(),

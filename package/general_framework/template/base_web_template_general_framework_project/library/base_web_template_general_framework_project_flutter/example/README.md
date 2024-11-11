@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+flutter build web --release --web-renderer html --pwa-strategy none
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

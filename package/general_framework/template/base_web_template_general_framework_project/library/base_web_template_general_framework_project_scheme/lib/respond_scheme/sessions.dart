@@ -4,20 +4,26 @@ import "package:general_lib/general_lib.dart";
 
 import "session.dart";
 
- 
 class Sessions extends JsonScheme {
-
-  
   Sessions(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"sessions","total_count":0,"sessions":[{"@type":"session"}],"@extra":"","@expire_date":"","@client_id":""};
+    return {
+      "@type": "sessions",
+      "total_count": 0,
+      "sessions": [
+        {"@type": "session"}
+      ],
+      "@extra": "",
+      "@expire_date": "",
+      "@client_id": ""
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == sessions
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -31,20 +37,15 @@ class Sessions extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [Sessions]
-  /// Empty  
+  /// Empty
   static Sessions empty() {
     return Sessions({});
   }
 
-  
-
-  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -53,16 +54,13 @@ class Sessions extends JsonScheme {
     }
   }
 
-  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
-
-  
   num? get total_count {
     try {
-      if (rawData["total_count"] is num == false){
+      if (rawData["total_count"] is num == false) {
         return null;
       }
       return rawData["total_count"] as num;
@@ -71,35 +69,31 @@ class Sessions extends JsonScheme {
     }
   }
 
-  
   set total_count(num? value) {
     rawData["total_count"] = value;
   }
 
-  
   List<Session> get sessions {
     try {
-      if (rawData["sessions"] is List == false){
+      if (rawData["sessions"] is List == false) {
         return [];
       }
-      return (rawData["sessions"] as List).map((e) => Session(e as Map)).toList().cast<Session>();
+      return (rawData["sessions"] as List)
+          .map((e) => Session(e as Map))
+          .toList()
+          .cast<Session>();
     } catch (e) {
       return [];
     }
   }
 
-
-  
   set sessions(List<Session> values) {
     rawData["sessions"] = values.map((value) => value.toJson()).toList();
   }
 
-
-
-  
   String? get special_extra {
     try {
-      if (rawData["@extra"] is String == false){
+      if (rawData["@extra"] is String == false) {
         return null;
       }
       return rawData["@extra"] as String;
@@ -108,16 +102,13 @@ class Sessions extends JsonScheme {
     }
   }
 
-  
   set special_extra(String? value) {
     rawData["@extra"] = value;
   }
 
-
-  
   String? get special_expire_date {
     try {
-      if (rawData["@expire_date"] is String == false){
+      if (rawData["@expire_date"] is String == false) {
         return null;
       }
       return rawData["@expire_date"] as String;
@@ -126,16 +117,13 @@ class Sessions extends JsonScheme {
     }
   }
 
-  
   set special_expire_date(String? value) {
     rawData["@expire_date"] = value;
   }
 
-
-  
   String? get special_client_id {
     try {
-      if (rawData["@client_id"] is String == false){
+      if (rawData["@client_id"] is String == false) {
         return null;
       }
       return rawData["@client_id"] as String;
@@ -144,38 +132,30 @@ class Sessions extends JsonScheme {
     }
   }
 
-  
   set special_client_id(String? value) {
     rawData["@client_id"] = value;
   }
 
-
-  
   static Sessions create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "sessions",
     num? total_count,
-      List<Session>? sessions,
+    List<Session>? sessions,
     String special_extra = "",
     String special_expire_date = "",
     String special_client_id = "",
-})  {
+  }) {
     // Sessions sessions = Sessions({
-final Map sessions_data_create_json = {
-  
+    final Map sessions_data_create_json = {
       "@type": special_type,
       "total_count": total_count,
-      "sessions": (sessions != null)? sessions.toJson(): null,
+      "sessions": (sessions != null) ? sessions.toJson() : null,
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@client_id": special_client_id,
+    };
 
-
-};
-
-
-          sessions_data_create_json.removeWhere((key, value) => value == null);
+    sessions_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -184,8 +164,6 @@ final Map sessions_data_create_json = {
         }
       });
     }
-return Sessions(sessions_data_create_json);
-
-
-      }
+    return Sessions(sessions_data_create_json);
+  }
 }

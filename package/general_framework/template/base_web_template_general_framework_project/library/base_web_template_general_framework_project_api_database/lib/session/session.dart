@@ -46,8 +46,9 @@ extension BaseWebTemplateGeneralFrameworkProjectApiDatabaseExtensionSession
   Future<String?> session_generateNewToken() async {
     while (true) {
       await Future.delayed(Duration(milliseconds: 1));
-      final String new_token = BaseWebTemplateGeneralFrameworkProjectSchemeDefault
-          .utils_generateSessionToken();
+      final String new_token =
+          BaseWebTemplateGeneralFrameworkProjectSchemeDefault
+              .utils_generateSessionToken();
 
       final result = await supabase_session
           .select("id")

@@ -13,7 +13,6 @@ dependencies:
     path: '../../base_web_template_general_framework_project_scheme'
   base_web_template_general_framework_project_client_database: 
     path: '../'
-
   base_web_template_general_framework_project_secret: 
     path: '../../base_web_template_general_framework_project_secret'
   http: '^1.2.2'

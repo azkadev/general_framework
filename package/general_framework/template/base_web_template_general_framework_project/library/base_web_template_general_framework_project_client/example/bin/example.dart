@@ -49,23 +49,28 @@ import 'package:general_lib/general_lib.dart';
 
 void main(List<String> arguments) async {
   print("start");
-  final BaseWebTemplateGeneralFrameworkProjectClient client = BaseWebTemplateGeneralFrameworkProjectClient(
-    baseTemplateGeneralFrameworkProjectSecretClientSide: BaseWebTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
+  final BaseWebTemplateGeneralFrameworkProjectClient client =
+      BaseWebTemplateGeneralFrameworkProjectClient(
+    baseTemplateGeneralFrameworkProjectSecretClientSide:
+        BaseWebTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
     generalLibrary: GeneralLibrary(),
     generalFrameworkClientInvokeOptions: GeneralFrameworkClientInvokeOptions(
       durationTimeOut: Duration(minutes: 1),
       isInvokeThrowOnError: false,
       networkClientConnectionType: NetworkClientConnectionType.websocket,
     ),
-    generalFrameworkDatabase: BaseWebTemplateGeneralFrameworkProjectClientDatabase(
-      baseWebTemplateGeneralFrameworkProjectSecretClientSide: BaseWebTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
+    generalFrameworkDatabase:
+        BaseWebTemplateGeneralFrameworkProjectClientDatabase(
+      baseWebTemplateGeneralFrameworkProjectSecretClientSide:
+          BaseWebTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
     ),
   );
   await client.ensureInitialized(
     onInvokeResult: (result, parameters, generalFrameworkClientInvokeOptions) {
       // print("${result}");
     },
-    onInvokeValidation: (parameters, generalFrameworkClientInvokeOptions) async {
+    onInvokeValidation:
+        (parameters, generalFrameworkClientInvokeOptions) async {
       print("validation: ${parameters}");
       return null;
     },

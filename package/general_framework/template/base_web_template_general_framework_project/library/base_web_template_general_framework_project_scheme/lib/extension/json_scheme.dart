@@ -38,7 +38,8 @@ import 'map.dart';
 import 'package:general_lib/json_scheme/json_scheme.dart';
 
 extension JsonSchemeExtensionScheme on JsonScheme {
-  String base_web_template_general_framework_project_scheme_utils_special_extra() {
+  String
+      base_web_template_general_framework_project_scheme_utils_special_extra() {
     return rawData
         .base_web_template_general_framework_project_scheme_utils_special_extra();
   }
