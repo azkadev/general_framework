@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_framework/general_services_public/dart/client/base.dart';
+import 'package:general_lib/language/language_core.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import "package:path/path.dart" as path;
 
@@ -10,8 +11,8 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
   bool checkIsLoggin({
     required BuildContext context,
     required bool isReplace,
-    required bool isUseSignPathName,    required void Function(BuildContext context)? onSuccesSign,
-
+    required bool isUseSignPathName,
+    required void Function(BuildContext context)? onSuccesSign,
   }) {
     throw UnimplementedError();
   }
@@ -79,7 +80,76 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
   ) {
     throw UnimplementedError("");
   }
+
+  dynamic generalAppPublicContent(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
+
+  dynamic generalAppPublicDocumentation(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
+
+  dynamic generalAppPublicProduct(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
+
+  dynamic generalAppPublicService(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
+
+  dynamic generalAppPublicPricing(
+    BuildContext context,
+    RouteDataGeneralLibFlutter data,
+  ) {
+    throw UnimplementedError("");
+  }
+
+
+
+  String privacyPolicyContent({
+    required Language? language,
+  }) {
+    throw UnimplementedError("");
+    
+  }
+
+  String termOfServicesContent({
+    required Language? language,
+  }) { 
+    throw UnimplementedError("");
+  }
+
+  GeneralLibFlutterApp generalLibFlutterApp(){
+    throw UnimplementedError("");
+
+  }
+  
 }
+
+
+
+
+
+///////
+
+
+
+
+
+
+
 
 abstract class GeneralServicePublicClientFlutter<T extends GeneralFrameworkClientFlutter, K extends GeneralServicePublicClient> implements GeneralServicePublicClientFlutterBaseCore {
   final GeneralFrameworkClientFlutterFunction<T> generalFrameworkClientFlutterFunction;
@@ -117,7 +187,13 @@ abstract class GeneralServicePublicClientFlutter<T extends GeneralFrameworkClien
     generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/sign", sign);
     //
     //
+    //
     generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/author", generalAppPublicAuthor);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/content", generalAppPublicContent);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/documentation", generalAppPublicDocumentation);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/product", generalAppPublicProduct);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/sevice", generalAppPublicService);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/pricing", generalAppPublicPricing);
   }
 }
 
