@@ -34,10 +34,12 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 
 export "ads/ads.dart";
+export "app_bar/app_bar.dart";
 export "blog/blog.dart";
 export "carousel/carousel.dart";
 export "chat/chat.dart";
 export "faqs/faqs.dart";
+export "bottom_bar/bottom_bar.dart";
 
 export "alert/alert.dart";
 export "dialog/dialog.dart";

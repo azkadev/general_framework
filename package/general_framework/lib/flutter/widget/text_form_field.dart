@@ -55,8 +55,10 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
   final int? maxLines;
   final bool autofocus;
   final FocusNode? focusNode;
+  final TextInputType? keyboardType;
   const TextFormFieldGeneralFrameworkWidget({
     super.key,
+    this.keyboardType,
     this.autofocus = false,
     this.focusNode,
     this.minLines,
@@ -86,6 +88,7 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: validator,
       readOnly: readOnly,
+      keyboardType: keyboardType,
       minLines: minLines,
       maxLength: maxLength,
       maxLines: maxLines,
