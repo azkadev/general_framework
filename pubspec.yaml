@@ -5,18 +5,18 @@ repository: 'https://github.com/azkadev/general_framework'
 homepage: 'https://github.com/azkadev/general_framework'
 issue_tracker: 'https://github.com/azkadev/general_framework/issues'
 documentation: 'https://azkadev.github.io/general_framework/'
-funding: 
+funding:
   - 'https://github.com/sponsors/azkadev'
-platforms: 
+platforms:
   android: null
   ios: null
   linux: null
   macos: null
   web: null
   windows: null
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
+dependencies:
   general_lib: '^0.0.46'
   mason_logger: '^0.3.1'
   packagex: '^0.0.60'
@@ -25,8 +25,8 @@ dependencies:
   yaml: '^3.1.2'
   yaml_edit: '^2.2.0'
   yaml_writer: '^2.0.0'
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
