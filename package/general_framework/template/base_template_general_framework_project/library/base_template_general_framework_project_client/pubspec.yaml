@@ -2,25 +2,25 @@ name: 'base_template_general_framework_project_client'
 description: 'A sample command-line application.'
 version: '1.0.0'
 publish_to: 'none'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
+dependencies:
   path: '^1.9.0'
   general_lib: '^0.0.46'
   general: '^0.0.30'
-  base_template_general_framework_project_client_database: 
+  base_template_general_framework_project_client_database:
     path: '../base_template_general_framework_project_client_database'
-  base_template_general_framework_project_scheme: 
+  base_template_general_framework_project_scheme:
     path: '../base_template_general_framework_project_scheme'
-  base_template_general_framework_project_secret: 
+  base_template_general_framework_project_secret:
     path: '../base_template_general_framework_project_secret'
   general_framework: '^0.0.4'
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'

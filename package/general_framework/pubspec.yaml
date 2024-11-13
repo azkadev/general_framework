@@ -4,21 +4,21 @@ version: '0.0.4'
 homepage: 'https://github.com/azkadev/general_framework'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://azkadev.github.io/general_framework/'
-funding: 
+funding:
   - 'https://github.com/sponsors/azkadev'
-platforms: 
+platforms:
   android: null
   ios: null
   linux: null
   macos: null
   web: null
   windows: null
-executables: 
+executables:
   general_framework: 'general_framework'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  flutter: 
+dependencies:
+  flutter:
     sdk: 'flutter'
   path: '^1.9.0'
   mason_logger: '^0.3.1'
@@ -40,22 +40,22 @@ dependencies:
   media_kit_video: '^1.2.4'
   html: '^0.15.4'
   translate_client: '^0.0.2'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-dev_dependencies: 
+dev_dependencies:
   flutter_lints: '^4.0.0'
   msix: '^3.16.7'
-flutter: 
-  assets: 
+flutter:
+  assets:
     - 'README.md'
-packagex: 
+packagex:
   name: 'general_framework'
   dart_target: 'general_framework'
   flutter_target: 'main'
   dart_name: 'general_framework'
   flutter_name: 'general_framework'
   is_without_platform_name: true
-  flutter_commands: 
+  flutter_commands:
     obfuscate: true
     split-debug-info: '0.0.0'
     build-name: '0.0.0'
@@ -66,7 +66,7 @@ packagex:
   github_username: 'azkadev'
   github_is_org: false
   is_app_auto_clean_up_folder: true
-msix_config: 
+msix_config:
   display_name: 'general_framework'
   install_certificate: false
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
