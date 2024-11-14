@@ -28,7 +28,7 @@ dependencies:
   http: '^1.1.0'
   server_universe: '^0.0.22'
   general: '^0.0.30'
-  path_provider: '^2.1.4'
+  path_provider: '^2.1.5'
   universal_io: '^2.2.2'
   intl: '^0.18.0'
   markdown: '^7.2.2'
