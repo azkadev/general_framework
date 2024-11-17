@@ -1,3 +1,5 @@
+// ignore_for_file: empty_catches
+
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
@@ -105,12 +107,17 @@ class AlertGeneralFrameworkWidget extends StatefulWidget {
 }
 
 class _AlertGeneralFrameworkWidgetState extends State<AlertGeneralFrameworkWidget> {
+  
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      try {
       setState(() {});
+      }catch (e){
+        
+      }
     });
   }
 

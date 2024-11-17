@@ -45,7 +45,6 @@ import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/scheme/socket_connection.dart';
 import 'package:http/http.dart';
 
-
 typedef GeneralFrameworkClientFunction<T extends GeneralFrameworkClient> = T Function();
 
 typedef InvokeClientValidationFunction<T> = FutureOr<T> Function(
@@ -78,10 +77,10 @@ abstract class GeneralFrameworkClientBaseCore {
 abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implements GeneralFrameworkClientBaseCore {
   final WebSocketClient web_socket_client = WebSocketClient("");
   final TcpSocketClient tcp_socket_client = TcpSocketClient(host: "", port: 0);
-  late final EventEmitter event_emitter;
+  final EventEmitter event_emitter;
   final String eventUpdate;
   final String eventInvoke;
-  late final Client http_client;
+  final Client http_client;
   final NetworkClientConnectionType networkClientConnectionType;
   late final GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions;
   final String apiUrl;
@@ -90,6 +89,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
   late final InvokeClientValidationFunction<Map?> onInvokeValidation;
   // late final InvokeClientFunction<dynamic> onInvokeRequest;
   late final InvokeClientFunction<dynamic> onInvokeResult;
+  
   late final String currentPath;
   final String pathApi;
   final String pathWebSocket;
@@ -105,19 +105,9 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
     this.eventUpdate = "update",
     this.eventInvoke = "invoke",
     Client? httpClient,
-  }) {
-    if (eventEmitter != null) {
-      event_emitter = eventEmitter;
-    } else {
-      event_emitter = EventEmitter();
-    }
+  })  : event_emitter = eventEmitter ?? EventEmitter(),
+        http_client = httpClient ?? Client();
 
-    if (httpClient != null) {
-      http_client = httpClient;
-    } else {
-      http_client = Client();
-    }
-  }
   Uri get api_uri {
     return Uri.parse(apiUrl).replace(
       path: pathApi,
@@ -132,7 +122,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
       regexpReplaces: [],
     );
   }
-  
+
   bool is_initialized = false;
 
   /// call this method
@@ -140,14 +130,14 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
     required InvokeClientFunction<dynamic> onInvokeResult,
     required InvokeClientValidationFunction<Map?> onInvokeValidation,
     required String currentPath,
-   }) async {
-    
+  }) async {
     if (is_initialized) {
       return;
     }
     tcp_socket_client.host = api_uri.host;
     tcp_socket_client.port = api_uri.port;
     web_socket_client.url = api_uri.replace(scheme: (api_uri.scheme == "https") ? "wss" : "ws", path: pathWebSocket).toString();
+   
     this.onInvokeResult = onInvokeResult;
     this.onInvokeValidation = onInvokeValidation;
     this.currentPath = currentPath;
@@ -168,8 +158,6 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
       await web_socket_client.connect(onSocketData: onSocketData, onSocketConnection: onSocketConnection);
     }
   }
-
-
 
   Future<void> onSocketData(dynamic data) async {
     final Map result = await Future(() async {
@@ -344,7 +332,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
           if (e["@type"] is String == false) {
             e["@type"] = "error";
           }
-          if (e["message"] is String) {
+          if (e["message"] is String == false) {
             e["message"] = "crash_client_side";
           }
           return e;

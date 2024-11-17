@@ -46,8 +46,7 @@ import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/flutter/client/general_framework_client_flutter_app_directory.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-import 'package:general_lib_flutter/route/route.dart';
-
+ 
 typedef GeneralFrameworkClientFlutterFunction<T extends GeneralFrameworkClientFlutter> = T Function();
 
 abstract class GeneralFrameworkClientFlutterCore {

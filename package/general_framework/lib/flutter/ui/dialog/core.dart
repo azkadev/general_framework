@@ -29,11 +29,18 @@ class DialogGeneralFramework {
       anchorPoint: anchorPoint,
       traversalEdgeBehavior: traversalEdgeBehavior,
       builder: (context) {
-        return ScaffoldMessenger(
+        final child = ScaffoldMessenger(
           child: Builder(
             builder: builder,
           ),
         );
+        if (barrierDismissible == false) {
+          return PopScope(
+            canPop: false,
+            child: child,
+          );
+        }
+        return child;
       },
     );
   }
@@ -93,13 +100,13 @@ class DialogGeneralFramework {
             },
           ),
         );
-          if (isCanShowSnackBar) {
-            return Scaffold(
-              backgroundColor: Colors.transparent,
-              body: child,
-            );
-          }
-          return child;
+        if (isCanShowSnackBar) {
+          return Scaffold(
+            backgroundColor: Colors.transparent,
+            body: child,
+          );
+        }
+        return child;
       },
       barrierDismissible: barrierDismissible,
       barrierColor: barrierColor,
@@ -132,7 +139,6 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     // return showDialogWithTitleGeneralFramework(title: title, children: children)
     return await showDialogGeneralFramework<B>(
       barrierDismissible: barrierDismissible,
-      
       isWithBlur: isWithBlur,
       barrierColor: barrierColor,
       barrierLabel: barrierLabel,
@@ -231,7 +237,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
   Future<B?> showDialogGeneralFramework<B>({
     required Widget Function(BuildContext context, void Function(void Function()) setState) builder,
     bool isWithBlur = false,
-    bool       isCanShowSnackBar = false,
+    bool isCanShowSnackBar = false,
     ImageFilter? blurFilter,
     BlendMode blurBlendMode = BlendMode.srcOver,
     bool barrierDismissible = true,
@@ -247,7 +253,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     return await DialogGeneralFramework.show<B>(
       context: this,
       isWithBlur: isWithBlur,
-      isCanShowSnackBar:       isCanShowSnackBar,
+      isCanShowSnackBar: isCanShowSnackBar,
       barrierDismissible: barrierDismissible,
       barrierColor: barrierColor,
       barrierLabel: barrierLabel,
@@ -329,7 +335,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     final RenderBox button = findRenderObject()! as RenderBox;
     final RenderBox overlay = Navigator.of(this).overlay!.context.findRenderObject()! as RenderBox;
     final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(this);
- 
+
     popupMenuPosition ??= popupMenuTheme.position ?? PopupMenuPosition.over;
 
     // Offset offset = Offset(
