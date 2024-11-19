@@ -181,7 +181,10 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
                         markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.content.trim(),
                       ]) {
                         if (element.isNotEmpty) {
-                          await markdownFlutterPageStateGeneralFramework.textToSpeech.speak(text: element);
+                          final text = markdownFlutterPageStateGeneralFramework.textToSpeech.utils_removeHtmlOrMarkdown(text: element);
+                          if (text.isNotEmpty) {
+                            await markdownFlutterPageStateGeneralFramework.textToSpeech.speak(text: element);
+                          }
                         }
                       }
                     },
@@ -248,7 +251,8 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
                           loadingGeneralFrameworkController.update(loadingText: "Translating Content to ${languageCodeDataDetail.flag} ${languageCodeDataDetail.name}");
 
                           final content_translate = await TranslateClient.translate(
-                            text: markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.content,toLanguageCode: languageCodeDataDetail.code ?? "",
+                            text: markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.content,
+                            toLanguageCode: languageCodeDataDetail.code ?? "",
                             ignoreError: true,
                           );
                           loadingGeneralFrameworkController.update(loadingText: "Finished Translate to ${languageCodeDataDetail.flag} ${languageCodeDataDetail.name}");

@@ -11,13 +11,15 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
   final EdgeInsetsGeometry? margin;
   final bool isAddPaddingTop;
   final Clip clipBehavior;
-  final WidgetBuilder builder;
+  final Iterable<Widget> Function(BuildContext context) builder;
+  final Widget Function(BuildContext context, Widget child)? widgetBuilder;
   const AppBarGeneralFrameworkWidget({
     super.key,
     this.containerKey,
     this.isAddPaddingTop = true,
     required this.size,
     required this.builder,
+    this.widgetBuilder,
     this.decorationBuilder,
     this.alignment,
     this.padding,
@@ -30,21 +32,28 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
 
   @override
   Widget build(BuildContext context) {
+    final Decoration decoration = (decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault).call(
+      context,
+      BoxDecoration(
+        color: context.theme.appBarTheme.backgroundColor,
+      ),
+    );
     return PreferredSize(
       preferredSize: preferredSize,
       child: Container(
         key: containerKey,
         padding: padding,
         alignment: alignment,
-        margin: () {
-          final margin = (this.margin ?? const EdgeInsets.only());
-          return EdgeInsets.only(
-            top: (margin.vertical / 2) + context.mediaQueryData.padding.top,
-            left: margin.horizontal / 2,
-            right: margin.horizontal / 2,
-            bottom: margin.vertical / 2,
-          );
-        }(),
+        margin: margin,
+        // margin: () {
+        //   final margin = (this.margin ?? const EdgeInsets.only());
+        //   return EdgeInsets.only(
+        //     top: (margin.vertical / 2),
+        //     left: margin.horizontal / 2,
+        //     right: margin.horizontal / 2,
+        //     bottom: margin.vertical / 2,
+        //   );
+        // }(),
         clipBehavior: clipBehavior,
         decoration: (decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault).call(
           context,
@@ -52,8 +61,55 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
             color: context.theme.appBarTheme.backgroundColor,
           ),
         ),
-        child: builder(context),
+        child: () {
+          final child = contentWidget(
+            context: context,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (isAddPaddingTop) ...[
+                  SizedBox(
+                    height: context.mediaQueryData.padding.top,
+                  ),
+                ],
+                for (final element in builder(context)) ...[
+                  if (element is AppBar) ...[
+                    MediaQuery.removePadding(
+                      context: context,
+                      removeBottom: true,
+                      removeLeft: true,
+                      removeRight: true,
+                      removeTop: true,
+                      child: element,
+                    ),
+                  ] else ...[
+                    element,
+                  ],
+                ],
+              ],
+            ),
+          );
+
+          if (decoration is BoxDecoration) {
+            return ClipRRect(
+              borderRadius: decoration.borderRadius ?? BorderRadius.zero,
+              child: child,
+            );
+          }
+          return child;
+        }(),
       ),
     );
+  }
+
+  Widget contentWidget({
+    required BuildContext context,
+    required Widget child,
+  }) {
+    final widgetBuilder = this.widgetBuilder;
+    if (widgetBuilder != null) {
+      return widgetBuilder(context, child);
+    }
+    return child;
   }
 }
