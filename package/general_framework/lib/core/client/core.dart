@@ -89,7 +89,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
   late final InvokeClientValidationFunction<Map?> onInvokeValidation;
   // late final InvokeClientFunction<dynamic> onInvokeRequest;
   late final InvokeClientFunction<dynamic> onInvokeResult;
-  
+
   late final String currentPath;
   final String pathApi;
   final String pathWebSocket;
@@ -137,7 +137,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
     tcp_socket_client.host = api_uri.host;
     tcp_socket_client.port = api_uri.port;
     web_socket_client.url = api_uri.replace(scheme: (api_uri.scheme == "https") ? "wss" : "ws", path: pathWebSocket).toString();
-   
+
     this.onInvokeResult = onInvokeResult;
     this.onInvokeValidation = onInvokeValidation;
     this.currentPath = currentPath;
@@ -325,7 +325,9 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
           });
         }
         final Map result_invoke = await completer.future;
-        event_emitter.off(listener: listener);
+        try {
+          event_emitter.off(listener: listener);
+        } catch (e) {}
         return result_invoke;
       } catch (e) {
         if (e is Map) {
