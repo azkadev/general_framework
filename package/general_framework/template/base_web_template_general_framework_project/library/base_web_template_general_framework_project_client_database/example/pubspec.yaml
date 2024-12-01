@@ -24,6 +24,7 @@ flutter:
   uses-material-design: true
 dependency_overrides:
   pointycastle: '3.8.0'
+  mime: '^2.0.0'
 funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
