@@ -251,7 +251,7 @@ jobs:
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -646,7 +646,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -3072,21 +3072,22 @@ name: 'base_web_template_general_framework_project_api'
 description: 'A sample command-line application.'
 version: '1.0.0'
 publish_to: 'none'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  base_web_template_general_framework_project_scheme: 
+dependencies:
+  base_web_template_general_framework_project_scheme:
     path: '../base_web_template_general_framework_project_scheme'
-  base_web_template_general_framework_project_api_database: 
+  base_web_template_general_framework_project_api_database:
     path: '../base_web_template_general_framework_project_api_database'
-  general_framework: '^0.0.4'
-  general_lib: '^0.0.46'
-dev_dependencies: 
+  general_framework: '^0.0.5'
+  general_lib: '^0.0.49'
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -3594,7 +3595,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -4742,26 +4743,27 @@ name: 'base_web_template_general_framework_project_api_database'
 description: 'A sample command-line application.'
 version: '1.0.0'
 publish_to: 'none'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  base_web_template_general_framework_project_scheme: 
+dependencies:
+  base_web_template_general_framework_project_scheme:
     path: '../base_web_template_general_framework_project_scheme'
-  base_web_template_general_framework_project_secret: 
+  base_web_template_general_framework_project_secret:
     path: '../base_web_template_general_framework_project_secret'
   collection: '^1.18.0'
-  general_lib: '^0.0.46'
+  general_lib: '^0.0.49'
   path: '^1.9.0'
   http: '^1.2.2'
-  general_framework: '^0.0.4'
+  general_framework: '^0.0.5'
   yet_another_json_isolate: '^2.0.0'
-  supabase: '^2.5.0'
-dev_dependencies: 
+  supabase: '^2.6.0'
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -5269,7 +5271,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -5596,7 +5598,7 @@ jobs:
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -5936,21 +5938,22 @@ name: 'example'
 description: 'A sample command-line application.'
 version: '1.0.0'
 publish_to: 'none'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  base_web_template_general_framework_project_api_server: 
+dependencies:
+  base_web_template_general_framework_project_api_server:
     path: '../'
-  base_web_template_general_framework_project_secret: 
+  base_web_template_general_framework_project_secret:
     path: '../../base_web_template_general_framework_project_secret'
-  base_web_template_general_framework_project_scheme: 
+  base_web_template_general_framework_project_scheme:
     path: '../../base_web_template_general_framework_project_scheme'
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -6614,28 +6617,29 @@ name: 'base_web_template_general_framework_project_api_server'
 description: 'A sample command-line application.'
 version: '1.0.0'
 publish_to: 'none'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  server_universe: '^0.0.22'
-  general_lib: '^0.0.46'
+dependencies:
+  server_universe: '^0.0.25'
+  general_lib: '^0.0.49'
   path: '^1.9.0'
   http: '^1.2.2'
-  base_web_template_general_framework_project_secret: 
+  base_web_template_general_framework_project_secret:
     path: '../base_web_template_general_framework_project_secret'
-  base_web_template_general_framework_project_scheme: 
+  base_web_template_general_framework_project_scheme:
     path: '../base_web_template_general_framework_project_scheme'
-  base_web_template_general_framework_project_api: 
+  base_web_template_general_framework_project_api:
     path: '../base_web_template_general_framework_project_api'
-  base_web_template_general_framework_project_api_database: 
+  base_web_template_general_framework_project_api_database:
     path: '../base_web_template_general_framework_project_api_database'
-  general_framework: '^0.0.4'
-dev_dependencies: 
+  general_framework: '^0.0.5'
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -7143,7 +7147,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -7477,7 +7481,7 @@ jobs:
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -7899,26 +7903,27 @@ name: 'example'
 description: 'A sample command-line application.'
 version: '1.0.0'
 publish_to: 'none'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  general: '^0.0.30'
-  base_web_template_general_framework_project_client_database: 
+dependencies:
+  general: '^0.0.32'
+  base_web_template_general_framework_project_client_database:
     path: '../../base_web_template_general_framework_project_client_database'
-  base_web_template_general_framework_project_client: 
+  base_web_template_general_framework_project_client:
     path: '../'
-  base_web_template_general_framework_project_secret: 
+  base_web_template_general_framework_project_secret:
     path: '../../base_web_template_general_framework_project_secret'
-  base_web_template_general_framework_project_scheme: 
+  base_web_template_general_framework_project_scheme:
     path: '../../base_web_template_general_framework_project_scheme'
-  general_framework: '^0.0.4'
-  general_lib: '^0.0.46'
-dev_dependencies: 
+  general_framework: '^0.0.5'
+  general_lib: '^0.0.49'
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -8934,25 +8939,26 @@ name: 'base_web_template_general_framework_project_client'
 description: 'A sample command-line application.'
 version: '1.0.0'
 publish_to: 'none'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
+dependencies:
   path: '^1.9.0'
-  general_lib: '^0.0.46'
-  general: '^0.0.30'
-  base_web_template_general_framework_project_client_database: 
+  general_lib: '^0.0.49'
+  general: '^0.0.32'
+  base_web_template_general_framework_project_client_database:
     path: '../base_web_template_general_framework_project_client_database'
-  base_web_template_general_framework_project_scheme: 
+  base_web_template_general_framework_project_scheme:
     path: '../base_web_template_general_framework_project_scheme'
-  base_web_template_general_framework_project_secret: 
+  base_web_template_general_framework_project_secret:
     path: '../base_web_template_general_framework_project_secret'
-  general_framework: '^0.0.4'
-dev_dependencies: 
+  general_framework: '^0.0.5'
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -9460,7 +9466,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -9803,7 +9809,7 @@ jobs:
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -18124,29 +18130,30 @@ name: 'example'
 description: 'A new Flutter project.'
 publish_to: 'none'
 version: '1.0.0+1'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  flutter: 
+dependencies:
+  flutter:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
   isar_flutter_libs: '^4.0.0-dev.14'
-  base_web_template_general_framework_project_scheme: 
+  base_web_template_general_framework_project_scheme:
     path: '../../base_web_template_general_framework_project_scheme'
-  base_web_template_general_framework_project_client_database: 
+  base_web_template_general_framework_project_client_database:
     path: '../'
-  base_web_template_general_framework_project_secret: 
+  base_web_template_general_framework_project_secret:
     path: '../../base_web_template_general_framework_project_secret'
   http: '^1.2.2'
-dev_dependencies: 
-  flutter_test: 
+dev_dependencies:
+  flutter_test:
     sdk: 'flutter'
   flutter_lints: '^4.0.0'
-flutter: 
+flutter:
   uses-material-design: true
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -19322,25 +19329,26 @@ name: 'base_web_template_general_framework_project_client_database'
 description: 'A sample command-line application.'
 version: '1.0.0'
 publish_to: 'none'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  base_web_template_general_framework_project_scheme: 
+dependencies:
+  base_web_template_general_framework_project_scheme:
     path: '../base_web_template_general_framework_project_scheme'
-  base_web_template_general_framework_project_secret: 
+  base_web_template_general_framework_project_secret:
     path: '../base_web_template_general_framework_project_secret'
   collection: '^1.18.0'
-  general_lib: '^0.0.46'
+  general_lib: '^0.0.49'
   path: '^1.9.0'
   http: '^1.2.2'
-  general_framework: '^0.0.4'
-dev_dependencies: 
+  general_framework: '^0.0.5'
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
   build_runner: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -19848,7 +19856,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -20241,7 +20249,7 @@ jobs:
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -28365,31 +28373,32 @@ name: 'example'
 description: 'A new Flutter project.'
 publish_to: 'none'
 version: '1.0.0+1'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  flutter: 
+dependencies:
+  flutter:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
   path: '^1.9.0'
-  general_lib: '^0.0.46'
-  general: '^0.0.30'
-  base_web_template_general_framework_project_flutter: 
+  general_lib: '^0.0.49'
+  general: '^0.0.32'
+  base_web_template_general_framework_project_flutter:
     path: '../'
-  base_web_template_general_framework_project_client: 
+  base_web_template_general_framework_project_client:
     path: '../../base_web_template_general_framework_project_client'
-  base_web_template_general_framework_project_secret: 
+  base_web_template_general_framework_project_secret:
     path: '../../base_web_template_general_framework_project_secret'
-  general_framework: '^0.0.4'
-dev_dependencies: 
-  flutter_test: 
+  general_framework: '^0.0.5'
+dev_dependencies:
+  flutter_test:
     sdk: 'flutter'
   flutter_lints: '^4.0.0'
-flutter: 
+flutter:
   uses-material-design: true
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -31017,34 +31026,35 @@ description: 'A new Flutter package project.'
 version: '0.0.1'
 homepage: 'https://youtube.com/@azkadev'
 publish_to: 'none'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
   flutter: '>=1.17.0'
-dependencies: 
-  flutter: 
+dependencies:
+  flutter:
     sdk: 'flutter'
   path: '^1.9.0'
-  general_lib: '^0.0.46'
-  general_lib_flutter: '^0.0.27'
-  general: '^0.0.30'
-  base_web_template_general_framework_project_scheme: 
+  general_lib: '^0.0.49'
+  general_lib_flutter: '^0.0.30'
+  general: '^0.0.32'
+  base_web_template_general_framework_project_scheme:
     path: '../base_web_template_general_framework_project_scheme'
-  base_web_template_general_framework_project_client_database: 
+  base_web_template_general_framework_project_client_database:
     path: '../base_web_template_general_framework_project_client_database'
-  base_web_template_general_framework_project_client: 
+  base_web_template_general_framework_project_client:
     path: '../base_web_template_general_framework_project_client'
-  base_web_template_general_framework_project_secret: 
+  base_web_template_general_framework_project_secret:
     path: '../base_web_template_general_framework_project_secret'
-  general_framework: '^0.0.4'
+  general_framework: '^0.0.5'
   media_kit_libs_video: '^1.0.5'
-dev_dependencies: 
-  flutter_test: 
+dev_dependencies:
+  flutter_test:
     sdk: 'flutter'
   flutter_lints: '^4.0.0'
 flutter: null
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 repository: 'https://github.com/azkadev/general_framework'
@@ -31588,7 +31598,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -47787,19 +47797,20 @@ name: 'base_web_template_general_framework_project_isar_scheme'
 description: 'A sample command-line application.'
 version: '1.0.0'
 publish_to: 'none'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  base_web_template_general_framework_project_scheme: 
+dependencies:
+  base_web_template_general_framework_project_scheme:
     path: '../base_web_template_general_framework_project_scheme'
   isar: '^4.0.0-dev.14'
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
   build_runner: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -48307,7 +48318,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -48632,15 +48643,16 @@ Copyright (c) 2024 GLOBAL CORPORATION.
 name: 'base_web_template_general_framework_project_language'
 description: 'A sample command-line application.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -49148,7 +49160,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -49487,15 +49499,16 @@ SOFTWARE.
 name: 'base_web_template_general_framework_project_media_server'
 description: 'A sample command-line application.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -50003,7 +50016,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -60304,17 +60317,18 @@ SOFTWARE.
 name: 'base_web_template_general_framework_project_scheme'
 description: 'A sample command-line application.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
+dependencies:
   path: '^1.9.0'
-  general_lib: '^0.0.46'
-dev_dependencies: 
+  general_lib: '^0.0.49'
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -60822,7 +60836,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -61199,16 +61213,17 @@ SOFTWARE.
 name: 'base_web_template_general_framework_project_secret'
 description: 'A sample command-line application.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  general_lib: '^0.0.46'
-dev_dependencies: 
+dependencies:
+  general_lib: '^0.0.49'
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -61726,7 +61741,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -62097,15 +62112,16 @@ SOFTWARE.
 name: 'base_web_template_general_framework_project_production_api_server'
 description: 'A sample command-line application.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -62613,7 +62629,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -64017,59 +64033,6 @@ include ":app"
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
 #include "Generated.xcconfig"
-
-""",
-                    children: [],
-                  ),
-                  ScriptGenerator(
-                    is_generate: true,
-                    directory_base: Directory(
-                        "base_web_template_general_framework_project"),
-                    file_system_entity: File(
-                        "production/base_web_template_general_framework_project_production_app/ios/Flutter/flutter_export_environment.sh"),
-                    state_data: {},
-                    file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""
-#!/bin/sh
-# This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/home/galaxeus/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_web_template_general_framework_project/production/base_web_template_general_framework_project_production_app"
-export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_TARGET=lib/main.dart"
-export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=1.0.0"
-export "FLUTTER_BUILD_NUMBER=1"
-export "DART_OBFUSCATION=false"
-export "TRACK_WIDGET_CREATION=true"
-export "TREE_SHAKE_ICONS=false"
-export "PACKAGE_CONFIG=.dart_tool/package_config.json"
-
-""",
-                    children: [],
-                  ),
-                  ScriptGenerator(
-                    is_generate: true,
-                    directory_base: Directory(
-                        "base_web_template_general_framework_project"),
-                    file_system_entity: File(
-                        "production/base_web_template_general_framework_project_production_app/ios/Flutter/Generated.xcconfig"),
-                    state_data: {},
-                    file_system_entity_type: FileSystemEntityType.file,
-                    value: r"""
-// This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/home/galaxeus/development/flutter
-FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/base_web_template_general_framework_project/production/base_web_template_general_framework_project_production_app
-COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=lib/main.dart
-FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=1.0.0
-FLUTTER_BUILD_NUMBER=1
-EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
-EXCLUDED_ARCHS[sdk=iphoneos*]=armv7
-DART_OBFUSCATION=false
-TRACK_WIDGET_CREATION=true
-TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.dart_tool/package_config.json
 
 """,
                     children: [],
@@ -70699,21 +70662,22 @@ name: 'base_web_template_general_framework_project_production_app'
 description: 'A new Flutter project.'
 publish_to: 'none'
 version: '1.0.0+1'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  flutter: 
+dependencies:
+  flutter:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
-dev_dependencies: 
-  flutter_test: 
+dev_dependencies:
+  flutter_test:
     sdk: 'flutter'
   flutter_lints: '^4.0.0'
-flutter: 
+flutter:
   uses-material-design: true
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -71235,7 +71199,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -71606,15 +71570,16 @@ SOFTWARE.
 name: 'base_web_template_general_framework_project_production_media_server'
 description: 'A sample command-line application.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -71991,24 +71956,24 @@ SOFTWARE.
 name: 'base_web_template_general_framework_project'
 description: 'A sample command-line application.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
+dependencies:
   path: '^1.9.0'
-  general_lib: '^0.0.46'
-dev_dependencies: 
+  general_lib: '^0.0.49'
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
-
 
 """,
     children: [],

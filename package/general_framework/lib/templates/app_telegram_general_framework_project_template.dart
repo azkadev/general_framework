@@ -246,7 +246,7 @@ jobs:
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -573,7 +573,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -835,15 +835,16 @@ Copyright (c) 2024 GLOBAL CORPORATION.
 name: 'app_telegram_general_framework_project_client'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -1385,7 +1386,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -1647,15 +1648,16 @@ Copyright (c) 2024 GLOBAL CORPORATION.
 name: 'app_telegram_general_framework_project_client_database'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -2197,7 +2199,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -2563,20 +2565,21 @@ name: 'app_telegram_general_framework_project_flutter'
 description: 'A new Flutter package project.'
 version: '0.0.1'
 homepage: null
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
   flutter: '>=1.17.0'
-dependencies: 
-  flutter: 
+dependencies:
+  flutter:
     sdk: 'flutter'
-dev_dependencies: 
-  flutter_test: 
+dev_dependencies:
+  flutter_test:
     sdk: 'flutter'
   flutter_lints: '^4.0.0'
 flutter: null
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 repository: 'https://github.com/azkadev/general_framework'
@@ -3117,7 +3120,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -3379,15 +3382,16 @@ Copyright (c) 2024 GLOBAL CORPORATION.
 name: 'app_telegram_general_framework_project_isar_scheme'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -3929,7 +3933,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -4191,15 +4195,16 @@ Copyright (c) 2024 GLOBAL CORPORATION.
 name: 'app_telegram_general_framework_project_language'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -4741,7 +4746,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -5003,15 +5008,16 @@ Copyright (c) 2024 GLOBAL CORPORATION.
 name: 'app_telegram_general_framework_project_scheme'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -5553,7 +5559,7 @@ jobs:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -5815,15 +5821,16 @@ Copyright (c) 2024 GLOBAL CORPORATION.
 name: 'app_telegram_general_framework_project_secret'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
@@ -6251,15 +6258,16 @@ Copyright (c) 2024 GLOBAL CORPORATION.
 name: 'app_telegram_general_framework_project'
 description: 'A sample command-line application.'
 version: '1.0.0'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies: {}
-dev_dependencies: 
+dev_dependencies:
   lints: '^4.0.0'
   test: 'any'
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'

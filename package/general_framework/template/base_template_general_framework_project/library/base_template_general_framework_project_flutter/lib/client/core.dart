@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, unnecessary_brace_in_string_interps
 
 /* <!-- START LICENSE -->
 
@@ -52,9 +52,7 @@ import 'package:general_framework/flutter/widget/core.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class BaseTemplateGeneralFrameworkProjectClientFlutter
-    extends GeneralFrameworkClientFlutter<
-        BaseTemplateGeneralFrameworkProjectClient> {
+class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkClientFlutter<BaseTemplateGeneralFrameworkProjectClient> {
   BaseTemplateGeneralFrameworkProjectClientFlutter({
     required super.navigatorKey,
     required super.generalLibrary,
@@ -74,13 +72,9 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
     );
     String token = generalFrameworkClient.sessionDefault.token ?? "";
     if (token.isNotEmpty) {
-      context
-          .routerGeneralLibFlutter()
-          .pushNamed(routeName: "/home", arguments: {});
+      context.routerGeneralLibFlutter().pushNamed(routeName: "/home", arguments: {});
     } else {
-      context
-          .routerGeneralLibFlutter()
-          .pushNamed(routeName: "/sign", arguments: {});
+      context.routerGeneralLibFlutter().pushNamed(routeName: "/sign", arguments: {});
     }
   }
 
@@ -89,11 +83,7 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
   }
 
   @override
-  FutureOr<dynamic> onInvokeResult(
-      Map result,
-      Map parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) async {
+  FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
     if (result["@type"] == "error") {
       final context = navigatorKey.currentContext;
       if (context == null) {
@@ -109,58 +99,47 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
             );
         return;
       }
-      final String message = (result["message"] as String)
-          .trim()
-          .split("_")
-          .map((e) => e.toLowerCase().toUpperCaseFirstData())
-          .join(" ");
+      final String message = (result["message"] as String).trim().split("_").map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
       context.showSnackBar("Error: ${message}");
     }
   }
 
   @override
-  FutureOr<Map?> onInvokeValidation(
-      Map parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) async {
+  FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
     return null;
   }
+ 
 
   @override
-  RouteGeneralLibFlutter get route {
-    return RouteGeneralLibFlutter(
-      onUnknownRoute: (context, routeData) {
-        return HomePage(generalFrameworkClientFlutter: this);
-      },
-      onRoute: () {
-        return {
-          "/": (context, data) {
-            return BaseTemplateGeneralFrameworkProjectFlutterAppMain(
-              generalFrameworkClientFlutter: this,
-            );
-          },
-          "/account": (context, data) {
-            final Account account = data.builder<Account>(
-              onBuilder: () {
-                dynamic body = data.arguments;
-                if (body is Account) {
-                  return body;
-                } else if (body is JsonScheme) {
-                  return Account(body.toJson());
-                } else if (body is Map) {
-                  return Account(body);
-                }
+  void ensureInitializedRoute() {
+    // TODO: implement ensureInitializedRoute
+    routeGeneralLibFlutter.all("/", (context, data) {
+      return BaseTemplateGeneralFrameworkProjectFlutterAppMain(
+        generalFrameworkClientFlutter: this,
+      );
+    });
+    routeGeneralLibFlutter.all("/account", (context, data) {
+      final Account account = data.builder<Account>(
+        onBuilder: () {
+          dynamic body = data.arguments;
+          if (body is Account) {
+            return body;
+          } else if (body is JsonScheme) {
+            return Account(body.toJson());
+          } else if (body is Map) {
+            return Account(body);
+          }
 
-                return Account({});
-              },
-            );
+          return Account({});
+        },
+      );
 
-            return AccountPage(
-              account: account,
-              generalFrameworkClientFlutter: this,
-            );
-          },
-          "/chat": (context, data) {
+      return AccountPage(
+        account: account,
+        generalFrameworkClientFlutter: this,
+      );
+    });
+    routeGeneralLibFlutter.all("/chat", (context, data) {
             final Account account = data.builder(
               onBuilder: () {
                 final body = data.arguments;
@@ -179,40 +158,53 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
               account: account,
               generalFrameworkClientFlutter: this,
             );
-          },
-          "/home": (context, data) {
+    });
+    routeGeneralLibFlutter.all("/home", (context, data) {
+      
             return HomePage(
               generalFrameworkClientFlutter: this,
             );
-          },
-          "/settings": (context, data) {
+    });
+    routeGeneralLibFlutter.all("/settings", (context, data) {
+      
             return SettingsPage(
               generalFrameworkClientFlutter: this,
             );
-          },
-          "/sign": (context, data) {
+    });
+    routeGeneralLibFlutter.all("/sign", (context, data) {
             return SignPage(
               generalFrameworkClientFlutter: this,
             );
-          },
-        };
-      },
-    );
+    });
+  }
+
+  @override
+  GeneralLibFlutterApp generalLibFlutterAppFunction() {
+    // TODO: implement generalLibFlutterAppFunction
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget onErrorRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+    // TODO: implement onErrorRoute
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget onNotFoundRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+    // TODO: implement onNotFoundRoute
+    throw UnimplementedError();
   }
 }
 
-abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget<
-        T extends BaseTemplateGeneralFrameworkProjectClientFlutter>
-    extends GeneralFrameworkClientFlutterAppStatefulWidget<T> {
+abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget<T extends BaseTemplateGeneralFrameworkProjectClientFlutter> extends GeneralFrameworkClientFlutterAppStatefulWidget<T> {
   const BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget({
     super.key,
     required super.generalFrameworkClientFlutter,
   });
 }
 
-abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget<
-        T extends BaseTemplateGeneralFrameworkProjectClientFlutter>
-    extends GeneralFrameworkClientFlutterAppStatelessWidget<T> {
+abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget<T extends BaseTemplateGeneralFrameworkProjectClientFlutter> extends GeneralFrameworkClientFlutterAppStatelessWidget<T> {
   const BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget({
     super.key,
     required super.generalFrameworkClientFlutter,

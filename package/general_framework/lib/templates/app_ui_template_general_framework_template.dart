@@ -246,7 +246,7 @@ jobs:
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
-github: 
+github:
   - 'azkadev'
   - 'generalfoss'
 
@@ -1505,56 +1505,6 @@ include ":app"
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
 #include "Generated.xcconfig"
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                File("ios/Flutter/flutter_export_environment.sh"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-#!/bin/sh
-# This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/home/galaxeus/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/app_ui_template_general_framework"
-export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_TARGET=lib/main.dart"
-export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=1.0.0"
-export "FLUTTER_BUILD_NUMBER=1"
-export "DART_OBFUSCATION=false"
-export "TRACK_WIDGET_CREATION=true"
-export "TREE_SHAKE_ICONS=false"
-export "PACKAGE_CONFIG=.dart_tool/package_config.json"
-
-""",
-            children: [],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity: File("ios/Flutter/Generated.xcconfig"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.file,
-            value: r"""
-// This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/home/galaxeus/development/flutter
-FLUTTER_APPLICATION_PATH=/home/galaxeus/Documents/galaxeus/app/general_framework/package/general_framework/template/app_ui_template_general_framework
-COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=lib/main.dart
-FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=1.0.0
-FLUTTER_BUILD_NUMBER=1
-EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
-EXCLUDED_ARCHS[sdk=iphoneos*]=armv7
-DART_OBFUSCATION=false
-TRACK_WIDGET_CREATION=true
-TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.dart_tool/package_config.json
 
 """,
             children: [],
@@ -9538,25 +9488,26 @@ name: 'app_ui_template_general_framework'
 description: 'A new Flutter project.'
 publish_to: 'none'
 version: '1.0.0+1'
-environment: 
+environment:
   sdk: '>=3.3.3 <4.0.0'
-dependencies: 
-  flutter: 
+dependencies:
+  flutter:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
-  general_lib_flutter: '^0.0.27'
-  general_lib: '^0.0.46'
-  simulate: '^0.0.41'
-  general_framework: '^0.0.4'
-dev_dependencies: 
-  flutter_test: 
+  general_lib_flutter: '^0.0.30'
+  general_lib: '^0.0.49'
+  simulate: '^0.0.43'
+  general_framework: '^0.0.5'
+dev_dependencies:
+  flutter_test:
     sdk: 'flutter'
   flutter_lints: '^4.0.0'
-flutter: 
+flutter:
   uses-material-design: true
-dependency_overrides: 
+dependency_overrides:
   pointycastle: '3.8.0'
-funding: 
+  mime: '^2.0.0'
+funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
 homepage: 'https://youtube.com/@azkadev'
