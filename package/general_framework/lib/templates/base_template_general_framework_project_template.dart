@@ -6395,7 +6395,7 @@ class BaseTemplateGeneralFrameworkProjectApiServer
   String decryptData({required String data}) {
     return generalFrameworkApi.generalFrameworkApiDatabase
         .baseTemplateGeneralFrameworkProjectSecretServerSide.crypto
-        .decrypt(data_base64: data);
+        .decrypt(data: data);
   }
 
   @override
@@ -8705,7 +8705,7 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
   @override
   String decryptData({required String data}) {
     return baseTemplateGeneralFrameworkProjectSecretClientSide.crypto
-        .decrypt(data_base64: data);
+        .decrypt(data: data);
   }
 
   @override
@@ -20697,11 +20697,6 @@ public final class GeneratedPluginRegistrant {
       Log.e(TAG, "Error registering plugin flutter_tts, com.tundralabs.fluttertts.FlutterTtsPlugin", e);
     }
     try {
-      flutterEngine.getPlugins().add(new org.flame_engine.gamepads_android.GamepadsAndroidPlugin());
-    } catch (Exception e) {
-      Log.e(TAG, "Error registering plugin gamepads_android, org.flame_engine.gamepads_android.GamepadsAndroidPlugin", e);
-    }
-    try {
       flutterEngine.getPlugins().add(new io.flutter.plugins.localauth.LocalAuthPlugin());
     } catch (Exception e) {
       Log.e(TAG, "Error registering plugin local_auth_android, io.flutter.plugins.localauth.LocalAuthPlugin", e);
@@ -20727,24 +20722,19 @@ public final class GeneratedPluginRegistrant {
       Log.e(TAG, "Error registering plugin permission_handler_android, com.baseflow.permissionhandler.PermissionHandlerPlugin", e);
     }
     try {
-      flutterEngine.getPlugins().add(new com.xamdesign.safe_device.SafeDevicePlugin());
-    } catch (Exception e) {
-      Log.e(TAG, "Error registering plugin safe_device, com.xamdesign.safe_device.SafeDevicePlugin", e);
-    }
-    try {
       flutterEngine.getPlugins().add(new com.aaassseee.screen_brightness_android.ScreenBrightnessAndroidPlugin());
     } catch (Exception e) {
       Log.e(TAG, "Error registering plugin screen_brightness_android, com.aaassseee.screen_brightness_android.ScreenBrightnessAndroidPlugin", e);
     }
     try {
-      flutterEngine.getPlugins().add(new com.wsc.sim_card_info.SimCardInfoPlugin());
-    } catch (Exception e) {
-      Log.e(TAG, "Error registering plugin sim_card_info, com.wsc.sim_card_info.SimCardInfoPlugin", e);
-    }
-    try {
       flutterEngine.getPlugins().add(new com.csdcorp.speech_to_text.SpeechToTextPlugin());
     } catch (Exception e) {
       Log.e(TAG, "Error registering plugin speech_to_text, com.csdcorp.speech_to_text.SpeechToTextPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new global_corporation.general_developer.azkadev.system_information_flutter.SystemInformationFlutterPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin system_information_flutter, global_corporation.general_developer.azkadev.system_information_flutter.SystemInformationFlutterPlugin", e);
     }
     try {
       flutterEngine.getPlugins().add(new io.flutter.plugins.urllauncher.UrlLauncherPlugin());
@@ -20831,9 +20821,11 @@ public final class GeneratedPluginRegistrant {
                                                 value: r"""
 package com.example.example
 
+
 import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity: FlutterActivity()
+
 
 """,
                                                 children: [],
@@ -21200,43 +21192,29 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
-def localProperties = new Properties()
-def localPropertiesFile = rootProject.file("local.properties")
-if (localPropertiesFile.exists()) {
-    localPropertiesFile.withReader("UTF-8") { reader ->
-        localProperties.load(reader)
-    }
-}
-
-def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
-if (flutterVersionCode == null) {
-    flutterVersionCode = "1"
-}
-
-def flutterVersionName = localProperties.getProperty("flutter.versionName")
-if (flutterVersionName == null) {
-    flutterVersionName = "1.0"
-}
-
 android {
     namespace = "com.example.example"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk 34
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = 17
     }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.example"
         // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutterVersionCode.toInteger()
-        versionName = flutterVersionName
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk 23
+        targetSdk 34
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
     }
 
     buildTypes {
@@ -21251,7 +21229,6 @@ android {
 flutter {
     source = "../.."
 }
-
 """,
                         children: [],
                       )
@@ -21290,7 +21267,7 @@ distributionBase=GRADLE_USER_HOME
 distributionPath=wrapper/dists
 zipStoreBase=GRADLE_USER_HOME
 zipStorePath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.3-all.zip
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.3-all.zip
 
 """,
                             children: [],
@@ -21317,30 +21294,11 @@ gradle-wrapper.jar
 GeneratedPluginRegistrant.java
 
 # Remember to never publicly share your keystore.
-# See https://flutter.dev/docs/deployment/android#reference-the-keystore-from-the-app
+# See https://flutter.dev/to/reference-keystore
 key.properties
 **/*.keystore
 **/*.jks
-*.exe
-*.deb
-*.sqlite-*
-*.sqlite
-docs/canvaskit
-*/canvaskit
-.dart_tool/
-build/
-ephemeral/
-/build/
-generate_glx_*
-node_modules/
-flutter/ephemeral
-android/.gradle
-android/flutter/ephemeral
-linux/flutter/ephemeral
-macos/Flutter/ephemeral
-windows/ephemeral
-tmp/
-temp/
+
 """,
                     children: [],
                   ),
@@ -21426,7 +21384,7 @@ tasks.register("clean", Delete) {
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
-org.gradle.jvmargs=-Xmx4G -XX:+HeapDumpOnOutOfMemoryError
+org.gradle.jvmargs=-Xmx4G -XX:MaxMetaspaceSize=2G -XX:+HeapDumpOnOutOfMemoryError
 android.useAndroidX=true
 android.enableJetifier=true
 
@@ -21720,6 +21678,9 @@ if "%OS%"=="Windows_NT" endlocal
                     value: r"""
 sdk.dir=/home/galaxeus/Android/Sdk
 flutter.sdk=/home/galaxeus/development/flutter
+flutter.buildMode=release
+flutter.versionName=1.0.0
+flutter.versionCode=1
 """,
                     children: [],
                   ),
@@ -21752,12 +21713,11 @@ pluginManagement {
 
 plugins {
     id "dev.flutter.flutter-plugin-loader" version "1.0.0"
-    id "com.android.application" version "7.3.0" apply false
-    id "org.jetbrains.kotlin.android" version "1.7.10" apply false
+    id "com.android.application" version "8.1.0" apply false
+    id "org.jetbrains.kotlin.android" version "1.9.22" apply false
 }
 
 include ":app"
-
 """,
                     children: [],
                   )
@@ -22574,12 +22534,6 @@ NS_ASSUME_NONNULL_END
 @import flutter_tts;
 #endif
 
-#if __has_include(<gamepads_ios/GamepadsIosPlugin.h>)
-#import <gamepads_ios/GamepadsIosPlugin.h>
-#else
-@import gamepads_ios;
-#endif
-
 #if __has_include(<local_auth_darwin/FLALocalAuthPlugin.h>)
 #import <local_auth_darwin/FLALocalAuthPlugin.h>
 #else
@@ -22610,28 +22564,22 @@ NS_ASSUME_NONNULL_END
 @import permission_handler_apple;
 #endif
 
-#if __has_include(<safe_device/SafeDevicePlugin.h>)
-#import <safe_device/SafeDevicePlugin.h>
-#else
-@import safe_device;
-#endif
-
 #if __has_include(<screen_brightness_ios/ScreenBrightnessIosPlugin.h>)
 #import <screen_brightness_ios/ScreenBrightnessIosPlugin.h>
 #else
 @import screen_brightness_ios;
 #endif
 
-#if __has_include(<sim_card_info/SimCardInfoPlugin.h>)
-#import <sim_card_info/SimCardInfoPlugin.h>
-#else
-@import sim_card_info;
-#endif
-
 #if __has_include(<speech_to_text/SpeechToTextPlugin.h>)
 #import <speech_to_text/SpeechToTextPlugin.h>
 #else
 @import speech_to_text;
+#endif
+
+#if __has_include(<system_information_flutter/SystemInformationFlutterPlugin.h>)
+#import <system_information_flutter/SystemInformationFlutterPlugin.h>
+#else
+@import system_information_flutter;
 #endif
 
 #if __has_include(<url_launcher_ios/URLLauncherPlugin.h>)
@@ -22658,16 +22606,14 @@ NS_ASSUME_NONNULL_END
   [CameraPlugin registerWithRegistrar:[registry registrarForPlugin:@"CameraPlugin"]];
   [FilePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FilePickerPlugin"]];
   [FlutterTtsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterTtsPlugin"]];
-  [GamepadsIosPlugin registerWithRegistrar:[registry registrarForPlugin:@"GamepadsIosPlugin"]];
   [FLALocalAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLALocalAuthPlugin"]];
   [MediaKitVideoPlugin registerWithRegistrar:[registry registrarForPlugin:@"MediaKitVideoPlugin"]];
   [FPPPackageInfoPlusPlugin registerWithRegistrar:[registry registrarForPlugin:@"FPPPackageInfoPlusPlugin"]];
   [PathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"PathProviderPlugin"]];
   [PermissionHandlerPlugin registerWithRegistrar:[registry registrarForPlugin:@"PermissionHandlerPlugin"]];
-  [SafeDevicePlugin registerWithRegistrar:[registry registrarForPlugin:@"SafeDevicePlugin"]];
   [ScreenBrightnessIosPlugin registerWithRegistrar:[registry registrarForPlugin:@"ScreenBrightnessIosPlugin"]];
-  [SimCardInfoPlugin registerWithRegistrar:[registry registrarForPlugin:@"SimCardInfoPlugin"]];
   [SpeechToTextPlugin registerWithRegistrar:[registry registrarForPlugin:@"SpeechToTextPlugin"]];
+  [SystemInformationFlutterPlugin registerWithRegistrar:[registry registrarForPlugin:@"SystemInformationFlutterPlugin"]];
   [URLLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"URLLauncherPlugin"]];
   [VolumeControllerPlugin registerWithRegistrar:[registry registrarForPlugin:@"VolumeControllerPlugin"]];
   [WakelockPlusPlugin registerWithRegistrar:[registry registrarForPlugin:@"WakelockPlusPlugin"]];
@@ -24022,21 +23968,13 @@ add_custom_target(flutter_assemble DEPENDS
 
 #include "generated_plugin_registrant.h"
 
-#include <gamepads_linux/gamepads_linux_plugin.h>
 #include <media_kit_video/media_kit_video_plugin.h>
-#include <sim_card_info/sim_card_info_plugin.h>
 #include <url_launcher_linux/url_launcher_plugin.h>
 
 void fl_register_plugins(FlPluginRegistry* registry) {
-  g_autoptr(FlPluginRegistrar) gamepads_linux_registrar =
-      fl_plugin_registry_get_registrar_for_plugin(registry, "GamepadsLinuxPlugin");
-  gamepads_linux_plugin_register_with_registrar(gamepads_linux_registrar);
   g_autoptr(FlPluginRegistrar) media_kit_video_registrar =
       fl_plugin_registry_get_registrar_for_plugin(registry, "MediaKitVideoPlugin");
   media_kit_video_plugin_register_with_registrar(media_kit_video_registrar);
-  g_autoptr(FlPluginRegistrar) sim_card_info_registrar =
-      fl_plugin_registry_get_registrar_for_plugin(registry, "SimCardInfoPlugin");
-  sim_card_info_plugin_register_with_registrar(sim_card_info_registrar);
   g_autoptr(FlPluginRegistrar) url_launcher_linux_registrar =
       fl_plugin_registry_get_registrar_for_plugin(registry, "UrlLauncherPlugin");
   url_launcher_plugin_register_with_registrar(url_launcher_linux_registrar);
@@ -24087,9 +24025,7 @@ void fl_register_plugins(FlPluginRegistry* registry);
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  gamepads_linux
   media_kit_video
-  sim_card_info
   url_launcher_linux
 )
 
@@ -24627,26 +24563,22 @@ import FlutterMacOS
 import Foundation
 
 import flutter_tts
-import gamepads_darwin
 import local_auth_darwin
 import media_kit_video
 import package_info_plus
 import path_provider_foundation
 import screen_brightness_macos
-import sim_card_info
 import speech_to_text
 import url_launcher_macos
 import wakelock_plus
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   FlutterTtsPlugin.register(with: registry.registrar(forPlugin: "FlutterTtsPlugin"))
-  GamepadsDarwinPlugin.register(with: registry.registrar(forPlugin: "GamepadsDarwinPlugin"))
   FLALocalAuthPlugin.register(with: registry.registrar(forPlugin: "FLALocalAuthPlugin"))
   MediaKitVideoPlugin.register(with: registry.registrar(forPlugin: "MediaKitVideoPlugin"))
   FPPPackageInfoPlusPlugin.register(with: registry.registrar(forPlugin: "FPPPackageInfoPlusPlugin"))
   PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
   ScreenBrightnessMacosPlugin.register(with: registry.registrar(forPlugin: "ScreenBrightnessMacosPlugin"))
-  SimCardInfoPlugin.register(with: registry.registrar(forPlugin: "SimCardInfoPlugin"))
   SpeechToTextPlugin.register(with: registry.registrar(forPlugin: "SpeechToTextPlugin"))
   UrlLauncherPlugin.register(with: registry.registrar(forPlugin: "UrlLauncherPlugin"))
   WakelockPlusMacosPlugin.register(with: registry.registrar(forPlugin: "WakelockPlusMacosPlugin"))
@@ -26788,12 +26720,10 @@ add_custom_target(flutter_assemble DEPENDS
 
 #include <camera_windows/camera_windows.h>
 #include <flutter_tts/flutter_tts_plugin.h>
-#include <gamepads_windows/gamepads_windows_plugin_c_api.h>
 #include <local_auth_windows/local_auth_plugin.h>
 #include <media_kit_video/media_kit_video_plugin_c_api.h>
 #include <permission_handler_windows/permission_handler_windows_plugin.h>
 #include <screen_brightness_windows/screen_brightness_windows_plugin.h>
-#include <sim_card_info/sim_card_info_plugin_c_api.h>
 #include <url_launcher_windows/url_launcher_windows.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
@@ -26801,8 +26731,6 @@ void RegisterPlugins(flutter::PluginRegistry* registry) {
       registry->GetRegistrarForPlugin("CameraWindows"));
   FlutterTtsPluginRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("FlutterTtsPlugin"));
-  GamepadsWindowsPluginCApiRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("GamepadsWindowsPluginCApi"));
   LocalAuthPluginRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("LocalAuthPlugin"));
   MediaKitVideoPluginCApiRegisterWithRegistrar(
@@ -26811,8 +26739,6 @@ void RegisterPlugins(flutter::PluginRegistry* registry) {
       registry->GetRegistrarForPlugin("PermissionHandlerWindowsPlugin"));
   ScreenBrightnessWindowsPluginRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("ScreenBrightnessWindowsPlugin"));
-  SimCardInfoPluginCApiRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("SimCardInfoPluginCApi"));
   UrlLauncherWindowsRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("UrlLauncherWindows"));
 }
@@ -26864,12 +26790,10 @@ void RegisterPlugins(flutter::PluginRegistry* registry);
 list(APPEND FLUTTER_PLUGIN_LIST
   camera_windows
   flutter_tts
-  gamepads_windows
   local_auth_windows
   media_kit_video
   permission_handler_windows
   screen_brightness_windows
-  sim_card_info
   url_launcher_windows
 )
 
@@ -28275,7 +28199,7 @@ temp/
 # This file should be version controlled and should not be manually edited.
 
 version:
-  revision: "b0850beeb25f6d5b10426284f506557f66181b36"
+  revision: "2663184aa79047d0a33a14a3b607954f8fdd8730"
   channel: "stable"
 
 project_type: app
@@ -28284,26 +28208,26 @@ project_type: app
 migration:
   platforms:
     - platform: root
-      create_revision: b0850beeb25f6d5b10426284f506557f66181b36
-      base_revision: b0850beeb25f6d5b10426284f506557f66181b36
+      create_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
+      base_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
     - platform: android
-      create_revision: b0850beeb25f6d5b10426284f506557f66181b36
-      base_revision: b0850beeb25f6d5b10426284f506557f66181b36
+      create_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
+      base_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
     - platform: ios
-      create_revision: b0850beeb25f6d5b10426284f506557f66181b36
-      base_revision: b0850beeb25f6d5b10426284f506557f66181b36
+      create_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
+      base_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
     - platform: linux
-      create_revision: b0850beeb25f6d5b10426284f506557f66181b36
-      base_revision: b0850beeb25f6d5b10426284f506557f66181b36
+      create_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
+      base_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
     - platform: macos
-      create_revision: b0850beeb25f6d5b10426284f506557f66181b36
-      base_revision: b0850beeb25f6d5b10426284f506557f66181b36
+      create_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
+      base_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
     - platform: web
-      create_revision: b0850beeb25f6d5b10426284f506557f66181b36
-      base_revision: b0850beeb25f6d5b10426284f506557f66181b36
+      create_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
+      base_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
     - platform: windows
-      create_revision: b0850beeb25f6d5b10426284f506557f66181b36
-      base_revision: b0850beeb25f6d5b10426284f506557f66181b36
+      create_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
+      base_revision: 2663184aa79047d0a33a14a3b607954f8fdd8730
 
   # User provided section
 
@@ -28385,6 +28309,502 @@ linter:
     <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>
+
+""",
+                children: [],
+              ),
+              ScriptGenerator(
+                is_generate: true,
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/example/guide-dart-general-library.md"),
+                state_data: {},
+                file_system_entity_type: FileSystemEntityType.file,
+                value: r"""
+# General 
+
+General Library Dokumentasi
+
+Silahkan buka masing masing folder ya!
+
+
+## Rekomendasi Full Config Flutter Platform Project
+
+
+1. Android
+
+- Change MainActivty.kt
+
+```kotlin
+
+import android.hardware.input.InputManager
+import android.os.Handler
+import android.view.InputDevice
+import android.view.KeyEvent
+import android.view.MotionEvent
+import io.flutter.embedding.android.FlutterActivity
+import org.flame_engine.gamepads_android.GamepadsCompatibleActivity
+import io.flutter.embedding.android.FlutterFragmentActivity
+
+class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
+    var keyListener: ((KeyEvent) -> Boolean)? = null
+    var motionListener: ((MotionEvent) -> Boolean)? = null
+
+    override fun dispatchGenericMotionEvent(motionEvent: MotionEvent): Boolean {
+        return motionListener?.invoke(motionEvent) ?: false
+    }
+    
+    override fun dispatchKeyEvent(keyEvent: KeyEvent): Boolean {
+        return keyListener?.invoke(keyEvent) ?: false
+    }
+
+    override fun registerInputDeviceListener(
+      listener: InputManager.InputDeviceListener, handler: Handler?) {
+        val inputManager = getSystemService(INPUT_SERVICE) as InputManager
+        inputManager.registerInputDeviceListener(listener, null)
+    }
+
+    override fun registerKeyEventHandler(handler: (KeyEvent) -> Boolean) {
+        keyListener = handler
+    }
+
+    override fun registerMotionEventHandler(handler: (MotionEvent) -> Boolean) {
+        motionListener = handler
+    }
+}
+
+```
+
+
+- Change Android Manifest
+
+
+```bash
+code android/settings.gradle
+```
+
+```bash
+plugins {
+    # bla bla bla
+    # change this
+    id "org.jetbrains.kotlin.android" version "1.9.22" apply false
+}
+```
+
+
+- Change Android Manifest
+
+
+```bash
+code android/app/src/main/AndroidManifest.xml
+```
+
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  
+    <!-- copy from this -->    
+    
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.INTERNET" /> 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <!-- Permissions options for the `ignoreBatteryOptimizations` group -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- Permissions options for the `notification` group -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+     
+    <!-- if you need more permission --> 
+
+
+    <queries>
+      <intent>
+        <action android:name="android.speech.RecognitionService" />
+      </intent>
+    </queries>
+
+   <queries>
+     <intent>
+       <action android:name="android.intent.action.TTS_SERVICE" />
+     </intent>
+    </queries>
+     
+
+    <!-- if you need permission basic social media --> 
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> 
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <!-- if you need permission more social media --> 
+
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+
+    <!-- if you need permission full social media --> 
+    
+    <!-- Permissions options for the `storage` group -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- Read storage permission for Android 12 and lower -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    
+    <!-- if you need more permission --> 
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/> 
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+ 
+
+    <!-- Permissions options for the `contacts` group -->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+    <!-- Permissions options for the `sms` group -->
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH"/>
+    <uses-permission android:name="android.permission.RECEIVE_MMS"/>
+
+    <!-- Permissions options for the `phone` group -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.ADD_VOICEMAIL"/>
+    <uses-permission android:name="android.permission.USE_SIP"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
+    <uses-permission android:name="android.permission.BIND_CALL_REDIRECTION_SERVICE"/>
+
+    <!-- Permissions options for the `calendar` group -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <!-- Permissions options for the `location` group -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <!-- Permissions options for the `microphone` or `speech` group -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Permissions options for the `sensors` group -->
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+    <uses-permission android:name="android.permission.BODY_SENSORS_BACKGROUND" />
+
+    <!-- Permissions options for the `accessMediaLocation` group -->
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+
+    <!-- Permissions options for the `activityRecognition` group -->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+ 
+
+    <!-- Permissions options for the `nearby devices` group -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
+
+    <!-- Permissions options for the `manage external storage` group -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <!-- Permissions options for the `system alert windows` group -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- Permissions options for the `request install packages` group -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!-- Permissions options for the `access notification policy` group -->
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
+ 
+
+    <!-- Permissions options for the `alarm` group -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+     
+     <!-- finished copy -->
+
+
+    <application
+        android:label="Example App"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <!-- Specifies an Android theme to apply to this Activity as soon as
+                 the Android process has started. This theme is visible to the user
+                 while the Flutter UI initializes. After that, this theme continues
+                 to determine the Window background behind the Flutter UI. -->
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!-- Don't delete the meta-data below.
+             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+             <!-- copy this -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+            
+        <!-- Adapt to the foreground service type(s) desired, these are just examples -->
+        <service
+            android:name="de.julianassmann.flutter_background.IsolateHolderService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync|specialUse|..." />
+
+          <!-- finished copy -->
+    </application>
+</manifest>
+
+```
+<!-- START GLOBAL CORPORATION -->
+<h3 align="center">
+  Global Corporation
+
+  ![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/global_corporation.png)
+</h3>
+
+
+<h3 align="center">
+  Welcome to Global Corporation profile!
+  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="28">
+</h3>
+
+<!-- Social icons section -->
+<p align="center">
+  <a href="https://www.instagram.com/global__corporation/"><img width="32px" alt="Instagram" title="Telegram" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"/></a>
+  &#8287;&#8287;&#8287;&#8287;&#8287;
+  <a href="https://t.me/GLOBAL_CORPORATION_ORG"><img width="32px" alt="Twitter" title="Telegram" src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"/></a>
+  &#8287;&#8287;&#8287;&#8287;&#8287;
+  <a href="https://twitter.com/global_corp_org"><img width="32px" alt="Twitter" title="Twitter" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg"/></a>
+  &#8287;&#8287;&#8287;&#8287;&#8287;
+  <a href="https://www.youtube.com/@global_Corporation"><img width="32px" alt="Youtube" title="Youtube" src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png"/></a>
+  &#8287;&#8287;&#8287;&#8287;&#8287;
+</p>
+
+**Global Corporation** Is a **leading company** that takes a leading role in **accelerating** and **maintaining** enterprise security. 
+
+With a sharp focus on innovation and technological excellence
+
+**Global Corporation** providing effective proactive solutions to secure company operations and prevent potential adverse risks. 
+
+With a committed team of experts, advanced technology, and a holistic approach to corporate security, Global Corporation has become a benchmark for other companies that prioritize security and safety as a top priority in their business.
+
+[![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/powered.png)](https://www.youtube.com/@Global_Corporation)
+
+## Application / Product / Project Official
+
+<h3 align="center">
+  Global App
+
+  ![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/global_corporation.png)
+</h3>
+
+  Super Cross-platform application allows you to do social media / chat as well as a place for buying and selling businesses to find work
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/global_app)
+
+<h3 align="center">
+  Global Bot App
+
+  ![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/global_corporation.png)
+</h3>
+
+  Super cross-platform application allows you to handle lots of bots / userbots / AI for your assistants, making it easier for you in all your affairs
+  
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/global_bot_app)
+
+### Global Studio Developer
+
+  The cross-platform Studio Developer application allows you to code on various platforms
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/global_bot_app)
+
+<h3 align="center">
+  Ads Gateway
+
+  ![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/ads_gateway.png)
+</h3>
+
+  **Applikasi** Cross platform advertising allows you to advertise on various platforms easily
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/coinlox)
+
+<h3 align="center">
+  Archivon
+
+  ![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/archivon.png)
+</h3>
+
+  **Applikasi** Linux based operating system which will be released
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/coinlox)
+
+<h3 align="center">
+  Coinlox
+
+  ![](https://raw.githubusercontent.com/globalcorporation/.github/main/.github/logo/coinlox.png)
+</h3>
+
+  **Applikasi** Cross Platform Wallet allows you to store money on the internet safely
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/coinlox)
+
+
+
+### Global Bot Telegram
+
+  Super Bot Telegram allows you to manage various chat groups / private / channels as well as a place to buy and sell the products we sell, you can buy this service from
+  IDR: 25k / bulan
+  $: 1,5 Dollar
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/global_bot_telegram)
+
+### Global Userbot Telegram
+
+  Super Bot Telegram allows you to manage various chat groups / private / channels as well as a place to buy and sell the products we sell, you can buy this service from
+  IDR: 25k / bulan
+  $: 1,5 Dollar
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/global_userbot_telegram)
+
+### Global Bot Whatsapp
+
+  Super Bot Telegram allows you to manage various chat groups / private / channels as well as a place to buy and sell the products we sell, you can buy this service from
+  IDR: 25k / bulan
+  $: 1,5 Dollar
+
+[![](https://cdn.dribbble.com/userupload/13133188/file/original-2331747061f15217a2f16cc3d665c5b6.jpg)](https://github.com/globalcorporation/global_bot_whatsapp)
+
+## Social Media
+
+<h3 align="center">
+  Telegram
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" width="20">
+</h3>
+
+1. [Group Developer Global Public](https://t.me/DEVELOPER_GLOBAL_PUBLIC)
+
+## Product / Services
+
+1. **Clone Bot / Userbot**
+  Hi, do you want to have a bot / userbot with lots of features?. 
+  - **Features**:
+    - **Repeat Message**
+    - **Manage Chat Private / Channel / Group**
+  - **Platform Support**:
+    - **Telegram**
+    - **Whatsapp**
+    - **Twitter**
+    - **Github**
+    - **Google** 
+1. **Products**
+    - **Black Products**
+    - **Group / Channel**
+    - **Nsfw**
+    - **Payment Gateway**
+    - **Paid Promote**
+    - **Pre Release / Beta**
+    - **Promo Cheap**
+    - **Source Code Bot / USerbot**
+    - **Trade**
+2. **Services**
+    - **Developer**
+    - **Goal**
+    - **Partner**
+    - **Promote**
+    - **Recommendation**
+    - **Sortcut Cheat Sheet**
+    - **Terminate**
+    - **Upgrade**
+
+## How To Buy Services Or Products | Cara Beli Jasa Atau Products
+
+- **Via Telegram Bot**
+
+  - **Englisth**
+     
+     If you want to buy, you can use Telegram to automatically process the payment
+     (if the long process is not a **SCAM!!** it's possible that the **server is down** so the process could take longer. If in doubt, tap the report menu then fill in a complaint)
+
+     - Open Bot: https://t.me/GLOBAL_CORP_ORG_BOT
+     - Fill in personal data / subscribe to the channel
+     - Tap Main menu select services / products
+     - Select Products / Services
+     - Make sure there are enough coins
+     - Fill in the required data
+
+
+  - **Indonesia**
+
+     Jika kamu ingin membeli bisa lewat telegram automatis pembayaran hingga proses
+     (jika proses lama itu bukan **SCAM !!** kemungkinan **server down** jadi proses bisa lebih lama jika ragu tap menu report lalu isi keluhan)
+     -  Buka Bot: https://t.me/GLOBAL_CORP_ORG_BOT
+     -  Isi data pribadi / subscribe channel
+     -  Tap Main menu pilih services / products
+     -  Pilih Product / Services
+     -  Pastikan coin mencukupi
+     -  Isi data yang di butuhkan
+
+- **Via Telegram USER**
+  
+  -  Buka: https://t.me/general_user
+  -  Ucapin apapun yang kamu butuh jasa dev / apapun
+
+  
+Video Tutorial
+[![Watch the video](https://img.youtube.com/vi/TY0Y21C6asM/maxresdefault.jpg)](https://www.youtube.com/watch?v=TY0Y21C6asM)
+
+- **Lewat App**
+
+  - **English** 
+
+    If you want to see a product/service with a full demo, you can buy it via the app
+
+  - **Indonesia**
+
+    jika kamu ingin melihat product / jasa dengan full demo kamu bisa beli lewat app
+
+## 📺 Latest YouTube Videos
+
+  <!-- prettier-ignore-start -->
+  <!-- BEGIN YOUTUBE-CARDS -->
+[![Userbot LIFE TIME Subsription Telegram Murah Unlimited Akun Ultra FAST | Global Corporation](https://ytcards.demolab.com/?id=LfNt8A2fCLQ&title=Userbot+LIFE+TIME+Subsription+Telegram+Murah+Unlimited+Akun+Ultra+FAST+%7C+Global+Corporation&lang=id&timestamp=1712129787&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5 "Userbot LIFE TIME Subsription Telegram Murah Unlimited Akun Ultra FAST | Global Corporation")](https://www.youtube.com/watch?v=LfNt8A2fCLQ)
+[![Tolong 😭 Siapapun beli satu jasa aku ntr aku kasih harga seiklasnya / ada yang mau donasi | GLOBAL](https://ytcards.demolab.com/?id=BFl2AT_pdOw&title=Tolong+%F0%9F%98%AD+Siapapun+beli+satu+jasa+aku+ntr+aku+kasih+harga+seiklasnya+%2F+ada+yang+mau+donasi+%7C+GLOBAL&lang=id&timestamp=1710988807&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5 "Tolong 😭 Siapapun beli satu jasa aku ntr aku kasih harga seiklasnya / ada yang mau donasi | GLOBAL")](https://www.youtube.com/watch?v=BFl2AT_pdOw)
+[![Cara beli ai telegram versi bot dan cara pakai| Global Corporation](https://ytcards.demolab.com/?id=7LZhoklvS9A&title=Cara+beli+ai+telegram+versi+bot+dan+cara+pakai%7C+Global+Corporation&lang=id&timestamp=1710937415&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5 "Cara beli ai telegram versi bot dan cara pakai| Global Corporation")](https://www.youtube.com/watch?v=7LZhoklvS9A)
+[![Ai Userbot Telegram Demo Cara Pakai Dan Beli | Global Corporation](https://ytcards.demolab.com/?id=4mAZ6EgAhUo&title=Ai+Userbot+Telegram+Demo+Cara+Pakai+Dan+Beli+%7C+Global+Corporation&lang=id&timestamp=1710936251&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5 "Ai Userbot Telegram Demo Cara Pakai Dan Beli | Global Corporation")](https://www.youtube.com/watch?v=4mAZ6EgAhUo)
+[![CARA BELI USERBOT TELEGRAM CLOUD  | Global Corporation](https://ytcards.demolab.com/?id=uiDJwK9r3Cg&title=CARA+BELI+USERBOT+TELEGRAM+CLOUD++%7C+Global+Corporation&lang=id&timestamp=1710900440&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5 "CARA BELI USERBOT TELEGRAM CLOUD  | Global Corporation")](https://www.youtube.com/watch?v=uiDJwK9r3Cg)
+[![Cara Top Up Automatis Menggunakan Payment Gateway Di GLOBAL BOT APP](https://ytcards.demolab.com/?id=ADqzS5ORJsU&title=Cara+Top+Up+Automatis+Menggunakan+Payment+Gateway+Di+GLOBAL+BOT+APP&lang=id&timestamp=1710721879&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5 "Cara Top Up Automatis Menggunakan Payment Gateway Di GLOBAL BOT APP")](https://www.youtube.com/watch?v=ADqzS5ORJsU)
+<!-- END YOUTUBE-CARDS -->
+  <!-- prettier-ignore-end -->
+
+<!-- END GLOBAL CORPORATION -->
 
 """,
                 children: [],
@@ -28783,7 +29203,7 @@ export "core.dart";
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, unnecessary_brace_in_string_interps
 
 /* <!-- START LICENSE -->
 
@@ -28912,77 +29332,89 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter
   }
 
   @override
-  RouteGeneralLibFlutter get route {
-    return RouteGeneralLibFlutter(
-      onUnknownRoute: (context, routeData) {
-        return HomePage(generalFrameworkClientFlutter: this);
-      },
-      onRoute: () {
-        return {
-          "/": (context, data) {
-            return BaseTemplateGeneralFrameworkProjectFlutterAppMain(
-              generalFrameworkClientFlutter: this,
-            );
-          },
-          "/account": (context, data) {
-            final Account account = data.builder<Account>(
-              onBuilder: () {
-                dynamic body = data.arguments;
-                if (body is Account) {
-                  return body;
-                } else if (body is JsonScheme) {
-                  return Account(body.toJson());
-                } else if (body is Map) {
-                  return Account(body);
-                }
+  void ensureInitializedRoute() {
+    // TODO: implement ensureInitializedRoute
+    routeGeneralLibFlutter.all("/", (context, data) {
+      return BaseTemplateGeneralFrameworkProjectFlutterAppMain(
+        generalFrameworkClientFlutter: this,
+      );
+    });
+    routeGeneralLibFlutter.all("/account", (context, data) {
+      final Account account = data.builder<Account>(
+        onBuilder: () {
+          dynamic body = data.arguments;
+          if (body is Account) {
+            return body;
+          } else if (body is JsonScheme) {
+            return Account(body.toJson());
+          } else if (body is Map) {
+            return Account(body);
+          }
 
-                return Account({});
-              },
-            );
+          return Account({});
+        },
+      );
 
-            return AccountPage(
-              account: account,
-              generalFrameworkClientFlutter: this,
-            );
-          },
-          "/chat": (context, data) {
-            final Account account = data.builder(
-              onBuilder: () {
-                final body = data.arguments;
-                if (body is Account) {
-                  return body;
-                } else if (body is JsonScheme) {
-                  return Account(body.toJson());
-                } else if (body is Map) {
-                  return Account(body);
-                }
+      return AccountPage(
+        account: account,
+        generalFrameworkClientFlutter: this,
+      );
+    });
+    routeGeneralLibFlutter.all("/chat", (context, data) {
+      final Account account = data.builder(
+        onBuilder: () {
+          final body = data.arguments;
+          if (body is Account) {
+            return body;
+          } else if (body is JsonScheme) {
+            return Account(body.toJson());
+          } else if (body is Map) {
+            return Account(body);
+          }
 
-                return Account({});
-              },
-            );
-            return ChatPage(
-              account: account,
-              generalFrameworkClientFlutter: this,
-            );
-          },
-          "/home": (context, data) {
-            return HomePage(
-              generalFrameworkClientFlutter: this,
-            );
-          },
-          "/settings": (context, data) {
-            return SettingsPage(
-              generalFrameworkClientFlutter: this,
-            );
-          },
-          "/sign": (context, data) {
-            return SignPage(
-              generalFrameworkClientFlutter: this,
-            );
-          },
-        };
-      },
-    );
+          return Account({});
+        },
+      );
+      return ChatPage(
+        account: account,
+        generalFrameworkClientFlutter: this,
+      );
+    });
+    routeGeneralLibFlutter.all("/home", (context, data) {
+      return HomePage(
+        generalFrameworkClientFlutter: this,
+      );
+    });
+    routeGeneralLibFlutter.all("/settings", (context, data) {
+      return SettingsPage(
+        generalFrameworkClientFlutter: this,
+      );
+    });
+    routeGeneralLibFlutter.all("/sign", (context, data) {
+      return SignPage(
+        generalFrameworkClientFlutter: this,
+      );
+    });
+  }
+
+  @override
+  GeneralLibFlutterApp generalLibFlutterAppFunction() {
+    // TODO: implement generalLibFlutterAppFunction
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget onErrorRoute(BuildContext context,
+      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+    // TODO: implement onErrorRoute
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget onNotFoundRoute(BuildContext context,
+      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+    // TODO: implement onNotFoundRoute
+    throw UnimplementedError();
   }
 }
 
@@ -29895,8 +30327,8 @@ class BaseTemplateGeneralFrameworkProjectFlutterApp
             textTheme: Typography().white,
           ),
           themeMode: themeMode,
-          onUnknownRoute: generalFrameworkClientFlutter.route.toOnUnknownRoute,
-          routes: generalFrameworkClientFlutter.route.toRoutes(),
+          onUnknownRoute:
+              generalFrameworkClientFlutter.routeGeneralLibFlutter.route,
         );
         if (Dart.isDebug) {
           print("debu");
@@ -46934,6 +47366,12 @@ Future<void> generateDatabaseSql() async {
       continue;
     }
 
+    if (RegExp("(${GeneralLibSchemeType.local.toSpesialType()})\$",
+            caseSensitive: false)
+        .hasMatch(jsonData["@type"])) {
+      continue;
+    }
+
     // Set<String> keys = {
     //   "drive",
     //   "coinlox",
@@ -47185,7 +47623,14 @@ Future<void> generateIsarDatabase() async {
   if (directory.existsSync() == false) {
     directory.createSync(recursive: true);
   }
+  final Directory directory_lib_database_scheme = Directory(path.join(
+    directory.path,
+    "lib",
+    "database",
+    "scheme",
+  ));
 
+  directory_lib_database_scheme.recreate();
   for (var i = 0; i < database_schemes.length; i++) {
     database_schemes[i].general_lib_extension_updateForce(data: {
       "id": 0,
@@ -47202,12 +47647,7 @@ Future<void> generateIsarDatabase() async {
       className: (data["@type"]),
       isarVersion: 4,
     );
-    await jsonDataScript.saveToFile(Directory(path.join(
-      directory.path,
-      "lib",
-      "database",
-      "scheme",
-    )));
+    await jsonDataScript.saveToFile(directory_lib_database_scheme);
   }
   Process.runSync("dart", [
     "format",
@@ -55079,11 +55519,11 @@ final List<Map<String, dynamic>> database_schemes = () {
     BaseTemplateGeneralFrameworkProjectSchemeDefault.chat(
         generalLibSchemeType: generalLibSchemeType),
     BaseTemplateGeneralFrameworkProjectSchemeDefault.message(
-        generalLibSchemeType: GeneralLibSchemeType.isar),
+        generalLibSchemeType: GeneralLibSchemeType.local),
     BaseTemplateGeneralFrameworkProjectSchemeDefault.session(
         generalLibSchemeType: generalLibSchemeType),
     BaseTemplateGeneralFrameworkProjectSchemeDefault.session(
-        generalLibSchemeType: GeneralLibSchemeType.isar),
+        generalLibSchemeType: GeneralLibSchemeType.local),
   ];
 }();
 
@@ -55179,7 +55619,7 @@ class BaseTemplateGeneralFrameworkProjectSchemeDefault {
       // json_data.general_lib_extension_updateForce(data: <String, dynamic>{
 
       // });
-    } else if (generalLibSchemeType == GeneralLibSchemeType.isar) {
+    } else if (generalLibSchemeType == GeneralLibSchemeType.local) {
       json_data.general_lib_extension_updateForce(data: <String, dynamic>{
         //
         //
@@ -55228,7 +55668,7 @@ class BaseTemplateGeneralFrameworkProjectSchemeDefault {
         // "chat_ids": [0],
         "chat_unique_id": "",
       });
-    } else if (generalLibSchemeType == GeneralLibSchemeType.isar) {
+    } else if (generalLibSchemeType == GeneralLibSchemeType.local) {
       json_data.general_lib_extension_updateForce(data: <String, dynamic>{
         "chat_ids": [0],
       });
@@ -56184,6 +56624,7 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+supabase_scheme/
 """,
             children: [],
           ),
@@ -56918,72 +57359,29 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 import 'package:general_lib/crypto/crypto.dart';
 
-class BaseTemplateGeneralFrameworkProjectSecret {
-  static BaseTemplateGeneralFrameworkProjectSecretClientSide clientSide({
-    required String apiUrl,
-    required String pathApi,
-    required String pathWebSocket,
-    required String cryptoKey,
-    required String cryptoIv,
-  }) {
-    return BaseTemplateGeneralFrameworkProjectSecretClientSide(
-      apiUrl: apiUrl,
-      pathApi: pathApi,
-      pathWebSocket: pathWebSocket,
-      cryptoKey: cryptoKey,
-      cryptoIv: cryptoIv,
-    );
-  }
-
-  static BaseTemplateGeneralFrameworkProjectSecretServerSide serverSide({
-    required String supabaseUrl,
-    required String supabaseKey,
-    required String pathApi,
-    required String pathWebSocket,
-    required String cryptoKey,
-    required String cryptoIv,
-  }) {
-    return BaseTemplateGeneralFrameworkProjectSecretServerSide(
-      supabaseUrl: supabaseUrl,
-      supabaseKey: supabaseKey,
-      pathApi: pathApi,
-      pathWebSocket: pathWebSocket,
-      cryptoKey: cryptoKey,
-      cryptoIv: cryptoIv,
-    );
-  }
-}
-
 class BaseTemplateGeneralFrameworkProjectSecretClientSide {
   final String apiUrl;
   final String pathApi;
   final String pathWebSocket;
-  final Crypto crypto = Crypto.defaultCrypto();
+  final Crypto crypto;
 
   BaseTemplateGeneralFrameworkProjectSecretClientSide({
     required this.apiUrl,
     required this.pathApi,
     required this.pathWebSocket,
-    required String cryptoKey,
-    required String cryptoIv,
-  }) {
-    crypto.defaultKey = cryptoKey;
-    crypto.defaultIv = cryptoIv;
-  }
-
+    required this.crypto,
+  });
   BaseTemplateGeneralFrameworkProjectSecretClientSide copyWith({
     String? apiUrl,
     String? pathApi,
     String? pathWebSocket,
-    String? cryptoKey,
-    String? cryptoIv,
+    Crypto? crypto,
   }) {
     return BaseTemplateGeneralFrameworkProjectSecretClientSide(
       apiUrl: apiUrl ?? this.apiUrl,
       pathApi: pathApi ?? this.pathApi,
       pathWebSocket: pathWebSocket ?? this.pathWebSocket,
-      cryptoKey: cryptoKey ?? crypto.defaultKey,
-      cryptoIv: cryptoIv ?? crypto.defaultIv,
+      crypto: crypto ?? this.crypto,
     );
   }
 
@@ -56992,8 +57390,7 @@ class BaseTemplateGeneralFrameworkProjectSecretClientSide {
       apiUrl: "http://0.0.0.0:3000",
       pathApi: "/api",
       pathWebSocket: "/ws",
-      cryptoKey: Crypto.defaultCrypto().defaultKey,
-      cryptoIv: Crypto.defaultCrypto().defaultIv,
+      crypto: Crypto.defaultCrypto(),
     );
   }
 }
@@ -57003,19 +57400,15 @@ class BaseTemplateGeneralFrameworkProjectSecretServerSide {
   final String supabaseKey;
   final String pathApi;
   final String pathWebSocket;
-  final Crypto crypto = Crypto.defaultCrypto();
+  final Crypto crypto;
 
   BaseTemplateGeneralFrameworkProjectSecretServerSide({
     required this.supabaseUrl,
     required this.supabaseKey,
     required this.pathApi,
     required this.pathWebSocket,
-    required String cryptoKey,
-    required String cryptoIv,
-  }) {
-    crypto.defaultKey = cryptoKey;
-    crypto.defaultIv = cryptoIv;
-  }
+    required this.crypto,
+  });
 
   BaseTemplateGeneralFrameworkProjectSecretServerSide copyWith({
     String? supabaseUrl,
@@ -57030,8 +57423,7 @@ class BaseTemplateGeneralFrameworkProjectSecretServerSide {
       supabaseKey: supabaseKey ?? this.supabaseKey,
       pathApi: pathApi ?? this.pathApi,
       pathWebSocket: pathWebSocket ?? this.pathWebSocket,
-      cryptoKey: cryptoKey ?? crypto.defaultKey,
-      cryptoIv: cryptoIv ?? crypto.defaultIv,
+      crypto: crypto,
     );
   }
 
@@ -57042,8 +57434,7 @@ class BaseTemplateGeneralFrameworkProjectSecretServerSide {
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU",
       pathApi: "/api",
       pathWebSocket: "/ws",
-      cryptoKey: Crypto.defaultCrypto().defaultKey,
-      cryptoIv: Crypto.defaultCrypto().defaultIv,
+      crypto: Crypto.defaultCrypto(),
     );
   }
 }

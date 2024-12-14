@@ -116,8 +116,9 @@ class BaseTemplateGeneralFrameworkProjectFlutterApp
             textTheme: Typography().white,
           ),
           themeMode: themeMode,
-          onUnknownRoute: generalFrameworkClientFlutter.routeGeneralLibFlutter.route,
-         );
+          onUnknownRoute:
+              generalFrameworkClientFlutter.routeGeneralLibFlutter.route,
+        );
         if (Dart.isDebug) {
           print("debu");
         }

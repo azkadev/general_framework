@@ -80,7 +80,7 @@ class GeneralFrameworkClientFlutterAppDirectory {
         }
       } catch (e) {}
 
-      return Directory(path.join(app_document_directory.parent.uri.toFilePath(), "External Storage"));
+      return Directory(path.join(app_document_directory.parent.uri.toFilePath(), "ApplicationData"));
     });
 
     app_download_directory = await Future(() async {

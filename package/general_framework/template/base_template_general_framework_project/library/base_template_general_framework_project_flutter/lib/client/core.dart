@@ -52,7 +52,9 @@ import 'package:general_framework/flutter/widget/core.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkClientFlutter<BaseTemplateGeneralFrameworkProjectClient> {
+class BaseTemplateGeneralFrameworkProjectClientFlutter
+    extends GeneralFrameworkClientFlutter<
+        BaseTemplateGeneralFrameworkProjectClient> {
   BaseTemplateGeneralFrameworkProjectClientFlutter({
     required super.navigatorKey,
     required super.generalLibrary,
@@ -72,9 +74,13 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkC
     );
     String token = generalFrameworkClient.sessionDefault.token ?? "";
     if (token.isNotEmpty) {
-      context.routerGeneralLibFlutter().pushNamed(routeName: "/home", arguments: {});
+      context
+          .routerGeneralLibFlutter()
+          .pushNamed(routeName: "/home", arguments: {});
     } else {
-      context.routerGeneralLibFlutter().pushNamed(routeName: "/sign", arguments: {});
+      context
+          .routerGeneralLibFlutter()
+          .pushNamed(routeName: "/sign", arguments: {});
     }
   }
 
@@ -83,7 +89,11 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkC
   }
 
   @override
-  FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
+  FutureOr<dynamic> onInvokeResult(
+      Map result,
+      Map parameters,
+      GeneralFrameworkClientInvokeOptions
+          generalFrameworkClientInvokeOptions) async {
     if (result["@type"] == "error") {
       final context = navigatorKey.currentContext;
       if (context == null) {
@@ -99,16 +109,22 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkC
             );
         return;
       }
-      final String message = (result["message"] as String).trim().split("_").map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
+      final String message = (result["message"] as String)
+          .trim()
+          .split("_")
+          .map((e) => e.toLowerCase().toUpperCaseFirstData())
+          .join(" ");
       context.showSnackBar("Error: ${message}");
     }
   }
 
   @override
-  FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
+  FutureOr<Map?> onInvokeValidation(
+      Map parameters,
+      GeneralFrameworkClientInvokeOptions
+          generalFrameworkClientInvokeOptions) async {
     return null;
   }
- 
 
   @override
   void ensureInitializedRoute() {
@@ -140,41 +156,39 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkC
       );
     });
     routeGeneralLibFlutter.all("/chat", (context, data) {
-            final Account account = data.builder(
-              onBuilder: () {
-                final body = data.arguments;
-                if (body is Account) {
-                  return body;
-                } else if (body is JsonScheme) {
-                  return Account(body.toJson());
-                } else if (body is Map) {
-                  return Account(body);
-                }
+      final Account account = data.builder(
+        onBuilder: () {
+          final body = data.arguments;
+          if (body is Account) {
+            return body;
+          } else if (body is JsonScheme) {
+            return Account(body.toJson());
+          } else if (body is Map) {
+            return Account(body);
+          }
 
-                return Account({});
-              },
-            );
-            return ChatPage(
-              account: account,
-              generalFrameworkClientFlutter: this,
-            );
+          return Account({});
+        },
+      );
+      return ChatPage(
+        account: account,
+        generalFrameworkClientFlutter: this,
+      );
     });
     routeGeneralLibFlutter.all("/home", (context, data) {
-      
-            return HomePage(
-              generalFrameworkClientFlutter: this,
-            );
+      return HomePage(
+        generalFrameworkClientFlutter: this,
+      );
     });
     routeGeneralLibFlutter.all("/settings", (context, data) {
-      
-            return SettingsPage(
-              generalFrameworkClientFlutter: this,
-            );
+      return SettingsPage(
+        generalFrameworkClientFlutter: this,
+      );
     });
     routeGeneralLibFlutter.all("/sign", (context, data) {
-            return SignPage(
-              generalFrameworkClientFlutter: this,
-            );
+      return SignPage(
+        generalFrameworkClientFlutter: this,
+      );
     });
   }
 
@@ -185,26 +199,32 @@ class BaseTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkC
   }
 
   @override
-  Widget onErrorRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+  Widget onErrorRoute(BuildContext context,
+      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
     // TODO: implement onErrorRoute
     throw UnimplementedError();
   }
 
   @override
-  Widget onNotFoundRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+  Widget onNotFoundRoute(BuildContext context,
+      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
     // TODO: implement onNotFoundRoute
     throw UnimplementedError();
   }
 }
 
-abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget<T extends BaseTemplateGeneralFrameworkProjectClientFlutter> extends GeneralFrameworkClientFlutterAppStatefulWidget<T> {
+abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget<
+        T extends BaseTemplateGeneralFrameworkProjectClientFlutter>
+    extends GeneralFrameworkClientFlutterAppStatefulWidget<T> {
   const BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget({
     super.key,
     required super.generalFrameworkClientFlutter,
   });
 }
 
-abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget<T extends BaseTemplateGeneralFrameworkProjectClientFlutter> extends GeneralFrameworkClientFlutterAppStatelessWidget<T> {
+abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget<
+        T extends BaseTemplateGeneralFrameworkProjectClientFlutter>
+    extends GeneralFrameworkClientFlutterAppStatelessWidget<T> {
   const BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget({
     super.key,
     required super.generalFrameworkClientFlutter,

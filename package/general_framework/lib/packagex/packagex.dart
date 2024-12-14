@@ -17,7 +17,7 @@ class PackagexProjectGeneralFramework {
 return {
   "name": "general_framework",
   "description": "General Framework Library for help you create project more easy with general standarization style code base",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "https://github.com/azkadev/general_framework",
   "repository": "https://github.com/azkadev/general_framework",
   "documentation": "https://azkadev.github.io/general_framework/",
@@ -36,7 +36,8 @@ return {
     "general_framework": "general_framework"
   },
   "dependency_overrides": {
-    "pointycastle": "3.8.0"
+    "pointycastle": "3.8.0",
+    "mime": "^2.0.0"
   },
   "issue_tracker": "https://t.me/DEVELOPER_GLOBAL_PUBLIC",
   "obfuscate": true,

@@ -199,6 +199,12 @@ Future<void> generateDatabaseSql() async {
       continue;
     }
 
+    if (RegExp("(${GeneralLibSchemeType.local.toSpesialType()})\$",
+            caseSensitive: false)
+        .hasMatch(jsonData["@type"])) {
+      continue;
+    }
+
     // Set<String> keys = {
     //   "drive",
     //   "coinlox",
@@ -450,7 +456,14 @@ Future<void> generateIsarDatabase() async {
   if (directory.existsSync() == false) {
     directory.createSync(recursive: true);
   }
+  final Directory directory_lib_database_scheme = Directory(path.join(
+    directory.path,
+    "lib",
+    "database",
+    "scheme",
+  ));
 
+  directory_lib_database_scheme.recreate();
   for (var i = 0; i < database_schemes.length; i++) {
     database_schemes[i].general_lib_extension_updateForce(data: {
       "id": 0,
@@ -467,12 +480,7 @@ Future<void> generateIsarDatabase() async {
       className: (data["@type"]),
       isarVersion: 4,
     );
-    await jsonDataScript.saveToFile(Directory(path.join(
-      directory.path,
-      "lib",
-      "database",
-      "scheme",
-    )));
+    await jsonDataScript.saveToFile(directory_lib_database_scheme);
   }
   Process.runSync("dart", [
     "format",

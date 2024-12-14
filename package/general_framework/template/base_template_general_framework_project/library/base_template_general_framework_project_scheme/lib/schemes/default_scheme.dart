@@ -78,7 +78,7 @@ class BaseTemplateGeneralFrameworkProjectSchemeDefault {
       // json_data.general_lib_extension_updateForce(data: <String, dynamic>{
 
       // });
-    } else if (generalLibSchemeType == GeneralLibSchemeType.isar) {
+    } else if (generalLibSchemeType == GeneralLibSchemeType.local) {
       json_data.general_lib_extension_updateForce(data: <String, dynamic>{
         //
         //
@@ -127,7 +127,7 @@ class BaseTemplateGeneralFrameworkProjectSchemeDefault {
         // "chat_ids": [0],
         "chat_unique_id": "",
       });
-    } else if (generalLibSchemeType == GeneralLibSchemeType.isar) {
+    } else if (generalLibSchemeType == GeneralLibSchemeType.local) {
       json_data.general_lib_extension_updateForce(data: <String, dynamic>{
         "chat_ids": [0],
       });

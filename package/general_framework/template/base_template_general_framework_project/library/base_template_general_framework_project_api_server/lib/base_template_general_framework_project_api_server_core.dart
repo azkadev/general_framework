@@ -49,7 +49,7 @@ class BaseTemplateGeneralFrameworkProjectApiServer
   String decryptData({required String data}) {
     return generalFrameworkApi.generalFrameworkApiDatabase
         .baseTemplateGeneralFrameworkProjectSecretServerSide.crypto
-        .decrypt(data_base64: data);
+        .decrypt(data: data);
   }
 
   @override

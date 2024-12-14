@@ -34,72 +34,29 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 import 'package:general_lib/crypto/crypto.dart';
 
-class BaseTemplateGeneralFrameworkProjectSecret {
-  static BaseTemplateGeneralFrameworkProjectSecretClientSide clientSide({
-    required String apiUrl,
-    required String pathApi,
-    required String pathWebSocket,
-    required String cryptoKey,
-    required String cryptoIv,
-  }) {
-    return BaseTemplateGeneralFrameworkProjectSecretClientSide(
-      apiUrl: apiUrl,
-      pathApi: pathApi,
-      pathWebSocket: pathWebSocket,
-      cryptoKey: cryptoKey,
-      cryptoIv: cryptoIv,
-    );
-  }
-
-  static BaseTemplateGeneralFrameworkProjectSecretServerSide serverSide({
-    required String supabaseUrl,
-    required String supabaseKey,
-    required String pathApi,
-    required String pathWebSocket,
-    required String cryptoKey,
-    required String cryptoIv,
-  }) {
-    return BaseTemplateGeneralFrameworkProjectSecretServerSide(
-      supabaseUrl: supabaseUrl,
-      supabaseKey: supabaseKey,
-      pathApi: pathApi,
-      pathWebSocket: pathWebSocket,
-      cryptoKey: cryptoKey,
-      cryptoIv: cryptoIv,
-    );
-  }
-}
-
 class BaseTemplateGeneralFrameworkProjectSecretClientSide {
   final String apiUrl;
   final String pathApi;
   final String pathWebSocket;
-  final Crypto crypto = Crypto.defaultCrypto();
+  final Crypto crypto;
 
   BaseTemplateGeneralFrameworkProjectSecretClientSide({
     required this.apiUrl,
     required this.pathApi,
     required this.pathWebSocket,
-    required String cryptoKey,
-    required String cryptoIv,
-  }) {
-    crypto.defaultKey = cryptoKey;
-    crypto.defaultIv = cryptoIv;
-  }
-
+    required this.crypto,
+  });
   BaseTemplateGeneralFrameworkProjectSecretClientSide copyWith({
     String? apiUrl,
     String? pathApi,
     String? pathWebSocket,
-    String? cryptoKey,
-    String? cryptoIv,
+    Crypto? crypto,
   }) {
     return BaseTemplateGeneralFrameworkProjectSecretClientSide(
       apiUrl: apiUrl ?? this.apiUrl,
       pathApi: pathApi ?? this.pathApi,
       pathWebSocket: pathWebSocket ?? this.pathWebSocket,
-      cryptoKey: cryptoKey ?? crypto.defaultKey,
-      cryptoIv: cryptoIv ?? crypto.defaultIv,
+      crypto: crypto ?? this.crypto,
     );
   }
 
@@ -108,8 +65,7 @@ class BaseTemplateGeneralFrameworkProjectSecretClientSide {
       apiUrl: "http://0.0.0.0:3000",
       pathApi: "/api",
       pathWebSocket: "/ws",
-      cryptoKey: Crypto.defaultCrypto().defaultKey,
-      cryptoIv: Crypto.defaultCrypto().defaultIv,
+      crypto: Crypto.defaultCrypto(),
     );
   }
 }
@@ -119,19 +75,15 @@ class BaseTemplateGeneralFrameworkProjectSecretServerSide {
   final String supabaseKey;
   final String pathApi;
   final String pathWebSocket;
-  final Crypto crypto = Crypto.defaultCrypto();
+  final Crypto crypto;
 
   BaseTemplateGeneralFrameworkProjectSecretServerSide({
     required this.supabaseUrl,
     required this.supabaseKey,
     required this.pathApi,
     required this.pathWebSocket,
-    required String cryptoKey,
-    required String cryptoIv,
-  }) {
-    crypto.defaultKey = cryptoKey;
-    crypto.defaultIv = cryptoIv;
-  }
+    required this.crypto,
+  });
 
   BaseTemplateGeneralFrameworkProjectSecretServerSide copyWith({
     String? supabaseUrl,
@@ -146,8 +98,7 @@ class BaseTemplateGeneralFrameworkProjectSecretServerSide {
       supabaseKey: supabaseKey ?? this.supabaseKey,
       pathApi: pathApi ?? this.pathApi,
       pathWebSocket: pathWebSocket ?? this.pathWebSocket,
-      cryptoKey: cryptoKey ?? crypto.defaultKey,
-      cryptoIv: cryptoIv ?? crypto.defaultIv,
+      crypto: crypto,
     );
   }
 
@@ -158,8 +109,7 @@ class BaseTemplateGeneralFrameworkProjectSecretServerSide {
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU",
       pathApi: "/api",
       pathWebSocket: "/ws",
-      cryptoKey: Crypto.defaultCrypto().defaultKey,
-      cryptoIv: Crypto.defaultCrypto().defaultIv,
+      crypto: Crypto.defaultCrypto(),
     );
   }
 }

@@ -205,7 +205,7 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
   @override
   String decryptData({required String data}) {
     return baseTemplateGeneralFrameworkProjectSecretClientSide.crypto
-        .decrypt(data_base64: data);
+        .decrypt(data: data);
   }
 
   @override

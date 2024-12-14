@@ -2965,37 +2965,6 @@ github:
             is_generate: true,
             directory_base: Directory("app_template_general_framework_project"),
             file_system_entity: Directory(
-                "library/app_template_general_framework_project_isar_scheme/bin"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.directory,
-            value: "",
-            children: [
-              ScriptGenerator(
-                is_generate: true,
-                directory_base:
-                    Directory("app_template_general_framework_project"),
-                file_system_entity: File(
-                    "library/app_template_general_framework_project_isar_scheme/bin/app_template_general_framework_project_client_isar_scheme.dart"),
-                state_data: {},
-                file_system_entity_type: FileSystemEntityType.file,
-                value: r"""
-import 'package:app_template_general_framework_project_isar_scheme/app_template_general_framework_project_isar_scheme.dart'
-    as app_template_general_framework_project_isar_scheme;
-
-void main(List<String> arguments) {
-  print(
-      'Hello world: ${app_template_general_framework_project_isar_scheme.calculate()}!');
-}
-
-""",
-                children: [],
-              )
-            ],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base: Directory("app_template_general_framework_project"),
-            file_system_entity: Directory(
                 "library/app_template_general_framework_project_isar_scheme/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
@@ -3012,38 +2981,6 @@ void main(List<String> arguments) {
                 value: r"""
 int calculate() {
   return 6 * 7;
-}
-
-""",
-                children: [],
-              )
-            ],
-          ),
-          ScriptGenerator(
-            is_generate: true,
-            directory_base: Directory("app_template_general_framework_project"),
-            file_system_entity: Directory(
-                "library/app_template_general_framework_project_isar_scheme/test"),
-            state_data: {},
-            file_system_entity_type: FileSystemEntityType.directory,
-            value: "",
-            children: [
-              ScriptGenerator(
-                is_generate: true,
-                directory_base:
-                    Directory("app_template_general_framework_project"),
-                file_system_entity: File(
-                    "library/app_template_general_framework_project_isar_scheme/test/app_template_general_framework_project_client_isar_scheme_test.dart"),
-                state_data: {},
-                file_system_entity_type: FileSystemEntityType.file,
-                value: r"""
-import 'package:app_template_general_framework_project_isar_scheme/app_template_general_framework_project_isar_scheme.dart';
-import 'package:test/test.dart';
-
-void main() {
-  test('calculate', () {
-    expect(calculate(), 42);
-  });
 }
 
 """,

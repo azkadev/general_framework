@@ -48,10 +48,10 @@ final List<Map<String, dynamic>> database_schemes = () {
     BaseTemplateGeneralFrameworkProjectSchemeDefault.chat(
         generalLibSchemeType: generalLibSchemeType),
     BaseTemplateGeneralFrameworkProjectSchemeDefault.message(
-        generalLibSchemeType: GeneralLibSchemeType.isar),
+        generalLibSchemeType: GeneralLibSchemeType.local),
     BaseTemplateGeneralFrameworkProjectSchemeDefault.session(
         generalLibSchemeType: generalLibSchemeType),
     BaseTemplateGeneralFrameworkProjectSchemeDefault.session(
-        generalLibSchemeType: GeneralLibSchemeType.isar),
+        generalLibSchemeType: GeneralLibSchemeType.local),
   ];
 }();

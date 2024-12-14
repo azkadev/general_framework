@@ -5,12 +5,10 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   camera_windows
   flutter_tts
-  gamepads_windows
   local_auth_windows
   media_kit_video
   permission_handler_windows
   screen_brightness_windows
-  sim_card_info
   url_launcher_windows
 )
 

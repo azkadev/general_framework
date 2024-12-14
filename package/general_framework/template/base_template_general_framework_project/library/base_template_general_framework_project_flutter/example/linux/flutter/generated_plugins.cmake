@@ -3,9 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  gamepads_linux
   media_kit_video
-  sim_card_info
   url_launcher_linux
 )
 
