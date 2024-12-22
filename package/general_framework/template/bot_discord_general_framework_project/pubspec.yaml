@@ -10,7 +10,7 @@ dependencies:
   server_universe: '^0.0.25'
   mason_logger: '^0.3.1'
 dev_dependencies:
-  lints: '^4.0.0'
+  lints: '^5.0.0'
   test: 'any'
 dependency_overrides:
   pointycastle: '3.8.0'

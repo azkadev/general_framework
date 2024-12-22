@@ -15,9 +15,9 @@ dependencies:
   http: '^1.2.2'
   general_framework: '^0.0.5'
   yet_another_json_isolate: '^2.0.0'
-  supabase: '^2.6.0'
+  supabase: '^2.6.1'
 dev_dependencies:
-  lints: '^4.0.0'
+  lints: '^5.0.0'
   test: 'any'
 dependency_overrides:
   pointycastle: '3.8.0'

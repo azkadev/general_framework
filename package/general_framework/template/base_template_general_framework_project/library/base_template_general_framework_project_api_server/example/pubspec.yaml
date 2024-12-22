@@ -12,7 +12,7 @@ dependencies:
   base_template_general_framework_project_scheme:
     path: '../../base_template_general_framework_project_scheme'
 dev_dependencies:
-  lints: '^4.0.0'
+  lints: '^5.0.0'
   test: 'any'
 dependency_overrides:
   pointycastle: '3.8.0'
