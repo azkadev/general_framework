@@ -10,9 +10,9 @@ dependencies:
   flutter:
     sdk: 'flutter'
   path: '^1.9.0'
-  general_lib: '^0.0.49'
-  general_lib_flutter: '^0.0.30'
-  general: '^0.0.32'
+  general_lib: '^0.0.50'
+  general_lib_flutter: '^0.0.31'
+  general: '^0.0.33'
   base_web_template_general_framework_project_scheme:
     path: '../base_web_template_general_framework_project_scheme'
   base_web_template_general_framework_project_client_database:
@@ -21,7 +21,7 @@ dependencies:
     path: '../base_web_template_general_framework_project_client'
   base_web_template_general_framework_project_secret:
     path: '../base_web_template_general_framework_project_secret'
-  general_framework: '^0.0.5'
+  general_framework: '^0.0.6'
   media_kit_libs_video: '^1.0.5'
 dev_dependencies:
   flutter_test:
