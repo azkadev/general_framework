@@ -1,5 +1,5 @@
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps
- 
+
 final Map<String, Map> general_framework_language_scheme = () {
   return <String, Map>{
     /// sign: start
@@ -13,13 +13,11 @@ final Map<String, Map> general_framework_language_scheme = () {
         "en": "Sign up",
       },
     },
+
     /// sign: end
     /// ads: start
     "ads": {
-      "title": {
-        "en": "Ads",
-        "id": "Iklan"
-      },
+      "title": {"en": "Ads", "id": "Iklan"},
     },
     // ads: end
   }.map((key, value) {

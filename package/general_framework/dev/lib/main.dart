@@ -50,12 +50,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   final GlobalKey globalKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
-
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -81,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context) {
           return const Column(
             mainAxisSize: MainAxisSize.min,
-            children: [ 
+            children: [
               Text("helo world"),
               Text("helo world"),
               Text("helo world"),
@@ -92,7 +89,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SingleChildScrollView(
         child: ConstrainedBox(
-          constraints: BoxConstraints(minHeight: context.height, minWidth: context.width),
+          constraints: BoxConstraints(
+              minHeight: context.height, minWidth: context.width),
           child: Column(
             // Column is also a layout widget. It takes a list of children and
             // arranges them vertically. By default, it sizes itself to fit its
@@ -141,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context) {
           return Column(
             mainAxisSize: MainAxisSize.min,
-            children: [ 
+            children: [
               const Text("helo world"),
               const Text("helo world"),
               const Text("helo world"),

@@ -102,37 +102,52 @@ enum MarkdownTag {
 
 ///use [MarkdownConfigGeneralFramework] to set various configurations for [MarkdownGeneralFrameworkWidget]
 class MarkdownConfigGeneralFramework {
-  HorizontalRulesConfig get hr => _getConfig<HorizontalRulesConfig>(MarkdownTag.hr, const HorizontalRulesConfig());
+  HorizontalRulesConfig get hr => _getConfig<HorizontalRulesConfig>(
+      MarkdownTag.hr, const HorizontalRulesConfig());
 
-  HeadingConfig get h1 => _getConfig<HeadingConfig>(MarkdownTag.h1, const H1Config());
+  HeadingConfig get h1 =>
+      _getConfig<HeadingConfig>(MarkdownTag.h1, const H1Config());
 
-  HeadingConfig get h2 => _getConfig<HeadingConfig>(MarkdownTag.h2, const H2Config());
+  HeadingConfig get h2 =>
+      _getConfig<HeadingConfig>(MarkdownTag.h2, const H2Config());
 
-  HeadingConfig get h3 => _getConfig<HeadingConfig>(MarkdownTag.h3, const H3Config());
+  HeadingConfig get h3 =>
+      _getConfig<HeadingConfig>(MarkdownTag.h3, const H3Config());
 
-  HeadingConfig get h4 => _getConfig<HeadingConfig>(MarkdownTag.h4, const H4Config());
+  HeadingConfig get h4 =>
+      _getConfig<HeadingConfig>(MarkdownTag.h4, const H4Config());
 
-  HeadingConfig get h5 => _getConfig<HeadingConfig>(MarkdownTag.h5, const H5Config());
+  HeadingConfig get h5 =>
+      _getConfig<HeadingConfig>(MarkdownTag.h5, const H5Config());
 
-  HeadingConfig get h6 => _getConfig<HeadingConfig>(MarkdownTag.h6, const H6Config());
+  HeadingConfig get h6 =>
+      _getConfig<HeadingConfig>(MarkdownTag.h6, const H6Config());
 
-  PreConfig get pre => _getConfig<PreConfig>(MarkdownTag.pre, const PreConfig());
+  PreConfig get pre =>
+      _getConfig<PreConfig>(MarkdownTag.pre, const PreConfig());
 
   LinkConfig get a => _getConfig<LinkConfig>(MarkdownTag.a, const LinkConfig());
 
-  ParagraphMarkdownConfig get p => _getConfig<ParagraphMarkdownConfig>(MarkdownTag.p, const ParagraphMarkdownConfig());
+  ParagraphMarkdownConfig get p => _getConfig<ParagraphMarkdownConfig>(
+      MarkdownTag.p, const ParagraphMarkdownConfig());
 
-  BlockquoteConfig get blockquote => _getConfig<BlockquoteConfig>(MarkdownTag.blockquote, const BlockquoteConfig());
+  BlockquoteConfig get blockquote => _getConfig<BlockquoteConfig>(
+      MarkdownTag.blockquote, const BlockquoteConfig());
 
-  ListConfig get li => _getConfig<ListConfig>(MarkdownTag.li, const ListConfig());
+  ListConfig get li =>
+      _getConfig<ListConfig>(MarkdownTag.li, const ListConfig());
 
-  TableConfig get table => _getConfig<TableConfig>(MarkdownTag.table, const TableConfig());
+  TableConfig get table =>
+      _getConfig<TableConfig>(MarkdownTag.table, const TableConfig());
 
-  CodeConfig get code => _getConfig<CodeConfig>(MarkdownTag.code, const CodeConfig());
+  CodeConfig get code =>
+      _getConfig<CodeConfig>(MarkdownTag.code, const CodeConfig());
 
-  ImgConfig get img => _getConfig<ImgConfig>(MarkdownTag.img, const ImgConfig());
+  ImgConfig get img =>
+      _getConfig<ImgConfig>(MarkdownTag.img, const ImgConfig());
 
-  CheckBoxConfig get input => _getConfig<CheckBoxConfig>(MarkdownTag.input, const CheckBoxConfig());
+  CheckBoxConfig get input =>
+      _getConfig<CheckBoxConfig>(MarkdownTag.input, const CheckBoxConfig());
 
   T _getConfig<T>(MarkdownTag tag, T defaultValue) {
     final config = _tag2Config[tag.name];
@@ -143,10 +158,12 @@ class MarkdownConfigGeneralFramework {
   }
 
   ///default [MarkdownConfigGeneralFramework] for [MarkdownGeneralFrameworkWidget]
-  static MarkdownConfigGeneralFramework get defaultConfig => MarkdownConfigGeneralFramework();
+  static MarkdownConfigGeneralFramework get defaultConfig =>
+      MarkdownConfigGeneralFramework();
 
   ///[darkConfig] is used for dark mode
-  static MarkdownConfigGeneralFramework get darkConfig => MarkdownConfigGeneralFramework(configs: [
+  static MarkdownConfigGeneralFramework get darkConfig =>
+      MarkdownConfigGeneralFramework(configs: [
         HorizontalRulesConfig.darkConfig,
         H1Config.darkConfig,
         H2Config.darkConfig,
@@ -163,13 +180,15 @@ class MarkdownConfigGeneralFramework {
   ///the key of [_tag2Config] is tag, the value is [MarkdownWidgetConfig]
   final Map<String, MarkdownWidgetConfig> _tag2Config = {};
 
-  MarkdownConfigGeneralFramework({List<MarkdownWidgetConfig> configs = const []}) {
+  MarkdownConfigGeneralFramework(
+      {List<MarkdownWidgetConfig> configs = const []}) {
     for (final config in configs) {
       _tag2Config[config.tag] = config;
     }
   }
 
-  MarkdownConfigGeneralFramework copy({List<MarkdownWidgetConfig> configs = const []}) {
+  MarkdownConfigGeneralFramework copy(
+      {List<MarkdownWidgetConfig> configs = const []}) {
     for (final config in configs) {
       _tag2Config[config.tag] = config;
     }

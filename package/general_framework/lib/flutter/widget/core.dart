@@ -35,7 +35,8 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/client/base.dart';
 
-abstract class GeneralFrameworkClientFlutterAppStatefulWidget<T extends GeneralFrameworkClientFlutter> extends StatefulWidget {
+abstract class GeneralFrameworkClientFlutterAppStatefulWidget<
+    T extends GeneralFrameworkClientFlutter> extends StatefulWidget {
   final T generalFrameworkClientFlutter;
   const GeneralFrameworkClientFlutterAppStatefulWidget({
     super.key,
@@ -43,7 +44,8 @@ abstract class GeneralFrameworkClientFlutterAppStatefulWidget<T extends GeneralF
   });
 }
 
-abstract class GeneralFrameworkClientFlutterAppStatelessWidget<T extends GeneralFrameworkClientFlutter> extends StatelessWidget {
+abstract class GeneralFrameworkClientFlutterAppStatelessWidget<
+    T extends GeneralFrameworkClientFlutter> extends StatelessWidget {
   final T generalFrameworkClientFlutter;
   const GeneralFrameworkClientFlutterAppStatelessWidget({
     super.key,

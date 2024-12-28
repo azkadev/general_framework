@@ -156,7 +156,6 @@ class TabbarGeneralFrameworkWidget extends StatelessWidget {
       return SkeletonizerGeneralFramework(
         enabled: isLoading,
         child: child,
-        
       );
     }
     return child;

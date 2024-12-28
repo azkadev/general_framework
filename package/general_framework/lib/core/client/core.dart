@@ -45,7 +45,8 @@ import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/scheme/socket_connection.dart';
 import 'package:http/http.dart';
 
-typedef GeneralFrameworkClientFunction<T extends GeneralFrameworkClient> = T Function();
+typedef GeneralFrameworkClientFunction<T extends GeneralFrameworkClient> = T
+    Function();
 
 typedef InvokeClientValidationFunction<T> = FutureOr<T> Function(
   Map parameters,
@@ -74,7 +75,8 @@ abstract class GeneralFrameworkClientBaseCore {
 
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
-abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implements GeneralFrameworkClientBaseCore {
+abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
+    implements GeneralFrameworkClientBaseCore {
   final WebSocketClient web_socket_client = WebSocketClient("");
   final TcpSocketClient tcp_socket_client = TcpSocketClient(host: "", port: 0);
   final EventEmitter event_emitter;
@@ -82,7 +84,8 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
   final String eventInvoke;
   final Client http_client;
   final NetworkClientConnectionType networkClientConnectionType;
-  late final GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions;
+  late final GeneralFrameworkClientInvokeOptions
+      generalFrameworkClientInvokeOptions;
   final String apiUrl;
   final GeneralLibrary generalLibrary;
   final D generalFrameworkDatabase;
@@ -136,7 +139,11 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
     }
     tcp_socket_client.host = api_uri.host;
     tcp_socket_client.port = api_uri.port;
-    web_socket_client.url = api_uri.replace(scheme: (api_uri.scheme == "https") ? "wss" : "ws", path: pathWebSocket).toString();
+    web_socket_client.url = api_uri
+        .replace(
+            scheme: (api_uri.scheme == "https") ? "wss" : "ws",
+            path: pathWebSocket)
+        .toString();
 
     this.onInvokeResult = onInvokeResult;
     this.onInvokeValidation = onInvokeValidation;
@@ -154,8 +161,10 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
         onSocketData: onSocketData,
         onSocketConnection: onSocketConnection,
       );
-    } else if (networkClientConnectionType == NetworkClientConnectionType.websocket) {
-      await web_socket_client.connect(onSocketData: onSocketData, onSocketConnection: onSocketConnection);
+    } else if (networkClientConnectionType ==
+        NetworkClientConnectionType.websocket) {
+      await web_socket_client.connect(
+          onSocketData: onSocketData, onSocketConnection: onSocketConnection);
     }
   }
 
@@ -169,7 +178,8 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
           return data;
         }
         if (data is List<int> || data is Uint8List) {
-          return json.decode(decryptData(data: utf8.decode(data, allowMalformed: true)));
+          return json.decode(
+              decryptData(data: utf8.decode(data, allowMalformed: true)));
         }
       } catch (e) {}
       return {};
@@ -191,7 +201,8 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
   EventEmitterListener on({
     required String event_name,
     required FutureOr<dynamic> Function(Map update) callback,
-    required FutureOr<dynamic> Function(Object e, StackTrace stackTrace) onError,
+    required FutureOr<dynamic> Function(Object e, StackTrace stackTrace)
+        onError,
   }) {
     return event_emitter.on(
       eventName: event_name,
@@ -264,7 +275,8 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
 
   Future<Map> invokeRaw({
     required Map parameters,
-    required GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
+    required GeneralFrameworkClientInvokeOptions?
+        generalFrameworkClientInvokeOptions,
   }) async {
     if (parameters["@type"] is String == false) {
       parameters["@type"] = "";
@@ -273,15 +285,19 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
     final String extra_parameters = utils_getExtra(
       parameters: parameters,
     );
-    final GeneralFrameworkClientInvokeOptions invoke_parameters = generalFrameworkClientInvokeOptions ?? this.generalFrameworkClientInvokeOptions;
+    final GeneralFrameworkClientInvokeOptions invoke_parameters =
+        generalFrameworkClientInvokeOptions ??
+            this.generalFrameworkClientInvokeOptions;
 
     final Completer<Map> completer = Completer<Map>();
     late final EventEmitterListener listener;
 
     final Map result = await Future<Map>(() async {
-      final NetworkClientConnectionType networkClientConnectionType = invoke_parameters.networkClientConnectionType;
+      final NetworkClientConnectionType networkClientConnectionType =
+          invoke_parameters.networkClientConnectionType;
       try {
-        final Map invoke_validation = await onInvokeValidation(parameters, invoke_parameters) ?? {};
+        final Map invoke_validation =
+            await onInvokeValidation(parameters, invoke_parameters) ?? {};
         if (invoke_validation.isNotEmpty) {
           return invoke_validation;
         }
@@ -298,13 +314,19 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
           if (Dart.isWeb) {
             headers["from-platform"] = "web";
           } else {
-            headers["from-platform"] = Dart.operatingSystem.trim().toLowerCase();
+            headers["from-platform"] =
+                Dart.operatingSystem.trim().toLowerCase();
           }
           headers["from-client-type"] = Dart.executable_type.name;
-          final Response response = await http_client.post(api_uri, headers: headers, body: parameter_encrypt);
+          final Response response = await http_client.post(api_uri,
+              headers: headers, body: parameter_encrypt);
           completer.complete(json.decode(decryptData(data: response.body)));
-        } else if ([NetworkClientConnectionType.tcpsocket, NetworkClientConnectionType.websocket].contains(networkClientConnectionType)) {
-          if (networkClientConnectionType == NetworkClientConnectionType.websocket) {
+        } else if ([
+          NetworkClientConnectionType.tcpsocket,
+          NetworkClientConnectionType.websocket
+        ].contains(networkClientConnectionType)) {
+          if (networkClientConnectionType ==
+              NetworkClientConnectionType.websocket) {
             await web_socket_client.send(value: utf8.encode(parameter_encrypt));
           } else {
             await tcp_socket_client.send(value: utf8.encode(parameter_encrypt));
@@ -391,6 +413,9 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase> implem
     GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
     required FutureOr<T> Function(Map result) onResult,
   }) async {
-    return await onResult(await invoke(parameters: parameters, generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions));
+    return await onResult(await invoke(
+        parameters: parameters,
+        generalFrameworkClientInvokeOptions:
+            generalFrameworkClientInvokeOptions));
   }
 }

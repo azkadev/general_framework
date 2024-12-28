@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
- 
 
-class MaterialOutlineGeneralFrameworkBuilderGeneralWidget extends StatelessWidget {
+class MaterialOutlineGeneralFrameworkBuilderGeneralWidget
+    extends StatelessWidget {
   final double? width;
   final double? height;
   final EdgeInsets margin;
@@ -46,7 +46,8 @@ class MaterialOutlineGeneralFrameworkBuilderGeneralWidget extends StatelessWidge
   }
 }
 
-class MaterialOutlineGeneralFrameworkButtonBuilderGeneralWidget extends StatelessWidget {
+class MaterialOutlineGeneralFrameworkButtonBuilderGeneralWidget
+    extends StatelessWidget {
   final double? width;
   final double? height;
   final BoxConstraints? constraints;
@@ -90,7 +91,8 @@ class MaterialOutlineGeneralFrameworkButtonBuilderGeneralWidget extends Stateles
   }
 }
 
-class MaterialOutlineGeneralFrameworkButtonGeneralWidget extends StatelessWidget {
+class MaterialOutlineGeneralFrameworkButtonGeneralWidget
+    extends StatelessWidget {
   final double? width;
   final double? height;
   final BoxConstraints? constraints;

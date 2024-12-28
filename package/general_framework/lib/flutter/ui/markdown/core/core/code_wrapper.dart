@@ -33,7 +33,7 @@ class _PreWrapperState extends State<CodeWrapperWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // Theme.of(context).brightness; 
+    // Theme.of(context).brightness;
 
     return Stack(
       children: [

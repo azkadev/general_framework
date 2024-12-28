@@ -35,13 +35,16 @@ class LanguageGeneralFrameworkOptions {
     LanguageGeneralFrameworkController? languageGeneralFrameworkController,
   }) {
     return LanguageGeneralFrameworkOptions(
-      languageGeneralFrameworkType: languageGeneralFrameworkType ?? this.languageGeneralFrameworkType,
+      languageGeneralFrameworkType:
+          languageGeneralFrameworkType ?? this.languageGeneralFrameworkType,
       onSelect: onSelect ?? this.onSelect,
-      languageGeneralFrameworkController: languageGeneralFrameworkController ?? this.languageGeneralFrameworkController,
+      languageGeneralFrameworkController: languageGeneralFrameworkController ??
+          this.languageGeneralFrameworkController,
     );
   }
 
-  static List<MapEntry<String, LanguageCodeDataDetail>> getCountryGeneralUiPages({
+  static List<MapEntry<String, LanguageCodeDataDetail>>
+      getCountryGeneralUiPages({
     required List<String> countryCodes,
   }) {
     return () {
@@ -66,16 +69,20 @@ class LanguageGeneralFrameworkOptions {
     required List<MapEntry<String, LanguageCodeDataDetail>> languageCodeDatas,
     required String value,
   }) {
-    final List<MapEntry<String, LanguageCodeDataDetail>> languageCodeResults = [];
+    final List<MapEntry<String, LanguageCodeDataDetail>> languageCodeResults =
+        [];
 
     for (final element in languageCodeDatas) {
       try {
         if (RegExp("^(([0-9]+))", caseSensitive: false).hasMatch(value)) {
-          if (!RegExp("^($value)", caseSensitive: false).hasMatch((element.value.dial_code ?? "").replaceAll(RegExp("([+])"), ""))) {
+          if (!RegExp("^($value)", caseSensitive: false).hasMatch(
+              (element.value.dial_code ?? "")
+                  .replaceAll(RegExp("([+])"), ""))) {
             continue;
           }
         } else {
-          if (!RegExp(value, caseSensitive: false).hasMatch(element.value.name ?? "")) {
+          if (!RegExp(value, caseSensitive: false)
+              .hasMatch(element.value.name ?? "")) {
             continue;
           }
         }
@@ -94,7 +101,10 @@ class LanguageGeneralFrameworkOptions {
     required List<MapEntry<String, LanguageCodeDataDetail>> languages,
   }) {
     languages.sort((a, b) {
-      return (a.value.name ?? "").toLowerCase().trim().compareTo((b.value.name ?? "").toLowerCase().trim());
+      return (a.value.name ?? "")
+          .toLowerCase()
+          .trim()
+          .compareTo((b.value.name ?? "").toLowerCase().trim());
     });
   }
 }
@@ -129,7 +139,8 @@ class LanguageGeneralFramework extends StatefulWidget {
   });
 
   @override
-  State<LanguageGeneralFramework> createState() => LanguageGeneralFrameworkState();
+  State<LanguageGeneralFramework> createState() =>
+      LanguageGeneralFrameworkState();
 
   static Future<T?> show<T>({
     required BuildContext context,
@@ -156,14 +167,18 @@ class LanguageGeneralFramework extends StatefulWidget {
 }
 
 class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
-  final TextEditingController searchTextEditingController = TextEditingController();
+  final TextEditingController searchTextEditingController =
+      TextEditingController();
   bool isShowSearch = false;
 
-  late final List<MapEntry<String, LanguageCodeDataDetail>> languageCodeDatas = LanguageGeneralFrameworkOptions.getCountryGeneralUiPages(
-    countryCodes: widget.languageGeneralFrameworkOptions.languageGeneralFrameworkController.languageSupports,
+  late final List<MapEntry<String, LanguageCodeDataDetail>> languageCodeDatas =
+      LanguageGeneralFrameworkOptions.getCountryGeneralUiPages(
+    countryCodes: widget.languageGeneralFrameworkOptions
+        .languageGeneralFrameworkController.languageSupports,
   );
 
-  late final List<MapEntry<String, LanguageCodeDataDetail>> languageCodeResults = [...languageCodeDatas];
+  late final List<MapEntry<String, LanguageCodeDataDetail>>
+      languageCodeResults = [...languageCodeDatas];
 
   @override
   void initState() {
@@ -188,7 +203,8 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
     setStateWithIgnoreError(fn: () {
       languageCodeResults.clear();
     });
-    languageCodeResults.addAll(LanguageGeneralFrameworkOptions.search(languageCodeDatas: languageCodeDatas, value: value));
+    languageCodeResults.addAll(LanguageGeneralFrameworkOptions.search(
+        languageCodeDatas: languageCodeDatas, value: value));
     setStateWithIgnoreError(fn: () {});
   }
 
@@ -205,7 +221,8 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
   PreferredSizeWidget appBar({
     required BuildContext context,
   }) {
-    final languageGeneralFrameworkOptions = widget.languageGeneralFrameworkOptions;
+    final languageGeneralFrameworkOptions =
+        widget.languageGeneralFrameworkOptions;
 
     if (isShowSearch) {
       return PreferredSize(
@@ -228,7 +245,7 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
                     prefixIconData: Icons.search,
                     suffixIcon: IconButton(
                       onPressed: () {
-                        reset(); 
+                        reset();
                       },
                       icon: Icon(
                         Icons.close,
@@ -250,7 +267,8 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
     return AppBar(
       key: appBarGlobalKey,
       leading: () {
-        if (languageGeneralFrameworkOptions.languageGeneralFrameworkType == LanguageGeneralFrameworkType.dialog) {
+        if (languageGeneralFrameworkOptions.languageGeneralFrameworkType ==
+            LanguageGeneralFrameworkType.dialog) {
           if (context.navigator().canPop()) {
             return IconButton(
               onPressed: () {
@@ -289,13 +307,15 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
   Widget body({
     required BuildContext context,
   }) {
-    final languageGeneralFrameworkOptions = widget.languageGeneralFrameworkOptions;
+    final languageGeneralFrameworkOptions =
+        widget.languageGeneralFrameworkOptions;
     return Scaffold(
       appBar: appBar(
         context: context,
       ),
       body: ListenableBuilder(
-        listenable: languageGeneralFrameworkOptions.languageGeneralFrameworkController,
+        listenable:
+            languageGeneralFrameworkOptions.languageGeneralFrameworkController,
         builder: (context, child) {
           return SingleChildScrollView(
             child: Column(
@@ -316,9 +336,11 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
 
   @override
   Widget build(BuildContext context) {
-    final languageGeneralFrameworkOptions = widget.languageGeneralFrameworkOptions;
+    final languageGeneralFrameworkOptions =
+        widget.languageGeneralFrameworkOptions;
 
-    if (languageGeneralFrameworkOptions.languageGeneralFrameworkType == LanguageGeneralFrameworkType.dialog) {
+    if (languageGeneralFrameworkOptions.languageGeneralFrameworkType ==
+        LanguageGeneralFrameworkType.dialog) {
       return MenuContainerBuilderGeneralFrameworkWidget(
         isWithBorder: true,
         isWithShadow: true,
@@ -348,8 +370,10 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
   Iterable<Widget> contentsWidget({
     required BuildContext context,
   }) {
-    final languageGeneralFrameworkOptions = widget.languageGeneralFrameworkOptions;
-    final countryCodeId = languageGeneralFrameworkOptions.languageGeneralFrameworkController.countryCodeId;
+    final languageGeneralFrameworkOptions =
+        widget.languageGeneralFrameworkOptions;
+    final countryCodeId = languageGeneralFrameworkOptions
+        .languageGeneralFrameworkController.countryCodeId;
     return [
       for (final element in languageCodeResults.toList()) ...[
         contentWidget(
@@ -378,8 +402,12 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
         context: context,
         isLoading: isLoading,
         onTap: () {
-          widget.languageGeneralFrameworkOptions.languageGeneralFrameworkController.updateCountryCode(countryCodeId: languageCodeDataDetail.code ?? "");
-          widget.languageGeneralFrameworkOptions.onSelect(context, languageCodeDataDetail);
+          widget.languageGeneralFrameworkOptions
+              .languageGeneralFrameworkController
+              .updateCountryCode(
+                  countryCodeId: languageCodeDataDetail.code ?? "");
+          widget.languageGeneralFrameworkOptions
+              .onSelect(context, languageCodeDataDetail);
         },
         leading: Text(
           languageCodeDataDetail.flag ?? "",

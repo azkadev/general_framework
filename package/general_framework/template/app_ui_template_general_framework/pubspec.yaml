@@ -3,15 +3,15 @@ description: 'A new Flutter project.'
 publish_to: 'none'
 version: '1.0.0+1'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies:
   flutter:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
-  general_lib_flutter: '^0.0.31'
-  general_lib: '^0.0.50'
-  simulate: '^0.0.44'
-  general_framework: '^0.0.6'
+  general_lib_flutter: '^0.0.32'
+  general_lib: '^0.0.51'
+  simulate: '^0.0.45'
+  general_framework: '^0.0.7'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'

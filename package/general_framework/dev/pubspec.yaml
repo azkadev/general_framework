@@ -3,12 +3,12 @@ description: 'A new Flutter project.'
 publish_to: 'none'
 version: '1.0.0+1'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies:
   flutter:
     sdk: 'flutter'
   cupertino_icons: '^1.0.8'
-  general_lib_flutter: '^0.0.31'
+  general_lib_flutter: '^0.0.32'
   general_framework:
     path: '../'
 dev_dependencies:

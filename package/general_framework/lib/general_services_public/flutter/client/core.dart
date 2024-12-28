@@ -116,43 +116,31 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
     throw UnimplementedError("");
   }
 
-
-
   String privacyPolicyContent({
     required Language? language,
   }) {
     throw UnimplementedError("");
-    
   }
 
   String termOfServicesContent({
     required Language? language,
-  }) { 
+  }) {
     throw UnimplementedError("");
   }
 
-  GeneralLibFlutterApp generalLibFlutterApp(){
+  GeneralLibFlutterApp generalLibFlutterApp() {
     throw UnimplementedError("");
-
   }
-  
 }
-
-
-
-
 
 ///////
 
-
-
-
-
-
-
-
-abstract class GeneralServicePublicClientFlutter<T extends GeneralFrameworkClientFlutter, K extends GeneralServicePublicClient> implements GeneralServicePublicClientFlutterBaseCore {
-  final GeneralFrameworkClientFlutterFunction<T> generalFrameworkClientFlutterFunction;
+abstract class GeneralServicePublicClientFlutter<
+        T extends GeneralFrameworkClientFlutter,
+        K extends GeneralServicePublicClient>
+    implements GeneralServicePublicClientFlutterBaseCore {
+  final GeneralFrameworkClientFlutterFunction<T>
+      generalFrameworkClientFlutterFunction;
   final K generalServicePublic;
 
   GeneralServicePublicClientFlutter({
@@ -170,34 +158,51 @@ abstract class GeneralServicePublicClientFlutter<T extends GeneralFrameworkClien
       String textLoading,
     ) onLoading,
   }) async {
-    final generalFrameworkClientFlutterAppDirectory = generalFrameworkClientFlutter.generalFrameworkClientFlutterAppDirectory;
+    final generalFrameworkClientFlutterAppDirectory =
+        generalFrameworkClientFlutter.generalFrameworkClientFlutterAppDirectory;
     await generalServicePublic.ensureInitialized(
-      currentPath: path.join(generalFrameworkClientFlutterAppDirectory.app_support_directory.path, "general_services_public"),
+      currentPath: path.join(
+          generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
+          "general_services_public"),
     );
   }
 
   void ensureInitializedRoute() {
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/home", home);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_services_public/home", home);
 
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/ads", ads);
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/ads/create", adsCreate);
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/bot", bot);
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/developer", developer);
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/unban", unban);
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_services_public/sign", sign);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_services_public/ads", ads);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_services_public/ads/create", adsCreate);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_services_public/bot", bot);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_services_public/developer", developer);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_services_public/unban", unban);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_services_public/sign", sign);
     //
     //
     //
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/author", generalAppPublicAuthor);
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/content", generalAppPublicContent);
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/documentation", generalAppPublicDocumentation);
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/product", generalAppPublicProduct);
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/sevice", generalAppPublicService);
-    generalFrameworkClientFlutter.routeGeneralLibFlutter.all("general_app_public/pricing", generalAppPublicPricing);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_app_public/author", generalAppPublicAuthor);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_app_public/content", generalAppPublicContent);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_app_public/documentation", generalAppPublicDocumentation);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_app_public/product", generalAppPublicProduct);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_app_public/sevice", generalAppPublicService);
+    generalFrameworkClientFlutter.routeGeneralLibFlutter
+        .all("general_app_public/pricing", generalAppPublicPricing);
   }
 }
 
-abstract class GeneralServicesPublicFlutterAppStatefulWidget<T extends GeneralServicePublicClientFlutter> extends StatefulWidget {
+abstract class GeneralServicesPublicFlutterAppStatefulWidget<
+    T extends GeneralServicePublicClientFlutter> extends StatefulWidget {
   final T generalServicesPublicFlutter;
   const GeneralServicesPublicFlutterAppStatefulWidget({
     super.key,
@@ -205,7 +210,8 @@ abstract class GeneralServicesPublicFlutterAppStatefulWidget<T extends GeneralSe
   });
 }
 
-abstract class GeneralServicesPublicFlutterAppStatelessWidget<T extends GeneralServicePublicClientFlutter> extends StatelessWidget {
+abstract class GeneralServicesPublicFlutterAppStatelessWidget<
+    T extends GeneralServicePublicClientFlutter> extends StatelessWidget {
   final T generalServicesPublicFlutter;
   const GeneralServicesPublicFlutterAppStatelessWidget({
     super.key,

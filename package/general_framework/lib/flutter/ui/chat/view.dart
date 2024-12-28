@@ -201,7 +201,8 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
     }
     return Text(
       () {
-        if (date.extensionGeneralFrameworkToThisDay().isAtSameMomentAs(DateTime.now().extensionGeneralFrameworkToThisDay())) {
+        if (date.extensionGeneralFrameworkToThisDay().isAtSameMomentAs(
+            DateTime.now().extensionGeneralFrameworkToThisDay())) {
           return intl.DateFormat("hh.mm", locale).format(date);
         } else {
           return intl.DateFormat("dd/mm/yy", locale).format(date);

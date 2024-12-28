@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/ui/chat/message.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class ChatControllerGeneralFramework<T extends MessageGeneralFramework> extends ChangeNotifier {
+class ChatControllerGeneralFramework<T extends MessageGeneralFramework>
+    extends ChangeNotifier {
   final ScrollControllerAutoKeepStateData scrollControllerAutoKeepStateData;
 
   final Map<num, T> messages = {};
@@ -86,10 +87,8 @@ class ChatControllerGeneralFramework<T extends MessageGeneralFramework> extends 
   void dispose() {
     messages.clear();
     try {
-    scrollControllerAutoKeepStateData.dispose();
-    }catch (e){
-      
-    }
+      scrollControllerAutoKeepStateData.dispose();
+    } catch (e) {}
     super.dispose();
   }
 }

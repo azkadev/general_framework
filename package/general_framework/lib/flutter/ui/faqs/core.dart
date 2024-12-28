@@ -19,7 +19,6 @@ class FaqGeneralFrameworkData {
   final List<FaqGeneralFrameworkSubData> data;
   FaqGeneralFrameworkData({
     required this.title,
-    
     required this.data,
   });
 }

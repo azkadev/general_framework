@@ -30,7 +30,8 @@ class AdsContentAdsGeneralFramework {
   final dynamic authorPhotoProfile;
   final String title;
   final String subtitle;
-  final void Function(AdsContentAdsGeneralFramework adsContentAdsGeneralFramework) onPressed;
+  final void Function(
+      AdsContentAdsGeneralFramework adsContentAdsGeneralFramework) onPressed;
   const AdsContentAdsGeneralFramework({
     required this.media,
     required this.authorPhotoProfile,
@@ -45,8 +46,13 @@ class AdsContentAdsGeneralFramework {
     required double? maxHeight,
     double? maxWidth,
     required List<AdsContentAdsGeneralFramework> ads,
-    required void Function(AdsContentAdsGeneralFramework adsContentAdsGeneralFramework, bool value) onHighlightChanged,
-    required void Function(AdsContentAdsGeneralFramework adsContentAdsGeneralFramework) onProfilePressed,
+    required void Function(
+            AdsContentAdsGeneralFramework adsContentAdsGeneralFramework,
+            bool value)
+        onHighlightChanged,
+    required void Function(
+            AdsContentAdsGeneralFramework adsContentAdsGeneralFramework)
+        onProfilePressed,
     required bool isLoading,
   }) {
     return AdsCarouselGeneralFrameworkWidget(
@@ -66,8 +72,12 @@ class AdsCarouselGeneralFrameworkWidget extends StatelessWidget {
   final double maxHeight;
   final double maxWidth;
   final List<AdsContentAdsGeneralFramework> ads;
-  final void Function(AdsContentAdsGeneralFramework adsContentAdsGeneralFramework, bool value) onHighlightChanged;
-  final void Function(AdsContentAdsGeneralFramework adsContentAdsGeneralFramework) onProfilePressed;
+  final void Function(
+      AdsContentAdsGeneralFramework adsContentAdsGeneralFramework,
+      bool value) onHighlightChanged;
+  final void Function(
+          AdsContentAdsGeneralFramework adsContentAdsGeneralFramework)
+      onProfilePressed;
   final bool isLoading;
   const AdsCarouselGeneralFrameworkWidget({
     super.key,
@@ -95,10 +105,12 @@ class AdsCarouselGeneralFrameworkWidget extends StatelessWidget {
       padding: margin ?? const EdgeInsets.all(5),
       onBuilder: (ctx) {
         final sizeProcces = context.extensionGeneralLibFlutterSizePhotoSmall();
-        return ads.map((AdsContentAdsGeneralFramework adsContentAdsGeneralFramework) {
+        return ads
+            .map((AdsContentAdsGeneralFramework adsContentAdsGeneralFramework) {
           final child = MaterialButton(
             onPressed: () {
-              adsContentAdsGeneralFramework.onPressed(adsContentAdsGeneralFramework);
+              adsContentAdsGeneralFramework
+                  .onPressed(adsContentAdsGeneralFramework);
             },
             onHighlightChanged: (value) {
               onHighlightChanged(adsContentAdsGeneralFramework, value);
@@ -159,7 +171,8 @@ class AdsCarouselGeneralFrameworkWidget extends StatelessWidget {
           );
 
           if (isLoading) {
-            return SkeletonizerGeneralFramework(enabled: isLoading, child: child);
+            return SkeletonizerGeneralFramework(
+                enabled: isLoading, child: child);
           }
           return child;
         }).toList();

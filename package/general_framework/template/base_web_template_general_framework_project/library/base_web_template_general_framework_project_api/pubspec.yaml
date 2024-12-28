@@ -3,14 +3,14 @@ description: 'A sample command-line application.'
 version: '1.0.0'
 publish_to: 'none'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies:
   base_web_template_general_framework_project_scheme:
     path: '../base_web_template_general_framework_project_scheme'
   base_web_template_general_framework_project_api_database:
     path: '../base_web_template_general_framework_project_api_database'
-  general_framework: '^0.0.6'
-  general_lib: '^0.0.50'
+  general_framework: '^0.0.7'
+  general_lib: '^0.0.51'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'

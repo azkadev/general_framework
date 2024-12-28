@@ -21,3 +21,4 @@ windows/ephemeral
 tmp/
 temp/
 supabase_scheme/
+generate_general_private_tools_*

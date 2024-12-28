@@ -25,7 +25,10 @@ class LoadingGeneralFrameworkWidget extends StatelessWidget {
                 color: context.theme.indicatorColor,
               );
 
-              if ([LoadingGeneralFrameworkType.page, LoadingGeneralFrameworkType.widget].contains(loadingGeneralFrameworkType)) {
+              if ([
+                LoadingGeneralFrameworkType.page,
+                LoadingGeneralFrameworkType.widget
+              ].contains(loadingGeneralFrameworkType)) {
                 return Padding(
                   padding: const EdgeInsets.all(20),
                   child: child,
@@ -64,7 +67,10 @@ class LoadingGeneralFrameworkWidget extends StatelessWidget {
                   fontSize: 12,
                 ),
               );
-              if ([LoadingGeneralFrameworkType.page, LoadingGeneralFrameworkType.widget].contains(loadingGeneralFrameworkType)) {
+              if ([
+                LoadingGeneralFrameworkType.page,
+                LoadingGeneralFrameworkType.widget
+              ].contains(loadingGeneralFrameworkType)) {
                 return Padding(
                   padding: const EdgeInsets.all(5),
                   child: child,

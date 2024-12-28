@@ -2,21 +2,26 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
- 
 class AuthorAds extends JsonScheme {
-
-  
   AuthorAds(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"authorAds","is_locked":false,"platform_id":"","account_user_id":0,"full_name":"","photo_profile":"","photo_path":"","url":""};
+    return {
+      "@type": "authorAds",
+      "is_locked": false,
+      "platform_id": "",
+      "account_user_id": 0,
+      "full_name": "",
+      "photo_profile": "",
+      "photo_path": "",
+      "url": ""
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == authorAds
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +35,15 @@ class AuthorAds extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [AuthorAds]
-  /// Empty  
+  /// Empty
   static AuthorAds empty() {
     return AuthorAds({});
   }
 
-  
-
-  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -52,16 +52,13 @@ class AuthorAds extends JsonScheme {
     }
   }
 
-  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
-
-  
   bool? get is_locked {
     try {
-      if (rawData["is_locked"] is bool == false){
+      if (rawData["is_locked"] is bool == false) {
         return null;
       }
       return rawData["is_locked"] as bool;
@@ -70,16 +67,13 @@ class AuthorAds extends JsonScheme {
     }
   }
 
-  
   set is_locked(bool? value) {
     rawData["is_locked"] = value;
   }
 
-
-  
   String? get platform_id {
     try {
-      if (rawData["platform_id"] is String == false){
+      if (rawData["platform_id"] is String == false) {
         return null;
       }
       return rawData["platform_id"] as String;
@@ -88,16 +82,13 @@ class AuthorAds extends JsonScheme {
     }
   }
 
-  
   set platform_id(String? value) {
     rawData["platform_id"] = value;
   }
 
-
-  
   num? get account_user_id {
     try {
-      if (rawData["account_user_id"] is num == false){
+      if (rawData["account_user_id"] is num == false) {
         return null;
       }
       return rawData["account_user_id"] as num;
@@ -106,16 +97,13 @@ class AuthorAds extends JsonScheme {
     }
   }
 
-  
   set account_user_id(num? value) {
     rawData["account_user_id"] = value;
   }
 
-
-  
   String? get full_name {
     try {
-      if (rawData["full_name"] is String == false){
+      if (rawData["full_name"] is String == false) {
         return null;
       }
       return rawData["full_name"] as String;
@@ -124,16 +112,13 @@ class AuthorAds extends JsonScheme {
     }
   }
 
-  
   set full_name(String? value) {
     rawData["full_name"] = value;
   }
 
-
-  
   String? get photo_profile {
     try {
-      if (rawData["photo_profile"] is String == false){
+      if (rawData["photo_profile"] is String == false) {
         return null;
       }
       return rawData["photo_profile"] as String;
@@ -142,16 +127,13 @@ class AuthorAds extends JsonScheme {
     }
   }
 
-  
   set photo_profile(String? value) {
     rawData["photo_profile"] = value;
   }
 
-
-  
   String? get photo_path {
     try {
-      if (rawData["photo_path"] is String == false){
+      if (rawData["photo_path"] is String == false) {
         return null;
       }
       return rawData["photo_path"] as String;
@@ -160,16 +142,13 @@ class AuthorAds extends JsonScheme {
     }
   }
 
-  
   set photo_path(String? value) {
     rawData["photo_path"] = value;
   }
 
-
-  
   String? get url {
     try {
-      if (rawData["url"] is String == false){
+      if (rawData["url"] is String == false) {
         return null;
       }
       return rawData["url"] as String;
@@ -178,16 +157,12 @@ class AuthorAds extends JsonScheme {
     }
   }
 
-  
   set url(String? value) {
     rawData["url"] = value;
   }
 
-
-  
   static AuthorAds create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "authorAds",
     bool? is_locked,
     String? platform_id,
@@ -196,10 +171,9 @@ class AuthorAds extends JsonScheme {
     String? photo_profile,
     String? photo_path,
     String? url,
-})  {
+  }) {
     // AuthorAds authorAds = AuthorAds({
-final Map authorAds_data_create_json = {
-  
+    final Map authorAds_data_create_json = {
       "@type": special_type,
       "is_locked": is_locked,
       "platform_id": platform_id,
@@ -208,12 +182,9 @@ final Map authorAds_data_create_json = {
       "photo_profile": photo_profile,
       "photo_path": photo_path,
       "url": url,
+    };
 
-
-};
-
-
-          authorAds_data_create_json.removeWhere((key, value) => value == null);
+    authorAds_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -222,8 +193,6 @@ final Map authorAds_data_create_json = {
         }
       });
     }
-return AuthorAds(authorAds_data_create_json);
-
-
-      }
+    return AuthorAds(authorAds_data_create_json);
+  }
 }

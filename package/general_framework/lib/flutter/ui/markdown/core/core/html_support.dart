@@ -39,10 +39,12 @@ List<MarkdownSpanNodeGeneralFrameworkWidget> parseHtml(
   TextStyle? parentStyle,
 }) {
   try {
-    final text = node.textContent.replaceAll(RegExp(r'(\r?\n)|(\r?\t)|(\r)'), '');
+    final text =
+        node.textContent.replaceAll(RegExp(r'(\r?\n)|(\r?\t)|(\r)'), '');
     if (!text.contains(htmlRep)) return [TextNode(text: node.text)];
     h.DocumentFragment document = parseFragment(text);
-    return HtmlToSpanVisitor(visitor: visitor, parentStyle: parentStyle).toVisit(document.nodes.toList());
+    return HtmlToSpanVisitor(visitor: visitor, parentStyle: parentStyle)
+        .toVisit(document.nodes.toList());
   } catch (e) {
     onError?.call(e);
     return [TextNode(text: node.text)];
@@ -97,7 +99,8 @@ class HtmlToSpanVisitor extends TreeVisitor {
     final localName = node.localName ?? '';
     final mdElement = m.Element(localName, []);
     mdElement.attributes.addAll(node.attributes.cast());
-    MarkdownSpanNodeGeneralFrameworkWidget spanNode = visitor.getNodeByElement(mdElement, visitor.config);
+    MarkdownSpanNodeGeneralFrameworkWidget spanNode =
+        visitor.getNodeByElement(mdElement, visitor.config);
     if (spanNode is! ElementNode) {
       final n = ConcreteElementNode(tag: localName, style: parentStyle);
       n.accept(spanNode);

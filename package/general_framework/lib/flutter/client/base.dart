@@ -46,21 +46,29 @@ import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/flutter/client/general_framework_client_flutter_app_directory.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
- 
-typedef GeneralFrameworkClientFlutterFunction<T extends GeneralFrameworkClientFlutter> = T Function();
+typedef GeneralFrameworkClientFlutterFunction<
+        T extends GeneralFrameworkClientFlutter>
+    = T Function();
 
 abstract class GeneralFrameworkClientFlutterCore {
-  FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {}
+  FutureOr<dynamic> onInvokeResult(
+      Map result,
+      Map parameters,
+      GeneralFrameworkClientInvokeOptions
+          generalFrameworkClientInvokeOptions) {}
 
-  FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
+  FutureOr<Map?> onInvokeValidation(Map parameters,
+      GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
     return null;
   }
 
-  Widget onErrorRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+  Widget onErrorRoute(BuildContext context,
+      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
     throw UnimplementedError();
   }
 
-  Widget onNotFoundRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+  Widget onNotFoundRoute(BuildContext context,
+      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
     throw UnimplementedError();
   }
 
@@ -71,12 +79,14 @@ abstract class GeneralFrameworkClientFlutterCore {
   }
 }
 
-abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> implements GeneralFrameworkClientFlutterCore {
+abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
+    implements GeneralFrameworkClientFlutterCore {
   final GlobalKey<NavigatorState> navigatorKey;
   final GeneralFlutter generalLibrary;
   final T generalFrameworkClient;
 
-  late final RouteGeneralLibFlutter routeGeneralLibFlutter = RouteGeneralLibFlutter(
+  late final RouteGeneralLibFlutter routeGeneralLibFlutter =
+      RouteGeneralLibFlutter(
     onErrorRoute: onErrorRoute,
     onNotFoundRoute: onNotFoundRoute,
   );
@@ -84,7 +94,9 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> i
   late final GeneralLibraryPlayerBase _player = generalLibrary.media_player;
   late final GeneralLibraryPlayerControllerBase _player_notification;
 
-  final GeneralFrameworkClientFlutterAppDirectory generalFrameworkClientFlutterAppDirectory = GeneralFrameworkClientFlutterAppDirectory();
+  final GeneralFrameworkClientFlutterAppDirectory
+      generalFrameworkClientFlutterAppDirectory =
+      GeneralFrameworkClientFlutterAppDirectory();
 
   GeneralFrameworkClientFlutter({
     required this.navigatorKey,
@@ -109,14 +121,16 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> i
     );
     await generalFrameworkClient.ensureInitialized(
       onInvokeResult: onInvokeResult,
-      currentPath: generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
+      currentPath:
+          generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
       onInvokeValidation: onInvokeValidation,
     );
 
     try {
       _player.ensureInitialized();
 
-      _player_notification = player().createPlayer(player_id: "app_notification");
+      _player_notification =
+          player().createPlayer(player_id: "app_notification");
     } catch (e) {}
 
     is_initialized = true;
@@ -134,7 +148,8 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> i
     required String soundNotification,
   }) async {
     try {
-      await playerNotification().open(GeneralLibraryPlayerMediaBase(soundNotification));
+      await playerNotification()
+          .open(GeneralLibraryPlayerMediaBase(soundNotification));
     } catch (e) {}
   }
 }

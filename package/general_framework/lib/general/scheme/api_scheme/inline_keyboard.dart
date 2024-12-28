@@ -2,21 +2,17 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
- 
 class InlineKeyboard extends JsonScheme {
-
-  
   InlineKeyboard(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"inlineKeyboard","url":""};
+    return {"@type": "inlineKeyboard", "url": ""};
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == inlineKeyboard
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +26,15 @@ class InlineKeyboard extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [InlineKeyboard]
-  /// Empty  
+  /// Empty
   static InlineKeyboard empty() {
     return InlineKeyboard({});
   }
 
-  
-
-  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -52,16 +43,13 @@ class InlineKeyboard extends JsonScheme {
     }
   }
 
-  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
-
-  
   String? get url {
     try {
-      if (rawData["url"] is String == false){
+      if (rawData["url"] is String == false) {
         return null;
       }
       return rawData["url"] as String;
@@ -70,30 +58,22 @@ class InlineKeyboard extends JsonScheme {
     }
   }
 
-  
   set url(String? value) {
     rawData["url"] = value;
   }
 
-
-  
   static InlineKeyboard create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "inlineKeyboard",
     String? url,
-})  {
+  }) {
     // InlineKeyboard inlineKeyboard = InlineKeyboard({
-final Map inlineKeyboard_data_create_json = {
-  
+    final Map inlineKeyboard_data_create_json = {
       "@type": special_type,
       "url": url,
+    };
 
-
-};
-
-
-          inlineKeyboard_data_create_json.removeWhere((key, value) => value == null);
+    inlineKeyboard_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -102,8 +82,6 @@ final Map inlineKeyboard_data_create_json = {
         }
       });
     }
-return InlineKeyboard(inlineKeyboard_data_create_json);
-
-
-      }
+    return InlineKeyboard(inlineKeyboard_data_create_json);
+  }
 }

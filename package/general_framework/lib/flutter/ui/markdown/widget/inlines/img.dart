@@ -24,10 +24,14 @@ class ImageNode extends MarkdownSpanNodeGeneralFrameworkWidget {
     final alt = attributes['alt'] ?? '';
     final isNetImage = imageUrl.startsWith('http');
     final imgWidget = isNetImage
-        ? Image.network(imageUrl, width: width, height: height, fit: BoxFit.cover, errorBuilder: (ctx, error, stacktrace) {
+        ? Image.network(imageUrl,
+            width: width,
+            height: height,
+            fit: BoxFit.cover, errorBuilder: (ctx, error, stacktrace) {
             return buildErrorImage(imageUrl, alt, error);
           })
-        : Image.asset(imageUrl, width: width, height: height, fit: BoxFit.cover, errorBuilder: (ctx, error, stacktrace) {
+        : Image.asset(imageUrl, width: width, height: height, fit: BoxFit.cover,
+            errorBuilder: (ctx, error, stacktrace) {
             return buildErrorImage(imageUrl, alt, error);
           });
     final result = (parent != null && parent is LinkNode)
@@ -38,13 +42,20 @@ class ImageNode extends MarkdownSpanNodeGeneralFrameworkWidget {
               onTap: () => _showImage(context, imgWidget),
             );
           });
-    return WidgetSpan(child: imgConfig.builder?.call(imageUrl, attributes) ?? result);
+    return WidgetSpan(
+        child: imgConfig.builder?.call(imageUrl, attributes) ?? result);
   }
 
   Widget buildErrorImage(String url, String alt, Object? error) {
     return MarkdownProxyRichTextGeneralFrameworkWidget(
       TextSpan(children: [
-        WidgetSpan(child: Icon(Icons.broken_image, color: Colors.redAccent, size: (parentStyle?.fontSize ?? config.p.textStyle.fontSize ?? 16) * (parentStyle?.height ?? config.p.textStyle.height ?? 1.2))),
+        WidgetSpan(
+            child: Icon(Icons.broken_image,
+                color: Colors.redAccent,
+                size: (parentStyle?.fontSize ??
+                        config.p.textStyle.fontSize ??
+                        16) *
+                    (parentStyle?.height ?? config.p.textStyle.height ?? 1.2))),
         TextSpan(text: alt, style: parentStyle ?? config.p.textStyle),
       ]),
       richTextBuilder: visitor.richTextBuilder,
@@ -53,7 +64,8 @@ class ImageNode extends MarkdownSpanNodeGeneralFrameworkWidget {
 
   ///show image in a new window
   void _showImage(BuildContext context, Widget child) {
-    Navigator.of(context).push(PageRouteBuilder(opaque: false, pageBuilder: (_, __, ___) => ImageViewer(child: child)));
+    Navigator.of(context).push(PageRouteBuilder(
+        opaque: false, pageBuilder: (_, __, ___) => ImageViewer(child: child)));
   }
 }
 
@@ -87,7 +99,8 @@ class ImageViewer extends StatelessWidget {
         body: Stack(
           fit: StackFit.expand,
           children: [
-            InteractiveViewer(child: Center(child: Hero(child: child, tag: child.hashCode))),
+            InteractiveViewer(
+                child: Center(child: Hero(child: child, tag: child.hashCode))),
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
@@ -101,7 +114,9 @@ class ImageViewer extends StatelessWidget {
                     ),
                     width: 40,
                     height: 40,
-                    decoration: BoxDecoration(color: Colors.white.withOpacity(0.2), shape: BoxShape.circle),
+                    decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.2),
+                        shape: BoxShape.circle),
                   ),
                 ),
               ),
@@ -113,5 +128,6 @@ class ImageViewer extends StatelessWidget {
   }
 }
 
-typedef ImgBuilder = Widget Function(String url, Map<String, String> attributes);
+typedef ImgBuilder = Widget Function(
+    String url, Map<String, String> attributes);
 typedef ErrorImgBuilder = Widget Function(String url, String alt, Object error);

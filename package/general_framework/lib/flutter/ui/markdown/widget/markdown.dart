@@ -44,10 +44,12 @@ class MarkdownGeneralFrameworkWidget extends StatefulWidget {
   });
 
   @override
-  MarkdownGeneralFrameworkWidgetState createState() => MarkdownGeneralFrameworkWidgetState();
+  MarkdownGeneralFrameworkWidgetState createState() =>
+      MarkdownGeneralFrameworkWidgetState();
 }
 
-class MarkdownGeneralFrameworkWidgetState extends State<MarkdownGeneralFrameworkWidget> {
+class MarkdownGeneralFrameworkWidgetState
+    extends State<MarkdownGeneralFrameworkWidget> {
   ///use [markdownGenerator] to transform markdown data to [Widget] list
   late MarkdownGeneralFrameworkGenerator markdownGenerator;
 
@@ -79,7 +81,8 @@ class MarkdownGeneralFrameworkWidgetState extends State<MarkdownGeneralFramework
   ///when we've got the data, we need update data without setState() to avoid the flicker of the view
   void updateState() {
     indexTreeSet.clear();
-    markdownGenerator = widget.markdownGenerator ?? MarkdownGeneralFrameworkGenerator();
+    markdownGenerator =
+        widget.markdownGenerator ?? MarkdownGeneralFrameworkGenerator();
     final result = markdownGenerator.buildWidgets(
       widget.data,
       onTocList: (tocList) {
@@ -119,12 +122,15 @@ class MarkdownGeneralFrameworkWidgetState extends State<MarkdownGeneralFramework
         shrinkWrap: widget.shrinkWrap,
         physics: widget.physics,
         controller: controller,
-        itemBuilder: (ctx, index) => wrapByAutoScroll(index, wrapByVisibilityDetector(index, _widgets[index]), controller),
+        itemBuilder: (ctx, index) => wrapByAutoScroll(index,
+            wrapByVisibilityDetector(index, _widgets[index]), controller),
         itemCount: _widgets.length,
         padding: widget.padding,
       ),
     );
-    return widget.selectable ? SelectionArea(child: markdownWidget) : markdownWidget;
+    return widget.selectable
+        ? SelectionArea(child: markdownWidget)
+        : markdownWidget;
   }
 
   ///wrap widget by [VisibilityDetector] that can know if [child] is visible
@@ -134,9 +140,13 @@ class MarkdownGeneralFrameworkWidgetState extends State<MarkdownGeneralFramework
       onVisibilityChanged: (VisibilityInfo info) {
         final visibleFraction = info.visibleFraction;
         if (isForward) {
-          visibleFraction == 0 ? indexTreeSet.remove(index) : indexTreeSet.add(index);
+          visibleFraction == 0
+              ? indexTreeSet.remove(index)
+              : indexTreeSet.add(index);
         } else {
-          visibleFraction == 1.0 ? indexTreeSet.add(index) : indexTreeSet.remove(index);
+          visibleFraction == 1.0
+              ? indexTreeSet.add(index)
+              : indexTreeSet.remove(index);
         }
         if (indexTreeSet.isNotEmpty) {
           _tocController?.onIndexChanged(indexTreeSet.first);
@@ -155,7 +165,8 @@ class MarkdownGeneralFrameworkWidgetState extends State<MarkdownGeneralFramework
 }
 
 ///wrap widget by [AutoScrollTag] that can use [AutoScrollController] to scrollToIndex
-Widget wrapByAutoScroll(int index, Widget child, AutoScrollController controller) {
+Widget wrapByAutoScroll(
+    int index, Widget child, AutoScrollController controller) {
   return AutoScrollTag(
     key: Key(index.toString()),
     controller: controller,

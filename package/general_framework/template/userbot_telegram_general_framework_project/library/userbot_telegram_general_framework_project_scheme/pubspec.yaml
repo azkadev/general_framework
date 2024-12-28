@@ -2,7 +2,7 @@ name: 'userbot_telegram_general_framework_project_scheme'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies: {}
 dev_dependencies:
   lints: '^5.0.0'

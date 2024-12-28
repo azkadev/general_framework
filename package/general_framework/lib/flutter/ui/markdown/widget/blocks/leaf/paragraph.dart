@@ -28,9 +28,11 @@ class ParagraphNode extends ElementNode {
 class ParagraphMarkdownConfig implements LeafConfig {
   final TextStyle textStyle;
 
-  const ParagraphMarkdownConfig({this.textStyle = const TextStyle(fontSize: 16)});
+  const ParagraphMarkdownConfig(
+      {this.textStyle = const TextStyle(fontSize: 16)});
 
-  static ParagraphMarkdownConfig get darkConfig => const ParagraphMarkdownConfig(textStyle: TextStyle(fontSize: 16));
+  static ParagraphMarkdownConfig get darkConfig =>
+      const ParagraphMarkdownConfig(textStyle: TextStyle(fontSize: 16));
 
   @nonVirtual
   @override
@@ -42,7 +44,8 @@ class ParagraphMarkdownConfig implements LeafConfig {
 ///double '~'swill be wrapped with an HTML <del> tag.
 class DelNode extends ElementNode {
   @override
-  TextStyle get style => parentStyle?.merge(_defaultDelStyle) ?? _defaultDelStyle;
+  TextStyle get style =>
+      parentStyle?.merge(_defaultDelStyle) ?? _defaultDelStyle;
 }
 
 ///Tag: [MarkdownTag.strong]
@@ -50,7 +53,8 @@ class DelNode extends ElementNode {
 /// double '*'s or '_'s will be wrapped with an HTML <strong> tag.
 class StrongNode extends ElementNode {
   @override
-  TextStyle get style => parentStyle?.merge(_defaultStrongStyle) ?? _defaultStrongStyle;
+  TextStyle get style =>
+      parentStyle?.merge(_defaultStrongStyle) ?? _defaultStrongStyle;
 }
 
 ///Tag: [MarkdownTag.em]

@@ -21,12 +21,14 @@ class TextWithBorderGeneralFrameworkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle textStyle = (textStyleBuilder ?? textStyleBuilderGeneralFrameworkWidgetDefault).call(
-        context,
-        (context.theme.textTheme.titleMedium ?? const TextStyle()).copyWith(
-          color: context.theme.indicatorColor,
-          fontWeight: FontWeight.bold,
-        ));
+    final TextStyle textStyle = (textStyleBuilder ??
+            textStyleBuilderGeneralFrameworkWidgetDefault)
+        .call(
+            context,
+            (context.theme.textTheme.titleMedium ?? const TextStyle()).copyWith(
+              color: context.theme.indicatorColor,
+              fontWeight: FontWeight.bold,
+            ));
     return Stack(
       children: List.generate(
         2,

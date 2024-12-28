@@ -65,15 +65,22 @@ class TableNode extends ElementNode {
 
     final tableWidget = Table(
       columnWidths: tbConfig.columnWidths,
-      defaultColumnWidth: tbConfig.defaultColumnWidth ?? const IntrinsicColumnWidth(),
+      defaultColumnWidth:
+          tbConfig.defaultColumnWidth ?? const IntrinsicColumnWidth(),
       textBaseline: tbConfig.textBaseline,
       textDirection: tbConfig.textDirection,
-      border: tbConfig.border ?? TableBorder.all(color: parentStyle?.color ?? config.p.textStyle.color ?? Colors.grey),
-      defaultVerticalAlignment: tbConfig.defaultVerticalAlignment ?? TableCellVerticalAlignment.middle,
+      border: tbConfig.border ??
+          TableBorder.all(
+              color: parentStyle?.color ??
+                  config.p.textStyle.color ??
+                  Colors.grey),
+      defaultVerticalAlignment: tbConfig.defaultVerticalAlignment ??
+          TableCellVerticalAlignment.middle,
       children: rows,
     );
 
-    return WidgetSpan(child: config.table.wrapper?.call(tableWidget) ?? tableWidget);
+    return WidgetSpan(
+        child: config.table.wrapper?.call(tableWidget) ?? tableWidget);
   }
 }
 
@@ -103,7 +110,10 @@ class THeadNode extends ElementNode {
   int get cellCount => (children.first as TrNode).children.length;
 
   @override
-  TextStyle? get style => config.table.headerStyle?.merge(parentStyle) ?? parentStyle ?? config.p.textStyle.copyWith(fontWeight: FontWeight.bold);
+  TextStyle? get style =>
+      config.table.headerStyle?.merge(parentStyle) ??
+      parentStyle ??
+      config.p.textStyle.copyWith(fontWeight: FontWeight.bold);
 }
 
 class TBodyNode extends ElementNode {
@@ -115,7 +125,8 @@ class TBodyNode extends ElementNode {
   List<TableRow> buildRows(int cellCount) {
     return List.generate(children.length, (index) {
       final child = children[index] as TrNode;
-      final List<Widget> widgets = List.generate(cellCount, (index) => Container());
+      final List<Widget> widgets =
+          List.generate(cellCount, (index) => Container());
       for (var i = 0; i < child.children.length; ++i) {
         var c = child.children[i];
         widgets[i] = Padding(
@@ -125,12 +136,16 @@ class TBodyNode extends ElementNode {
               richTextBuilder: visitor.richTextBuilder,
             ));
       }
-      return TableRow(decoration: config.table.bodyRowDecoration, children: widgets);
+      return TableRow(
+          decoration: config.table.bodyRowDecoration, children: widgets);
     });
   }
 
   @override
-  TextStyle? get style => config.table.headerStyle?.merge(parentStyle) ?? parentStyle ?? config.p.textStyle;
+  TextStyle? get style =>
+      config.table.headerStyle?.merge(parentStyle) ??
+      parentStyle ??
+      config.p.textStyle;
 }
 
 class TrNode extends ElementNode {

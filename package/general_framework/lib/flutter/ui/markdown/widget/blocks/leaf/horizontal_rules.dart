@@ -29,11 +29,13 @@ class HorizontalRulesConfig implements LeafConfig {
   final double height;
   final Color color;
 
-  const HorizontalRulesConfig({this.height = 2, this.color = const Color(0xFFd0d7de)});
+  const HorizontalRulesConfig(
+      {this.height = 2, this.color = const Color(0xFFd0d7de)});
 
   @nonVirtual
   @override
   String get tag => MarkdownTag.hr.name;
 
-  static HorizontalRulesConfig get darkConfig => const HorizontalRulesConfig(color: Colors.white);
+  static HorizontalRulesConfig get darkConfig =>
+      const HorizontalRulesConfig(color: Colors.white);
 }

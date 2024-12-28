@@ -3,7 +3,8 @@ import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_framework/flutter/image/image_core.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget extends StatelessWidget {
+class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget
+    extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final bool isLoading;
   final Size? size;
@@ -34,7 +35,8 @@ class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget extends Stateles
   @override
   Widget build(BuildContext context) {
     final Size size = this.size ?? Size(context.width, context.height / 3.5);
-    final BorderRadiusGeometry borderRadius = this.borderRadius ?? BorderRadius.circular(20);
+    final BorderRadiusGeometry borderRadius =
+        this.borderRadius ?? BorderRadius.circular(20);
     return MediaQuery(
       data: context.mediaQueryData.copyWith(
         size: size,
@@ -47,8 +49,12 @@ class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget extends Stateles
         decoration: BoxDecoration(
           color: context.theme.primaryColor,
           borderRadius: borderRadius,
-          border: isWithBorder ? context.extensionGeneralLibFlutterBorderAll() : null,
-          boxShadow: isWithBoxShadows ? context.extensionGeneralLibFlutterBoxShadows() : null,
+          border: isWithBorder
+              ? context.extensionGeneralLibFlutterBorderAll()
+              : null,
+          boxShadow: isWithBoxShadows
+              ? context.extensionGeneralLibFlutterBoxShadows()
+              : null,
         ),
         child: ClipRRect(
           borderRadius: borderRadius,
@@ -62,7 +68,8 @@ class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget extends Stateles
                       decoration: BoxDecoration(
                         image: ImageGeneralUiGeneralFramework.decorationImage(
                           pathImage: media,
-                          imageGeneralUiOptions: const ImageGeneralUiGeneralFrameworkOptions(
+                          imageGeneralUiOptions:
+                              const ImageGeneralUiGeneralFrameworkOptions(
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -80,36 +87,37 @@ class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget extends Stateles
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Flexible(
-                                child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 5,
-                            horizontal: 15,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                title.trim(),
-                                style: context.theme.textTheme.titleSmall,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              Text(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 5,
+                              horizontal: 15,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  title.trim(),
+                                  style: context.theme.textTheme.titleSmall,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
                                   subtitle,
                                   style: context.theme.textTheme.bodySmall,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                              
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
                         ),
                         Container(
                           decoration: BoxDecoration(
                             color: context.theme.primaryColor,
                             borderRadius: BorderRadius.circular(20),
-                            border: context.extensionGeneralLibFlutterBorderAll(),
-                            boxShadow: context.extensionGeneralLibFlutterBoxShadows(),
+                            border:
+                                context.extensionGeneralLibFlutterBorderAll(),
+                            boxShadow:
+                                context.extensionGeneralLibFlutterBoxShadows(),
                           ),
                           margin: const EdgeInsets.symmetric(
                             vertical: 5,

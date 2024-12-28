@@ -42,7 +42,9 @@ class UlOrOLNode extends ElementNode {
             children.length,
             (index) {
               final childNode = children[index];
-              return MarkdownProxyRichTextGeneralFrameworkWidget(childNode.build(), richTextBuilder: visitor.richTextBuilder);
+              return MarkdownProxyRichTextGeneralFrameworkWidget(
+                  childNode.build(),
+                  richTextBuilder: visitor.richTextBuilder);
             },
           ),
         ),
@@ -87,7 +89,9 @@ class ListNode extends ElementNode {
   InlineSpan build() {
     final space = config.li.marginLeft;
     final marginBottom = config.li.marginBottom;
-    final parentStyleHeight = (parentStyle?.fontSize ?? config.p.textStyle.fontSize ?? 16.0) * (parentStyle?.height ?? config.p.textStyle.height ?? 1.2);
+    final parentStyleHeight =
+        (parentStyle?.fontSize ?? config.p.textStyle.fontSize ?? 16.0) *
+            (parentStyle?.height ?? config.p.textStyle.height ?? 1.2);
     Widget marker;
     if (isCheckbox) {
       marker = MarkdownProxyRichTextGeneralFrameworkWidget(
@@ -95,7 +99,9 @@ class ListNode extends ElementNode {
         richTextBuilder: visitor.richTextBuilder,
       );
     } else {
-      marker = config.li.marker?.call(isOrdered, depth, index) ?? getDefaultMarker(isOrdered, depth, parentStyle?.color, index, parentStyleHeight / 2, config);
+      marker = config.li.marker?.call(isOrdered, depth, index) ??
+          getDefaultMarker(isOrdered, depth, parentStyle?.color, index,
+              parentStyleHeight / 2, config);
     }
     return WidgetSpan(
       child: Padding(
@@ -207,21 +213,31 @@ class _OlMarker extends StatelessWidget {
   final Color? color;
   final ParagraphMarkdownConfig config;
 
-  const _OlMarker({this.depth = 0, this.color, this.index = 1, required this.config});
+  const _OlMarker(
+      {this.depth = 0, this.color, this.index = 1, required this.config});
 
   @override
   Widget build(BuildContext context) {
-    return SelectionContainer.disabled(child: Text('${index + 1}.', style: config.textStyle.copyWith(color: color)));
+    return SelectionContainer.disabled(
+        child: Text('${index + 1}.',
+            style: config.textStyle.copyWith(color: color)));
   }
 }
 
 ///get default marker for list
-Widget getDefaultMarker(bool isOrdered, int depth, Color? color, int index, double paddingTop, MarkdownConfigGeneralFramework config) {
+Widget getDefaultMarker(bool isOrdered, int depth, Color? color, int index,
+    double paddingTop, MarkdownConfigGeneralFramework config) {
   Widget marker;
   if (isOrdered) {
-    marker = Container(alignment: Alignment.topRight, padding: const EdgeInsets.only(right: 1), child: _OlMarker(depth: depth, index: index, color: color, config: config.p));
+    marker = Container(
+        alignment: Alignment.topRight,
+        padding: const EdgeInsets.only(right: 1),
+        child: _OlMarker(
+            depth: depth, index: index, color: color, config: config.p));
   } else {
-    marker = Padding(padding: EdgeInsets.only(top: paddingTop - 3), child: _UlMarker(depth: depth, color: color));
+    marker = Padding(
+        padding: EdgeInsets.only(top: paddingTop - 3),
+        child: _UlMarker(depth: depth, color: color));
   }
   return marker;
 }

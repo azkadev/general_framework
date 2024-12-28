@@ -48,8 +48,11 @@ class MarkdownFlutterGeneralFrameworkWidget extends StatelessWidget {
       selectable: selectable,
       shrinkWrap: shrinkWrap,
       tocController: tocController,
-      config: (markdownConfigBuilder ?? markdownConfigBuilderDefault).call(context, markdownConfigDefault(context, onUrlPressed), onUrlPressed),
-      markdownGenerator: (markdownGeneralFrameworkGeneratorBuilder ?? markdownGeneralFrameworkGeneratorBuilderDefault).call(context, markdownGeneralFrameworkGeneratorDefault(context)),
+      config: (markdownConfigBuilder ?? markdownConfigBuilderDefault).call(
+          context, markdownConfigDefault(context, onUrlPressed), onUrlPressed),
+      markdownGenerator: (markdownGeneralFrameworkGeneratorBuilder ??
+              markdownGeneralFrameworkGeneratorBuilderDefault)
+          .call(context, markdownGeneralFrameworkGeneratorDefault(context)),
     );
   }
 
@@ -61,7 +64,8 @@ class MarkdownFlutterGeneralFrameworkWidget extends StatelessWidget {
     return MarkdownConfigGeneralFramework.defaultConfig.copy(
       configs: [
         ParagraphMarkdownConfig(
-          textStyle: (context.theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
+          textStyle:
+              (context.theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
             color: context.theme.indicatorColor,
             shadows: context.extensionGeneralLibFlutterShadows(),
           ),
@@ -124,20 +128,28 @@ class MarkdownFlutterGeneralFrameworkWidget extends StatelessWidget {
             'variable': const TextStyle(color: Color(0xffaddb67)),
             'bullet': const TextStyle(color: Color(0xffd9f5dd)),
             'code': const TextStyle(color: Color(0xff80CBC4)),
-            'emphasis': const TextStyle(color: Color(0xffc792ea), fontStyle: FontStyle.normal),
-            'strong': const TextStyle(color: Color(0xffaddb67), fontWeight: FontWeight.bold),
+            'emphasis': const TextStyle(
+                color: Color(0xffc792ea), fontStyle: FontStyle.normal),
+            'strong': const TextStyle(
+                color: Color(0xffaddb67), fontWeight: FontWeight.bold),
             'formula': const TextStyle(color: Color(0xffc792ea)),
             'link': const TextStyle(color: Color(0xffff869a)),
-            'quote': const TextStyle(color: Color(0xff697098), fontStyle: FontStyle.normal),
+            'quote': const TextStyle(
+                color: Color(0xff697098), fontStyle: FontStyle.normal),
             'selector-tag': const TextStyle(color: Color(0xffff6363)),
             'selector-id': const TextStyle(color: Color(0xfffad430)),
-            'selector-class': const TextStyle(color: Color(0xffaddb67), fontStyle: FontStyle.normal),
-            'selector-attr': const TextStyle(color: Color(0xffc792ea), fontStyle: FontStyle.normal),
-            'selector-pseudo': const TextStyle(color: Color(0xffc792ea), fontStyle: FontStyle.normal),
+            'selector-class': const TextStyle(
+                color: Color(0xffaddb67), fontStyle: FontStyle.normal),
+            'selector-attr': const TextStyle(
+                color: Color(0xffc792ea), fontStyle: FontStyle.normal),
+            'selector-pseudo': const TextStyle(
+                color: Color(0xffc792ea), fontStyle: FontStyle.normal),
             'template-tag': const TextStyle(color: Color(0xffc792ea)),
             'template-variable': const TextStyle(color: Color(0xffaddb67)),
-            'addition': const TextStyle(color: Color(0xffaddb67ff), fontStyle: FontStyle.normal),
-            'deletion': const TextStyle(color: Color(0xffef535090), fontStyle: FontStyle.normal),
+            'addition': const TextStyle(
+                color: Color(0xffaddb67ff), fontStyle: FontStyle.normal),
+            'deletion': const TextStyle(
+                color: Color(0xffef535090), fontStyle: FontStyle.normal),
           },
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -170,7 +182,8 @@ class MarkdownFlutterGeneralFrameworkWidget extends StatelessWidget {
     return markdownConfigGeneralFramework;
   }
 
-  static MarkdownGeneralFrameworkGenerator markdownGeneralFrameworkGeneratorDefault(
+  static MarkdownGeneralFrameworkGenerator
+      markdownGeneralFrameworkGeneratorDefault(
     BuildContext context,
   ) {
     return MarkdownGeneralFrameworkGenerator(
@@ -185,7 +198,8 @@ class MarkdownFlutterGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
-  static MarkdownGeneralFrameworkGenerator markdownGeneralFrameworkGeneratorBuilderDefault(
+  static MarkdownGeneralFrameworkGenerator
+      markdownGeneralFrameworkGeneratorBuilderDefault(
     BuildContext context,
     MarkdownGeneralFrameworkGenerator markdownGeneralFrameworkGenerator,
   ) {

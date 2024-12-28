@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart'; 
- 
+import 'package:flutter/material.dart';
 
 class MediaQuerGeneralFrameworkWidget extends StatelessWidget {
   final MediaQueryData mediaQueryData;

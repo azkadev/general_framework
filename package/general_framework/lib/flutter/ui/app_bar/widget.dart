@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredSizeWidget {
+class AppBarGeneralFrameworkWidget extends StatelessWidget
+    implements PreferredSizeWidget {
   final Size size;
   final Key? containerKey;
   final DecorationBuilderGeneralFrameworkWidget? decorationBuilder;
@@ -32,7 +33,9 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
 
   @override
   Widget build(BuildContext context) {
-    final Decoration decoration = (decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault).call(
+    final Decoration decoration =
+        (decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault)
+            .call(
       context,
       BoxDecoration(
         color: context.theme.appBarTheme.backgroundColor,
@@ -55,7 +58,9 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
         //   );
         // }(),
         clipBehavior: clipBehavior,
-        decoration: (decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault).call(
+        decoration: (decorationBuilder ??
+                decorationBuilderGeneralFrameworkWidgetDefault)
+            .call(
           context,
           BoxDecoration(
             color: context.theme.appBarTheme.backgroundColor,
