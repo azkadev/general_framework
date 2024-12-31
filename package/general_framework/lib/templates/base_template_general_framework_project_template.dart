@@ -4,7 +4,8 @@
 import 'package:general_lib/script_generate/script_generate.dart';
 import 'package:io_universe/io_universe.dart';
 
-final List<ScriptGenerator> base_template_general_framework_project_script_generators = [
+final List<ScriptGenerator>
+    base_template_general_framework_project_script_generators = [
   ScriptGenerator(
     is_generate: true,
     directory_base: Directory("base_template_general_framework_project"),
@@ -23,8 +24,10 @@ final List<ScriptGenerator> base_template_general_framework_project_script_gener
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File(".github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                ".github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -83,8 +86,10 @@ jobs:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File(".github/workflows/general_workflow_release_app_development.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                ".github/workflows/general_workflow_release_app_development.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -159,8 +164,10 @@ jobs:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File(".github/workflows/general_workflow_release_app_production.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                ".github/workflows/general_workflow_release_app_production.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -262,7 +269,8 @@ github:
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: File("bin/base_template_general_framework_project.dart"),
+        file_system_entity:
+            File("bin/base_template_general_framework_project.dart"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
@@ -319,7 +327,8 @@ void main(List<String> arguments) {}
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: File("lib/base_template_general_framework_project.dart"),
+        file_system_entity:
+            File("lib/base_template_general_framework_project.dart"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
@@ -377,31 +386,38 @@ int calculate() {
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("library/base_template_general_framework_project_api"),
+        file_system_entity:
+            Directory("library/base_template_general_framework_project_api"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_api/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_api/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -460,8 +476,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -536,8 +554,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -614,8 +634,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -630,16 +652,20 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_api/bin"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_api/bin"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api/bin/base_template_general_framework_project_api.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api/bin/base_template_general_framework_project_api.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -692,24 +718,30 @@ void main(List<String> arguments) {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_api/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_api/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api/lib/api"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api/lib/api"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/api.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/api.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -736,8 +768,10 @@ export "sign_up.dart";
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/get_all_messages.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/get_all_messages.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -847,8 +881,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetAllMessagesMessages
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/get_chat.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/get_chat.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -929,8 +965,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetChatAccount
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/get_me.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/get_me.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -990,8 +1028,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMeAccount
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/get_message.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/get_message.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1101,8 +1141,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMessageMessage
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/get_messages.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/get_messages.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1216,8 +1258,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetMessagesMessages
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/get_sessions.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/get_sessions.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1296,8 +1340,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetSessionsSessions
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/get_update.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/get_update.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1356,8 +1402,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetUpdateUpdate
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/get_user.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/get_user.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1438,8 +1486,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetUserAccount
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/log_out.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/log_out.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1510,8 +1560,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionlogOutOk
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/search_account.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/search_account.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1590,8 +1642,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsearchAccountAccounts
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/search_account_by_username.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/search_account_by_username.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1677,8 +1731,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsearchAccountByUsername
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/send_message.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/send_message.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1802,8 +1858,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsendMessageMessage
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/set_bio.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/set_bio.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1883,8 +1941,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsetBioOk
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/set_name.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/set_name.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1971,8 +2031,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsetNameOk
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/set_username.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/set_username.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -2074,8 +2136,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsetUsernameOk
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/sign_in.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/sign_in.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -2187,8 +2251,10 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsignInSession
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/api/sign_up.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/api/sign_up.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -2305,16 +2371,20 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsignUpOk
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api/lib/update"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api/lib/update"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api/lib/update/update.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api/lib/update/update.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -2490,8 +2560,10 @@ class InvokeRequestData {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api/lib/base_template_general_framework_project_api.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api/lib/base_template_general_framework_project_api.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -2538,8 +2610,10 @@ int calculate() {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api/lib/base_template_general_framework_project_api_core.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api/lib/base_template_general_framework_project_api_core.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -2792,16 +2866,20 @@ class BaseTemplateGeneralFrameworkProjectApi extends GeneralFrameworkApiBase<
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_api/test"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_api/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api/test/base_template_general_framework_project_api_test.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api/test/base_template_general_framework_project_api_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -2855,8 +2933,10 @@ void main() {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -2887,8 +2967,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -2928,8 +3010,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -2942,8 +3026,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -2970,8 +3056,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -3007,8 +3095,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -3244,31 +3334,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("library/base_template_general_framework_project_api_database"),
+        file_system_entity: Directory(
+            "library/base_template_general_framework_project_api_database"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_api_database/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_api_database/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api_database/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api_database/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_database/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_database/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -3327,8 +3424,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_database/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_database/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -3403,8 +3502,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_database/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_database/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -3481,8 +3582,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_database/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_database/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -3497,24 +3600,30 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_api_database/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_api_database/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api_database/lib/account"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api_database/lib/account"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_database/lib/account/account.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_database/lib/account/account.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -3710,16 +3819,20 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionAccount
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api_database/lib/chat"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api_database/lib/chat"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_database/lib/chat/chat.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_database/lib/chat/chat.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -3842,16 +3955,20 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionChat
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api_database/lib/message"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api_database/lib/message"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_database/lib/message/message.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_database/lib/message/message.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -4047,16 +4164,20 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api_database/lib/session"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api_database/lib/session"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_database/lib/session/session.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_database/lib/session/session.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -4235,8 +4356,10 @@ extension BaseTemplateGeneralFrameworkProjectApiDatabaseExtensionSession
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_database/lib/base_template_general_framework_project_api_database.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_database/lib/base_template_general_framework_project_api_database.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -4286,8 +4409,10 @@ export "session/session.dart";
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_database/lib/base_template_general_framework_project_api_database_core.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_database/lib/base_template_general_framework_project_api_database_core.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -4416,16 +4541,20 @@ class BaseTemplateGeneralFrameworkProjectApiDatabase
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_api_database/test"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_api_database/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_database/test/base_template_general_framework_project_api_database_test.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_database/test/base_template_general_framework_project_api_database_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -4471,8 +4600,10 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api_database/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_database/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4503,8 +4634,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api_database/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_database/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4544,8 +4677,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api_database/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_database/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4558,8 +4693,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api_database/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_database/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4586,8 +4723,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api_database/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_database/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4628,8 +4767,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api_database/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_database/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4865,31 +5006,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("library/base_template_general_framework_project_api_server"),
+        file_system_entity: Directory(
+            "library/base_template_general_framework_project_api_server"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_api_server/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_api_server/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api_server/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api_server/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_server/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_server/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -4948,8 +5096,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_server/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_server/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -5024,8 +5174,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_server/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_server/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -5102,8 +5254,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_server/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -5118,16 +5272,20 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_api_server/bin"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_api_server/bin"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_server/bin/base_template_general_framework_project_api_server.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/bin/base_template_general_framework_project_api_server.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -5173,32 +5331,40 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_api_server/example"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_api_server/example"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api_server/example/.github"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api_server/example/.github"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_api_server/example/.github/workflows"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_api_server/example/.github/workflows"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_api_server/example/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_api_server/example/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -5257,8 +5423,10 @@ jobs:
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_api_server/example/.github/workflows/general_workflow_release_app_development.yaml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_api_server/example/.github/workflows/general_workflow_release_app_development.yaml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -5333,8 +5501,10 @@ jobs:
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_api_server/example/.github/workflows/general_workflow_release_app_production.yaml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_api_server/example/.github/workflows/general_workflow_release_app_production.yaml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -5411,8 +5581,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_server/example/.github/FUNDING.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_server/example/.github/FUNDING.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -5427,8 +5599,10 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api_server/example/base_template_general_framework_project_database"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api_server/example/base_template_general_framework_project_database"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
@@ -5436,16 +5610,20 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api_server/example/bin"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api_server/example/bin"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_server/example/bin/example.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_server/example/bin/example.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -5501,16 +5679,20 @@ void main(List<String> arguments) async {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api_server/example/lib"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api_server/example/lib"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_server/example/lib/example.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_server/example/lib/example.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -5559,16 +5741,20 @@ int calculate() {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_api_server/example/test"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_api_server/example/test"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_api_server/example/test/example_test.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_api_server/example/test/example_test.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -5622,8 +5808,10 @@ void main() {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_server/example/.gitignore"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/example/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -5654,8 +5842,10 @@ temp/
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_server/example/analysis_options.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/example/analysis_options.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -5695,8 +5885,10 @@ include: package:lints/recommended.yaml
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_server/example/CHANGELOG.md"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/example/CHANGELOG.md"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -5709,8 +5901,10 @@ include: package:lints/recommended.yaml
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_server/example/LICENSE"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/example/LICENSE"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -5723,8 +5917,10 @@ Copyright (c) 2024 GLOBAL CORPORATION.
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_server/example/pubspec.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/example/pubspec.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -5760,8 +5956,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_server/example/README.md"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/example/README.md"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -5996,16 +6194,20 @@ Video Tutorial
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_api_server/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_api_server/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_server/lib/base_template_general_framework_project_api_server.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/lib/base_template_general_framework_project_api_server.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -6049,8 +6251,10 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_server/lib/base_template_general_framework_project_api_server_cli.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/lib/base_template_general_framework_project_api_server_cli.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -6133,8 +6337,10 @@ void baseTemplateGeneralFrameworkProjectApiServerCli({
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_server/lib/base_template_general_framework_project_api_server_core.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/lib/base_template_general_framework_project_api_server_core.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -6207,16 +6413,20 @@ class BaseTemplateGeneralFrameworkProjectApiServer
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_api_server/test"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_api_server/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_api_server/test/base_template_general_framework_project_api_server_test.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_api_server/test/base_template_general_framework_project_api_server_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -6262,8 +6472,10 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api_server/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_server/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -6294,8 +6506,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api_server/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_server/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -6335,8 +6549,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api_server/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_server/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -6349,8 +6565,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api_server/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_server/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -6377,8 +6595,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api_server/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_server/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -6421,8 +6641,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_api_server/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_api_server/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -6658,31 +6880,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("library/base_template_general_framework_project_client"),
+        file_system_entity:
+            Directory("library/base_template_general_framework_project_client"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_client/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_client/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -6741,8 +6970,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -6817,8 +7048,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -6895,8 +7128,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -6911,16 +7146,20 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_client/bin"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_client/bin"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client/bin/base_template_general_framework_project_client.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/bin/base_template_general_framework_project_client.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -6973,32 +7212,40 @@ void main(List<String> arguments) {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_client/example"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_client/example"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client/example/.github"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client/example/.github"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client/example/.github/workflows"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client/example/.github/workflows"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client/example/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client/example/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -7057,8 +7304,10 @@ jobs:
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client/example/.github/workflows/general_workflow_release_app_development.yaml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client/example/.github/workflows/general_workflow_release_app_development.yaml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -7133,8 +7382,10 @@ jobs:
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client/example/.github/workflows/general_workflow_release_app_production.yaml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client/example/.github/workflows/general_workflow_release_app_production.yaml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -7211,8 +7462,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client/example/.github/FUNDING.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/example/.github/FUNDING.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -7227,8 +7480,10 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client/example/base_template_general_framework_project_database"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client/example/base_template_general_framework_project_database"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
@@ -7236,16 +7491,20 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client/example/bin"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client/example/bin"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client/example/bin/example.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/example/bin/example.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -7380,16 +7639,20 @@ void main(List<String> arguments) async {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client/example/lib"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client/example/lib"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client/example/lib/example.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/example/lib/example.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -7438,16 +7701,20 @@ int calculate() {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client/example/test"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client/example/test"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client/example/test/example_test.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/example/test/example_test.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -7501,8 +7768,10 @@ void main() {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client/example/.gitignore"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -7533,8 +7802,10 @@ temp/
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client/example/analysis_options.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/analysis_options.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -7574,8 +7845,10 @@ include: package:lints/recommended.yaml
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client/example/CHANGELOG.md"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/CHANGELOG.md"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -7588,8 +7861,10 @@ include: package:lints/recommended.yaml
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client/example/LICENSE"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/LICENSE"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -7602,8 +7877,10 @@ Copyright (c) 2024 GLOBAL CORPORATION.
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client/example/pubspec.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/pubspec.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -7644,8 +7921,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client/example/README.md"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/example/README.md"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -7880,24 +8159,30 @@ Video Tutorial
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_client/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_client/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client/lib/api"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client/lib/api"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client/lib/api/api.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client/lib/api/api.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -8156,8 +8441,10 @@ extension BaseTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client/lib/base_template_general_framework_project_client.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/lib/base_template_general_framework_project_client.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -8204,8 +8491,10 @@ int calculate() {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client/lib/base_template_general_framework_project_client_core.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/lib/base_template_general_framework_project_client_core.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -8433,16 +8722,20 @@ class BaseTemplateGeneralFrameworkProjectClient extends GeneralFrameworkClient<
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_client/test"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_client/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client/test/base_template_general_framework_project_client_test.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client/test/base_template_general_framework_project_client_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -8496,8 +8789,10 @@ void main() {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_client/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_client/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -8528,8 +8823,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_client/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_client/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -8569,8 +8866,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_client/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_client/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -8583,8 +8882,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_client/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_client/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -8611,8 +8912,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_client/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_client/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -8652,8 +8955,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_client/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_client/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -8889,31 +9194,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("library/base_template_general_framework_project_client_database"),
+        file_system_entity: Directory(
+            "library/base_template_general_framework_project_client_database"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_client_database/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_client_database/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -8972,8 +9284,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -9048,8 +9362,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -9126,8 +9442,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client_database/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -9142,8 +9460,10 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_client_database/base_template_general_framework_project_database"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_client_database/base_template_general_framework_project_database"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
@@ -9151,16 +9471,20 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_client_database/bin"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_client_database/bin"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client_database/bin/base_template_general_framework_project_client_database.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/bin/base_template_general_framework_project_client_database.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -9218,32 +9542,40 @@ void main(List<String> arguments) {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_client_database/example"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/.github"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/example/.github"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/.github/workflows"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/.github/workflows"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -9302,8 +9634,10 @@ jobs:
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/.github/workflows/general_workflow_release_app_development.yaml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/.github/workflows/general_workflow_release_app_development.yaml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -9378,8 +9712,10 @@ jobs:
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/.github/workflows/general_workflow_release_app_production.yaml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/.github/workflows/general_workflow_release_app_production.yaml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -9456,8 +9792,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/.github/FUNDING.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/.github/FUNDING.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -9472,24 +9810,30 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/.idea"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/example/.idea"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/.idea/libraries"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/.idea/libraries"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/.idea/libraries/Dart_SDK.xml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/.idea/libraries/Dart_SDK.xml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -9517,8 +9861,10 @@ github:
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/.idea/libraries/KotlinJavaRuntime.xml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/.idea/libraries/KotlinJavaRuntime.xml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -9545,16 +9891,20 @@ github:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/.idea/runConfigurations"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/.idea/runConfigurations"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/.idea/runConfigurations/main_dart.xml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/.idea/runConfigurations/main_dart.xml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -9571,8 +9921,10 @@ github:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/.idea/modules.xml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/.idea/modules.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -9591,8 +9943,10 @@ github:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/.idea/workspace.xml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/.idea/workspace.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -9640,42 +9994,54 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/example/android"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/android/app"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/android/app/src"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/debug"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_client_database/example/android/app/src/debug"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/app/src/debug/AndroidManifest.xml"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_client_database/example/android/app/src/debug/AndroidManifest.xml"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- The INTERNET permission is required for development. Specifically,
@@ -9692,50 +10058,68 @@ github:
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_client_database/example/android/app/src/main"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/java"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "library/base_template_general_framework_project_client_database/example/android/app/src/main/java"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/java/io"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_client_database/example/android/app/src/main/java/io"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/java/io/flutter"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: Directory(
+                                            "library/base_template_general_framework_project_client_database/example/android/app/src/main/java/io/flutter"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.directory,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.directory,
                                         value: "",
                                         children: [
                                           ScriptGenerator(
                                             is_generate: true,
-                                            directory_base: Directory("base_template_general_framework_project"),
-                                            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/java/io/flutter/plugins"),
+                                            directory_base: Directory(
+                                                "base_template_general_framework_project"),
+                                            file_system_entity: Directory(
+                                                "library/base_template_general_framework_project_client_database/example/android/app/src/main/java/io/flutter/plugins"),
                                             state_data: {},
-                                            file_system_entity_type: FileSystemEntityType.directory,
+                                            file_system_entity_type:
+                                                FileSystemEntityType.directory,
                                             value: "",
                                             children: [
                                               ScriptGenerator(
                                                 is_generate: true,
-                                                directory_base: Directory("base_template_general_framework_project"),
-                                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java"),
+                                                directory_base: Directory(
+                                                    "base_template_general_framework_project"),
+                                                file_system_entity: File(
+                                                    "library/base_template_general_framework_project_client_database/example/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java"),
                                                 state_data: {},
-                                                file_system_entity_type: FileSystemEntityType.file,
+                                                file_system_entity_type:
+                                                    FileSystemEntityType.file,
                                                 value: r"""
 package io.flutter.plugins;
 
@@ -9865,42 +10249,57 @@ public final class GeneratedPluginRegistrant {
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/kotlin"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "library/base_template_general_framework_project_client_database/example/android/app/src/main/kotlin"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/kotlin/com"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_client_database/example/android/app/src/main/kotlin/com"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/kotlin/com/example"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: Directory(
+                                            "library/base_template_general_framework_project_client_database/example/android/app/src/main/kotlin/com/example"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.directory,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.directory,
                                         value: "",
                                         children: [
                                           ScriptGenerator(
                                             is_generate: true,
-                                            directory_base: Directory("base_template_general_framework_project"),
-                                            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/kotlin/com/example/example"),
+                                            directory_base: Directory(
+                                                "base_template_general_framework_project"),
+                                            file_system_entity: Directory(
+                                                "library/base_template_general_framework_project_client_database/example/android/app/src/main/kotlin/com/example/example"),
                                             state_data: {},
-                                            file_system_entity_type: FileSystemEntityType.directory,
+                                            file_system_entity_type:
+                                                FileSystemEntityType.directory,
                                             value: "",
                                             children: [
                                               ScriptGenerator(
                                                 is_generate: true,
-                                                directory_base: Directory("base_template_general_framework_project"),
-                                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/app/src/main/kotlin/com/example/example/MainActivity.kt"),
+                                                directory_base: Directory(
+                                                    "base_template_general_framework_project"),
+                                                file_system_entity: File(
+                                                    "library/base_template_general_framework_project_client_database/example/android/app/src/main/kotlin/com/example/example/MainActivity.kt"),
                                                 state_data: {},
-                                                file_system_entity_type: FileSystemEntityType.file,
+                                                file_system_entity_type:
+                                                    FileSystemEntityType.file,
                                                 value: r"""
 package com.example.example
 
@@ -9921,26 +10320,35 @@ class MainActivity: FlutterActivity()
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/res"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "library/base_template_general_framework_project_client_database/example/android/app/src/main/res"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/drawable"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/drawable"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/drawable/launch_background.xml"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: File(
+                                            "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/drawable/launch_background.xml"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.file,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.file,
                                         value: r"""
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Modify this file to customize your launch splash screen -->
@@ -9962,18 +10370,24 @@ class MainActivity: FlutterActivity()
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/drawable-v21"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/drawable-v21"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/drawable-v21/launch_background.xml"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: File(
+                                            "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/drawable-v21/launch_background.xml"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.file,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.file,
                                         value: r"""
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Modify this file to customize your launch splash screen -->
@@ -9995,63 +10409,84 @@ class MainActivity: FlutterActivity()
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/mipmap-hdpi"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/mipmap-hdpi"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [],
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/mipmap-mdpi"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/mipmap-mdpi"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [],
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/mipmap-xhdpi"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/mipmap-xhdpi"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [],
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/mipmap-xxhdpi"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/mipmap-xxhdpi"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [],
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/mipmap-xxxhdpi"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/mipmap-xxxhdpi"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [],
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/values"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/values"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/values/styles.xml"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: File(
+                                            "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/values/styles.xml"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.file,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.file,
                                         value: r"""
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -10079,18 +10514,24 @@ class MainActivity: FlutterActivity()
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/values-night"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/values-night"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/app/src/main/res/values-night/styles.xml"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: File(
+                                            "library/base_template_general_framework_project_client_database/example/android/app/src/main/res/values-night/styles.xml"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.file,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.file,
                                         value: r"""
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -10120,10 +10561,13 @@ class MainActivity: FlutterActivity()
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/app/src/main/AndroidManifest.xml"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_client_database/example/android/app/src/main/AndroidManifest.xml"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
@@ -10178,18 +10622,24 @@ class MainActivity: FlutterActivity()
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/app/src/profile"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_client_database/example/android/app/src/profile"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/app/src/profile/AndroidManifest.xml"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_client_database/example/android/app/src/profile/AndroidManifest.xml"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- The INTERNET permission is required for development. Specifically,
@@ -10208,8 +10658,10 @@ class MainActivity: FlutterActivity()
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/app/build.gradle"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/android/app/build.gradle"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -10279,24 +10731,30 @@ flutter {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/gradle"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/android/gradle"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/android/gradle/wrapper"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/android/gradle/wrapper"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/gradle/wrapper/gradle-wrapper.properties"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_client_database/example/android/gradle/wrapper/gradle-wrapper.properties"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -10315,8 +10773,10 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.3-all.zip
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/.gitignore"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/android/.gitignore"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -10358,8 +10818,10 @@ temp/
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/build.gradle"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/android/build.gradle"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -10387,8 +10849,10 @@ tasks.register("clean", Delete) {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/example_android.iml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/android/example_android.iml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -10427,8 +10891,10 @@ tasks.register("clean", Delete) {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/gradle.properties"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/android/gradle.properties"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -10441,8 +10907,10 @@ android.enableJetifier=true
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/gradlew"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/android/gradlew"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -10612,8 +11080,10 @@ exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.Grad
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/gradlew.bat"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/android/gradlew.bat"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -10713,8 +11183,10 @@ if "%OS%"=="Windows_NT" endlocal
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/local.properties"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/android/local.properties"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -10725,8 +11197,10 @@ flutter.sdk=/home/galaxeus/development/flutter
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/android/settings.gradle"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/android/settings.gradle"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -10763,8 +11237,10 @@ include ":app"
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/base_template_general_framework_project_database"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/example/base_template_general_framework_project_database"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
@@ -10772,24 +11248,30 @@ include ":app"
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/example/ios"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Flutter"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/ios/Flutter"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Flutter/AppFrameworkInfo.plist"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/ios/Flutter/AppFrameworkInfo.plist"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -10825,8 +11307,10 @@ include ":app"
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Flutter/Debug.xcconfig"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/ios/Flutter/Debug.xcconfig"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -10837,8 +11321,10 @@ include ":app"
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Flutter/Release.xcconfig"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/ios/Flutter/Release.xcconfig"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -10851,34 +11337,44 @@ include ":app"
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Runner"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/ios/Runner"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Runner/Assets.xcassets"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/ios/Runner/Assets.xcassets"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Runner/Assets.xcassets/AppIcon.appiconset"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_client_database/example/ios/Runner/Assets.xcassets/AppIcon.appiconset"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_client_database/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 /* <!-- START LICENSE -->
 
@@ -11044,18 +11540,24 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Runner/Assets.xcassets/LaunchImage.imageset"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_client_database/example/ios/Runner/Assets.xcassets/LaunchImage.imageset"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_client_database/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 /* <!-- START LICENSE -->
 
@@ -11120,10 +11622,13 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_client_database/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 # Launch Screen Assets
 
@@ -11360,16 +11865,20 @@ Video Tutorial
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Runner/Base.lproj"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/ios/Runner/Base.lproj"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner/Base.lproj/LaunchScreen.storyboard"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_client_database/example/ios/Runner/Base.lproj/LaunchScreen.storyboard"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -11416,8 +11925,10 @@ Video Tutorial
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner/Base.lproj/Main.storyboard"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_client_database/example/ios/Runner/Base.lproj/Main.storyboard"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -11455,8 +11966,10 @@ Video Tutorial
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner/AppDelegate.swift"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/ios/Runner/AppDelegate.swift"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -11479,8 +11992,10 @@ import UIKit
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner/GeneratedPluginRegistrant.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/ios/Runner/GeneratedPluginRegistrant.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -11509,8 +12024,10 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner/GeneratedPluginRegistrant.m"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/ios/Runner/GeneratedPluginRegistrant.m"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -11653,8 +12170,10 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner/Info.plist"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/ios/Runner/Info.plist"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -11713,8 +12232,10 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner/Runner-Bridging-Header.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/ios/Runner/Runner-Bridging-Header.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -11727,34 +12248,44 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/project.xcworkspace"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/project.xcworkspace"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -11770,10 +12301,13 @@ NS_ASSUME_NONNULL_END
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -11791,8 +12325,10 @@ NS_ASSUME_NONNULL_END
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -11811,26 +12347,34 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/xcshareddata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/xcshareddata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/xcshareddata/xcschemes"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/xcshareddata/xcschemes"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
@@ -11940,8 +12484,10 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/project.pbxproj"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/ios/Runner.xcodeproj/project.pbxproj"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -12569,24 +13115,30 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Runner.xcworkspace"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/ios/Runner.xcworkspace"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/Runner.xcworkspace/xcshareddata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/ios/Runner.xcworkspace/xcshareddata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_client_database/example/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -12604,8 +13156,10 @@ NS_ASSUME_NONNULL_END
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_client_database/example/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -12625,8 +13179,10 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/Runner.xcworkspace/contents.xcworkspacedata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/ios/Runner.xcworkspace/contents.xcworkspacedata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -12645,16 +13201,20 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/ios/RunnerTests"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/ios/RunnerTests"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/RunnerTests/RunnerTests.swift"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/ios/RunnerTests/RunnerTests.swift"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -12678,8 +13238,10 @@ class RunnerTests: XCTestCase {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/ios/.gitignore"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/ios/.gitignore"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -12744,16 +13306,20 @@ temp/
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/lib"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/example/lib"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/lib/main.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/lib/main.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -12929,24 +13495,30 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/linux"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/example/linux"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/linux/flutter"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/linux/flutter"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/linux/flutter/CMakeLists.txt"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/linux/flutter/CMakeLists.txt"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -13044,8 +13616,10 @@ add_custom_target(flutter_assemble DEPENDS
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/linux/flutter/generated_plugin_registrant.cc"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/linux/flutter/generated_plugin_registrant.cc"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -13086,8 +13660,10 @@ void fl_register_plugins(FlPluginRegistry* registry) {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/linux/flutter/generated_plugin_registrant.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/linux/flutter/generated_plugin_registrant.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -13112,8 +13688,10 @@ void fl_register_plugins(FlPluginRegistry* registry);
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/linux/flutter/generated_plugins.cmake"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/linux/flutter/generated_plugins.cmake"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -13153,8 +13731,10 @@ endforeach(ffi_plugin)
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/linux/.gitignore"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/linux/.gitignore"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -13183,8 +13763,10 @@ temp/
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/linux/CMakeLists.txt"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/linux/CMakeLists.txt"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -13339,8 +13921,10 @@ endif()
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/linux/main.cc"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/linux/main.cc"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -13390,8 +13974,10 @@ int main(int argc, char** argv) {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/linux/my_application.cc"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/linux/my_application.cc"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -13559,8 +14145,10 @@ MyApplication* my_application_new() {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/linux/my_application.h"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/linux/my_application.h"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -13590,24 +14178,30 @@ MyApplication* my_application_new();
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/example/macos"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Flutter"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/macos/Flutter"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Flutter/Flutter-Debug.xcconfig"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/macos/Flutter/Flutter-Debug.xcconfig"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -13618,8 +14212,10 @@ MyApplication* my_application_new();
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Flutter/Flutter-Release.xcconfig"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/macos/Flutter/Flutter-Release.xcconfig"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -13630,8 +14226,10 @@ MyApplication* my_application_new();
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Flutter/GeneratedPluginRegistrant.swift"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/macos/Flutter/GeneratedPluginRegistrant.swift"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -13677,34 +14275,44 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Runner"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/macos/Runner"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Runner/Assets.xcassets"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner/Assets.xcassets"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Runner/Assets.xcassets/AppIcon.appiconset"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_client_database/example/macos/Runner/Assets.xcassets/AppIcon.appiconset"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_client_database/example/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 /* <!-- START LICENSE -->
 
@@ -13818,16 +14426,20 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Runner/Base.lproj"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner/Base.lproj"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner/Base.lproj/MainMenu.xib"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_client_database/example/macos/Runner/Base.lproj/MainMenu.xib"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -14182,16 +14794,20 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Runner/Configs"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner/Configs"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner/Configs/AppInfo.xcconfig"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_client_database/example/macos/Runner/Configs/AppInfo.xcconfig"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -14215,8 +14831,10 @@ PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner/Configs/Debug.xcconfig"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_client_database/example/macos/Runner/Configs/Debug.xcconfig"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -14228,8 +14846,10 @@ PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner/Configs/Release.xcconfig"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_client_database/example/macos/Runner/Configs/Release.xcconfig"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -14241,8 +14861,10 @@ PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner/Configs/Warnings.xcconfig"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_client_database/example/macos/Runner/Configs/Warnings.xcconfig"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -14267,8 +14889,10 @@ CLANG_WARN_UNREACHABLE_CODE = YES
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner/AppDelegate.swift"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner/AppDelegate.swift"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -14287,8 +14911,10 @@ class AppDelegate: FlutterAppDelegate {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner/DebugProfile.entitlements"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner/DebugProfile.entitlements"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -14310,8 +14936,10 @@ class AppDelegate: FlutterAppDelegate {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner/Info.plist"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner/Info.plist"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -14353,8 +14981,10 @@ class AppDelegate: FlutterAppDelegate {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner/MainFlutterWindow.swift"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner/MainFlutterWindow.swift"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -14379,8 +15009,10 @@ class MainFlutterWindow: NSWindow {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner/Release.entitlements"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner/Release.entitlements"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -14400,34 +15032,44 @@ class MainFlutterWindow: NSWindow {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/project.xcworkspace"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/project.xcworkspace"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -14447,26 +15089,34 @@ class MainFlutterWindow: NSWindow {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/xcshareddata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/xcshareddata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/xcshareddata/xcschemes"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/xcshareddata/xcschemes"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
@@ -14576,8 +15226,10 @@ class MainFlutterWindow: NSWindow {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/project.pbxproj"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner.xcodeproj/project.pbxproj"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -15294,24 +15946,30 @@ class MainFlutterWindow: NSWindow {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Runner.xcworkspace"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/macos/Runner.xcworkspace"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/Runner.xcworkspace/xcshareddata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner.xcworkspace/xcshareddata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_client_database/example/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -15331,8 +15989,10 @@ class MainFlutterWindow: NSWindow {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/Runner.xcworkspace/contents.xcworkspacedata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/macos/Runner.xcworkspace/contents.xcworkspacedata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -15351,16 +16011,20 @@ class MainFlutterWindow: NSWindow {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/macos/RunnerTests"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/macos/RunnerTests"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/RunnerTests/RunnerTests.swift"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/macos/RunnerTests/RunnerTests.swift"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -15384,8 +16048,10 @@ class RunnerTests: XCTestCase {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/macos/.gitignore"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/macos/.gitignore"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -15423,16 +16089,20 @@ temp/
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/test"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/example/test"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/test/widget_test.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/test/widget_test.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -15508,16 +16178,20 @@ void main() {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/web"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/example/web"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/web/icons"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/web/icons"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
@@ -15525,8 +16199,10 @@ void main() {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/web/index.html"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/web/index.html"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -15574,8 +16250,10 @@ void main() {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/web/manifest.json"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/web/manifest.json"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -15656,24 +16334,30 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/windows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/example/windows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/windows/flutter"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/windows/flutter"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/flutter/CMakeLists.txt"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/flutter/CMakeLists.txt"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -15792,8 +16476,10 @@ add_custom_target(flutter_assemble DEPENDS
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/flutter/generated_plugin_registrant.cc"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/flutter/generated_plugin_registrant.cc"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -15844,8 +16530,10 @@ void RegisterPlugins(flutter::PluginRegistry* registry) {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/flutter/generated_plugin_registrant.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/flutter/generated_plugin_registrant.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -15870,8 +16558,10 @@ void RegisterPlugins(flutter::PluginRegistry* registry);
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/flutter/generated_plugins.cmake"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/flutter/generated_plugins.cmake"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -15916,16 +16606,20 @@ endforeach(ffi_plugin)
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/windows/runner"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_client_database/example/windows/runner"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_client_database/example/windows/runner/resources"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_client_database/example/windows/runner/resources"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
@@ -15933,8 +16627,10 @@ endforeach(ffi_plugin)
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/runner/CMakeLists.txt"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/runner/CMakeLists.txt"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -15984,8 +16680,10 @@ add_dependencies(${BINARY_NAME} flutter_assemble)
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/runner/flutter_window.cpp"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/runner/flutter_window.cpp"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -16100,8 +16798,10 @@ FlutterWindow::MessageHandler(HWND hwnd, UINT const message,
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/runner/flutter_window.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/runner/flutter_window.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -16144,8 +16844,10 @@ class FlutterWindow : public Win32Window {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/runner/main.cpp"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/runner/main.cpp"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -16232,8 +16934,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/runner/resource.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/runner/resource.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -16259,8 +16963,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/runner/runner.exe.manifest"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/runner/runner.exe.manifest"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -16290,8 +16996,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/runner/Runner.rc"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/runner/Runner.rc"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -16422,8 +17130,10 @@ END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/runner/utils.cpp"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/runner/utils.cpp"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -16532,8 +17242,10 @@ std::string Utf8FromUtf16(const wchar_t* utf16_string) {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/runner/utils.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/runner/utils.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -16562,8 +17274,10 @@ std::vector<std::string> GetCommandLineArguments();
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/runner/win32_window.cpp"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/runner/win32_window.cpp"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -16895,8 +17609,10 @@ void Win32Window::UpdateTheme(HWND const window) {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/runner/win32_window.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_client_database/example/windows/runner/win32_window.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -17010,8 +17726,10 @@ class Win32Window {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/.gitignore"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/windows/.gitignore"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -17057,8 +17775,10 @@ temp/
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/example/windows/CMakeLists.txt"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/example/windows/CMakeLists.txt"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -17178,8 +17898,10 @@ install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client_database/example/.gitignore"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/example/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -17249,8 +17971,10 @@ temp/
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client_database/example/.metadata"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/example/.metadata"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -17305,8 +18029,10 @@ migration:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client_database/example/analysis_options.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/example/analysis_options.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -17344,8 +18070,10 @@ linter:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client_database/example/example.iml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/example/example.iml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -17372,8 +18100,10 @@ linter:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client_database/example/LICENSE"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/example/LICENSE"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -17386,8 +18116,10 @@ Copyright (c) 2024 GLOBAL CORPORATION.
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client_database/example/pubspec.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/example/pubspec.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -17429,8 +18161,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client_database/example/README.md"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/example/README.md"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -17679,24 +18413,30 @@ Video Tutorial
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_client_database/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_client_database/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/lib/account"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/lib/account"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/lib/account/account.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/lib/account/account.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -17818,16 +18558,20 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionAccount
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/lib/message"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/lib/message"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/lib/message/message.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/lib/message/message.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -18056,16 +18800,20 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_client_database/lib/session"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_client_database/lib/session"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_client_database/lib/session/session.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_client_database/lib/session/session.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -18228,8 +18976,10 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionSession
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client_database/lib/base_template_general_framework_project_client_database.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/lib/base_template_general_framework_project_client_database.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -18276,8 +19026,10 @@ export "message/message.dart";
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client_database/lib/base_template_general_framework_project_client_database_core.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/lib/base_template_general_framework_project_client_database_core.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -18418,16 +19170,20 @@ class BaseTemplateGeneralFrameworkProjectClientDatabase
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_client_database/test"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_client_database/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_client_database/test/base_template_general_framework_project_client_database_test.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_client_database/test/base_template_general_framework_project_client_database_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -18522,8 +19278,10 @@ void main() async {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_client_database/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_client_database/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -18554,8 +19312,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_client_database/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_client_database/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -18595,8 +19355,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_client_database/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_client_database/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -18609,8 +19371,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_client_database/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_client_database/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -18637,8 +19401,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_client_database/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_client_database/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -18679,8 +19445,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_client_database/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_client_database/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -18916,31 +19684,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("library/base_template_general_framework_project_flutter"),
+        file_system_entity: Directory(
+            "library/base_template_general_framework_project_flutter"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_flutter/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_flutter/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -18999,8 +19774,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -19075,8 +19852,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -19153,8 +19932,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_flutter/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -19169,24 +19950,30 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_flutter/.idea"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_flutter/.idea"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/.idea/libraries"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/.idea/libraries"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/.idea/libraries/Dart_SDK.xml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/.idea/libraries/Dart_SDK.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -19216,8 +20003,10 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_flutter/.idea/modules.xml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/.idea/modules.xml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -19235,8 +20024,10 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_flutter/.idea/workspace.xml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/.idea/workspace.xml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -19284,32 +20075,40 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_flutter/example"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/.github"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/example/.github"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/.github/workflows"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/.github/workflows"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -19368,8 +20167,10 @@ jobs:
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/.github/workflows/general_workflow_release_app_development.yaml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/.github/workflows/general_workflow_release_app_development.yaml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -19444,8 +20245,10 @@ jobs:
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/.github/workflows/general_workflow_release_app_production.yaml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/.github/workflows/general_workflow_release_app_production.yaml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -19522,8 +20325,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/.github/FUNDING.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/.github/FUNDING.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -19538,24 +20343,30 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/.idea"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/example/.idea"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/.idea/libraries"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/.idea/libraries"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/.idea/libraries/Dart_SDK.xml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/.idea/libraries/Dart_SDK.xml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -19583,8 +20394,10 @@ github:
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/.idea/libraries/KotlinJavaRuntime.xml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/.idea/libraries/KotlinJavaRuntime.xml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -19611,16 +20424,20 @@ github:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/.idea/runConfigurations"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/.idea/runConfigurations"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/.idea/runConfigurations/main_dart.xml"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/.idea/runConfigurations/main_dart.xml"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -19637,8 +20454,10 @@ github:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/.idea/modules.xml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/.idea/modules.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -19657,8 +20476,10 @@ github:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/.idea/workspace.xml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/.idea/workspace.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -19706,42 +20527,54 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/example/android"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/android/app"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/android/app/src"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/debug"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_flutter/example/android/app/src/debug"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/app/src/debug/AndroidManifest.xml"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_flutter/example/android/app/src/debug/AndroidManifest.xml"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- The INTERNET permission is required for development. Specifically,
@@ -19758,50 +20591,68 @@ github:
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_flutter/example/android/app/src/main"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/java"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "library/base_template_general_framework_project_flutter/example/android/app/src/main/java"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/java/io"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_flutter/example/android/app/src/main/java/io"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/java/io/flutter"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: Directory(
+                                            "library/base_template_general_framework_project_flutter/example/android/app/src/main/java/io/flutter"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.directory,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.directory,
                                         value: "",
                                         children: [
                                           ScriptGenerator(
                                             is_generate: true,
-                                            directory_base: Directory("base_template_general_framework_project"),
-                                            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/java/io/flutter/plugins"),
+                                            directory_base: Directory(
+                                                "base_template_general_framework_project"),
+                                            file_system_entity: Directory(
+                                                "library/base_template_general_framework_project_flutter/example/android/app/src/main/java/io/flutter/plugins"),
                                             state_data: {},
-                                            file_system_entity_type: FileSystemEntityType.directory,
+                                            file_system_entity_type:
+                                                FileSystemEntityType.directory,
                                             value: "",
                                             children: [
                                               ScriptGenerator(
                                                 is_generate: true,
-                                                directory_base: Directory("base_template_general_framework_project"),
-                                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java"),
+                                                directory_base: Directory(
+                                                    "base_template_general_framework_project"),
+                                                file_system_entity: File(
+                                                    "library/base_template_general_framework_project_flutter/example/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java"),
                                                 state_data: {},
-                                                file_system_entity_type: FileSystemEntityType.file,
+                                                file_system_entity_type:
+                                                    FileSystemEntityType.file,
                                                 value: r"""
 package io.flutter.plugins;
 
@@ -19916,42 +20767,57 @@ public final class GeneratedPluginRegistrant {
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/kotlin"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "library/base_template_general_framework_project_flutter/example/android/app/src/main/kotlin"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/kotlin/com"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_flutter/example/android/app/src/main/kotlin/com"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/kotlin/com/example"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: Directory(
+                                            "library/base_template_general_framework_project_flutter/example/android/app/src/main/kotlin/com/example"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.directory,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.directory,
                                         value: "",
                                         children: [
                                           ScriptGenerator(
                                             is_generate: true,
-                                            directory_base: Directory("base_template_general_framework_project"),
-                                            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/kotlin/com/example/example"),
+                                            directory_base: Directory(
+                                                "base_template_general_framework_project"),
+                                            file_system_entity: Directory(
+                                                "library/base_template_general_framework_project_flutter/example/android/app/src/main/kotlin/com/example/example"),
                                             state_data: {},
-                                            file_system_entity_type: FileSystemEntityType.directory,
+                                            file_system_entity_type:
+                                                FileSystemEntityType.directory,
                                             value: "",
                                             children: [
                                               ScriptGenerator(
                                                 is_generate: true,
-                                                directory_base: Directory("base_template_general_framework_project"),
-                                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/app/src/main/kotlin/com/example/example/MainActivity.kt"),
+                                                directory_base: Directory(
+                                                    "base_template_general_framework_project"),
+                                                file_system_entity: File(
+                                                    "library/base_template_general_framework_project_flutter/example/android/app/src/main/kotlin/com/example/example/MainActivity.kt"),
                                                 state_data: {},
-                                                file_system_entity_type: FileSystemEntityType.file,
+                                                file_system_entity_type:
+                                                    FileSystemEntityType.file,
                                                 value: r"""
 package com.example.example
 
@@ -19974,26 +20840,35 @@ class MainActivity: FlutterActivity()
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/res"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "library/base_template_general_framework_project_flutter/example/android/app/src/main/res"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/drawable"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/drawable"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/drawable/launch_background.xml"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: File(
+                                            "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/drawable/launch_background.xml"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.file,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.file,
                                         value: r"""
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Modify this file to customize your launch splash screen -->
@@ -20015,18 +20890,24 @@ class MainActivity: FlutterActivity()
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/drawable-v21"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/drawable-v21"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/drawable-v21/launch_background.xml"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: File(
+                                            "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/drawable-v21/launch_background.xml"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.file,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.file,
                                         value: r"""
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Modify this file to customize your launch splash screen -->
@@ -20048,63 +20929,84 @@ class MainActivity: FlutterActivity()
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/mipmap-hdpi"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/mipmap-hdpi"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [],
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/mipmap-mdpi"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/mipmap-mdpi"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [],
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/mipmap-xhdpi"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/mipmap-xhdpi"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [],
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/mipmap-xxhdpi"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/mipmap-xxhdpi"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [],
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/mipmap-xxxhdpi"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/mipmap-xxxhdpi"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [],
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/values"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/values"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/values/styles.xml"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: File(
+                                            "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/values/styles.xml"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.file,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.file,
                                         value: r"""
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -20132,18 +21034,24 @@ class MainActivity: FlutterActivity()
                                   ),
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/values-night"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/values-night"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/app/src/main/res/values-night/styles.xml"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: File(
+                                            "library/base_template_general_framework_project_flutter/example/android/app/src/main/res/values-night/styles.xml"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.file,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.file,
                                         value: r"""
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -20173,10 +21081,13 @@ class MainActivity: FlutterActivity()
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/app/src/main/AndroidManifest.xml"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_flutter/example/android/app/src/main/AndroidManifest.xml"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
@@ -20231,18 +21142,24 @@ class MainActivity: FlutterActivity()
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/app/src/profile"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_flutter/example/android/app/src/profile"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/app/src/profile/AndroidManifest.xml"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_flutter/example/android/app/src/profile/AndroidManifest.xml"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- The INTERNET permission is required for development. Specifically,
@@ -20261,8 +21178,10 @@ class MainActivity: FlutterActivity()
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/app/build.gradle"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/android/app/build.gradle"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -20317,24 +21236,30 @@ flutter {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/gradle"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/android/gradle"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/android/gradle/wrapper"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/android/gradle/wrapper"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/gradle/wrapper/gradle-wrapper.properties"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_flutter/example/android/gradle/wrapper/gradle-wrapper.properties"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -20353,8 +21278,10 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-8.3-all.zip
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/.gitignore"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/android/.gitignore"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -20377,8 +21304,10 @@ key.properties
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/build.gradle"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/android/build.gradle"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -20406,8 +21335,10 @@ tasks.register("clean", Delete) {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/example_android.iml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/android/example_android.iml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -20446,8 +21377,10 @@ tasks.register("clean", Delete) {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/gradle.properties"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/android/gradle.properties"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -20460,8 +21393,10 @@ android.enableJetifier=true
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/gradlew"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/android/gradlew"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -20631,8 +21566,10 @@ exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.Grad
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/gradlew.bat"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/android/gradlew.bat"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -20732,8 +21669,10 @@ if "%OS%"=="Windows_NT" endlocal
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/local.properties"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/android/local.properties"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -20747,8 +21686,10 @@ flutter.versionCode=1
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/android/settings.gradle"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/android/settings.gradle"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -20784,24 +21725,30 @@ include ":app"
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/example/ios"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Flutter"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/ios/Flutter"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Flutter/AppFrameworkInfo.plist"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/ios/Flutter/AppFrameworkInfo.plist"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -20837,8 +21784,10 @@ include ":app"
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Flutter/Debug.xcconfig"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/ios/Flutter/Debug.xcconfig"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -20849,8 +21798,10 @@ include ":app"
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Flutter/Release.xcconfig"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/ios/Flutter/Release.xcconfig"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -20863,34 +21814,44 @@ include ":app"
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Runner"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/ios/Runner"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Runner/Assets.xcassets"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/ios/Runner/Assets.xcassets"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Runner/Assets.xcassets/AppIcon.appiconset"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_flutter/example/ios/Runner/Assets.xcassets/AppIcon.appiconset"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_flutter/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 /* <!-- START LICENSE -->
 
@@ -21056,18 +22017,24 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Runner/Assets.xcassets/LaunchImage.imageset"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_flutter/example/ios/Runner/Assets.xcassets/LaunchImage.imageset"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_flutter/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 /* <!-- START LICENSE -->
 
@@ -21132,10 +22099,13 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_flutter/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 # Launch Screen Assets
 
@@ -21372,16 +22342,20 @@ Video Tutorial
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Runner/Base.lproj"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/ios/Runner/Base.lproj"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner/Base.lproj/LaunchScreen.storyboard"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_flutter/example/ios/Runner/Base.lproj/LaunchScreen.storyboard"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -21428,8 +22402,10 @@ Video Tutorial
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner/Base.lproj/Main.storyboard"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_flutter/example/ios/Runner/Base.lproj/Main.storyboard"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -21467,8 +22443,10 @@ Video Tutorial
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner/AppDelegate.swift"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/ios/Runner/AppDelegate.swift"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -21491,8 +22469,10 @@ import UIKit
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner/GeneratedPluginRegistrant.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/ios/Runner/GeneratedPluginRegistrant.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -21521,8 +22501,10 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner/GeneratedPluginRegistrant.m"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/ios/Runner/GeneratedPluginRegistrant.m"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -21644,8 +22626,10 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner/Info.plist"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/ios/Runner/Info.plist"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -21704,8 +22688,10 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner/Runner-Bridging-Header.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/ios/Runner/Runner-Bridging-Header.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -21718,34 +22704,44 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/project.xcworkspace"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/project.xcworkspace"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -21761,10 +22757,13 @@ NS_ASSUME_NONNULL_END
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -21782,8 +22781,10 @@ NS_ASSUME_NONNULL_END
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -21802,26 +22803,34 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/xcshareddata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/xcshareddata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/xcshareddata/xcschemes"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/xcshareddata/xcschemes"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
@@ -21931,8 +22940,10 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/project.pbxproj"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/ios/Runner.xcodeproj/project.pbxproj"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -22560,24 +23571,30 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Runner.xcworkspace"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/ios/Runner.xcworkspace"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/Runner.xcworkspace/xcshareddata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/ios/Runner.xcworkspace/xcshareddata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_flutter/example/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -22595,8 +23612,10 @@ NS_ASSUME_NONNULL_END
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_flutter/example/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -22616,8 +23635,10 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/Runner.xcworkspace/contents.xcworkspacedata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/ios/Runner.xcworkspace/contents.xcworkspacedata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -22636,16 +23657,20 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/ios/RunnerTests"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/ios/RunnerTests"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/RunnerTests/RunnerTests.swift"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/ios/RunnerTests/RunnerTests.swift"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -22669,8 +23694,10 @@ class RunnerTests: XCTestCase {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/ios/.gitignore"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/ios/.gitignore"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -22735,16 +23762,20 @@ temp/
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/lib"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/example/lib"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/lib/main.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/lib/main.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -22801,24 +23832,30 @@ void main(List<String> args) {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/linux"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/example/linux"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/linux/flutter"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/linux/flutter"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/linux/flutter/CMakeLists.txt"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/linux/flutter/CMakeLists.txt"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -22916,8 +23953,10 @@ add_custom_target(flutter_assemble DEPENDS
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugin_registrant.cc"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugin_registrant.cc"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -22946,8 +23985,10 @@ void fl_register_plugins(FlPluginRegistry* registry) {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugin_registrant.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugin_registrant.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -22972,8 +24013,10 @@ void fl_register_plugins(FlPluginRegistry* registry);
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugins.cmake"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/linux/flutter/generated_plugins.cmake"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -23010,8 +24053,10 @@ endforeach(ffi_plugin)
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/linux/.gitignore"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/linux/.gitignore"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -23040,8 +24085,10 @@ temp/
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/linux/CMakeLists.txt"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/linux/CMakeLists.txt"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -23196,8 +24243,10 @@ endif()
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/linux/main.cc"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/linux/main.cc"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -23247,8 +24296,10 @@ int main(int argc, char** argv) {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/linux/my_application.cc"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/linux/my_application.cc"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -23416,8 +24467,10 @@ MyApplication* my_application_new() {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/linux/my_application.h"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/linux/my_application.h"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -23447,24 +24500,30 @@ MyApplication* my_application_new();
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/example/macos"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Flutter"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/macos/Flutter"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Flutter/Flutter-Debug.xcconfig"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/macos/Flutter/Flutter-Debug.xcconfig"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -23475,8 +24534,10 @@ MyApplication* my_application_new();
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Flutter/Flutter-Release.xcconfig"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/macos/Flutter/Flutter-Release.xcconfig"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -23487,8 +24548,10 @@ MyApplication* my_application_new();
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Flutter/GeneratedPluginRegistrant.swift"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/macos/Flutter/GeneratedPluginRegistrant.swift"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -23528,34 +24591,44 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Runner"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/macos/Runner"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Runner/Assets.xcassets"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner/Assets.xcassets"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Runner/Assets.xcassets/AppIcon.appiconset"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_flutter/example/macos/Runner/Assets.xcassets/AppIcon.appiconset"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_flutter/example/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 /* <!-- START LICENSE -->
 
@@ -23669,16 +24742,20 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Runner/Base.lproj"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner/Base.lproj"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner/Base.lproj/MainMenu.xib"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_flutter/example/macos/Runner/Base.lproj/MainMenu.xib"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -24033,16 +25110,20 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Runner/Configs"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner/Configs"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner/Configs/AppInfo.xcconfig"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_flutter/example/macos/Runner/Configs/AppInfo.xcconfig"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -24066,8 +25147,10 @@ PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner/Configs/Debug.xcconfig"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_flutter/example/macos/Runner/Configs/Debug.xcconfig"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -24079,8 +25162,10 @@ PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner/Configs/Release.xcconfig"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_flutter/example/macos/Runner/Configs/Release.xcconfig"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -24092,8 +25177,10 @@ PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner/Configs/Warnings.xcconfig"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_flutter/example/macos/Runner/Configs/Warnings.xcconfig"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -24118,8 +25205,10 @@ CLANG_WARN_UNREACHABLE_CODE = YES
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner/AppDelegate.swift"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner/AppDelegate.swift"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -24138,8 +25227,10 @@ class AppDelegate: FlutterAppDelegate {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner/DebugProfile.entitlements"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner/DebugProfile.entitlements"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -24161,8 +25252,10 @@ class AppDelegate: FlutterAppDelegate {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner/Info.plist"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner/Info.plist"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -24204,8 +25297,10 @@ class AppDelegate: FlutterAppDelegate {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner/MainFlutterWindow.swift"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner/MainFlutterWindow.swift"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -24230,8 +25325,10 @@ class MainFlutterWindow: NSWindow {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner/Release.entitlements"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner/Release.entitlements"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -24251,34 +25348,44 @@ class MainFlutterWindow: NSWindow {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/project.xcworkspace"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/project.xcworkspace"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -24298,26 +25405,34 @@ class MainFlutterWindow: NSWindow {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/xcshareddata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/xcshareddata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/xcshareddata/xcschemes"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/xcshareddata/xcschemes"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: File(
+                                    "library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.file,
+                                file_system_entity_type:
+                                    FileSystemEntityType.file,
                                 value: r"""
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
@@ -24427,8 +25542,10 @@ class MainFlutterWindow: NSWindow {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/project.pbxproj"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner.xcodeproj/project.pbxproj"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -25145,24 +26262,30 @@ class MainFlutterWindow: NSWindow {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Runner.xcworkspace"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/macos/Runner.xcworkspace"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/Runner.xcworkspace/xcshareddata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner.xcworkspace/xcshareddata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "library/base_template_general_framework_project_flutter/example/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -25182,8 +26305,10 @@ class MainFlutterWindow: NSWindow {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/Runner.xcworkspace/contents.xcworkspacedata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/macos/Runner.xcworkspace/contents.xcworkspacedata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -25202,16 +26327,20 @@ class MainFlutterWindow: NSWindow {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/macos/RunnerTests"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/macos/RunnerTests"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/RunnerTests/RunnerTests.swift"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/macos/RunnerTests/RunnerTests.swift"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -25235,8 +26364,10 @@ class RunnerTests: XCTestCase {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/macos/.gitignore"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/macos/.gitignore"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -25274,16 +26405,20 @@ temp/
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/web"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/example/web"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/web/icons"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/web/icons"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
@@ -25291,8 +26426,10 @@ temp/
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/web/index.html"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/web/index.html"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -25340,8 +26477,10 @@ temp/
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/web/manifest.json"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/web/manifest.json"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -25422,24 +26561,30 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/windows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/example/windows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/windows/flutter"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/windows/flutter"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/flutter/CMakeLists.txt"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/flutter/CMakeLists.txt"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -25558,8 +26703,10 @@ add_custom_target(flutter_assemble DEPENDS
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/flutter/generated_plugin_registrant.cc"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/flutter/generated_plugin_registrant.cc"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -25601,8 +26748,10 @@ void RegisterPlugins(flutter::PluginRegistry* registry) {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/flutter/generated_plugin_registrant.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/flutter/generated_plugin_registrant.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -25627,8 +26776,10 @@ void RegisterPlugins(flutter::PluginRegistry* registry);
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/flutter/generated_plugins.cmake"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/flutter/generated_plugins.cmake"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -25670,16 +26821,20 @@ endforeach(ffi_plugin)
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/windows/runner"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/example/windows/runner"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("library/base_template_general_framework_project_flutter/example/windows/runner/resources"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "library/base_template_general_framework_project_flutter/example/windows/runner/resources"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
@@ -25687,8 +26842,10 @@ endforeach(ffi_plugin)
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/runner/CMakeLists.txt"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/runner/CMakeLists.txt"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -25738,8 +26895,10 @@ add_dependencies(${BINARY_NAME} flutter_assemble)
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/runner/flutter_window.cpp"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/runner/flutter_window.cpp"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -25854,8 +27013,10 @@ FlutterWindow::MessageHandler(HWND hwnd, UINT const message,
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/runner/flutter_window.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/runner/flutter_window.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -25898,8 +27059,10 @@ class FlutterWindow : public Win32Window {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/runner/main.cpp"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/runner/main.cpp"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -25986,8 +27149,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/runner/resource.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/runner/resource.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -26013,8 +27178,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/runner/runner.exe.manifest"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/runner/runner.exe.manifest"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -26044,8 +27211,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/runner/Runner.rc"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/runner/Runner.rc"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -26176,8 +27345,10 @@ END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/runner/utils.cpp"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/runner/utils.cpp"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -26286,8 +27457,10 @@ std::string Utf8FromUtf16(const wchar_t* utf16_string) {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/runner/utils.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/runner/utils.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -26316,8 +27489,10 @@ std::vector<std::string> GetCommandLineArguments();
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/runner/win32_window.cpp"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/runner/win32_window.cpp"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -26649,8 +27824,10 @@ void Win32Window::UpdateTheme(HWND const window) {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/runner/win32_window.h"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/example/windows/runner/win32_window.h"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -26764,8 +27941,10 @@ class Win32Window {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/.gitignore"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/windows/.gitignore"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -26811,8 +27990,10 @@ temp/
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/example/windows/CMakeLists.txt"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/example/windows/CMakeLists.txt"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -26932,8 +28113,10 @@ install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_flutter/example/.gitignore"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/example/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -27003,8 +28186,10 @@ temp/
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_flutter/example/.metadata"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/example/.metadata"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -27059,8 +28244,10 @@ migration:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_flutter/example/analysis_options.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/example/analysis_options.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -27098,8 +28285,10 @@ linter:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_flutter/example/example.iml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/example/example.iml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -27126,8 +28315,10 @@ linter:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_flutter/example/guide-dart-general-library.md"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/example/guide-dart-general-library.md"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -27620,8 +28811,10 @@ Video Tutorial
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_flutter/example/LICENSE"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/example/LICENSE"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -27634,8 +28827,10 @@ Copyright (c) 2024 GLOBAL CORPORATION.
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_flutter/example/pubspec.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/example/pubspec.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -27681,8 +28876,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_flutter/example/README.md"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/example/README.md"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -27931,24 +29128,30 @@ Video Tutorial
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_flutter/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_flutter/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/lib/client"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/lib/client"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/lib/client/client.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/lib/client/client.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -27993,8 +29196,10 @@ export "core.dart";
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/lib/client/core.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/lib/client/core.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -28238,24 +29443,30 @@ abstract class BaseTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidge
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/lib/page"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/lib/page"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/lib/page/account"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/lib/page/account"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/lib/page/account/account.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/lib/page/account/account.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -28324,16 +29535,20 @@ class _AccountPageState extends State<AccountPage> {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/lib/page/chat"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/lib/page/chat"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/lib/page/chat/chat.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/lib/page/chat/chat.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -28408,16 +29623,20 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/lib/page/home"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/lib/page/home"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/lib/page/home/home.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/lib/page/home/home.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -28583,16 +29802,20 @@ class _HomePageState extends State<HomePage> {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/lib/page/settings"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/lib/page/settings"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/lib/page/settings/settings.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/lib/page/settings/settings.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -28660,16 +29883,20 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_flutter/lib/page/sign"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_flutter/lib/page/sign"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_flutter/lib/page/sign/sign.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_flutter/lib/page/sign/sign.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -28916,16 +30143,20 @@ class _SignPageState extends State<SignPage> {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_flutter/lib/widget"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_flutter/lib/widget"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_flutter/lib/widget/widget.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_flutter/lib/widget/widget.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -28971,8 +30202,10 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_flutter/lib/base_template_general_framework_project_flutter.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_flutter/lib/base_template_general_framework_project_flutter.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -29168,8 +30401,10 @@ class _BaseTemplateGeneralFrameworkProjectFlutterAppMainState
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_flutter/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_flutter/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -29225,8 +30460,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_flutter/.metadata"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_flutter/.metadata"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -29246,8 +30483,10 @@ project_type: package
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_flutter/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_flutter/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -29261,8 +30500,10 @@ include: package:flutter_lints/flutter.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_flutter/base_template_general_framework_project_flutter.iml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_flutter/base_template_general_framework_project_flutter.iml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -29290,8 +30531,10 @@ include: package:flutter_lints/flutter.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_flutter/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_flutter/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -29304,8 +30547,10 @@ include: package:flutter_lints/flutter.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_flutter/guide-dart-general-library.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_flutter/guide-dart-general-library.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -29800,8 +31045,10 @@ Video Tutorial
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_flutter/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_flutter/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -29828,8 +31075,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_flutter/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_flutter/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -29877,8 +31126,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_flutter/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_flutter/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -30151,31 +31402,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("library/base_template_general_framework_project_isar_scheme"),
+        file_system_entity: Directory(
+            "library/base_template_general_framework_project_isar_scheme"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_isar_scheme/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_isar_scheme/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_isar_scheme/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_isar_scheme/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_isar_scheme/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_isar_scheme/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -30234,8 +31492,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_isar_scheme/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_isar_scheme/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -30310,8 +31570,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_isar_scheme/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_isar_scheme/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -30388,8 +31650,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_isar_scheme/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_isar_scheme/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -30404,32 +31668,40 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_isar_scheme/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_isar_scheme/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_isar_scheme/lib/database"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_isar_scheme/lib/database"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("library/base_template_general_framework_project_isar_scheme/lib/database/scheme"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "library/base_template_general_framework_project_isar_scheme/lib/database/scheme"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/database/scheme/account_database.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_isar_scheme/lib/database/scheme/account_database.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -30623,8 +31895,10 @@ class AccountDatabase {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/database/scheme/account_database.g.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_isar_scheme/lib/database/scheme/account_database.g.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -32967,8 +34241,10 @@ extension AccountDatabaseQueryProperty3<R1, R2>
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/database/scheme/chat_database.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_isar_scheme/lib/database/scheme/chat_database.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -33138,8 +34414,10 @@ class ChatDatabase {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/database/scheme/chat_database.g.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_isar_scheme/lib/database/scheme/chat_database.g.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -34606,8 +35884,10 @@ extension ChatDatabaseQueryProperty3<R1, R2>
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/database/scheme/message_database.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_isar_scheme/lib/database/scheme/message_database.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -34825,8 +36105,10 @@ class MessageDatabase {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/database/scheme/message_database.g.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_isar_scheme/lib/database/scheme/message_database.g.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -37371,8 +38653,10 @@ extension MessageDatabaseQueryProperty3<R1, R2>
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/database/scheme/message_isar_database.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_isar_scheme/lib/database/scheme/message_isar_database.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -37590,8 +38874,10 @@ class MessageIsarDatabase {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/database/scheme/message_isar_database.g.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_isar_scheme/lib/database/scheme/message_isar_database.g.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -40068,8 +41354,10 @@ extension MessageIsarDatabaseQueryProperty3<R1, R2>
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/database/scheme/session_database.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_isar_scheme/lib/database/scheme/session_database.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -40239,8 +41527,10 @@ class SessionDatabase {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/database/scheme/session_database.g.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_isar_scheme/lib/database/scheme/session_database.g.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -41699,8 +42989,10 @@ extension SessionDatabaseQueryProperty3<R1, R2>
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/database/scheme/session_isar_database.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_isar_scheme/lib/database/scheme/session_isar_database.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -41878,8 +43170,10 @@ class SessionIsarDatabase {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/database/scheme/session_isar_database.g.dart"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "library/base_template_general_framework_project_isar_scheme/lib/database/scheme/session_isar_database.g.dart"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -43444,8 +44738,10 @@ extension SessionIsarDatabaseQueryProperty3<R1, R2>
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_isar_scheme/lib/base_template_general_framework_project_isar_scheme.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_isar_scheme/lib/base_template_general_framework_project_isar_scheme.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -43491,8 +44787,10 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_isar_scheme/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_isar_scheme/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -43523,8 +44821,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_isar_scheme/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_isar_scheme/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -43564,8 +44864,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_isar_scheme/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_isar_scheme/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -43578,8 +44880,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_isar_scheme/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_isar_scheme/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -43606,8 +44910,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_isar_scheme/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_isar_scheme/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -43641,8 +44947,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_isar_scheme/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_isar_scheme/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -43878,31 +45186,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("library/base_template_general_framework_project_language"),
+        file_system_entity: Directory(
+            "library/base_template_general_framework_project_language"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_language/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_language/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_language/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_language/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_language/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_language/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -43961,8 +45276,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_language/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_language/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -44037,8 +45354,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_language/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_language/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -44115,8 +45434,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_language/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_language/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -44131,16 +45452,20 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_language/bin"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_language/bin"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_language/bin/base_template_general_framework_project_language.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_language/bin/base_template_general_framework_project_language.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -44193,16 +45518,20 @@ void main(List<String> arguments) {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_language/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_language/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_language/lib/base_template_general_framework_project_language.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_language/lib/base_template_general_framework_project_language.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -44251,16 +45580,20 @@ int calculate() {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_language/test"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_language/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_language/test/base_template_general_framework_project_language_test.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_language/test/base_template_general_framework_project_language_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -44314,8 +45647,10 @@ void main() {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_language/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_language/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -44346,8 +45681,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_language/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_language/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -44387,8 +45724,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_language/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_language/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -44401,8 +45740,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_language/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_language/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -44415,8 +45756,10 @@ Copyright (c) 2024 GLOBAL CORPORATION.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_language/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_language/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -44445,8 +45788,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_language/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_language/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -44682,31 +46027,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("library/base_template_general_framework_project_media_server"),
+        file_system_entity: Directory(
+            "library/base_template_general_framework_project_media_server"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_media_server/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_media_server/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_media_server/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_media_server/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_media_server/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_media_server/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -44765,8 +46117,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_media_server/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_media_server/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -44841,8 +46195,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_media_server/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_media_server/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -44919,8 +46275,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_media_server/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_media_server/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -44935,16 +46293,20 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_media_server/bin"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_media_server/bin"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_media_server/bin/base_template_general_framework_project_media_server.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_media_server/bin/base_template_general_framework_project_media_server.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -44997,16 +46359,20 @@ void main(List<String> arguments) {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_media_server/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_media_server/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_media_server/lib/base_template_general_framework_project_media_server.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_media_server/lib/base_template_general_framework_project_media_server.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -45055,16 +46421,20 @@ int calculate() {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_media_server/test"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_media_server/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_media_server/test/base_template_general_framework_project_media_server_test.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_media_server/test/base_template_general_framework_project_media_server_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -45118,8 +46488,10 @@ void main() {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_media_server/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_media_server/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -45150,8 +46522,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_media_server/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_media_server/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -45191,8 +46565,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_media_server/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_media_server/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -45205,8 +46581,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_media_server/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_media_server/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -45233,8 +46611,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_media_server/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_media_server/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -45263,8 +46643,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_media_server/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_media_server/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -45500,31 +46882,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("library/base_template_general_framework_project_scheme"),
+        file_system_entity:
+            Directory("library/base_template_general_framework_project_scheme"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_scheme/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_scheme/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_scheme/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_scheme/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -45583,8 +46972,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -45659,8 +47050,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -45737,8 +47130,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_scheme/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_scheme/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -45753,16 +47148,20 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_scheme/bin"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_scheme/bin"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_scheme/bin/base_template_general_framework_project_scheme.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_scheme/bin/base_template_general_framework_project_scheme.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -46275,24 +47674,30 @@ Future<void> generateIsarDatabase() async {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_scheme/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_scheme/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_scheme/lib/api_scheme"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_scheme/lib/api_scheme"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/api_scheme.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/api_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -46319,8 +47724,10 @@ export "sign_up.dart";
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/get_all_messages.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/get_all_messages.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -46582,8 +47989,10 @@ class GetAllMessages extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/get_chat.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/get_chat.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -46809,8 +48218,10 @@ class GetChat extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/get_me.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/get_me.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -47018,8 +48429,10 @@ class GetMe extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/get_message.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/get_message.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -47263,8 +48676,10 @@ class GetMessage extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/get_messages.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/get_messages.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -47512,8 +48927,10 @@ class GetMessages extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/get_sessions.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/get_sessions.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -47757,8 +49174,10 @@ class GetSessions extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/get_update.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/get_update.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -47966,8 +49385,10 @@ class GetUpdate extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/get_user.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/get_user.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -48193,8 +49614,10 @@ class GetUser extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/log_out.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/log_out.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -48402,8 +49825,10 @@ class LogOut extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/search_account.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/search_account.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -48629,8 +50054,10 @@ class SearchAccount extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/search_account_by_username.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/search_account_by_username.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -48858,8 +50285,10 @@ class SearchAccountByUsername extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/send_message.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/send_message.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -49103,8 +50532,10 @@ class SendMessage extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/set_bio.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/set_bio.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -49330,8 +50761,10 @@ class SetBio extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/set_name.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/set_name.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -49575,8 +51008,10 @@ class SetName extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/set_username.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/set_username.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -49802,8 +51237,10 @@ class SetUsername extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/sign_in.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/sign_in.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -50047,8 +51484,10 @@ class SignIn extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/api_scheme/sign_up.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/api_scheme/sign_up.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -50294,16 +51733,20 @@ class SignUp extends JsonScheme {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_scheme/lib/converter"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_scheme/lib/converter"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/converter/account.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/converter/account.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -50360,8 +51803,10 @@ extension AccountDatabaseExtension on AccountDatabase {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/converter/message.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/converter/message.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -50423,8 +51868,10 @@ extension MessageDatabaseExtension on MessageDatabase {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/converter/session.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/converter/session.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -50481,16 +51928,20 @@ extension SessionDatabaseExtension on SessionDatabase {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_scheme/lib/database_scheme"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_scheme/lib/database_scheme"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/database_scheme/account_database.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/database_scheme/account_database.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -50716,8 +52167,10 @@ class AccountDatabase extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/database_scheme/chat_database.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/database_scheme/chat_database.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -50875,8 +52328,10 @@ class ChatDatabase extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/database_scheme/database_scheme.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/database_scheme/database_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -50892,8 +52347,10 @@ export "session_isar_database.dart";
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/database_scheme/message_database.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/database_scheme/message_database.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -51155,8 +52612,10 @@ class MessageDatabase extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/database_scheme/message_isar_database.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/database_scheme/message_isar_database.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -51423,8 +52882,10 @@ class MessageIsarDatabase extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/database_scheme/session_database.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/database_scheme/session_database.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -51578,8 +53039,10 @@ class SessionDatabase extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/database_scheme/session_isar_database.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/database_scheme/session_isar_database.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -51754,16 +53217,20 @@ class SessionIsarDatabase extends JsonScheme {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_scheme/lib/extension"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_scheme/lib/extension"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/extension/json_scheme.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/extension/json_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -51824,8 +53291,10 @@ extension JsonSchemeExtensionScheme on JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/extension/map.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/extension/map.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -51889,16 +53358,20 @@ extension MapExtensionScheme on Map {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_scheme/lib/respond_scheme"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_scheme/lib/respond_scheme"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/respond_scheme/account.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/account.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -52124,8 +53597,10 @@ class Account extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/respond_scheme/accounts.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/accounts.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -52304,8 +53779,10 @@ class Accounts extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/respond_scheme/error.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/error.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -52459,8 +53936,10 @@ class Error extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/respond_scheme/message.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/message.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -52740,8 +54219,10 @@ class Message extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/respond_scheme/messages.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/messages.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -52920,8 +54401,10 @@ class Messages extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/respond_scheme/ok.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/ok.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -53052,8 +54535,10 @@ class Ok extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/respond_scheme/respond_scheme.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/respond_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -53072,8 +54557,10 @@ export "update.dart";
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/respond_scheme/session.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/session.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -53245,8 +54732,10 @@ class Session extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/respond_scheme/sessions.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/sessions.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -53425,8 +54914,10 @@ class Sessions extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/respond_scheme/update.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/respond_scheme/update.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -53602,16 +55093,20 @@ class Update extends JsonScheme {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_scheme/lib/scheme"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_scheme/lib/scheme"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/scheme/error.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/scheme/error.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -53708,8 +55203,10 @@ class Error extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/scheme/ok.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/scheme/ok.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -53789,8 +55286,10 @@ class Ok extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/scheme/scheme.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/scheme/scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -53804,16 +55303,20 @@ export "ok.dart";
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_scheme/lib/schemes"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_scheme/lib/schemes"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/schemes/api_scheme.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/schemes/api_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -53959,8 +55462,10 @@ final List<Map<String, dynamic>> api_schemes = [
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/schemes/database_scheme.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/schemes/database_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -54027,8 +55532,10 @@ final List<Map<String, dynamic>> database_schemes = () {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/schemes/default_scheme.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/schemes/default_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -54179,8 +55686,10 @@ class BaseTemplateGeneralFrameworkProjectSchemeDefault {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/schemes/respond_scheme.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/schemes/respond_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -54284,8 +55793,10 @@ final List<Map<String, dynamic>> respond_schemes = () {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/schemes/schemes.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/schemes/schemes.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -54338,8 +55849,10 @@ final List<Map<String, dynamic>> schemes = [
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/schemes/update_scheme.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/schemes/update_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -54396,16 +55909,20 @@ final List<Map<String, dynamic>> update_schemes = [
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_scheme/lib/update_scheme"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_scheme/lib/update_scheme"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/update_scheme/error.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/update_scheme/error.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -54559,8 +56076,10 @@ class Error extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/update_scheme/ok.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/update_scheme/ok.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -54691,8 +56210,10 @@ class Ok extends JsonScheme {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_scheme/lib/update_scheme/update_scheme.dart"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_scheme/lib/update_scheme/update_scheme.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -54706,8 +56227,10 @@ export "ok.dart";
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_scheme/lib/base_template_general_framework_project_scheme.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_scheme/lib/base_template_general_framework_project_scheme.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -54753,8 +56276,10 @@ export "base_template_general_framework_project_scheme_core.dart";
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_scheme/lib/base_template_general_framework_project_scheme_core.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_scheme/lib/base_template_general_framework_project_scheme_core.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -54828,16 +56353,20 @@ class BaseTemplateGeneralFrameworkProjectSchemeValidation {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_scheme/supabase_scheme"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_scheme/supabase_scheme"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_scheme/supabase_scheme/account.supabase_sql"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_scheme/supabase_scheme/account.supabase_sql"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -54873,8 +56402,10 @@ ALTER TABLE account ADD COLUMN is_test boolean DEFAULT false;
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_scheme/supabase_scheme/chat.supabase_sql"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_scheme/supabase_scheme/chat.supabase_sql"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -54904,8 +56435,10 @@ ALTER TABLE chat ADD COLUMN is_test boolean DEFAULT false;
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_scheme/supabase_scheme/message.supabase_sql"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_scheme/supabase_scheme/message.supabase_sql"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -54947,8 +56480,10 @@ ALTER TABLE message ADD COLUMN is_test boolean DEFAULT false;
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_scheme/supabase_scheme/message_isar.supabase_sql"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_scheme/supabase_scheme/message_isar.supabase_sql"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -54990,8 +56525,10 @@ ALTER TABLE message_isar ADD COLUMN is_test boolean DEFAULT false;
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_scheme/supabase_scheme/session.supabase_sql"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_scheme/supabase_scheme/session.supabase_sql"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -55021,8 +56558,10 @@ ALTER TABLE session ADD COLUMN is_test boolean DEFAULT false;
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_scheme/supabase_scheme/session_isar.supabase_sql"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_scheme/supabase_scheme/session_isar.supabase_sql"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -55056,8 +56595,10 @@ ALTER TABLE session_isar ADD COLUMN is_test boolean DEFAULT false;
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_scheme/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_scheme/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -55089,8 +56630,10 @@ supabase_scheme/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_scheme/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_scheme/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -55130,8 +56673,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_scheme/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_scheme/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -55144,8 +56689,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_scheme/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_scheme/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -55172,8 +56719,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_scheme/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_scheme/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -55204,8 +56753,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_scheme/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_scheme/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -55441,31 +56992,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("library/base_template_general_framework_project_secret"),
+        file_system_entity:
+            Directory("library/base_template_general_framework_project_secret"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_secret/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_secret/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("library/base_template_general_framework_project_secret/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "library/base_template_general_framework_project_secret/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_secret/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_secret/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -55524,8 +57082,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_secret/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_secret/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -55600,8 +57160,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("library/base_template_general_framework_project_secret/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "library/base_template_general_framework_project_secret/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -55678,8 +57240,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_secret/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_secret/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -55694,16 +57258,20 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("library/base_template_general_framework_project_secret/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "library/base_template_general_framework_project_secret/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_secret/lib/base_template_general_framework_project_secret.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_secret/lib/base_template_general_framework_project_secret.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -55748,8 +57316,10 @@ export "base_template_general_framework_project_secret_core.dart";
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("library/base_template_general_framework_project_secret/lib/base_template_general_framework_project_secret_core.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "library/base_template_general_framework_project_secret/lib/base_template_general_framework_project_secret_core.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -55876,8 +57446,10 @@ class BaseTemplateGeneralFrameworkProjectSecretServerSide {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_secret/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_secret/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -55908,8 +57480,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_secret/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_secret/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -55949,8 +57523,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_secret/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_secret/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -55963,8 +57539,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_secret/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_secret/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -55991,8 +57569,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_secret/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_secret/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -56022,8 +57602,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("library/base_template_general_framework_project_secret/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "library/base_template_general_framework_project_secret/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -56269,31 +57851,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("production/base_template_general_framework_project_production_api_server"),
+        file_system_entity: Directory(
+            "production/base_template_general_framework_project_production_api_server"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_api_server/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_api_server/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_api_server/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_api_server/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_api_server/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_api_server/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -56352,8 +57941,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_api_server/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_api_server/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -56428,8 +58019,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_api_server/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_api_server/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -56506,8 +58099,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_api_server/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_api_server/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -56522,16 +58117,20 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_api_server/bin"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_api_server/bin"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_api_server/bin/base_template_general_framework_project_production_api_server.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_api_server/bin/base_template_general_framework_project_production_api_server.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -56584,16 +58183,20 @@ void main(List<String> arguments) {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_api_server/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_api_server/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_api_server/lib/base_template_general_framework_project_production_api_server.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_api_server/lib/base_template_general_framework_project_production_api_server.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -56642,16 +58245,20 @@ int calculate() {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_api_server/test"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_api_server/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_api_server/test/base_template_general_framework_project_production_api_server_test.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_api_server/test/base_template_general_framework_project_production_api_server_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -56705,8 +58312,10 @@ void main() {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_api_server/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_api_server/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -56737,8 +58346,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_api_server/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_api_server/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -56778,8 +58389,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_api_server/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_api_server/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -56792,8 +58405,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_api_server/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_api_server/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -56821,8 +58436,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_api_server/license"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_api_server/license"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -56850,8 +58467,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_api_server/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_api_server/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -56880,8 +58499,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_api_server/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_api_server/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -57117,31 +58738,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("production/base_template_general_framework_project_production_app"),
+        file_system_entity: Directory(
+            "production/base_template_general_framework_project_production_app"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_app/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_app/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -57200,8 +58828,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -57276,8 +58906,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -57354,8 +58986,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -57370,24 +59004,30 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_app/.idea"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_app/.idea"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/.idea/libraries"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/.idea/libraries"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/.idea/libraries/Dart_SDK.xml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/.idea/libraries/Dart_SDK.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -57415,8 +59055,10 @@ github:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/.idea/libraries/KotlinJavaRuntime.xml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/.idea/libraries/KotlinJavaRuntime.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -57443,16 +59085,20 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/.idea/runConfigurations"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/.idea/runConfigurations"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/.idea/runConfigurations/main_dart.xml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/.idea/runConfigurations/main_dart.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -57469,8 +59115,10 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/.idea/modules.xml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/.idea/modules.xml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -57489,8 +59137,10 @@ github:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/.idea/workspace.xml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/.idea/workspace.xml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -57538,40 +59188,50 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_app/android"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_app/android"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/android/app"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/android/app/src"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/debug"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "production/base_template_general_framework_project_production_app/android/app/src/debug"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("production/base_template_general_framework_project_production_app/android/app/src/debug/AndroidManifest.xml"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "production/base_template_general_framework_project_production_app/android/app/src/debug/AndroidManifest.xml"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -57590,50 +59250,67 @@ github:
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "production/base_template_general_framework_project_production_app/android/app/src/main"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/java"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "production/base_template_general_framework_project_production_app/android/app/src/main/java"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/java/io"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "production/base_template_general_framework_project_production_app/android/app/src/main/java/io"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/java/io/flutter"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "production/base_template_general_framework_project_production_app/android/app/src/main/java/io/flutter"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/java/io/flutter/plugins"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: Directory(
+                                            "production/base_template_general_framework_project_production_app/android/app/src/main/java/io/flutter/plugins"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.directory,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.directory,
                                         value: "",
                                         children: [
                                           ScriptGenerator(
                                             is_generate: true,
-                                            directory_base: Directory("base_template_general_framework_project"),
-                                            file_system_entity: File("production/base_template_general_framework_project_production_app/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java"),
+                                            directory_base: Directory(
+                                                "base_template_general_framework_project"),
+                                            file_system_entity: File(
+                                                "production/base_template_general_framework_project_production_app/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java"),
                                             state_data: {},
-                                            file_system_entity_type: FileSystemEntityType.file,
+                                            file_system_entity_type:
+                                                FileSystemEntityType.file,
                                             value: r"""
 package io.flutter.plugins;
 
@@ -57668,42 +59345,57 @@ public final class GeneratedPluginRegistrant {
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/kotlin"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "production/base_template_general_framework_project_production_app/android/app/src/main/kotlin"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/kotlin/com"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "production/base_template_general_framework_project_production_app/android/app/src/main/kotlin/com"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/kotlin/com/example"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: Directory(
+                                        "production/base_template_general_framework_project_production_app/android/app/src/main/kotlin/com/example"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.directory,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory("base_template_general_framework_project"),
-                                        file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/kotlin/com/example/base_template_general_framework_project_production_app"),
+                                        directory_base: Directory(
+                                            "base_template_general_framework_project"),
+                                        file_system_entity: Directory(
+                                            "production/base_template_general_framework_project_production_app/android/app/src/main/kotlin/com/example/base_template_general_framework_project_production_app"),
                                         state_data: {},
-                                        file_system_entity_type: FileSystemEntityType.directory,
+                                        file_system_entity_type:
+                                            FileSystemEntityType.directory,
                                         value: "",
                                         children: [
                                           ScriptGenerator(
                                             is_generate: true,
-                                            directory_base: Directory("base_template_general_framework_project"),
-                                            file_system_entity: File("production/base_template_general_framework_project_production_app/android/app/src/main/kotlin/com/example/base_template_general_framework_project_production_app/MainActivity.kt"),
+                                            directory_base: Directory(
+                                                "base_template_general_framework_project"),
+                                            file_system_entity: File(
+                                                "production/base_template_general_framework_project_production_app/android/app/src/main/kotlin/com/example/base_template_general_framework_project_production_app/MainActivity.kt"),
                                             state_data: {},
-                                            file_system_entity_type: FileSystemEntityType.file,
+                                            file_system_entity_type:
+                                                FileSystemEntityType.file,
                                             value: r"""
 package com.example.base_template_general_framework_project_production_app
 
@@ -57724,26 +59416,35 @@ class MainActivity: FlutterActivity()
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/res"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: Directory(
+                                "production/base_template_general_framework_project_production_app/android/app/src/main/res"),
                             state_data: {},
-                            file_system_entity_type: FileSystemEntityType.directory,
+                            file_system_entity_type:
+                                FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/res/drawable"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "production/base_template_general_framework_project_production_app/android/app/src/main/res/drawable"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: File("production/base_template_general_framework_project_production_app/android/app/src/main/res/drawable/launch_background.xml"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: File(
+                                        "production/base_template_general_framework_project_production_app/android/app/src/main/res/drawable/launch_background.xml"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.file,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.file,
                                     value: r"""
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Modify this file to customize your launch splash screen -->
@@ -57765,18 +59466,24 @@ class MainActivity: FlutterActivity()
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/res/drawable-v21"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "production/base_template_general_framework_project_production_app/android/app/src/main/res/drawable-v21"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: File("production/base_template_general_framework_project_production_app/android/app/src/main/res/drawable-v21/launch_background.xml"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: File(
+                                        "production/base_template_general_framework_project_production_app/android/app/src/main/res/drawable-v21/launch_background.xml"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.file,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.file,
                                     value: r"""
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Modify this file to customize your launch splash screen -->
@@ -57798,63 +59505,84 @@ class MainActivity: FlutterActivity()
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/res/mipmap-hdpi"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "production/base_template_general_framework_project_production_app/android/app/src/main/res/mipmap-hdpi"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [],
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/res/mipmap-mdpi"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "production/base_template_general_framework_project_production_app/android/app/src/main/res/mipmap-mdpi"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [],
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/res/mipmap-xhdpi"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "production/base_template_general_framework_project_production_app/android/app/src/main/res/mipmap-xhdpi"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [],
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/res/mipmap-xxhdpi"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "production/base_template_general_framework_project_production_app/android/app/src/main/res/mipmap-xxhdpi"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [],
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/res/mipmap-xxxhdpi"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "production/base_template_general_framework_project_production_app/android/app/src/main/res/mipmap-xxxhdpi"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [],
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/res/values"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "production/base_template_general_framework_project_production_app/android/app/src/main/res/values"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: File("production/base_template_general_framework_project_production_app/android/app/src/main/res/values/styles.xml"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: File(
+                                        "production/base_template_general_framework_project_production_app/android/app/src/main/res/values/styles.xml"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.file,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.file,
                                     value: r"""
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -57882,18 +59610,24 @@ class MainActivity: FlutterActivity()
                               ),
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory("base_template_general_framework_project"),
-                                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/main/res/values-night"),
+                                directory_base: Directory(
+                                    "base_template_general_framework_project"),
+                                file_system_entity: Directory(
+                                    "production/base_template_general_framework_project_production_app/android/app/src/main/res/values-night"),
                                 state_data: {},
-                                file_system_entity_type: FileSystemEntityType.directory,
+                                file_system_entity_type:
+                                    FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory("base_template_general_framework_project"),
-                                    file_system_entity: File("production/base_template_general_framework_project_production_app/android/app/src/main/res/values-night/styles.xml"),
+                                    directory_base: Directory(
+                                        "base_template_general_framework_project"),
+                                    file_system_entity: File(
+                                        "production/base_template_general_framework_project_production_app/android/app/src/main/res/values-night/styles.xml"),
                                     state_data: {},
-                                    file_system_entity_type: FileSystemEntityType.file,
+                                    file_system_entity_type:
+                                        FileSystemEntityType.file,
                                     value: r"""
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -57923,8 +59657,10 @@ class MainActivity: FlutterActivity()
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("production/base_template_general_framework_project_production_app/android/app/src/main/AndroidManifest.xml"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "production/base_template_general_framework_project_production_app/android/app/src/main/AndroidManifest.xml"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -57981,16 +59717,20 @@ class MainActivity: FlutterActivity()
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/app/src/profile"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "production/base_template_general_framework_project_production_app/android/app/src/profile"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("production/base_template_general_framework_project_production_app/android/app/src/profile/AndroidManifest.xml"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "production/base_template_general_framework_project_production_app/android/app/src/profile/AndroidManifest.xml"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -58011,8 +59751,10 @@ class MainActivity: FlutterActivity()
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/android/app/build.gradle"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/android/app/build.gradle"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -58082,24 +59824,30 @@ flutter {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/gradle"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/android/gradle"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/android/gradle/wrapper"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/android/gradle/wrapper"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("production/base_template_general_framework_project_production_app/android/gradle/wrapper/gradle-wrapper.properties"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "production/base_template_general_framework_project_production_app/android/gradle/wrapper/gradle-wrapper.properties"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -58118,8 +59866,10 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.3-all.zip
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/android/.gitignore"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/android/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -58161,8 +59911,10 @@ temp/
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/android/base_template_general_framework_project_production_app_android.iml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/android/base_template_general_framework_project_production_app_android.iml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -58201,8 +59953,10 @@ temp/
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/android/build.gradle"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/android/build.gradle"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -58230,8 +59984,10 @@ tasks.register("clean", Delete) {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/android/gradle.properties"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/android/gradle.properties"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -58244,8 +60000,10 @@ android.enableJetifier=true
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/android/gradlew"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/android/gradlew"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -58415,8 +60173,10 @@ exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.Grad
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/android/gradlew.bat"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/android/gradlew.bat"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -58516,8 +60276,10 @@ if "%OS%"=="Windows_NT" endlocal
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/android/local.properties"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/android/local.properties"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -58528,8 +60290,10 @@ flutter.sdk=/home/galaxeus/development/flutter
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/android/settings.gradle"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/android/settings.gradle"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -58566,24 +60330,30 @@ include ":app"
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_app/ios"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Flutter"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/ios/Flutter"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Flutter/AppFrameworkInfo.plist"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/ios/Flutter/AppFrameworkInfo.plist"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -58619,8 +60389,10 @@ include ":app"
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Flutter/Debug.xcconfig"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/ios/Flutter/Debug.xcconfig"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -58631,8 +60403,10 @@ include ":app"
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Flutter/Release.xcconfig"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/ios/Flutter/Release.xcconfig"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -58645,32 +60419,40 @@ include ":app"
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Runner"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/ios/Runner"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Runner/Assets.xcassets"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/ios/Runner/Assets.xcassets"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Runner/Assets.xcassets/AppIcon.appiconset"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "production/base_template_general_framework_project_production_app/ios/Runner/Assets.xcassets/AppIcon.appiconset"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "production/base_template_general_framework_project_production_app/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -58838,16 +60620,20 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Runner/Assets.xcassets/LaunchImage.imageset"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "production/base_template_general_framework_project_production_app/ios/Runner/Assets.xcassets/LaunchImage.imageset"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "production/base_template_general_framework_project_production_app/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -58914,8 +60700,10 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "production/base_template_general_framework_project_production_app/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -59154,16 +60942,20 @@ Video Tutorial
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Runner/Base.lproj"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/ios/Runner/Base.lproj"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner/Base.lproj/LaunchScreen.storyboard"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "production/base_template_general_framework_project_production_app/ios/Runner/Base.lproj/LaunchScreen.storyboard"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -59210,8 +61002,10 @@ Video Tutorial
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner/Base.lproj/Main.storyboard"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "production/base_template_general_framework_project_production_app/ios/Runner/Base.lproj/Main.storyboard"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -59249,8 +61043,10 @@ Video Tutorial
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner/AppDelegate.swift"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/ios/Runner/AppDelegate.swift"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -59273,8 +61069,10 @@ import UIKit
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner/GeneratedPluginRegistrant.h"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/ios/Runner/GeneratedPluginRegistrant.h"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -59303,8 +61101,10 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner/GeneratedPluginRegistrant.m"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/ios/Runner/GeneratedPluginRegistrant.m"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -59328,8 +61128,10 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner/Info.plist"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/ios/Runner/Info.plist"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -59388,8 +61190,10 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner/Runner-Bridging-Header.h"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/ios/Runner/Runner-Bridging-Header.h"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -59402,32 +61206,40 @@ NS_ASSUME_NONNULL_END
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/project.xcworkspace"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/project.xcworkspace"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -59445,8 +61257,10 @@ NS_ASSUME_NONNULL_END
                           ),
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -59466,8 +61280,10 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -59486,24 +61302,30 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/xcshareddata"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/xcshareddata"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/xcshareddata/xcschemes"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/xcshareddata/xcschemes"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -59615,8 +61437,10 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/project.pbxproj"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/ios/Runner.xcodeproj/project.pbxproj"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -60244,24 +62068,30 @@ NS_ASSUME_NONNULL_END
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Runner.xcworkspace"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/ios/Runner.xcworkspace"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/Runner.xcworkspace/xcshareddata"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/ios/Runner.xcworkspace/xcshareddata"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "production/base_template_general_framework_project_production_app/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -60279,8 +62109,10 @@ NS_ASSUME_NONNULL_END
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "production/base_template_general_framework_project_production_app/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -60300,8 +62132,10 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/ios/Runner.xcworkspace/contents.xcworkspacedata"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/ios/Runner.xcworkspace/contents.xcworkspacedata"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -60320,16 +62154,20 @@ NS_ASSUME_NONNULL_END
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/ios/RunnerTests"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/ios/RunnerTests"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/ios/RunnerTests/RunnerTests.swift"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/ios/RunnerTests/RunnerTests.swift"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -60353,8 +62191,10 @@ class RunnerTests: XCTestCase {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/ios/.gitignore"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/ios/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -60419,16 +62259,20 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_app/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_app/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/lib/main.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/lib/main.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -60599,24 +62443,30 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_app/linux"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_app/linux"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/linux/flutter"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/linux/flutter"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/linux/flutter/CMakeLists.txt"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/linux/flutter/CMakeLists.txt"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -60714,8 +62564,10 @@ add_custom_target(flutter_assemble DEPENDS
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/linux/flutter/generated_plugin_registrant.cc"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/linux/flutter/generated_plugin_registrant.cc"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -60736,8 +62588,10 @@ void fl_register_plugins(FlPluginRegistry* registry) {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/linux/flutter/generated_plugin_registrant.h"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/linux/flutter/generated_plugin_registrant.h"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -60762,8 +62616,10 @@ void fl_register_plugins(FlPluginRegistry* registry);
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/linux/flutter/generated_plugins.cmake"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/linux/flutter/generated_plugins.cmake"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -60798,8 +62654,10 @@ endforeach(ffi_plugin)
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/linux/.gitignore"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/linux/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -60828,8 +62686,10 @@ temp/
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/linux/CMakeLists.txt"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/linux/CMakeLists.txt"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -60984,8 +62844,10 @@ endif()
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/linux/main.cc"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/linux/main.cc"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -61035,8 +62897,10 @@ int main(int argc, char** argv) {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/linux/my_application.cc"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/linux/my_application.cc"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -61204,8 +63068,10 @@ MyApplication* my_application_new() {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/linux/my_application.h"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/linux/my_application.h"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -61235,24 +63101,30 @@ MyApplication* my_application_new();
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_app/macos"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Flutter"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/macos/Flutter"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Flutter/Flutter-Debug.xcconfig"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/macos/Flutter/Flutter-Debug.xcconfig"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -61263,8 +63135,10 @@ MyApplication* my_application_new();
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Flutter/Flutter-Release.xcconfig"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/macos/Flutter/Flutter-Release.xcconfig"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -61275,8 +63149,10 @@ MyApplication* my_application_new();
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Flutter/GeneratedPluginRegistrant.swift"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/macos/Flutter/GeneratedPluginRegistrant.swift"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -61298,32 +63174,40 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Runner"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/macos/Runner"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Runner/Assets.xcassets"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/macos/Runner/Assets.xcassets"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Runner/Assets.xcassets/AppIcon.appiconset"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "production/base_template_general_framework_project_production_app/macos/Runner/Assets.xcassets/AppIcon.appiconset"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "production/base_template_general_framework_project_production_app/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -61439,16 +63323,20 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Runner/Base.lproj"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/macos/Runner/Base.lproj"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner/Base.lproj/MainMenu.xib"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "production/base_template_general_framework_project_production_app/macos/Runner/Base.lproj/MainMenu.xib"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -61803,16 +63691,20 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Runner/Configs"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/macos/Runner/Configs"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner/Configs/AppInfo.xcconfig"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "production/base_template_general_framework_project_production_app/macos/Runner/Configs/AppInfo.xcconfig"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -61836,8 +63728,10 @@ PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner/Configs/Debug.xcconfig"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "production/base_template_general_framework_project_production_app/macos/Runner/Configs/Debug.xcconfig"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -61849,8 +63743,10 @@ PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner/Configs/Release.xcconfig"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "production/base_template_general_framework_project_production_app/macos/Runner/Configs/Release.xcconfig"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -61862,8 +63758,10 @@ PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner/Configs/Warnings.xcconfig"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "production/base_template_general_framework_project_production_app/macos/Runner/Configs/Warnings.xcconfig"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -61888,8 +63786,10 @@ CLANG_WARN_UNREACHABLE_CODE = YES
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner/AppDelegate.swift"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/macos/Runner/AppDelegate.swift"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -61908,8 +63808,10 @@ class AppDelegate: FlutterAppDelegate {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner/DebugProfile.entitlements"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/macos/Runner/DebugProfile.entitlements"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -61931,8 +63833,10 @@ class AppDelegate: FlutterAppDelegate {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner/Info.plist"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/macos/Runner/Info.plist"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -61974,8 +63878,10 @@ class AppDelegate: FlutterAppDelegate {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner/MainFlutterWindow.swift"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/macos/Runner/MainFlutterWindow.swift"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -62000,8 +63906,10 @@ class MainFlutterWindow: NSWindow {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner/Release.entitlements"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/macos/Runner/Release.entitlements"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -62021,32 +63929,40 @@ class MainFlutterWindow: NSWindow {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/project.xcworkspace"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/project.xcworkspace"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -62068,24 +63984,30 @@ class MainFlutterWindow: NSWindow {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/xcshareddata"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/xcshareddata"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/xcshareddata/xcschemes"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: Directory(
+                            "production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/xcshareddata/xcschemes"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base: Directory("base_template_general_framework_project"),
-                            file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
+                            directory_base: Directory(
+                                "base_template_general_framework_project"),
+                            file_system_entity: File(
+                                "production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -62197,8 +64119,10 @@ class MainFlutterWindow: NSWindow {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/project.pbxproj"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/macos/Runner.xcodeproj/project.pbxproj"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -62915,24 +64839,30 @@ class MainFlutterWindow: NSWindow {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Runner.xcworkspace"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/macos/Runner.xcworkspace"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/Runner.xcworkspace/xcshareddata"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/macos/Runner.xcworkspace/xcshareddata"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base: Directory("base_template_general_framework_project"),
-                        file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                        directory_base: Directory(
+                            "base_template_general_framework_project"),
+                        file_system_entity: File(
+                            "production/base_template_general_framework_project_production_app/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.file,
                         value: r"""
@@ -62952,8 +64882,10 @@ class MainFlutterWindow: NSWindow {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/macos/Runner.xcworkspace/contents.xcworkspacedata"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/macos/Runner.xcworkspace/contents.xcworkspacedata"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -62972,16 +64904,20 @@ class MainFlutterWindow: NSWindow {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/macos/RunnerTests"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/macos/RunnerTests"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/macos/RunnerTests/RunnerTests.swift"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/macos/RunnerTests/RunnerTests.swift"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -63005,8 +64941,10 @@ class RunnerTests: XCTestCase {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/macos/.gitignore"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/macos/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -63044,16 +64982,20 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_app/test"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_app/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/test/widget_test.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/test/widget_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -63129,16 +65071,20 @@ void main() {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_app/web"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_app/web"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/web/icons"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/web/icons"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
@@ -63146,8 +65092,10 @@ void main() {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/web/index.html"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/web/index.html"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -63195,8 +65143,10 @@ void main() {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/web/manifest.json"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/web/manifest.json"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -63277,24 +65227,30 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_app/windows"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_app/windows"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/windows/flutter"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/windows/flutter"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/flutter/CMakeLists.txt"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/flutter/CMakeLists.txt"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -63413,8 +65369,10 @@ add_custom_target(flutter_assemble DEPENDS
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/flutter/generated_plugin_registrant.cc"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/flutter/generated_plugin_registrant.cc"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -63435,8 +65393,10 @@ void RegisterPlugins(flutter::PluginRegistry* registry) {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/flutter/generated_plugin_registrant.h"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/flutter/generated_plugin_registrant.h"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -63461,8 +65421,10 @@ void RegisterPlugins(flutter::PluginRegistry* registry);
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/flutter/generated_plugins.cmake"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/flutter/generated_plugins.cmake"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -63497,16 +65459,20 @@ endforeach(ffi_plugin)
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_app/windows/runner"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_app/windows/runner"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: Directory("production/base_template_general_framework_project_production_app/windows/runner/resources"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: Directory(
+                        "production/base_template_general_framework_project_production_app/windows/runner/resources"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
@@ -63514,8 +65480,10 @@ endforeach(ffi_plugin)
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/runner/CMakeLists.txt"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/runner/CMakeLists.txt"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -63565,8 +65533,10 @@ add_dependencies(${BINARY_NAME} flutter_assemble)
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/runner/flutter_window.cpp"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/runner/flutter_window.cpp"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -63681,8 +65651,10 @@ FlutterWindow::MessageHandler(HWND hwnd, UINT const message,
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/runner/flutter_window.h"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/runner/flutter_window.h"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -63725,8 +65697,10 @@ class FlutterWindow : public Win32Window {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/runner/main.cpp"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/runner/main.cpp"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -63813,8 +65787,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/runner/resource.h"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/runner/resource.h"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -63840,8 +65816,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/runner/runner.exe.manifest"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/runner/runner.exe.manifest"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -63871,8 +65849,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/runner/Runner.rc"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/runner/Runner.rc"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -64003,8 +65983,10 @@ END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/runner/utils.cpp"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/runner/utils.cpp"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -64113,8 +66095,10 @@ std::string Utf8FromUtf16(const wchar_t* utf16_string) {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/runner/utils.h"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/runner/utils.h"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -64143,8 +66127,10 @@ std::vector<std::string> GetCommandLineArguments();
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/runner/win32_window.cpp"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/runner/win32_window.cpp"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -64476,8 +66462,10 @@ void Win32Window::UpdateTheme(HWND const window) {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_app/windows/runner/win32_window.h"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_app/windows/runner/win32_window.h"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -64591,8 +66579,10 @@ class Win32Window {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/windows/.gitignore"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/windows/.gitignore"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -64638,8 +66628,10 @@ temp/
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_app/windows/CMakeLists.txt"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_app/windows/CMakeLists.txt"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -64759,8 +66751,10 @@ install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_app/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_app/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -64830,8 +66824,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_app/.metadata"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_app/.metadata"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -64886,8 +66882,10 @@ migration:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_app/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_app/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -64925,8 +66923,10 @@ linter:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_app/base_template_general_framework_project_production_app.iml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_app/base_template_general_framework_project_production_app.iml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -64953,8 +66953,10 @@ linter:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_app/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_app/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -64982,8 +66984,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_app/license"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_app/license"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -65011,8 +67015,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_app/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_app/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -65048,8 +67054,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_app/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_app/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -65299,31 +67307,38 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("base_template_general_framework_project"),
-        file_system_entity: Directory("production/base_template_general_framework_project_production_media_server"),
+        file_system_entity: Directory(
+            "production/base_template_general_framework_project_production_media_server"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_media_server/.github"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_media_server/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: Directory("production/base_template_general_framework_project_production_media_server/.github/workflows"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: Directory(
+                    "production/base_template_general_framework_project_production_media_server/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_media_server/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_media_server/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -65382,8 +67397,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_media_server/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_media_server/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -65458,8 +67475,10 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base: Directory("base_template_general_framework_project"),
-                    file_system_entity: File("production/base_template_general_framework_project_production_media_server/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base:
+                        Directory("base_template_general_framework_project"),
+                    file_system_entity: File(
+                        "production/base_template_general_framework_project_production_media_server/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -65536,8 +67555,10 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_media_server/.github/FUNDING.yaml"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_media_server/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -65552,16 +67573,20 @@ github:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_media_server/bin"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_media_server/bin"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_media_server/bin/base_template_general_framework_project_production_media_server.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_media_server/bin/base_template_general_framework_project_production_media_server.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -65614,16 +67639,20 @@ void main(List<String> arguments) {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_media_server/lib"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_media_server/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_media_server/lib/base_template_general_framework_project_production_media_server.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_media_server/lib/base_template_general_framework_project_production_media_server.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -65672,16 +67701,20 @@ int calculate() {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: Directory("production/base_template_general_framework_project_production_media_server/test"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: Directory(
+                "production/base_template_general_framework_project_production_media_server/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base: Directory("base_template_general_framework_project"),
-                file_system_entity: File("production/base_template_general_framework_project_production_media_server/test/base_template_general_framework_project_production_media_server_test.dart"),
+                directory_base:
+                    Directory("base_template_general_framework_project"),
+                file_system_entity: File(
+                    "production/base_template_general_framework_project_production_media_server/test/base_template_general_framework_project_production_media_server_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -65735,8 +67768,10 @@ void main() {
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_media_server/.gitignore"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_media_server/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -65767,8 +67802,10 @@ temp/
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_media_server/analysis_options.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_media_server/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -65808,8 +67845,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_media_server/CHANGELOG.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_media_server/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -65822,8 +67861,10 @@ include: package:lints/recommended.yaml
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_media_server/LICENSE"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_media_server/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -65851,8 +67892,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_media_server/license"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_media_server/license"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -65880,8 +67923,10 @@ SOFTWARE.
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_media_server/pubspec.yaml"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_media_server/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -65910,8 +67955,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("base_template_general_framework_project"),
-            file_system_entity: File("production/base_template_general_framework_project_production_media_server/README.md"),
+            directory_base:
+                Directory("base_template_general_framework_project"),
+            file_system_entity: File(
+                "production/base_template_general_framework_project_production_media_server/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""

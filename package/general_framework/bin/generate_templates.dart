@@ -42,13 +42,18 @@ import 'package:io_universe/io_universe.dart';
 import "package:path/path.dart" as path;
 
 void main(List<String> args) async {
-  final Directory directory_template = Directory(path.join(Directory.current.path, "template"));
+  final Directory directory_template =
+      Directory(path.join(Directory.current.path, "template"));
   // directory_template_base.listSync().whereType<Directory>();
   Process.runSync("dart", [
     "format",
     directory_template.uri.toFilePath(),
   ]);
-  final List<FileSystemEntity> fileSystemEntitys = directory_template.listSync().where((element) => element.statSync().type == FileSystemEntityType.directory).toList();
+  final List<FileSystemEntity> fileSystemEntitys = directory_template
+      .listSync()
+      .where((element) =>
+          element.statSync().type == FileSystemEntityType.directory)
+      .toList();
   fileSystemEntitys.sort((a, b) => a.path.compareTo(b.path));
   for (var element in fileSystemEntitys) {
     final String base_name = "${path.basename(element.path)}";
@@ -61,7 +66,8 @@ void main(List<String> args) async {
             ),
           );
       final String script = scirpts.toScriptDart(scriptName: base_name);
-      final File file = File(path.join(Directory.current.path, "lib", "templates", "${base_name}_template.dart"));
+      final File file = File(path.join(Directory.current.path, "lib",
+          "templates", "${base_name}_template.dart"));
       if (file.parent.existsSync() == false) {
         file.parent.createSync(
           recursive: true,
@@ -73,6 +79,8 @@ void main(List<String> args) async {
 
   Process.runSync("dart", [
     "format",
-    Directory(path.join(Directory.current.path, "lib", "templates")).uri.toFilePath(),
+    Directory(path.join(Directory.current.path, "lib", "templates"))
+        .uri
+        .toFilePath(),
   ]);
 }

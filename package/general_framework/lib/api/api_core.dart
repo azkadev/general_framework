@@ -56,8 +56,10 @@ class GeneralFrameworkApi {
       "app_ui": app_ui_template_general_framework_script_generators,
       "base": base_template_general_framework_project_script_generators,
       "base_web": base_web_template_general_framework_project_script_generators,
-      "telegram_bot": telegram_bot_template_general_framework_project_script_generators,
-      "telegram_userbot": telegram_userbot_template_general_framework_project_script_generators,
+      "telegram_bot":
+          telegram_bot_template_general_framework_project_script_generators,
+      "telegram_userbot":
+          telegram_userbot_template_general_framework_project_script_generators,
     };
   }
 
@@ -75,14 +77,16 @@ class GeneralFrameworkApi {
         "message": "name_project_cant_empty",
       };
     }
-    final Directory directoryProject = Directory(path.join(current_path, name_project));
+    final Directory directoryProject =
+        Directory(path.join(current_path, name_project));
     if (directoryProject.existsSync() && is_force == false) {
       return {
         "@type": "error",
         "message": "directory_project_already_exist",
       };
     }
-    final Stream<ScriptGeneratorStatus> status = template_project.generateToDirectory(
+    final Stream<ScriptGeneratorStatus> status =
+        template_project.generateToDirectory(
       directoryBase: directoryProject,
     );
     await for (final ScriptGeneratorStatus element in status) {

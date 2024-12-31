@@ -4,10 +4,12 @@
 import 'package:general_lib/script_generate/script_generate.dart';
 import 'package:io_universe/io_universe.dart';
 
-final List<ScriptGenerator> telegram_bot_template_general_framework_project_script_generators = [
+final List<ScriptGenerator>
+    telegram_bot_template_general_framework_project_script_generators = [
   ScriptGenerator(
     is_generate: true,
-    directory_base: Directory("telegram_bot_template_general_framework_project"),
+    directory_base:
+        Directory("telegram_bot_template_general_framework_project"),
     file_system_entity: Directory(".github"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.directory,
@@ -15,7 +17,8 @@ final List<ScriptGenerator> telegram_bot_template_general_framework_project_scri
     children: [
       ScriptGenerator(
         is_generate: true,
-        directory_base: Directory("telegram_bot_template_general_framework_project"),
+        directory_base:
+            Directory("telegram_bot_template_general_framework_project"),
         file_system_entity: Directory(".github/workflows"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
@@ -23,8 +26,10 @@ final List<ScriptGenerator> telegram_bot_template_general_framework_project_scri
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("telegram_bot_template_general_framework_project"),
-            file_system_entity: File(".github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+            directory_base:
+                Directory("telegram_bot_template_general_framework_project"),
+            file_system_entity: File(
+                ".github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -83,8 +88,10 @@ jobs:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("telegram_bot_template_general_framework_project"),
-            file_system_entity: File(".github/workflows/general_workflow_release_app_development.yaml"),
+            directory_base:
+                Directory("telegram_bot_template_general_framework_project"),
+            file_system_entity: File(
+                ".github/workflows/general_workflow_release_app_development.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -159,8 +166,10 @@ jobs:
           ),
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("telegram_bot_template_general_framework_project"),
-            file_system_entity: File(".github/workflows/general_workflow_release_app_production.yaml"),
+            directory_base:
+                Directory("telegram_bot_template_general_framework_project"),
+            file_system_entity: File(
+                ".github/workflows/general_workflow_release_app_production.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -237,7 +246,8 @@ jobs:
       ),
       ScriptGenerator(
         is_generate: true,
-        directory_base: Directory("telegram_bot_template_general_framework_project"),
+        directory_base:
+            Directory("telegram_bot_template_general_framework_project"),
         file_system_entity: File(".github/FUNDING.yaml"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
@@ -253,7 +263,8 @@ github:
   ),
   ScriptGenerator(
     is_generate: true,
-    directory_base: Directory("telegram_bot_template_general_framework_project"),
+    directory_base:
+        Directory("telegram_bot_template_general_framework_project"),
     file_system_entity: Directory("example"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.directory,
@@ -261,8 +272,10 @@ github:
     children: [
       ScriptGenerator(
         is_generate: true,
-        directory_base: Directory("telegram_bot_template_general_framework_project"),
-        file_system_entity: File("example/telegram_bot_template_general_framework_project_example.dart"),
+        directory_base:
+            Directory("telegram_bot_template_general_framework_project"),
+        file_system_entity: File(
+            "example/telegram_bot_template_general_framework_project_example.dart"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
@@ -280,7 +293,8 @@ void main() {
   ),
   ScriptGenerator(
     is_generate: true,
-    directory_base: Directory("telegram_bot_template_general_framework_project"),
+    directory_base:
+        Directory("telegram_bot_template_general_framework_project"),
     file_system_entity: Directory("lib"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.directory,
@@ -288,7 +302,8 @@ void main() {
     children: [
       ScriptGenerator(
         is_generate: true,
-        directory_base: Directory("telegram_bot_template_general_framework_project"),
+        directory_base:
+            Directory("telegram_bot_template_general_framework_project"),
         file_system_entity: Directory("lib/src"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
@@ -296,8 +311,10 @@ void main() {
         children: [
           ScriptGenerator(
             is_generate: true,
-            directory_base: Directory("telegram_bot_template_general_framework_project"),
-            file_system_entity: File("lib/src/telegram_bot_template_general_framework_project_base.dart"),
+            directory_base:
+                Directory("telegram_bot_template_general_framework_project"),
+            file_system_entity: File(
+                "lib/src/telegram_bot_template_general_framework_project_base.dart"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -315,8 +332,10 @@ class Awesome {
       ),
       ScriptGenerator(
         is_generate: true,
-        directory_base: Directory("telegram_bot_template_general_framework_project"),
-        file_system_entity: File("lib/telegram_bot_template_general_framework_project.dart"),
+        directory_base:
+            Directory("telegram_bot_template_general_framework_project"),
+        file_system_entity:
+            File("lib/telegram_bot_template_general_framework_project.dart"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
@@ -336,7 +355,8 @@ export 'src/telegram_bot_template_general_framework_project_base.dart';
   ),
   ScriptGenerator(
     is_generate: true,
-    directory_base: Directory("telegram_bot_template_general_framework_project"),
+    directory_base:
+        Directory("telegram_bot_template_general_framework_project"),
     file_system_entity: Directory("test"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.directory,
@@ -344,8 +364,10 @@ export 'src/telegram_bot_template_general_framework_project_base.dart';
     children: [
       ScriptGenerator(
         is_generate: true,
-        directory_base: Directory("telegram_bot_template_general_framework_project"),
-        file_system_entity: File("test/telegram_bot_template_general_framework_project_test.dart"),
+        directory_base:
+            Directory("telegram_bot_template_general_framework_project"),
+        file_system_entity: File(
+            "test/telegram_bot_template_general_framework_project_test.dart"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
@@ -373,7 +395,8 @@ void main() {
   ),
   ScriptGenerator(
     is_generate: true,
-    directory_base: Directory("telegram_bot_template_general_framework_project"),
+    directory_base:
+        Directory("telegram_bot_template_general_framework_project"),
     file_system_entity: File(".gitignore"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
@@ -409,7 +432,8 @@ temp/
   ),
   ScriptGenerator(
     is_generate: true,
-    directory_base: Directory("telegram_bot_template_general_framework_project"),
+    directory_base:
+        Directory("telegram_bot_template_general_framework_project"),
     file_system_entity: File("analysis_options.yaml"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
@@ -450,7 +474,8 @@ include: package:lints/recommended.yaml
   ),
   ScriptGenerator(
     is_generate: true,
-    directory_base: Directory("telegram_bot_template_general_framework_project"),
+    directory_base:
+        Directory("telegram_bot_template_general_framework_project"),
     file_system_entity: File("CHANGELOG.md"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
@@ -464,7 +489,8 @@ include: package:lints/recommended.yaml
   ),
   ScriptGenerator(
     is_generate: true,
-    directory_base: Directory("telegram_bot_template_general_framework_project"),
+    directory_base:
+        Directory("telegram_bot_template_general_framework_project"),
     file_system_entity: File("LICENSE"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
@@ -478,7 +504,8 @@ Copyright (c) 2024 GLOBAL CORPORATION.
   ),
   ScriptGenerator(
     is_generate: true,
-    directory_base: Directory("telegram_bot_template_general_framework_project"),
+    directory_base:
+        Directory("telegram_bot_template_general_framework_project"),
     file_system_entity: File("pubspec.yaml"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
@@ -507,7 +534,8 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
   ),
   ScriptGenerator(
     is_generate: true,
-    directory_base: Directory("telegram_bot_template_general_framework_project"),
+    directory_base:
+        Directory("telegram_bot_template_general_framework_project"),
     file_system_entity: File("README.md"),
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,

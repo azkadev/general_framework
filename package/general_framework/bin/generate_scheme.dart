@@ -46,28 +46,35 @@ import "extension.dart";
 
 void main(List<String> args) async {
   {
-    final Directory directory_lib_scheme = Directory(path.join(Directory.current.path, "lib", "scheme")).recreate();
+    final Directory directory_lib_scheme =
+        Directory(path.join(Directory.current.path, "lib", "scheme"))
+            .recreate();
 
     ///
 
     await jsonToScripts(
       api_schemes,
-      directory: Directory(path.join(directory_lib_scheme.path, "api_scheme")).recreate(),
+      directory: Directory(path.join(directory_lib_scheme.path, "api_scheme"))
+          .recreate(),
     );
     await jsonToScripts(
       schemes,
-      directory: Directory(path.join(directory_lib_scheme.path, "scheme")).recreate(),
+      directory:
+          Directory(path.join(directory_lib_scheme.path, "scheme")).recreate(),
     );
   }
 
   {
-    final Directory directory_lib_scheme = Directory(path.join(Directory.current.path, "lib", "general", "scheme")).recreate();
+    final Directory directory_lib_scheme =
+        Directory(path.join(Directory.current.path, "lib", "general", "scheme"))
+            .recreate();
 
     ///
 
     await jsonToScripts(
       general_api_schemes,
-      directory: Directory(path.join(directory_lib_scheme.path, "api_scheme")).recreate(),
+      directory: Directory(path.join(directory_lib_scheme.path, "api_scheme"))
+          .recreate(),
     );
   }
 }

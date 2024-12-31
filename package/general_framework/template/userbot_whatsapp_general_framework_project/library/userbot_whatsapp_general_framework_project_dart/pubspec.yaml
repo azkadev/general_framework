@@ -5,11 +5,11 @@ environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
   path: '^1.9.0'
-  general_lib: '^0.0.51'
-  general: '^0.0.34'
-  server_universe: '^0.0.27'
+  general_lib: '^0.0.52'
+  general: '^0.0.35'
+  server_universe: '^0.0.28'
   mason_logger: '^0.3.1'
-  whatsapp_client: '^1.0.28'
+  whatsapp_client: '^1.0.29'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
