@@ -43,7 +43,7 @@ import 'package:general_lib/general_lib.dart';
 import 'package:http/http.dart';
 import 'package:server_universe/native.dart';
 import 'package:server_universe/native/core/type_handlers/websocket_type_handler.dart';
-import 'package:universal_io/io.dart';
+import 'package:io_universe/io_universe.dart';
 
 abstract class GeneralFrameworkApiServerCore {
   String encryptData({
@@ -59,8 +59,7 @@ abstract class GeneralFrameworkApiServerCore {
   }
 }
 
-abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase>
-    implements GeneralFrameworkApiServerCore {
+abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase> implements GeneralFrameworkApiServerCore {
   final ServerUniverseNative serverUniverse;
   final T generalFrameworkApi;
   final String pathApi;
@@ -73,10 +72,8 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase>
     this.pathWebSocket = "/ws",
   });
   bool _is_initialized = false;
-  FutureOr<void> ensureInitialized(
-      {required String currentPath, required Client httpClient}) async {
-    await generalFrameworkApi.ensureInitialized(
-        currentPath: currentPath, httpClient: httpClient);
+  FutureOr<void> ensureInitialized({required String currentPath, required Client httpClient}) async {
+    await generalFrameworkApi.ensureInitialized(currentPath: currentPath, httpClient: httpClient);
     if (_is_initialized) {
       return;
     }
@@ -123,8 +120,7 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase>
                 }
                 return {};
               }();
-              if (parameters["@type"] == "error" &&
-                  parameters["message"] == "decrypt_error") {
+              if (parameters["@type"] == "error" && parameters["message"] == "decrypt_error") {
                 await websocket.close();
                 return;
               }

@@ -7,7 +7,7 @@ import 'package:general_framework/languages/languages.dart';
 import 'package:general_lib/general_lib.dart';
 import "package:path/path.dart" as path;
 import 'package:translate_client/translate_client.dart';
-import 'package:universal_io/io.dart';
+import 'package:io_universe/io_universe.dart';
 import "extension.dart";
 
 void main(List<String> args) async {
@@ -24,18 +24,14 @@ void main(List<String> args) async {
       "general_framework",
     )).recreate(),
     is_translate: false,
-    onData:
-        (String origin_data, language_code_id, default_language_code_id) async {
-      return await onData(
-          origin_data, language_code_id, default_language_code_id);
+    onData: (String origin_data, language_code_id, default_language_code_id) async {
+      return await onData(origin_data, language_code_id, default_language_code_id);
     },
   );
-  Process.runSync("dart", ["format", directory_lib_language.uri.toFilePath()],
-      workingDirectory: Directory.current.uri.toFilePath());
+  Process.runSync("dart", ["format", directory_lib_language.uri.toFilePath()], workingDirectory: Directory.current.uri.toFilePath());
 }
 
-FutureOr<String?> onData(
-    String origin_data, language_code_id, default_language_code_id) async {
+FutureOr<String?> onData(String origin_data, language_code_id, default_language_code_id) async {
   if (["id", "en"].contains(language_code_id)) {
     RegExp regExp = RegExp(r"({[a-z0-9_]+})", caseSensitive: false);
     if (regExp.hashData(origin_data)) {

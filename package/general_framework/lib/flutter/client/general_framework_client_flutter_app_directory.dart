@@ -42,7 +42,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:general_lib/dart/dart.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
-import 'package:universal_io/io.dart';
+import 'package:io_universe/io_universe.dart';
 import "package:path/path.dart" as path;
 
 class GeneralFrameworkClientFlutterAppDirectory {
@@ -61,44 +61,37 @@ class GeneralFrameworkClientFlutterAppDirectory {
       return;
     }
     app_temp_directory = await path_provider.getTemporaryDirectory();
-    app_support_directory =
-        await path_provider.getApplicationSupportDirectory();
-    app_document_directory =
-        await path_provider.getApplicationDocumentsDirectory();
+    app_support_directory = await path_provider.getApplicationSupportDirectory();
+    app_document_directory = await path_provider.getApplicationDocumentsDirectory();
 
     app_cache_directory = await Future(() async {
       try {
         return await path_provider.getApplicationCacheDirectory();
       } catch (e) {}
 
-      return Directory(
-          path.join(app_document_directory.parent.uri.toFilePath(), "cache"));
+      return Directory(path.join(app_document_directory.parent.uri.toFilePath(), "cache"));
     });
 
     app_external_storage_directory = await Future(() async {
       try {
-        final Directory? directory_procces =
-            await path_provider.getExternalStorageDirectory();
+        final Directory? directory_procces = await path_provider.getExternalStorageDirectory();
         if (directory_procces != null) {
           return directory_procces;
         }
       } catch (e) {}
 
-      return Directory(path.join(
-          app_document_directory.parent.uri.toFilePath(), "ApplicationData"));
+      return Directory(path.join(app_document_directory.parent.uri.toFilePath(), "ApplicationData"));
     });
 
     app_download_directory = await Future(() async {
       try {
-        final Directory? directory_procces =
-            await path_provider.getDownloadsDirectory();
+        final Directory? directory_procces = await path_provider.getDownloadsDirectory();
         if (directory_procces != null) {
           return directory_procces;
         }
       } catch (e) {}
 
-      return Directory(path.join(
-          app_document_directory.parent.uri.toFilePath(), "Downloads"));
+      return Directory(path.join(app_document_directory.parent.uri.toFilePath(), "Downloads"));
     });
   }
 }

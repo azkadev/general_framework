@@ -2,10 +2,9 @@
 
 // import 'dart:io';
 import 'package:general_lib/script_generate/script_generate.dart';
-import 'package:universal_io/io.dart';
+import 'package:io_universe/io_universe.dart';
 
-final List<ScriptGenerator>
-    bot_telegram_general_framework_project_script_generators = [
+final List<ScriptGenerator> bot_telegram_general_framework_project_script_generators = [
   ScriptGenerator(
     is_generate: true,
     directory_base: Directory("bot_telegram_general_framework_project"),
@@ -25,8 +24,7 @@ final List<ScriptGenerator>
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                ".github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+            file_system_entity: File(".github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -86,8 +84,7 @@ jobs:
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                ".github/workflows/general_workflow_release_app_development.yaml"),
+            file_system_entity: File(".github/workflows/general_workflow_release_app_development.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -163,8 +160,7 @@ jobs:
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                ".github/workflows/general_workflow_release_app_production.yaml"),
+            file_system_entity: File(".github/workflows/general_workflow_release_app_production.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -266,8 +262,7 @@ github:
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("bot_telegram_general_framework_project"),
-        file_system_entity:
-            File("bin/bot_telegram_general_framework_project.dart"),
+        file_system_entity: File("bin/bot_telegram_general_framework_project.dart"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
@@ -294,8 +289,7 @@ void main(List<String> arguments) {
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("bot_telegram_general_framework_project"),
-        file_system_entity:
-            File("lib/bot_telegram_general_framework_project.dart"),
+        file_system_entity: File("lib/bot_telegram_general_framework_project.dart"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
@@ -319,8 +313,7 @@ int calculate() {
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("bot_telegram_general_framework_project"),
-        file_system_entity:
-            Directory("library/bot_telegram_general_framework_project_client"),
+        file_system_entity: Directory("library/bot_telegram_general_framework_project_client"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
@@ -328,28 +321,23 @@ int calculate() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_client/.github"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_client/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_client/.github/workflows"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_client/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_client/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_client/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -408,10 +396,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_client/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_client/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -486,10 +472,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_client/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_client/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -566,10 +550,8 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_client/.github/FUNDING.yaml"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_client/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -585,18 +567,15 @@ github:
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_client/example"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_client/example"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_client/example/bot_telegram_general_framework_project_client_example.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_client/example/bot_telegram_general_framework_project_client_example.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -615,28 +594,23 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_client/lib"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_client/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_client/lib/src"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_client/lib/src"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_client/lib/src/bot_telegram_general_framework_project_client_base.dart"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_client/lib/src/bot_telegram_general_framework_project_client_base.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -654,10 +628,8 @@ class Awesome {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_client/lib/bot_telegram_general_framework_project_client.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_client/lib/bot_telegram_general_framework_project_client.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -678,18 +650,15 @@ export 'src/bot_telegram_general_framework_project_client_base.dart';
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_client/test"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_client/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_client/test/bot_telegram_general_framework_project_client_test.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_client/test/bot_telegram_general_framework_project_client_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -718,8 +687,7 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_client/.gitignore"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_client/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -755,8 +723,7 @@ temp/
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_client/analysis_options.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_client/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -797,8 +764,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_client/CHANGELOG.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_client/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -812,8 +778,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_client/LICENSE"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_client/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -827,8 +792,7 @@ Copyright (c) 2024 GLOBAL CORPORATION.
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_client/pubspec.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_client/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -858,8 +822,7 @@ documentation: 'https://youtube.com/@azkadev'
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_client/README.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_client/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -1132,8 +1095,7 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("bot_telegram_general_framework_project"),
-        file_system_entity: Directory(
-            "library/bot_telegram_general_framework_project_client_database"),
+        file_system_entity: Directory("library/bot_telegram_general_framework_project_client_database"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
@@ -1141,28 +1103,23 @@ Video Tutorial
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_client_database/.github"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_client_database/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_client_database/.github/workflows"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_client_database/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_client_database/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_client_database/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1221,10 +1178,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_client_database/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_client_database/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1299,10 +1254,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_client_database/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_client_database/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1379,10 +1332,8 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_client_database/.github/FUNDING.yaml"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_client_database/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -1398,18 +1349,15 @@ github:
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_client_database/example"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_client_database/example"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_client_database/example/bot_telegram_general_framework_project_client_database_example.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_client_database/example/bot_telegram_general_framework_project_client_database_example.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -1428,28 +1376,23 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_client_database/lib"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_client_database/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_client_database/lib/src"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_client_database/lib/src"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_client_database/lib/src/bot_telegram_general_framework_project_client_database_base.dart"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_client_database/lib/src/bot_telegram_general_framework_project_client_database_base.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1467,10 +1410,8 @@ class Awesome {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_client_database/lib/bot_telegram_general_framework_project_client_database.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_client_database/lib/bot_telegram_general_framework_project_client_database.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -1491,18 +1432,15 @@ export 'src/bot_telegram_general_framework_project_client_database_base.dart';
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_client_database/test"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_client_database/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_client_database/test/bot_telegram_general_framework_project_client_database_test.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_client_database/test/bot_telegram_general_framework_project_client_database_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -1531,8 +1469,7 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_client_database/.gitignore"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_client_database/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -1568,8 +1505,7 @@ temp/
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_client_database/analysis_options.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_client_database/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -1610,8 +1546,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_client_database/CHANGELOG.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_client_database/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -1625,8 +1560,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_client_database/LICENSE"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_client_database/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -1640,8 +1574,7 @@ Copyright (c) 2024 GLOBAL CORPORATION.
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_client_database/pubspec.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_client_database/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -1671,8 +1604,7 @@ documentation: 'https://youtube.com/@azkadev'
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_client_database/README.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_client_database/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -1945,8 +1877,7 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("bot_telegram_general_framework_project"),
-        file_system_entity:
-            Directory("library/bot_telegram_general_framework_project_dart"),
+        file_system_entity: Directory("library/bot_telegram_general_framework_project_dart"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
@@ -1954,28 +1885,23 @@ Video Tutorial
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_dart/.github"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_dart/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_dart/.github/workflows"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_dart/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_dart/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_dart/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -2034,10 +1960,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_dart/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_dart/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -2112,10 +2036,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_dart/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_dart/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -2192,10 +2114,8 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_dart/.github/FUNDING.yaml"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_dart/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -2211,18 +2131,15 @@ github:
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_dart/example"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_dart/example"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_dart/example/bot_telegram_general_framework_project_dart_example.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_dart/example/bot_telegram_general_framework_project_dart_example.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -2241,28 +2158,23 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_dart/lib"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_dart/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_dart/lib/src"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_dart/lib/src"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_dart/lib/src/bot_telegram_general_framework_project_dart_base.dart"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_dart/lib/src/bot_telegram_general_framework_project_dart_base.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -2280,10 +2192,8 @@ class Awesome {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_dart/lib/bot_telegram_general_framework_project_dart.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_dart/lib/bot_telegram_general_framework_project_dart.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -2304,18 +2214,15 @@ export 'src/bot_telegram_general_framework_project_dart_base.dart';
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_dart/test"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_dart/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_dart/test/bot_telegram_general_framework_project_dart_test.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_dart/test/bot_telegram_general_framework_project_dart_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -2344,8 +2251,7 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_dart/.gitignore"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_dart/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -2381,8 +2287,7 @@ temp/
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_dart/analysis_options.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_dart/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -2423,8 +2328,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_dart/CHANGELOG.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_dart/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -2438,8 +2342,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_dart/LICENSE"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_dart/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -2453,8 +2356,7 @@ Copyright (c) 2024 GLOBAL CORPORATION.
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_dart/pubspec.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_dart/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -2490,8 +2392,7 @@ documentation: 'https://youtube.com/@azkadev'
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_dart/README.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_dart/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -2764,8 +2665,7 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("bot_telegram_general_framework_project"),
-        file_system_entity: Directory(
-            "library/bot_telegram_general_framework_project_isar_scheme"),
+        file_system_entity: Directory("library/bot_telegram_general_framework_project_isar_scheme"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
@@ -2773,28 +2673,23 @@ Video Tutorial
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_isar_scheme/.github"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_isar_scheme/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_isar_scheme/.github/workflows"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_isar_scheme/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_isar_scheme/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -2853,10 +2748,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_isar_scheme/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -2931,10 +2824,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_isar_scheme/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -3011,10 +2902,8 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_isar_scheme/.github/FUNDING.yaml"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -3030,18 +2919,15 @@ github:
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_isar_scheme/example"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_isar_scheme/example"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_isar_scheme/example/bot_telegram_general_framework_project_client_isar_scheme_example.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/example/bot_telegram_general_framework_project_client_isar_scheme_example.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -3060,28 +2946,23 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_isar_scheme/lib"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_isar_scheme/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_isar_scheme/lib/src"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_isar_scheme/lib/src"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_isar_scheme/lib/src/bot_telegram_general_framework_project_client_isar_scheme_base.dart"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/lib/src/bot_telegram_general_framework_project_client_isar_scheme_base.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -3099,10 +2980,8 @@ class Awesome {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_isar_scheme/lib/bot_telegram_general_framework_project_client_isar_scheme.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/lib/bot_telegram_general_framework_project_client_isar_scheme.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -3123,18 +3002,15 @@ export '../../bot_telegram_general_framework_project_client_isar_scheme/lib/src/
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_isar_scheme/test"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_isar_scheme/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_isar_scheme/test/bot_telegram_general_framework_project_client_isar_scheme_test.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/test/bot_telegram_general_framework_project_client_isar_scheme_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -3163,8 +3039,7 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_isar_scheme/.gitignore"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -3200,8 +3075,7 @@ temp/
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_isar_scheme/analysis_options.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -3242,8 +3116,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_isar_scheme/CHANGELOG.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -3257,8 +3130,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_isar_scheme/LICENSE"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -3272,8 +3144,7 @@ Copyright (c) 2024 GLOBAL CORPORATION.
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_isar_scheme/pubspec.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -3305,8 +3176,7 @@ documentation: 'https://youtube.com/@azkadev'
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_isar_scheme/README.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_isar_scheme/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -3579,8 +3449,7 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("bot_telegram_general_framework_project"),
-        file_system_entity: Directory(
-            "library/bot_telegram_general_framework_project_language"),
+        file_system_entity: Directory("library/bot_telegram_general_framework_project_language"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
@@ -3588,28 +3457,23 @@ Video Tutorial
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_language/.github"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_language/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_language/.github/workflows"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_language/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_language/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_language/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -3668,10 +3532,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_language/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_language/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -3746,10 +3608,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_language/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_language/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -3826,10 +3686,8 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_language/.github/FUNDING.yaml"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_language/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -3845,18 +3703,15 @@ github:
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_language/example"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_language/example"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_language/example/bot_telegram_general_framework_project_language_example.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_language/example/bot_telegram_general_framework_project_language_example.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -3875,28 +3730,23 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_language/lib"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_language/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_language/lib/src"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_language/lib/src"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_language/lib/src/bot_telegram_general_framework_project_language_base.dart"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_language/lib/src/bot_telegram_general_framework_project_language_base.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -3914,10 +3764,8 @@ class Awesome {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_language/lib/bot_telegram_general_framework_project_language.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_language/lib/bot_telegram_general_framework_project_language.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -3938,18 +3786,15 @@ export 'src/bot_telegram_general_framework_project_language_base.dart';
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_language/test"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_language/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_language/test/bot_telegram_general_framework_project_language_test.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_language/test/bot_telegram_general_framework_project_language_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -3978,8 +3823,7 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_language/.gitignore"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_language/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4015,8 +3859,7 @@ temp/
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_language/analysis_options.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_language/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4057,8 +3900,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_language/CHANGELOG.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_language/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4072,8 +3914,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_language/LICENSE"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_language/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4087,8 +3928,7 @@ Copyright (c) 2024 GLOBAL CORPORATION.
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_language/pubspec.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_language/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4118,8 +3958,7 @@ documentation: 'https://youtube.com/@azkadev'
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_language/README.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_language/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4392,8 +4231,7 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("bot_telegram_general_framework_project"),
-        file_system_entity:
-            Directory("library/bot_telegram_general_framework_project_scheme"),
+        file_system_entity: Directory("library/bot_telegram_general_framework_project_scheme"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
@@ -4401,28 +4239,23 @@ Video Tutorial
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_scheme/.github"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_scheme/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_scheme/.github/workflows"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_scheme/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_scheme/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_scheme/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -4481,10 +4314,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_scheme/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_scheme/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -4559,10 +4390,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_scheme/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_scheme/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -4639,10 +4468,8 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_scheme/.github/FUNDING.yaml"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_scheme/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -4658,18 +4485,15 @@ github:
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_scheme/example"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_scheme/example"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_scheme/example/bot_telegram_general_framework_project_scheme_example.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_scheme/example/bot_telegram_general_framework_project_scheme_example.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -4688,28 +4512,23 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_scheme/lib"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_scheme/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_scheme/lib/src"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_scheme/lib/src"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_scheme/lib/src/bot_telegram_general_framework_project_scheme_base.dart"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_scheme/lib/src/bot_telegram_general_framework_project_scheme_base.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -4727,10 +4546,8 @@ class Awesome {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_scheme/lib/bot_telegram_general_framework_project_scheme.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_scheme/lib/bot_telegram_general_framework_project_scheme.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -4751,18 +4568,15 @@ export 'src/bot_telegram_general_framework_project_scheme_base.dart';
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_scheme/test"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_scheme/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_scheme/test/bot_telegram_general_framework_project_scheme_test.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_scheme/test/bot_telegram_general_framework_project_scheme_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -4791,8 +4605,7 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_scheme/.gitignore"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_scheme/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4828,8 +4641,7 @@ temp/
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_scheme/analysis_options.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_scheme/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4870,8 +4682,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_scheme/CHANGELOG.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_scheme/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4885,8 +4696,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_scheme/LICENSE"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_scheme/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4900,8 +4710,7 @@ Copyright (c) 2024 GLOBAL CORPORATION.
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_scheme/pubspec.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_scheme/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4931,8 +4740,7 @@ documentation: 'https://youtube.com/@azkadev'
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_scheme/README.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_scheme/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -5205,8 +5013,7 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("bot_telegram_general_framework_project"),
-        file_system_entity:
-            Directory("library/bot_telegram_general_framework_project_secret"),
+        file_system_entity: Directory("library/bot_telegram_general_framework_project_secret"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.directory,
         value: "",
@@ -5214,28 +5021,23 @@ Video Tutorial
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_secret/.github"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_secret/.github"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_secret/.github/workflows"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_secret/.github/workflows"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_secret/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_secret/.github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -5294,10 +5096,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_secret/.github/workflows/general_workflow_release_app_development.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_secret/.github/workflows/general_workflow_release_app_development.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -5372,10 +5172,8 @@ jobs:
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_secret/.github/workflows/general_workflow_release_app_production.yaml"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_secret/.github/workflows/general_workflow_release_app_production.yaml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -5452,10 +5250,8 @@ jobs:
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_secret/.github/FUNDING.yaml"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_secret/.github/FUNDING.yaml"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -5471,18 +5267,15 @@ github:
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_secret/example"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_secret/example"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_secret/example/bot_telegram_general_framework_project_secret_example.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_secret/example/bot_telegram_general_framework_project_secret_example.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -5501,28 +5294,23 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_secret/lib"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_secret/lib"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: Directory(
-                    "library/bot_telegram_general_framework_project_secret/lib/src"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: Directory("library/bot_telegram_general_framework_project_secret/lib/src"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("bot_telegram_general_framework_project"),
-                    file_system_entity: File(
-                        "library/bot_telegram_general_framework_project_secret/lib/src/bot_telegram_general_framework_project_secret_base.dart"),
+                    directory_base: Directory("bot_telegram_general_framework_project"),
+                    file_system_entity: File("library/bot_telegram_general_framework_project_secret/lib/src/bot_telegram_general_framework_project_secret_base.dart"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -5540,10 +5328,8 @@ class Awesome {
               ),
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_secret/lib/bot_telegram_general_framework_project_secret.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_secret/lib/bot_telegram_general_framework_project_secret.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -5564,18 +5350,15 @@ export 'src/bot_telegram_general_framework_project_secret_base.dart';
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: Directory(
-                "library/bot_telegram_general_framework_project_secret/test"),
+            file_system_entity: Directory("library/bot_telegram_general_framework_project_secret/test"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
             children: [
               ScriptGenerator(
                 is_generate: true,
-                directory_base:
-                    Directory("bot_telegram_general_framework_project"),
-                file_system_entity: File(
-                    "library/bot_telegram_general_framework_project_secret/test/bot_telegram_general_framework_project_secret_test.dart"),
+                directory_base: Directory("bot_telegram_general_framework_project"),
+                file_system_entity: File("library/bot_telegram_general_framework_project_secret/test/bot_telegram_general_framework_project_secret_test.dart"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -5604,8 +5387,7 @@ void main() {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_secret/.gitignore"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_secret/.gitignore"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -5641,8 +5423,7 @@ temp/
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_secret/analysis_options.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_secret/analysis_options.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -5683,8 +5464,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_secret/CHANGELOG.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_secret/CHANGELOG.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -5698,8 +5478,7 @@ include: package:lints/recommended.yaml
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_secret/LICENSE"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_secret/LICENSE"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -5713,8 +5492,7 @@ Copyright (c) 2024 GLOBAL CORPORATION.
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_secret/pubspec.yaml"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_secret/pubspec.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -5744,8 +5522,7 @@ documentation: 'https://youtube.com/@azkadev'
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("bot_telegram_general_framework_project"),
-            file_system_entity: File(
-                "library/bot_telegram_general_framework_project_secret/README.md"),
+            file_system_entity: File("library/bot_telegram_general_framework_project_secret/README.md"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -6028,8 +5805,7 @@ Video Tutorial
       ScriptGenerator(
         is_generate: true,
         directory_base: Directory("bot_telegram_general_framework_project"),
-        file_system_entity:
-            File("test/bot_telegram_general_framework_project_test.dart"),
+        file_system_entity: File("test/bot_telegram_general_framework_project_test.dart"),
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""

@@ -7,7 +7,7 @@ environment:
 dependencies:
   base_template_general_framework_project_scheme:
     path: '../base_template_general_framework_project_scheme'
-  collection: '^1.18.0'
+  collection: '^1.19.0'
   general_lib: '^0.0.51'
   path: '^1.9.0'
   http: '^1.2.2'

@@ -2,10 +2,9 @@
 
 // import 'dart:io';
 import 'package:general_lib/script_generate/script_generate.dart';
-import 'package:universal_io/io.dart';
+import 'package:io_universe/io_universe.dart';
 
-final List<ScriptGenerator>
-    app_ui_template_general_framework_script_generators = [
+final List<ScriptGenerator> app_ui_template_general_framework_script_generators = [
   ScriptGenerator(
     is_generate: true,
     directory_base: Directory("app_ui_template_general_framework"),
@@ -25,8 +24,7 @@ final List<ScriptGenerator>
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity: File(
-                ".github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
+            file_system_entity: File(".github/workflows/general_workflow_deploy_docs_to_github_page.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -86,8 +84,7 @@ jobs:
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity: File(
-                ".github/workflows/general_workflow_release_app_development.yaml"),
+            file_system_entity: File(".github/workflows/general_workflow_release_app_development.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -163,8 +160,7 @@ jobs:
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity: File(
-                ".github/workflows/general_workflow_release_app_production.yaml"),
+            file_system_entity: File(".github/workflows/general_workflow_release_app_production.yaml"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -298,10 +294,8 @@ github:
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity:
-                        File("android/app/src/debug/AndroidManifest.xml"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: File("android/app/src/debug/AndroidManifest.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -328,8 +322,7 @@ github:
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
+                    directory_base: Directory("app_ui_template_general_framework"),
                     file_system_entity: Directory("android/app/src/main/java"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
@@ -337,45 +330,34 @@ github:
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base:
-                            Directory("app_ui_template_general_framework"),
-                        file_system_entity:
-                            Directory("android/app/src/main/java/io"),
+                        directory_base: Directory("app_ui_template_general_framework"),
+                        file_system_entity: Directory("android/app/src/main/java/io"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base:
-                                Directory("app_ui_template_general_framework"),
-                            file_system_entity: Directory(
-                                "android/app/src/main/java/io/flutter"),
+                            directory_base: Directory("app_ui_template_general_framework"),
+                            file_system_entity: Directory("android/app/src/main/java/io/flutter"),
                             state_data: {},
-                            file_system_entity_type:
-                                FileSystemEntityType.directory,
+                            file_system_entity_type: FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory(
-                                    "app_ui_template_general_framework"),
-                                file_system_entity: Directory(
-                                    "android/app/src/main/java/io/flutter/plugins"),
+                                directory_base: Directory("app_ui_template_general_framework"),
+                                file_system_entity: Directory("android/app/src/main/java/io/flutter/plugins"),
                                 state_data: {},
-                                file_system_entity_type:
-                                    FileSystemEntityType.directory,
+                                file_system_entity_type: FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory(
-                                        "app_ui_template_general_framework"),
-                                    file_system_entity: File(
-                                        "android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java"),
+                                    directory_base: Directory("app_ui_template_general_framework"),
+                                    file_system_entity: File("android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java"),
                                     state_data: {},
-                                    file_system_entity_type:
-                                        FileSystemEntityType.file,
+                                    file_system_entity_type: FileSystemEntityType.file,
                                     value: r"""
 package io.flutter.plugins;
 
@@ -500,66 +482,50 @@ public final class GeneratedPluginRegistrant {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity:
-                        Directory("android/app/src/main/kotlin"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: Directory("android/app/src/main/kotlin"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
                     value: "",
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base:
-                            Directory("app_ui_template_general_framework"),
-                        file_system_entity: Directory(
-                            "android/app/src/main/kotlin/global_corporation"),
+                        directory_base: Directory("app_ui_template_general_framework"),
+                        file_system_entity: Directory("android/app/src/main/kotlin/global_corporation"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base:
-                                Directory("app_ui_template_general_framework"),
-                            file_system_entity: Directory(
-                                "android/app/src/main/kotlin/global_corporation/azkadev"),
+                            directory_base: Directory("app_ui_template_general_framework"),
+                            file_system_entity: Directory("android/app/src/main/kotlin/global_corporation/azkadev"),
                             state_data: {},
-                            file_system_entity_type:
-                                FileSystemEntityType.directory,
+                            file_system_entity_type: FileSystemEntityType.directory,
                             value: "",
                             children: [
                               ScriptGenerator(
                                 is_generate: true,
-                                directory_base: Directory(
-                                    "app_ui_template_general_framework"),
-                                file_system_entity: Directory(
-                                    "android/app/src/main/kotlin/global_corporation/azkadev/general_framework"),
+                                directory_base: Directory("app_ui_template_general_framework"),
+                                file_system_entity: Directory("android/app/src/main/kotlin/global_corporation/azkadev/general_framework"),
                                 state_data: {},
-                                file_system_entity_type:
-                                    FileSystemEntityType.directory,
+                                file_system_entity_type: FileSystemEntityType.directory,
                                 value: "",
                                 children: [
                                   ScriptGenerator(
                                     is_generate: true,
-                                    directory_base: Directory(
-                                        "app_ui_template_general_framework"),
-                                    file_system_entity: Directory(
-                                        "android/app/src/main/kotlin/global_corporation/azkadev/general_framework/app_ui_template_general_framework"),
+                                    directory_base: Directory("app_ui_template_general_framework"),
+                                    file_system_entity: Directory("android/app/src/main/kotlin/global_corporation/azkadev/general_framework/app_ui_template_general_framework"),
                                     state_data: {},
-                                    file_system_entity_type:
-                                        FileSystemEntityType.directory,
+                                    file_system_entity_type: FileSystemEntityType.directory,
                                     value: "",
                                     children: [
                                       ScriptGenerator(
                                         is_generate: true,
-                                        directory_base: Directory(
-                                            "app_ui_template_general_framework"),
-                                        file_system_entity: File(
-                                            "android/app/src/main/kotlin/global_corporation/azkadev/general_framework/app_ui_template_general_framework/MainActivity.kt"),
+                                        directory_base: Directory("app_ui_template_general_framework"),
+                                        file_system_entity: File("android/app/src/main/kotlin/global_corporation/azkadev/general_framework/app_ui_template_general_framework/MainActivity.kt"),
                                         state_data: {},
-                                        file_system_entity_type:
-                                            FileSystemEntityType.file,
+                                        file_system_entity_type: FileSystemEntityType.file,
                                         value: r"""
 package global_corporation.azkadev.general_framework.app_ui_template_general_framework
 
@@ -614,8 +580,7 @@ class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
+                    directory_base: Directory("app_ui_template_general_framework"),
                     file_system_entity: Directory("android/app/src/main/res"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.directory,
@@ -623,20 +588,16 @@ class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
                     children: [
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base:
-                            Directory("app_ui_template_general_framework"),
-                        file_system_entity:
-                            Directory("android/app/src/main/res/drawable"),
+                        directory_base: Directory("app_ui_template_general_framework"),
+                        file_system_entity: Directory("android/app/src/main/res/drawable"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base:
-                                Directory("app_ui_template_general_framework"),
-                            file_system_entity: File(
-                                "android/app/src/main/res/drawable/launch_background.xml"),
+                            directory_base: Directory("app_ui_template_general_framework"),
+                            file_system_entity: File("android/app/src/main/res/drawable/launch_background.xml"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -660,20 +621,16 @@ class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base:
-                            Directory("app_ui_template_general_framework"),
-                        file_system_entity:
-                            Directory("android/app/src/main/res/drawable-v21"),
+                        directory_base: Directory("app_ui_template_general_framework"),
+                        file_system_entity: Directory("android/app/src/main/res/drawable-v21"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base:
-                                Directory("app_ui_template_general_framework"),
-                            file_system_entity: File(
-                                "android/app/src/main/res/drawable-v21/launch_background.xml"),
+                            directory_base: Directory("app_ui_template_general_framework"),
+                            file_system_entity: File("android/app/src/main/res/drawable-v21/launch_background.xml"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -697,10 +654,8 @@ class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base:
-                            Directory("app_ui_template_general_framework"),
-                        file_system_entity:
-                            Directory("android/app/src/main/res/mipmap-hdpi"),
+                        directory_base: Directory("app_ui_template_general_framework"),
+                        file_system_entity: Directory("android/app/src/main/res/mipmap-hdpi"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
@@ -708,10 +663,8 @@ class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base:
-                            Directory("app_ui_template_general_framework"),
-                        file_system_entity:
-                            Directory("android/app/src/main/res/mipmap-mdpi"),
+                        directory_base: Directory("app_ui_template_general_framework"),
+                        file_system_entity: Directory("android/app/src/main/res/mipmap-mdpi"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
@@ -719,10 +672,8 @@ class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base:
-                            Directory("app_ui_template_general_framework"),
-                        file_system_entity:
-                            Directory("android/app/src/main/res/mipmap-xhdpi"),
+                        directory_base: Directory("app_ui_template_general_framework"),
+                        file_system_entity: Directory("android/app/src/main/res/mipmap-xhdpi"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
@@ -730,10 +681,8 @@ class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base:
-                            Directory("app_ui_template_general_framework"),
-                        file_system_entity:
-                            Directory("android/app/src/main/res/mipmap-xxhdpi"),
+                        directory_base: Directory("app_ui_template_general_framework"),
+                        file_system_entity: Directory("android/app/src/main/res/mipmap-xxhdpi"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
@@ -741,10 +690,8 @@ class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base:
-                            Directory("app_ui_template_general_framework"),
-                        file_system_entity: Directory(
-                            "android/app/src/main/res/mipmap-xxxhdpi"),
+                        directory_base: Directory("app_ui_template_general_framework"),
+                        file_system_entity: Directory("android/app/src/main/res/mipmap-xxxhdpi"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
@@ -752,20 +699,16 @@ class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base:
-                            Directory("app_ui_template_general_framework"),
-                        file_system_entity:
-                            Directory("android/app/src/main/res/values"),
+                        directory_base: Directory("app_ui_template_general_framework"),
+                        file_system_entity: Directory("android/app/src/main/res/values"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base:
-                                Directory("app_ui_template_general_framework"),
-                            file_system_entity: File(
-                                "android/app/src/main/res/values/styles.xml"),
+                            directory_base: Directory("app_ui_template_general_framework"),
+                            file_system_entity: File("android/app/src/main/res/values/styles.xml"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -795,20 +738,16 @@ class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
                       ),
                       ScriptGenerator(
                         is_generate: true,
-                        directory_base:
-                            Directory("app_ui_template_general_framework"),
-                        file_system_entity:
-                            Directory("android/app/src/main/res/values-night"),
+                        directory_base: Directory("app_ui_template_general_framework"),
+                        file_system_entity: Directory("android/app/src/main/res/values-night"),
                         state_data: {},
                         file_system_entity_type: FileSystemEntityType.directory,
                         value: "",
                         children: [
                           ScriptGenerator(
                             is_generate: true,
-                            directory_base:
-                                Directory("app_ui_template_general_framework"),
-                            file_system_entity: File(
-                                "android/app/src/main/res/values-night/styles.xml"),
+                            directory_base: Directory("app_ui_template_general_framework"),
+                            file_system_entity: File("android/app/src/main/res/values-night/styles.xml"),
                             state_data: {},
                             file_system_entity_type: FileSystemEntityType.file,
                             value: r"""
@@ -840,10 +779,8 @@ class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity:
-                        File("android/app/src/main/AndroidManifest.xml"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: File("android/app/src/main/AndroidManifest.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -908,10 +845,8 @@ class MainActivity: FlutterFragmentActivity(), GamepadsCompatibleActivity {
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity:
-                        File("android/app/src/profile/AndroidManifest.xml"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: File("android/app/src/profile/AndroidManifest.xml"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1019,8 +954,7 @@ flutter {
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity:
-                    File("android/gradle/wrapper/gradle-wrapper.properties"),
+                file_system_entity: File("android/gradle/wrapper/gradle-wrapper.properties"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -1542,18 +1476,15 @@ include ":app"
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity:
-                    Directory("ios/Runner/Assets.xcassets/AppIcon.appiconset"),
+                file_system_entity: Directory("ios/Runner/Assets.xcassets/AppIcon.appiconset"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity: File(
-                        "ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: File("ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1688,18 +1619,15 @@ include ":app"
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity: Directory(
-                    "ios/Runner/Assets.xcassets/LaunchImage.imageset"),
+                file_system_entity: Directory("ios/Runner/Assets.xcassets/LaunchImage.imageset"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity: File(
-                        "ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: File("ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1732,10 +1660,8 @@ include ":app"
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity: File(
-                        "ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: File("ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -1983,8 +1909,7 @@ Video Tutorial
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity:
-                    File("ios/Runner/Base.lproj/LaunchScreen.storyboard"),
+                file_system_entity: File("ios/Runner/Base.lproj/LaunchScreen.storyboard"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -2032,8 +1957,7 @@ Video Tutorial
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity:
-                    File("ios/Runner/Base.lproj/Main.storyboard"),
+                file_system_entity: File("ios/Runner/Base.lproj/Main.storyboard"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -2345,8 +2269,7 @@ NS_ASSUME_NONNULL_END
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                Directory("ios/Runner.xcodeproj/project.xcworkspace"),
+            file_system_entity: Directory("ios/Runner.xcodeproj/project.xcworkspace"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
@@ -2354,18 +2277,15 @@ NS_ASSUME_NONNULL_END
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity: Directory(
-                    "ios/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
+                file_system_entity: Directory("ios/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity: File(
-                        "ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: File("ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -2383,10 +2303,8 @@ NS_ASSUME_NONNULL_END
                   ),
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity: File(
-                        "ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: File("ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -2407,8 +2325,7 @@ NS_ASSUME_NONNULL_END
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity: File(
-                    "ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata"),
+                file_system_entity: File("ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -2436,18 +2353,15 @@ NS_ASSUME_NONNULL_END
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity:
-                    Directory("ios/Runner.xcodeproj/xcshareddata/xcschemes"),
+                file_system_entity: Directory("ios/Runner.xcodeproj/xcshareddata/xcschemes"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity: File(
-                        "ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: File("ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -3197,8 +3111,7 @@ NS_ASSUME_NONNULL_END
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                Directory("ios/Runner.xcworkspace/xcshareddata"),
+            file_system_entity: Directory("ios/Runner.xcworkspace/xcshareddata"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
@@ -3206,8 +3119,7 @@ NS_ASSUME_NONNULL_END
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity: File(
-                    "ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                file_system_entity: File("ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -3226,8 +3138,7 @@ NS_ASSUME_NONNULL_END
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity: File(
-                    "ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
+                file_system_entity: File("ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -3248,8 +3159,7 @@ NS_ASSUME_NONNULL_END
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                File("ios/Runner.xcworkspace/contents.xcworkspacedata"),
+            file_system_entity: File("ios/Runner.xcworkspace/contents.xcworkspacedata"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -4993,8 +4903,7 @@ add_custom_target(flutter_assemble DEPENDS
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                File("linux/flutter/generated_plugin_registrant.cc"),
+            file_system_entity: File("linux/flutter/generated_plugin_registrant.cc"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -5040,8 +4949,7 @@ void fl_register_plugins(FlPluginRegistry* registry) {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                File("linux/flutter/generated_plugin_registrant.h"),
+            file_system_entity: File("linux/flutter/generated_plugin_registrant.h"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -5518,8 +5426,7 @@ MyApplication* my_application_new();
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                File("macos/Flutter/GeneratedPluginRegistrant.swift"),
+            file_system_entity: File("macos/Flutter/GeneratedPluginRegistrant.swift"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -5584,18 +5491,15 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity: Directory(
-                    "macos/Runner/Assets.xcassets/AppIcon.appiconset"),
+                file_system_entity: Directory("macos/Runner/Assets.xcassets/AppIcon.appiconset"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity: File(
-                        "macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: File("macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -5686,8 +5590,7 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity:
-                    File("macos/Runner/Base.lproj/MainMenu.xib"),
+                file_system_entity: File("macos/Runner/Base.lproj/MainMenu.xib"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -6051,8 +5954,7 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity:
-                    File("macos/Runner/Configs/AppInfo.xcconfig"),
+                file_system_entity: File("macos/Runner/Configs/AppInfo.xcconfig"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -6090,8 +5992,7 @@ PRODUCT_COPYRIGHT = Copyright © 2024 global_corporation.azkadev.general_framewo
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity:
-                    File("macos/Runner/Configs/Release.xcconfig"),
+                file_system_entity: File("macos/Runner/Configs/Release.xcconfig"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -6104,8 +6005,7 @@ PRODUCT_COPYRIGHT = Copyright © 2024 global_corporation.azkadev.general_framewo
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity:
-                    File("macos/Runner/Configs/Warnings.xcconfig"),
+                file_system_entity: File("macos/Runner/Configs/Warnings.xcconfig"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -6272,8 +6172,7 @@ class MainFlutterWindow: NSWindow {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                Directory("macos/Runner.xcodeproj/project.xcworkspace"),
+            file_system_entity: Directory("macos/Runner.xcodeproj/project.xcworkspace"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
@@ -6281,18 +6180,15 @@ class MainFlutterWindow: NSWindow {
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity: Directory(
-                    "macos/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
+                file_system_entity: Directory("macos/Runner.xcodeproj/project.xcworkspace/xcshareddata"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity: File(
-                        "macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: File("macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -6315,8 +6211,7 @@ class MainFlutterWindow: NSWindow {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                Directory("macos/Runner.xcodeproj/xcshareddata"),
+            file_system_entity: Directory("macos/Runner.xcodeproj/xcshareddata"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
@@ -6324,18 +6219,15 @@ class MainFlutterWindow: NSWindow {
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity:
-                    Directory("macos/Runner.xcodeproj/xcshareddata/xcschemes"),
+                file_system_entity: Directory("macos/Runner.xcodeproj/xcshareddata/xcschemes"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.directory,
                 value: "",
                 children: [
                   ScriptGenerator(
                     is_generate: true,
-                    directory_base:
-                        Directory("app_ui_template_general_framework"),
-                    file_system_entity: File(
-                        "macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
+                    directory_base: Directory("app_ui_template_general_framework"),
+                    file_system_entity: File("macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme"),
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
@@ -7174,8 +7066,7 @@ class MainFlutterWindow: NSWindow {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                Directory("macos/Runner.xcworkspace/xcshareddata"),
+            file_system_entity: Directory("macos/Runner.xcworkspace/xcshareddata"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.directory,
             value: "",
@@ -7183,8 +7074,7 @@ class MainFlutterWindow: NSWindow {
               ScriptGenerator(
                 is_generate: true,
                 directory_base: Directory("app_ui_template_general_framework"),
-                file_system_entity: File(
-                    "macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
+                file_system_entity: File("macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"),
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
@@ -7205,8 +7095,7 @@ class MainFlutterWindow: NSWindow {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                File("macos/Runner.xcworkspace/contents.xcworkspacedata"),
+            file_system_entity: File("macos/Runner.xcworkspace/contents.xcworkspacedata"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -7548,8 +7437,7 @@ add_custom_target(flutter_assemble DEPENDS
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                File("windows/flutter/generated_plugin_registrant.cc"),
+            file_system_entity: File("windows/flutter/generated_plugin_registrant.cc"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
@@ -7604,8 +7492,7 @@ void RegisterPlugins(flutter::PluginRegistry* registry) {
           ScriptGenerator(
             is_generate: true,
             directory_base: Directory("app_ui_template_general_framework"),
-            file_system_entity:
-                File("windows/flutter/generated_plugin_registrant.h"),
+            file_system_entity: File("windows/flutter/generated_plugin_registrant.h"),
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""

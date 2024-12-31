@@ -37,7 +37,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 
 import 'package:http/http.dart';
-import 'package:universal_io/io.dart';
+import 'package:io_universe/io_universe.dart';
 
 abstract class GeneralFrameworkDatabaseCore {
   Directory get directory_base {
@@ -47,8 +47,7 @@ abstract class GeneralFrameworkDatabaseCore {
   void ensureInitializedDatabase() {}
 }
 
-abstract class GeneralFrameworkDatabase
-    implements GeneralFrameworkDatabaseCore {
+abstract class GeneralFrameworkDatabase implements GeneralFrameworkDatabaseCore {
   late final String currentPath;
   bool _is_initialized = false;
   late final Client httpClient;
