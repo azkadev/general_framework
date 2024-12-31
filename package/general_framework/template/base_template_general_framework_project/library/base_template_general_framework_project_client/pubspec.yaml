@@ -7,14 +7,14 @@ environment:
 dependencies:
   path: '^1.9.0'
   general_lib: '^0.0.52'
-  general: '^0.0.35'
+  general: '^0.0.36'
   base_template_general_framework_project_client_database:
     path: '../base_template_general_framework_project_client_database'
   base_template_general_framework_project_scheme:
     path: '../base_template_general_framework_project_scheme'
   base_template_general_framework_project_secret:
     path: '../base_template_general_framework_project_secret'
-  general_framework: '^0.0.8'
+  general_framework: '^0.0.9'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'

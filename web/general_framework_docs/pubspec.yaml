@@ -11,7 +11,7 @@ dependencies:
   general_lib_flutter: '^0.0.33'
   general_lib: '^0.0.52'
   simulate: '^0.0.46'
-  general_framework: '^0.0.8'
+  general_framework: '^0.0.9'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'

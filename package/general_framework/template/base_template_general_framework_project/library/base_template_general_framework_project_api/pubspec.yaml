@@ -9,7 +9,7 @@ dependencies:
     path: '../base_template_general_framework_project_scheme'
   base_template_general_framework_project_api_database:
     path: '../base_template_general_framework_project_api_database'
-  general_framework: '^0.0.8'
+  general_framework: '^0.0.9'
   general_lib: '^0.0.52'
 dev_dependencies:
   lints: '^5.0.0'
