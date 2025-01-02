@@ -95,6 +95,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
   final MainAxisSize mainAxisSize;
   final bool isWithBorder;
   final bool isWithShadow;
+  final WidgetBuilderGeneralFrameworkWidget? builder;
   const MenuContainerGeneralFrameworkWidget({
     super.key,
     this.mainAxisSize = MainAxisSize.min,
@@ -114,9 +115,9 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.center,
     required this.menuBuilder,
+    this.builder,
   });
-  static TextStyle textStyleBuilderDefault(
-      BuildContext context, TextStyle textStyle) {
+  static TextStyle textStyleBuilderDefault(BuildContext context, TextStyle textStyle) {
     return textStyle;
   }
 
@@ -138,8 +139,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     int? subtitleMaxLines,
     void Function()? onLongPress,
     void Function()? onTap,
-    TextStyle Function(BuildContext context, TextStyle textStyle)?
-        textStyleBuilder,
+    TextStyle Function(BuildContext context, TextStyle textStyle)? textStyleBuilder,
   }) {
     final child = MaterialButton(
       onLongPress: onLongPress,
@@ -153,22 +153,14 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
           context,
           Text(
             title,
-            style: (textStyleBuilder ?? textStyleBuilderDefault).call(
-                context,
-                (context.theme.textTheme.bodyMedium ??
-                    const TextStyle()
-                        .copyWith(color: context.theme.indicatorColor))),
+            style: (textStyleBuilder ?? textStyleBuilderDefault).call(context, (context.theme.textTheme.bodyMedium ?? const TextStyle().copyWith(color: context.theme.indicatorColor))),
           ),
         ),
         subtitle: () {
           if (subtitle.trim().isNotEmpty) {
             return Text(
               subtitle.trim(),
-              style: (textStyleBuilder ?? textStyleBuilderDefault).call(
-                  context,
-                  (context.theme.textTheme.bodySmall ??
-                      const TextStyle()
-                          .copyWith(color: context.theme.hintColor))),
+              style: (textStyleBuilder ?? textStyleBuilderDefault).call(context, (context.theme.textTheme.bodySmall ?? const TextStyle().copyWith(color: context.theme.hintColor))),
               overflow: subtitleTextOverflow ?? TextOverflow.ellipsis,
               maxLines: subtitleMaxLines,
             );
@@ -192,8 +184,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     EdgeInsetsGeometry? padding,
     AlignmentGeometry alignment = Alignment.center,
     required String title,
-    TextStyle Function(BuildContext context, TextStyle textStyle)?
-        textStyleBuilder,
+    TextStyle Function(BuildContext context, TextStyle textStyle)? textStyleBuilder,
     TextOverflow? textOverflow,
   }) {
     return Padding(
@@ -202,11 +193,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
         alignment: alignment,
         child: Text(
           title,
-          style: (textStyleBuilder ?? textStyleBuilderDefault).call(
-              context,
-              (context.theme.textTheme.titleSmall ??
-                  const TextStyle()
-                      .copyWith(color: context.theme.indicatorColor))),
+          style: (textStyleBuilder ?? textStyleBuilderDefault).call(context, (context.theme.textTheme.titleSmall ?? const TextStyle().copyWith(color: context.theme.indicatorColor))),
           overflow: textOverflow,
         ),
       ),
@@ -231,25 +218,27 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
       transform: transform,
       transformAlignment: transformAlignment,
       margin: margin,
-      decorationBuilder:
-          decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault,
+      decorationBuilder: decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault,
       padding: padding,
       clipBehavior: clipBehavior,
       builder: (context) {
-        if (axis == Axis.horizontal) {
-          return Row(
+        final Widget child = () {
+          if (axis == Axis.horizontal) {
+            return Row(
+              mainAxisSize: mainAxisSize,
+              crossAxisAlignment: crossAxisAlignment,
+              mainAxisAlignment: mainAxisAlignment,
+              children: menuBuilder(context),
+            );
+          }
+          return Column(
             mainAxisSize: mainAxisSize,
             crossAxisAlignment: crossAxisAlignment,
             mainAxisAlignment: mainAxisAlignment,
             children: menuBuilder(context),
           );
-        }
-        return Column(
-          mainAxisSize: mainAxisSize,
-          crossAxisAlignment: crossAxisAlignment,
-          mainAxisAlignment: mainAxisAlignment,
-          children: menuBuilder(context),
-        );
+        }();
+        return (builder ?? widgetBuilderGeneralFrameworkWidgetDefault)(context, child);
       },
       isWithBorder: isWithBorder,
       isWithShadow: isWithShadow,
