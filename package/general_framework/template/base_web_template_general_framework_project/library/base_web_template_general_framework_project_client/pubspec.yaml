@@ -6,15 +6,15 @@ environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
   path: '^1.9.0'
-  general_lib: '^0.0.54'
-  general: '^0.0.38'
+  general_lib: '^0.0.56'
+  general: '^0.0.39'
   base_web_template_general_framework_project_client_database:
     path: '../base_web_template_general_framework_project_client_database'
   base_web_template_general_framework_project_scheme:
     path: '../base_web_template_general_framework_project_scheme'
   base_web_template_general_framework_project_secret:
     path: '../base_web_template_general_framework_project_secret'
-  general_framework: '^0.0.11'
+  general_framework: '^0.0.12'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
