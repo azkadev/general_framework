@@ -262,3 +262,117 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 }
+
+class MenuContainerResponsiveGeneralFrameworkWidget extends StatelessWidget {
+  final WidgetBuilder titleBuilder;
+  final List<Widget> Function(BuildContext context) menuBuilder;
+  final bool isLoading;
+  final double? width;
+  final double? height;
+  final BoxConstraints? constraints;
+
+  final Matrix4? transform;
+  final AlignmentGeometry? transformAlignment;
+  final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
+  final Clip? clipBehavior;
+  final DecorationBuilderGeneralFrameworkWidget? decorationBuilder;
+
+  final MainAxisAlignment mainAxisAlignment;
+  final CrossAxisAlignment crossAxisAlignment;
+  final Axis axis;
+  final MainAxisSize mainAxisSize;
+  final bool isWithBorder;
+  final bool isWithShadow;
+  final WidgetBuilderGeneralFrameworkWidget? builder;
+  final WidgetBuilderGeneralFrameworkWidget? wrapBuilder;
+  const MenuContainerResponsiveGeneralFrameworkWidget({
+    super.key,
+    required this.isLoading,
+    required this.titleBuilder,
+    required this.menuBuilder,
+    this.wrapBuilder,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
+    this.isWithBorder = true,
+    this.isWithShadow = true,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.mainAxisSize = MainAxisSize.min,
+    this.axis = Axis.vertical,
+    this.builder,
+    this.clipBehavior,
+    this.constraints,
+    this.decorationBuilder,
+    this.height,
+    this.margin,
+    this.padding,
+    this.transform,
+    this.transformAlignment,
+    this.width,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final bool isPortrait = context.orientation.isPortrait;
+    if (isPortrait) {
+      return contentWidget(
+        isPortrait: isPortrait,
+      );
+    }
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        contentWidget(
+          isPortrait: isPortrait,
+        ),
+        Wrap(
+          children: [
+            for (final element in menuBuilder(context)) ...[
+              () {
+                final wrapBuilderFunction = wrapBuilder;
+                if (wrapBuilderFunction != null) {
+                  return wrapBuilderFunction(context, element);
+                }
+                return SizedBox(
+                  width: context.width / 5,
+                  child: element,
+                );
+              }(),
+            ],
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget contentWidget({
+    required bool isPortrait,
+  }) {
+    return MenuContainerGeneralFrameworkWidget(
+      isLoading: isLoading,
+      axis: axis,
+      mainAxisAlignment: mainAxisAlignment,
+      mainAxisSize: mainAxisSize,
+      isWithBorder: isWithBorder,
+      isWithShadow: isWithShadow,
+      crossAxisAlignment: crossAxisAlignment,
+      builder: builder,
+      width: width,
+      height: height,
+      transform: transform,
+      transformAlignment: transformAlignment,
+      decorationBuilder: decorationBuilder,
+      margin: margin,
+      padding: padding,
+      clipBehavior: clipBehavior,
+      constraints: constraints,
+      menuBuilder: (context) {
+        return [
+          titleBuilder(context),
+          if (isPortrait) ...[
+            ...menuBuilder(context),
+          ],
+        ];
+      },
+    );
+  }
+}

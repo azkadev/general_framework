@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import "package:flutter/material.dart";
-import 'package:general_framework/flutter/flutter.dart';
+import 'package:general_framework/flutter/typedef/typedef.dart';
 import 'package:general_framework/flutter/ui/ui.dart';
 import 'package:general_framework/flutter/widget/widget.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
