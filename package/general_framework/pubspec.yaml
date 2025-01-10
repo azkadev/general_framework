@@ -24,7 +24,7 @@ dependencies:
   mason_logger: '^0.3.1'
   general_lib: '^0.0.57'
   general_lib_flutter: '^0.0.38'
-  packagex: '^0.0.78'
+  packagex: '^0.0.82'
   http: '^1.2.2'
   server_universe: '^0.0.31'
   general: '^0.0.39'

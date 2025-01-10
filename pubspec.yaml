@@ -19,7 +19,7 @@ environment:
 dependencies:
   general_lib: '^0.0.57'
   mason_logger: '^0.3.1'
-  packagex: '^0.0.78'
+  packagex: '^0.0.82'
   path: '^1.9.0'
   universal_io: '^2.2.2'
   yaml: '^3.1.3'
