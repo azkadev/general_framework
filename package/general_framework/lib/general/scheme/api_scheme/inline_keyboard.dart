@@ -2,7 +2,9 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
+/// Generated
 class InlineKeyboard extends JsonScheme {
+  /// Generated
   InlineKeyboard(super.rawData);
 
   /// return default data
@@ -32,6 +34,7 @@ class InlineKeyboard extends JsonScheme {
     return InlineKeyboard({});
   }
 
+  /// Generated
   String? get special_type {
     try {
       if (rawData["@type"] is String == false) {
@@ -43,10 +46,12 @@ class InlineKeyboard extends JsonScheme {
     }
   }
 
+  /// Generated
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+  /// Generated
   String? get url {
     try {
       if (rawData["url"] is String == false) {
@@ -58,10 +63,12 @@ class InlineKeyboard extends JsonScheme {
     }
   }
 
+  /// Generated
   set url(String? value) {
     rawData["url"] = value;
   }
 
+  /// Generated
   static InlineKeyboard create({
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "inlineKeyboard",

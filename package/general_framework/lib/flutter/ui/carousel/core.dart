@@ -38,6 +38,7 @@ import 'package:general_lib_flutter/general_lib_flutter.dart';
 ///  * [CarouselGeneralFrameworkController], which controls the first visible item in the carousel.
 ///  * [PageView], which is a scrollable list that works page by page.
 class CarouselGeneralFrameworkView extends StatefulWidget {
+  /// UncompleteDocumentation
   final BoxConstraints constraints;
   // final bool isShowAll;
 

@@ -35,16 +35,25 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 import 'package:general_lib/general_lib_core.dart';
 
+/// UncompleteDocumentation
 class GeneralFrameworkClientInvokeOptions {
+  /// UncompleteDocumentation
   final Duration durationTimeOut;
+
+  /// UncompleteDocumentation
   final NetworkClientConnectionType networkClientConnectionType;
+
+  /// UncompleteDocumentation
   final bool isInvokeThrowOnError;
+
+  /// UncompleteDocumentation
   GeneralFrameworkClientInvokeOptions({
     required this.networkClientConnectionType,
     required this.durationTimeOut,
     required this.isInvokeThrowOnError,
   });
 
+  /// UncompleteDocumentation
   GeneralFrameworkClientInvokeOptions copyWith({
     NetworkClientConnectionType? networkClientConnectionType,
     Duration? durationTimeOut,

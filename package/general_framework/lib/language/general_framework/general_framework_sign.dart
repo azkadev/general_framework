@@ -16,7 +16,7 @@ final Map _general_framework_sign_up_title_data = {
   "en": "Sign up"
 };
 
-// extension GeneralFrameworkSignExtensionGeneralFramework on GeneralFramework {
+/// UncompleteDocumentation
 extension GeneralFrameworkSignExtensionGeneralFramework on Language {
   /// default return
   /// ```dart

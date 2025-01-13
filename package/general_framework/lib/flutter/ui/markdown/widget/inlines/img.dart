@@ -4,12 +4,19 @@ import '../../markdown_widget.dart';
 
 ///Tag: [MarkdownTag.img]
 class ImageNode extends MarkdownSpanNodeGeneralFrameworkWidget {
+  /// UncompleteDocumentation
   final Map<String, String> attributes;
+
+  /// UncompleteDocumentation
   final MarkdownConfigGeneralFramework config;
+
+  /// UncompleteDocumentation
   final WidgetVisitor visitor;
 
+  /// UncompleteDocumentation
   ImgConfig get imgConfig => config.img;
 
+  /// UncompleteDocumentation
   ImageNode(this.attributes, this.config, this.visitor);
 
   @override
@@ -46,6 +53,7 @@ class ImageNode extends MarkdownSpanNodeGeneralFrameworkWidget {
         child: imgConfig.builder?.call(imageUrl, attributes) ?? result);
   }
 
+  /// UncompleteDocumentation
   Widget buildErrorImage(String url, String alt, Object? error) {
     return MarkdownProxyRichTextGeneralFrameworkWidget(
       TextSpan(children: [
@@ -77,6 +85,7 @@ class ImgConfig implements InlineConfig {
   ///use [errorBuilder] to return a custom error image
   final ErrorImgBuilder? errorBuilder;
 
+  /// UncompleteDocumentation
   const ImgConfig({this.builder, this.errorBuilder});
 
   @nonVirtual
@@ -86,8 +95,10 @@ class ImgConfig implements InlineConfig {
 
 ///show image with [InteractiveViewer]
 class ImageViewer extends StatelessWidget {
+  /// UncompleteDocumentation
   final Widget child;
 
+  /// UncompleteDocumentation
   const ImageViewer({super.key, required this.child});
 
   @override
@@ -95,7 +106,8 @@ class ImageViewer extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.of(context).pop(),
       child: Scaffold(
-        backgroundColor: Colors.black.withOpacity(0.3),
+        // backgroundColor: Colors.black.withOpacity(0.3),
+        backgroundColor: Colors.black.withValues(alpha: 0.3),
         body: Stack(
           fit: StackFit.expand,
           children: [
@@ -115,8 +127,10 @@ class ImageViewer extends StatelessWidget {
                     width: 40,
                     height: 40,
                     decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        shape: BoxShape.circle),
+                      // color: Colors.white.withOpacity(0.2),
+                      color: Colors.white.withValues(alpha: 0.2),
+                      shape: BoxShape.circle,
+                    ),
                   ),
                 ),
               ),
@@ -128,6 +142,9 @@ class ImageViewer extends StatelessWidget {
   }
 }
 
+/// UncompleteDocumentation
 typedef ImgBuilder = Widget Function(
     String url, Map<String, String> attributes);
+
+/// UncompleteDocumentation
 typedef ErrorImgBuilder = Widget Function(String url, String alt, Object error);

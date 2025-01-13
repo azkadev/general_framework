@@ -6,6 +6,8 @@ import '../markdown_widget.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
+/// UncompleteDocumentation
+
 class MarkdownGeneralFrameworkWidget extends StatefulWidget {
   ///the markdown data
   final String data;
@@ -31,6 +33,7 @@ class MarkdownGeneralFrameworkWidget extends StatefulWidget {
   ///config for [MarkdownGeneralFrameworkGenerator]
   final MarkdownGeneralFrameworkGenerator? markdownGenerator;
 
+  /// UncompleteDocumentation
   const MarkdownGeneralFrameworkWidget({
     super.key,
     required this.data,
@@ -48,6 +51,7 @@ class MarkdownGeneralFrameworkWidget extends StatefulWidget {
       MarkdownGeneralFrameworkWidgetState();
 }
 
+/// UncompleteDocumentation
 class MarkdownGeneralFrameworkWidgetState
     extends State<MarkdownGeneralFrameworkWidget> {
   ///use [markdownGenerator] to transform markdown data to [Widget] list
@@ -172,6 +176,7 @@ Widget wrapByAutoScroll(
     controller: controller,
     index: index,
     child: child,
-    highlightColor: Colors.black.withOpacity(0.1),
+    // highlightColor: Colors.black.withOpacity(0.1),
+    highlightColor: Colors.black.withValues(alpha: 0.1),
   );
 }

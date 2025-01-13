@@ -19,6 +19,7 @@ class TocControllerGeneralFrameworkWidget {
   ValueCallback<int>? _onIndexChangedCallback;
   ValueCallback<List<Toc>>? _onListChanged;
 
+  /// UncompleteDocumentation
   void setTocList(List<Toc> list) {
     _index2toc.clear();
     for (final toc in list) {
@@ -31,8 +32,11 @@ class TocControllerGeneralFrameworkWidget {
     _jumpToIndexCallback = value;
   }
 
+  /// UncompleteDocumentation
+
   List<Toc> get tocList => List.unmodifiable(_index2toc.values);
 
+  /// UncompleteDocumentation
   void dispose() {
     _index2toc.clear();
     _onIndexChangedCallback = null;
@@ -40,10 +44,12 @@ class TocControllerGeneralFrameworkWidget {
     _onListChanged = null;
   }
 
+  /// UncompleteDocumentation
   void jumpToIndex(int index) {
     _jumpToIndexCallback?.call(index);
   }
 
+  /// UncompleteDocumentation
   void onIndexChanged(int index) {
     _onIndexChangedCallback?.call(index);
   }
@@ -60,12 +66,15 @@ class Toc {
   ///index of [TocControllerGeneralFrameworkWidget.tocList]
   final int selfIndex;
 
+  /// UncompleteDocumentation
   Toc({
     required this.node,
     this.widgetIndex = 0,
     this.selfIndex = 0,
   });
 }
+
+/// UncompleteDocumentation
 
 class TocWidget extends StatefulWidget {
   ///[controller] must not be null
@@ -83,6 +92,7 @@ class TocWidget extends StatefulWidget {
   ///use [itemBuilder] to return a custom widget
   final TocItemBuilder? itemBuilder;
 
+  /// UncompleteDocumentation
   const TocWidget({
     super.key,
     required this.controller,
@@ -206,6 +216,7 @@ class TocItemBuilderData {
   ///use [refreshIndexCallback] to change [currentIndex]
   final ValueChanged<int> refreshIndexCallback;
 
+  /// UncompleteDocumentation
   TocItemBuilderData(
       this.index, this.toc, this.currentIndex, this.refreshIndexCallback);
 }

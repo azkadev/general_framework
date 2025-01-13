@@ -5,21 +5,48 @@ import '../../proxy_rich_text.dart';
 import '../../span_node.dart';
 import '../../widget_visitor.dart';
 
+/// UncompleteDocumentation
 class TableConfig implements ContainerConfig {
+  /// UncompleteDocumentation
   final Map<int, TableColumnWidth>? columnWidths;
+
+  /// UncompleteDocumentation
   final TableColumnWidth? defaultColumnWidth;
+
+  /// UncompleteDocumentation
   final TextDirection? textDirection;
+
+  /// UncompleteDocumentation
   final TableBorder? border;
+
+  /// UncompleteDocumentation
   final TableCellVerticalAlignment? defaultVerticalAlignment;
+
+  /// UncompleteDocumentation
   final TextBaseline? textBaseline;
+
+  /// UncompleteDocumentation
   final Decoration? headerRowDecoration;
+
+  /// UncompleteDocumentation
   final Decoration? bodyRowDecoration;
+
+  /// UncompleteDocumentation
   final TextStyle? headerStyle;
+
+  /// UncompleteDocumentation
   final TextStyle? bodyStyle;
+
+  /// UncompleteDocumentation
   final EdgeInsets headPadding;
+
+  /// UncompleteDocumentation
   final EdgeInsets bodyPadding;
+
+  /// UncompleteDocumentation
   final WidgetWrapper? wrapper;
 
+  /// UncompleteDocumentation
   const TableConfig({
     this.columnWidths,
     this.defaultColumnWidth,
@@ -41,11 +68,15 @@ class TableConfig implements ContainerConfig {
   String get tag => MarkdownTag.table.name;
 }
 
+/// UncompleteDocumentation
 class TableNode extends ElementNode {
+  /// UncompleteDocumentation
   final MarkdownConfigGeneralFramework config;
 
+  /// UncompleteDocumentation
   TableNode(this.config);
 
+  /// UncompleteDocumentation
   TableConfig get tbConfig => config.table;
 
   @override
@@ -84,12 +115,18 @@ class TableNode extends ElementNode {
   }
 }
 
+/// UncompleteDocumentation
 class THeadNode extends ElementNode {
+  /// UncompleteDocumentation
   final MarkdownConfigGeneralFramework config;
+
+  /// UncompleteDocumentation
   final WidgetVisitor visitor;
 
+  /// UncompleteDocumentation
   THeadNode(this.config, this.visitor);
 
+  /// UncompleteDocumentation
   List<TableRow> get rows => List.generate(children.length, (index) {
         final trChild = children[index] as TrNode;
         return TableRow(
@@ -107,6 +144,7 @@ class THeadNode extends ElementNode {
             }));
       });
 
+  /// UncompleteDocumentation
   int get cellCount => (children.first as TrNode).children.length;
 
   @override
@@ -116,12 +154,18 @@ class THeadNode extends ElementNode {
       config.p.textStyle.copyWith(fontWeight: FontWeight.bold);
 }
 
+/// UncompleteDocumentation
 class TBodyNode extends ElementNode {
+  /// UncompleteDocumentation
   final MarkdownConfigGeneralFramework config;
+
+  /// UncompleteDocumentation
   final WidgetVisitor visitor;
 
+  /// UncompleteDocumentation
   TBodyNode(this.config, this.visitor);
 
+  /// UncompleteDocumentation
   List<TableRow> buildRows(int cellCount) {
     return List.generate(children.length, (index) {
       final child = children[index] as TrNode;
@@ -148,20 +192,29 @@ class TBodyNode extends ElementNode {
       config.p.textStyle;
 }
 
+/// UncompleteDocumentation
+
 class TrNode extends ElementNode {
   @override
   TextStyle? get style => parentStyle;
 }
 
+/// UncompleteDocumentation
 class ThNode extends ElementNode {
   @override
   TextStyle? get style => parentStyle;
 }
 
+/// UncompleteDocumentation
+
 class TdNode extends ElementNode {
+  /// UncompleteDocumentation
   final Map<String, String> attribute;
+
+  /// UncompleteDocumentation
   final WidgetVisitor visitor;
 
+  /// UncompleteDocumentation
   TdNode(this.attribute, this.visitor);
 
   @override

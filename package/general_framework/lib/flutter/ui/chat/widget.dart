@@ -44,32 +44,82 @@ import 'package:intl/intl.dart' as intl;
 
 /// create chat message on main screen
 class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final bool isLoading;
+
+  /// UncompleteDocumentation
   final Color? unreadCountColor;
+
+  /// UncompleteDocumentation
   final BorderRadiusGeometry? unreadCountBorderRadius;
+
+  /// UncompleteDocumentation
   final dynamic profilePicture;
+
+  /// UncompleteDocumentation
   final String title;
+
+  /// UncompleteDocumentation
   final String? message;
+
+  /// UncompleteDocumentation
   final DateTime date;
+
+  /// UncompleteDocumentation
   final num unreadCount;
+
+  /// UncompleteDocumentation
   final WidgetBuilder? profilePictureBuilder;
+
+  /// UncompleteDocumentation
   final WidgetBuilder? titleBuilder;
+
+  /// UncompleteDocumentation
   final WidgetBuilder? messageBuilder;
+
+  /// UncompleteDocumentation
   final WidgetBuilder? dateBuilder;
+
+  /// UncompleteDocumentation
   final WidgetBuilder? unreadCountBuilder;
+
+  /// UncompleteDocumentation
   final double spaceTrailing;
+
+  /// UncompleteDocumentation
   final void Function()? profilePictureOnTap;
+
+  /// UncompleteDocumentation
   final void Function()? profilePictureOnLongPress;
+
+  /// UncompleteDocumentation
   final void Function()? onTap;
+
+  /// UncompleteDocumentation
   final void Function()? onLongPress;
+
+  /// UncompleteDocumentation
   final void Function(bool value)? onFocusChange;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? contentPadding;
+
+  /// UncompleteDocumentation
   final String? locale;
 
+  /// UncompleteDocumentation
   final bool profilePictureIsUseShadow;
+
+  /// UncompleteDocumentation
   final bool profilePictureIsWithBorder;
+
+  /// UncompleteDocumentation
   final BorderRadiusGeometry? profilePictureBorderRadius;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? profilePictureMargin;
+
+  /// UncompleteDocumentation
   const ChatMessageGeneralFrameworkWidget({
     super.key,
     required this.isLoading,
@@ -133,6 +183,7 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
+  /// UncompleteDocumentation
   Widget profilePictureWidget({
     required BuildContext context,
   }) {
@@ -154,6 +205,7 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
+  /// UncompleteDocumentation
   Widget titleWidget({
     required BuildContext context,
   }) {
@@ -171,6 +223,7 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
+  /// UncompleteDocumentation
   Widget? messageWidget({
     required BuildContext context,
   }) {
@@ -193,6 +246,7 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
+  /// UncompleteDocumentation
   Widget dateWidget({
     required BuildContext context,
   }) {
@@ -212,6 +266,7 @@ class ChatMessageGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
+  /// UncompleteDocumentation
   Widget unreadCountWidget({
     required BuildContext context,
   }) {

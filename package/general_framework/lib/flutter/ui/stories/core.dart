@@ -38,6 +38,7 @@ import 'package:general_lib_flutter/general_lib_flutter.dart';
 ///  * [StoriesGeneralFrameworkController], which controls the first visible item in the carousel.
 ///  * [PageView], which is a scrollable list that works page by page.
 class StoriesGeneralFrameworkView extends StatefulWidget {
+  /// UncompleteDocumentation
   final BoxConstraints constraints;
 
   /// Creates a Material Design carousel.

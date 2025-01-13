@@ -7,9 +7,13 @@ import 'package:flutter/src/scheduler/ticker.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 class FaqsGeneralFrameworkPage extends StatefulWidget {
+  /// UncompleteDocumentation
   final FutureOr<FaqGeneralFrameworkOptions> Function(BuildContext context)
       onFaqs;
+
+  /// UncompleteDocumentation
   const FaqsGeneralFrameworkPage({
     super.key,
     required this.onFaqs,

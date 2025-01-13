@@ -11,11 +11,20 @@ import 'package:markdown/markdown.dart' as m;
 ///An indented code block is composed of one or more indented chunks separated by blank lines
 ///A code fence is a sequence of at least three consecutive backtick characters (`) or tildes (~)
 class CodeBlockNode extends ElementNode {
+  /// UncompleteDocumentation
   CodeBlockNode(this.element, this.preConfig, this.visitor);
 
+  /// UncompleteDocumentation
   String get content => element.textContent;
+
+  /// UncompleteDocumentation
   final PreConfig preConfig;
+
+  /// UncompleteDocumentation
+  ///
   final m.Element element;
+
+  /// UncompleteDocumentation
   final WidgetVisitor visitor;
 
   @override
@@ -94,6 +103,8 @@ List<InlineSpan> highLightSpans(
       styleNotMatched);
 }
 
+/// UncompleteDocumentation
+
 List<TextSpan> convertHiNodes(
   List<hi.Node> nodes,
   Map<String, TextStyle> theme,
@@ -134,20 +145,34 @@ List<TextSpan> convertHiNodes(
 
 ///config class for pre
 class PreConfig implements LeafConfig {
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry padding;
+
+  /// UncompleteDocumentation
   final Decoration decoration;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry margin;
+
+  /// UncompleteDocumentation
   final TextStyle textStyle;
 
   /// the [styleNotMatched] is used to set a default TextStyle for code that does not match any theme.
   final TextStyle? styleNotMatched;
+
+  /// UncompleteDocumentation
   final CodeWrapper? wrapper;
+
+  /// UncompleteDocumentation
   final CodeBuilder? builder;
 
   ///see package:flutter_highlight/themes/
   final Map<String, TextStyle> theme;
+
+  /// UncompleteDocumentation
   final String language;
 
+  /// UncompleteDocumentation
   const PreConfig({
     this.padding = const EdgeInsets.all(16.0),
     this.decoration = const BoxDecoration(
@@ -163,6 +188,7 @@ class PreConfig implements LeafConfig {
     this.builder,
   }) : assert(builder == null || wrapper == null);
 
+  /// UncompleteDocumentation
   static PreConfig get darkConfig => const PreConfig(
         decoration: BoxDecoration(
           color: Color(0xff555555),
@@ -199,10 +225,12 @@ class PreConfig implements LeafConfig {
   String get tag => MarkdownTag.pre.name;
 }
 
+/// UncompleteDocumentation
 typedef CodeWrapper = Widget Function(
   Widget child,
   String code,
   String language,
 );
 
+/// UncompleteDocumentation
 typedef CodeBuilder = Widget Function(String code, String language);

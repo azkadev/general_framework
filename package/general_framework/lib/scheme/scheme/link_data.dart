@@ -2,7 +2,9 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
+/// Generated
 class LinkData extends JsonScheme {
+  /// Generated
   LinkData(super.rawData);
 
   /// return default data
@@ -32,6 +34,7 @@ class LinkData extends JsonScheme {
     return LinkData({});
   }
 
+  /// Generated
   String? get special_type {
     try {
       if (rawData["@type"] is String == false) {
@@ -43,10 +46,12 @@ class LinkData extends JsonScheme {
     }
   }
 
+  /// Generated
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+  /// Generated
   String? get icon {
     try {
       if (rawData["icon"] is String == false) {
@@ -58,10 +63,12 @@ class LinkData extends JsonScheme {
     }
   }
 
+  /// Generated
   set icon(String? value) {
     rawData["icon"] = value;
   }
 
+  /// Generated
   String? get title {
     try {
       if (rawData["title"] is String == false) {
@@ -73,10 +80,12 @@ class LinkData extends JsonScheme {
     }
   }
 
+  /// Generated
   set title(String? value) {
     rawData["title"] = value;
   }
 
+  /// Generated
   String? get value {
     try {
       if (rawData["value"] is String == false) {
@@ -88,10 +97,12 @@ class LinkData extends JsonScheme {
     }
   }
 
+  /// Generated
   set value(String? value) {
     rawData["value"] = value;
   }
 
+  /// Generated
   static LinkData create({
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "linkData",

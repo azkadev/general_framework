@@ -45,12 +45,16 @@ import 'package:server_universe/native.dart';
 import 'package:server_universe/native/core/type_handlers/websocket_type_handler.dart';
 import 'package:io_universe/io_universe.dart';
 
+/// UncompleteDocumentation
 abstract class GeneralFrameworkApiServerCore {
+  /// UncompleteDocumentation
   String encryptData({
     required Map data,
   }) {
     return json.encode(data);
   }
+
+  /// UncompleteDocumentation
 
   String decryptData({
     required String data,
@@ -59,13 +63,23 @@ abstract class GeneralFrameworkApiServerCore {
   }
 }
 
+/// UncompleteDocumentation
+
 abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase>
     implements GeneralFrameworkApiServerCore {
+  /// UncompleteDocumentation
   final ServerUniverseNative serverUniverse;
+
+  /// UncompleteDocumentation
   final T generalFrameworkApi;
+
+  /// UncompleteDocumentation
   final String pathApi;
+
+  /// UncompleteDocumentation
   final String pathWebSocket;
 
+  /// UncompleteDocumentation
   GeneralFrameworkApiServer({
     required this.generalFrameworkApi,
     required this.serverUniverse,
@@ -73,6 +87,8 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase>
     this.pathWebSocket = "/ws",
   });
   bool _is_initialized = false;
+
+  /// UncompleteDocumentation
   FutureOr<void> ensureInitialized(
       {required String currentPath, required Client httpClient}) async {
     await generalFrameworkApi.ensureInitialized(
@@ -138,11 +154,15 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase>
     _is_initialized = true;
   }
 
+  /// UncompleteDocumentation
+
   FutureOr<JsonScheme> invoke({
     required JsonScheme parameters,
   }) async {
     return await generalFrameworkApi.invoke(parameters: parameters);
   }
+
+  /// UncompleteDocumentation
 
   FutureOr<void> listen({
     int port = 3000,

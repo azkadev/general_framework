@@ -2,7 +2,9 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
+/// Generated
 class GeneralFrameworkDocumentationDocumentationsContent extends JsonScheme {
+  /// Generated
   GeneralFrameworkDocumentationDocumentationsContent(super.rawData);
 
   /// return default data
@@ -36,6 +38,7 @@ class GeneralFrameworkDocumentationDocumentationsContent extends JsonScheme {
     return GeneralFrameworkDocumentationDocumentationsContent({});
   }
 
+  /// Generated
   String? get special_type {
     try {
       if (rawData["@type"] is String == false) {
@@ -47,10 +50,12 @@ class GeneralFrameworkDocumentationDocumentationsContent extends JsonScheme {
     }
   }
 
+  /// Generated
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+  /// Generated
   String? get content_id {
     try {
       if (rawData["content_id"] is String == false) {
@@ -62,10 +67,12 @@ class GeneralFrameworkDocumentationDocumentationsContent extends JsonScheme {
     }
   }
 
+  /// Generated
   set content_id(String? value) {
     rawData["content_id"] = value;
   }
 
+  /// Generated
   String? get content {
     try {
       if (rawData["content"] is String == false) {
@@ -77,10 +84,12 @@ class GeneralFrameworkDocumentationDocumentationsContent extends JsonScheme {
     }
   }
 
+  /// Generated
   set content(String? value) {
     rawData["content"] = value;
   }
 
+  /// Generated
   static GeneralFrameworkDocumentationDocumentationsContent create({
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "generalFrameworkDocumentationDocumentationsContent",

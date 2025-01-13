@@ -46,9 +46,12 @@ import 'package:general_lib/script_generate/script_generate.dart';
 import 'package:mason_logger/mason_logger.dart';
 import "package:path/path.dart" as path;
 
+/// UncompleteDocumentation
 Logger logger = Logger();
 
+/// UncompleteDocumentation
 class GeneralFrameworkCli {
+  /// UncompleteDocumentation
   static String seeYoutubeForDocumentOrTutorial() {
     return """
 See https://youtube.com/@azkadev for detailed documentation and tutorial.
@@ -56,6 +59,7 @@ See https://youtube.com/@azkadev for detailed documentation and tutorial.
         .trim();
   }
 
+  /// UncompleteDocumentation
   static String watermark() {
     return """
 General Framework Created By DEVELOPER AZKADEV - https://github.com/azkadev
@@ -64,6 +68,7 @@ Corporation - GLOBAL CORPORATION & GENERAL CORPORATION
         .trim();
   }
 
+  /// UncompleteDocumentation
   static String helpGlobal(
       {required String executable_name, required List<String> commands}) {
     return """
@@ -92,6 +97,7 @@ Commands:
         .trim();
   }
 
+  /// UncompleteDocumentation
   static void generalFrameworkCli({
     required List<String> arguments,
   }) async {

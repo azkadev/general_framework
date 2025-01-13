@@ -4,7 +4,9 @@ import "package:general_lib/general_lib.dart";
 
 import "link_data.dart";
 
+/// Generated
 class AccountData extends JsonScheme {
+  /// Generated
   AccountData(super.rawData);
 
   /// return default data
@@ -45,6 +47,7 @@ class AccountData extends JsonScheme {
     return AccountData({});
   }
 
+  /// Generated
   String? get special_type {
     try {
       if (rawData["@type"] is String == false) {
@@ -56,10 +59,12 @@ class AccountData extends JsonScheme {
     }
   }
 
+  /// Generated
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+  /// Generated
   num? get id {
     try {
       if (rawData["id"] is num == false) {
@@ -71,10 +76,12 @@ class AccountData extends JsonScheme {
     }
   }
 
+  /// Generated
   set id(num? value) {
     rawData["id"] = value;
   }
 
+  /// Generated
   String? get first_name {
     try {
       if (rawData["first_name"] is String == false) {
@@ -86,10 +93,12 @@ class AccountData extends JsonScheme {
     }
   }
 
+  /// Generated
   set first_name(String? value) {
     rawData["first_name"] = value;
   }
 
+  /// Generated
   String? get last_name {
     try {
       if (rawData["last_name"] is String == false) {
@@ -101,10 +110,12 @@ class AccountData extends JsonScheme {
     }
   }
 
+  /// Generated
   set last_name(String? value) {
     rawData["last_name"] = value;
   }
 
+  /// Generated
   String? get username {
     try {
       if (rawData["username"] is String == false) {
@@ -116,10 +127,12 @@ class AccountData extends JsonScheme {
     }
   }
 
+  /// Generated
   set username(String? value) {
     rawData["username"] = value;
   }
 
+  /// Generated
   String? get profile_picture {
     try {
       if (rawData["profile_picture"] is String == false) {
@@ -131,10 +144,12 @@ class AccountData extends JsonScheme {
     }
   }
 
+  /// Generated
   set profile_picture(String? value) {
     rawData["profile_picture"] = value;
   }
 
+  /// Generated
   String? get bio {
     try {
       if (rawData["bio"] is String == false) {
@@ -146,10 +161,12 @@ class AccountData extends JsonScheme {
     }
   }
 
+  /// Generated
   set bio(String? value) {
     rawData["bio"] = value;
   }
 
+  /// Generated
   List<LinkData> get social_medias {
     try {
       if (rawData["social_medias"] is List == false) {
@@ -164,10 +181,12 @@ class AccountData extends JsonScheme {
     }
   }
 
+  /// Generated
   set social_medias(List<LinkData> values) {
     rawData["social_medias"] = values.map((value) => value.toJson()).toList();
   }
 
+  /// Generated
   static AccountData create({
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "accountData",

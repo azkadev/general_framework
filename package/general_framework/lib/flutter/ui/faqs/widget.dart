@@ -3,10 +3,15 @@ import "package:general_lib_flutter/general_lib_flutter.dart";
 
 import "core.dart";
 
+/// UncompleteDocumentation
 class FaqGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? margin;
+
+  /// UncompleteDocumentation
   final FaqGeneralFrameworkSubData faq;
 
+  /// UncompleteDocumentation
   const FaqGeneralFrameworkWidget({
     super.key,
     required this.margin,

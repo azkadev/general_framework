@@ -2,18 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentationu
 class AppBarGeneralFrameworkWidget extends StatelessWidget
     implements PreferredSizeWidget {
+  /// UncompleteDocumentation
   final Size size;
+
+  /// UncompleteDocumentation
   final Key? containerKey;
+
+  /// UncompleteDocumentation
   final DecorationBuilderGeneralFrameworkWidget? decorationBuilder;
+
+  /// UncompleteDocumentation
   final AlignmentGeometry? alignment;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? padding;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? margin;
+
+  /// UncompleteDocumentation
   final bool isAddPaddingTop;
+
+  /// UncompleteDocumentation
   final Clip clipBehavior;
+
+  /// UncompleteDocumentation
   final Iterable<Widget> Function(BuildContext context) builder;
+
+  /// UncompleteDocumentation
   final Widget Function(BuildContext context, Widget child)? widgetBuilder;
+
+  /// UncompleteDocumentation
   const AppBarGeneralFrameworkWidget({
     super.key,
     this.containerKey,
@@ -107,6 +129,7 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget
     );
   }
 
+  /// UncompleteDocumentation
   Widget contentWidget({
     required BuildContext context,
     required Widget child,

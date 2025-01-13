@@ -5,7 +5,9 @@ import "package:general_lib/general_lib.dart";
 import "general_framework_documentation_documentation.dart";
 import "general_framework_documentation_footer.dart";
 
+/// Generated
 class GeneralFrameworkDocumentation extends JsonScheme {
+  /// Generated
   GeneralFrameworkDocumentation(super.rawData);
 
   /// return default data
@@ -80,6 +82,7 @@ class GeneralFrameworkDocumentation extends JsonScheme {
     return GeneralFrameworkDocumentation({});
   }
 
+  /// Generated
   String? get special_type {
     try {
       if (rawData["@type"] is String == false) {
@@ -91,10 +94,12 @@ class GeneralFrameworkDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+  /// Generated
   String? get logo {
     try {
       if (rawData["logo"] is String == false) {
@@ -106,10 +111,12 @@ class GeneralFrameworkDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set logo(String? value) {
     rawData["logo"] = value;
   }
 
+  /// Generated
   String? get title {
     try {
       if (rawData["title"] is String == false) {
@@ -121,10 +128,12 @@ class GeneralFrameworkDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set title(String? value) {
     rawData["title"] = value;
   }
 
+  /// Generated
   String? get description {
     try {
       if (rawData["description"] is String == false) {
@@ -136,10 +145,12 @@ class GeneralFrameworkDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set description(String? value) {
     rawData["description"] = value;
   }
 
+  /// Generated
   String? get content {
     try {
       if (rawData["content"] is String == false) {
@@ -151,10 +162,12 @@ class GeneralFrameworkDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set content(String? value) {
     rawData["content"] = value;
   }
 
+  /// Generated
   ///
   /// default:
   ///
@@ -170,10 +183,12 @@ class GeneralFrameworkDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set author_url_social_medias(List<String> value) {
     rawData["author_url_social_medias"] = value;
   }
 
+  /// Generated
   List<GeneralFrameworkDocumentationDocumentation> get documentations {
     try {
       if (rawData["documentations"] is List == false) {
@@ -188,10 +203,12 @@ class GeneralFrameworkDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set documentations(List<GeneralFrameworkDocumentationDocumentation> values) {
     rawData["documentations"] = values.map((value) => value.toJson()).toList();
   }
 
+  /// Generated
   GeneralFrameworkDocumentationFooter get footer {
     try {
       if (rawData["footer"] is Map == false) {
@@ -203,10 +220,12 @@ class GeneralFrameworkDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set footer(GeneralFrameworkDocumentationFooter value) {
     rawData["footer"] = value.toJson();
   }
 
+  /// Generated
   static GeneralFrameworkDocumentation create({
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "generalFrameworkDocumentation",

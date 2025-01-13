@@ -8,10 +8,10 @@ dependencies:
   base_template_general_framework_project_scheme:
     path: '../base_template_general_framework_project_scheme'
   collection: '^1.19.0'
-  general_lib: '^0.0.57'
+  general_lib: '^0.0.59'
   path: '^1.9.0'
   http: '^1.2.2'
-  general_framework: '^0.0.13'
+  general_framework: '^0.0.14'
   base_template_general_framework_project_isar_scheme:
     path: '../base_template_general_framework_project_isar_scheme'
   isar: '^4.0.0-dev.14'

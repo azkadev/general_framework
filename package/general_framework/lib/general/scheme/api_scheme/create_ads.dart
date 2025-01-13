@@ -5,7 +5,9 @@ import "package:general_lib/general_lib.dart";
 import "author_ads.dart";
 import "content_ads.dart";
 
+/// Generated
 class CreateAds extends JsonScheme {
+  /// Generated
   CreateAds(super.rawData);
 
   /// return default data
@@ -63,6 +65,7 @@ class CreateAds extends JsonScheme {
     return CreateAds({});
   }
 
+  /// Generated
   String? get special_type {
     try {
       if (rawData["@type"] is String == false) {
@@ -74,10 +77,12 @@ class CreateAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+  /// Generated
   bool? get is_anonymous {
     try {
       if (rawData["is_anonymous"] is bool == false) {
@@ -89,10 +94,12 @@ class CreateAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set is_anonymous(bool? value) {
     rawData["is_anonymous"] = value;
   }
 
+  /// Generated
   bool? get is_anonymous_locked {
     try {
       if (rawData["is_anonymous_locked"] is bool == false) {
@@ -104,10 +111,12 @@ class CreateAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set is_anonymous_locked(bool? value) {
     rawData["is_anonymous_locked"] = value;
   }
 
+  /// Generated
   num? get amount_day {
     try {
       if (rawData["amount_day"] is num == false) {
@@ -119,10 +128,12 @@ class CreateAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set amount_day(num? value) {
     rawData["amount_day"] = value;
   }
 
+  /// Generated
   ///
   /// default:
   ///
@@ -138,10 +149,12 @@ class CreateAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set show_on_platforms(List<String> value) {
     rawData["show_on_platforms"] = value;
   }
 
+  /// Generated
   AuthorAds get author {
     try {
       if (rawData["author"] is Map == false) {
@@ -153,10 +166,12 @@ class CreateAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set author(AuthorAds value) {
     rawData["author"] = value.toJson();
   }
 
+  /// Generated
   ContentAds get ads {
     try {
       if (rawData["ads"] is Map == false) {
@@ -168,10 +183,12 @@ class CreateAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set ads(ContentAds value) {
     rawData["ads"] = value.toJson();
   }
 
+  /// Generated
   static CreateAds create({
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "createAds",

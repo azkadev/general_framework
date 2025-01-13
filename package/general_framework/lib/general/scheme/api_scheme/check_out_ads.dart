@@ -4,7 +4,9 @@ import "package:general_lib/general_lib.dart";
 
 import "create_ads.dart";
 
+/// Generated
 class CheckOutAds extends JsonScheme {
+  /// Generated
   CheckOutAds(super.rawData);
 
   /// return default data
@@ -37,6 +39,7 @@ class CheckOutAds extends JsonScheme {
     return CheckOutAds({});
   }
 
+  /// Generated
   String? get special_type {
     try {
       if (rawData["@type"] is String == false) {
@@ -48,10 +51,12 @@ class CheckOutAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+  /// Generated
   CreateAds get ads {
     try {
       if (rawData["ads"] is Map == false) {
@@ -63,10 +68,12 @@ class CheckOutAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set ads(CreateAds value) {
     rawData["ads"] = value.toJson();
   }
 
+  /// Generated
   static CheckOutAds create({
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "checkOutAds",

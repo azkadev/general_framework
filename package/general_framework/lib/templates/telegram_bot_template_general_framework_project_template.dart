@@ -4,6 +4,7 @@
 import 'package:general_lib/script_generate/script_generate.dart';
 import 'package:io_universe/io_universe.dart';
 
+/// UncompleteDocumentation
 final List<ScriptGenerator>
     telegram_bot_template_general_framework_project_script_generators = [
   ScriptGenerator(

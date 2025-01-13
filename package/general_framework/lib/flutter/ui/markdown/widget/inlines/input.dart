@@ -6,9 +6,13 @@ import '../span_node.dart';
 
 ///Tag: [MarkdownTag.input]
 class InputNode extends MarkdownSpanNodeGeneralFrameworkWidget {
+  /// UncompleteDocumentation
   final Map<String, String> attr;
+
+  /// UncompleteDocumentation
   final MarkdownConfigGeneralFramework config;
 
+  /// UncompleteDocumentation
   InputNode(this.attr, this.config);
 
   @override
@@ -35,8 +39,10 @@ typedef CheckBoxBuilder = Widget Function(bool checked);
 
 ///config class for checkbox, tag: input
 class CheckBoxConfig implements InlineConfig {
+  /// UncompleteDocumentation
   final CheckBoxBuilder? builder;
 
+  /// UncompleteDocumentation
   const CheckBoxConfig({this.builder});
 
   @nonVirtual
@@ -46,8 +52,10 @@ class CheckBoxConfig implements InlineConfig {
 
 ///the check box widget
 class MCheckBox extends StatelessWidget {
+  /// UncompleteDocumentation
   final bool checked;
 
+  /// UncompleteDocumentation
   const MCheckBox({super.key, required this.checked});
 
   @override

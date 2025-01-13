@@ -32,7 +32,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-library skeletonizer;
+library;
 
 export 'src/widgets/skeleton.dart';
 export 'src/widgets/widgets.dart' hide SkeletonizerGeneralFrameworkBuildData;

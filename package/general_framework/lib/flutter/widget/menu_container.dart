@@ -2,20 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import "package:general_lib_flutter/general_lib_flutter.dart";
 
+/// UncompleteDocumentation
 class MenuContainerBuilderGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final bool isLoading;
+
+  /// UncompleteDocumentation
   final double? width;
+
+  /// UncompleteDocumentation
   final double? height;
+
+  /// UncompleteDocumentation
   final BoxConstraints? constraints;
+
+  /// UncompleteDocumentation
   final Matrix4? transform;
+
+  /// UncompleteDocumentation
   final AlignmentGeometry? transformAlignment;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? margin;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? padding;
+
+  /// UncompleteDocumentation
   final Clip? clipBehavior;
+
+  /// UncompleteDocumentation
   final DecorationBuilderGeneralFrameworkWidget decorationBuilder;
+
+  /// UncompleteDocumentation
   final WidgetBuilder builder;
+
+  /// UncompleteDocumentation
   final bool isWithBorder;
+
+  /// UncompleteDocumentation
   final bool isWithShadow;
+
+  /// UncompleteDocumentation
   const MenuContainerBuilderGeneralFrameworkWidget({
     super.key,
     required this.isWithBorder,
@@ -75,27 +103,63 @@ class MenuContainerBuilderGeneralFrameworkWidget extends StatelessWidget {
   }
 }
 
+/// UncompleteDocumentation
 class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final bool isLoading;
+
+  /// UncompleteDocumentation
   final double? width;
+
+  /// UncompleteDocumentation
   final double? height;
+
+  /// UncompleteDocumentation
   final BoxConstraints? constraints;
 
+  /// UncompleteDocumentation
   final Matrix4? transform;
+
+  /// UncompleteDocumentation
   final AlignmentGeometry? transformAlignment;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? margin;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? padding;
+
+  /// UncompleteDocumentation
   final Clip? clipBehavior;
+
+  /// UncompleteDocumentation
   final DecorationBuilderGeneralFrameworkWidget? decorationBuilder;
 
+  /// UncompleteDocumentation
   final MainAxisAlignment mainAxisAlignment;
+
+  /// UncompleteDocumentation
   final CrossAxisAlignment crossAxisAlignment;
+
+  /// UncompleteDocumentation
   final List<Widget> Function(BuildContext context) menuBuilder;
+
+  /// UncompleteDocumentation
   final Axis axis;
+
+  /// UncompleteDocumentation
   final MainAxisSize mainAxisSize;
+
+  /// UncompleteDocumentation
   final bool isWithBorder;
+
+  /// UncompleteDocumentation
   final bool isWithShadow;
+
+  /// UncompleteDocumentation
   final WidgetBuilderGeneralFrameworkWidget? builder;
+
+  /// UncompleteDocumentation
   const MenuContainerGeneralFrameworkWidget({
     super.key,
     this.mainAxisSize = MainAxisSize.min,
@@ -117,15 +181,19 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     required this.menuBuilder,
     this.builder,
   });
+
+  /// UncompleteDocumentation
   static TextStyle textStyleBuilderDefault(
       BuildContext context, TextStyle textStyle) {
     return textStyle;
   }
 
+  /// UncompleteDocumentation
   static Widget titleBuilderDefault(BuildContext context, Text child) {
     return child;
   }
 
+  /// UncompleteDocumentation
   static Widget lisTile({
     required BuildContext context,
     bool isLoading = false,
@@ -189,6 +257,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     return child;
   }
 
+  /// UncompleteDocumentation
   static Widget title({
     required BuildContext context,
     EdgeInsetsGeometry? padding,
@@ -215,6 +284,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
+  /// UncompleteDocumentation
   static Widget divider({
     required BuildContext context,
   }) {
@@ -263,29 +333,70 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
   }
 }
 
+/// UncompleteDocumentation
 class MenuContainerResponsiveGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final WidgetBuilder titleBuilder;
+
+  /// UncompleteDocumentation
   final List<Widget> Function(BuildContext context) menuBuilder;
+
+  /// UncompleteDocumentation
   final bool isLoading;
+
+  /// UncompleteDocumentation
   final double? width;
+
+  /// UncompleteDocumentation
   final double? height;
+
+  /// UncompleteDocumentation
   final BoxConstraints? constraints;
 
+  /// UncompleteDocumentation
   final Matrix4? transform;
+
+  /// UncompleteDocumentation
   final AlignmentGeometry? transformAlignment;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? margin;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? padding;
+
+  /// UncompleteDocumentation
   final Clip? clipBehavior;
+
+  /// UncompleteDocumentation
   final DecorationBuilderGeneralFrameworkWidget? decorationBuilder;
 
+  /// UncompleteDocumentation
   final MainAxisAlignment mainAxisAlignment;
+
+  /// UncompleteDocumentation
   final CrossAxisAlignment crossAxisAlignment;
+
+  /// UncompleteDocumentation
   final Axis axis;
+
+  /// UncompleteDocumentation
+
   final MainAxisSize mainAxisSize;
+
+  /// UncompleteDocumentation
   final bool isWithBorder;
+
+  /// UncompleteDocumentation
   final bool isWithShadow;
+
+  /// UncompleteDocumentation
   final WidgetBuilderGeneralFrameworkWidget? builder;
+
+  /// UncompleteDocumentation
   final WidgetBuilderGeneralFrameworkWidget? wrapBuilder;
+
+  /// UncompleteDocumentation
   const MenuContainerResponsiveGeneralFrameworkWidget({
     super.key,
     required this.isLoading,
@@ -344,6 +455,7 @@ class MenuContainerResponsiveGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
+  /// UncompleteDocumentation
   Widget contentWidget({
     required bool isPortrait,
   }) {

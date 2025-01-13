@@ -41,6 +41,7 @@ import 'package:http/http.dart';
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
 abstract class GeneralFrameworkApiBaseCore {
+  /// UncompleteDocumentation
   FutureOr<JsonScheme> invoke({
     required JsonScheme parameters,
   }) async {
@@ -52,10 +53,15 @@ abstract class GeneralFrameworkApiBaseCore {
 /// is universal client for help you connection to rest api server super easy friendly
 abstract class GeneralFrameworkApiBase<D extends GeneralFrameworkDatabase>
     implements GeneralFrameworkApiBaseCore {
+  /// UncompleteDocumentation
   final D generalFrameworkApiDatabase;
+
+  /// UncompleteDocumentation
   GeneralFrameworkApiBase({
     required this.generalFrameworkApiDatabase,
   });
+
+  /// UncompleteDocumentation
   FutureOr<void> ensureInitialized({
     required String currentPath,
     required Client httpClient,

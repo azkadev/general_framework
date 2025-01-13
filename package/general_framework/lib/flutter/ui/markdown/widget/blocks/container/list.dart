@@ -12,12 +12,22 @@ import '../leaf/paragraph.dart';
 ///
 /// ordered list and unordered widget
 class UlOrOLNode extends ElementNode {
+  /// UncompleteDocumentation
   final String tag;
+
+  /// UncompleteDocumentation
   final ListConfig config;
+
+  /// UncompleteDocumentation
   final Map<String, String> attribute;
+
+  /// UncompleteDocumentation
   late int start;
+
+  /// UncompleteDocumentation
   final WidgetVisitor visitor;
 
+  /// UncompleteDocumentation
   UlOrOLNode(this.tag, this.attribute, this.config, this.visitor) {
     start = (int.tryParse(attribute['start'] ?? '') ?? 1) - 1;
   }
@@ -61,20 +71,27 @@ class UlOrOLNode extends ElementNode {
 /// A list is a sequence of one or more list items of the same type.
 /// The list items may be separated by any number of blank lines.
 class ListNode extends ElementNode {
+  /// UncompleteDocumentation
   final MarkdownConfigGeneralFramework config;
+
+  /// UncompleteDocumentation
   final WidgetVisitor visitor;
 
+  /// UncompleteDocumentation
   ListNode(this.config, this.visitor);
 
   int _index = 0;
 
+  /// UncompleteDocumentation
   int get index => _index;
 
+  /// UncompleteDocumentation
   bool get isOrdered {
     final p = parent;
     return p != null && p is UlOrOLNode && p.tag == MarkdownTag.ol.name;
   }
 
+  /// UncompleteDocumentation
   int get depth {
     int d = 0;
     MarkdownSpanNodeGeneralFrameworkWidget? p = parent;
@@ -136,6 +153,7 @@ class ListNode extends ElementNode {
     );
   }
 
+  /// UncompleteDocumentation
   bool get isCheckbox {
     return children.isNotEmpty && children.first is InputNode;
   }
@@ -155,6 +173,7 @@ class ListConfig implements ContainerConfig {
   ///the marker widget for list
   final ListMarker? marker;
 
+  /// UncompleteDocumentation
   const ListConfig({
     this.marginLeft = 32.0,
     this.marginBottom = 4.0,

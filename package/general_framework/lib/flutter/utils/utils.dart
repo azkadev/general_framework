@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+/// UncompleteDocumentation
 class GeneralFrameworkFlutterUtils {
+  /// UncompleteDocumentation
   static final List<MaterialColor> colors = [
     Colors.blue,
     Colors.blueGrey,
@@ -17,6 +19,8 @@ class GeneralFrameworkFlutterUtils {
     Colors.lightGreen,
     Colors.lime
   ];
+
+  /// UncompleteDocumentation
 
   static MaterialColor randomColors() {
     // colors.shuffle();

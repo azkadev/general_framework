@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// UncompleteDocumentation
 class CodeWrapperWidget extends StatefulWidget {
+  /// UncompleteDocumentation
   final Widget child;
+
+  /// UncompleteDocumentation
   final String text;
+
+  /// UncompleteDocumentation
   final String language;
 
+  /// UncompleteDocumentation
   const CodeWrapperWidget({
     super.key,
     required this.child,

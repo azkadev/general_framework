@@ -2,36 +2,75 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
-import 'package:general_framework/flutter/typedef/typedef.dart';
-import 'package:general_framework/flutter/widget/profile_picture.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 enum StoriesGeneralFrameworkWidgetStyle {
+  /// UncompleteDocumentation
   pofileInStories,
 }
 
+/// UncompleteDocumentation
 class StoriesGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final StoriesGeneralFrameworkWidgetStyle storiesGeneralFrameworkWidgetStyle;
+
+  /// UncompleteDocumentation
   final dynamic content;
+
+  /// UncompleteDocumentation
   final dynamic profile;
+
+  /// UncompleteDocumentation
   final String title;
+
+  /// UncompleteDocumentation
   final WidgetBuilderGeneralFrameworkWidget? profileBuilder;
+
+  /// UncompleteDocumentation
   final WidgetBuilderGeneralFrameworkWidget? titleBuilder;
+
+  /// UncompleteDocumentation
   final WidgetBuilderGeneralFrameworkWidget? contentBuilder;
 
+  /// UncompleteDocumentation
   final void Function()? profileOnPressed;
+
+  /// UncompleteDocumentation
   final void Function()? onPressed;
+
+  /// UncompleteDocumentation
   final BorderRadiusGeometry? borderRadius;
+
+  /// UncompleteDocumentation
   final bool isWithBlur;
+
+  /// UncompleteDocumentation
   final bool profileIsUseShadow;
+
+  /// UncompleteDocumentation
   final bool profileIsWithBorder;
+
+  /// UncompleteDocumentation
   final bool isUseShadow;
+
+  /// UncompleteDocumentation
   final bool isWithBorder;
+
+  /// UncompleteDocumentation
   final bool isLoading;
 
+  /// UncompleteDocumentation
+
   final ImageFilter? blurFilter;
+
+  /// UncompleteDocumentation
   final BlendMode blurBlendMode;
+
+  /// UncompleteDocumentation
   final ColorFilter? contentColorFilter;
+
+  /// UncompleteDocumentation
   const StoriesGeneralFrameworkWidget({
     super.key,
     this.blurFilter,
@@ -65,6 +104,8 @@ class StoriesGeneralFrameworkWidget extends StatelessWidget {
     }
     return child;
   }
+
+  /// UncompleteDocumentation
 
   Widget body(BuildContext context) {
     return Stack(

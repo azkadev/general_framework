@@ -8,7 +8,7 @@ import "package:general_lib/regexp_replace/regexp_replace.dart";
 
 final Map _general_framework_ads_title_data = {"id": "Iklan", "en": "Ads"};
 
-// extension GeneralFrameworkAdsExtensionGeneralFramework on GeneralFramework {
+/// UncompleteDocumentation
 extension GeneralFrameworkAdsExtensionGeneralFramework on Language {
   /// default return
   /// ```dart

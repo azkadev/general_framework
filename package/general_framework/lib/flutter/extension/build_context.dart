@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/ui/alert/alert.dart';
 import 'package:general_lib/general_lib.dart';
 
+/// UncompleteDocumentation
 extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
+  /// UncompleteDocumentation
   bool extensionGeneralFrameworkShowAlertError({
     required dynamic data,
   }) {

@@ -36,7 +36,9 @@ import 'dart:math';
 
 import 'package:general_lib/general_lib.dart';
 
+/// UncompleteDocumentation
 class GeneralFrameworkUtils {
+  /// UncompleteDocumentation
   static String generateAnyText({
     required int max,
     required int min,

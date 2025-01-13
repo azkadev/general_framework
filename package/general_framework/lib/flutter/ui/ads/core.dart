@@ -3,10 +3,15 @@ import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_framework/flutter/image/image_core.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 class AdsGeneralFrameworkControllers extends ChangeNotifier {
+  /// UncompleteDocumentation
   final List<AdsContentAdsGeneralFramework> ads = [];
 
+  /// UncompleteDocumentation
   AdsGeneralFrameworkControllers();
+
+  /// UncompleteDocumentation
   void update({
     required List<AdsContentAdsGeneralFramework> ads,
   }) {
@@ -25,13 +30,26 @@ class AdsGeneralFrameworkControllers extends ChangeNotifier {
   }
 }
 
+/// UncompleteDocumentation
+
 class AdsContentAdsGeneralFramework {
+  /// UncompleteDocumentation
   final dynamic media;
+
+  /// UncompleteDocumentation
   final dynamic authorPhotoProfile;
+
+  /// UncompleteDocumentation
   final String title;
+
+  /// UncompleteDocumentation
   final String subtitle;
+
+  /// UncompleteDocumentation
   final void Function(
       AdsContentAdsGeneralFramework adsContentAdsGeneralFramework) onPressed;
+
+  /// UncompleteDocumentation
   const AdsContentAdsGeneralFramework({
     required this.media,
     required this.authorPhotoProfile,
@@ -39,6 +57,8 @@ class AdsContentAdsGeneralFramework {
     required this.onPressed,
     required this.subtitle,
   });
+
+  /// UncompleteDocumentation
 
   static Widget carouselWidget({
     required BuildContext context,
@@ -67,18 +87,34 @@ class AdsContentAdsGeneralFramework {
   }
 }
 
+/// UncompleteDocumentation
 class AdsCarouselGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final EdgeInsets? margin;
+
+  /// UncompleteDocumentation
   final double maxHeight;
+
+  /// UncompleteDocumentation
   final double maxWidth;
+
+  /// UncompleteDocumentation
   final List<AdsContentAdsGeneralFramework> ads;
+
+  /// UncompleteDocumentation
   final void Function(
       AdsContentAdsGeneralFramework adsContentAdsGeneralFramework,
       bool value) onHighlightChanged;
+
+  /// UncompleteDocumentation
   final void Function(
           AdsContentAdsGeneralFramework adsContentAdsGeneralFramework)
       onProfilePressed;
+
+  /// UncompleteDocumentation
   final bool isLoading;
+
+  /// UncompleteDocumentation
   const AdsCarouselGeneralFrameworkWidget({
     super.key,
     required this.ads,

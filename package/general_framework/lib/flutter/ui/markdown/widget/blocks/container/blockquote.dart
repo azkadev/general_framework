@@ -10,9 +10,13 @@ import '../../widget_visitor.dart';
 ///
 /// A block quote marker, optionally preceded by up to three spaces of indentation
 class BlockquoteNode extends ElementNode {
+  /// UncompleteDocumentation
   final BlockquoteConfig config;
+
+  /// UncompleteDocumentation
   final WidgetVisitor visitor;
 
+  /// UncompleteDocumentation
   BlockquoteNode(this.config, this.visitor);
 
   @override
@@ -37,11 +41,22 @@ class BlockquoteNode extends ElementNode {
 
 ///config class for Block quotes, tag: blockquote
 class BlockquoteConfig implements ContainerConfig {
+  /// UncompleteDocumentation
   final Color sideColor;
+
+  /// UncompleteDocumentation
   final Color textColor;
+
+  /// UncompleteDocumentation
   final double sideWith;
+
+  /// UncompleteDocumentation
   final EdgeInsets padding;
+
+  /// UncompleteDocumentation
   final EdgeInsets margin;
+
+  /// UncompleteDocumentation
 
   const BlockquoteConfig({
     this.sideColor = const Color(0xffd0d7de),
@@ -51,6 +66,7 @@ class BlockquoteConfig implements ContainerConfig {
     this.margin = const EdgeInsets.fromLTRB(0, 8, 0, 8),
   });
 
+  /// UncompleteDocumentation
   static BlockquoteConfig get darkConfig =>
       const BlockquoteConfig(textColor: Color(0xffd0d7de));
 

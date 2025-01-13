@@ -2,18 +2,42 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/typedef/typedef.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 class BottomBarGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final BoxConstraints? constraints;
+
+  /// UncompleteDocumentation
   final DecorationBuilderGeneralFrameworkWidget? decorationBuilder;
+
+  /// UncompleteDocumentation
   final AlignmentGeometry? alignment;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? padding;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? margin;
+
+  /// UncompleteDocumentation
   final Clip clipBehavior;
+
+  /// UncompleteDocumentation
   final double? height;
+
+  /// UncompleteDocumentation
   final double? width;
+
+  /// UncompleteDocumentation
   final bool isAddBottomBarPadding;
+
+  /// UncompleteDocumentation
   final WidgetBuilder? topBuilder;
+
+  /// UncompleteDocumentation
   final WidgetBuilder builder;
+
+  /// UncompleteDocumentation
   const BottomBarGeneralFrameworkWidget({
     super.key,
     this.height,
@@ -45,6 +69,8 @@ class BottomBarGeneralFrameworkWidget extends StatelessWidget {
     }
     return bodyBuilder(context: context);
   }
+
+  /// UncompleteDocumentation
 
   Widget bodyBuilder({required BuildContext context}) {
     final WidgetBuilder? topBuilder = this.topBuilder;

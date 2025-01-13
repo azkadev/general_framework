@@ -2,7 +2,9 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
+/// Generated
 class GeneralFrameworkDocumentationDocumentationSideBar extends JsonScheme {
+  /// Generated
   GeneralFrameworkDocumentationDocumentationSideBar(super.rawData);
 
   /// return default data
@@ -36,6 +38,7 @@ class GeneralFrameworkDocumentationDocumentationSideBar extends JsonScheme {
     return GeneralFrameworkDocumentationDocumentationSideBar({});
   }
 
+  /// Generated
   String? get special_type {
     try {
       if (rawData["@type"] is String == false) {
@@ -47,10 +50,12 @@ class GeneralFrameworkDocumentationDocumentationSideBar extends JsonScheme {
     }
   }
 
+  /// Generated
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+  /// Generated
   String? get title {
     try {
       if (rawData["title"] is String == false) {
@@ -62,10 +67,12 @@ class GeneralFrameworkDocumentationDocumentationSideBar extends JsonScheme {
     }
   }
 
+  /// Generated
   set title(String? value) {
     rawData["title"] = value;
   }
 
+  /// Generated
   String? get navigate_content_id {
     try {
       if (rawData["navigate_content_id"] is String == false) {
@@ -77,10 +84,12 @@ class GeneralFrameworkDocumentationDocumentationSideBar extends JsonScheme {
     }
   }
 
+  /// Generated
   set navigate_content_id(String? value) {
     rawData["navigate_content_id"] = value;
   }
 
+  /// Generated
   static GeneralFrameworkDocumentationDocumentationSideBar create({
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "generalFrameworkDocumentationDocumentationSideBar",

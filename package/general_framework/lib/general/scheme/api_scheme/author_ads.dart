@@ -2,7 +2,9 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
+/// Generated
 class AuthorAds extends JsonScheme {
+  /// Generated
   AuthorAds(super.rawData);
 
   /// return default data
@@ -41,6 +43,7 @@ class AuthorAds extends JsonScheme {
     return AuthorAds({});
   }
 
+  /// Generated
   String? get special_type {
     try {
       if (rawData["@type"] is String == false) {
@@ -52,10 +55,12 @@ class AuthorAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+  /// Generated
   bool? get is_locked {
     try {
       if (rawData["is_locked"] is bool == false) {
@@ -67,10 +72,12 @@ class AuthorAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set is_locked(bool? value) {
     rawData["is_locked"] = value;
   }
 
+  /// Generated
   String? get platform_id {
     try {
       if (rawData["platform_id"] is String == false) {
@@ -82,10 +89,12 @@ class AuthorAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set platform_id(String? value) {
     rawData["platform_id"] = value;
   }
 
+  /// Generated
   num? get account_user_id {
     try {
       if (rawData["account_user_id"] is num == false) {
@@ -97,10 +106,12 @@ class AuthorAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set account_user_id(num? value) {
     rawData["account_user_id"] = value;
   }
 
+  /// Generated
   String? get full_name {
     try {
       if (rawData["full_name"] is String == false) {
@@ -112,10 +123,12 @@ class AuthorAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set full_name(String? value) {
     rawData["full_name"] = value;
   }
 
+  /// Generated
   String? get photo_profile {
     try {
       if (rawData["photo_profile"] is String == false) {
@@ -127,10 +140,12 @@ class AuthorAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set photo_profile(String? value) {
     rawData["photo_profile"] = value;
   }
 
+  /// Generated
   String? get photo_path {
     try {
       if (rawData["photo_path"] is String == false) {
@@ -142,10 +157,12 @@ class AuthorAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set photo_path(String? value) {
     rawData["photo_path"] = value;
   }
 
+  /// Generated
   String? get url {
     try {
       if (rawData["url"] is String == false) {
@@ -157,10 +174,12 @@ class AuthorAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set url(String? value) {
     rawData["url"] = value;
   }
 
+  /// Generated
   static AuthorAds create({
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "authorAds",

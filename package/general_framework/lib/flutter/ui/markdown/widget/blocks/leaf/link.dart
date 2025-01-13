@@ -12,9 +12,13 @@ import '../../span_node.dart';
 ///link will always be wrapped by other tags, such as [MarkdownTag.p]
 
 class LinkNode extends ElementNode {
+  /// UncompleteDocumentation
   final Map<String, String> attributes;
+
+  /// UncompleteDocumentation
   final LinkConfig linkConfig;
 
+  /// UncompleteDocumentation
   LinkNode(this.attributes, this.linkConfig);
 
   @override
@@ -48,9 +52,13 @@ class LinkNode extends ElementNode {
 
 ///config class for link, tag: a
 class LinkConfig implements LeafConfig {
+  /// UncompleteDocumentation
   final TextStyle style;
+
+  /// UncompleteDocumentation
   final ValueCallback<String>? onTap;
 
+  /// UncompleteDocumentation
   const LinkConfig(
       {this.style = const TextStyle(
           color: Color(0xff0969da), decoration: TextDecoration.underline),

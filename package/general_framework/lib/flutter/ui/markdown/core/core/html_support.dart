@@ -29,6 +29,7 @@ void htmlToMarkdown(h.Node? node, int deep, List<m.Node> mNodes) {
   }
 }
 
+/// UncompleteDocumentation
 final RegExp htmlRep = RegExp(r'<[^>]*>', multiLine: true, caseSensitive: true);
 
 ///parse [m.Node] to [h.Node]
@@ -51,24 +52,35 @@ List<MarkdownSpanNodeGeneralFrameworkWidget> parseHtml(
   }
 }
 
+/// UncompleteDocumentation
+
 class HtmlElement extends m.Element {
   @override
   final String textContent;
 
+  /// UncompleteDocumentation
   HtmlElement(super.tag, super.children, this.textContent);
 }
 
+/// UncompleteDocumentation
 class HtmlToSpanVisitor extends TreeVisitor {
   final List<MarkdownSpanNodeGeneralFrameworkWidget> _spans = [];
   final List<MarkdownSpanNodeGeneralFrameworkWidget> _spansStack = [];
+
+  /// UncompleteDocumentation
   final WidgetVisitor visitor;
+
+  /// UncompleteDocumentation
   final TextStyle parentStyle;
 
+  /// UncompleteDocumentation
   HtmlToSpanVisitor({
     WidgetVisitor? visitor,
     TextStyle? parentStyle,
   })  : visitor = visitor ?? WidgetVisitor(),
         parentStyle = parentStyle ?? const TextStyle();
+
+  /// UncompleteDocumentation
 
   List<MarkdownSpanNodeGeneralFrameworkWidget> toVisit(List<h.Node> nodes) {
     _spans.clear();

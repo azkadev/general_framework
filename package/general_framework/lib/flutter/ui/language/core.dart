@@ -8,27 +8,40 @@ import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/scheme/language_code_data_detail.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 enum LanguageGeneralFrameworkType {
+  /// UncompleteDocumentation
   dialog,
-  full,
+
+  /// UncompleteDocumentation
+  full;
 }
 
+/// UncompleteDocumentation
 typedef LanguageGeneralFrameworkOnSelect = void Function(
   BuildContext context,
   LanguageCodeDataDetail languageCodeDataDetail,
 );
 
+/// UncompleteDocumentation
 class LanguageGeneralFrameworkOptions {
+  /// UncompleteDocumentation
   final LanguageGeneralFrameworkType languageGeneralFrameworkType;
+
+  /// UncompleteDocumentation
   final LanguageGeneralFrameworkOnSelect onSelect;
+
+  /// UncompleteDocumentation
   final LanguageGeneralFrameworkController languageGeneralFrameworkController;
 
+  /// UncompleteDocumentation
   const LanguageGeneralFrameworkOptions({
     required this.languageGeneralFrameworkType,
     required this.onSelect,
     required this.languageGeneralFrameworkController,
   });
 
+  /// UncompleteDocumentation
   LanguageGeneralFrameworkOptions copyWith({
     LanguageGeneralFrameworkType? languageGeneralFrameworkType,
     LanguageGeneralFrameworkOnSelect? onSelect,
@@ -43,6 +56,7 @@ class LanguageGeneralFrameworkOptions {
     );
   }
 
+  /// UncompleteDocumentation
   static List<MapEntry<String, LanguageCodeDataDetail>>
       getCountryGeneralUiPages({
     required List<String> countryCodes,
@@ -65,6 +79,7 @@ class LanguageGeneralFrameworkOptions {
     }();
   }
 
+  /// UncompleteDocumentation
   static List<MapEntry<String, LanguageCodeDataDetail>> search({
     required List<MapEntry<String, LanguageCodeDataDetail>> languageCodeDatas,
     required String value,
@@ -97,6 +112,8 @@ class LanguageGeneralFrameworkOptions {
     return languageCodeResults;
   }
 
+  /// UncompleteDocumentation
+
   static void sort({
     required List<MapEntry<String, LanguageCodeDataDetail>> languages,
   }) {
@@ -109,14 +126,21 @@ class LanguageGeneralFrameworkOptions {
   }
 }
 
+/// UncompleteDocumentation
 class LanguageGeneralFrameworkController extends ChangeNotifier {
+  /// UncompleteDocumentation
   String countryCodeId;
+
+  /// UncompleteDocumentation
   final List<String> languageSupports;
+
+  /// UncompleteDocumentation
   LanguageGeneralFrameworkController({
     required this.countryCodeId,
     required this.languageSupports,
   });
 
+  /// UncompleteDocumentation
   void updateCountryCode({
     required String countryCodeId,
   }) {
@@ -131,8 +155,12 @@ class LanguageGeneralFrameworkController extends ChangeNotifier {
   }
 }
 
+/// UncompleteDocumentation
 class LanguageGeneralFramework extends StatefulWidget {
+  /// UncompleteDocumentation
   final LanguageGeneralFrameworkOptions languageGeneralFrameworkOptions;
+
+  /// UncompleteDocumentation
   const LanguageGeneralFramework({
     super.key,
     required this.languageGeneralFrameworkOptions,
@@ -142,6 +170,7 @@ class LanguageGeneralFramework extends StatefulWidget {
   State<LanguageGeneralFramework> createState() =>
       LanguageGeneralFrameworkState();
 
+  /// UncompleteDocumentation
   static Future<T?> show<T>({
     required BuildContext context,
     required LanguageGeneralFrameworkOptions languageGeneralFrameworkOptions,
@@ -166,17 +195,24 @@ class LanguageGeneralFramework extends StatefulWidget {
   }
 }
 
+/// UncompleteDocumentation
+
 class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
+  /// UncompleteDocumentation
   final TextEditingController searchTextEditingController =
       TextEditingController();
+
+  /// UncompleteDocumentation
   bool isShowSearch = false;
 
+  /// UncompleteDocumentation
   late final List<MapEntry<String, LanguageCodeDataDetail>> languageCodeDatas =
       LanguageGeneralFrameworkOptions.getCountryGeneralUiPages(
     countryCodes: widget.languageGeneralFrameworkOptions
         .languageGeneralFrameworkController.languageSupports,
   );
 
+  /// UncompleteDocumentation
   late final List<MapEntry<String, LanguageCodeDataDetail>>
       languageCodeResults = [...languageCodeDatas];
 
@@ -197,6 +233,7 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
     super.dispose();
   }
 
+  /// UncompleteDocumentation
   void search({
     required String value,
   }) async {
@@ -208,6 +245,8 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
     setStateWithIgnoreError(fn: () {});
   }
 
+  /// UncompleteDocumentation
+
   void reset() {
     setState(() {
       searchTextEditingController.clear();
@@ -217,7 +256,10 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
     });
   }
 
+  /// UncompleteDocumentation
   final GlobalKey appBarGlobalKey = GlobalKey();
+
+  /// UncompleteDocumentation
   PreferredSizeWidget appBar({
     required BuildContext context,
   }) {
@@ -304,6 +346,7 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
     );
   }
 
+  /// UncompleteDocumentation
   Widget body({
     required BuildContext context,
   }) {
@@ -367,6 +410,8 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
     return body(context: context);
   }
 
+  /// UncompleteDocumentation
+
   Iterable<Widget> contentsWidget({
     required BuildContext context,
   }) {
@@ -386,6 +431,7 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> {
     ];
   }
 
+  /// UncompleteDocumentation
   Widget contentWidget({
     required BuildContext context,
     required LanguageCodeDataDetail languageCodeDataDetail,

@@ -50,6 +50,7 @@ class LicenseGeneralFrameworkPage extends StatefulWidget {
   /// Defaults to the empty string.
   final String? applicationLegalese;
 
+  /// UncompleteDocumentation
   final String poweredBy;
 
   /// Creates a page that shows licenses for software used by the application.
@@ -73,6 +74,7 @@ class LicenseGeneralFrameworkPage extends StatefulWidget {
   State<LicenseGeneralFrameworkPage> createState() =>
       _LicenseGeneralFrameworkPageState();
 
+  /// UncompleteDocumentation
   static Future<T?> show<T>({
     required BuildContext context,
     required String poweredBy,
@@ -236,13 +238,24 @@ class _LicenseGeneralFrameworkPageState
   }
 }
 
+/// UncompleteDocumentation
 class LicenseAuthorGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final String name;
+
+  /// UncompleteDocumentation
   final String version;
+
+  /// UncompleteDocumentation
   final Widget? icon;
+
+  /// UncompleteDocumentation
   final String? legalese;
 
+  /// UncompleteDocumentation
   final String poweredBy;
+
+  /// UncompleteDocumentation
   const LicenseAuthorGeneralFrameworkWidget({
     super.key,
     required this.name,
@@ -307,14 +320,21 @@ class LicenseAuthorGeneralFrameworkWidget extends StatelessWidget {
 /// [packageLicenseBindings] records the m+:n+ relationship between the license
 /// and packages as a map of package names to license indexes.
 class LicenseDetailData extends ChangeNotifier {
+  /// UncompleteDocumentation
   final List<LicenseEntry> licenses = <LicenseEntry>[];
+
+  /// UncompleteDocumentation
   final Map<String, List<int>> packageLicenseBindings = <String, List<int>>{};
+
+  /// UncompleteDocumentation
   final List<String> packages = <String>[];
+
+  /// UncompleteDocumentation
   int? currentSelectedPackageIndex;
   // Special treatment for the first package since it should be the package
   // for delivered application.
   // String? firstPackage;
-
+  /// UncompleteDocumentation
   Future<void> refresh() async {
     currentSelectedPackageIndex = 0;
     licenses.clear();
@@ -328,11 +348,13 @@ class LicenseDetailData extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// UncompleteDocumentation
   void setindex(int index) {
     currentSelectedPackageIndex = index;
     notifyListeners();
   }
 
+  /// UncompleteDocumentation
   Future<void> addLicense(LicenseEntry entry) async {
     // Before the license can be added, we must first record the packages to
     // which it belongs.
@@ -384,7 +406,9 @@ class _DetailArguments {
   int get hashCode => Object.hash(packageName, Object.hashAll(licenseEntries));
 }
 
+/// UncompleteDocumentation
 class PackageLicenseLandscapeGeneralUiPage extends StatefulWidget {
+  /// UncompleteDocumentation
   const PackageLicenseLandscapeGeneralUiPage({
     super.key,
     required this.packageName,
@@ -392,8 +416,14 @@ class PackageLicenseLandscapeGeneralUiPage extends StatefulWidget {
     required this.scrollController,
   });
 
+  /// UncompleteDocumentation
+
   final String packageName;
+
+  /// UncompleteDocumentation
   final List<LicenseEntry> licenseEntries;
+
+  /// UncompleteDocumentation
   final ScrollController? scrollController;
 
   @override
@@ -401,6 +431,7 @@ class PackageLicenseLandscapeGeneralUiPage extends StatefulWidget {
       PackageLicenseLandscapeGeneralUiPageState();
 }
 
+/// UncompleteDocumentation
 class PackageLicenseLandscapeGeneralUiPageState
     extends State<PackageLicenseLandscapeGeneralUiPage> {
   @override
@@ -593,7 +624,10 @@ class PackageLicenseLandscapeGeneralUiPageState
   }
 }
 
+/// UncompleteDocumentation
+
 class PackageLicenseLandscapeGeneralUiPageTitle extends StatelessWidget {
+  /// UncompleteDocumentation
   const PackageLicenseLandscapeGeneralUiPageTitle({
     // ignore: unused_element
     super.key,
@@ -605,10 +639,19 @@ class PackageLicenseLandscapeGeneralUiPageTitle extends StatelessWidget {
     this.foregroundColor,
   });
 
+  /// UncompleteDocumentation
   final String title;
+
+  /// UncompleteDocumentation
   final String subtitle;
+
+  /// UncompleteDocumentation
   final TextTheme theme;
+
+  /// UncompleteDocumentation
   final TextStyle? titleTextStyle;
+
+  /// UncompleteDocumentation
   final Color? foregroundColor;
 
   @override
@@ -690,7 +733,14 @@ enum ActionLevelType {
 const String _navMaster = 'master';
 const String _navDetail = 'detail';
 
-enum FocusLicenseType { master, detail }
+/// UncompleteDocumentation
+enum FocusLicenseType {
+  /// UncompleteDocumentation
+  master,
+
+  /// UncompleteDocumentation
+  detail;
+}
 
 /// A Master Detail Flow widget. Depending on screen width it builds either a
 /// lateral or nested navigation flow between a master view and a detail page.
@@ -736,14 +786,14 @@ class MasterDetailFlowWidget extends StatefulWidget {
   @override
   MasterDetailFlowWidgetState createState() => MasterDetailFlowWidgetState();
 
-  // The master detail flow proxy from the closest instance of this class that encloses the given
-  // context.
-  //
-  // Typical usage is as follows:
-  //
-  // ```dart
-  // MasterDetailFlowWidget.of(context).openDetailPage(arguments);
-  // ```
+  /// The master detail flow proxy from the closest instance of this class that encloses the given
+  /// context.
+  ///
+  /// Typical usage is as follows:
+  ///
+  /// ```dart
+  /// MasterDetailFlowWidget.of(context).openDetailPage(arguments);
+  /// ```
   static MasterDetailFlowWidgetProxy of(BuildContext context) {
     _PageOpener? pageOpener =
         context.findAncestorStateOfType<MasterDetailScaffoldWidgetState>();
@@ -788,7 +838,7 @@ abstract class _PageOpener {
 }
 
 // const int _materialWideDisplayThreshold = 840;
-
+/// UncompleteDocumentation
 class MasterDetailFlowWidgetState extends State<MasterDetailFlowWidget>
     implements _PageOpener {
   /// Tracks whether focus is on the detail or master views. Determines behavior when switching
@@ -827,12 +877,13 @@ class MasterDetailFlowWidgetState extends State<MasterDetailFlowWidget>
     return potraitUi(context);
   }
 
+  /// UncompleteDocumentation
   Widget potraitUi(BuildContext context) {
     // _builtLayout = _LayoutMode.nested;
     final MaterialPageRoute<void> masterPageRoute = _masterPageRoute(context);
 
     return NavigatorPopHandler(
-      onPop: () {
+      onPopWithResult: (a) {
         _navigatorKey.currentState!.maybePop();
       },
       child: Navigator(
@@ -903,6 +954,7 @@ class MasterDetailFlowWidgetState extends State<MasterDetailFlowWidget>
     );
   }
 
+  /// UncompleteDocumentation
   MaterialPageRoute<void> detailPageRoute(Object? arguments) {
     return MaterialPageRoute<dynamic>(builder: (BuildContext context) {
       return PopScope(
@@ -916,6 +968,7 @@ class MasterDetailFlowWidgetState extends State<MasterDetailFlowWidget>
     });
   }
 
+  /// UncompleteDocumentation
   Widget landscapeUi(BuildContext context) {
     // _builtLayout = _LayoutMode.lateral;
     return MasterDetailScaffoldWidget(
@@ -964,7 +1017,9 @@ const double _kMasterViewWidth = 320.0;
 const double _kDetailPageFABlessGutterWidth = 40.0;
 const double _kDetailPageFABGutterWidth = 84.0;
 
+/// UncompleteDocumentation
 class MasterDetailScaffoldWidget extends StatefulWidget {
+  /// UncompleteDocumentation
   final MasterViewBuilderWidget masterViewBuilder;
 
   /// Builder for the detail page.
@@ -973,11 +1028,20 @@ class MasterDetailScaffoldWidget extends StatefulWidget {
   /// that uses the [ScrollController] provided. In fact, it is strongly recommended the entire
   /// lateral page is scrollable.
   final DetailPageBuilderWidget detailPageBuilder;
+
+  /// UncompleteDocumentation
   final ActionBuilderWidget? actionBuilder;
+
+  /// UncompleteDocumentation
   final Object? initialArguments;
+
+  /// UncompleteDocumentation
   final Widget? title;
+
+  /// UncompleteDocumentation
   final double? detailPageFABlessGutterWidth;
 
+  /// UncompleteDocumentation
   const MasterDetailScaffoldWidget({
     super.key,
     required this.detailPageBuilder,
@@ -993,11 +1057,19 @@ class MasterDetailScaffoldWidget extends StatefulWidget {
       MasterDetailScaffoldWidgetState();
 }
 
+/// UncompleteDocumentation
 class MasterDetailScaffoldWidgetState extends State<MasterDetailScaffoldWidget>
     implements _PageOpener {
+  /// UncompleteDocumentation
   late FloatingActionButtonLocation floatingActionButtonLocation;
+
+  /// UncompleteDocumentation
   late double detailPageFABGutterWidth;
+
+  /// UncompleteDocumentation
   late double detailPageFABlessGutterWidth;
+
+  /// UncompleteDocumentation
   late double masterViewWidth;
 
   final ValueNotifier<Object?> _detailArguments = ValueNotifier<Object?>(null);

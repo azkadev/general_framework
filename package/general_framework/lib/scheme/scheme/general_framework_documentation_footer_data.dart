@@ -4,7 +4,9 @@ import "package:general_lib/general_lib.dart";
 
 import "general_framework_documentation_footer_sub_data.dart";
 
+/// Generated
 class GeneralFrameworkDocumentationFooterData extends JsonScheme {
+  /// Generated
   GeneralFrameworkDocumentationFooterData(super.rawData);
 
   /// return default data
@@ -44,6 +46,7 @@ class GeneralFrameworkDocumentationFooterData extends JsonScheme {
     return GeneralFrameworkDocumentationFooterData({});
   }
 
+  /// Generated
   String? get special_type {
     try {
       if (rawData["@type"] is String == false) {
@@ -55,10 +58,12 @@ class GeneralFrameworkDocumentationFooterData extends JsonScheme {
     }
   }
 
+  /// Generated
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+  /// Generated
   String? get title {
     try {
       if (rawData["title"] is String == false) {
@@ -70,10 +75,12 @@ class GeneralFrameworkDocumentationFooterData extends JsonScheme {
     }
   }
 
+  /// Generated
   set title(String? value) {
     rawData["title"] = value;
   }
 
+  /// Generated
   List<GeneralFrameworkDocumentationFooterSubData> get footer {
     try {
       if (rawData["footer"] is List == false) {
@@ -88,10 +95,12 @@ class GeneralFrameworkDocumentationFooterData extends JsonScheme {
     }
   }
 
+  /// Generated
   set footer(List<GeneralFrameworkDocumentationFooterSubData> values) {
     rawData["footer"] = values.map((value) => value.toJson()).toList();
   }
 
+  /// Generated
   static GeneralFrameworkDocumentationFooterData create({
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "generalFrameworkDocumentationFooterData",

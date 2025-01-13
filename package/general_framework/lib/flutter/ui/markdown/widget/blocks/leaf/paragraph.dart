@@ -7,8 +7,10 @@ import '../../span_node.dart';
 ///
 ///A sequence of non-blank lines that cannot be interpreted as other kinds of blocks forms a paragraph
 class ParagraphNode extends ElementNode {
+  /// UncompleteDocumentation
   final ParagraphMarkdownConfig pConfig;
 
+  /// UncompleteDocumentation
   ParagraphNode(this.pConfig);
 
   @override
@@ -26,11 +28,14 @@ class ParagraphNode extends ElementNode {
 
 ///config class for paragraphs, tag: p
 class ParagraphMarkdownConfig implements LeafConfig {
+  /// UncompleteDocumentation
   final TextStyle textStyle;
 
+  /// UncompleteDocumentation
   const ParagraphMarkdownConfig(
       {this.textStyle = const TextStyle(fontSize: 16)});
 
+  /// UncompleteDocumentation
   static ParagraphMarkdownConfig get darkConfig =>
       const ParagraphMarkdownConfig(textStyle: TextStyle(fontSize: 16));
 

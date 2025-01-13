@@ -32,11 +32,19 @@ import '../../markdown_widget.dart';
 import 'html_support.dart';
 import 'package:markdown/markdown.dart' as m;
 
+/// UncompleteDocumentation
 class MarkdownCustomTextNodeGeneralFramework extends ElementNode {
+  /// UncompleteDocumentation
+
   final String text;
+
+  /// UncompleteDocumentation
   final MarkdownConfigGeneralFramework config;
+
+  /// UncompleteDocumentation
   final WidgetVisitor visitor;
 
+  /// UncompleteDocumentation
   MarkdownCustomTextNodeGeneralFramework(this.text, this.config, this.visitor);
 
   @override

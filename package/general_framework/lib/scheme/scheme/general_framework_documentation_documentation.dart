@@ -5,7 +5,9 @@ import "package:general_lib/general_lib.dart";
 import "general_framework_documentation_documentation_side_bar.dart";
 import "general_framework_documentation_documentations_content.dart";
 
+/// Generated
 class GeneralFrameworkDocumentationDocumentation extends JsonScheme {
+  /// Generated
   GeneralFrameworkDocumentationDocumentation(super.rawData);
 
   /// return default data
@@ -54,6 +56,7 @@ class GeneralFrameworkDocumentationDocumentation extends JsonScheme {
     return GeneralFrameworkDocumentationDocumentation({});
   }
 
+  /// Generated
   String? get special_type {
     try {
       if (rawData["@type"] is String == false) {
@@ -65,10 +68,12 @@ class GeneralFrameworkDocumentationDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+  /// Generated
   String? get doc_id {
     try {
       if (rawData["doc_id"] is String == false) {
@@ -80,10 +85,12 @@ class GeneralFrameworkDocumentationDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set doc_id(String? value) {
     rawData["doc_id"] = value;
   }
 
+  /// Generated
   String? get title {
     try {
       if (rawData["title"] is String == false) {
@@ -95,10 +102,12 @@ class GeneralFrameworkDocumentationDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set title(String? value) {
     rawData["title"] = value;
   }
 
+  /// Generated
   String? get description {
     try {
       if (rawData["description"] is String == false) {
@@ -110,10 +119,12 @@ class GeneralFrameworkDocumentationDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set description(String? value) {
     rawData["description"] = value;
   }
 
+  /// Generated
   List<GeneralFrameworkDocumentationDocumentationSideBar> get sidebars {
     try {
       if (rawData["sidebars"] is List == false) {
@@ -129,10 +140,12 @@ class GeneralFrameworkDocumentationDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set sidebars(List<GeneralFrameworkDocumentationDocumentationSideBar> values) {
     rawData["sidebars"] = values.map((value) => value.toJson()).toList();
   }
 
+  /// Generated
   List<GeneralFrameworkDocumentationDocumentationsContent> get contents {
     try {
       if (rawData["contents"] is List == false) {
@@ -148,11 +161,13 @@ class GeneralFrameworkDocumentationDocumentation extends JsonScheme {
     }
   }
 
+  /// Generated
   set contents(
       List<GeneralFrameworkDocumentationDocumentationsContent> values) {
     rawData["contents"] = values.map((value) => value.toJson()).toList();
   }
 
+  /// Generated
   static GeneralFrameworkDocumentationDocumentation create({
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "generalFrameworkDocumentationDocumentation",

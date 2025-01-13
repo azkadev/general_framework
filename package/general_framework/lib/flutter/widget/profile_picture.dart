@@ -2,32 +2,63 @@
 
 // import 'package:hive_flutter/hive_flutter.dart';
 
-import 'dart:ui';
-
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_framework/flutter/image/image_core.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:flutter/material.dart';
 
+/// UncompleteDocumentation
 class ProfilePictureGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final Color? color;
+
+  /// UncompleteDocumentation
   final dynamic pathImage;
+
+  /// UncompleteDocumentation
   final String nick_name;
+
+  /// UncompleteDocumentation
   final double width;
+
+  /// UncompleteDocumentation
   final double height;
 
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? margin;
+
+  /// UncompleteDocumentation
   final BorderRadiusGeometry? borderRadius;
+
+  /// UncompleteDocumentation
   final void Function()? onPressed;
+
+  /// UncompleteDocumentation
   final void Function()? onLongPress;
+
+  /// UncompleteDocumentation
   final void Function(bool data)? onHighlightChanged;
+
+  /// UncompleteDocumentation
   final bool isWithBorder;
+
+  /// UncompleteDocumentation
   final void Function(Object e, StackTrace? stackTrace)? onError;
+
+  /// UncompleteDocumentation
   final Widget Function(
       BuildContext context, Object error, StackTrace? stackTrace)? errorBuilder;
+
+  /// UncompleteDocumentation
   final bool isUseShadow;
+
+  /// UncompleteDocumentation
   final bool isLoading;
+
+  /// UncompleteDocumentation
   final ColorFilter? colorFilter;
+
+  /// UncompleteDocumentation
   const ProfilePictureGeneralFrameworkWidget({
     super.key,
     this.colorFilter,
@@ -48,6 +79,7 @@ class ProfilePictureGeneralFrameworkWidget extends StatelessWidget {
     required this.onPressed,
   });
 
+  /// UncompleteDocumentation
   Widget body(BuildContext context) {
     final decorationImageOrNull =
         ImageGeneralUiGeneralFramework.decorationImageOrNull(

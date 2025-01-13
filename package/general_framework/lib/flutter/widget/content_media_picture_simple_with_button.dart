@@ -3,20 +3,45 @@ import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_framework/flutter/image/image_core.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget
     extends StatelessWidget {
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? margin;
+
+  /// UncompleteDocumentation
   final bool isLoading;
+
+  /// UncompleteDocumentation
   final Size? size;
+
+  /// UncompleteDocumentation
+
   final dynamic media;
+
+  /// UncompleteDocumentation
   final String title;
+
+  /// UncompleteDocumentation
   final String subtitle;
+
+  /// UncompleteDocumentation
   final IconData iconData;
+
+  /// UncompleteDocumentation
   final void Function()? onPressed;
+
+  /// UncompleteDocumentation
   final BorderRadiusGeometry? borderRadius;
 
+  /// UncompleteDocumentation
+
   final bool isWithBorder;
+
+  /// UncompleteDocumentation
   final bool isWithBoxShadows;
+
+  /// UncompleteDocumentation
   const ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget({
     super.key,
     required this.isLoading,

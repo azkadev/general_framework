@@ -46,45 +46,65 @@ import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/flutter/client/general_framework_client_flutter_app_directory.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 typedef GeneralFrameworkClientFlutterFunction<
         T extends GeneralFrameworkClientFlutter>
     = T Function();
 
+/// UncompleteDocumentation
+
 abstract class GeneralFrameworkClientFlutterCore {
+  /// UncompleteDocumentation
   FutureOr<dynamic> onInvokeResult(
       Map result,
       Map parameters,
       GeneralFrameworkClientInvokeOptions
           generalFrameworkClientInvokeOptions) {}
 
+  /// UncompleteDocumentation
   FutureOr<Map?> onInvokeValidation(Map parameters,
       GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
     return null;
   }
 
+  /// UncompleteDocumentation
   Widget onErrorRoute(BuildContext context,
       RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
     throw UnimplementedError();
   }
+
+  /// UncompleteDocumentation
 
   Widget onNotFoundRoute(BuildContext context,
       RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
     throw UnimplementedError();
   }
 
+  /// UncompleteDocumentation
+
   void ensureInitializedRoute() {}
+
+  /// UncompleteDocumentation
 
   GeneralLibFlutterApp generalLibFlutterAppFunction() {
     throw UnimplementedError();
   }
 }
 
+/// UncompleteDocumentation
+
 abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
     implements GeneralFrameworkClientFlutterCore {
+  /// UncompleteDocumentation
   final GlobalKey<NavigatorState> navigatorKey;
+
+  /// UncompleteDocumentation
   final GeneralFlutter generalLibrary;
+
+  /// UncompleteDocumentation
   final T generalFrameworkClient;
 
+  /// UncompleteDocumentation
   late final RouteGeneralLibFlutter routeGeneralLibFlutter =
       RouteGeneralLibFlutter(
     onErrorRoute: onErrorRoute,
@@ -94,10 +114,12 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
   late final GeneralLibraryPlayerBase _player = generalLibrary.media_player;
   late final GeneralLibraryPlayerControllerBase _player_notification;
 
+  /// UncompleteDocumentation
   final GeneralFrameworkClientFlutterAppDirectory
       generalFrameworkClientFlutterAppDirectory =
       GeneralFrameworkClientFlutterAppDirectory();
 
+  /// UncompleteDocumentation
   GeneralFrameworkClientFlutter({
     required this.navigatorKey,
     required this.generalLibrary,
@@ -106,7 +128,10 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
     ensureInitializedRoute();
   }
 
+  /// UncompleteDocumentation
   bool is_initialized = false;
+
+  /// UncompleteDocumentation
   FutureOr<void> ensureInitialized({
     required BuildContext context,
     required FutureOr<void> Function(String textLoading) onLoading,
@@ -136,14 +161,18 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
     is_initialized = true;
   }
 
+  /// UncompleteDocumentation
+
   GeneralLibraryPlayerBase player() {
     return _player;
   }
 
+  /// UncompleteDocumentation
   GeneralLibraryPlayerControllerBase playerNotification() {
     return _player_notification;
   }
 
+  /// UncompleteDocumentation
   Future<void> playSoundNotification({
     required String soundNotification,
   }) async {

@@ -9,17 +9,37 @@ import 'toc.dart';
 
 ///use [MarkdownGeneralFrameworkGenerator] to transform markdown data to [Widget] list, so you can render it by any type of [ListView]
 class MarkdownGeneralFrameworkGenerator {
+  /// UncompleteDocumentation
   final Iterable<m.InlineSyntax> inlineSyntaxList;
+
+  /// UncompleteDocumentation
   final Iterable<m.BlockSyntax> blockSyntaxList;
+
+  /// UncompleteDocumentation
   final EdgeInsets linesMargin;
+
+  /// UncompleteDocumentation
   final List<MarkdownSpanNodeGeneralFrameworkWidgetGeneratorWithTag> generators;
+
+  /// UncompleteDocumentation
   final MarkdownSpanNodeGeneralFrameworkWidgetAcceptCallback? onNodeAccepted;
+
+  /// UncompleteDocumentation
   final m.ExtensionSet? extensionSet;
+
+  /// UncompleteDocumentation
   final TextNodeGenerator? textGenerator;
+
+  /// UncompleteDocumentation
   final MarkdownSpanNodeGeneralFrameworkWidgetBuilder? spanNodeBuilder;
+
+  /// UncompleteDocumentation
   final RichTextBuilder? richTextBuilder;
+
+  /// UncompleteDocumentation
   final RegExp? splitRegExp;
 
+  /// UncompleteDocumentation
   MarkdownGeneralFrameworkGenerator({
     this.inlineSyntaxList = const [],
     this.blockSyntaxList = const [],
@@ -75,7 +95,9 @@ class MarkdownGeneralFrameworkGenerator {
   }
 }
 
+/// UncompleteDocumentation
 typedef MarkdownSpanNodeGeneralFrameworkWidgetBuilder = TextSpan Function(
     MarkdownSpanNodeGeneralFrameworkWidget spanNode);
 
+/// UncompleteDocumentation
 typedef RichTextBuilder = Widget Function(InlineSpan span);

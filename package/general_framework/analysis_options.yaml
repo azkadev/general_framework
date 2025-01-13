@@ -1,13 +1,13 @@
 include: package:general_framework/lints/lints.yaml
-
-linter: 
+linter:
   rules:
-    # - prefer
-
-
-
+    - public_member_api_docs
 analyzer:
   exclude:
     - bin/
     - template/
     - dev/
+    - test
+    - dev
+    - templates
+    - lib/templates

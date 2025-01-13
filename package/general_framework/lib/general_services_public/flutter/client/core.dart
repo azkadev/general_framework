@@ -7,7 +7,9 @@ import 'package:general_lib/language/language_core.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import "package:path/path.dart" as path;
 
+/// UncompleteDocumentation
 abstract class GeneralServicePublicClientFlutterBaseCore {
+  /// UncompleteDocumentation
   bool checkIsLoggin({
     required BuildContext context,
     required bool isReplace,
@@ -24,13 +26,15 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
   // }) {
   //   throw UnimplementedError("");
   // }
-
+  /// UncompleteDocumentation
   dynamic home(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
   ) {
     throw UnimplementedError("");
   }
+
+  /// UncompleteDocumentation
 
   dynamic ads(
     BuildContext context,
@@ -39,6 +43,7 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
     throw UnimplementedError("");
   }
 
+  /// UncompleteDocumentation
   dynamic adsCreate(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
@@ -46,6 +51,7 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
     throw UnimplementedError("");
   }
 
+  /// UncompleteDocumentation
   dynamic bot(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
@@ -53,12 +59,15 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
     throw UnimplementedError("");
   }
 
+  /// UncompleteDocumentation
   dynamic developer(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
   ) {
     throw UnimplementedError("");
   }
+
+  /// UncompleteDocumentation
 
   dynamic unban(
     BuildContext context,
@@ -67,12 +76,16 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
     throw UnimplementedError("");
   }
 
+  /// UncompleteDocumentation
+
   dynamic sign(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
   ) {
     throw UnimplementedError("");
   }
+
+  /// UncompleteDocumentation
 
   dynamic generalAppPublicAuthor(
     BuildContext context,
@@ -81,6 +94,7 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
     throw UnimplementedError("");
   }
 
+  /// UncompleteDocumentation
   dynamic generalAppPublicContent(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
@@ -88,6 +102,7 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
     throw UnimplementedError("");
   }
 
+  /// UncompleteDocumentation
   dynamic generalAppPublicDocumentation(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
@@ -95,6 +110,7 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
     throw UnimplementedError("");
   }
 
+  /// UncompleteDocumentation
   dynamic generalAppPublicProduct(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
@@ -102,6 +118,7 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
     throw UnimplementedError("");
   }
 
+  /// UncompleteDocumentation
   dynamic generalAppPublicService(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
@@ -109,6 +126,7 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
     throw UnimplementedError("");
   }
 
+  /// UncompleteDocumentation
   dynamic generalAppPublicPricing(
     BuildContext context,
     RouteDataGeneralLibFlutter data,
@@ -116,11 +134,14 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
     throw UnimplementedError("");
   }
 
+  /// UncompleteDocumentation
   String privacyPolicyContent({
     required Language? language,
   }) {
     throw UnimplementedError("");
   }
+
+  /// UncompleteDocumentation
 
   String termOfServicesContent({
     required Language? language,
@@ -128,30 +149,39 @@ abstract class GeneralServicePublicClientFlutterBaseCore {
     throw UnimplementedError("");
   }
 
+  /// UncompleteDocumentation
+
   GeneralLibFlutterApp generalLibFlutterApp() {
     throw UnimplementedError("");
   }
 }
 
-///////
+/// UncompleteDocumentation
 
 abstract class GeneralServicePublicClientFlutter<
         T extends GeneralFrameworkClientFlutter,
         K extends GeneralServicePublicClient>
     implements GeneralServicePublicClientFlutterBaseCore {
+  /// UncompleteDocumentation
   final GeneralFrameworkClientFlutterFunction<T>
       generalFrameworkClientFlutterFunction;
+
+  /// UncompleteDocumentation
   final K generalServicePublic;
+
+  /// UncompleteDocumentation
 
   GeneralServicePublicClientFlutter({
     required this.generalFrameworkClientFlutterFunction,
     required this.generalServicePublic,
   });
 
+  /// UncompleteDocumentation
   T get generalFrameworkClientFlutter {
     return generalFrameworkClientFlutterFunction();
   }
 
+  /// UncompleteDocumentation
   FutureOr<void> ensureInitialized({
     required BuildContext context,
     required FutureOr<void> Function(
@@ -166,6 +196,8 @@ abstract class GeneralServicePublicClientFlutter<
           "general_services_public"),
     );
   }
+
+  /// UncompleteDocumentation
 
   void ensureInitializedRoute() {
     generalFrameworkClientFlutter.routeGeneralLibFlutter
@@ -201,18 +233,27 @@ abstract class GeneralServicePublicClientFlutter<
   }
 }
 
+/// UncompleteDocumentation
+
 abstract class GeneralServicesPublicFlutterAppStatefulWidget<
     T extends GeneralServicePublicClientFlutter> extends StatefulWidget {
+  /// UncompleteDocumentation
   final T generalServicesPublicFlutter;
+
+  /// UncompleteDocumentation
   const GeneralServicesPublicFlutterAppStatefulWidget({
     super.key,
     required this.generalServicesPublicFlutter,
   });
 }
 
+/// UncompleteDocumentation
 abstract class GeneralServicesPublicFlutterAppStatelessWidget<
     T extends GeneralServicePublicClientFlutter> extends StatelessWidget {
+  /// UncompleteDocumentation
   final T generalServicesPublicFlutter;
+
+  /// UncompleteDocumentation
   const GeneralServicesPublicFlutterAppStatelessWidget({
     super.key,
     required this.generalServicesPublicFlutter,

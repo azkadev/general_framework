@@ -3,35 +3,91 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 class TabbarGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final bool isLoading;
+
+  /// UncompleteDocumentation
   final TabController? controller;
+
+  /// UncompleteDocumentation
   final void Function(int index)? onTap;
+
+  /// UncompleteDocumentation
   final List<Widget> tabs;
 
+  /// UncompleteDocumentation
   final bool isScrollable;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? padding;
+
+  /// UncompleteDocumentation
   final Color? indicatorColor;
+
+  /// UncompleteDocumentation
   final bool automaticIndicatorColorAdjustment;
+
+  /// UncompleteDocumentation
   final double indicatorWeight;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry indicatorPadding;
+
+  /// UncompleteDocumentation
   final Decoration? indicator;
+
+  /// UncompleteDocumentation
   final TabBarIndicatorSize? indicatorSize;
+
+  /// UncompleteDocumentation
   final Color? dividerColor;
+
+  /// UncompleteDocumentation
+
   final double? dividerHeight;
+
+  /// UncompleteDocumentation
   final Color? labelColor;
+
+  /// UncompleteDocumentation
   final TextStyle? labelStyle;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? labelPadding;
+
+  /// UncompleteDocumentation
   final Color? unselectedLabelColor;
+
+  /// UncompleteDocumentation
   final TextStyle? unselectedLabelStyle;
+
+  /// UncompleteDocumentation
   final DragStartBehavior dragStartBehavior;
+
+  /// UncompleteDocumentation
   final WidgetStateProperty<Color?>? overlayColor;
+
+  /// UncompleteDocumentation
   final MouseCursor? mouseCursor;
+
+  /// UncompleteDocumentation
   final bool? enableFeedback;
+
+  /// UncompleteDocumentation
   final ScrollPhysics? physics;
+
+  /// UncompleteDocumentation
   final InteractiveInkFeatureFactory? splashFactory;
+
+  /// UncompleteDocumentation
   final BorderRadius? splashBorderRadius;
+
+  /// UncompleteDocumentation
   final TabAlignment? tabAlignment;
+
+  /// UncompleteDocumentation
   const TabbarGeneralFrameworkWidget({
     super.key,
     this.isLoading = false,
@@ -63,6 +119,7 @@ class TabbarGeneralFrameworkWidget extends StatelessWidget {
     this.tabAlignment,
   });
 
+  /// UncompleteDocumentation
   static Widget builder({
     Key? key,
     bool isLoading = false,

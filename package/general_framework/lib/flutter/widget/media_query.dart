@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
+/// UncompleteDocumentation
 class MediaQuerGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final MediaQueryData mediaQueryData;
+
+  /// UncompleteDocumentation
   final WidgetBuilder builder;
+
+  /// UncompleteDocumentation
   const MediaQuerGeneralFrameworkWidget({
     super.key,
     required this.mediaQueryData,

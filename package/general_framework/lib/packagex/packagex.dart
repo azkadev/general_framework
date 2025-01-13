@@ -1,15 +1,19 @@
 // ignore_for_file: non_constant_identifier_names
 import 'dart:convert';
 
+/// UncompleteDocumentation
 class PackagexProjectGeneralFramework {
+  /// UncompleteDocumentation
   static bool isSame({required String data}) {
     return [default_data_to_string, json.encode(default_data)].contains(data);
   }
 
+  /// UncompleteDocumentation
   static String get default_data_to_string {
     return (JsonEncoder.withIndent(" " * 2).convert(default_data));
   }
 
+  /// UncompleteDocumentation
   static Map get default_data {
     return {
       "name": "general_framework",

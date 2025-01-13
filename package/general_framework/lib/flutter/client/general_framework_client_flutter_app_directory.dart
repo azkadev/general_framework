@@ -45,14 +45,30 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:io_universe/io_universe.dart';
 import "package:path/path.dart" as path;
 
+/// UncompleteDocumentation
 class GeneralFrameworkClientFlutterAppDirectory {
+  /// UncompleteDocumentation
   Directory app_temp_directory = Directory("");
+
+  /// UncompleteDocumentation
   Directory app_support_directory = Directory("");
+
+  /// UncompleteDocumentation
   Directory app_document_directory = Directory("");
+
+  /// UncompleteDocumentation
   Directory app_cache_directory = Directory("");
+
+  /// UncompleteDocumentation
   Directory app_external_storage_directory = Directory("");
+
+  /// UncompleteDocumentation
   Directory app_download_directory = Directory("");
+
+  /// UncompleteDocumentation
   GeneralFrameworkClientFlutterAppDirectory();
+
+  /// UncompleteDocumentation
   Future<void> ensureInitialized({
     required BuildContext context,
     required FutureOr<void> Function(String text) onLoading,

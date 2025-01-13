@@ -241,7 +241,7 @@ class SkeletonizerGeneralFrameworkCanvas implements Canvas {
 
   @override
   void drawDRRect(ui.RRect outer, ui.RRect inner, ui.Paint paint) {
-    if (paint.color.opacity == 0) return;
+    if (paint.color.a == 0) return;
     context._didPaint = true;
     final treatAsBone = context._treatedAsLeaf[outer.center] ?? false;
     if (treatAsBone) {
@@ -334,7 +334,7 @@ class SkeletonizerGeneralFrameworkCanvas implements Canvas {
 
   @override
   void drawPath(ui.Path path, ui.Paint paint) {
-    if (paint.color.opacity == 0) return;
+    if (paint.color.a == 0) return;
     context._didPaint = true;
     final treatAsBone =
         context._treatedAsLeaf[path.getBounds().center] ?? false;
@@ -352,7 +352,7 @@ class SkeletonizerGeneralFrameworkCanvas implements Canvas {
 
   @override
   void drawRect(ui.Rect rect, ui.Paint paint) {
-    if (paint.color.opacity == 0) return;
+    if (paint.color.a == 0) return;
     context._didPaint = true;
     final treatAsBone = context._treatedAsLeaf[rect.center] ?? false;
     if (treatAsBone) {
@@ -368,7 +368,7 @@ class SkeletonizerGeneralFrameworkCanvas implements Canvas {
 
   @override
   void drawRRect(ui.RRect rrect, ui.Paint paint) {
-    if (paint.color.opacity == 0) return;
+    if (paint.color.a == 0) return;
     context._didPaint = true;
     final treatAsBone = context._treatedAsLeaf[rrect.center] ?? false;
     if (treatAsBone) {
@@ -385,7 +385,7 @@ class SkeletonizerGeneralFrameworkCanvas implements Canvas {
 
   @override
   void drawCircle(ui.Offset c, double radius, ui.Paint paint) {
-    if (paint.color.opacity == 0) return;
+    if (paint.color.a == 0) return;
     context._didPaint = true;
     final treatAsBone = context._treatedAsLeaf[c] ?? false;
     if (treatAsBone) {

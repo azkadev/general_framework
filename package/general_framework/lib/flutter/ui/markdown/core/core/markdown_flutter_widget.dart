@@ -8,23 +8,43 @@ import 'custom_text_node.dart';
 
 import '../../markdown_widget.dart';
 
+/// UncompleteDocumentation
 class MarkdownFlutterGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final String data;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? padding;
+
+  /// UncompleteDocumentation
   final bool shrinkWrap;
+
+  /// UncompleteDocumentation
   final bool selectable;
+
+  /// UncompleteDocumentation
   final MarkdownConfigGeneralFramework Function(
     BuildContext context,
     MarkdownConfigGeneralFramework markdownConfigGeneralFramework,
     void Function(String url) onUrlPressed,
   )? markdownConfigBuilder;
+
+  /// UncompleteDocumentation
   final MarkdownGeneralFrameworkGenerator Function(
     BuildContext context,
     MarkdownGeneralFrameworkGenerator markdownGeneralFrameworkGenerator,
   )? markdownGeneralFrameworkGeneratorBuilder;
+
+  /// UncompleteDocumentation
   final ScrollPhysics? physics;
+
+  /// UncompleteDocumentation
   final TocControllerGeneralFrameworkWidget? tocController;
+
+  /// UncompleteDocumentation
   final void Function(String url) onUrlPressed;
+
+  /// UncompleteDocumentation
   const MarkdownFlutterGeneralFrameworkWidget({
     super.key,
     this.padding,
@@ -56,6 +76,7 @@ class MarkdownFlutterGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
+  /// UncompleteDocumentation
   static MarkdownConfigGeneralFramework markdownConfigDefault(
     BuildContext context,
     void Function(String url) onUrlPressed,
@@ -174,6 +195,7 @@ class MarkdownFlutterGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
+  /// UncompleteDocumentation
   static MarkdownConfigGeneralFramework markdownConfigBuilderDefault(
     BuildContext context,
     MarkdownConfigGeneralFramework markdownConfigGeneralFramework,
@@ -182,6 +204,7 @@ class MarkdownFlutterGeneralFrameworkWidget extends StatelessWidget {
     return markdownConfigGeneralFramework;
   }
 
+  /// UncompleteDocumentation
   static MarkdownGeneralFrameworkGenerator
       markdownGeneralFrameworkGeneratorDefault(
     BuildContext context,
@@ -198,6 +221,7 @@ class MarkdownFlutterGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
+  /// UncompleteDocumentation
   static MarkdownGeneralFrameworkGenerator
       markdownGeneralFrameworkGeneratorBuilderDefault(
     BuildContext context,

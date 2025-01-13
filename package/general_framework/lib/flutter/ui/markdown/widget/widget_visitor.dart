@@ -37,8 +37,10 @@ class WidgetVisitor implements m.NodeVisitor {
   ///use [splitRegExp] to split markdown data
   final RegExp? splitRegExp;
 
+  /// UncompleteDocumentation
   static RegExp defaultSplitRegExp = RegExp(r'(\r?\n)|(\r)');
 
+  /// UncompleteDocumentation
   WidgetVisitor({
     MarkdownConfigGeneralFramework? config,
     this.generators = const [],
@@ -145,6 +147,8 @@ class WidgetVisitor implements m.NodeVisitor {
         ImageNode(e.attributes, config, visitor),
   };
 
+  /// UncompleteDocumentation
+
   MarkdownSpanNodeGeneralFrameworkWidget getNodeByElement(
       m.Element element, MarkdownConfigGeneralFramework config) {
     return _tag2node[element.tag]?.call(element, config, this) ??
@@ -168,9 +172,13 @@ typedef MarkdownSpanNodeGeneralFrameworkWidgetAcceptCallback = void Function(
 
 ///use [MarkdownSpanNodeGeneralFrameworkWidgetGeneratorWithTag] that you can custom your own [MarkdownSpanNodeGeneralFrameworkWidgetGenerator] with tag
 class MarkdownSpanNodeGeneralFrameworkWidgetGeneratorWithTag {
+  /// UncompleteDocumentation
   final String tag;
+
+  /// UncompleteDocumentation
   final MarkdownSpanNodeGeneralFrameworkWidgetGenerator generator;
 
+  /// UncompleteDocumentation
   MarkdownSpanNodeGeneralFrameworkWidgetGeneratorWithTag(
       {required this.tag, required this.generator});
 }

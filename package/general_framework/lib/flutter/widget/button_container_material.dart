@@ -2,25 +2,57 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/extension/build_context.dart';
 
+/// UncompleteDocumentation
 class ButtonContainerMaterialGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final double? height;
+
+  /// UncompleteDocumentation
   final double? width;
 
+  /// UncompleteDocumentation
+
   final EdgeInsetsGeometry? margin;
+
+  /// UncompleteDocumentation
   final EdgeInsetsGeometry? padding;
+
+  /// UncompleteDocumentation
   final BorderRadiusGeometry? borderRadius;
 
+  /// UncompleteDocumentation
   final Clip clipBehavior;
+
+  /// UncompleteDocumentation
   final Color? color;
 
+  /// UncompleteDocumentation
+
   final bool isWithBorder;
+
+  /// UncompleteDocumentation
   final bool isWithBoxShadows;
+
+  /// UncompleteDocumentation
   final bool isLoading;
+
+  /// UncompleteDocumentation
+
   final DecorationBuilderGeneralFrameworkWidget? decorationBuilder;
+
+  /// UncompleteDocumentation
   final void Function()? onPressed;
+
+  /// UncompleteDocumentation
   final void Function()? onLongPress;
+
+  /// UncompleteDocumentation
   final void Function(bool value)? onHighlightChanged;
+
+  /// UncompleteDocumentation
   final WidgetBuilder builder;
+
+  /// UncompleteDocumentation
   const ButtonContainerMaterialGeneralFrameworkWidget({
     super.key,
     this.height,

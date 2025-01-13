@@ -4,7 +4,9 @@ import "package:general_lib/general_lib.dart";
 
 import "inline_keyboard.dart";
 
+/// Generated
 class ContentAds extends JsonScheme {
+  /// Generated
   ContentAds(super.rawData);
 
   /// return default data
@@ -45,6 +47,7 @@ class ContentAds extends JsonScheme {
     return ContentAds({});
   }
 
+  /// Generated
   String? get special_type {
     try {
       if (rawData["@type"] is String == false) {
@@ -56,10 +59,12 @@ class ContentAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+  /// Generated
   String? get ads_unique_id {
     try {
       if (rawData["ads_unique_id"] is String == false) {
@@ -71,10 +76,12 @@ class ContentAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set ads_unique_id(String? value) {
     rawData["ads_unique_id"] = value;
   }
 
+  /// Generated
   String? get content_type {
     try {
       if (rawData["content_type"] is String == false) {
@@ -86,10 +93,12 @@ class ContentAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set content_type(String? value) {
     rawData["content_type"] = value;
   }
 
+  /// Generated
   ///
   /// default:
   ///
@@ -105,10 +114,12 @@ class ContentAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set medias(List<String> value) {
     rawData["medias"] = value;
   }
 
+  /// Generated
   String? get caption {
     try {
       if (rawData["caption"] is String == false) {
@@ -120,10 +131,12 @@ class ContentAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set caption(String? value) {
     rawData["caption"] = value;
   }
 
+  /// Generated
   List<List<InlineKeyboard>> get inline_keyboard {
     try {
       if (rawData["inline_keyboard"] is List == false) {
@@ -141,12 +154,14 @@ class ContentAds extends JsonScheme {
     }
   }
 
+  /// Generated
   set inline_keyboard(List<List<InlineKeyboard>> values) {
     rawData["inline_keyboard"] = values
         .map((value) => value.map((value) => value.toJson()).toList())
         .toList();
   }
 
+  /// Generated
   static ContentAds create({
     bool schemeUtilsIsSetDefaultData = false,
     String special_type = "contentAds",

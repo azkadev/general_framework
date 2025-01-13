@@ -47,9 +47,12 @@ import 'package:general_lib/script_generate/script_generate.dart';
 import "package:path/path.dart" as path;
 import 'package:io_universe/io_universe.dart';
 
+/// UncompleteDocumentation
 class GeneralFrameworkApi {
+  /// UncompleteDocumentation
   GeneralFrameworkApi();
 
+  /// UncompleteDocumentation
   Map<String, List<ScriptGenerator>> get templates {
     return {
       "app": app_template_general_framework_project_script_generators,
@@ -63,6 +66,7 @@ class GeneralFrameworkApi {
     };
   }
 
+  /// UncompleteDocumentation
   Future<Map> createProject({
     required String name_project,
     required List<ScriptGenerator> template_project,

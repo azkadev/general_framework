@@ -2,23 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/widget/widget.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 enum ThemeChangeGeneralFrameworkWidgetStyle {
+  /// UncompleteDocumentation
   minimalist,
+
+  /// UncompleteDocumentation
   listTile,
+
+  /// UncompleteDocumentation
   full,
 }
 
+/// UncompleteDocumentation
 class ThemeChangeGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final GeneralLibFlutterApp generalLibFlutterApp;
+
+  /// UncompleteDocumentation
   final ThemeChangeGeneralFrameworkWidgetStyle
       themeChangeGeneralFrameworkWidgetStyle;
+
+  /// UncompleteDocumentation
   final void Function() onChanged;
+
+  /// UncompleteDocumentation
   const ThemeChangeGeneralFrameworkWidget({
     super.key,
     required this.themeChangeGeneralFrameworkWidgetStyle,
     required this.generalLibFlutterApp,
     required this.onChanged,
   });
+
+  /// UncompleteDocumentation
   static void onPressedDefault({
     required BuildContext context,
     required final GeneralLibFlutterApp generalLibFlutterApp,
@@ -31,6 +47,8 @@ class ThemeChangeGeneralFrameworkWidget extends StatelessWidget {
     );
     onChanged();
   }
+
+  /// UncompleteDocumentation
 
   static Widget iconButtonWidget({
     required BuildContext context,
@@ -48,6 +66,7 @@ class ThemeChangeGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
+  /// UncompleteDocumentation
   static Widget iconWidget({
     required final GeneralLibFlutterApp generalLibFlutterApp,
   }) {
@@ -66,6 +85,7 @@ class ThemeChangeGeneralFrameworkWidget extends StatelessWidget {
     );
   }
 
+  /// UncompleteDocumentation
   static Widget textWidget({
     required final GeneralLibFlutterApp generalLibFlutterApp,
   }) {

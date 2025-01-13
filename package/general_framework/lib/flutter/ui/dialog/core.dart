@@ -5,7 +5,9 @@ import 'package:general_framework/flutter/typedef/typedef.dart';
 import 'package:general_framework/flutter/widget/menu_container.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 class DialogGeneralFramework {
+  /// UncompleteDocumentation
   static Future<T?> showBuilder<T>({
     required BuildContext context,
     required WidgetBuilder builder,
@@ -44,6 +46,8 @@ class DialogGeneralFramework {
       },
     );
   }
+
+  /// UncompleteDocumentation
 
   static Future<T?> show<T>({
     required BuildContext context,
@@ -121,7 +125,10 @@ class DialogGeneralFramework {
   }
 }
 
+/// UncompleteDocumentation
+
 extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
+  /// UncompleteDocumentation
   Future<B?> showDialogBuilderWithTitleGeneralFramework<B>({
     required IconData icons,
     required String title,
@@ -203,6 +210,8 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     );
   }
 
+  /// UncompleteDocumentation
+
   Future<B?> showDialogBuildersWithTitleGeneralFramework<B>({
     required IconData icons,
     required String title,
@@ -240,6 +249,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     );
   }
 
+  /// UncompleteDocumentation
   Future<B?> showDialogGeneralFramework<B>({
     required Widget Function(
             BuildContext context, void Function(void Function()) setState)
@@ -274,6 +284,8 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
       builder: builder,
     );
   }
+
+  /// UncompleteDocumentation
 
   Future<T?> showDialogFloatingGeneralFramework<T>({
     required Widget Function(
@@ -338,6 +350,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     );
   }
 
+  /// UncompleteDocumentation
   RelativeRect treePopUpMenuPositionGeneralFramework({
     PopupMenuPosition? popupMenuPosition,
     Offset popUpOffset = Offset.zero,
@@ -376,6 +389,8 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
 
     return position;
   }
+
+  /// UncompleteDocumentation
 
   Future<T?> showMenuGeneralFramework<T>({
     required List<PopupMenuEntry<T>> items,
@@ -418,6 +433,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     );
   }
 
+  /// UncompleteDocumentation
   Future<T?> showModalBottomSheetGeneralFramework<T>({
     required Widget Function(BuildContext context) builder,
     Color? backgroundColor,
@@ -442,7 +458,8 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     return await showModalBottomSheet<T>(
       context: this,
       builder: builder,
-      backgroundColor: theme.primaryColor.withOpacity(0.85),
+      // backgroundColor: theme.primaryColor.withOpacity(0.85),
+      backgroundColor: theme.primaryColor.withValues(alpha: 0.85),
       barrierLabel: barrierLabel,
       elevation: elevation,
       shape: shape,

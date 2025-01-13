@@ -2,16 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 class MaterialOutlineGeneralFrameworkBuilderGeneralWidget
     extends StatelessWidget {
+  /// UncompleteDocumentation
   final double? width;
+
+  /// UncompleteDocumentation
   final double? height;
+
+  /// UncompleteDocumentation
   final EdgeInsets margin;
+
+  /// UncompleteDocumentation
   final BorderRadius borderRadius;
+
+  /// UncompleteDocumentation
   final Color? color;
+
+  /// UncompleteDocumentation
   final Widget child;
+
+  /// UncompleteDocumentation
   final bool isLoading;
+
+  /// UncompleteDocumentation
   final BoxConstraints? constraints;
+
+  /// UncompleteDocumentation
   const MaterialOutlineGeneralFrameworkBuilderGeneralWidget({
     super.key,
     this.color,
@@ -46,17 +64,37 @@ class MaterialOutlineGeneralFrameworkBuilderGeneralWidget
   }
 }
 
+/// UncompleteDocumentation
 class MaterialOutlineGeneralFrameworkButtonBuilderGeneralWidget
     extends StatelessWidget {
+  /// UncompleteDocumentation
   final double? width;
+
+  /// UncompleteDocumentation
   final double? height;
+
+  /// UncompleteDocumentation
   final BoxConstraints? constraints;
+
+  /// UncompleteDocumentation
   final EdgeInsets margin;
+
+  /// UncompleteDocumentation
   final BorderRadius borderRadius;
+
+  /// UncompleteDocumentation
   final Widget child;
+
+  /// UncompleteDocumentation
   final bool isLoading;
+
+  /// UncompleteDocumentation
   final void Function()? onPressed;
+
+  /// UncompleteDocumentation
   final Color? color;
+
+  /// UncompleteDocumentation
   const MaterialOutlineGeneralFrameworkButtonBuilderGeneralWidget({
     super.key,
     this.color,
@@ -91,17 +129,37 @@ class MaterialOutlineGeneralFrameworkButtonBuilderGeneralWidget
   }
 }
 
+/// UncompleteDocumentation
 class MaterialOutlineGeneralFrameworkButtonGeneralWidget
     extends StatelessWidget {
+  /// UncompleteDocumentation
   final double? width;
+
+  /// UncompleteDocumentation
   final double? height;
+
+  /// UncompleteDocumentation
   final BoxConstraints? constraints;
+
+  /// UncompleteDocumentation
   final EdgeInsets margin;
+
+  /// UncompleteDocumentation
   final BorderRadius borderRadius;
+
+  /// UncompleteDocumentation
   final String text;
+
+  /// UncompleteDocumentation
   final bool isLoading;
+
+  /// UncompleteDocumentation
   final void Function()? onPressed;
+
+  /// UncompleteDocumentation
   final Color? color;
+
+  /// UncompleteDocumentation
   const MaterialOutlineGeneralFrameworkButtonGeneralWidget({
     super.key,
     this.color,

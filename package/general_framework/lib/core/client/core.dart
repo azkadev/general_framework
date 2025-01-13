@@ -45,13 +45,17 @@ import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/scheme/socket_connection.dart';
 import 'package:http/http.dart';
 
+/// UncompleteDocumentation
 typedef GeneralFrameworkClientFunction<T extends GeneralFrameworkClient> = T
     Function();
 
+/// UncompleteDocumentation
 typedef InvokeClientValidationFunction<T> = FutureOr<T> Function(
   Map parameters,
   GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions,
 );
+
+/// UncompleteDocumentation
 
 typedef InvokeClientFunction<T> = FutureOr<T> Function(
   Map result,
@@ -59,13 +63,16 @@ typedef InvokeClientFunction<T> = FutureOr<T> Function(
   GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions,
 );
 
+/// UncompleteDocumentation
 abstract class GeneralFrameworkClientBaseCore {
+  /// UncompleteDocumentation
   String encryptData({
     required Map data,
   }) {
     return json.encode(data);
   }
 
+  /// UncompleteDocumentation
   String decryptData({
     required String data,
   }) {
@@ -77,25 +84,57 @@ abstract class GeneralFrameworkClientBaseCore {
 /// is universal client for help you connection to rest api server super easy friendly
 abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
     implements GeneralFrameworkClientBaseCore {
+  /// UncompleteDocumentation
   final WebSocketClient web_socket_client = WebSocketClient("");
+
+  /// UncompleteDocumentation
   final TcpSocketClient tcp_socket_client = TcpSocketClient(host: "", port: 0);
+
+  /// UncompleteDocumentation
   final EventEmitter event_emitter;
+
+  /// UncompleteDocumentation
   final String eventUpdate;
+
+  /// UncompleteDocumentation
   final String eventInvoke;
+
+  /// UncompleteDocumentation
   final Client http_client;
+
+  /// UncompleteDocumentation
   final NetworkClientConnectionType networkClientConnectionType;
+
+  /// UncompleteDocumentation
   late final GeneralFrameworkClientInvokeOptions
       generalFrameworkClientInvokeOptions;
+
+  /// UncompleteDocumentation
   final String apiUrl;
+
+  /// UncompleteDocumentation
   final GeneralLibrary generalLibrary;
+
+  /// UncompleteDocumentation
   final D generalFrameworkDatabase;
+
+  /// UncompleteDocumentation
   late final InvokeClientValidationFunction<Map?> onInvokeValidation;
+
   // late final InvokeClientFunction<dynamic> onInvokeRequest;
+  /// UncompleteDocumentation
   late final InvokeClientFunction<dynamic> onInvokeResult;
 
+  /// UncompleteDocumentation
   late final String currentPath;
+
+  /// UncompleteDocumentation
   final String pathApi;
+
+  /// UncompleteDocumentation
   final String pathWebSocket;
+
+  /// UncompleteDocumentation
   GeneralFrameworkClient({
     required this.pathApi,
     required this.pathWebSocket,
@@ -111,12 +150,14 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
   })  : event_emitter = eventEmitter ?? EventEmitter(),
         http_client = httpClient ?? Client();
 
+  /// UncompleteDocumentation
   Uri get api_uri {
     return Uri.parse(apiUrl).replace(
       path: pathApi,
     );
   }
 
+  /// UncompleteDocumentation
   Language language({
     String? languageCodeId,
   }) {
@@ -125,6 +166,8 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
       regexpReplaces: [],
     );
   }
+
+  /// UncompleteDocumentation
 
   bool is_initialized = false;
 
@@ -168,6 +211,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
     }
   }
 
+  /// UncompleteDocumentation
   Future<void> onSocketData(dynamic data) async {
     final Map result = await Future(() async {
       try {
@@ -194,10 +238,13 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
     }
   }
 
+  /// UncompleteDocumentation
+
   FutureOr<void> onSocketConnection(SocketConnection socketConnection) {
     emit(event_name: eventInvoke, data: socketConnection.toJson());
   }
 
+  /// UncompleteDocumentation
   EventEmitterListener on({
     required String event_name,
     required FutureOr<dynamic> Function(Map update) callback,
@@ -218,6 +265,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
     );
   }
 
+  /// UncompleteDocumentation
   void emit({
     required String event_name,
     required Object data,
@@ -228,6 +276,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
     );
   }
 
+  /// UncompleteDocumentation
   String utils_generateExtra({
     required int length,
     String schema = "0123456789abcdefghijklmnopqrstuvwxyz-_",
@@ -235,6 +284,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
     return generateUuid(length, text: schema);
   }
 
+  /// UncompleteDocumentation
   String utils_getExtra({
     required Map parameters,
   }) {
@@ -252,6 +302,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
     return parameters["@extra"];
   }
 
+  /// UncompleteDocumentation
   void utils_checkResult({
     required Map result,
   }) {
@@ -273,6 +324,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
     }
   }
 
+  /// UncompleteDocumentation
   Future<Map> invokeRaw({
     required Map parameters,
     required GeneralFrameworkClientInvokeOptions?
@@ -398,6 +450,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
     return result;
   }
 
+  /// UncompleteDocumentation
   Future<Map> invoke({
     required Map parameters,
     GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
@@ -408,6 +461,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
     );
   }
 
+  /// UncompleteDocumentation
   FutureOr<T> invokeBuilder<T>({
     required Map parameters,
     GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,

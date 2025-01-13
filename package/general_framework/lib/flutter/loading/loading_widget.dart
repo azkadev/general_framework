@@ -3,9 +3,15 @@ import 'package:general_lib_flutter/extension/build_context.dart';
 import 'loading_controller.dart';
 import 'loading_core.dart';
 
+/// UncompleteDocumentation
 class LoadingGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final LoadingGeneralFrameworkController loadingGeneralFrameworkController;
+
+  /// UncompleteDocumentation
   final LoadingGeneralFrameworkType loadingGeneralFrameworkType;
+
+  /// UncompleteDocumentation
   const LoadingGeneralFrameworkWidget({
     super.key,
     required this.loadingGeneralFrameworkController,
@@ -36,7 +42,8 @@ class LoadingGeneralFrameworkWidget extends StatelessWidget {
               }
               return Container(
                 decoration: BoxDecoration(
-                  color: context.theme.primaryColor.withOpacity(0.85),
+                  // color: context.theme.primaryColor.withOpacity(0.85),
+                  color: context.theme.primaryColor.withValues(alpha: 0.85),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     color: context.theme.indicatorColor,
@@ -78,7 +85,8 @@ class LoadingGeneralFrameworkWidget extends StatelessWidget {
               }
               return Container(
                 decoration: BoxDecoration(
-                  color: context.theme.primaryColor.withOpacity(0.85),
+                  // color: context.theme.primaryColor.withOpacity(0.85),
+                  color: context.theme.primaryColor.withValues(alpha: 0.85),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     color: context.theme.indicatorColor,

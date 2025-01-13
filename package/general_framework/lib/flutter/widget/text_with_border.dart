@@ -2,13 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/typedef/typedef.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 class TextWithBorderGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final String text;
+
+  /// UncompleteDocumentation
   final TextAlign? textAlign;
+
+  /// UncompleteDocumentation
   final double strokeWidth;
+
+  /// UncompleteDocumentation
   final Color? strokeColor;
+
+  /// UncompleteDocumentation
   final TextOverflow? overflow;
+
+  /// UncompleteDocumentation
   final TextStyleBuilderGeneralFrameworkWidget? textStyleBuilder;
+
+  /// UncompleteDocumentation
   const TextWithBorderGeneralFrameworkWidget({
     super.key,
     required this.text,

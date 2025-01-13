@@ -36,8 +36,12 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/ui/chat/controller.dart';
 
+/// UncompleteDocumentation
 class ChatPageGeneralFramework extends StatefulWidget {
+  /// UncompleteDocumentation
   final ChatControllerGeneralFramework chatControllerGeneralFramework;
+
+  /// UncompleteDocumentation
   const ChatPageGeneralFramework({
     super.key,
     required this.chatControllerGeneralFramework,

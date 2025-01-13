@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 typedef AlertGeneralFrameworkButtonFunction<T> = T Function(
     BuildContext context,
     AlertGeneralFrameworkOptions alertGeneralFrameworkOptions);
 
+/// UncompleteDocumentation
 extension AlertGeneralFrameworkExtensionBuildContext on BuildContext {
+  /// UncompleteDocumentation
   Future<T?> showAlertGeneralFramework<T>({
     required AlertGeneralFrameworkOptions alertGeneralFrameworkOptions,
   }) async {
@@ -25,22 +28,51 @@ extension AlertGeneralFrameworkExtensionBuildContext on BuildContext {
   }
 }
 
+/// UncompleteDocumentation
 class AlertGeneralFrameworkOptions {
+  /// UncompleteDocumentation
   final String title;
+
+  /// UncompleteDocumentation
   final bool isWithBlur;
+
+  /// UncompleteDocumentation
   final AlertGeneralFrameworkButtonFunction<dynamic> builder;
+
+  /// UncompleteDocumentation
   final String confirmText;
+
+  /// UncompleteDocumentation
   final String cancelText;
+
+  /// UncompleteDocumentation
   final bool isShowCancelButton;
+
+  /// UncompleteDocumentation
   final bool isAutoCloseOnConfirmBtnPressed;
 
+  /// UncompleteDocumentation
   final AlertGeneralFrameworkButtonFunction<void>? onCancelPressed;
+
+  /// UncompleteDocumentation
   final AlertGeneralFrameworkButtonFunction<void>? onConfirmPressed;
+
+  /// UncompleteDocumentation
   final bool useRootNavigator;
+
+  /// UncompleteDocumentation
   final bool barrierDismissible;
+
+  /// UncompleteDocumentation
   final bool isShowCloseButton;
+
+  /// UncompleteDocumentation
   final Color? color;
+
+  /// UncompleteDocumentation
   final BorderRadius? borderRadius;
+
+  /// UncompleteDocumentation
   AlertGeneralFrameworkOptions({
     required this.title,
     required this.builder,
@@ -58,6 +90,7 @@ class AlertGeneralFrameworkOptions {
     this.onConfirmPressed,
   });
 
+  /// UncompleteDocumentation
   AlertGeneralFrameworkOptions copyWith({
     String? title,
     AlertGeneralFrameworkButtonFunction<dynamic>? builder,
@@ -91,6 +124,7 @@ class AlertGeneralFrameworkOptions {
     );
   }
 
+  /// UncompleteDocumentation
   static void onCancelPressedDefault(BuildContext context,
       AlertGeneralFrameworkOptions alertGeneralFrameworkOptions) {
     context
@@ -98,12 +132,17 @@ class AlertGeneralFrameworkOptions {
         .pop();
   }
 
+  /// UncompleteDocumentation
   static void onConfirmPressedDefault(BuildContext context,
       AlertGeneralFrameworkOptions alertGeneralFrameworkOptions) {}
 }
 
+/// UncompleteDocumentation
 class AlertGeneralFrameworkWidget extends StatefulWidget {
+  /// UncompleteDocumentation
   final AlertGeneralFrameworkOptions alertGeneralFrameworkOptions;
+
+  /// UncompleteDocumentation
   const AlertGeneralFrameworkWidget({
     super.key,
     required this.alertGeneralFrameworkOptions,

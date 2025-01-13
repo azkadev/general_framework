@@ -36,26 +36,63 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/typedef/typedef.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
+/// UncompleteDocumentation
 class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
+  /// UncompleteDocumentation
   final String? hintText;
+
+  /// UncompleteDocumentation
   final String? labelText;
+
+  /// UncompleteDocumentation
   final IconData prefixIconData;
+
+  /// UncompleteDocumentation
   final Widget Function(BuildContext context, Widget child)? prefixIconBuilder;
+
+  /// UncompleteDocumentation
   final InputDecorationBuilderGeneralFrameworkWidget? inputDecorationBuilder;
+
+  /// UncompleteDocumentation
   final Color color;
+
+  /// UncompleteDocumentation
   final TextEditingController? controller;
+
+  /// UncompleteDocumentation
   final String? Function(String? data)? validator;
+
+  /// UncompleteDocumentation
   final bool readOnly;
+
+  /// UncompleteDocumentation
   final bool obscureText;
+
+  /// UncompleteDocumentation
   final Widget? suffixIcon;
+
+  /// UncompleteDocumentation
   final void Function(String value)? onChanged;
 
+  /// UncompleteDocumentation
   final int? minLines;
+
+  /// UncompleteDocumentation
   final int? maxLength;
+
+  /// UncompleteDocumentation
   final int? maxLines;
+
+  /// UncompleteDocumentation
   final bool autofocus;
+
+  /// UncompleteDocumentation
   final FocusNode? focusNode;
+
+  /// UncompleteDocumentation
   final TextInputType? keyboardType;
+
+  /// UncompleteDocumentation
   const TextFormFieldGeneralFrameworkWidget({
     super.key,
     this.keyboardType,

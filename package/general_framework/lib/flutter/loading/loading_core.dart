@@ -4,15 +4,24 @@ import 'package:general_framework/flutter/ui/dialog/core.dart';
 import 'loading_controller.dart';
 import 'loading_widget.dart';
 
+/// UncompleteDocumentation
 enum LoadingGeneralFrameworkType {
+  /// UncompleteDocumentation
   page,
+
+  /// UncompleteDocumentation
   floating,
-  widget,
+
+  /// UncompleteDocumentation
+  widget;
 }
 
+/// UncompleteDocumentation
 class LoadingGeneralFramework {
+  /// UncompleteDocumentation
   LoadingGeneralFramework();
 
+  /// UncompleteDocumentation
   static Future<T?> show<T>({
     required BuildContext context,
     required LoadingGeneralFrameworkController

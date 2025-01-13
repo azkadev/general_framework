@@ -45,35 +45,54 @@ import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:translate_client/translate_client_core.dart';
 
+/// UncompleteDocumentation
 typedef MarkdownFlutterContentGeneralFrameworkFunction<
         T extends MarkdownFlutterPageStateGeneralFramework>
     = FutureOr<MarkdownFlutterContentGeneralFramework> Function(
         BuildContext context, T markdownFlutterPageStateGeneralFramework);
+
+/// UncompleteDocumentation
 typedef MarkdownFlutterOnUrlPressedGeneralFrameworkFunction<
         T extends MarkdownFlutterPageStateGeneralFramework>
     = void Function(BuildContext context, String url,
         T markdownFlutterPageStateGeneralFramework);
+
+/// UncompleteDocumentation
 typedef MarkdownFlutterAppBarActionsGeneralFrameworkFunction<
         T extends MarkdownFlutterPageStateGeneralFramework>
     = List<Widget> Function(
         BuildContext context, T markdownFlutterPageStateGeneralFramework);
+
+/// UncompleteDocumentation
 typedef MarkdownFlutterPopupMenuItemsGeneralFrameworkFunction<
         T extends MarkdownFlutterPageStateGeneralFramework>
     = List<PopupMenuEntry<dynamic>> Function(BuildContext context,
         T markdownFlutterPageStateGeneralFramework, TextStyle textStyle);
 
+/// UncompleteDocumentation
 class MarkdownFlutterContentGeneralFramework {
+  /// UncompleteDocumentation
   final String title;
+
+  /// UncompleteDocumentation
   final String content;
+
+  /// UncompleteDocumentation
   final String languageCodeId;
+
+  /// UncompleteDocumentation
   const MarkdownFlutterContentGeneralFramework(
       {required this.title,
       required this.content,
       required this.languageCodeId});
+
+  /// UncompleteDocumentation
   static MarkdownFlutterContentGeneralFramework empty() {
     return const MarkdownFlutterContentGeneralFramework(
         title: "", content: "", languageCodeId: "");
   }
+
+  /// UncompleteDocumentation
 
   MarkdownFlutterContentGeneralFramework copyWith({
     String? title,
@@ -88,17 +107,28 @@ class MarkdownFlutterContentGeneralFramework {
   }
 }
 
+/// UncompleteDocumentation
 class MarkdownFlutterPageGeneralFramework<
     T extends MarkdownFlutterPageStateGeneralFramework> extends StatefulWidget {
+  /// UncompleteDocumentation
   final String title;
+
+  /// UncompleteDocumentation
   final MarkdownFlutterOnUrlPressedGeneralFrameworkFunction onUrlPressedBuilder;
+
+  /// UncompleteDocumentation
   final MarkdownFlutterContentGeneralFrameworkFunction<T>
       markdownFlutterContentGeneralFrameworkBuilder;
+
+  /// UncompleteDocumentation
   final MarkdownFlutterPopupMenuItemsGeneralFrameworkFunction<T>
       markdownFlutterPopupMenuItemsGeneralFrameworkBuilder;
 
+  /// UncompleteDocumentation
   final MarkdownFlutterAppBarActionsGeneralFrameworkFunction<T>
       markdownFlutterAppBarActionsGeneralFrameworkFunctionBuilder;
+
+  /// UncompleteDocumentation
   const MarkdownFlutterPageGeneralFramework({
     super.key,
     required this.title,
@@ -111,6 +141,8 @@ class MarkdownFlutterPageGeneralFramework<
   @override
   State<MarkdownFlutterPageGeneralFramework> createState() =>
       MarkdownFlutterPageStateGeneralFramework();
+
+  /// UncompleteDocumentation
 
   static AppBar appBar<T extends MarkdownFlutterPageStateGeneralFramework>({
     Key? key,
@@ -369,10 +401,13 @@ class MarkdownFlutterPageGeneralFramework<
   }
 }
 
+/// UncompleteDocumentation
 class MarkdownFlutterPageStateGeneralFramework
     extends State<MarkdownFlutterPageGeneralFramework> {
+  /// UncompleteDocumentation
   final GeneralFlutter generalFlutter = const GeneralFlutter();
 
+  /// UncompleteDocumentation
   late final GeneralLibraryTextToSpeechBaseFlutter textToSpeech =
       generalFlutter.text_to_speech;
 
@@ -390,11 +425,15 @@ class MarkdownFlutterPageStateGeneralFramework
     super.dispose();
   }
 
+  /// UncompleteDocumentation
   MarkdownFlutterContentGeneralFramework
       markdownFlutterContentGeneralFramework =
       MarkdownFlutterContentGeneralFramework.empty();
 
+  /// UncompleteDocumentation
   bool is_loading = false;
+
+  /// UncompleteDocumentation
   Future<void> refresh() async {
     if (is_loading) {
       return;

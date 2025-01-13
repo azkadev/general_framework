@@ -4,14 +4,26 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// UncompleteDocumentation
 class ImageGeneralUiGeneralFrameworkOptions {
+  /// UncompleteDocumentation
   final double? height;
+
+  /// UncompleteDocumentation
+
   final double? width;
+
+  /// UncompleteDocumentation
   final BoxFit? fit;
+
+  /// UncompleteDocumentation
   final ColorFilter? colorFilter;
 
+  /// UncompleteDocumentation
   final Widget Function(
       BuildContext context, Object error, StackTrace? stackTrace)? errorBuilder;
+
+  /// UncompleteDocumentation
   const ImageGeneralUiGeneralFrameworkOptions({
     this.colorFilter,
     this.width,
@@ -21,13 +33,19 @@ class ImageGeneralUiGeneralFrameworkOptions {
   });
 }
 
+/// UncompleteDocumentation
+
 class ImageGeneralUiGeneralFramework {
+  /// UncompleteDocumentation
   const ImageGeneralUiGeneralFramework();
 
+  /// UncompleteDocumentation
   static ImageGeneralUiGeneralFrameworkOptions imageGeneralUiOptionsDefault =
       const ImageGeneralUiGeneralFrameworkOptions(
     fit: BoxFit.cover,
   );
+
+  /// UncompleteDocumentation
 
   static ImageGeneralUiGeneralFrameworkOptions
       getImageGeneralUiGeneralFrameworkOptions({
@@ -35,6 +53,8 @@ class ImageGeneralUiGeneralFramework {
   }) {
     return imageGeneralUiOptions ?? imageGeneralUiOptionsDefault;
   }
+
+  /// UncompleteDocumentation
 
   static DecorationImage decorationImage({
     required dynamic pathImage,
@@ -61,6 +81,8 @@ class ImageGeneralUiGeneralFramework {
       ).image,
     );
   }
+
+  /// UncompleteDocumentation
 
   static DecorationImage? decorationImageOrNull({
     required dynamic pathImage,
@@ -91,6 +113,7 @@ class ImageGeneralUiGeneralFramework {
     }
   }
 
+  /// UncompleteDocumentation
   static Image image({
     required dynamic pathImage,
     ImageGeneralUiGeneralFrameworkOptions? imageGeneralUiOptions,
@@ -110,6 +133,8 @@ class ImageGeneralUiGeneralFramework {
           fit: imageGeneralUiGeneralFrameworkOptions.fit,
         );
   }
+
+  /// UncompleteDocumentation
 
   static Image? imageOrNull({
     required dynamic pathImage,
