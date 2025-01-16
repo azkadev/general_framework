@@ -6,7 +6,7 @@ environment:
 dependencies:
   path: '^1.9.0'
   general_lib: '^0.0.61'
-  general: '^0.0.44'
+  general: '^0.0.45'
   server_universe: '^0.0.34'
   mason_logger: '^0.3.1'
   telegram_client: '^0.8.36'

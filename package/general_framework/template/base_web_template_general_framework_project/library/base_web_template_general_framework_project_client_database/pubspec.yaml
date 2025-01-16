@@ -13,7 +13,7 @@ dependencies:
   general_lib: '^0.0.61'
   path: '^1.9.0'
   http: '^1.2.2'
-  general_framework: '^0.0.16'
+  general_framework: '^0.0.17'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'

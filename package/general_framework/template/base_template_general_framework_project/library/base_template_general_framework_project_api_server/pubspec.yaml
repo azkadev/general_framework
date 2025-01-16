@@ -17,7 +17,7 @@ dependencies:
     path: '../base_template_general_framework_project_api'
   base_template_general_framework_project_api_database:
     path: '../base_template_general_framework_project_api_database'
-  general_framework: '^0.0.16'
+  general_framework: '^0.0.17'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
