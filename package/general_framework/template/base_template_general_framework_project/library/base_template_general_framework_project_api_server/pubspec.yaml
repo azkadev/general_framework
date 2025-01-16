@@ -5,8 +5,8 @@ publish_to: 'none'
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
-  server_universe: '^0.0.32'
-  general_lib: '^0.0.59'
+  server_universe: '^0.0.33'
+  general_lib: '^0.0.60'
   path: '^1.9.0'
   http: '^1.2.2'
   base_template_general_framework_project_secret:

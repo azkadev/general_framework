@@ -5,11 +5,11 @@ environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
   path: '^1.9.0'
-  general_lib: '^0.0.59'
+  general_lib: '^0.0.60'
   general: '^0.0.43'
-  server_universe: '^0.0.32'
+  server_universe: '^0.0.33'
   mason_logger: '^0.3.1'
-  telegram_client: '^0.8.34'
+  telegram_client: '^0.8.35'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
