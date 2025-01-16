@@ -9,15 +9,15 @@ dependencies:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
   path: '^1.9.0'
-  general_lib: '^0.0.60'
-  general: '^0.0.43'
+  general_lib: '^0.0.61'
+  general: '^0.0.44'
   base_template_general_framework_project_flutter:
     path: '../'
   base_template_general_framework_project_client:
     path: '../../base_template_general_framework_project_client'
   base_template_general_framework_project_secret:
     path: '../../base_template_general_framework_project_secret'
-  general_framework: '^0.0.15'
+  general_framework: '^0.0.16'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'

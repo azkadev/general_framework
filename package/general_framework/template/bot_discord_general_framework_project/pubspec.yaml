@@ -5,9 +5,9 @@ environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
   path: '^1.9.0'
-  general_lib: '^0.0.60'
-  general: '^0.0.43'
-  server_universe: '^0.0.33'
+  general_lib: '^0.0.61'
+  general: '^0.0.44'
+  server_universe: '^0.0.34'
   mason_logger: '^0.3.1'
 dev_dependencies:
   lints: '^5.0.0'

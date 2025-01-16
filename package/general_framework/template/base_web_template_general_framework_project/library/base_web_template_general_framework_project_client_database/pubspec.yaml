@@ -10,10 +10,10 @@ dependencies:
   base_web_template_general_framework_project_secret:
     path: '../base_web_template_general_framework_project_secret'
   collection: '^1.19.0'
-  general_lib: '^0.0.60'
+  general_lib: '^0.0.61'
   path: '^1.9.0'
   http: '^1.2.2'
-  general_framework: '^0.0.15'
+  general_framework: '^0.0.16'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
