@@ -32,7 +32,7 @@ class RefreshGeneralFrameworkWidget extends StatefulWidget {
     super.key,
     required this.child,
     required this.isLastPage,
-    required  this.onRefreshTop,
+    required this.onRefreshTop,
     required this.onRefreshBottom,
     this.noMoreWidget,
     this.loadingWidget,
@@ -87,35 +87,40 @@ class RefreshGeneralFrameworkWidgetState extends State<RefreshGeneralFrameworkWi
 
   @override
   Widget build(BuildContext context) {
-    final Widget mainWiget = ListView(
-      physics: AlwaysScrollableScrollPhysics(),
-      padding: widget.padding,
-      controller: _scrollController,
-      children: <Widget>[
-        widget.child,
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.all(16),
-              child: _isLoading
-                  ? widget.loadingWidget ?? CupertinoActivityIndicator()
-                  : widget.isLastPage
-                      ? widget.noMoreWidget ??
-                          Text(
-                            'No more data',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Theme.of(context).disabledColor,
-                            ),
-                          )
-                      : Container(),
-            ),
-          ],
+    final Widget mainWiget = ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+      child: ListView(
+        physics:  const AlwaysScrollableScrollPhysics(
+          parent:BouncingScrollPhysics(), 
         ),
-      ],
+        padding: widget.padding,
+        controller: _scrollController,
+        children: <Widget>[
+          widget.child,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: _isLoading
+                    ? widget.loadingWidget ?? const CupertinoActivityIndicator()
+                    : widget.isLastPage
+                        ? widget.noMoreWidget ??
+                            Text(
+                              'No more data',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Theme.of(context).disabledColor,
+                              ),
+                            )
+                        : Container(),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
- 
+
     return RefreshIndicator(
       key: _refreshIndicatorKey,
       onRefresh: () async {
