@@ -348,7 +348,7 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> with
       title: "Language",
       pageState: this,
       isShowApplicationIconAndtitle: (languageGeneralFrameworkOptions.languageGeneralFrameworkType == LanguageGeneralFrameworkType.full) ? true : false,
-      isApplicationFullScreen: widget.languageGeneralFrameworkOptions.isApplicationFullScreen,
+      isApplicationFullScreen: (languageGeneralFrameworkOptions.languageGeneralFrameworkType == LanguageGeneralFrameworkType.dialog)?true:widget.languageGeneralFrameworkOptions.isApplicationFullScreen,
       applicationTitle: widget.languageGeneralFrameworkOptions.applicationTitle,
       applicationIcon: widget.languageGeneralFrameworkOptions.applicationIcon,
       generalLibFlutterApp: widget.languageGeneralFrameworkOptions.generalLibFlutterApp,
