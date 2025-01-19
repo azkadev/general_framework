@@ -40,12 +40,15 @@ class RefreshGeneralFrameworkWidget extends StatefulWidget {
     this.scrollController,
   });
   @override
-  State<RefreshGeneralFrameworkWidget> createState() => RefreshGeneralFrameworkWidgetState();
+  State<RefreshGeneralFrameworkWidget> createState() =>
+      RefreshGeneralFrameworkWidgetState();
 }
 
 ///
-class RefreshGeneralFrameworkWidgetState extends State<RefreshGeneralFrameworkWidget> {
-  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
+class RefreshGeneralFrameworkWidgetState
+    extends State<RefreshGeneralFrameworkWidget> {
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
 
   ScrollController? _scrollController;
   bool _isLoading = false;
@@ -55,7 +58,8 @@ class RefreshGeneralFrameworkWidgetState extends State<RefreshGeneralFrameworkWi
     super.initState();
     _scrollController = widget.scrollController ?? ScrollController();
     _scrollController!.addListener(() async {
-      if (_scrollController!.position.pixels >= _scrollController!.position.maxScrollExtent) {
+      if (_scrollController!.position.pixels >=
+          _scrollController!.position.maxScrollExtent) {
         if (_isLoading) {
           return;
         }
@@ -90,8 +94,8 @@ class RefreshGeneralFrameworkWidgetState extends State<RefreshGeneralFrameworkWi
     final Widget mainWiget = ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
       child: ListView(
-        physics:  const AlwaysScrollableScrollPhysics(
-          parent:BouncingScrollPhysics(), 
+        physics: const AlwaysScrollableScrollPhysics(
+          parent: BouncingScrollPhysics(),
         ),
         padding: widget.padding,
         controller: _scrollController,
