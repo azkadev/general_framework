@@ -183,8 +183,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
   });
 
   /// UncompleteDocumentation
-  static TextStyle textStyleBuilderDefault(
-      BuildContext context, TextStyle textStyle) {
+  static TextStyle textStyleBuilderDefault(BuildContext context, TextStyle textStyle) {
     return textStyle;
   }
 
@@ -208,8 +207,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     int? subtitleMaxLines,
     void Function()? onLongPress,
     void Function()? onTap,
-    TextStyle Function(BuildContext context, TextStyle textStyle)?
-        textStyleBuilder,
+    TextStyle Function(BuildContext context, TextStyle textStyle)? textStyleBuilder,
   }) {
     final child = MaterialButton(
       onLongPress: onLongPress,
@@ -223,22 +221,14 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
           context,
           Text(
             title,
-            style: (textStyleBuilder ?? textStyleBuilderDefault).call(
-                context,
-                (context.theme.textTheme.bodyMedium ??
-                    const TextStyle()
-                        .copyWith(color: context.theme.indicatorColor))),
+            style: (textStyleBuilder ?? textStyleBuilderDefault).call(context, (context.theme.textTheme.bodyMedium ?? const TextStyle().copyWith(color: context.theme.indicatorColor))),
           ),
         ),
         subtitle: () {
           if (subtitle.trim().isNotEmpty) {
             return Text(
               subtitle.trim(),
-              style: (textStyleBuilder ?? textStyleBuilderDefault).call(
-                  context,
-                  (context.theme.textTheme.bodySmall ??
-                      const TextStyle()
-                          .copyWith(color: context.theme.hintColor))),
+              style: (textStyleBuilder ?? textStyleBuilderDefault).call(context, (context.theme.textTheme.bodySmall ?? const TextStyle().copyWith(color: context.theme.hintColor))),
               overflow: subtitleTextOverflow ?? TextOverflow.ellipsis,
               maxLines: subtitleMaxLines,
             );
@@ -263,8 +253,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     EdgeInsetsGeometry? padding,
     AlignmentGeometry alignment = Alignment.center,
     required String title,
-    TextStyle Function(BuildContext context, TextStyle textStyle)?
-        textStyleBuilder,
+    TextStyle Function(BuildContext context, TextStyle textStyle)? textStyleBuilder,
     TextOverflow? textOverflow,
   }) {
     return Padding(
@@ -273,11 +262,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
         alignment: alignment,
         child: Text(
           title,
-          style: (textStyleBuilder ?? textStyleBuilderDefault).call(
-              context,
-              (context.theme.textTheme.titleSmall ??
-                  const TextStyle()
-                      .copyWith(color: context.theme.indicatorColor))),
+          style: (textStyleBuilder ?? textStyleBuilderDefault).call(context, (context.theme.textTheme.titleSmall ?? const TextStyle().copyWith(color: context.theme.indicatorColor))),
           overflow: textOverflow,
         ),
       ),
@@ -303,8 +288,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
       transform: transform,
       transformAlignment: transformAlignment,
       margin: margin,
-      decorationBuilder:
-          decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault,
+      decorationBuilder: decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault,
       padding: padding,
       clipBehavior: clipBehavior,
       builder: (context) {
@@ -324,8 +308,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
             children: menuBuilder(context),
           );
         }();
-        return (builder ?? widgetBuilderGeneralFrameworkWidgetDefault)(
-            context, child);
+        return (builder ?? widgetBuilderGeneralFrameworkWidgetDefault)(context, child);
       },
       isWithBorder: isWithBorder,
       isWithShadow: isWithShadow,
@@ -436,6 +419,7 @@ class MenuContainerResponsiveGeneralFrameworkWidget extends StatelessWidget {
           isPortrait: isPortrait,
         ),
         Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             for (final element in menuBuilder(context)) ...[
               () {
