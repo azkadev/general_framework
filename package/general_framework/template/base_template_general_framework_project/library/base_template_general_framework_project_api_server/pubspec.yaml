@@ -5,7 +5,7 @@ publish_to: 'none'
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
-  server_universe: '^0.0.35'
+  server_universe: '^0.0.36'
   general_lib: '^0.0.62'
   path: '^1.9.0'
   http: '^1.2.2'

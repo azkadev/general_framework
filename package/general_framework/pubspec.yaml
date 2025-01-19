@@ -25,7 +25,7 @@ dependencies:
   general_lib_flutter: '^0.0.41'
   packagex: '^0.0.85'
   http: '^1.2.2'
-  server_universe: '^0.0.35'
+  server_universe: '^0.0.36'
   general: '^0.0.46'
   path_provider: '^2.1.5'
   io_universe: '^0.0.5'
@@ -39,6 +39,7 @@ dependencies:
   media_kit_video_fork: '^0.0.2'
   html: '^0.15.4'
   translate_client: '^0.0.11'
+  window_manager: '^0.4.3'
 dependency_overrides:
   pointycastle: '3.8.0'
   mime: '^2.0.0'
