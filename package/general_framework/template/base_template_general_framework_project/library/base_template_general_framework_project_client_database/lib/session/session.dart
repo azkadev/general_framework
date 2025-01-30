@@ -35,16 +35,14 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
-import 'package:base_template_general_framework_project_isar_scheme/database/scheme/session_isar_database.dart'
-    as isar_scheme;
+import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/session_isar_database.dart' as isar_scheme;
 import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
 import 'package:base_template_general_framework_project_scheme/database_scheme/session_isar_database.dart';
 import 'package:general_lib/general_lib.dart';
 
 import 'package:isar/isar.dart';
 
-extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionSession
-    on BaseTemplateGeneralFrameworkProjectClientDatabase {
+extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionSession on BaseTemplateGeneralFrameworkProjectClientDatabase {
   ({
     int total_count,
     Iterable<SessionIsarDatabase> sessions,
@@ -69,8 +67,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionSession
     int? limit,
   }) {
     isar_core.sessionIsarDatabases.where().is_defaultEqualTo(true);
-    final session_isar =
-        isar_core.sessionIsarDatabases.where().is_defaultEqualTo(true);
+    final session_isar = isar_core.sessionIsarDatabases.where().is_defaultEqualTo(true);
     return (
       total_count: session_isar.count(),
       sessions: session_isar.findAll(offset: offset, limit: limit).map((e) {
@@ -82,10 +79,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionSession
   SessionIsarDatabase? session_getSession({
     required int account_user_id,
   }) {
-    final result = isar_core.sessionIsarDatabases
-        .where()
-        .account_user_idEqualTo(account_user_id)
-        .findFirst();
+    final result = isar_core.sessionIsarDatabases.where().account_user_idEqualTo(account_user_id).findFirst();
     if (result == null) {
       return null;
     }
@@ -105,10 +99,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionSession
     required int account_user_id,
   }) {
     isar_core.write((isar) {
-      isar.sessionIsarDatabases
-          .where()
-          .account_user_idEqualTo(account_user_id)
-          .deleteAll();
+      isar.sessionIsarDatabases.where().account_user_idEqualTo(account_user_id).deleteAll();
     });
     return true;
   }
@@ -121,15 +112,10 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionSession
     newSessionDatabase.rawData.removeByKeys(["id"]);
     newSessionDatabase.account_user_id = account_user_id;
     newSessionDatabase.token = token;
-    final result = isar_core.sessionIsarDatabases
-        .where()
-        .account_user_idEqualTo(account_user_id)
-        .findFirst();
+    final result = isar_core.sessionIsarDatabases.where().account_user_idEqualTo(account_user_id).findFirst();
     if (result == null) {
-      isar_scheme.SessionIsarDatabase new_session_isar_database =
-          isar_scheme.SessionIsarDatabase();
-      new_session_isar_database.id =
-          isar_core.sessionIsarDatabases.autoIncrement();
+      isar_scheme.SessionIsarDatabase new_session_isar_database = isar_scheme.SessionIsarDatabase();
+      new_session_isar_database.id = isar_core.sessionIsarDatabases.autoIncrement();
       new_session_isar_database.token = token;
 
       newSessionDatabase.rawData.forEach((key, value) {

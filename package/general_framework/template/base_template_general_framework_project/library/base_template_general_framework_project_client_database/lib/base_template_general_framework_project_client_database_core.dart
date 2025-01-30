@@ -38,16 +38,15 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 import 'dart:io';
 
-import 'package:base_template_general_framework_project_isar_scheme/database/scheme/account_database.dart';
-import 'package:base_template_general_framework_project_isar_scheme/database/scheme/message_database.dart';
-import 'package:base_template_general_framework_project_isar_scheme/database/scheme/session_isar_database.dart';
+import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/account_database.dart';
+import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/message_database.dart';
+import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/session_isar_database.dart';
 import 'package:general_framework/core/database/database_core.dart';
 import 'package:http/http.dart';
 import 'package:isar/isar.dart';
 import "package:path/path.dart" as path;
 
-class BaseTemplateGeneralFrameworkProjectClientDatabase
-    extends GeneralFrameworkDatabase {
+class BaseTemplateGeneralFrameworkProjectClientDatabase extends GeneralFrameworkDatabase {
   final List<IsarGeneratedSchema> isar_schemes = [
     AccountDatabaseSchema,
     SessionIsarDatabaseSchema,
@@ -66,8 +65,7 @@ class BaseTemplateGeneralFrameworkProjectClientDatabase
   }
 
   Directory get directory_database {
-    final Directory directory = Directory(path.join(directory_base.path,
-        "base_template_general_framework_project_database"));
+    final Directory directory = Directory(path.join(directory_base.path, "base_template_general_framework_project_database"));
     if (directory.existsSync() == false) {
       directory.createSync(recursive: true);
     }
@@ -87,8 +85,7 @@ class BaseTemplateGeneralFrameworkProjectClientDatabase
     required String currentPath,
     required Client httpClient,
   }) async {
-    await super
-        .ensureInitialized(currentPath: currentPath, httpClient: httpClient);
+    await super.ensureInitialized(currentPath: currentPath, httpClient: httpClient);
     {
       isar_core = openIsar(
         name: "base_template_general_framework_project_database",
