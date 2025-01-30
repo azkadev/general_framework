@@ -1,3 +1,5 @@
+// ignore_for_file: empty_catches
+
 /* <!-- START LICENSE -->
 
 
@@ -35,6 +37,8 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import "package:general_lib_flutter/general_lib_flutter.dart";
+
+import 'glowy_borders/glowy_borders.dart';
 
 /// UncompleteDocumentation
 class MenuContainerBuilderGeneralFrameworkWidget extends StatelessWidget {
@@ -193,9 +197,29 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
   /// UncompleteDocumentation
   final WidgetBuilderGeneralFrameworkWidget? builder;
 
+  /// UncompleteDocumentait
+  final bool isGlowOutside;
+
+  ///
+  final double glowBorderSize;
+
+  ///
+  final double glowSize;
+
+  ///
+  final List<Color>? glowGradientColors;
+
+  ///
+  final BorderRadiusGeometry? glowBorderRadius;
+
   /// UncompleteDocumentation
   const MenuContainerGeneralFrameworkWidget({
     super.key,
+    this.glowBorderRadius,
+    this.glowBorderSize = 0,
+    this.glowSize = 0,
+    this.glowGradientColors,
+    this.isGlowOutside = false,
     this.mainAxisSize = MainAxisSize.min,
     this.axis = Axis.vertical,
     this.isWithBorder = true,
@@ -217,8 +241,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
   });
 
   /// UncompleteDocumentation
-  static TextStyle textStyleBuilderDefault(
-      BuildContext context, TextStyle textStyle) {
+  static TextStyle textStyleBuilderDefault(BuildContext context, TextStyle textStyle) {
     return textStyle;
   }
 
@@ -242,8 +265,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     int? subtitleMaxLines,
     void Function()? onLongPress,
     void Function()? onTap,
-    TextStyle Function(BuildContext context, TextStyle textStyle)?
-        textStyleBuilder,
+    TextStyle Function(BuildContext context, TextStyle textStyle)? textStyleBuilder,
   }) {
     final child = MaterialButton(
       onLongPress: onLongPress,
@@ -257,22 +279,14 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
           context,
           Text(
             title,
-            style: (textStyleBuilder ?? textStyleBuilderDefault).call(
-                context,
-                (context.theme.textTheme.bodyMedium ??
-                    const TextStyle()
-                        .copyWith(color: context.theme.indicatorColor))),
+            style: (textStyleBuilder ?? textStyleBuilderDefault).call(context, (context.theme.textTheme.bodyMedium ?? const TextStyle().copyWith(color: context.theme.indicatorColor))),
           ),
         ),
         subtitle: () {
           if (subtitle.trim().isNotEmpty) {
             return Text(
               subtitle.trim(),
-              style: (textStyleBuilder ?? textStyleBuilderDefault).call(
-                  context,
-                  (context.theme.textTheme.bodySmall ??
-                      const TextStyle()
-                          .copyWith(color: context.theme.hintColor))),
+              style: (textStyleBuilder ?? textStyleBuilderDefault).call(context, (context.theme.textTheme.bodySmall ?? const TextStyle().copyWith(color: context.theme.hintColor))),
               overflow: subtitleTextOverflow ?? TextOverflow.ellipsis,
               maxLines: subtitleMaxLines,
             );
@@ -297,8 +311,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
     EdgeInsetsGeometry? padding,
     AlignmentGeometry alignment = Alignment.center,
     required String title,
-    TextStyle Function(BuildContext context, TextStyle textStyle)?
-        textStyleBuilder,
+    TextStyle Function(BuildContext context, TextStyle textStyle)? textStyleBuilder,
     TextOverflow? textOverflow,
   }) {
     return Padding(
@@ -307,11 +320,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
         alignment: alignment,
         child: Text(
           title,
-          style: (textStyleBuilder ?? textStyleBuilderDefault).call(
-              context,
-              (context.theme.textTheme.titleSmall ??
-                  const TextStyle()
-                      .copyWith(color: context.theme.indicatorColor))),
+          style: (textStyleBuilder ?? textStyleBuilderDefault).call(context, (context.theme.textTheme.titleSmall ?? const TextStyle().copyWith(color: context.theme.indicatorColor))),
           overflow: textOverflow,
         ),
       ),
@@ -329,7 +338,8 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MenuContainerBuilderGeneralFrameworkWidget(
+    final decorationBuilder = this.decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault;
+    final child = MenuContainerBuilderGeneralFrameworkWidget(
       isLoading: isLoading,
       width: width,
       height: height,
@@ -337,8 +347,7 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
       transform: transform,
       transformAlignment: transformAlignment,
       margin: margin,
-      decorationBuilder:
-          decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault,
+      decorationBuilder: decorationBuilder,
       padding: padding,
       clipBehavior: clipBehavior,
       builder: (context) {
@@ -358,12 +367,39 @@ class MenuContainerGeneralFrameworkWidget extends StatelessWidget {
             children: menuBuilder(context),
           );
         }();
-        return (builder ?? widgetBuilderGeneralFrameworkWidgetDefault)(
-            context, child);
+        return (builder ?? widgetBuilderGeneralFrameworkWidgetDefault)(context, child);
       },
       isWithBorder: isWithBorder,
       isWithShadow: isWithShadow,
     );
+    if (isGlowOutside) {
+      final BorderRadiusGeometry glowBorderRadius = () {
+        if (this.glowBorderRadius != null) {
+          return this.glowBorderRadius ?? BorderRadius.zero;
+        }
+        try {
+          return (decorationBuilder as BoxDecoration).borderRadius ?? BorderRadius.zero;
+        } catch (e) {}
+        return BorderRadius.zero;
+      }();
+      return AnimatedGradientBorderGeneralFrameworkWidget(
+        borderSize: glowBorderSize,
+        glowSize: glowSize,
+        gradientColors: glowGradientColors ??
+            [
+              Colors.transparent,
+              Colors.transparent,
+              Colors.transparent,
+              // Colors.purple.shade50,
+              Colors.red,
+              Colors.green,
+              Colors.blue,
+            ],
+        borderRadius: glowBorderRadius,
+        child: child,
+      );
+    }
+    return child;
   }
 }
 
