@@ -1,40 +1,6 @@
-/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
 // ignore_for_file: non_constant_identifier_names
 
-// import 'dart:io';
+// import 'io_universe/io_universe.dart';
 import 'package:general_lib/script_generate/script_generate.dart';
 import 'package:io_universe/io_universe.dart';
 
@@ -305,6 +271,40 @@ github:
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project/bot_discord_general_framework_project.dart'
     as bot_discord_general_framework_project;
 
@@ -333,6 +333,40 @@ void main(List<String> arguments) {
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 int calculate() {
   return 6 * 7;
 }
@@ -634,6 +668,40 @@ github:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_client/bot_discord_general_framework_project_client.dart';
 
 void main() {
@@ -674,6 +742,40 @@ void main() {
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 // TODO: Put public facing types in this file.
 
 /// Checks if you are awesome. Spoiler: you are.
@@ -695,6 +797,40 @@ class Awesome {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
@@ -727,6 +863,40 @@ export 'src/bot_discord_general_framework_project_client_base.dart';
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_client/bot_discord_general_framework_project_client.dart';
 import 'package:test/test.dart';
 
@@ -783,6 +953,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
             children: [],
           ),
@@ -794,36 +967,15 @@ temp/
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
-# This file configures the static analysis results for your project (errors,
-# warnings, and lints).
-#
-# This enables the 'recommended' set of lints from `package:lints`.
-# This set helps identify many issues that may lead to problems when running
-# or consuming Dart code, and enforces writing Dart using a single, idiomatic
-# style and format.
-#
-# If you want a smaller set of lints you can change this to specify
-# 'package:lints/core.yaml'. These are just the most critical lints
-# (the recommended set includes the core lints).
-# The core lints are also what is used by pub.dev for scoring packages.
-
 include: package:lints/recommended.yaml
-
-# Uncomment the following section to specify additional rules.
-
-# linter:
-#   rules:
-#     - camel_case_types
-
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
-
-# For more information about the core and recommended set of lints, see
-# https://dart.dev/go/core-lints
-
-# For additional information about configuring this file, see
-# https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+    - test
+    - dev
+    - templates
+linter:
+  rules:
+    - public_member_api_docs
 
 """,
             children: [],
@@ -870,10 +1022,10 @@ name: 'bot_discord_general_framework_project_client'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies: {}
 dev_dependencies:
-  lints: '^4.0.0'
+  lints: '^5.0.0'
   test: 'any'
 dependency_overrides:
   pointycastle: '3.8.0'
@@ -1447,6 +1599,40 @@ github:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_client_database/bot_discord_general_framework_project_client_database.dart';
 
 void main() {
@@ -1487,6 +1673,40 @@ void main() {
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 // TODO: Put public facing types in this file.
 
 /// Checks if you are awesome. Spoiler: you are.
@@ -1508,6 +1728,40 @@ class Awesome {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
@@ -1540,6 +1794,40 @@ export 'src/bot_discord_general_framework_project_client_database_base.dart';
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_client_database/bot_discord_general_framework_project_client_database.dart';
 import 'package:test/test.dart';
 
@@ -1596,6 +1884,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
             children: [],
           ),
@@ -1607,36 +1898,15 @@ temp/
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
-# This file configures the static analysis results for your project (errors,
-# warnings, and lints).
-#
-# This enables the 'recommended' set of lints from `package:lints`.
-# This set helps identify many issues that may lead to problems when running
-# or consuming Dart code, and enforces writing Dart using a single, idiomatic
-# style and format.
-#
-# If you want a smaller set of lints you can change this to specify
-# 'package:lints/core.yaml'. These are just the most critical lints
-# (the recommended set includes the core lints).
-# The core lints are also what is used by pub.dev for scoring packages.
-
 include: package:lints/recommended.yaml
-
-# Uncomment the following section to specify additional rules.
-
-# linter:
-#   rules:
-#     - camel_case_types
-
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
-
-# For more information about the core and recommended set of lints, see
-# https://dart.dev/go/core-lints
-
-# For additional information about configuring this file, see
-# https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+    - test
+    - dev
+    - templates
+linter:
+  rules:
+    - public_member_api_docs
 
 """,
             children: [],
@@ -1683,10 +1953,10 @@ name: 'bot_discord_general_framework_project_client_database'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies: {}
 dev_dependencies:
-  lints: '^4.0.0'
+  lints: '^5.0.0'
   test: 'any'
 dependency_overrides:
   pointycastle: '3.8.0'
@@ -2260,6 +2530,40 @@ github:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_dart/bot_discord_general_framework_project_dart.dart';
 
 void main() {
@@ -2300,6 +2604,40 @@ void main() {
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 // TODO: Put public facing types in this file.
 
 /// Checks if you are awesome. Spoiler: you are.
@@ -2321,6 +2659,40 @@ class Awesome {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
@@ -2353,6 +2725,40 @@ export 'src/bot_discord_general_framework_project_dart_base.dart';
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_dart/bot_discord_general_framework_project_dart.dart';
 import 'package:test/test.dart';
 
@@ -2409,6 +2815,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
             children: [],
           ),
@@ -2420,36 +2829,15 @@ temp/
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
-# This file configures the static analysis results for your project (errors,
-# warnings, and lints).
-#
-# This enables the 'recommended' set of lints from `package:lints`.
-# This set helps identify many issues that may lead to problems when running
-# or consuming Dart code, and enforces writing Dart using a single, idiomatic
-# style and format.
-#
-# If you want a smaller set of lints you can change this to specify
-# 'package:lints/core.yaml'. These are just the most critical lints
-# (the recommended set includes the core lints).
-# The core lints are also what is used by pub.dev for scoring packages.
-
 include: package:lints/recommended.yaml
-
-# Uncomment the following section to specify additional rules.
-
-# linter:
-#   rules:
-#     - camel_case_types
-
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
-
-# For more information about the core and recommended set of lints, see
-# https://dart.dev/go/core-lints
-
-# For additional information about configuring this file, see
-# https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+    - test
+    - dev
+    - templates
+linter:
+  rules:
+    - public_member_api_docs
 
 """,
             children: [],
@@ -2496,10 +2884,10 @@ name: 'bot_discord_general_framework_project_dart'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies: {}
 dev_dependencies:
-  lints: '^4.0.0'
+  lints: '^5.0.0'
   test: 'any'
 dependency_overrides:
   pointycastle: '3.8.0'
@@ -3073,6 +3461,40 @@ github:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_isar_scheme/bot_discord_general_framework_project_isar_scheme.dart';
 
 void main() {
@@ -3113,6 +3535,40 @@ void main() {
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 // TODO: Put public facing types in this file.
 
 /// Checks if you are awesome. Spoiler: you are.
@@ -3134,6 +3590,40 @@ class Awesome {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
@@ -3166,6 +3656,40 @@ export '../../bot_discord_general_framework_project_client_isar_scheme/lib/src/b
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_isar_scheme/bot_discord_general_framework_project_isar_scheme.dart';
 import 'package:test/test.dart';
 
@@ -3222,6 +3746,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
             children: [],
           ),
@@ -3233,36 +3760,15 @@ temp/
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
-# This file configures the static analysis results for your project (errors,
-# warnings, and lints).
-#
-# This enables the 'recommended' set of lints from `package:lints`.
-# This set helps identify many issues that may lead to problems when running
-# or consuming Dart code, and enforces writing Dart using a single, idiomatic
-# style and format.
-#
-# If you want a smaller set of lints you can change this to specify
-# 'package:lints/core.yaml'. These are just the most critical lints
-# (the recommended set includes the core lints).
-# The core lints are also what is used by pub.dev for scoring packages.
-
 include: package:lints/recommended.yaml
-
-# Uncomment the following section to specify additional rules.
-
-# linter:
-#   rules:
-#     - camel_case_types
-
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
-
-# For more information about the core and recommended set of lints, see
-# https://dart.dev/go/core-lints
-
-# For additional information about configuring this file, see
-# https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+    - test
+    - dev
+    - templates
+linter:
+  rules:
+    - public_member_api_docs
 
 """,
             children: [],
@@ -3309,10 +3815,10 @@ name: 'bot_discord_general_framework_project_isar_scheme'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies: {}
 dev_dependencies:
-  lints: '^4.0.0'
+  lints: '^5.0.0'
   test: 'any'
 dependency_overrides:
   pointycastle: '3.8.0'
@@ -3886,6 +4392,40 @@ github:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_language/bot_discord_general_framework_project_language.dart';
 
 void main() {
@@ -3926,6 +4466,40 @@ void main() {
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 // TODO: Put public facing types in this file.
 
 /// Checks if you are awesome. Spoiler: you are.
@@ -3947,6 +4521,40 @@ class Awesome {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
@@ -3979,6 +4587,40 @@ export 'src/bot_discord_general_framework_project_language_base.dart';
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_language/bot_discord_general_framework_project_language.dart';
 import 'package:test/test.dart';
 
@@ -4035,6 +4677,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
             children: [],
           ),
@@ -4046,36 +4691,15 @@ temp/
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
-# This file configures the static analysis results for your project (errors,
-# warnings, and lints).
-#
-# This enables the 'recommended' set of lints from `package:lints`.
-# This set helps identify many issues that may lead to problems when running
-# or consuming Dart code, and enforces writing Dart using a single, idiomatic
-# style and format.
-#
-# If you want a smaller set of lints you can change this to specify
-# 'package:lints/core.yaml'. These are just the most critical lints
-# (the recommended set includes the core lints).
-# The core lints are also what is used by pub.dev for scoring packages.
-
 include: package:lints/recommended.yaml
-
-# Uncomment the following section to specify additional rules.
-
-# linter:
-#   rules:
-#     - camel_case_types
-
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
-
-# For more information about the core and recommended set of lints, see
-# https://dart.dev/go/core-lints
-
-# For additional information about configuring this file, see
-# https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+    - test
+    - dev
+    - templates
+linter:
+  rules:
+    - public_member_api_docs
 
 """,
             children: [],
@@ -4122,10 +4746,10 @@ name: 'bot_discord_general_framework_project_language'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies: {}
 dev_dependencies:
-  lints: '^4.0.0'
+  lints: '^5.0.0'
   test: 'any'
 dependency_overrides:
   pointycastle: '3.8.0'
@@ -4699,6 +5323,40 @@ github:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_scheme/bot_discord_general_framework_project_scheme.dart';
 
 void main() {
@@ -4739,6 +5397,40 @@ void main() {
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 // TODO: Put public facing types in this file.
 
 /// Checks if you are awesome. Spoiler: you are.
@@ -4760,6 +5452,40 @@ class Awesome {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
@@ -4792,6 +5518,40 @@ export 'src/bot_discord_general_framework_project_scheme_base.dart';
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_scheme/bot_discord_general_framework_project_scheme.dart';
 import 'package:test/test.dart';
 
@@ -4848,6 +5608,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
             children: [],
           ),
@@ -4859,36 +5622,15 @@ temp/
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
-# This file configures the static analysis results for your project (errors,
-# warnings, and lints).
-#
-# This enables the 'recommended' set of lints from `package:lints`.
-# This set helps identify many issues that may lead to problems when running
-# or consuming Dart code, and enforces writing Dart using a single, idiomatic
-# style and format.
-#
-# If you want a smaller set of lints you can change this to specify
-# 'package:lints/core.yaml'. These are just the most critical lints
-# (the recommended set includes the core lints).
-# The core lints are also what is used by pub.dev for scoring packages.
-
 include: package:lints/recommended.yaml
-
-# Uncomment the following section to specify additional rules.
-
-# linter:
-#   rules:
-#     - camel_case_types
-
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
-
-# For more information about the core and recommended set of lints, see
-# https://dart.dev/go/core-lints
-
-# For additional information about configuring this file, see
-# https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+    - test
+    - dev
+    - templates
+linter:
+  rules:
+    - public_member_api_docs
 
 """,
             children: [],
@@ -4935,10 +5677,10 @@ name: 'bot_discord_general_framework_project_scheme'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies: {}
 dev_dependencies:
-  lints: '^4.0.0'
+  lints: '^5.0.0'
   test: 'any'
 dependency_overrides:
   pointycastle: '3.8.0'
@@ -5512,6 +6254,40 @@ github:
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_secret/bot_discord_general_framework_project_secret.dart';
 
 void main() {
@@ -5552,6 +6328,40 @@ void main() {
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 // TODO: Put public facing types in this file.
 
 /// Checks if you are awesome. Spoiler: you are.
@@ -5573,6 +6383,40 @@ class Awesome {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
@@ -5605,6 +6449,40 @@ export 'src/bot_discord_general_framework_project_secret_base.dart';
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project_secret/bot_discord_general_framework_project_secret.dart';
 import 'package:test/test.dart';
 
@@ -5661,6 +6539,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
             children: [],
           ),
@@ -5672,36 +6553,15 @@ temp/
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
-# This file configures the static analysis results for your project (errors,
-# warnings, and lints).
-#
-# This enables the 'recommended' set of lints from `package:lints`.
-# This set helps identify many issues that may lead to problems when running
-# or consuming Dart code, and enforces writing Dart using a single, idiomatic
-# style and format.
-#
-# If you want a smaller set of lints you can change this to specify
-# 'package:lints/core.yaml'. These are just the most critical lints
-# (the recommended set includes the core lints).
-# The core lints are also what is used by pub.dev for scoring packages.
-
 include: package:lints/recommended.yaml
-
-# Uncomment the following section to specify additional rules.
-
-# linter:
-#   rules:
-#     - camel_case_types
-
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
-
-# For more information about the core and recommended set of lints, see
-# https://dart.dev/go/core-lints
-
-# For additional information about configuring this file, see
-# https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+    - test
+    - dev
+    - templates
+linter:
+  rules:
+    - public_member_api_docs
 
 """,
             children: [],
@@ -5748,10 +6608,10 @@ name: 'bot_discord_general_framework_project_secret'
 description: 'A starting point for Dart libraries or applications.'
 version: '1.0.0'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies: {}
 dev_dependencies:
-  lints: '^4.0.0'
+  lints: '^5.0.0'
   test: 'any'
 dependency_overrides:
   pointycastle: '3.8.0'
@@ -6059,6 +6919,40 @@ Video Tutorial
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:bot_discord_general_framework_project/bot_discord_general_framework_project.dart';
 import 'package:test/test.dart';
 
@@ -6102,6 +6996,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
     children: [],
   ),
@@ -6112,36 +7009,15 @@ temp/
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
     value: r"""
-# This file configures the static analysis results for your project (errors,
-# warnings, and lints).
-#
-# This enables the 'recommended' set of lints from `package:lints`.
-# This set helps identify many issues that may lead to problems when running
-# or consuming Dart code, and enforces writing Dart using a single, idiomatic
-# style and format.
-#
-# If you want a smaller set of lints you can change this to specify
-# 'package:lints/core.yaml'. These are just the most critical lints
-# (the recommended set includes the core lints).
-# The core lints are also what is used by pub.dev for scoring packages.
-
 include: package:lints/recommended.yaml
-
-# Uncomment the following section to specify additional rules.
-
-# linter:
-#   rules:
-#     - camel_case_types
-
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
-
-# For more information about the core and recommended set of lints, see
-# https://dart.dev/go/core-lints
-
-# For additional information about configuring this file, see
-# https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+    - test
+    - dev
+    - templates
+linter:
+  rules:
+    - public_member_api_docs
 
 """,
     children: [],
@@ -6185,15 +7061,15 @@ name: 'bot_discord_general_framework_project'
 description: 'A sample command-line application.'
 version: '1.0.0'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies:
   path: '^1.9.0'
-  general_lib: '^0.0.49'
-  general: '^0.0.32'
-  server_universe: '^0.0.25'
+  general_lib: '^0.0.62'
+  general: '^0.0.46'
+  server_universe: '^0.0.36'
   mason_logger: '^0.3.1'
 dev_dependencies:
-  lints: '^4.0.0'
+  lints: '^5.0.0'
   test: 'any'
 dependency_overrides:
   pointycastle: '3.8.0'

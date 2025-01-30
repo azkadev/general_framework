@@ -14,7 +14,7 @@ dependencies:
   general_framework: '^0.0.18'
   base_template_general_framework_project_isar_scheme:
     path: '../base_template_general_framework_project_isar_scheme'
-  isar: '^4.0.0-dev.14'
+  
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'

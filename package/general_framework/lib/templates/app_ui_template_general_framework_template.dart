@@ -1,40 +1,6 @@
-/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
 // ignore_for_file: non_constant_identifier_names
 
-// import 'dart:io';
+// import 'io_universe/io_universe.dart';
 import 'package:general_lib/script_generate/script_generate.dart';
 import 'package:io_universe/io_universe.dart';
 
@@ -1111,6 +1077,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
         children: [],
       ),
@@ -1591,6 +1560,40 @@ include ":app"
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 {
   "images" : [
     {
@@ -1737,6 +1740,40 @@ include ":app"
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 {
   "images" : [
     {
@@ -3394,6 +3431,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
         children: [],
       )
@@ -3430,6 +3470,40 @@ temp/
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:flutter/material.dart';
 
 class AboutContentLandingPageWidget extends StatefulWidget {
@@ -3495,6 +3569,40 @@ class _AboutContentLandingPageWidgetState
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:flutter/material.dart';
 
 class HomeContentLandingPageWidget extends StatefulWidget {
@@ -3552,6 +3660,40 @@ class _HomeContentLandingPageWidgetState
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 // ignore_for_file: non_constant_identifier_names, empty_catches
 
 import 'package:app_ui_template_general_framework/landing/about/about.dart';
@@ -4086,6 +4228,40 @@ class _LandingPageState extends State<LandingPage> {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/ui/ui.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
@@ -4188,6 +4364,40 @@ class _AccountPageState extends State<AccountPage> {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/ui/ui.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
@@ -4290,6 +4500,40 @@ class _ChatPageState extends State<ChatPage> {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/ui/ui.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
@@ -4392,6 +4636,40 @@ class _HomePageState extends State<HomePage> {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:flutter/material.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
@@ -4458,6 +4736,40 @@ class _SettingsPageState extends State<SettingsPage> {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
@@ -4633,6 +4945,40 @@ class _SignPageState extends State<SignPage> {
                 state_data: {},
                 file_system_entity_type: FileSystemEntityType.file,
                 value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/ui/ui.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
@@ -4738,6 +5084,40 @@ class _StoryPageState extends State<StoryPage> {
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
@@ -4811,6 +5191,40 @@ class _AppUiTemplateGeneralFrameworkState
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 import 'package:app_ui_template_general_framework/app.dart';
 import 'package:app_ui_template_general_framework/landing/landing.dart';
 import 'package:app_ui_template_general_framework/page/account/account.dart';
@@ -5032,6 +5446,40 @@ add_custom_target(flutter_assemble DEPENDS
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 //
 //  Generated file. Do not edit.
 //
@@ -5105,6 +5553,40 @@ void fl_register_plugins(FlPluginRegistry* registry);
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 #
 # Generated file, do not edit.
 #
@@ -5167,6 +5649,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
         children: [],
       ),
@@ -5333,6 +5818,40 @@ endif()
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 #include "my_application.h"
 
 int main(int argc, char** argv) {
@@ -5350,6 +5869,40 @@ int main(int argc, char** argv) {
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 #include "my_application.h"
 
 #include <flutter_linux/flutter_linux.h>
@@ -5633,6 +6186,40 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
                     state_data: {},
                     file_system_entity_type: FileSystemEntityType.file,
                     value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 {
   "images" : [
     {
@@ -7324,6 +7911,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
         children: [],
       )
@@ -7402,6 +7992,40 @@ temp/
         state_data: {},
         file_system_entity_type: FileSystemEntityType.file,
         value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 {
     "name": "app_ui_template_general_framework",
     "short_name": "app_ui_template_general_framework",
@@ -7587,6 +8211,40 @@ add_custom_target(flutter_assemble DEPENDS
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 //
 //  Generated file. Do not edit.
 //
@@ -7669,6 +8327,40 @@ void RegisterPlugins(flutter::PluginRegistry* registry);
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 #
 # Generated file, do not edit.
 #
@@ -7784,6 +8476,40 @@ add_dependencies(${BINARY_NAME} flutter_assemble)
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 #include "flutter_window.h"
 
 #include <optional>
@@ -7910,6 +8636,40 @@ class FlutterWindow : public Win32Window {
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 #include <flutter/dart_project.h>
 #include <flutter/flutter_view_controller.h>
 #include <windows.h>
@@ -8154,6 +8914,40 @@ END
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 #include "utils.h"
 
 #include <flutter_windows.h>
@@ -8260,6 +9054,40 @@ std::vector<std::string> GetCommandLineArguments();
             state_data: {},
             file_system_entity_type: FileSystemEntityType.file,
             value: r"""
+/* <!-- START LICENSE -->
+
+
+This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
+Social Media:
+
+   - Youtube: https://youtube.com/@Global_Corporation 
+   - Github: https://github.com/globalcorporation
+   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
+
+All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
+
+If you wan't edit you must add credit me (don't change)
+
+If this Software / Program / Source Code has you
+
+Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
+
+Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
+
+Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
+Karena jika ada negosiasi harga kemungkinan
+
+1. Software Ada yang di kurangin
+2. Informasi tidak lengkap
+3. Bantuan Tidak Bisa remote / full time (Ada jeda)
+
+Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
+
+jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
+Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
+
+
+<!-- END LICENSE --> */
 #include "win32_window.h"
 
 #include <dwmapi.h>
@@ -8711,6 +9539,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
         children: [],
       ),
@@ -8903,6 +9734,9 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
+generate_general_private_tools_*
+packagex-build-debug
+packagex-compile-debug
 """,
     children: [],
   ),
@@ -8969,34 +9803,15 @@ migration:
     state_data: {},
     file_system_entity_type: FileSystemEntityType.file,
     value: r"""
-# This file configures the analyzer, which statically analyzes Dart code to
-# check for errors, warnings, and lints.
-#
-# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
-# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
-# invoked from the command line by running `flutter analyze`.
-
-# The following line activates a set of recommended lints for Flutter apps,
-# packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
-
 linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at https://dart.dev/lints.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
-
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+    - public_member_api_docs
+analyzer:
+  exclude:
+    - test
+    - dev
+    - templates
 
 """,
     children: [],
@@ -9523,19 +10338,19 @@ description: 'A new Flutter project.'
 publish_to: 'none'
 version: '1.0.0+1'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies:
   flutter:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
-  general_lib_flutter: '^0.0.30'
-  general_lib: '^0.0.49'
-  simulate: '^0.0.43'
-  general_framework: '^0.0.5'
+  general_lib_flutter: '^0.0.41'
+  general_lib: '^0.0.62'
+  simulate: '^0.0.52'
+  general_framework: '^0.0.18'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'
-  flutter_lints: '^4.0.0'
+  flutter_lints: '^5.0.0'
 flutter:
   uses-material-design: true
 dependency_overrides:
