@@ -9,7 +9,7 @@ docs/canvaskit
 build/
 ephemeral/
 /build/
-generate_glx_*
+generate_general_private_tools_*
 node_modules/
 android/.gradle
 android/flutter/ephemeral
@@ -18,6 +18,5 @@ macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
 temp/
-generate_general_private_tools_*
 packagex-build-debug
 packagex-compile-debug

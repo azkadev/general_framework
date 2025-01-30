@@ -26,7 +26,6 @@ dev_dependencies:
   flutter_test:
     sdk: 'flutter'
   flutter_lints: '^5.0.0'
-flutter: null
 dependency_overrides:
   pointycastle: '3.8.0'
   mime: '^2.0.0'
