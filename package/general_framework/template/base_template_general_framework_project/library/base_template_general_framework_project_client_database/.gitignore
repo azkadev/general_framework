@@ -23,3 +23,4 @@ temp/
 generate_general_private_tools_*
 packagex-build-debug
 packagex-compile-debug
+base_template_general_framework_project_database/
