@@ -35,18 +35,18 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
-import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/message_isar_database.dart' as isar_scheme;
-import 'package:base_template_general_framework_project_scheme/database_scheme/message_isar_database.dart';
-import 'package:general_lib/extension/map.dart';
-import 'package:isar/isar.dart';
+import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/message_local_database.dart' as database_universe_scheme;
+import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
+import "package:database_universe/database_universe.dart";
+import 'package:general_lib/general_lib.dart';
 
 extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage on BaseTemplateGeneralFrameworkProjectClientDatabase {
   bool message_deleteAllMessage({
     required int chat_id,
     required int user_id,
   }) {
-    isar_core.write((isar) {
-      isar.messageIsarDatabases.where().chat_idsElementBetween(chat_id, user_id).or().chat_idsElementBetween(user_id, chat_id).deleteAll();
+    database_universe_core.write((isar) {
+      isar.messageLocalDatabases.where().chat_idsElementBetween(chat_id, user_id).or().chat_idsElementBetween(user_id, chat_id).deleteAll();
     });
     return true;
   }
@@ -56,8 +56,8 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage on B
     required int user_id,
     required int message_id,
   }) {
-    isar_core.write((isar) {
-      isar.messageIsarDatabases.where().chat_idsElementBetween(chat_id, user_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).deleteAll();
+    database_universe_core.write((isar) {
+      isar.messageLocalDatabases.where().chat_idsElementBetween(chat_id, user_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).deleteAll();
     });
     return true;
   }
@@ -67,51 +67,51 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage on B
     required int user_id,
     required int message_id,
   }) {
-    isar_core.write((isar) {
-      isar.messageIsarDatabases.where().chat_idsElementBetween(chat_id, user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).message_idEqualTo(message_id).deleteAll();
+    database_universe_core.write((isar) {
+      isar.messageLocalDatabases.where().chat_idsElementBetween(chat_id, user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).message_idEqualTo(message_id).deleteAll();
     });
     return true;
   }
 
-  MessageIsarDatabase? message_getMessage({
+  MessageLocalDatabase? message_getMessage({
     required int chat_id,
     required int user_id,
     required int message_id,
   }) {
-    final result = isar_core.messageIsarDatabases.where().chat_idsElementBetween(chat_id, user_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).findFirst();
+    final result = database_universe_core.messageLocalDatabases.where().chat_idsElementBetween(chat_id, user_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).findFirst();
     if (result == null) {
       return null;
     }
-    return MessageIsarDatabase(result.toJson());
+    return MessageLocalDatabase(result.toJson());
   }
 
-  MessageIsarDatabase? message_getMessageByMessageId({
+  MessageLocalDatabase? message_getMessageByMessageId({
     required int chat_id,
     required int user_id,
     required int message_id,
   }) {
-    final result = isar_core.messageIsarDatabases.where().chat_idsElementBetween(chat_id, user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).message_idEqualTo(message_id).findFirst();
+    final result = database_universe_core.messageLocalDatabases.where().chat_idsElementBetween(chat_id, user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).message_idEqualTo(message_id).findFirst();
     if (result == null) {
       return null;
     }
-    return MessageIsarDatabase(result.toJson());
+    return MessageLocalDatabase(result.toJson());
   }
 
   ({
     int message_count,
-    Iterable<MessageIsarDatabase> messages,
+    Iterable<MessageLocalDatabase> messages,
   }) message_getMessages({
     required int chat_id,
     required int user_id,
     required int? offset,
     required int? limit,
   }) {
-    final isar_builder = isar_core.messageIsarDatabases.where().chat_idsElementBetween(chat_id, user_id).or().chat_idsElementBetween(user_id, chat_id);
+    final isar_builder = database_universe_core.messageLocalDatabases.where().chat_idsElementBetween(chat_id, user_id).or().chat_idsElementBetween(user_id, chat_id);
     final int message_count = isar_builder.count();
     return (
       message_count: message_count,
       messages: isar_builder.findAll(offset: offset, limit: limit).map((e) {
-        return MessageIsarDatabase(e.toJson());
+        return MessageLocalDatabase(e.toJson());
       }),
     );
   }
@@ -120,42 +120,42 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage on B
     required int chat_id,
     required int user_id,
     required int message_id,
-    required MessageIsarDatabase newMessageIsarDatabase,
+    required MessageLocalDatabase newMessageLocalDatabase,
   }) {
-    newMessageIsarDatabase.rawData.removeByKeys(["id"]);
-    newMessageIsarDatabase.chat_ids = [
+    newMessageLocalDatabase.rawData.removeByKeys(["id"]);
+    newMessageLocalDatabase.chat_ids = [
       chat_id,
       user_id,
     ];
-    newMessageIsarDatabase.from_user_id = user_id;
-    newMessageIsarDatabase.message_id = message_id;
-    final result = isar_core.messageIsarDatabases.where().chat_idsElementBetween(chat_id, user_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).findFirst();
+    newMessageLocalDatabase.from_user_id = user_id;
+    newMessageLocalDatabase.message_id = message_id;
+    final result = database_universe_core.messageLocalDatabases.where().chat_idsElementBetween(chat_id, user_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).or().chat_idsElementBetween(user_id, chat_id).from_user_idEqualTo(user_id).message_idEqualTo(message_id).findFirst();
     if (result == null) {
-      isar_scheme.MessageIsarDatabase new_message_database_isar = isar_scheme.MessageIsarDatabase();
-      new_message_database_isar.id = isar_core.messageIsarDatabases.autoIncrement();
-      new_message_database_isar.chat_ids = newMessageIsarDatabase.chat_ids.map((e) => e.toInt()).toList();
+      database_universe_scheme.MessageLocalDatabase new_message_database_isar = database_universe_scheme.MessageLocalDatabase();
+      new_message_database_isar.id = database_universe_core.messageLocalDatabases.autoIncrement();
+      new_message_database_isar.chat_ids = newMessageLocalDatabase.chat_ids.map((e) => e.toInt()).toList();
       new_message_database_isar.from_user_id = user_id;
       new_message_database_isar.message_id = message_id;
 
-      newMessageIsarDatabase.rawData.forEach((key, value) {
+      newMessageLocalDatabase.rawData.forEach((key, value) {
         if (key == "chat_ids") {
           return;
         }
         new_message_database_isar[key] = value;
       });
-      isar_core.write((isar) {
-        isar.messageIsarDatabases.put(new_message_database_isar);
+      database_universe_core.write((isar) {
+        isar.messageLocalDatabases.put(new_message_database_isar);
       });
       return true;
     }
-    newMessageIsarDatabase.rawData.forEach((key, value) {
+    newMessageLocalDatabase.rawData.forEach((key, value) {
       if (key == "chat_ids") {
         return;
       }
       result[key] = value;
     });
-    isar_core.write((isar) {
-      isar.messageIsarDatabases.put(result);
+    database_universe_core.write((isar) {
+      isar.messageLocalDatabases.put(result);
     });
     return true;
   }

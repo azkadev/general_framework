@@ -35,33 +35,33 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:io';
 
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database.dart';
-import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/message_database.dart' as isar_scheme;
-import 'package:base_template_general_framework_project_scheme/database_scheme/message_isar_database.dart';
+import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/message_database.dart' as database_universe_scheme;
+import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
+import 'package:database_universe/database_universe.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:http/http.dart';
-import 'package:isar/isar.dart';
 import 'package:test/test.dart';
 
 void main() async {
   final BaseTemplateGeneralFrameworkProjectClientDatabase database = BaseTemplateGeneralFrameworkProjectClientDatabase();
   await database.ensureInitialized(currentPath: Directory.current.path, httpClient: Client());
 
-  int chat_id = 20000;
-  int user_id = 10000;
+  int chatId = 20000;
+  int userId = 10000;
   test("Message Database", () async {
-    database.isar_core.messageDatabases.where().exportJson().printPretty();
+    database.database_universe_core.messageDatabases.where().exportJson().printPretty();
     print("Wait");
     await Future.delayed(Duration(seconds: 2));
-    int message_id = 1;
-    final MessageIsarDatabase? messageDatabase = database.message_getMessageByMessageId(
-      chat_id: chat_id,
-      user_id: user_id,
-      message_id: message_id,
+    int messageId = 1;
+    final MessageLocalDatabase? messageDatabase = database.message_getMessageByMessageId(
+      chat_id: chatId,
+      user_id: userId,
+      message_id: messageId,
     );
     print(messageDatabase);
     final messages = database.message_getMessages(
-      chat_id: chat_id,
-      user_id: user_id,
+      chat_id: chatId,
+      user_id: userId,
       offset: 0,
       limit: 100,
     );

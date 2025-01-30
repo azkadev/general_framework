@@ -35,62 +35,62 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
-import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/session_isar_database.dart' as isar_scheme;
-import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
-import 'package:base_template_general_framework_project_scheme/database_scheme/session_isar_database.dart';
+ import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart'; 
 import 'package:general_lib/general_lib.dart';
+ 
 
-import 'package:isar/isar.dart';
+import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/session_local_database.dart' as database_universe_scheme;
+import "package:database_universe/database_universe.dart";
 
 extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionSession on BaseTemplateGeneralFrameworkProjectClientDatabase {
   ({
     int total_count,
-    Iterable<SessionIsarDatabase> sessions,
+    Iterable<SessionLocalDatabase> sessions,
   }) session_getSessions({
     required int? offset,
     required int? limit,
   }) {
-    final session_isar = isar_core.sessionIsarDatabases.where();
+    final session_isar = database_universe_core.sessionLocalDatabases.where();
     return (
       total_count: session_isar.count(),
       sessions: session_isar.findAll(offset: offset, limit: limit).map((e) {
-        return SessionIsarDatabase(e.toJson());
+        return SessionLocalDatabase(e.toJson());
       }),
     );
   }
 
   ({
     int total_count,
-    Iterable<SessionIsarDatabase> sessions,
+    Iterable<SessionLocalDatabase> sessions,
   }) session_getSessionDefault({
     int? offset,
     int? limit,
   }) {
-    isar_core.sessionIsarDatabases.where().is_defaultEqualTo(true);
-    final session_isar = isar_core.sessionIsarDatabases.where().is_defaultEqualTo(true);
+    database_universe_core.sessionLocalDatabases.where().is_defaultEqualTo(true);
+    final session_isar = database_universe_core.sessionLocalDatabases.where().is_defaultEqualTo(true);
     return (
       total_count: session_isar.count(),
       sessions: session_isar.findAll(offset: offset, limit: limit).map((e) {
-        return SessionIsarDatabase(e.toJson());
+        return SessionLocalDatabase(e.toJson());
       }),
     );
   }
 
-  SessionIsarDatabase? session_getSession({
+  SessionLocalDatabase? session_getSession({
     required int account_user_id,
   }) {
-    final result = isar_core.sessionIsarDatabases.where().account_user_idEqualTo(account_user_id).findFirst();
+    final result = database_universe_core.sessionLocalDatabases.where().account_user_idEqualTo(account_user_id).findFirst();
     if (result == null) {
       return null;
     }
-    return SessionIsarDatabase(result.toJson());
+    return SessionLocalDatabase(result.toJson());
   }
 
   bool session_deleteSessionByToken({
     required String token,
   }) {
-    isar_core.write((isar) {
-      isar.sessionIsarDatabases.where().tokenEqualTo(token).deleteAll();
+    database_universe_core.write((isar) {
+      isar.sessionLocalDatabases.where().tokenEqualTo(token).deleteAll();
     });
     return true;
   }
@@ -98,8 +98,8 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionSession on B
   bool session_deleteSession({
     required int account_user_id,
   }) {
-    isar_core.write((isar) {
-      isar.sessionIsarDatabases.where().account_user_idEqualTo(account_user_id).deleteAll();
+    database_universe_core.write((isar) {
+      isar.sessionLocalDatabases.where().account_user_idEqualTo(account_user_id).deleteAll();
     });
     return true;
   }
@@ -107,30 +107,30 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionSession on B
   bool session_saveSession({
     required int account_user_id,
     required String token,
-    required SessionIsarDatabase newSessionDatabase,
+    required SessionLocalDatabase newSessionDatabase,
   }) {
     newSessionDatabase.rawData.removeByKeys(["id"]);
     newSessionDatabase.account_user_id = account_user_id;
     newSessionDatabase.token = token;
-    final result = isar_core.sessionIsarDatabases.where().account_user_idEqualTo(account_user_id).findFirst();
+    final result = database_universe_core.sessionLocalDatabases.where().account_user_idEqualTo(account_user_id).findFirst();
     if (result == null) {
-      isar_scheme.SessionIsarDatabase new_session_isar_database = isar_scheme.SessionIsarDatabase();
-      new_session_isar_database.id = isar_core.sessionIsarDatabases.autoIncrement();
+      database_universe_scheme.SessionLocalDatabase new_session_isar_database = database_universe_scheme.SessionLocalDatabase();
+      new_session_isar_database.id = database_universe_core.sessionLocalDatabases.autoIncrement();
       new_session_isar_database.token = token;
 
       newSessionDatabase.rawData.forEach((key, value) {
         new_session_isar_database[key] = value;
       });
-      isar_core.write((isar) {
-        isar.sessionIsarDatabases.put(new_session_isar_database);
+      database_universe_core.write((isar) {
+        isar.sessionLocalDatabases.put(new_session_isar_database);
       });
       return true;
     }
     newSessionDatabase.rawData.forEach((key, value) {
       result[key] = value;
     });
-    isar_core.write((isar) {
-      isar.sessionIsarDatabases.put(result);
+    database_universe_core.write((isar) {
+      isar.sessionLocalDatabases.put(result);
     });
     return true;
   }

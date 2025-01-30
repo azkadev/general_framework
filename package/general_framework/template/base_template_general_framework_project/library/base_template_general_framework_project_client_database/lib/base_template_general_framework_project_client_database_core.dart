@@ -38,21 +38,19 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 import 'dart:io';
 
-import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/account_database.dart';
-import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/message_database.dart';
-import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/session_isar_database.dart';
+import 'package:base_template_general_framework_project_database_universe_scheme/base_template_general_framework_project_database_universe_scheme.dart';
+ import 'package:database_universe/database_universe.dart';
+// import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/session_isar_database.dart';
 import 'package:general_framework/core/database/database_core.dart';
 import 'package:http/http.dart';
-import 'package:isar/isar.dart';
+// import 'package:isar/isar.dart';
 import "package:path/path.dart" as path;
 
+///
 class BaseTemplateGeneralFrameworkProjectClientDatabase extends GeneralFrameworkDatabase {
-  final List<IsarGeneratedSchema> isar_schemes = [
-    AccountDatabaseSchema,
-    SessionIsarDatabaseSchema,
-    MessageDatabaseSchema,
-  ];
-  late final Isar isar_core;
+  ///
+  late final DatabaseUniverse database_universe_core;
+  ///
   BaseTemplateGeneralFrameworkProjectClientDatabase();
 
   @override
@@ -63,7 +61,8 @@ class BaseTemplateGeneralFrameworkProjectClientDatabase extends GeneralFramework
     }
     return directory;
   }
-
+  
+  ///
   Directory get directory_database {
     final Directory directory = Directory(path.join(directory_base.path, "base_template_general_framework_project_database"));
     if (directory.existsSync() == false) {
@@ -87,26 +86,28 @@ class BaseTemplateGeneralFrameworkProjectClientDatabase extends GeneralFramework
   }) async {
     await super.ensureInitialized(currentPath: currentPath, httpClient: httpClient);
     {
-      isar_core = openIsar(
+      database_universe_core = openDatabaseUniverse(
         name: "base_template_general_framework_project_database",
         maxSizeMiB: null,
       );
     }
   }
 
-  Isar openIsar({
+  ///
+  DatabaseUniverse openDatabaseUniverse({
     required String name,
     required int? maxSizeMiB,
+    List<DatabaseUniverseGeneratedSchema>? schemas,
   }) {
     int try_count = 0;
     while (true) {
       try_count++;
       try {
-        return Isar.open(
-          schemas: isar_schemes,
+        return DatabaseUniverse.open(
+          schemas: schemas ?? BaseTemplateGeneralFrameworkProjectDatabaseUniverseScheme.schemes,
           directory: directory_database.path,
           name: name,
-          maxSizeMiB: maxSizeMiB ?? Isar.defaultMaxSizeMiB * 100,
+          maxSizeMiB: maxSizeMiB ?? DatabaseUniverse.defaultMaxSizeMiB * 100,
         );
       } catch (e) {
         if (try_count > 2) {
@@ -123,4 +124,6 @@ class BaseTemplateGeneralFrameworkProjectClientDatabase extends GeneralFramework
       }
     }
   }
+
+
 }

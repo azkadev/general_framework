@@ -35,15 +35,15 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database_core.dart';
-import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/account_database.dart' as isar_scheme;
+import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/account_database.dart' as database_universe_scheme;
 import 'package:base_template_general_framework_project_scheme/database_scheme/account_database.dart';
-import 'package:isar/isar.dart';
+import 'package:database_universe/database_universe.dart';
 
 extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionAccount on BaseTemplateGeneralFrameworkProjectClientDatabase {
   AccountDatabase? account_getAccountByUserId({
     required int account_user_id,
   }) {
-    final result = isar_core.accountDatabases.where().idEqualTo(account_user_id).findFirst();
+    final result = database_universe_core.accountDatabases.where().idEqualTo(account_user_id).findFirst();
     if (result == null) {
       return null;
     }
@@ -53,7 +53,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionAccount on B
   AccountDatabase? account_getAccountByUserName({
     required String username,
   }) {
-    final result = isar_core.accountDatabases.where().usernameEqualTo(username, caseSensitive: false).findFirst();
+    final result = database_universe_core.accountDatabases.where().usernameEqualTo(username, caseSensitive: false).findFirst();
     if (result == null) {
       return null;
     }
@@ -65,14 +65,14 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionAccount on B
     required AccountDatabase newAccountDatabase,
   }) {
     newAccountDatabase.id = account_user_id;
-    final result = isar_core.accountDatabases.where().idEqualTo(account_user_id).findFirst();
+    final result = database_universe_core.accountDatabases.where().idEqualTo(account_user_id).findFirst();
     if (result == null) {
-      final isar_scheme.AccountDatabase new_account_database_isar = isar_scheme.AccountDatabase();
+      final database_universe_scheme.AccountDatabase new_account_database_isar = database_universe_scheme.AccountDatabase();
       new_account_database_isar.id = account_user_id;
       newAccountDatabase.rawData.forEach((key, value) {
         new_account_database_isar[key] = value;
       });
-      isar_core.write((isar) {
+      database_universe_core.write((isar) {
         isar.accountDatabases.put(new_account_database_isar);
       });
       return true;
@@ -81,7 +81,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionAccount on B
     newAccountDatabase.rawData.forEach((key, value) {
       result[key] = value;
     });
-    isar_core.write((isar) {
+    database_universe_core.write((isar) {
       isar.accountDatabases.put(result);
     });
     return true;
@@ -90,7 +90,7 @@ extension BaseTemplateGeneralFrameworkProjectClientDatabaseExtensionAccount on B
   bool account_deleteAccountByUserId({
     required int account_user_id,
   }) {
-    isar_core.write((isar) {
+    database_universe_core.write((isar) {
       isar.accountDatabases.where().idEqualTo(account_user_id).deleteAll();
     });
     return true;
