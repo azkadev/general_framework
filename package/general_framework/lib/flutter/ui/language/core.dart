@@ -329,7 +329,6 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework>
       languageCodeResults.addAll(languageCodeDatas);
     });
   }
- 
 
   /// UncompleteDocumentation
   PreferredSizeWidget appBar({

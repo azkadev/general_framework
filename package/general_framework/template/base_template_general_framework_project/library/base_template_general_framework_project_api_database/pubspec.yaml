@@ -13,7 +13,7 @@ dependencies:
   general_lib: '^0.0.63'
   path: '^1.9.0'
   http: '^1.2.2'
-  general_framework: '^0.0.19'
+  general_framework: '^0.0.20'
   yet_another_json_isolate: '^2.0.0'
   supabase: '^2.6.2'
 dev_dependencies:

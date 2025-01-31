@@ -17,7 +17,7 @@ dependencies:
     path: '../../base_web_template_general_framework_project_client'
   base_web_template_general_framework_project_secret:
     path: '../../base_web_template_general_framework_project_secret'
-  general_framework: '^0.0.19'
+  general_framework: '^0.0.20'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'
