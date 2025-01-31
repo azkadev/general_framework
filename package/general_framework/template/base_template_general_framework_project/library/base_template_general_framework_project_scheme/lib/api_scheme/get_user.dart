@@ -2,21 +2,29 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
-/// Generated 
+/// Generated
 class GetUser extends JsonScheme {
-
   /// Generated
   GetUser(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"getUser","user_id":0,"@return_type":"account","@client_token":"","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
+    return {
+      "@type": "getUser",
+      "user_id": 0,
+      "@return_type": "account",
+      "@client_token": "",
+      "@platform_id": "",
+      "@platform_username": "",
+      "@extra": "",
+      "@expire_date": "",
+      "@token": ""
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == getUser
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +38,16 @@ class GetUser extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [GetUser]
-  /// Empty  
+  /// Empty
   static GetUser empty() {
     return GetUser({});
   }
 
-  
-
   /// Generated
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -57,11 +61,10 @@ class GetUser extends JsonScheme {
     rawData["@type"] = value;
   }
 
-
   /// Generated
   num? get user_id {
     try {
-      if (rawData["user_id"] is num == false){
+      if (rawData["user_id"] is num == false) {
         return null;
       }
       return rawData["user_id"] as num;
@@ -75,11 +78,10 @@ class GetUser extends JsonScheme {
     rawData["user_id"] = value;
   }
 
-
   /// Generated
   String? get special_return_type {
     try {
-      if (rawData["@return_type"] is String == false){
+      if (rawData["@return_type"] is String == false) {
         return null;
       }
       return rawData["@return_type"] as String;
@@ -93,11 +95,10 @@ class GetUser extends JsonScheme {
     rawData["@return_type"] = value;
   }
 
-
   /// Generated
   String? get special_client_token {
     try {
-      if (rawData["@client_token"] is String == false){
+      if (rawData["@client_token"] is String == false) {
         return null;
       }
       return rawData["@client_token"] as String;
@@ -111,11 +112,10 @@ class GetUser extends JsonScheme {
     rawData["@client_token"] = value;
   }
 
-
   /// Generated
   String? get special_platform_id {
     try {
-      if (rawData["@platform_id"] is String == false){
+      if (rawData["@platform_id"] is String == false) {
         return null;
       }
       return rawData["@platform_id"] as String;
@@ -129,11 +129,10 @@ class GetUser extends JsonScheme {
     rawData["@platform_id"] = value;
   }
 
-
   /// Generated
   String? get special_platform_username {
     try {
-      if (rawData["@platform_username"] is String == false){
+      if (rawData["@platform_username"] is String == false) {
         return null;
       }
       return rawData["@platform_username"] as String;
@@ -147,11 +146,10 @@ class GetUser extends JsonScheme {
     rawData["@platform_username"] = value;
   }
 
-
   /// Generated
   String? get special_extra {
     try {
-      if (rawData["@extra"] is String == false){
+      if (rawData["@extra"] is String == false) {
         return null;
       }
       return rawData["@extra"] as String;
@@ -165,11 +163,10 @@ class GetUser extends JsonScheme {
     rawData["@extra"] = value;
   }
 
-
   /// Generated
   String? get special_expire_date {
     try {
-      if (rawData["@expire_date"] is String == false){
+      if (rawData["@expire_date"] is String == false) {
         return null;
       }
       return rawData["@expire_date"] as String;
@@ -183,11 +180,10 @@ class GetUser extends JsonScheme {
     rawData["@expire_date"] = value;
   }
 
-
   /// Generated
   String? get special_token {
     try {
-      if (rawData["@token"] is String == false){
+      if (rawData["@token"] is String == false) {
         return null;
       }
       return rawData["@token"] as String;
@@ -201,11 +197,9 @@ class GetUser extends JsonScheme {
     rawData["@token"] = value;
   }
 
-
   /// Generated
   static GetUser create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "getUser",
     num? user_id,
     String special_return_type = "account",
@@ -215,10 +209,9 @@ class GetUser extends JsonScheme {
     String special_extra = "",
     String special_expire_date = "",
     String special_token = "",
-})  {
+  }) {
     // GetUser getUser = GetUser({
-final Map getUser_data_create_json = {
-  
+    final Map getUser_data_create_json = {
       "@type": special_type,
       "user_id": user_id,
       "@return_type": special_return_type,
@@ -228,12 +221,9 @@ final Map getUser_data_create_json = {
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@token": special_token,
+    };
 
-
-};
-
-
-          getUser_data_create_json.removeWhere((key, value) => value == null);
+    getUser_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -242,8 +232,6 @@ final Map getUser_data_create_json = {
         }
       });
     }
-return GetUser(getUser_data_create_json);
-
-
-      }
+    return GetUser(getUser_data_create_json);
+  }
 }

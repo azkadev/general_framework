@@ -2,21 +2,25 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
-/// Generated 
+/// Generated
 class ChatDatabase extends JsonScheme {
-
   /// Generated
   ChatDatabase(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"chatDatabase","chat_ids":[0],"chat_unique_id":"","from_app_id":"","owner_account_user_id":0};
+    return {
+      "@type": "chatDatabase",
+      "chat_ids": [0],
+      "chat_unique_id": "",
+      "from_app_id": "",
+      "owner_account_user_id": 0
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == chatDatabase
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +34,16 @@ class ChatDatabase extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [ChatDatabase]
-  /// Empty  
+  /// Empty
   static ChatDatabase empty() {
     return ChatDatabase({});
   }
 
-  
-
   /// Generated
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -57,15 +57,14 @@ class ChatDatabase extends JsonScheme {
     rawData["@type"] = value;
   }
 
-
   /// Generated
   ///
   /// default:
-  /// 
-  /// 
+  ///
+  ///
   List<num> get chat_ids {
     try {
-      if (rawData["chat_ids"] is List == false){
+      if (rawData["chat_ids"] is List == false) {
         return [];
       }
       return (rawData["chat_ids"] as List).cast<num>();
@@ -74,17 +73,15 @@ class ChatDatabase extends JsonScheme {
     }
   }
 
-
   /// Generated
   set chat_ids(List<num> value) {
     rawData["chat_ids"] = value;
   }
 
-
   /// Generated
   String? get chat_unique_id {
     try {
-      if (rawData["chat_unique_id"] is String == false){
+      if (rawData["chat_unique_id"] is String == false) {
         return null;
       }
       return rawData["chat_unique_id"] as String;
@@ -98,11 +95,10 @@ class ChatDatabase extends JsonScheme {
     rawData["chat_unique_id"] = value;
   }
 
-
   /// Generated
   String? get from_app_id {
     try {
-      if (rawData["from_app_id"] is String == false){
+      if (rawData["from_app_id"] is String == false) {
         return null;
       }
       return rawData["from_app_id"] as String;
@@ -116,11 +112,10 @@ class ChatDatabase extends JsonScheme {
     rawData["from_app_id"] = value;
   }
 
-
   /// Generated
   num? get owner_account_user_id {
     try {
-      if (rawData["owner_account_user_id"] is num == false){
+      if (rawData["owner_account_user_id"] is num == false) {
         return null;
       }
       return rawData["owner_account_user_id"] as num;
@@ -134,31 +129,25 @@ class ChatDatabase extends JsonScheme {
     rawData["owner_account_user_id"] = value;
   }
 
-
   /// Generated
   static ChatDatabase create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "chatDatabase",
-      List<num>? chat_ids,
+    List<num>? chat_ids,
     String? chat_unique_id,
     String? from_app_id,
     num? owner_account_user_id,
-})  {
+  }) {
     // ChatDatabase chatDatabase = ChatDatabase({
-final Map chatDatabase_data_create_json = {
-  
+    final Map chatDatabase_data_create_json = {
       "@type": special_type,
       "chat_ids": chat_ids,
       "chat_unique_id": chat_unique_id,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
+    };
 
-
-};
-
-
-          chatDatabase_data_create_json.removeWhere((key, value) => value == null);
+    chatDatabase_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -167,8 +156,6 @@ final Map chatDatabase_data_create_json = {
         }
       });
     }
-return ChatDatabase(chatDatabase_data_create_json);
-
-
-      }
+    return ChatDatabase(chatDatabase_data_create_json);
+  }
 }

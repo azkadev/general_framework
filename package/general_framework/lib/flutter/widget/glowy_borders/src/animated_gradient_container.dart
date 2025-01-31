@@ -21,7 +21,14 @@ class AnimatedGradientContainerGeneralFrameworkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(decoration: BoxDecoration(borderRadius: borderRadius, gradient: SweepGradient(colors: [...gradientColors, ...gradientColors.reversed], stops: _generateColorStops([...gradientColors, ...gradientColors.reversed]), transform: GradientRotation(gradientAngle))));
+    return Container(
+        decoration: BoxDecoration(
+            borderRadius: borderRadius,
+            gradient: SweepGradient(
+                colors: [...gradientColors, ...gradientColors.reversed],
+                stops: _generateColorStops(
+                    [...gradientColors, ...gradientColors.reversed]),
+                transform: GradientRotation(gradientAngle))));
   }
 
   List<double> _generateColorStops(List<dynamic> colors) {

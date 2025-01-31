@@ -2,21 +2,26 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
-/// Generated 
+/// Generated
 class SessionLocalDatabase extends JsonScheme {
-
   /// Generated
   SessionLocalDatabase(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"sessionLocalDatabase","account_user_id":0,"token":"","is_default":false,"from_app_id":"","owner_account_user_id":0};
+    return {
+      "@type": "sessionLocalDatabase",
+      "account_user_id": 0,
+      "token": "",
+      "is_default": false,
+      "from_app_id": "",
+      "owner_account_user_id": 0
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == sessionLocalDatabase
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +35,16 @@ class SessionLocalDatabase extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [SessionLocalDatabase]
-  /// Empty  
+  /// Empty
   static SessionLocalDatabase empty() {
     return SessionLocalDatabase({});
   }
 
-  
-
   /// Generated
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -57,11 +58,10 @@ class SessionLocalDatabase extends JsonScheme {
     rawData["@type"] = value;
   }
 
-
   /// Generated
   num? get account_user_id {
     try {
-      if (rawData["account_user_id"] is num == false){
+      if (rawData["account_user_id"] is num == false) {
         return null;
       }
       return rawData["account_user_id"] as num;
@@ -75,11 +75,10 @@ class SessionLocalDatabase extends JsonScheme {
     rawData["account_user_id"] = value;
   }
 
-
   /// Generated
   String? get token {
     try {
-      if (rawData["token"] is String == false){
+      if (rawData["token"] is String == false) {
         return null;
       }
       return rawData["token"] as String;
@@ -93,11 +92,10 @@ class SessionLocalDatabase extends JsonScheme {
     rawData["token"] = value;
   }
 
-
   /// Generated
   bool? get is_default {
     try {
-      if (rawData["is_default"] is bool == false){
+      if (rawData["is_default"] is bool == false) {
         return null;
       }
       return rawData["is_default"] as bool;
@@ -111,11 +109,10 @@ class SessionLocalDatabase extends JsonScheme {
     rawData["is_default"] = value;
   }
 
-
   /// Generated
   String? get from_app_id {
     try {
-      if (rawData["from_app_id"] is String == false){
+      if (rawData["from_app_id"] is String == false) {
         return null;
       }
       return rawData["from_app_id"] as String;
@@ -129,11 +126,10 @@ class SessionLocalDatabase extends JsonScheme {
     rawData["from_app_id"] = value;
   }
 
-
   /// Generated
   num? get owner_account_user_id {
     try {
-      if (rawData["owner_account_user_id"] is num == false){
+      if (rawData["owner_account_user_id"] is num == false) {
         return null;
       }
       return rawData["owner_account_user_id"] as num;
@@ -147,33 +143,28 @@ class SessionLocalDatabase extends JsonScheme {
     rawData["owner_account_user_id"] = value;
   }
 
-
   /// Generated
   static SessionLocalDatabase create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "sessionLocalDatabase",
     num? account_user_id,
     String? token,
     bool? is_default,
     String? from_app_id,
     num? owner_account_user_id,
-})  {
+  }) {
     // SessionLocalDatabase sessionLocalDatabase = SessionLocalDatabase({
-final Map sessionLocalDatabase_data_create_json = {
-  
+    final Map sessionLocalDatabase_data_create_json = {
       "@type": special_type,
       "account_user_id": account_user_id,
       "token": token,
       "is_default": is_default,
       "from_app_id": from_app_id,
       "owner_account_user_id": owner_account_user_id,
+    };
 
-
-};
-
-
-          sessionLocalDatabase_data_create_json.removeWhere((key, value) => value == null);
+    sessionLocalDatabase_data_create_json
+        .removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -182,8 +173,6 @@ final Map sessionLocalDatabase_data_create_json = {
         }
       });
     }
-return SessionLocalDatabase(sessionLocalDatabase_data_create_json);
-
-
-      }
+    return SessionLocalDatabase(sessionLocalDatabase_data_create_json);
+  }
 }

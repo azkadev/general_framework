@@ -10,12 +10,10 @@ class BaseTemplateGeneralFrameworkProjectDatabaseUniverseScheme {
   ///
   static final List<DatabaseUniverseGeneratedSchema> schemes = [
     AccountDatabaseSchema,
-  
     ChatDatabaseSchema,
     MessageDatabaseSchema,
-  
     MessageLocalDatabaseSchema,
-  SessionLocalDatabaseSchema,
+    SessionLocalDatabaseSchema,
     SessionLocalDatabaseSchema,
   ];
 }

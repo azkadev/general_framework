@@ -2,21 +2,19 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
-/// Generated 
+/// Generated
 class Ok extends JsonScheme {
-
   /// Generated
   Ok(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"ok"};
+    return {"@type": "ok"};
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == ok
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +28,16 @@ class Ok extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [Ok]
-  /// Empty  
+  /// Empty
   static Ok empty() {
     return Ok({});
   }
 
-  
-
   /// Generated
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -57,23 +51,17 @@ class Ok extends JsonScheme {
     rawData["@type"] = value;
   }
 
-
   /// Generated
   static Ok create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "ok",
-})  {
+  }) {
     // Ok ok = Ok({
-final Map ok_data_create_json = {
-  
+    final Map ok_data_create_json = {
       "@type": special_type,
+    };
 
-
-};
-
-
-          ok_data_create_json.removeWhere((key, value) => value == null);
+    ok_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -82,8 +70,6 @@ final Map ok_data_create_json = {
         }
       });
     }
-return Ok(ok_data_create_json);
-
-
-      }
+    return Ok(ok_data_create_json);
+  }
 }

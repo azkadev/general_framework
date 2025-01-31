@@ -2,21 +2,19 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
-/// Generated 
+/// Generated
 class Ok extends JsonScheme {
-
   /// Generated
   Ok(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"ok","@extra":"","@expire_date":"","@client_id":""};
+    return {"@type": "ok", "@extra": "", "@expire_date": "", "@client_id": ""};
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == ok
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +28,16 @@ class Ok extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [Ok]
-  /// Empty  
+  /// Empty
   static Ok empty() {
     return Ok({});
   }
 
-  
-
   /// Generated
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -57,11 +51,10 @@ class Ok extends JsonScheme {
     rawData["@type"] = value;
   }
 
-
   /// Generated
   String? get special_extra {
     try {
-      if (rawData["@extra"] is String == false){
+      if (rawData["@extra"] is String == false) {
         return null;
       }
       return rawData["@extra"] as String;
@@ -75,11 +68,10 @@ class Ok extends JsonScheme {
     rawData["@extra"] = value;
   }
 
-
   /// Generated
   String? get special_expire_date {
     try {
-      if (rawData["@expire_date"] is String == false){
+      if (rawData["@expire_date"] is String == false) {
         return null;
       }
       return rawData["@expire_date"] as String;
@@ -93,11 +85,10 @@ class Ok extends JsonScheme {
     rawData["@expire_date"] = value;
   }
 
-
   /// Generated
   String? get special_client_id {
     try {
-      if (rawData["@client_id"] is String == false){
+      if (rawData["@client_id"] is String == false) {
         return null;
       }
       return rawData["@client_id"] as String;
@@ -111,29 +102,23 @@ class Ok extends JsonScheme {
     rawData["@client_id"] = value;
   }
 
-
   /// Generated
   static Ok create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "ok",
     String special_extra = "",
     String special_expire_date = "",
     String special_client_id = "",
-})  {
+  }) {
     // Ok ok = Ok({
-final Map ok_data_create_json = {
-  
+    final Map ok_data_create_json = {
       "@type": special_type,
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@client_id": special_client_id,
+    };
 
-
-};
-
-
-          ok_data_create_json.removeWhere((key, value) => value == null);
+    ok_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -142,8 +127,6 @@ final Map ok_data_create_json = {
         }
       });
     }
-return Ok(ok_data_create_json);
-
-
-      }
+    return Ok(ok_data_create_json);
+  }
 }

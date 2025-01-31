@@ -4,20 +4,26 @@ import "package:general_lib/general_lib.dart";
 
 import "message.dart";
 
-/// Generated 
+/// Generated
 class Update extends JsonScheme {
-
   /// Generated
   Update(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"update","message":{"@type":"message"},"new_message":{"@type":"message"},"@extra":"","@expire_date":"","@client_id":""};
+    return {
+      "@type": "update",
+      "message": {"@type": "message"},
+      "new_message": {"@type": "message"},
+      "@extra": "",
+      "@expire_date": "",
+      "@client_id": ""
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == update
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -31,20 +37,16 @@ class Update extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [Update]
-  /// Empty  
+  /// Empty
   static Update empty() {
     return Update({});
   }
 
-  
-
   /// Generated
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -58,51 +60,44 @@ class Update extends JsonScheme {
     rawData["@type"] = value;
   }
 
-
   /// Generated
   Message get message {
     try {
-      if (rawData["message"] is Map == false){
-        return Message({}); 
+      if (rawData["message"] is Map == false) {
+        return Message({});
       }
       return Message(rawData["message"] as Map);
-    } catch (e) {  
-      return Message({}); 
+    } catch (e) {
+      return Message({});
     }
   }
-
 
   /// Generated
   set message(Message value) {
     rawData["message"] = value.toJson();
   }
 
-
-
   /// Generated
   Message get new_message {
     try {
-      if (rawData["new_message"] is Map == false){
-        return Message({}); 
+      if (rawData["new_message"] is Map == false) {
+        return Message({});
       }
       return Message(rawData["new_message"] as Map);
-    } catch (e) {  
-      return Message({}); 
+    } catch (e) {
+      return Message({});
     }
   }
-
 
   /// Generated
   set new_message(Message value) {
     rawData["new_message"] = value.toJson();
   }
 
-
-
   /// Generated
   String? get special_extra {
     try {
-      if (rawData["@extra"] is String == false){
+      if (rawData["@extra"] is String == false) {
         return null;
       }
       return rawData["@extra"] as String;
@@ -116,11 +111,10 @@ class Update extends JsonScheme {
     rawData["@extra"] = value;
   }
 
-
   /// Generated
   String? get special_expire_date {
     try {
-      if (rawData["@expire_date"] is String == false){
+      if (rawData["@expire_date"] is String == false) {
         return null;
       }
       return rawData["@expire_date"] as String;
@@ -134,11 +128,10 @@ class Update extends JsonScheme {
     rawData["@expire_date"] = value;
   }
 
-
   /// Generated
   String? get special_client_id {
     try {
-      if (rawData["@client_id"] is String == false){
+      if (rawData["@client_id"] is String == false) {
         return null;
       }
       return rawData["@client_id"] as String;
@@ -152,33 +145,27 @@ class Update extends JsonScheme {
     rawData["@client_id"] = value;
   }
 
-
   /// Generated
   static Update create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "update",
-      Message? message,
-      Message? new_message,
+    Message? message,
+    Message? new_message,
     String special_extra = "",
     String special_expire_date = "",
     String special_client_id = "",
-})  {
+  }) {
     // Update update = Update({
-final Map update_data_create_json = {
-  
+    final Map update_data_create_json = {
       "@type": special_type,
-      "message": (message != null)?message.toJson(): null,
-      "new_message": (new_message != null)?new_message.toJson(): null,
+      "message": (message != null) ? message.toJson() : null,
+      "new_message": (new_message != null) ? new_message.toJson() : null,
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@client_id": special_client_id,
+    };
 
-
-};
-
-
-          update_data_create_json.removeWhere((key, value) => value == null);
+    update_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -187,8 +174,6 @@ final Map update_data_create_json = {
         }
       });
     }
-return Update(update_data_create_json);
-
-
-      }
+    return Update(update_data_create_json);
+  }
 }

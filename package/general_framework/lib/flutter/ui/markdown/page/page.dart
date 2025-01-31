@@ -46,16 +46,28 @@ import 'package:flutter/material.dart';
 import 'package:translate_client/translate_client_core.dart';
 
 /// UncompleteDocumentation
-typedef MarkdownFlutterContentGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = FutureOr<MarkdownFlutterContentGeneralFramework> Function(BuildContext context, T markdownFlutterPageStateGeneralFramework);
+typedef MarkdownFlutterContentGeneralFrameworkFunction<
+        T extends MarkdownFlutterPageStateGeneralFramework>
+    = FutureOr<MarkdownFlutterContentGeneralFramework> Function(
+        BuildContext context, T markdownFlutterPageStateGeneralFramework);
 
 /// UncompleteDocumentation
-typedef MarkdownFlutterOnUrlPressedGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = void Function(BuildContext context, String url, T markdownFlutterPageStateGeneralFramework);
+typedef MarkdownFlutterOnUrlPressedGeneralFrameworkFunction<
+        T extends MarkdownFlutterPageStateGeneralFramework>
+    = void Function(BuildContext context, String url,
+        T markdownFlutterPageStateGeneralFramework);
 
 /// UncompleteDocumentation
-typedef MarkdownFlutterAppBarActionsGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = List<Widget> Function(BuildContext context, T markdownFlutterPageStateGeneralFramework);
+typedef MarkdownFlutterAppBarActionsGeneralFrameworkFunction<
+        T extends MarkdownFlutterPageStateGeneralFramework>
+    = List<Widget> Function(
+        BuildContext context, T markdownFlutterPageStateGeneralFramework);
 
 /// UncompleteDocumentation
-typedef MarkdownFlutterPopupMenuItemsGeneralFrameworkFunction<T extends MarkdownFlutterPageStateGeneralFramework> = List<PopupMenuEntry<dynamic>> Function(BuildContext context, T markdownFlutterPageStateGeneralFramework, TextStyle textStyle);
+typedef MarkdownFlutterPopupMenuItemsGeneralFrameworkFunction<
+        T extends MarkdownFlutterPageStateGeneralFramework>
+    = List<PopupMenuEntry<dynamic>> Function(BuildContext context,
+        T markdownFlutterPageStateGeneralFramework, TextStyle textStyle);
 
 /// UncompleteDocumentation
 class MarkdownFlutterContentGeneralFramework {
@@ -69,11 +81,15 @@ class MarkdownFlutterContentGeneralFramework {
   final String languageCodeId;
 
   /// UncompleteDocumentation
-  const MarkdownFlutterContentGeneralFramework({required this.title, required this.content, required this.languageCodeId});
+  const MarkdownFlutterContentGeneralFramework(
+      {required this.title,
+      required this.content,
+      required this.languageCodeId});
 
   /// UncompleteDocumentation
   static MarkdownFlutterContentGeneralFramework empty() {
-    return const MarkdownFlutterContentGeneralFramework(title: "", content: "", languageCodeId: "");
+    return const MarkdownFlutterContentGeneralFramework(
+        title: "", content: "", languageCodeId: "");
   }
 
   /// UncompleteDocumentation
@@ -92,7 +108,8 @@ class MarkdownFlutterContentGeneralFramework {
 }
 
 /// UncompleteDocumentation
-class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGeneralFramework> extends StatefulWidget {
+class MarkdownFlutterPageGeneralFramework<
+    T extends MarkdownFlutterPageStateGeneralFramework> extends StatefulWidget {
   /// UncompleteDocumentation
   final String title;
 
@@ -100,15 +117,19 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
   final MarkdownFlutterOnUrlPressedGeneralFrameworkFunction onUrlPressedBuilder;
 
   /// UncompleteDocumentation
-  final MarkdownFlutterContentGeneralFrameworkFunction<T> markdownFlutterContentGeneralFrameworkBuilder;
+  final MarkdownFlutterContentGeneralFrameworkFunction<T>
+      markdownFlutterContentGeneralFrameworkBuilder;
 
   /// UncompleteDocumentation
-  final MarkdownFlutterPopupMenuItemsGeneralFrameworkFunction<T> markdownFlutterPopupMenuItemsGeneralFrameworkBuilder;
+  final MarkdownFlutterPopupMenuItemsGeneralFrameworkFunction<T>
+      markdownFlutterPopupMenuItemsGeneralFrameworkBuilder;
 
   /// UncompleteDocumentation
-  final MarkdownFlutterAppBarActionsGeneralFrameworkFunction<T> markdownFlutterAppBarActionsGeneralFrameworkFunctionBuilder;
-///
-  final GeneralLibFlutterApp generalLibFlutterApp; 
+  final MarkdownFlutterAppBarActionsGeneralFrameworkFunction<T>
+      markdownFlutterAppBarActionsGeneralFrameworkFunctionBuilder;
+
+  ///
+  final GeneralLibFlutterApp generalLibFlutterApp;
 
   /// UncompleteDocumentation
   const MarkdownFlutterPageGeneralFramework({
@@ -122,7 +143,8 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
   });
 
   @override
-  State<MarkdownFlutterPageGeneralFramework> createState() => MarkdownFlutterPageStateGeneralFramework();
+  State<MarkdownFlutterPageGeneralFramework> createState() =>
+      MarkdownFlutterPageStateGeneralFramework();
 
   /// UncompleteDocumentation
 
@@ -132,7 +154,8 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
     required BuildContext context,
     required T markdownFlutterPageStateGeneralFramework,
   }) {
-    final bodySmall = (context.theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
+    final bodySmall =
+        (context.theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
       color: context.theme.indicatorColor,
       shadows: context.extensionGeneralLibFlutterShadows(),
     );
@@ -148,7 +171,9 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
       ),
       backgroundColor: context.theme.primaryColor,
       actions: [
-        ...markdownFlutterPageStateGeneralFramework.widget.markdownFlutterAppBarActionsGeneralFrameworkFunctionBuilder(context, markdownFlutterPageStateGeneralFramework),
+        ...markdownFlutterPageStateGeneralFramework.widget
+            .markdownFlutterAppBarActionsGeneralFrameworkFunctionBuilder(
+                context, markdownFlutterPageStateGeneralFramework),
         PopupMenuButton(
           iconSize: 20,
           position: PopupMenuPosition.under,
@@ -197,9 +222,12 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
                   }
                   markdownFlutterPageStateGeneralFramework.handleFunction(
                     onFunction: (context, statefulWidget) async {
-                      if (markdownFlutterPageStateGeneralFramework.textToSpeech.isSupport() == false) {
+                      if (markdownFlutterPageStateGeneralFramework.textToSpeech
+                              .isSupport() ==
+                          false) {
                         context.showAlertGeneralFramework(
-                          alertGeneralFrameworkOptions: AlertGeneralFrameworkOptions(
+                          alertGeneralFrameworkOptions:
+                              AlertGeneralFrameworkOptions(
                             title: "Unsupported",
                             isShowCancelButton: false,
                             isShowCloseButton: false,
@@ -212,13 +240,21 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
                       }
 
                       for (final element in [
-                        markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.title.trim(),
-                        markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.content.trim(),
+                        markdownFlutterPageStateGeneralFramework
+                            .markdownFlutterContentGeneralFramework.title
+                            .trim(),
+                        markdownFlutterPageStateGeneralFramework
+                            .markdownFlutterContentGeneralFramework.content
+                            .trim(),
                       ]) {
                         if (element.isNotEmpty) {
-                          final text = markdownFlutterPageStateGeneralFramework.textToSpeech.utils_removeHtmlOrMarkdown(text: element);
+                          final text = markdownFlutterPageStateGeneralFramework
+                              .textToSpeech
+                              .utils_removeHtmlOrMarkdown(text: element);
                           if (text.isNotEmpty) {
-                            await markdownFlutterPageStateGeneralFramework.textToSpeech.speak(text: element);
+                            await markdownFlutterPageStateGeneralFramework
+                                .textToSpeech
+                                .speak(text: element);
                           }
                         }
                       }
@@ -255,60 +291,88 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
                     return;
                   }
 
-                  markdownFlutterPageStateGeneralFramework.handleFunction(onFunction: (context, statefulWidget) async {
-                    final LanguageGeneralFrameworkController languageGeneralFrameworkController = LanguageGeneralFrameworkController(
-                      countryCodeId: markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.languageCodeId,
+                  markdownFlutterPageStateGeneralFramework.handleFunction(
+                      onFunction: (context, statefulWidget) async {
+                    final LanguageGeneralFrameworkController
+                        languageGeneralFrameworkController =
+                        LanguageGeneralFrameworkController(
+                      countryCodeId: markdownFlutterPageStateGeneralFramework
+                          .markdownFlutterContentGeneralFramework
+                          .languageCodeId,
                       languageSupports: [],
                     );
                     await LanguageGeneralFramework.show(
                       context: context,
-                      languageGeneralFrameworkOptions: LanguageGeneralFrameworkOptions(
+                      languageGeneralFrameworkOptions:
+                          LanguageGeneralFrameworkOptions(
                         applicationIcon: null,
                         applicationTitle: "",
                         isApplicationFullScreen: false,
-                        generalLibFlutterApp: markdownFlutterPageStateGeneralFramework.widget.generalLibFlutterApp,
-                        languageGeneralFrameworkType: LanguageGeneralFrameworkType.dialog,
-
+                        generalLibFlutterApp:
+                            markdownFlutterPageStateGeneralFramework
+                                .widget.generalLibFlutterApp,
+                        languageGeneralFrameworkType:
+                            LanguageGeneralFrameworkType.dialog,
                         onSelect: (context, languageCodeDataDetail) async {
-                          if (markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.languageCodeId == languageCodeDataDetail.code) {
+                          if (markdownFlutterPageStateGeneralFramework
+                                  .markdownFlutterContentGeneralFramework
+                                  .languageCodeId ==
+                              languageCodeDataDetail.code) {
                             context.navigator().pop();
 
                             return;
                           }
-                          final LoadingGeneralFrameworkController loadingGeneralFrameworkController = LoadingGeneralFrameworkController(
+                          final LoadingGeneralFrameworkController
+                              loadingGeneralFrameworkController =
+                              LoadingGeneralFrameworkController(
                             loadingText: "Translating",
                           );
                           LoadingGeneralFramework.show(
                             context: context,
-                            loadingGeneralFrameworkController: loadingGeneralFrameworkController,
+                            loadingGeneralFrameworkController:
+                                loadingGeneralFrameworkController,
                           );
-                          loadingGeneralFrameworkController.update(loadingText: "Translating Title to ${languageCodeDataDetail.flag} ${languageCodeDataDetail.name}");
-                          final title_translate = await TranslateClient.translate(
-                            text: markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.content,
+                          loadingGeneralFrameworkController.update(
+                              loadingText:
+                                  "Translating Title to ${languageCodeDataDetail.flag} ${languageCodeDataDetail.name}");
+                          final title_translate =
+                              await TranslateClient.translate(
+                            text: markdownFlutterPageStateGeneralFramework
+                                .markdownFlutterContentGeneralFramework.content,
                             toLanguageCode: languageCodeDataDetail.code ?? "",
                             ignoreError: true,
                           );
-                          loadingGeneralFrameworkController.update(loadingText: "Translating Content to ${languageCodeDataDetail.flag} ${languageCodeDataDetail.name}");
+                          loadingGeneralFrameworkController.update(
+                              loadingText:
+                                  "Translating Content to ${languageCodeDataDetail.flag} ${languageCodeDataDetail.name}");
 
-                          final content_translate = await TranslateClient.translate(
-                            text: markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework.content,
+                          final content_translate =
+                              await TranslateClient.translate(
+                            text: markdownFlutterPageStateGeneralFramework
+                                .markdownFlutterContentGeneralFramework.content,
                             toLanguageCode: languageCodeDataDetail.code ?? "",
                             ignoreError: true,
                           );
-                          loadingGeneralFrameworkController.update(loadingText: "Finished Translate to ${languageCodeDataDetail.flag} ${languageCodeDataDetail.name}");
+                          loadingGeneralFrameworkController.update(
+                              loadingText:
+                                  "Finished Translate to ${languageCodeDataDetail.flag} ${languageCodeDataDetail.name}");
 
-                          markdownFlutterPageStateGeneralFramework.markdownFlutterContentGeneralFramework = MarkdownFlutterContentGeneralFramework(
+                          markdownFlutterPageStateGeneralFramework
+                                  .markdownFlutterContentGeneralFramework =
+                              MarkdownFlutterContentGeneralFramework(
                             title: title_translate,
                             content: content_translate,
                             languageCodeId: languageCodeDataDetail.code ?? "",
                           );
                           context.navigator().pop();
                           context.navigator().pop();
-                          markdownFlutterPageStateGeneralFramework.setStateWithIgnoreError(
+                          markdownFlutterPageStateGeneralFramework
+                              .setStateWithIgnoreError(
                             fn: () {},
                           );
                         },
-                        languageGeneralFrameworkController: languageGeneralFrameworkController,
+                        languageGeneralFrameworkController:
+                            languageGeneralFrameworkController,
                       ),
                     );
                     languageGeneralFrameworkController.dispose();
@@ -336,7 +400,9 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
                   );
                 }(),
               ),
-              ...markdownFlutterPageStateGeneralFramework.widget.markdownFlutterPopupMenuItemsGeneralFrameworkBuilder(context, markdownFlutterPageStateGeneralFramework, bodySmall),
+              ...markdownFlutterPageStateGeneralFramework.widget
+                  .markdownFlutterPopupMenuItemsGeneralFrameworkBuilder(context,
+                      markdownFlutterPageStateGeneralFramework, bodySmall),
             ];
           },
         ),
@@ -346,12 +412,14 @@ class MarkdownFlutterPageGeneralFramework<T extends MarkdownFlutterPageStateGene
 }
 
 /// UncompleteDocumentation
-class MarkdownFlutterPageStateGeneralFramework extends State<MarkdownFlutterPageGeneralFramework> {
+class MarkdownFlutterPageStateGeneralFramework
+    extends State<MarkdownFlutterPageGeneralFramework> {
   /// UncompleteDocumentation
   final GeneralFlutter generalFlutter = const GeneralFlutter();
 
   /// UncompleteDocumentation
-  late final GeneralLibraryTextToSpeechBaseFlutter textToSpeech = generalFlutter.text_to_speech;
+  late final GeneralLibraryTextToSpeechBaseFlutter textToSpeech =
+      generalFlutter.text_to_speech;
 
   @override
   void initState() {
@@ -368,7 +436,9 @@ class MarkdownFlutterPageStateGeneralFramework extends State<MarkdownFlutterPage
   }
 
   /// UncompleteDocumentation
-  MarkdownFlutterContentGeneralFramework markdownFlutterContentGeneralFramework = MarkdownFlutterContentGeneralFramework.empty();
+  MarkdownFlutterContentGeneralFramework
+      markdownFlutterContentGeneralFramework =
+      MarkdownFlutterContentGeneralFramework.empty();
 
   /// UncompleteDocumentation
   bool is_loading = false;
@@ -380,11 +450,13 @@ class MarkdownFlutterPageStateGeneralFramework extends State<MarkdownFlutterPage
     }
     setState(() {
       is_loading = true;
-      markdownFlutterContentGeneralFramework = MarkdownFlutterContentGeneralFramework.empty();
+      markdownFlutterContentGeneralFramework =
+          MarkdownFlutterContentGeneralFramework.empty();
     });
     await Future(() async {
       await textToSpeech.initialized();
-      markdownFlutterContentGeneralFramework = await widget.markdownFlutterContentGeneralFrameworkBuilder(context, this);
+      markdownFlutterContentGeneralFramework = await widget
+          .markdownFlutterContentGeneralFrameworkBuilder(context, this);
     });
     setState(() {
       is_loading = false;
@@ -404,7 +476,8 @@ class MarkdownFlutterPageStateGeneralFramework extends State<MarkdownFlutterPage
         color: context.theme.indicatorColor,
         onRefresh: refresh,
         child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+          physics: const AlwaysScrollableScrollPhysics(
+              parent: BouncingScrollPhysics()),
           child: ConstrainedBox(
             constraints: BoxConstraints(
               minHeight: context.height,

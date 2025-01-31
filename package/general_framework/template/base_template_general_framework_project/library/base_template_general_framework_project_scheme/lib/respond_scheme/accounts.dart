@@ -4,20 +4,28 @@ import "package:general_lib/general_lib.dart";
 
 import "account.dart";
 
-/// Generated 
+/// Generated
 class Accounts extends JsonScheme {
-
   /// Generated
   Accounts(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"accounts","total_count":0,"accounts":[{"@type":"account"}],"@extra":"","@expire_date":"","@client_id":""};
+    return {
+      "@type": "accounts",
+      "total_count": 0,
+      "accounts": [
+        {"@type": "account"}
+      ],
+      "@extra": "",
+      "@expire_date": "",
+      "@client_id": ""
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == accounts
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -31,20 +39,16 @@ class Accounts extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [Accounts]
-  /// Empty  
+  /// Empty
   static Accounts empty() {
     return Accounts({});
   }
 
-  
-
   /// Generated
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -58,11 +62,10 @@ class Accounts extends JsonScheme {
     rawData["@type"] = value;
   }
 
-
   /// Generated
   num? get total_count {
     try {
-      if (rawData["total_count"] is num == false){
+      if (rawData["total_count"] is num == false) {
         return null;
       }
       return rawData["total_count"] as num;
@@ -79,27 +82,27 @@ class Accounts extends JsonScheme {
   /// Generated
   List<Account> get accounts {
     try {
-      if (rawData["accounts"] is List == false){
+      if (rawData["accounts"] is List == false) {
         return [];
       }
-      return (rawData["accounts"] as List).map((e) => Account(e as Map)).toList().cast<Account>();
+      return (rawData["accounts"] as List)
+          .map((e) => Account(e as Map))
+          .toList()
+          .cast<Account>();
     } catch (e) {
       return [];
     }
   }
-
 
   /// Generated
   set accounts(List<Account> values) {
     rawData["accounts"] = values.map((value) => value.toJson()).toList();
   }
 
-
-
   /// Generated
   String? get special_extra {
     try {
-      if (rawData["@extra"] is String == false){
+      if (rawData["@extra"] is String == false) {
         return null;
       }
       return rawData["@extra"] as String;
@@ -113,11 +116,10 @@ class Accounts extends JsonScheme {
     rawData["@extra"] = value;
   }
 
-
   /// Generated
   String? get special_expire_date {
     try {
-      if (rawData["@expire_date"] is String == false){
+      if (rawData["@expire_date"] is String == false) {
         return null;
       }
       return rawData["@expire_date"] as String;
@@ -131,11 +133,10 @@ class Accounts extends JsonScheme {
     rawData["@expire_date"] = value;
   }
 
-
   /// Generated
   String? get special_client_id {
     try {
-      if (rawData["@client_id"] is String == false){
+      if (rawData["@client_id"] is String == false) {
         return null;
       }
       return rawData["@client_id"] as String;
@@ -149,33 +150,27 @@ class Accounts extends JsonScheme {
     rawData["@client_id"] = value;
   }
 
-
   /// Generated
   static Accounts create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "accounts",
     num? total_count,
-      List<Account>? accounts,
+    List<Account>? accounts,
     String special_extra = "",
     String special_expire_date = "",
     String special_client_id = "",
-})  {
+  }) {
     // Accounts accounts = Accounts({
-final Map accounts_data_create_json = {
-  
+    final Map accounts_data_create_json = {
       "@type": special_type,
       "total_count": total_count,
-      "accounts": (accounts != null)? accounts.toJson(): null,
+      "accounts": (accounts != null) ? accounts.toJson() : null,
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@client_id": special_client_id,
+    };
 
-
-};
-
-
-          accounts_data_create_json.removeWhere((key, value) => value == null);
+    accounts_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -184,8 +179,6 @@ final Map accounts_data_create_json = {
         }
       });
     }
-return Accounts(accounts_data_create_json);
-
-
-      }
+    return Accounts(accounts_data_create_json);
+  }
 }

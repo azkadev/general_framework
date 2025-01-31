@@ -2,21 +2,31 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
-/// Generated 
+/// Generated
 class GetAllMessages extends JsonScheme {
-
   /// Generated
   GetAllMessages(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"getAllMessages","chat_id":0,"offset":0,"limit":0,"@return_type":"messages","@client_token":"","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
+    return {
+      "@type": "getAllMessages",
+      "chat_id": 0,
+      "offset": 0,
+      "limit": 0,
+      "@return_type": "messages",
+      "@client_token": "",
+      "@platform_id": "",
+      "@platform_username": "",
+      "@extra": "",
+      "@expire_date": "",
+      "@token": ""
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == getAllMessages
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +40,16 @@ class GetAllMessages extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [GetAllMessages]
-  /// Empty  
+  /// Empty
   static GetAllMessages empty() {
     return GetAllMessages({});
   }
 
-  
-
   /// Generated
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -57,11 +63,10 @@ class GetAllMessages extends JsonScheme {
     rawData["@type"] = value;
   }
 
-
   /// Generated
   num? get chat_id {
     try {
-      if (rawData["chat_id"] is num == false){
+      if (rawData["chat_id"] is num == false) {
         return null;
       }
       return rawData["chat_id"] as num;
@@ -75,11 +80,10 @@ class GetAllMessages extends JsonScheme {
     rawData["chat_id"] = value;
   }
 
-
   /// Generated
   num? get offset {
     try {
-      if (rawData["offset"] is num == false){
+      if (rawData["offset"] is num == false) {
         return null;
       }
       return rawData["offset"] as num;
@@ -93,11 +97,10 @@ class GetAllMessages extends JsonScheme {
     rawData["offset"] = value;
   }
 
-
   /// Generated
   num? get limit {
     try {
-      if (rawData["limit"] is num == false){
+      if (rawData["limit"] is num == false) {
         return null;
       }
       return rawData["limit"] as num;
@@ -111,11 +114,10 @@ class GetAllMessages extends JsonScheme {
     rawData["limit"] = value;
   }
 
-
   /// Generated
   String? get special_return_type {
     try {
-      if (rawData["@return_type"] is String == false){
+      if (rawData["@return_type"] is String == false) {
         return null;
       }
       return rawData["@return_type"] as String;
@@ -129,11 +131,10 @@ class GetAllMessages extends JsonScheme {
     rawData["@return_type"] = value;
   }
 
-
   /// Generated
   String? get special_client_token {
     try {
-      if (rawData["@client_token"] is String == false){
+      if (rawData["@client_token"] is String == false) {
         return null;
       }
       return rawData["@client_token"] as String;
@@ -147,11 +148,10 @@ class GetAllMessages extends JsonScheme {
     rawData["@client_token"] = value;
   }
 
-
   /// Generated
   String? get special_platform_id {
     try {
-      if (rawData["@platform_id"] is String == false){
+      if (rawData["@platform_id"] is String == false) {
         return null;
       }
       return rawData["@platform_id"] as String;
@@ -165,11 +165,10 @@ class GetAllMessages extends JsonScheme {
     rawData["@platform_id"] = value;
   }
 
-
   /// Generated
   String? get special_platform_username {
     try {
-      if (rawData["@platform_username"] is String == false){
+      if (rawData["@platform_username"] is String == false) {
         return null;
       }
       return rawData["@platform_username"] as String;
@@ -183,11 +182,10 @@ class GetAllMessages extends JsonScheme {
     rawData["@platform_username"] = value;
   }
 
-
   /// Generated
   String? get special_extra {
     try {
-      if (rawData["@extra"] is String == false){
+      if (rawData["@extra"] is String == false) {
         return null;
       }
       return rawData["@extra"] as String;
@@ -201,11 +199,10 @@ class GetAllMessages extends JsonScheme {
     rawData["@extra"] = value;
   }
 
-
   /// Generated
   String? get special_expire_date {
     try {
-      if (rawData["@expire_date"] is String == false){
+      if (rawData["@expire_date"] is String == false) {
         return null;
       }
       return rawData["@expire_date"] as String;
@@ -219,11 +216,10 @@ class GetAllMessages extends JsonScheme {
     rawData["@expire_date"] = value;
   }
 
-
   /// Generated
   String? get special_token {
     try {
-      if (rawData["@token"] is String == false){
+      if (rawData["@token"] is String == false) {
         return null;
       }
       return rawData["@token"] as String;
@@ -237,11 +233,9 @@ class GetAllMessages extends JsonScheme {
     rawData["@token"] = value;
   }
 
-
   /// Generated
   static GetAllMessages create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "getAllMessages",
     num? chat_id,
     num? offset,
@@ -253,10 +247,9 @@ class GetAllMessages extends JsonScheme {
     String special_extra = "",
     String special_expire_date = "",
     String special_token = "",
-})  {
+  }) {
     // GetAllMessages getAllMessages = GetAllMessages({
-final Map getAllMessages_data_create_json = {
-  
+    final Map getAllMessages_data_create_json = {
       "@type": special_type,
       "chat_id": chat_id,
       "offset": offset,
@@ -268,12 +261,9 @@ final Map getAllMessages_data_create_json = {
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@token": special_token,
+    };
 
-
-};
-
-
-          getAllMessages_data_create_json.removeWhere((key, value) => value == null);
+    getAllMessages_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -282,8 +272,6 @@ final Map getAllMessages_data_create_json = {
         }
       });
     }
-return GetAllMessages(getAllMessages_data_create_json);
-
-
-      }
+    return GetAllMessages(getAllMessages_data_create_json);
+  }
 }

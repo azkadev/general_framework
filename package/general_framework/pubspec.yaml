@@ -67,6 +67,26 @@ packagex:
   github_username: 'azkadev'
   github_is_org: false
   is_app_auto_clean_up_folder: true
+  flutter_build_arguments: []
+  dart_compile_exe_arguments: []
+  uploads:
+    - platform_type: 'github'
+      github_username: 'archivon-apps-stores'
+      github_tag: 'release'
+      github_is_org: false
+      github_repository_name: 'general_framework'
+    - platform_type: 'supabase'
+      supabase_folder_name: 'release'
+    - platform_type: 'telegram'
+      telegram_chats:
+        - chat_id: '@slebew'
+          message_thread_id: ''
+  packages:
+    - dart_target: 'general_framework'
+      flutter_target: 'main'
+      dart_name: 'general_framework'
+      flutter_name: 'general_framework'
+      output_name: 'general-framework'
 msix_config:
   display_name: 'general_framework'
   install_certificate: false

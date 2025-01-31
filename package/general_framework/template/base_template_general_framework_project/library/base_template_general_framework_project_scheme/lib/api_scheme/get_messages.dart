@@ -2,21 +2,30 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
-/// Generated 
+/// Generated
 class GetMessages extends JsonScheme {
-
   /// Generated
   GetMessages(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"getMessages","chat_id":0,"message_ids":[0],"@return_type":"messages","@client_token":"","@platform_id":"","@platform_username":"","@extra":"","@expire_date":"","@token":""};
+    return {
+      "@type": "getMessages",
+      "chat_id": 0,
+      "message_ids": [0],
+      "@return_type": "messages",
+      "@client_token": "",
+      "@platform_id": "",
+      "@platform_username": "",
+      "@extra": "",
+      "@expire_date": "",
+      "@token": ""
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == getMessages
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +39,16 @@ class GetMessages extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [GetMessages]
-  /// Empty  
+  /// Empty
   static GetMessages empty() {
     return GetMessages({});
   }
 
-  
-
   /// Generated
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -57,11 +62,10 @@ class GetMessages extends JsonScheme {
     rawData["@type"] = value;
   }
 
-
   /// Generated
   num? get chat_id {
     try {
-      if (rawData["chat_id"] is num == false){
+      if (rawData["chat_id"] is num == false) {
         return null;
       }
       return rawData["chat_id"] as num;
@@ -75,15 +79,14 @@ class GetMessages extends JsonScheme {
     rawData["chat_id"] = value;
   }
 
-
   /// Generated
   ///
   /// default:
-  /// 
-  /// 
+  ///
+  ///
   List<num> get message_ids {
     try {
-      if (rawData["message_ids"] is List == false){
+      if (rawData["message_ids"] is List == false) {
         return [];
       }
       return (rawData["message_ids"] as List).cast<num>();
@@ -92,17 +95,15 @@ class GetMessages extends JsonScheme {
     }
   }
 
-
   /// Generated
   set message_ids(List<num> value) {
     rawData["message_ids"] = value;
   }
 
-
   /// Generated
   String? get special_return_type {
     try {
-      if (rawData["@return_type"] is String == false){
+      if (rawData["@return_type"] is String == false) {
         return null;
       }
       return rawData["@return_type"] as String;
@@ -116,11 +117,10 @@ class GetMessages extends JsonScheme {
     rawData["@return_type"] = value;
   }
 
-
   /// Generated
   String? get special_client_token {
     try {
-      if (rawData["@client_token"] is String == false){
+      if (rawData["@client_token"] is String == false) {
         return null;
       }
       return rawData["@client_token"] as String;
@@ -134,11 +134,10 @@ class GetMessages extends JsonScheme {
     rawData["@client_token"] = value;
   }
 
-
   /// Generated
   String? get special_platform_id {
     try {
-      if (rawData["@platform_id"] is String == false){
+      if (rawData["@platform_id"] is String == false) {
         return null;
       }
       return rawData["@platform_id"] as String;
@@ -152,11 +151,10 @@ class GetMessages extends JsonScheme {
     rawData["@platform_id"] = value;
   }
 
-
   /// Generated
   String? get special_platform_username {
     try {
-      if (rawData["@platform_username"] is String == false){
+      if (rawData["@platform_username"] is String == false) {
         return null;
       }
       return rawData["@platform_username"] as String;
@@ -170,11 +168,10 @@ class GetMessages extends JsonScheme {
     rawData["@platform_username"] = value;
   }
 
-
   /// Generated
   String? get special_extra {
     try {
-      if (rawData["@extra"] is String == false){
+      if (rawData["@extra"] is String == false) {
         return null;
       }
       return rawData["@extra"] as String;
@@ -188,11 +185,10 @@ class GetMessages extends JsonScheme {
     rawData["@extra"] = value;
   }
 
-
   /// Generated
   String? get special_expire_date {
     try {
-      if (rawData["@expire_date"] is String == false){
+      if (rawData["@expire_date"] is String == false) {
         return null;
       }
       return rawData["@expire_date"] as String;
@@ -206,11 +202,10 @@ class GetMessages extends JsonScheme {
     rawData["@expire_date"] = value;
   }
 
-
   /// Generated
   String? get special_token {
     try {
-      if (rawData["@token"] is String == false){
+      if (rawData["@token"] is String == false) {
         return null;
       }
       return rawData["@token"] as String;
@@ -224,14 +219,12 @@ class GetMessages extends JsonScheme {
     rawData["@token"] = value;
   }
 
-
   /// Generated
   static GetMessages create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "getMessages",
     num? chat_id,
-      List<num>? message_ids,
+    List<num>? message_ids,
     String special_return_type = "messages",
     String special_client_token = "",
     String special_platform_id = "",
@@ -239,10 +232,9 @@ class GetMessages extends JsonScheme {
     String special_extra = "",
     String special_expire_date = "",
     String special_token = "",
-})  {
+  }) {
     // GetMessages getMessages = GetMessages({
-final Map getMessages_data_create_json = {
-  
+    final Map getMessages_data_create_json = {
       "@type": special_type,
       "chat_id": chat_id,
       "message_ids": message_ids,
@@ -253,12 +245,9 @@ final Map getMessages_data_create_json = {
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@token": special_token,
+    };
 
-
-};
-
-
-          getMessages_data_create_json.removeWhere((key, value) => value == null);
+    getMessages_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -267,8 +256,6 @@ final Map getMessages_data_create_json = {
         }
       });
     }
-return GetMessages(getMessages_data_create_json);
-
-
-      }
+    return GetMessages(getMessages_data_create_json);
+  }
 }

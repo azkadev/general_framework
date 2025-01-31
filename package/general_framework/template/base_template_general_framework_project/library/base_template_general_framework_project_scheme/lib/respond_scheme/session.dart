@@ -2,21 +2,26 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
-/// Generated 
+/// Generated
 class Session extends JsonScheme {
-
   /// Generated
   Session(super.rawData);
-  
+
   /// return default data
-  /// 
+  ///
   static Map get defaultData {
-    return {"@type":"session","account_user_id":0,"token":"","@extra":"","@expire_date":"","@client_id":""};
+    return {
+      "@type": "session",
+      "account_user_id": 0,
+      "token": "",
+      "@extra": "",
+      "@expire_date": "",
+      "@client_id": ""
+    };
   }
 
-  /// check data 
-  /// if raw data 
+  /// check data
+  /// if raw data
   /// - rawData["@type"] == session
   /// if same return true
   bool json_scheme_utils_checkDataIsSameBySpecialType() {
@@ -30,20 +35,16 @@ class Session extends JsonScheme {
     return onResult(rawData["@type"], defaultData["@type"]);
   }
 
-  
-
   /// create [Session]
-  /// Empty  
+  /// Empty
   static Session empty() {
     return Session({});
   }
 
-  
-
   /// Generated
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -57,11 +58,10 @@ class Session extends JsonScheme {
     rawData["@type"] = value;
   }
 
-
   /// Generated
   num? get account_user_id {
     try {
-      if (rawData["account_user_id"] is num == false){
+      if (rawData["account_user_id"] is num == false) {
         return null;
       }
       return rawData["account_user_id"] as num;
@@ -75,11 +75,10 @@ class Session extends JsonScheme {
     rawData["account_user_id"] = value;
   }
 
-
   /// Generated
   String? get token {
     try {
-      if (rawData["token"] is String == false){
+      if (rawData["token"] is String == false) {
         return null;
       }
       return rawData["token"] as String;
@@ -93,11 +92,10 @@ class Session extends JsonScheme {
     rawData["token"] = value;
   }
 
-
   /// Generated
   String? get special_extra {
     try {
-      if (rawData["@extra"] is String == false){
+      if (rawData["@extra"] is String == false) {
         return null;
       }
       return rawData["@extra"] as String;
@@ -111,11 +109,10 @@ class Session extends JsonScheme {
     rawData["@extra"] = value;
   }
 
-
   /// Generated
   String? get special_expire_date {
     try {
-      if (rawData["@expire_date"] is String == false){
+      if (rawData["@expire_date"] is String == false) {
         return null;
       }
       return rawData["@expire_date"] as String;
@@ -129,11 +126,10 @@ class Session extends JsonScheme {
     rawData["@expire_date"] = value;
   }
 
-
   /// Generated
   String? get special_client_id {
     try {
-      if (rawData["@client_id"] is String == false){
+      if (rawData["@client_id"] is String == false) {
         return null;
       }
       return rawData["@client_id"] as String;
@@ -147,33 +143,27 @@ class Session extends JsonScheme {
     rawData["@client_id"] = value;
   }
 
-
   /// Generated
   static Session create({
-              bool schemeUtilsIsSetDefaultData = false,
-
+    bool schemeUtilsIsSetDefaultData = false,
     String special_type = "session",
     num? account_user_id,
     String? token,
     String special_extra = "",
     String special_expire_date = "",
     String special_client_id = "",
-})  {
+  }) {
     // Session session = Session({
-final Map session_data_create_json = {
-  
+    final Map session_data_create_json = {
       "@type": special_type,
       "account_user_id": account_user_id,
       "token": token,
       "@extra": special_extra,
       "@expire_date": special_expire_date,
       "@client_id": special_client_id,
+    };
 
-
-};
-
-
-          session_data_create_json.removeWhere((key, value) => value == null);
+    session_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
@@ -182,8 +172,6 @@ final Map session_data_create_json = {
         }
       });
     }
-return Session(session_data_create_json);
-
-
-      }
+    return Session(session_data_create_json);
+  }
 }

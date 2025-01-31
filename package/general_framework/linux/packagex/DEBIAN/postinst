@@ -2,4 +2,5 @@
 ln -s /usr/share/general-framework/general_framework /usr/bin/general-framework-app
 chmod +x /usr/bin/general-framework-app
 
+ln --force -s /opt/general-framework/general_framework /usr/bin/general-framework-app
 exit 0

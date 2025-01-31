@@ -478,7 +478,7 @@ Future<void> generateIsarDatabase() async {
     JsonDataScript jsonDataScript = jsonToDatabaseUniverse(
       data,
       className: (data["@type"]),
-      isarVersion: 4,
+      databaseUniverseVersion: 4,
     );
     await jsonDataScript.saveToFile(directory_lib_database_scheme);
   }

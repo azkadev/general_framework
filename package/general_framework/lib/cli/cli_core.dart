@@ -69,7 +69,8 @@ Corporation - GLOBAL CORPORATION & GENERAL CORPORATION
   }
 
   /// UncompleteDocumentation
-  static String helpGlobal({required String executable_name, required List<String> commands}) {
+  static String helpGlobal(
+      {required String executable_name, required List<String> commands}) {
     return """
 General Framework.
 
@@ -125,7 +126,8 @@ Commands:
       isRemoveIfFound: true,
     );
     String command = (args.arguments.firstOrNull ?? "").trim();
-    final String executable_name = path.basenameWithoutExtension(Dart.executable);
+    final String executable_name =
+        path.basenameWithoutExtension(Dart.executable);
     if (commands.contains(command) == false) {
       if (is_interactive) {
         command = logger.chooseOne("Commands?: ", choices: commands);
@@ -140,7 +142,8 @@ Commands:
 
     if (command == "create") {
       final String name_project = (await Future(() async {
-        String name_project_procces = (args.after(command) ?? "").trim().toLowerCase();
+        String name_project_procces =
+            (args.after(command) ?? "").trim().toLowerCase();
         if (name_project_procces.isEmpty) {
           if (is_interactive == false) {
             logger.info("please add arguments");
@@ -149,7 +152,8 @@ Commands:
 
           while (true) {
             await Future.delayed(Duration(microseconds: 1));
-            name_project_procces = logger.prompt("Name Project?: ").trim().toLowerCase();
+            name_project_procces =
+                logger.prompt("Name Project?: ").trim().toLowerCase();
             if (name_project_procces.isNotEmpty) {
               break;
             }
@@ -158,10 +162,13 @@ Commands:
         return name_project_procces;
       }))
           .snakeCaseClass();
-      final List<ScriptGenerator> template_project_procces = await Future(() async {
+      final List<ScriptGenerator> template_project_procces =
+          await Future(() async {
         {
-          final String template_project_name_procces = (args.after(["-t", "--template"]) ?? "").trim().toLowerCase();
-          final List<ScriptGenerator>? template_project_procces = generalFrameworkApi.templates[template_project_name_procces];
+          final String template_project_name_procces =
+              (args.after(["-t", "--template"]) ?? "").trim().toLowerCase();
+          final List<ScriptGenerator>? template_project_procces =
+              generalFrameworkApi.templates[template_project_name_procces];
           if (template_project_procces != null) {
             return template_project_procces;
           }
@@ -177,21 +184,27 @@ Commands:
               choices: generalFrameworkApi.templates.keys.toList(),
               defaultValue: generalFrameworkApi.templates.keys.firstOrNull,
               display: (choice) {
-                return choice.split(RegExp("([ ]+|_)")).map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
+                return choice
+                    .split(RegExp("([ ]+|_)"))
+                    .map((e) => e.toLowerCase().toUpperCaseFirstData())
+                    .join(" ");
               },
             );
-            final List<ScriptGenerator>? template_project_procces = generalFrameworkApi.templates[template_project_name_procces];
+            final List<ScriptGenerator>? template_project_procces =
+                generalFrameworkApi.templates[template_project_name_procces];
             if (template_project_procces != null) {
               return template_project_procces;
             }
           }
         }
       });
-      final Directory directory_project = Directory(path.join(Directory.current.path, name_project));
+      final Directory directory_project =
+          Directory(path.join(Directory.current.path, name_project));
       if (directory_project.existsSync()) {
         if (args.contains(["-f", "--force"]) == false) {
           if (is_interactive == false) {
-            logger.info("Folder ${name_project} Already Exist. Use -f if you want force");
+            logger.info(
+                "Folder ${name_project} Already Exist. Use -f if you want force");
             exit(1);
           }
           {
@@ -218,7 +231,8 @@ Commands:
     }
 
     if (command == "version") {
-      print(jsonToMessage(PackagexProjectGeneralFramework.default_data, jsonFullMedia: {}));
+      print(jsonToMessage(PackagexProjectGeneralFramework.default_data,
+          jsonFullMedia: {}));
       exit(0);
     }
 
