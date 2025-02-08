@@ -38,7 +38,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:general/core/core.dart';
+import 'package:general_system_device/core/core.dart';
 import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/core/database/database_core.dart';
 import 'package:general_lib/general_lib.dart';
@@ -113,7 +113,7 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
   final String apiUrl;
 
   /// UncompleteDocumentation
-  final GeneralLibrary generalLibrary;
+  final GeneralSystemDeviceLibrary generalLibrary;
 
   /// UncompleteDocumentation
   final D generalFrameworkDatabase;

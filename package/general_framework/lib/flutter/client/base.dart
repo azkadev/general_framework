@@ -37,10 +37,10 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:general/core/player/player_controller.dart';
-import 'package:general/core/player/player_core.dart';
-import 'package:general/core/player/player_model_data.dart';
-import 'package:general/flutter/general_flutter_core.dart';
+import 'package:general_system_device/core/player/player_controller.dart';
+import 'package:general_system_device/core/player/player_core.dart';
+import 'package:general_system_device/core/player/player_model_data.dart';
+import 'package:general_system_device/flutter/general_system_device_flutter_core.dart';
 import 'package:general_framework/core/client/core.dart';
 import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/flutter/client/general_framework_client_flutter_app_directory.dart';
@@ -99,7 +99,7 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
   final GlobalKey<NavigatorState> navigatorKey;
 
   /// UncompleteDocumentation
-  final GeneralFlutter generalLibrary;
+  final GeneralSystemDeviceFlutter generalLibrary;
 
   /// UncompleteDocumentation
   final T generalFrameworkClient;
@@ -111,8 +111,8 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
     onNotFoundRoute: onNotFoundRoute,
   );
 
-  late final GeneralLibraryPlayerBase _player = generalLibrary.media_player;
-  late final GeneralLibraryPlayerControllerBase _player_notification;
+  late final GeneralSystemDeviceLibraryPlayerBase _player = generalLibrary.media_player;
+  late final GeneralSystemDeviceLibraryPlayerControllerBase _player_notification;
 
   /// UncompleteDocumentation
   final GeneralFrameworkClientFlutterAppDirectory
@@ -163,12 +163,12 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
 
   /// UncompleteDocumentation
 
-  GeneralLibraryPlayerBase player() {
+  GeneralSystemDeviceLibraryPlayerBase player() {
     return _player;
   }
 
   /// UncompleteDocumentation
-  GeneralLibraryPlayerControllerBase playerNotification() {
+  GeneralSystemDeviceLibraryPlayerControllerBase playerNotification() {
     return _player_notification;
   }
 
@@ -178,7 +178,7 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
   }) async {
     try {
       await playerNotification()
-          .open(GeneralLibraryPlayerMediaBase(soundNotification));
+          .open(GeneralSystemDeviceLibraryPlayerMediaBase(soundNotification));
     } catch (e) {}
   }
 }

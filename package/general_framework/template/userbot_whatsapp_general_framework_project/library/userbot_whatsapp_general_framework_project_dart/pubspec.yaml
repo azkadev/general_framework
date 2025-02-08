@@ -6,7 +6,6 @@ environment:
 dependencies:
   path: '^1.9.0'
   general_lib: '^0.0.63'
-  general: '^0.0.46'
   server_universe: '^0.0.36'
   mason_logger: '^0.3.1'
   whatsapp_client: '^1.0.34'

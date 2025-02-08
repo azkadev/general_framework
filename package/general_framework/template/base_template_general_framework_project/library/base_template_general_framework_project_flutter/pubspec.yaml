@@ -12,7 +12,6 @@ dependencies:
   path: '^1.9.0'
   general_lib: '^0.0.63'
   general_lib_flutter: '^0.0.41'
-  general: '^0.0.46'
   base_template_general_framework_project_scheme:
     path: '../base_template_general_framework_project_scheme'
   base_template_general_framework_project_client_database:
@@ -21,7 +20,7 @@ dependencies:
     path: '../base_template_general_framework_project_client'
   base_template_general_framework_project_secret:
     path: '../base_template_general_framework_project_secret'
-  general_framework: '^0.0.20'
+  general_framework: '^0.0.21'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'

@@ -36,8 +36,8 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 <!-- END LICENSE --> */
 import 'dart:async';
 
-import 'package:general/flutter/general_flutter_core.dart';
-import 'package:general/flutter/text_to_speech/text_to_speech.dart';
+import 'package:general_system_device/flutter/general_system_device_flutter_core.dart';
+import 'package:general_system_device/flutter/text_to_speech/text_to_speech.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_framework/flutter/loading/loading_controller.dart';
 import 'package:general_framework/flutter/loading/loading_core.dart';
@@ -415,10 +415,10 @@ class MarkdownFlutterPageGeneralFramework<
 class MarkdownFlutterPageStateGeneralFramework
     extends State<MarkdownFlutterPageGeneralFramework> {
   /// UncompleteDocumentation
-  final GeneralFlutter generalFlutter = const GeneralFlutter();
+  final GeneralSystemDeviceFlutter generalFlutter = const GeneralSystemDeviceFlutter();
 
   /// UncompleteDocumentation
-  late final GeneralLibraryTextToSpeechBaseFlutter textToSpeech =
+  late final GeneralSystemDeviceLibraryTextToSpeechBaseFlutter textToSpeech =
       generalFlutter.text_to_speech;
 
   @override
