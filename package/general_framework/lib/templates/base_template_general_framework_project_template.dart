@@ -3140,8 +3140,8 @@ dependencies:
     path: '../base_template_general_framework_project_scheme'
   base_template_general_framework_project_api_database:
     path: '../base_template_general_framework_project_api_database'
-  general_framework: '^0.0.18'
-  general_lib: '^0.0.62'
+  general_framework: '^0.0.22'
+  general_lib: '^0.0.65'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
@@ -3155,6 +3155,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -4832,10 +4834,10 @@ dependencies:
   base_template_general_framework_project_secret:
     path: '../base_template_general_framework_project_secret'
   collection: '^1.19.0'
-  general_lib: '^0.0.62'
-  path: '^1.9.0'
+  general_lib: '^0.0.65'
+  path: '^1.9.1'
   http: '^1.2.2'
-  general_framework: '^0.0.18'
+  general_framework: '^0.0.22'
   yet_another_json_isolate: '^2.0.0'
   supabase: '^2.6.2'
 dev_dependencies:
@@ -4851,6 +4853,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -6107,6 +6111,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
                 children: [],
@@ -6749,8 +6755,8 @@ environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
   server_universe: '^0.0.36'
-  general_lib: '^0.0.62'
-  path: '^1.9.0'
+  general_lib: '^0.0.65'
+  path: '^1.9.1'
   http: '^1.2.2'
   base_template_general_framework_project_secret:
     path: '../base_template_general_framework_project_secret'
@@ -6760,7 +6766,7 @@ dependencies:
     path: '../base_template_general_framework_project_api'
   base_template_general_framework_project_api_database:
     path: '../base_template_general_framework_project_api_database'
-  general_framework: '^0.0.18'
+  general_framework: '^0.0.22'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
@@ -6774,6 +6780,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -8097,7 +8105,6 @@ publish_to: 'none'
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
-  general: '^0.0.46'
   base_template_general_framework_project_client_database:
     path: '../../base_template_general_framework_project_client_database'
   base_template_general_framework_project_client:
@@ -8106,8 +8113,8 @@ dependencies:
     path: '../../base_template_general_framework_project_secret'
   base_template_general_framework_project_scheme:
     path: '../../base_template_general_framework_project_scheme'
-  general_framework: '^0.0.18'
-  general_lib: '^0.0.62'
+  general_framework: '^0.0.22'
+  general_lib: '^0.0.65'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
@@ -8121,6 +8128,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
                 children: [],
@@ -9115,16 +9124,15 @@ publish_to: 'none'
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
-  path: '^1.9.0'
-  general_lib: '^0.0.62'
-  general: '^0.0.46'
+  path: '^1.9.1'
+  general_lib: '^0.0.65'
   base_template_general_framework_project_client_database:
     path: '../base_template_general_framework_project_client_database'
   base_template_general_framework_project_scheme:
     path: '../base_template_general_framework_project_scheme'
   base_template_general_framework_project_secret:
     path: '../base_template_general_framework_project_secret'
-  general_framework: '^0.0.18'
+  general_framework: '^0.0.22'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
@@ -9138,6 +9146,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -10769,10 +10779,10 @@ dependencies:
   base_template_general_framework_project_scheme:
     path: '../base_template_general_framework_project_scheme'
   collection: '^1.19.0'
-  general_lib: '^0.0.62'
-  path: '^1.9.0'
+  general_lib: '^0.0.65'
+  path: '^1.9.1'
   http: '^1.2.2'
-  general_framework: '^0.0.18'
+  general_framework: '^0.0.22'
   database_universe: '^1.0.5'
   base_template_general_framework_project_database_universe_scheme:
     path: '../base_template_general_framework_project_database_universe_scheme'
@@ -10790,6 +10800,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -24374,6 +24386,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 documentation: 'https://youtube.com/@azkadev'
+project:
+  type: ''
 
 """,
             children: [],
@@ -33812,16 +33826,15 @@ dependencies:
   flutter:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
-  path: '^1.9.0'
-  general_lib: '^0.0.62'
-  general: '^0.0.46'
+  path: '^1.9.1'
+  general_lib: '^0.0.65'
   base_template_general_framework_project_flutter:
     path: '../'
   base_template_general_framework_project_client:
     path: '../../base_template_general_framework_project_client'
   base_template_general_framework_project_secret:
     path: '../../base_template_general_framework_project_secret'
-  general_framework: '^0.0.18'
+  general_framework: '^0.0.22'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'
@@ -33838,6 +33851,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
                 children: [],
@@ -36069,10 +36084,9 @@ environment:
 dependencies:
   flutter:
     sdk: 'flutter'
-  path: '^1.9.0'
-  general_lib: '^0.0.62'
+  path: '^1.9.1'
+  general_lib: '^0.0.65'
   general_lib_flutter: '^0.0.41'
-  general: '^0.0.46'
   base_template_general_framework_project_scheme:
     path: '../base_template_general_framework_project_scheme'
   base_template_general_framework_project_client_database:
@@ -36081,7 +36095,7 @@ dependencies:
     path: '../base_template_general_framework_project_client'
   base_template_general_framework_project_secret:
     path: '../base_template_general_framework_project_secret'
-  general_framework: '^0.0.18'
+  general_framework: '^0.0.22'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'
@@ -36095,6 +36109,8 @@ funding:
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -36930,6 +36946,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -47645,8 +47663,8 @@ version: '1.0.0'
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
-  path: '^1.9.0'
-  general_lib: '^0.0.62'
+  path: '^1.9.1'
+  general_lib: '^0.0.65'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
@@ -47660,6 +47678,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -48519,7 +48539,7 @@ version: '1.0.0'
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
-  general_lib: '^0.0.62'
+  general_lib: '^0.0.65'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
@@ -48533,6 +48553,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -49454,6 +49476,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -58186,6 +58210,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -59111,6 +59137,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -59466,8 +59494,8 @@ version: '1.0.0'
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
-  path: '^1.9.0'
-  general_lib: '^0.0.62'
+  path: '^1.9.1'
+  general_lib: '^0.0.65'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
@@ -59481,6 +59509,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
     children: [],

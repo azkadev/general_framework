@@ -956,6 +956,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -1769,6 +1771,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -2729,6 +2733,8 @@ funding:
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -3448,6 +3454,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -4261,6 +4269,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -5074,6 +5084,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
             children: [],
@@ -5477,8 +5489,8 @@ version: '1.0.0'
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
-  general_lib: '^0.0.62'
-  path: '^1.9.0'
+  general_lib: '^0.0.65'
+  path: '^1.9.1'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
@@ -5492,6 +5504,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
     children: [],

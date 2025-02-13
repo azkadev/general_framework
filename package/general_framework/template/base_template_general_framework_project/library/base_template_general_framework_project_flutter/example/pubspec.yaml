@@ -8,15 +8,15 @@ dependencies:
   flutter:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
-  path: '^1.9.0'
-  general_lib: '^0.0.63'
+  path: '^1.9.1'
+  general_lib: '^0.0.65'
   base_template_general_framework_project_flutter:
     path: '../'
   base_template_general_framework_project_client:
     path: '../../base_template_general_framework_project_client'
   base_template_general_framework_project_secret:
     path: '../../base_template_general_framework_project_secret'
-  general_framework: '^0.0.21'
+  general_framework: '^0.0.22'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'
@@ -33,3 +33,5 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''

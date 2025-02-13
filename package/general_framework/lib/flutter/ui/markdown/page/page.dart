@@ -415,7 +415,8 @@ class MarkdownFlutterPageGeneralFramework<
 class MarkdownFlutterPageStateGeneralFramework
     extends State<MarkdownFlutterPageGeneralFramework> {
   /// UncompleteDocumentation
-  final GeneralSystemDeviceFlutter generalFlutter = const GeneralSystemDeviceFlutter();
+  final GeneralSystemDeviceFlutter generalFlutter =
+      const GeneralSystemDeviceFlutter();
 
   /// UncompleteDocumentation
   late final GeneralSystemDeviceLibraryTextToSpeechBaseFlutter textToSpeech =

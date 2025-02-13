@@ -10344,9 +10344,9 @@ dependencies:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
   general_lib_flutter: '^0.0.41'
-  general_lib: '^0.0.62'
+  general_lib: '^0.0.65'
   simulate: '^0.0.52'
-  general_framework: '^0.0.18'
+  general_framework: '^0.0.22'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'
@@ -10363,6 +10363,8 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
 
 """,
     children: [],

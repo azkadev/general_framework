@@ -13,8 +13,8 @@ dependencies:
     path: '../../base_template_general_framework_project_secret'
   base_template_general_framework_project_scheme:
     path: '../../base_template_general_framework_project_scheme'
-  general_framework: '^0.0.21'
-  general_lib: '^0.0.63'
+  general_framework: '^0.0.22'
+  general_lib: '^0.0.65'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
@@ -28,3 +28,5 @@ homepage: 'https://youtube.com/@azkadev'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://youtube.com/@azkadev'
 issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''

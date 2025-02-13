@@ -1,4 +1,12 @@
 # This is a generated file; do not edit or check into version control.
+camera=/home/galaxeus/.pub-cache/hosted/pub.dev/camera-0.11.1/
+camera_android_camerax=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.13/
+camera_avfoundation=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.18+2/
+camera_web=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_web-0.3.5/
+camera_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/camera_windows-0.2.6+1/
+file_picker=/home/galaxeus/.pub-cache/hosted/pub.dev/file_picker-8.3.5/
+flutter_background=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_background-1.3.0+1/
+flutter_plugin_android_lifecycle=/home/galaxeus/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.24/
 media_kit_video_fork=/home/galaxeus/.pub-cache/hosted/pub.dev/media_kit_video_fork-0.0.2/
 package_info_plus=/home/galaxeus/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/
 path_provider=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider-2.1.5/
@@ -6,6 +14,11 @@ path_provider_android=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_and
 path_provider_foundation=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
 path_provider_linux=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
 path_provider_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+permission_handler=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/
+permission_handler_android=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.13/
+permission_handler_apple=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/
+permission_handler_html=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+5/
+permission_handler_windows=/home/galaxeus/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/
 screen_brightness=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness-0.2.2+1/
 screen_brightness_android=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_android-0.1.0+2/
 screen_brightness_ios=/home/galaxeus/.pub-cache/hosted/pub.dev/screen_brightness_ios-0.1.0/
