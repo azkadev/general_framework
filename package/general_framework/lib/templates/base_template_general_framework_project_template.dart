@@ -3140,7 +3140,7 @@ dependencies:
     path: '../base_template_general_framework_project_scheme'
   base_template_general_framework_project_api_database:
     path: '../base_template_general_framework_project_api_database'
-  general_framework: '^0.0.22'
+  general_framework: '^0.0.23'
   general_lib: '^0.0.65'
 dev_dependencies:
   lints: '^5.0.0'
@@ -4837,7 +4837,7 @@ dependencies:
   general_lib: '^0.0.65'
   path: '^1.9.1'
   http: '^1.2.2'
-  general_framework: '^0.0.22'
+  general_framework: '^0.0.23'
   yet_another_json_isolate: '^2.0.0'
   supabase: '^2.6.2'
 dev_dependencies:
@@ -6766,7 +6766,7 @@ dependencies:
     path: '../base_template_general_framework_project_api'
   base_template_general_framework_project_api_database:
     path: '../base_template_general_framework_project_api_database'
-  general_framework: '^0.0.22'
+  general_framework: '^0.0.23'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
@@ -8113,7 +8113,7 @@ dependencies:
     path: '../../base_template_general_framework_project_secret'
   base_template_general_framework_project_scheme:
     path: '../../base_template_general_framework_project_scheme'
-  general_framework: '^0.0.22'
+  general_framework: '^0.0.23'
   general_lib: '^0.0.65'
 dev_dependencies:
   lints: '^5.0.0'
@@ -9132,7 +9132,7 @@ dependencies:
     path: '../base_template_general_framework_project_scheme'
   base_template_general_framework_project_secret:
     path: '../base_template_general_framework_project_secret'
-  general_framework: '^0.0.22'
+  general_framework: '^0.0.23'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
@@ -10782,7 +10782,7 @@ dependencies:
   general_lib: '^0.0.65'
   path: '^1.9.1'
   http: '^1.2.2'
-  general_framework: '^0.0.22'
+  general_framework: '^0.0.23'
   database_universe: '^1.0.5'
   base_template_general_framework_project_database_universe_scheme:
     path: '../base_template_general_framework_project_database_universe_scheme'
@@ -33834,7 +33834,7 @@ dependencies:
     path: '../../base_template_general_framework_project_client'
   base_template_general_framework_project_secret:
     path: '../../base_template_general_framework_project_secret'
-  general_framework: '^0.0.22'
+  general_framework: '^0.0.23'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'
@@ -36095,7 +36095,7 @@ dependencies:
     path: '../base_template_general_framework_project_client'
   base_template_general_framework_project_secret:
     path: '../base_template_general_framework_project_secret'
-  general_framework: '^0.0.22'
+  general_framework: '^0.0.23'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'
