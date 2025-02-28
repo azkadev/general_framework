@@ -1,6 +1,6 @@
 name: 'general_framework'
 description: 'General Framework Library for help you create project more easy with general standarization style code base'
-version: '0.0.26'
+version: '0.0.27'
 homepage: 'https://github.com/azkadev/general_framework'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://azkadev.github.io/general_framework/'
@@ -38,8 +38,7 @@ dependencies:
   html: '^0.15.4'
   translate_client: '^0.0.11'
   window_manager: '^0.4.3'
-  general_system_device: '^0.0.52'
-  media_universe_flutter: '^0.0.0'
+  general_system_device: '^0.0.53'
 dependency_overrides:
   pointycastle: '3.8.0'
   mime: '^2.0.0'
