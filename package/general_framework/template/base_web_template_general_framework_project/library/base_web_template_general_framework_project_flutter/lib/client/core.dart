@@ -53,17 +53,14 @@ import 'package:general_framework/flutter/widget/core.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class BaseWebTemplateGeneralFrameworkProjectClientFlutter
-    extends GeneralFrameworkClientFlutter<
-        BaseWebTemplateGeneralFrameworkProjectClient> {
+class BaseWebTemplateGeneralFrameworkProjectClientFlutter extends GeneralFrameworkClientFlutter<BaseWebTemplateGeneralFrameworkProjectClient> {
   BaseWebTemplateGeneralFrameworkProjectClientFlutter({
     required super.navigatorKey,
     required super.generalLibrary,
     required super.generalFrameworkClient,
   });
 
-  static final GeneralLibFlutterApp generalLibFlutterApp =
-      GeneralLibFlutterApp();
+  static final GeneralLibFlutterApp generalLibFlutterApp = GeneralLibFlutterApp();
   bool _isInitialized = false;
   @override
   FutureOr<void> ensureInitialized({
@@ -87,9 +84,7 @@ class BaseWebTemplateGeneralFrameworkProjectClientFlutter
   void ensureInitializedNavigatorPush({
     required BuildContext context,
   }) async {
-    context
-        .routerGeneralLibFlutter()
-        .pushReplacementNamed(routeName: "/", arguments: {});
+    context.routerGeneralLibFlutter().pushReplacementNamed(routeName: "/", arguments: {});
     // if (token.isNotEmpty) {
     //   context.routerGeneralLibFlutter().pushReplacementNamed(routeName: "/home", arguments: {});
     // } else {
@@ -104,11 +99,7 @@ class BaseWebTemplateGeneralFrameworkProjectClientFlutter
   }
 
   @override
-  FutureOr<dynamic> onInvokeResult(
-      Map result,
-      Map parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) async {
+  FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
     if (result["@type"] == "error") {
       final context = navigatorKey.currentContext;
       if (context == null) {
@@ -118,25 +109,16 @@ class BaseWebTemplateGeneralFrameworkProjectClientFlutter
         result["message"] = "";
       }
       if (result["message"] == "session_not_found") {
-        context
-            .routerGeneralLibFlutter()
-            .pushNamedAndRemoveUntil(routeName: "/sign", removeRouteName: "/");
+        context.routerGeneralLibFlutter().pushNamedAndRemoveUntil(routeName: "/sign", removeRouteName: "/");
         return;
       }
-      final String message = (result["message"] as String)
-          .trim()
-          .split("_")
-          .map((e) => e.toLowerCase().toUpperCaseFirstData())
-          .join(" ");
+      final String message = (result["message"] as String).trim().split("_").map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
       context.showSnackBar("Error: ${message}");
     }
   }
 
   @override
-  FutureOr<Map?> onInvokeValidation(
-      Map parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) async {
+  FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) async {
     return null;
   }
 
@@ -218,22 +200,19 @@ class BaseWebTemplateGeneralFrameworkProjectClientFlutter
   }
 
   @override
-  Widget onErrorRoute(BuildContext context,
-      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+  Widget onErrorRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
     return const Scaffold(
       body: CircularProgressIndicator(),
     );
   }
 
   @override
-  Widget onNotFoundRoute(BuildContext context,
-      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+  Widget onNotFoundRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: ConstrainedBox(
-          constraints: BoxConstraints(
-              minHeight: context.height, minWidth: context.width),
+          constraints: BoxConstraints(minHeight: context.height, minWidth: context.width),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -255,18 +234,14 @@ class BaseWebTemplateGeneralFrameworkProjectClientFlutter
   }
 }
 
-abstract class BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget<
-        T extends BaseWebTemplateGeneralFrameworkProjectClientFlutter>
-    extends GeneralFrameworkClientFlutterAppStatefulWidget<T> {
+abstract class BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget<T extends BaseWebTemplateGeneralFrameworkProjectClientFlutter> extends GeneralFrameworkClientFlutterAppStatefulWidget<T> {
   const BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget({
     super.key,
     required super.generalFrameworkClientFlutter,
   });
 }
 
-abstract class BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget<
-        T extends BaseWebTemplateGeneralFrameworkProjectClientFlutter>
-    extends GeneralFrameworkClientFlutterAppStatelessWidget<T> {
+abstract class BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget<T extends BaseWebTemplateGeneralFrameworkProjectClientFlutter> extends GeneralFrameworkClientFlutterAppStatelessWidget<T> {
   const BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatelessWidget({
     super.key,
     required super.generalFrameworkClientFlutter,

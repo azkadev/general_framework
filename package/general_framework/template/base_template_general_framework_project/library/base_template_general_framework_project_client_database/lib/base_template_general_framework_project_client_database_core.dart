@@ -47,8 +47,7 @@ import 'package:http/http.dart';
 import "package:path/path.dart" as path;
 
 ///
-class BaseTemplateGeneralFrameworkProjectClientDatabase
-    extends GeneralFrameworkDatabase {
+class BaseTemplateGeneralFrameworkProjectClientDatabase extends GeneralFrameworkDatabase {
   ///
   late final DatabaseUniverse database_universe_core;
 
@@ -66,8 +65,7 @@ class BaseTemplateGeneralFrameworkProjectClientDatabase
 
   ///
   Directory get directory_database {
-    final Directory directory = Directory(path.join(directory_base.path,
-        "base_template_general_framework_project_database"));
+    final Directory directory = Directory(path.join(directory_base.path, "base_template_general_framework_project_database"));
     if (directory.existsSync() == false) {
       directory.createSync(recursive: true);
     }
@@ -87,8 +85,7 @@ class BaseTemplateGeneralFrameworkProjectClientDatabase
     required String currentPath,
     required Client httpClient,
   }) async {
-    await super
-        .ensureInitialized(currentPath: currentPath, httpClient: httpClient);
+    await super.ensureInitialized(currentPath: currentPath, httpClient: httpClient);
     {
       database_universe_core = openDatabaseUniverse(
         name: "base_template_general_framework_project_database",
@@ -108,8 +105,7 @@ class BaseTemplateGeneralFrameworkProjectClientDatabase
       try_count++;
       try {
         return DatabaseUniverse.open(
-          schemas: schemas ??
-              BaseTemplateGeneralFrameworkProjectDatabaseUniverseScheme.schemes,
+          schemas: schemas ?? BaseTemplateGeneralFrameworkProjectDatabaseUniverseScheme.schemes,
           directory: directory_database.path,
           name: name,
           maxSizeMiB: maxSizeMiB ?? DatabaseUniverse.defaultMaxSizeMiB * 100,

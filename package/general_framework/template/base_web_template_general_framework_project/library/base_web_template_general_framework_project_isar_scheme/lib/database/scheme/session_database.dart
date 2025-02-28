@@ -169,15 +169,7 @@ class SessionDatabase {
 
   /// return original data json
   static Map get defaultData {
-    return {
-      "@type": "sessionDatabase",
-      "account_user_id": 0,
-      "token": "",
-      "from_app_id": "",
-      "owner_account_user_id": 0,
-      "is_test": false,
-      "id": 0
-    };
+    return {"@type": "sessionDatabase", "account_user_id": 0, "token": "", "from_app_id": "", "owner_account_user_id": 0, "is_test": false, "id": 0};
   }
 
   static SessionDatabase create({

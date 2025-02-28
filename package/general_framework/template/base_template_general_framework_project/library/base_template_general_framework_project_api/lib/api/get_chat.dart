@@ -41,8 +41,7 @@ import 'package:base_template_general_framework_project_api_database/account/acc
 import 'package:base_template_general_framework_project_scheme/converter/account.dart';
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
-extension BaseTemplateGeneralFrameworkProjectApiExtensiongetChatAccount
-    on BaseTemplateGeneralFrameworkProjectApi {
+extension BaseTemplateGeneralFrameworkProjectApiExtensiongetChatAccount on BaseTemplateGeneralFrameworkProjectApi {
   FutureOr<Account> api_getChat({
     required InvokeRequestData invokeRequestData,
   }) async {
@@ -61,8 +60,7 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensiongetChatAccount
     if (chat_id_parameters == invokeRequestData.accountDatabase.id) {
       return invokeRequestData.accountDatabase.toAccount();
     }
-    final result = await generalFrameworkApiDatabase.account_getAccountByUserId(
-        account_user_id: chat_id_parameters);
+    final result = await generalFrameworkApiDatabase.account_getAccountByUserId(account_user_id: chat_id_parameters);
     if (result == null) {
       return Account({"@type": "error", "message": "account_not_found"});
     }

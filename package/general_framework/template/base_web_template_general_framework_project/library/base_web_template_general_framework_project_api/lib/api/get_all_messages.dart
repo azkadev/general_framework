@@ -44,13 +44,11 @@ import 'package:base_web_template_general_framework_project_scheme/database_sche
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_web_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetAllMessagesMessages
-    on BaseWebTemplateGeneralFrameworkProjectApi {
+extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetAllMessagesMessages on BaseWebTemplateGeneralFrameworkProjectApi {
   FutureOr<Messages> api_getAllMessages({
     required InvokeRequestData invokeRequestData,
   }) async {
-    final GetAllMessages getAllMessages =
-        invokeRequestData.parametersBuilder<GetAllMessages>(
+    final GetAllMessages getAllMessages = invokeRequestData.parametersBuilder<GetAllMessages>(
       builder: (parameters) {
         return GetAllMessages(parameters.toJson());
       },
@@ -63,8 +61,7 @@ extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetAllMessagesMessag
       });
     }
 
-    final ChatDatabase? chatDatabase =
-        await generalFrameworkApiDatabase.chat_getChatDatabase(
+    final ChatDatabase? chatDatabase = await generalFrameworkApiDatabase.chat_getChatDatabase(
       chat_id: getAllMessages.chat_id ?? 0,
       user_id: invokeRequestData.accountDatabase.id ?? 0,
     );
@@ -82,12 +79,7 @@ extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetAllMessagesMessag
       });
     }
 
-    final List<Message> messages =
-        (await generalFrameworkApiDatabase.message_getMessageAllMessage(
-                chat_unique_id: chat_unique_id,
-                offset: getAllMessages.offset ?? 0,
-                limit: getAllMessages.limit ?? 100))
-            .map((e) {
+    final List<Message> messages = (await generalFrameworkApiDatabase.message_getMessageAllMessage(chat_unique_id: chat_unique_id, offset: getAllMessages.offset ?? 0, limit: getAllMessages.limit ?? 100)).map((e) {
       return e.toMessage(
         chat_id: getAllMessages.chat_id ?? 0,
       );

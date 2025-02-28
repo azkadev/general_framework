@@ -38,8 +38,7 @@ import 'package:base_web_template_general_framework_project_client_database/base
 
 import 'package:base_web_template_general_framework_project_scheme/database_scheme/message_isar_database.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage
-    on BaseWebTemplateGeneralFrameworkProjectClientDatabase {
+extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionMessage on BaseWebTemplateGeneralFrameworkProjectClientDatabase {
   bool message_deleteAllMessage({
     required int chat_id,
     required int user_id,

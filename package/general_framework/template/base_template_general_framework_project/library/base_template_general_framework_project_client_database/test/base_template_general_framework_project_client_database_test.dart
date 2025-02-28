@@ -35,8 +35,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'dart:io';
 
 import 'package:base_template_general_framework_project_client_database/base_template_general_framework_project_client_database.dart';
-import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/message_database.dart'
-    as database_universe_scheme;
+import 'package:base_template_general_framework_project_database_universe_scheme/database/scheme/message_database.dart' as database_universe_scheme;
 import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
 import 'package:database_universe/database_universe.dart';
 import 'package:general_lib/general_lib.dart';
@@ -44,23 +43,17 @@ import 'package:http/http.dart';
 import 'package:test/test.dart';
 
 void main() async {
-  final BaseTemplateGeneralFrameworkProjectClientDatabase database =
-      BaseTemplateGeneralFrameworkProjectClientDatabase();
-  await database.ensureInitialized(
-      currentPath: Directory.current.path, httpClient: Client());
+  final BaseTemplateGeneralFrameworkProjectClientDatabase database = BaseTemplateGeneralFrameworkProjectClientDatabase();
+  await database.ensureInitialized(currentPath: Directory.current.path, httpClient: Client());
 
   int chatId = 20000;
   int userId = 10000;
   test("Message Database", () async {
-    database.database_universe_core.messageDatabases
-        .where()
-        .exportJson()
-        .printPretty();
+    database.database_universe_core.messageDatabases.where().exportJson().printPretty();
     print("Wait");
     await Future.delayed(Duration(seconds: 2));
     int messageId = 1;
-    final MessageLocalDatabase? messageDatabase =
-        database.message_getMessageByMessageId(
+    final MessageLocalDatabase? messageDatabase = database.message_getMessageByMessageId(
       chat_id: chatId,
       user_id: userId,
       message_id: messageId,

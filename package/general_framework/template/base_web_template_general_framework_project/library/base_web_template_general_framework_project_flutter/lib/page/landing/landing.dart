@@ -38,18 +38,15 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class LandingPage
-    extends BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
+class LandingPage extends BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
   const LandingPage({super.key, required super.generalFrameworkClientFlutter});
 
   @override
   State<LandingPage> createState() => _LandingPageState();
 }
 
-class _LandingPageState extends State<LandingPage>
-    with GeneralLibFlutterStatefulWidget {
-  final ScrollControllerAutoKeepStateData scrollControllerAutoKeepStateData =
-      ScrollControllerAutoKeepStateData(
+class _LandingPageState extends State<LandingPage> with GeneralLibFlutterStatefulWidget {
+  final ScrollControllerAutoKeepStateData scrollControllerAutoKeepStateData = ScrollControllerAutoKeepStateData(
     keyId: "home_page",
   );
 
@@ -143,11 +140,8 @@ class _LandingPageState extends State<LandingPage>
       SkeletonizerGeneralFramework(
         enabled: isLoading,
         child: ThemeChangeGeneralFrameworkWidget(
-          themeChangeGeneralFrameworkWidgetStyle: (isLandscape)
-              ? ThemeChangeGeneralFrameworkWidgetStyle.minimalist
-              : ThemeChangeGeneralFrameworkWidgetStyle.listTile,
-          generalLibFlutterApp: widget.generalFrameworkClientFlutter
-              .generalLibFlutterAppFunction(),
+          themeChangeGeneralFrameworkWidgetStyle: (isLandscape) ? ThemeChangeGeneralFrameworkWidgetStyle.minimalist : ThemeChangeGeneralFrameworkWidgetStyle.listTile,
+          generalLibFlutterApp: widget.generalFrameworkClientFlutter.generalLibFlutterAppFunction(),
           onChanged: () {},
         ),
       ),
@@ -172,8 +166,7 @@ class _LandingPageState extends State<LandingPage>
       child: () {
         final child = Text(
           text,
-          style:
-              (context.theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
+          style: (context.theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
             color: context.theme.indicatorColor,
           ),
         );
@@ -316,9 +309,7 @@ class _LandingPageState extends State<LandingPage>
                         children: [
                           Text(
                             "Website Name",
-                            style: (context.theme.textTheme.titleLarge ??
-                                    const TextStyle())
-                                .copyWith(
+                            style: (context.theme.textTheme.titleLarge ?? const TextStyle()).copyWith(
                               fontSize: 70,
                             ),
                           ),

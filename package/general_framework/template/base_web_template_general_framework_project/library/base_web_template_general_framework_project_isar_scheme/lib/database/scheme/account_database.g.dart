@@ -45,8 +45,7 @@ part of 'account_database.dart';
 // ignore_for_file: type=lint
 
 extension GetAccountDatabaseCollection on Isar {
-  IsarCollection<int, AccountDatabase> get accountDatabases =>
-      this.collection();
+  IsarCollection<int, AccountDatabase> get accountDatabases => this.collection();
 }
 
 const AccountDatabaseSchema = IsarGeneratedSchema(
@@ -260,8 +259,7 @@ class _AccountDatabaseUpdateAllImpl implements _AccountDatabaseUpdateAll {
 extension AccountDatabaseUpdate on IsarCollection<int, AccountDatabase> {
   _AccountDatabaseUpdate get update => _AccountDatabaseUpdateImpl(this);
 
-  _AccountDatabaseUpdateAll get updateAll =>
-      _AccountDatabaseUpdateAllImpl(this);
+  _AccountDatabaseUpdateAll get updateAll => _AccountDatabaseUpdateAllImpl(this);
 }
 
 sealed class _AccountDatabaseQueryUpdate {
@@ -311,15 +309,12 @@ class _AccountDatabaseQueryUpdateImpl implements _AccountDatabaseQueryUpdate {
 }
 
 extension AccountDatabaseQueryUpdate on IsarQuery<AccountDatabase> {
-  _AccountDatabaseQueryUpdate get updateFirst =>
-      _AccountDatabaseQueryUpdateImpl(this, limit: 1);
+  _AccountDatabaseQueryUpdate get updateFirst => _AccountDatabaseQueryUpdateImpl(this, limit: 1);
 
-  _AccountDatabaseQueryUpdate get updateAll =>
-      _AccountDatabaseQueryUpdateImpl(this);
+  _AccountDatabaseQueryUpdate get updateAll => _AccountDatabaseQueryUpdateImpl(this);
 }
 
-class _AccountDatabaseQueryBuilderUpdateImpl
-    implements _AccountDatabaseQueryUpdate {
+class _AccountDatabaseQueryBuilderUpdateImpl implements _AccountDatabaseQueryUpdate {
   const _AccountDatabaseQueryBuilderUpdateImpl(this.query, {this.limit});
 
   final QueryBuilder<AccountDatabase, AccountDatabase, QOperations> query;
@@ -356,19 +351,14 @@ class _AccountDatabaseQueryBuilderUpdateImpl
   }
 }
 
-extension AccountDatabaseQueryBuilderUpdate
-    on QueryBuilder<AccountDatabase, AccountDatabase, QOperations> {
-  _AccountDatabaseQueryUpdate get updateFirst =>
-      _AccountDatabaseQueryBuilderUpdateImpl(this, limit: 1);
+extension AccountDatabaseQueryBuilderUpdate on QueryBuilder<AccountDatabase, AccountDatabase, QOperations> {
+  _AccountDatabaseQueryUpdate get updateFirst => _AccountDatabaseQueryBuilderUpdateImpl(this, limit: 1);
 
-  _AccountDatabaseQueryUpdate get updateAll =>
-      _AccountDatabaseQueryBuilderUpdateImpl(this);
+  _AccountDatabaseQueryUpdate get updateAll => _AccountDatabaseQueryBuilderUpdateImpl(this);
 }
 
-extension AccountDatabaseQueryFilter
-    on QueryBuilder<AccountDatabase, AccountDatabase, QFilterCondition> {
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      special_typeEqualTo(
+extension AccountDatabaseQueryFilter on QueryBuilder<AccountDatabase, AccountDatabase, QFilterCondition> {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> special_typeEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -383,8 +373,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      special_typeGreaterThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> special_typeGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -399,8 +388,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      special_typeGreaterThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> special_typeGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -415,8 +403,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      special_typeLessThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> special_typeLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -431,8 +418,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      special_typeLessThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> special_typeLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -447,8 +433,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      special_typeBetween(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> special_typeBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -465,8 +450,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      special_typeStartsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> special_typeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -481,8 +465,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      special_typeEndsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> special_typeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -497,8 +480,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      special_typeContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> special_typeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -510,8 +492,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      special_typeMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> special_typeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -523,8 +504,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      special_typeIsEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> special_typeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -535,8 +515,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      special_typeIsNotEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> special_typeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -547,8 +526,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      idEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -561,8 +539,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      idGreaterThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -575,8 +552,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      idGreaterThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -589,8 +565,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      idLessThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -603,8 +578,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      idLessThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -617,8 +591,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      idBetween(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> idBetween(
     int lower,
     int upper,
   ) {
@@ -633,8 +606,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      first_nameEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> first_nameEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -649,8 +621,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      first_nameGreaterThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> first_nameGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -665,8 +636,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      first_nameGreaterThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> first_nameGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -681,8 +651,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      first_nameLessThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> first_nameLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -697,8 +666,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      first_nameLessThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> first_nameLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -713,8 +681,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      first_nameBetween(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> first_nameBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -731,8 +698,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      first_nameStartsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> first_nameStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -747,8 +713,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      first_nameEndsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> first_nameEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -763,8 +728,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      first_nameContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> first_nameContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -776,8 +740,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      first_nameMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> first_nameMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -789,8 +752,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      first_nameIsEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> first_nameIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -801,8 +763,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      first_nameIsNotEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> first_nameIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -813,8 +774,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      last_nameEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> last_nameEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -829,8 +789,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      last_nameGreaterThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> last_nameGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -845,8 +804,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      last_nameGreaterThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> last_nameGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -861,8 +819,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      last_nameLessThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> last_nameLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -877,8 +834,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      last_nameLessThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> last_nameLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -893,8 +849,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      last_nameBetween(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> last_nameBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -911,8 +866,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      last_nameStartsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> last_nameStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -927,8 +881,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      last_nameEndsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> last_nameEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -943,8 +896,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      last_nameContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> last_nameContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -956,8 +908,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      last_nameMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> last_nameMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -969,8 +920,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      last_nameIsEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> last_nameIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -981,8 +931,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      last_nameIsNotEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> last_nameIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -993,8 +942,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      usernameEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> usernameEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1009,8 +957,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      usernameGreaterThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> usernameGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1025,8 +972,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      usernameGreaterThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> usernameGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1041,8 +987,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      usernameLessThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> usernameLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1057,8 +1002,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      usernameLessThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> usernameLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1073,8 +1017,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      usernameBetween(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> usernameBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -1091,8 +1034,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      usernameStartsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> usernameStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1107,8 +1049,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      usernameEndsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> usernameEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1123,8 +1064,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      usernameContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> usernameContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -1136,8 +1076,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      usernameMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> usernameMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -1149,8 +1088,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      usernameIsEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> usernameIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -1161,8 +1099,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      usernameIsNotEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> usernameIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -1173,8 +1110,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      bioEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> bioEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1189,8 +1125,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      bioGreaterThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> bioGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1205,8 +1140,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      bioGreaterThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> bioGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1221,8 +1155,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      bioLessThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> bioLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1237,8 +1170,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      bioLessThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> bioLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1253,8 +1185,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      bioBetween(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> bioBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -1271,8 +1202,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      bioStartsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> bioStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1287,8 +1217,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      bioEndsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> bioEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1303,8 +1232,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      bioContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> bioContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -1316,8 +1244,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      bioMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> bioMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -1329,8 +1256,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      bioIsEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> bioIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -1341,8 +1267,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      bioIsNotEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> bioIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -1353,8 +1278,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> passwordEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1369,8 +1293,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordGreaterThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> passwordGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1385,8 +1308,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordGreaterThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> passwordGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1401,8 +1323,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordLessThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> passwordLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1417,8 +1338,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordLessThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> passwordLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1433,8 +1353,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordBetween(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> passwordBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -1451,8 +1370,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordStartsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> passwordStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1467,8 +1385,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordEndsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> passwordEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1483,8 +1400,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> passwordContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -1496,8 +1412,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> passwordMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -1509,8 +1424,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordIsEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> passwordIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -1521,8 +1435,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      passwordIsNotEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> passwordIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -1533,8 +1446,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      from_app_idEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> from_app_idEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1549,8 +1461,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      from_app_idGreaterThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> from_app_idGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1565,8 +1476,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      from_app_idGreaterThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> from_app_idGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1581,8 +1491,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      from_app_idLessThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> from_app_idLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1597,8 +1506,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      from_app_idLessThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> from_app_idLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1613,8 +1521,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      from_app_idBetween(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> from_app_idBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -1631,8 +1538,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      from_app_idStartsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> from_app_idStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1647,8 +1553,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      from_app_idEndsWith(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> from_app_idEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1663,8 +1568,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      from_app_idContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> from_app_idContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -1676,8 +1580,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      from_app_idMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> from_app_idMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -1689,8 +1592,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      from_app_idIsEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> from_app_idIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -1701,8 +1603,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      from_app_idIsNotEmpty() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> from_app_idIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -1713,8 +1614,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      owner_account_user_idEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> owner_account_user_idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1727,8 +1627,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      owner_account_user_idGreaterThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> owner_account_user_idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1741,8 +1640,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      owner_account_user_idGreaterThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> owner_account_user_idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1755,8 +1653,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      owner_account_user_idLessThan(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> owner_account_user_idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1769,8 +1666,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      owner_account_user_idLessThanOrEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> owner_account_user_idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1783,8 +1679,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      owner_account_user_idBetween(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> owner_account_user_idBetween(
     int lower,
     int upper,
   ) {
@@ -1799,8 +1694,7 @@ extension AccountDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition>
-      is_testEqualTo(
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterFilterCondition> is_testEqualTo(
     bool value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1814,13 +1708,10 @@ extension AccountDatabaseQueryFilter
   }
 }
 
-extension AccountDatabaseQueryObject
-    on QueryBuilder<AccountDatabase, AccountDatabase, QFilterCondition> {}
+extension AccountDatabaseQueryObject on QueryBuilder<AccountDatabase, AccountDatabase, QFilterCondition> {}
 
-extension AccountDatabaseQuerySortBy
-    on QueryBuilder<AccountDatabase, AccountDatabase, QSortBy> {
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      sortBySpecial_type({bool caseSensitive = true}) {
+extension AccountDatabaseQuerySortBy on QueryBuilder<AccountDatabase, AccountDatabase, QSortBy> {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1829,8 +1720,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      sortBySpecial_typeDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortBySpecial_typeDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1852,8 +1742,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByFirst_name(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByFirst_name({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         2,
@@ -1862,8 +1751,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      sortByFirst_nameDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByFirst_nameDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         2,
@@ -1873,8 +1761,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByLast_name(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByLast_name({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         3,
@@ -1883,8 +1770,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      sortByLast_nameDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByLast_nameDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         3,
@@ -1894,8 +1780,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByUsername(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByUsername({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         4,
@@ -1904,8 +1789,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      sortByUsernameDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByUsernameDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         4,
@@ -1915,8 +1799,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByBio(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByBio({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         5,
@@ -1925,8 +1808,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByBioDesc(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByBioDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         5,
@@ -1936,8 +1818,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByPassword(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByPassword({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         6,
@@ -1946,8 +1827,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      sortByPasswordDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByPasswordDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         6,
@@ -1957,8 +1837,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      sortByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         7,
@@ -1967,8 +1846,7 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      sortByFrom_app_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         7,
@@ -1978,15 +1856,13 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      sortByOwner_account_user_id() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(8);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      sortByOwner_account_user_idDesc() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(8, sort: Sort.desc);
     });
@@ -1998,25 +1874,21 @@ extension AccountDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      sortByIs_testDesc() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> sortByIs_testDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(9, sort: Sort.desc);
     });
   }
 }
 
-extension AccountDatabaseQuerySortThenBy
-    on QueryBuilder<AccountDatabase, AccountDatabase, QSortThenBy> {
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenBySpecial_type({bool caseSensitive = true}) {
+extension AccountDatabaseQuerySortThenBy on QueryBuilder<AccountDatabase, AccountDatabase, QSortThenBy> {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenBySpecial_typeDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenBySpecial_typeDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, sort: Sort.desc, caseSensitive: caseSensitive);
     });
@@ -2034,99 +1906,85 @@ extension AccountDatabaseQuerySortThenBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByFirst_name(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByFirst_name({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenByFirst_nameDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByFirst_nameDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByLast_name(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByLast_name({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenByLast_nameDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByLast_nameDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByUsername(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByUsername({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenByUsernameDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByUsernameDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByBio(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByBio({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByBioDesc(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByBioDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByPassword(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByPassword({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenByPasswordDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByPasswordDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenByFrom_app_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenByOwner_account_user_id() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(8);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenByOwner_account_user_idDesc() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(8, sort: Sort.desc);
     });
@@ -2138,82 +1996,70 @@ extension AccountDatabaseQuerySortThenBy
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy>
-      thenByIs_testDesc() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterSortBy> thenByIs_testDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(9, sort: Sort.desc);
     });
   }
 }
 
-extension AccountDatabaseQueryWhereDistinct
-    on QueryBuilder<AccountDatabase, AccountDatabase, QDistinct> {
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
-      distinctBySpecial_type({bool caseSensitive = true}) {
+extension AccountDatabaseQueryWhereDistinct on QueryBuilder<AccountDatabase, AccountDatabase, QDistinct> {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct> distinctBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
-      distinctByFirst_name({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct> distinctByFirst_name({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(2, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
-      distinctByLast_name({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct> distinctByLast_name({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(3, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
-      distinctByUsername({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct> distinctByUsername({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(4, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct> distinctByBio(
-      {bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct> distinctByBio({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(5, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
-      distinctByPassword({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct> distinctByPassword({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(6, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
-      distinctByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct> distinctByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(7, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
-      distinctByOwner_account_user_id() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct> distinctByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(8);
     });
   }
 
-  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct>
-      distinctByIs_test() {
+  QueryBuilder<AccountDatabase, AccountDatabase, QAfterDistinct> distinctByIs_test() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(9);
     });
   }
 }
 
-extension AccountDatabaseQueryProperty1
-    on QueryBuilder<AccountDatabase, AccountDatabase, QProperty> {
+extension AccountDatabaseQueryProperty1 on QueryBuilder<AccountDatabase, AccountDatabase, QProperty> {
   QueryBuilder<AccountDatabase, String, QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
@@ -2262,8 +2108,7 @@ extension AccountDatabaseQueryProperty1
     });
   }
 
-  QueryBuilder<AccountDatabase, int, QAfterProperty>
-      owner_account_user_idProperty() {
+  QueryBuilder<AccountDatabase, int, QAfterProperty> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(8);
     });
@@ -2276,10 +2121,8 @@ extension AccountDatabaseQueryProperty1
   }
 }
 
-extension AccountDatabaseQueryProperty2<R>
-    on QueryBuilder<AccountDatabase, R, QAfterProperty> {
-  QueryBuilder<AccountDatabase, (R, String), QAfterProperty>
-      special_typeProperty() {
+extension AccountDatabaseQueryProperty2<R> on QueryBuilder<AccountDatabase, R, QAfterProperty> {
+  QueryBuilder<AccountDatabase, (R, String), QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
@@ -2291,22 +2134,19 @@ extension AccountDatabaseQueryProperty2<R>
     });
   }
 
-  QueryBuilder<AccountDatabase, (R, String), QAfterProperty>
-      first_nameProperty() {
+  QueryBuilder<AccountDatabase, (R, String), QAfterProperty> first_nameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<AccountDatabase, (R, String), QAfterProperty>
-      last_nameProperty() {
+  QueryBuilder<AccountDatabase, (R, String), QAfterProperty> last_nameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<AccountDatabase, (R, String), QAfterProperty>
-      usernameProperty() {
+  QueryBuilder<AccountDatabase, (R, String), QAfterProperty> usernameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
@@ -2318,22 +2158,19 @@ extension AccountDatabaseQueryProperty2<R>
     });
   }
 
-  QueryBuilder<AccountDatabase, (R, String), QAfterProperty>
-      passwordProperty() {
+  QueryBuilder<AccountDatabase, (R, String), QAfterProperty> passwordProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(6);
     });
   }
 
-  QueryBuilder<AccountDatabase, (R, String), QAfterProperty>
-      from_app_idProperty() {
+  QueryBuilder<AccountDatabase, (R, String), QAfterProperty> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(7);
     });
   }
 
-  QueryBuilder<AccountDatabase, (R, int), QAfterProperty>
-      owner_account_user_idProperty() {
+  QueryBuilder<AccountDatabase, (R, int), QAfterProperty> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(8);
     });
@@ -2346,10 +2183,8 @@ extension AccountDatabaseQueryProperty2<R>
   }
 }
 
-extension AccountDatabaseQueryProperty3<R1, R2>
-    on QueryBuilder<AccountDatabase, (R1, R2), QAfterProperty> {
-  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations>
-      special_typeProperty() {
+extension AccountDatabaseQueryProperty3<R1, R2> on QueryBuilder<AccountDatabase, (R1, R2), QAfterProperty> {
+  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
@@ -2361,22 +2196,19 @@ extension AccountDatabaseQueryProperty3<R1, R2>
     });
   }
 
-  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations>
-      first_nameProperty() {
+  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations> first_nameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations>
-      last_nameProperty() {
+  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations> last_nameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations>
-      usernameProperty() {
+  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations> usernameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
@@ -2388,22 +2220,19 @@ extension AccountDatabaseQueryProperty3<R1, R2>
     });
   }
 
-  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations>
-      passwordProperty() {
+  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations> passwordProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(6);
     });
   }
 
-  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations>
-      from_app_idProperty() {
+  QueryBuilder<AccountDatabase, (R1, R2, String), QOperations> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(7);
     });
   }
 
-  QueryBuilder<AccountDatabase, (R1, R2, int), QOperations>
-      owner_account_user_idProperty() {
+  QueryBuilder<AccountDatabase, (R1, R2, int), QOperations> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(8);
     });

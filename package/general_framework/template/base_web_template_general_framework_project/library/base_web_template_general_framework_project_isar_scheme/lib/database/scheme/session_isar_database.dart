@@ -176,16 +176,7 @@ class SessionIsarDatabase {
 
   /// return original data json
   static Map get defaultData {
-    return {
-      "@type": "sessionIsarDatabase",
-      "account_user_id": 0,
-      "token": "",
-      "is_default": false,
-      "from_app_id": "",
-      "owner_account_user_id": 0,
-      "is_test": false,
-      "id": 0
-    };
+    return {"@type": "sessionIsarDatabase", "account_user_id": 0, "token": "", "is_default": false, "from_app_id": "", "owner_account_user_id": 0, "is_test": false, "id": 0};
   }
 
   static SessionIsarDatabase create({

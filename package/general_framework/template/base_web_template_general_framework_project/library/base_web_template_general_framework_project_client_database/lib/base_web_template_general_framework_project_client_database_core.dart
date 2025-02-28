@@ -49,11 +49,9 @@ import 'package:http/http.dart';
 import "package:path/path.dart" as path;
 // import "package:base_web_template_general_framework_project_secret/base_web_template_general_framework_project_secret_core.dart";
 
-class BaseWebTemplateGeneralFrameworkProjectClientDatabase
-    extends GeneralFrameworkDatabase {
+class BaseWebTemplateGeneralFrameworkProjectClientDatabase extends GeneralFrameworkDatabase {
   final DatabaseGeneralLib databaseGeneralLib;
-  final BaseWebTemplateGeneralFrameworkProjectSecretClientSide
-      baseWebTemplateGeneralFrameworkProjectSecretClientSide;
+  final BaseWebTemplateGeneralFrameworkProjectSecretClientSide baseWebTemplateGeneralFrameworkProjectSecretClientSide;
 
   BaseWebTemplateGeneralFrameworkProjectClientDatabase({
     DatabaseGeneralLib? databaseGeneralLib,
@@ -77,8 +75,7 @@ class BaseWebTemplateGeneralFrameworkProjectClientDatabase
   }
 
   Directory get directory_database {
-    final Directory directory = Directory(path.join(directory_base.path,
-        "base_web_template_general_framework_project_database"));
+    final Directory directory = Directory(path.join(directory_base.path, "base_web_template_general_framework_project_database"));
     if (Dart.isWeb) {
       return directory;
     } else {
@@ -97,35 +94,27 @@ class BaseWebTemplateGeneralFrameworkProjectClientDatabase
     }
   }
 
-  DatabaseMiniGeneralLibraryBaseOptions
-      get databaseMiniGeneralLibraryBaseOptions =>
-          DatabaseMiniGeneralLibraryBaseOptions(
-            crypto:
-                baseWebTemplateGeneralFrameworkProjectSecretClientSide.crypto,
-            isUseCrypto: true,
-            isIgnoreError: true,
-          );
+  DatabaseMiniGeneralLibraryBaseOptions get databaseMiniGeneralLibraryBaseOptions => DatabaseMiniGeneralLibraryBaseOptions(
+        crypto: baseWebTemplateGeneralFrameworkProjectSecretClientSide.crypto,
+        isUseCrypto: true,
+        isIgnoreError: true,
+      );
 
   @override
   FutureOr<void> ensureInitialized({
     required String currentPath,
     required Client httpClient,
   }) async {
-    await super
-        .ensureInitialized(currentPath: currentPath, httpClient: httpClient);
+    await super.ensureInitialized(currentPath: currentPath, httpClient: httpClient);
     {
-      cores_database_mini_library =
-          await databaseGeneralLib.openDatabaseMiniAsync(
+      cores_database_mini_library = await databaseGeneralLib.openDatabaseMiniAsync(
         key: "database_core",
-        databaseMiniGeneralLibraryBaseOptions:
-            databaseMiniGeneralLibraryBaseOptions,
+        databaseMiniGeneralLibraryBaseOptions: databaseMiniGeneralLibraryBaseOptions,
         defaultData: {},
       );
-      messages_database_mini_library =
-          await databaseGeneralLib.openDatabaseMiniAsync(
+      messages_database_mini_library = await databaseGeneralLib.openDatabaseMiniAsync(
         key: "messages",
-        databaseMiniGeneralLibraryBaseOptions:
-            databaseMiniGeneralLibraryBaseOptions,
+        databaseMiniGeneralLibraryBaseOptions: databaseMiniGeneralLibraryBaseOptions,
         defaultData: {},
       );
     }

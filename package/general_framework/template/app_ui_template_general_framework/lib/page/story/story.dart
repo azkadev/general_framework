@@ -68,9 +68,7 @@ class _StoryPageState extends State<StoryPage> {
                 leading: Icon(Icons.settings),
                 title: Text("Settings"),
                 onTap: () {
-                  context
-                      .routerGeneralLibFlutter()
-                      .pushNamed(routeName: "/settings");
+                  context.routerGeneralLibFlutter().pushNamed(routeName: "/settings");
                 },
               ),
               SizedBox(

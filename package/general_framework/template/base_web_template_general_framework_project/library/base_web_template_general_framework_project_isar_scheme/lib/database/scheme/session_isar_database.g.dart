@@ -45,8 +45,7 @@ part of 'session_isar_database.dart';
 // ignore_for_file: type=lint
 
 extension GetSessionIsarDatabaseCollection on Isar {
-  IsarCollection<int, SessionIsarDatabase> get sessionIsarDatabases =>
-      this.collection();
+  IsarCollection<int, SessionIsarDatabase> get sessionIsarDatabases => this.collection();
 }
 
 const SessionIsarDatabaseSchema = IsarGeneratedSchema(
@@ -95,8 +94,7 @@ const SessionIsarDatabaseSchema = IsarGeneratedSchema(
 );
 
 @isarProtected
-int serializeSessionIsarDatabase(
-    IsarWriter writer, SessionIsarDatabase object) {
+int serializeSessionIsarDatabase(IsarWriter writer, SessionIsarDatabase object) {
   IsarCore.writeString(writer, 1, object.special_type);
   IsarCore.writeLong(writer, 2, object.account_user_id);
   IsarCore.writeString(writer, 3, object.token);
@@ -202,8 +200,7 @@ sealed class _SessionIsarDatabaseUpdateAll {
   });
 }
 
-class _SessionIsarDatabaseUpdateAllImpl
-    implements _SessionIsarDatabaseUpdateAll {
+class _SessionIsarDatabaseUpdateAllImpl implements _SessionIsarDatabaseUpdateAll {
   const _SessionIsarDatabaseUpdateAllImpl(this.collection);
 
   final IsarCollection<int, SessionIsarDatabase> collection;
@@ -231,12 +228,10 @@ class _SessionIsarDatabaseUpdateAllImpl
   }
 }
 
-extension SessionIsarDatabaseUpdate
-    on IsarCollection<int, SessionIsarDatabase> {
+extension SessionIsarDatabaseUpdate on IsarCollection<int, SessionIsarDatabase> {
   _SessionIsarDatabaseUpdate get update => _SessionIsarDatabaseUpdateImpl(this);
 
-  _SessionIsarDatabaseUpdateAll get updateAll =>
-      _SessionIsarDatabaseUpdateAllImpl(this);
+  _SessionIsarDatabaseUpdateAll get updateAll => _SessionIsarDatabaseUpdateAllImpl(this);
 }
 
 sealed class _SessionIsarDatabaseQueryUpdate {
@@ -251,8 +246,7 @@ sealed class _SessionIsarDatabaseQueryUpdate {
   });
 }
 
-class _SessionIsarDatabaseQueryUpdateImpl
-    implements _SessionIsarDatabaseQueryUpdate {
+class _SessionIsarDatabaseQueryUpdateImpl implements _SessionIsarDatabaseQueryUpdate {
   const _SessionIsarDatabaseQueryUpdateImpl(this.query, {this.limit});
 
   final IsarQuery<SessionIsarDatabase> query;
@@ -281,19 +275,15 @@ class _SessionIsarDatabaseQueryUpdateImpl
 }
 
 extension SessionIsarDatabaseQueryUpdate on IsarQuery<SessionIsarDatabase> {
-  _SessionIsarDatabaseQueryUpdate get updateFirst =>
-      _SessionIsarDatabaseQueryUpdateImpl(this, limit: 1);
+  _SessionIsarDatabaseQueryUpdate get updateFirst => _SessionIsarDatabaseQueryUpdateImpl(this, limit: 1);
 
-  _SessionIsarDatabaseQueryUpdate get updateAll =>
-      _SessionIsarDatabaseQueryUpdateImpl(this);
+  _SessionIsarDatabaseQueryUpdate get updateAll => _SessionIsarDatabaseQueryUpdateImpl(this);
 }
 
-class _SessionIsarDatabaseQueryBuilderUpdateImpl
-    implements _SessionIsarDatabaseQueryUpdate {
+class _SessionIsarDatabaseQueryBuilderUpdateImpl implements _SessionIsarDatabaseQueryUpdate {
   const _SessionIsarDatabaseQueryBuilderUpdateImpl(this.query, {this.limit});
 
-  final QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QOperations>
-      query;
+  final QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QOperations> query;
   final int? limit;
 
   @override
@@ -323,19 +313,14 @@ class _SessionIsarDatabaseQueryBuilderUpdateImpl
   }
 }
 
-extension SessionIsarDatabaseQueryBuilderUpdate
-    on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QOperations> {
-  _SessionIsarDatabaseQueryUpdate get updateFirst =>
-      _SessionIsarDatabaseQueryBuilderUpdateImpl(this, limit: 1);
+extension SessionIsarDatabaseQueryBuilderUpdate on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QOperations> {
+  _SessionIsarDatabaseQueryUpdate get updateFirst => _SessionIsarDatabaseQueryBuilderUpdateImpl(this, limit: 1);
 
-  _SessionIsarDatabaseQueryUpdate get updateAll =>
-      _SessionIsarDatabaseQueryBuilderUpdateImpl(this);
+  _SessionIsarDatabaseQueryUpdate get updateAll => _SessionIsarDatabaseQueryBuilderUpdateImpl(this);
 }
 
-extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
-    SessionIsarDatabase, QFilterCondition> {
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      special_typeEqualTo(
+extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QFilterCondition> {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> special_typeEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -350,8 +335,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      special_typeGreaterThan(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> special_typeGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -366,8 +350,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      special_typeGreaterThanOrEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> special_typeGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -382,8 +365,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      special_typeLessThan(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> special_typeLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -398,8 +380,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      special_typeLessThanOrEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> special_typeLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -414,8 +395,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      special_typeBetween(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> special_typeBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -432,8 +412,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      special_typeStartsWith(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> special_typeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -448,8 +427,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      special_typeEndsWith(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> special_typeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -464,8 +442,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      special_typeContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> special_typeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -477,8 +454,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      special_typeMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> special_typeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -490,8 +466,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      special_typeIsEmpty() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> special_typeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -502,8 +477,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      special_typeIsNotEmpty() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> special_typeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -514,8 +488,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      account_user_idEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> account_user_idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -528,8 +501,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      account_user_idGreaterThan(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> account_user_idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -542,8 +514,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      account_user_idGreaterThanOrEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> account_user_idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -556,8 +527,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      account_user_idLessThan(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> account_user_idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -570,8 +540,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      account_user_idLessThanOrEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> account_user_idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -584,8 +553,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      account_user_idBetween(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> account_user_idBetween(
     int lower,
     int upper,
   ) {
@@ -600,8 +568,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> tokenEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -616,8 +583,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenGreaterThan(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> tokenGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -632,8 +598,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenGreaterThanOrEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> tokenGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -648,8 +613,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenLessThan(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> tokenLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -664,8 +628,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenLessThanOrEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> tokenLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -680,8 +643,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenBetween(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> tokenBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -698,8 +660,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenStartsWith(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> tokenStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -714,8 +675,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenEndsWith(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> tokenEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -730,8 +690,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> tokenContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -743,8 +702,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> tokenMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -756,8 +714,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenIsEmpty() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> tokenIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -768,8 +725,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      tokenIsNotEmpty() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> tokenIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -780,8 +736,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      is_defaultEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> is_defaultEqualTo(
     bool value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -794,8 +749,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      from_app_idEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> from_app_idEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -810,8 +764,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      from_app_idGreaterThan(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> from_app_idGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -826,8 +779,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      from_app_idGreaterThanOrEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> from_app_idGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -842,8 +794,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      from_app_idLessThan(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> from_app_idLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -858,8 +809,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      from_app_idLessThanOrEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> from_app_idLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -874,8 +824,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      from_app_idBetween(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> from_app_idBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -892,8 +841,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      from_app_idStartsWith(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> from_app_idStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -908,8 +856,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      from_app_idEndsWith(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> from_app_idEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -924,8 +871,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      from_app_idContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> from_app_idContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -937,8 +883,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      from_app_idMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> from_app_idMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -950,8 +895,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      from_app_idIsEmpty() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> from_app_idIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -962,8 +906,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      from_app_idIsNotEmpty() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> from_app_idIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -974,8 +917,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      owner_account_user_idEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> owner_account_user_idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -988,8 +930,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      owner_account_user_idGreaterThan(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> owner_account_user_idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1002,8 +943,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      owner_account_user_idGreaterThanOrEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> owner_account_user_idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1016,8 +956,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      owner_account_user_idLessThan(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> owner_account_user_idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1030,8 +969,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      owner_account_user_idLessThanOrEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> owner_account_user_idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1044,8 +982,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      owner_account_user_idBetween(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> owner_account_user_idBetween(
     int lower,
     int upper,
   ) {
@@ -1060,8 +997,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      is_testEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> is_testEqualTo(
     bool value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1074,8 +1010,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      idEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1088,8 +1023,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      idGreaterThan(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1102,8 +1036,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      idGreaterThanOrEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1116,8 +1049,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      idLessThan(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1130,8 +1062,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      idLessThanOrEqualTo(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1144,8 +1075,7 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition>
-      idBetween(
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterFilterCondition> idBetween(
     int lower,
     int upper,
   ) {
@@ -1161,13 +1091,10 @@ extension SessionIsarDatabaseQueryFilter on QueryBuilder<SessionIsarDatabase,
   }
 }
 
-extension SessionIsarDatabaseQueryObject on QueryBuilder<SessionIsarDatabase,
-    SessionIsarDatabase, QFilterCondition> {}
+extension SessionIsarDatabaseQueryObject on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QFilterCondition> {}
 
-extension SessionIsarDatabaseQuerySortBy
-    on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QSortBy> {
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortBySpecial_type({bool caseSensitive = true}) {
+extension SessionIsarDatabaseQuerySortBy on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QSortBy> {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1176,8 +1103,7 @@ extension SessionIsarDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortBySpecial_typeDesc({bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortBySpecial_typeDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1187,22 +1113,19 @@ extension SessionIsarDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByAccount_user_id() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByAccount_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByAccount_user_idDesc() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByAccount_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByToken({bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByToken({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         3,
@@ -1211,8 +1134,7 @@ extension SessionIsarDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByTokenDesc({bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByTokenDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         3,
@@ -1222,22 +1144,19 @@ extension SessionIsarDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByIs_default() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByIs_default() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByIs_defaultDesc() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByIs_defaultDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         5,
@@ -1246,8 +1165,7 @@ extension SessionIsarDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByFrom_app_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         5,
@@ -1257,227 +1175,193 @@ extension SessionIsarDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByOwner_account_user_id() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByOwner_account_user_idDesc() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByIs_test() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByIs_test() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByIs_testDesc() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByIs_testDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortById() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      sortByIdDesc() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> sortByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0, sort: Sort.desc);
     });
   }
 }
 
-extension SessionIsarDatabaseQuerySortThenBy
-    on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QSortThenBy> {
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenBySpecial_type({bool caseSensitive = true}) {
+extension SessionIsarDatabaseQuerySortThenBy on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QSortThenBy> {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenBySpecial_typeDesc({bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenBySpecial_typeDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByAccount_user_id() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByAccount_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByAccount_user_idDesc() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByAccount_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByToken({bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByToken({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByTokenDesc({bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByTokenDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByIs_default() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByIs_default() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByIs_defaultDesc() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByIs_defaultDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByFrom_app_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByOwner_account_user_id() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByOwner_account_user_idDesc() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByIs_test() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByIs_test() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByIs_testDesc() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByIs_testDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenById() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy>
-      thenByIdDesc() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0, sort: Sort.desc);
     });
   }
 }
 
-extension SessionIsarDatabaseQueryWhereDistinct
-    on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QDistinct> {
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
-      distinctBySpecial_type({bool caseSensitive = true}) {
+extension SessionIsarDatabaseQueryWhereDistinct on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QDistinct> {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct> distinctBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
-      distinctByAccount_user_id() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct> distinctByAccount_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(2);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
-      distinctByToken({bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct> distinctByToken({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(3, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
-      distinctByIs_default() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct> distinctByIs_default() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(4);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
-      distinctByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct> distinctByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(5, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
-      distinctByOwner_account_user_id() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct> distinctByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(6);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct>
-      distinctByIs_test() {
+  QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QAfterDistinct> distinctByIs_test() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(7);
     });
   }
 }
 
-extension SessionIsarDatabaseQueryProperty1
-    on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QProperty> {
-  QueryBuilder<SessionIsarDatabase, String, QAfterProperty>
-      special_typeProperty() {
+extension SessionIsarDatabaseQueryProperty1 on QueryBuilder<SessionIsarDatabase, SessionIsarDatabase, QProperty> {
+  QueryBuilder<SessionIsarDatabase, String, QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, int, QAfterProperty>
-      account_user_idProperty() {
+  QueryBuilder<SessionIsarDatabase, int, QAfterProperty> account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
@@ -1495,15 +1379,13 @@ extension SessionIsarDatabaseQueryProperty1
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, String, QAfterProperty>
-      from_app_idProperty() {
+  QueryBuilder<SessionIsarDatabase, String, QAfterProperty> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, int, QAfterProperty>
-      owner_account_user_idProperty() {
+  QueryBuilder<SessionIsarDatabase, int, QAfterProperty> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(6);
     });
@@ -1522,52 +1404,44 @@ extension SessionIsarDatabaseQueryProperty1
   }
 }
 
-extension SessionIsarDatabaseQueryProperty2<R>
-    on QueryBuilder<SessionIsarDatabase, R, QAfterProperty> {
-  QueryBuilder<SessionIsarDatabase, (R, String), QAfterProperty>
-      special_typeProperty() {
+extension SessionIsarDatabaseQueryProperty2<R> on QueryBuilder<SessionIsarDatabase, R, QAfterProperty> {
+  QueryBuilder<SessionIsarDatabase, (R, String), QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R, int), QAfterProperty>
-      account_user_idProperty() {
+  QueryBuilder<SessionIsarDatabase, (R, int), QAfterProperty> account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R, String), QAfterProperty>
-      tokenProperty() {
+  QueryBuilder<SessionIsarDatabase, (R, String), QAfterProperty> tokenProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R, bool), QAfterProperty>
-      is_defaultProperty() {
+  QueryBuilder<SessionIsarDatabase, (R, bool), QAfterProperty> is_defaultProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R, String), QAfterProperty>
-      from_app_idProperty() {
+  QueryBuilder<SessionIsarDatabase, (R, String), QAfterProperty> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R, int), QAfterProperty>
-      owner_account_user_idProperty() {
+  QueryBuilder<SessionIsarDatabase, (R, int), QAfterProperty> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(6);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R, bool), QAfterProperty>
-      is_testProperty() {
+  QueryBuilder<SessionIsarDatabase, (R, bool), QAfterProperty> is_testProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(7);
     });
@@ -1580,52 +1454,44 @@ extension SessionIsarDatabaseQueryProperty2<R>
   }
 }
 
-extension SessionIsarDatabaseQueryProperty3<R1, R2>
-    on QueryBuilder<SessionIsarDatabase, (R1, R2), QAfterProperty> {
-  QueryBuilder<SessionIsarDatabase, (R1, R2, String), QOperations>
-      special_typeProperty() {
+extension SessionIsarDatabaseQueryProperty3<R1, R2> on QueryBuilder<SessionIsarDatabase, (R1, R2), QAfterProperty> {
+  QueryBuilder<SessionIsarDatabase, (R1, R2, String), QOperations> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R1, R2, int), QOperations>
-      account_user_idProperty() {
+  QueryBuilder<SessionIsarDatabase, (R1, R2, int), QOperations> account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R1, R2, String), QOperations>
-      tokenProperty() {
+  QueryBuilder<SessionIsarDatabase, (R1, R2, String), QOperations> tokenProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R1, R2, bool), QOperations>
-      is_defaultProperty() {
+  QueryBuilder<SessionIsarDatabase, (R1, R2, bool), QOperations> is_defaultProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R1, R2, String), QOperations>
-      from_app_idProperty() {
+  QueryBuilder<SessionIsarDatabase, (R1, R2, String), QOperations> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R1, R2, int), QOperations>
-      owner_account_user_idProperty() {
+  QueryBuilder<SessionIsarDatabase, (R1, R2, int), QOperations> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(6);
     });
   }
 
-  QueryBuilder<SessionIsarDatabase, (R1, R2, bool), QOperations>
-      is_testProperty() {
+  QueryBuilder<SessionIsarDatabase, (R1, R2, bool), QOperations> is_testProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(7);
     });

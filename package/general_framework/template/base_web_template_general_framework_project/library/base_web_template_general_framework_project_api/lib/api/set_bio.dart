@@ -41,8 +41,7 @@ import 'package:base_web_template_general_framework_project_api_database/account
 import 'package:base_web_template_general_framework_project_scheme/database_scheme/account_database.dart';
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsetBioOk
-    on BaseWebTemplateGeneralFrameworkProjectApi {
+extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsetBioOk on BaseWebTemplateGeneralFrameworkProjectApi {
   FutureOr<Ok> api_setBio({
     required InvokeRequestData invokeRequestData,
   }) async {
@@ -52,8 +51,7 @@ extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsetBioOk
       }
       return null;
     }();
-    final bool is_update_succes =
-        await generalFrameworkApiDatabase.account_saveAccountByUserId(
+    final bool is_update_succes = await generalFrameworkApiDatabase.account_saveAccountByUserId(
       account_user_id: invokeRequestData.accountDatabase.id ?? 0,
       newAccountDatabase: AccountDatabase.create(
         bio: bio_parameters,

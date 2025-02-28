@@ -1,3 +1,7 @@
+## 0.0.26
+
+- New Version 0.0.26
+- Update Dependencies
 ## 0.0.25
 
 - New Version 0.0.25

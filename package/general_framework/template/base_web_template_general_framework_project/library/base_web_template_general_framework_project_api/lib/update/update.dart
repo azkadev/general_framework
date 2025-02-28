@@ -66,18 +66,14 @@ class InvokeRequestData {
   Future<void> ensureInitialized({
     required BaseWebTemplateGeneralFrameworkProjectApiDatabase database,
   }) async {
-    final String client_token_procces = parameters
-        .base_web_template_general_framework_project_scheme_utils_special_client_token();
+    final String client_token_procces = parameters.base_web_template_general_framework_project_scheme_utils_special_client_token();
     if (client_token_procces.isNotEmpty) {
-      final SessionDatabase? session_procces =
-          await database.session_getSessionByToken(
+      final SessionDatabase? session_procces = await database.session_getSessionByToken(
         token: client_token_procces,
       );
       if (session_procces != null) {
         sessionDatabase.rawData = session_procces.rawData;
-        final AccountDatabase? account_procces =
-            await database.account_getAccountByUserId(
-                account_user_id: sessionDatabase.account_user_id ?? 0);
+        final AccountDatabase? account_procces = await database.account_getAccountByUserId(account_user_id: sessionDatabase.account_user_id ?? 0);
         if (account_procces != null) {
           accountDatabase.rawData = account_procces.rawData;
         }
@@ -97,9 +93,7 @@ class InvokeRequestData {
         }),
       );
     }
-    if (BaseWebTemplateGeneralFrameworkProjectSchemeDefault.api_methods
-            .contains(special_type) ==
-        false) {
+    if (BaseWebTemplateGeneralFrameworkProjectSchemeDefault.api_methods.contains(special_type) == false) {
       return send(
         result: JsonScheme({
           "@type": "error",

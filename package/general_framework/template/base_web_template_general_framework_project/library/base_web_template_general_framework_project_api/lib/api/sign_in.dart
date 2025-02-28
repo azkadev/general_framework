@@ -45,8 +45,7 @@ import 'package:base_web_template_general_framework_project_scheme/database_sche
 import 'package:base_web_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsignInSession
-    on BaseWebTemplateGeneralFrameworkProjectApi {
+extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsignInSession on BaseWebTemplateGeneralFrameworkProjectApi {
   FutureOr<Session> api_signIn({
     required InvokeRequestData invokeRequestData,
   }) async {
@@ -64,30 +63,24 @@ extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsignInSession
     }();
     // validation
     {
-      final Map? validation_username =
-          BaseWebTemplateGeneralFrameworkProjectSchemeValidation
-              .usernameValidation(username: username_parameters);
+      final Map? validation_username = BaseWebTemplateGeneralFrameworkProjectSchemeValidation.usernameValidation(username: username_parameters);
       if (validation_username != null) {
         return Session(validation_username);
       }
 
-      final Map? validation_password =
-          BaseWebTemplateGeneralFrameworkProjectSchemeValidation
-              .usernameValidation(username: password_parameters);
+      final Map? validation_password = BaseWebTemplateGeneralFrameworkProjectSchemeValidation.usernameValidation(username: password_parameters);
       if (validation_password != null) {
         return Session(validation_password);
       }
     }
-    final AccountDatabase? account_data_old = await generalFrameworkApiDatabase
-        .account_getAccountByUserName(username: username_parameters);
+    final AccountDatabase? account_data_old = await generalFrameworkApiDatabase.account_getAccountByUserName(username: username_parameters);
     if (account_data_old == null) {
       return Session({"@type": "error", "message": "account_not_found"});
     }
     if (account_data_old.password != password_parameters) {
       return Session({"@type": "error", "message": "password_wrong"});
     }
-    final SessionDatabase? session_data_new =
-        await generalFrameworkApiDatabase.session_createNewSession(
+    final SessionDatabase? session_data_new = await generalFrameworkApiDatabase.session_createNewSession(
       account_user_id: account_data_old.id ?? 0,
       newSessionDatabase: SessionDatabase.create(),
     );

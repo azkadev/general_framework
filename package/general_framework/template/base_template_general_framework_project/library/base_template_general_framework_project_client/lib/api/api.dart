@@ -5,8 +5,7 @@ import 'package:base_template_general_framework_project_scheme/api_scheme/api_sc
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:general_framework/core/client/options.dart';
 
-extension BaseTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate
-    on BaseTemplateGeneralFrameworkProjectClient {
+extension BaseTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate on BaseTemplateGeneralFrameworkProjectClient {
   /// generate
   Future<Ok> api_signUp({
     required SignUp signUpParameters,

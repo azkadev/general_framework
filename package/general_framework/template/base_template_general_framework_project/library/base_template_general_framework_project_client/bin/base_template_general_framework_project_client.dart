@@ -32,10 +32,8 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-import 'package:base_template_general_framework_project_client/base_template_general_framework_project_client.dart'
-    as base_template_general_framework_project_client;
+import 'package:base_template_general_framework_project_client/base_template_general_framework_project_client.dart' as base_template_general_framework_project_client;
 
 void main(List<String> arguments) {
-  print(
-      'Hello world: ${base_template_general_framework_project_client.calculate()}!');
+  print('Hello world: ${base_template_general_framework_project_client.calculate()}!');
 }

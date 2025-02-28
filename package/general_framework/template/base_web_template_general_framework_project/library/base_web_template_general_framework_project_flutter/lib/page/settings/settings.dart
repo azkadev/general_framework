@@ -35,8 +35,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:base_web_template_general_framework_project_flutter/client/core.dart';
 import 'package:flutter/material.dart';
 
-class SettingsPage
-    extends BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
+class SettingsPage extends BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
   const SettingsPage({super.key, required super.generalFrameworkClientFlutter});
 
   @override

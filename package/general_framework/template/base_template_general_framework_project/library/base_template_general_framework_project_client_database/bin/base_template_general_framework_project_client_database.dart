@@ -38,9 +38,6 @@ import 'package:base_template_general_framework_project_client_database/base_tem
 import 'package:http/http.dart';
 
 void main(List<String> arguments) {
-  final BaseTemplateGeneralFrameworkProjectClientDatabase
-      baseTemplateGeneralFrameworkProjectClientDatabase =
-      BaseTemplateGeneralFrameworkProjectClientDatabase();
-  baseTemplateGeneralFrameworkProjectClientDatabase.ensureInitialized(
-      currentPath: Directory.current.path, httpClient: Client());
+  final BaseTemplateGeneralFrameworkProjectClientDatabase baseTemplateGeneralFrameworkProjectClientDatabase = BaseTemplateGeneralFrameworkProjectClientDatabase();
+  baseTemplateGeneralFrameworkProjectClientDatabase.ensureInitialized(currentPath: Directory.current.path, httpClient: Client());
 }

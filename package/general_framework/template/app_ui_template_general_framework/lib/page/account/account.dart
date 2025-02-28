@@ -68,9 +68,7 @@ class _AccountPageState extends State<AccountPage> {
                 leading: Icon(Icons.settings),
                 title: Text("Settings"),
                 onTap: () {
-                  context
-                      .routerGeneralLibFlutter()
-                      .pushNamed(routeName: "/settings");
+                  context.routerGeneralLibFlutter().pushNamed(routeName: "/settings");
                 },
               ),
               SizedBox(

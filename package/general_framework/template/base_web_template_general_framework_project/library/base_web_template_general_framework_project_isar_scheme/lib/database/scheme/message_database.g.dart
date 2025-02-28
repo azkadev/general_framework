@@ -45,8 +45,7 @@ part of 'message_database.dart';
 // ignore_for_file: type=lint
 
 extension GetMessageDatabaseCollection on Isar {
-  IsarCollection<int, MessageDatabase> get messageDatabases =>
-      this.collection();
+  IsarCollection<int, MessageDatabase> get messageDatabases => this.collection();
 }
 
 const MessageDatabaseSchema = IsarGeneratedSchema(
@@ -236,8 +235,7 @@ class _MessageDatabaseUpdateImpl implements _MessageDatabaseUpdate {
           if (status != ignore) 8: status as String?,
           if (chat_unique_id != ignore) 9: chat_unique_id as String?,
           if (from_app_id != ignore) 10: from_app_id as String?,
-          if (owner_account_user_id != ignore)
-            11: owner_account_user_id as int?,
+          if (owner_account_user_id != ignore) 11: owner_account_user_id as int?,
           if (is_test != ignore) 12: is_test as bool?,
         }) >
         0;
@@ -303,8 +301,7 @@ class _MessageDatabaseUpdateAllImpl implements _MessageDatabaseUpdateAll {
 extension MessageDatabaseUpdate on IsarCollection<int, MessageDatabase> {
   _MessageDatabaseUpdate get update => _MessageDatabaseUpdateImpl(this);
 
-  _MessageDatabaseUpdateAll get updateAll =>
-      _MessageDatabaseUpdateAllImpl(this);
+  _MessageDatabaseUpdateAll get updateAll => _MessageDatabaseUpdateAllImpl(this);
 }
 
 sealed class _MessageDatabaseQueryUpdate {
@@ -363,15 +360,12 @@ class _MessageDatabaseQueryUpdateImpl implements _MessageDatabaseQueryUpdate {
 }
 
 extension MessageDatabaseQueryUpdate on IsarQuery<MessageDatabase> {
-  _MessageDatabaseQueryUpdate get updateFirst =>
-      _MessageDatabaseQueryUpdateImpl(this, limit: 1);
+  _MessageDatabaseQueryUpdate get updateFirst => _MessageDatabaseQueryUpdateImpl(this, limit: 1);
 
-  _MessageDatabaseQueryUpdate get updateAll =>
-      _MessageDatabaseQueryUpdateImpl(this);
+  _MessageDatabaseQueryUpdate get updateAll => _MessageDatabaseQueryUpdateImpl(this);
 }
 
-class _MessageDatabaseQueryBuilderUpdateImpl
-    implements _MessageDatabaseQueryUpdate {
+class _MessageDatabaseQueryBuilderUpdateImpl implements _MessageDatabaseQueryUpdate {
   const _MessageDatabaseQueryBuilderUpdateImpl(this.query, {this.limit});
 
   final QueryBuilder<MessageDatabase, MessageDatabase, QOperations> query;
@@ -414,19 +408,14 @@ class _MessageDatabaseQueryBuilderUpdateImpl
   }
 }
 
-extension MessageDatabaseQueryBuilderUpdate
-    on QueryBuilder<MessageDatabase, MessageDatabase, QOperations> {
-  _MessageDatabaseQueryUpdate get updateFirst =>
-      _MessageDatabaseQueryBuilderUpdateImpl(this, limit: 1);
+extension MessageDatabaseQueryBuilderUpdate on QueryBuilder<MessageDatabase, MessageDatabase, QOperations> {
+  _MessageDatabaseQueryUpdate get updateFirst => _MessageDatabaseQueryBuilderUpdateImpl(this, limit: 1);
 
-  _MessageDatabaseQueryUpdate get updateAll =>
-      _MessageDatabaseQueryBuilderUpdateImpl(this);
+  _MessageDatabaseQueryUpdate get updateAll => _MessageDatabaseQueryBuilderUpdateImpl(this);
 }
 
-extension MessageDatabaseQueryFilter
-    on QueryBuilder<MessageDatabase, MessageDatabase, QFilterCondition> {
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      special_typeEqualTo(
+extension MessageDatabaseQueryFilter on QueryBuilder<MessageDatabase, MessageDatabase, QFilterCondition> {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> special_typeEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -441,8 +430,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      special_typeGreaterThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> special_typeGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -457,8 +445,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      special_typeGreaterThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> special_typeGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -473,8 +460,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      special_typeLessThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> special_typeLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -489,8 +475,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      special_typeLessThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> special_typeLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -505,8 +490,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      special_typeBetween(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> special_typeBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -523,8 +507,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      special_typeStartsWith(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> special_typeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -539,8 +522,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      special_typeEndsWith(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> special_typeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -555,8 +537,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      special_typeContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> special_typeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -568,8 +549,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      special_typeMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> special_typeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -581,8 +561,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      special_typeIsEmpty() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> special_typeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -593,8 +572,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      special_typeIsNotEmpty() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> special_typeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -605,8 +583,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      is_outgoingEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> is_outgoingEqualTo(
     bool value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -619,8 +596,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      message_idEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> message_idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -633,8 +609,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      message_idGreaterThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> message_idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -647,8 +622,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      message_idGreaterThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> message_idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -661,8 +635,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      message_idLessThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> message_idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -675,8 +648,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      message_idLessThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> message_idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -689,8 +661,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      message_idBetween(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> message_idBetween(
     int lower,
     int upper,
   ) {
@@ -705,8 +676,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_user_idEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_user_idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -719,8 +689,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_user_idGreaterThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_user_idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -733,8 +702,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_user_idGreaterThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_user_idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -747,8 +715,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_user_idLessThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_user_idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -761,8 +728,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_user_idLessThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_user_idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -775,8 +741,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_user_idBetween(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_user_idBetween(
     int lower,
     int upper,
   ) {
@@ -791,8 +756,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      textEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> textEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -807,8 +771,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      textGreaterThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> textGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -823,8 +786,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      textGreaterThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> textGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -839,8 +801,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      textLessThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> textLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -855,8 +816,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      textLessThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> textLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -871,8 +831,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      textBetween(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> textBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -889,8 +848,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      textStartsWith(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> textStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -905,8 +863,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      textEndsWith(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> textEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -921,8 +878,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      textContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> textContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -934,8 +890,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      textMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> textMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -947,8 +902,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      textIsEmpty() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> textIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -959,8 +913,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      textIsNotEmpty() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> textIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -971,8 +924,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      dateEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> dateEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -985,8 +937,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      dateGreaterThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> dateGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -999,8 +950,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      dateGreaterThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> dateGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1013,8 +963,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      dateLessThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> dateLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1027,8 +976,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      dateLessThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> dateLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1041,8 +989,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      dateBetween(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> dateBetween(
     int lower,
     int upper,
   ) {
@@ -1057,8 +1004,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      update_dateEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> update_dateEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1071,8 +1017,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      update_dateGreaterThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> update_dateGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1085,8 +1030,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      update_dateGreaterThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> update_dateGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1099,8 +1043,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      update_dateLessThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> update_dateLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1113,8 +1056,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      update_dateLessThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> update_dateLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1127,8 +1069,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      update_dateBetween(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> update_dateBetween(
     int lower,
     int upper,
   ) {
@@ -1143,8 +1084,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      statusEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> statusEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1159,8 +1099,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      statusGreaterThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> statusGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1175,8 +1114,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      statusGreaterThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> statusGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1191,8 +1129,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      statusLessThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> statusLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1207,8 +1144,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      statusLessThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> statusLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1223,8 +1159,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      statusBetween(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> statusBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -1241,8 +1176,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      statusStartsWith(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> statusStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1257,8 +1191,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      statusEndsWith(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> statusEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1273,8 +1206,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      statusContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> statusContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -1286,8 +1218,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      statusMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> statusMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -1299,8 +1230,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      statusIsEmpty() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> statusIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -1311,8 +1241,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      statusIsNotEmpty() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> statusIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -1323,8 +1252,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_unique_idEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> chat_unique_idEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1339,8 +1267,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_unique_idGreaterThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> chat_unique_idGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1355,8 +1282,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_unique_idGreaterThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> chat_unique_idGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1371,8 +1297,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_unique_idLessThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> chat_unique_idLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1387,8 +1312,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_unique_idLessThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> chat_unique_idLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1403,8 +1327,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_unique_idBetween(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> chat_unique_idBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -1421,8 +1344,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_unique_idStartsWith(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> chat_unique_idStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1437,8 +1359,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_unique_idEndsWith(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> chat_unique_idEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1453,8 +1374,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_unique_idContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> chat_unique_idContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -1466,8 +1386,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_unique_idMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> chat_unique_idMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -1479,8 +1398,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_unique_idIsEmpty() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> chat_unique_idIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -1491,8 +1409,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      chat_unique_idIsNotEmpty() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> chat_unique_idIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -1503,8 +1420,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_app_idEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_app_idEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1519,8 +1435,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_app_idGreaterThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_app_idGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1535,8 +1450,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_app_idGreaterThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_app_idGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1551,8 +1465,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_app_idLessThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_app_idLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1567,8 +1480,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_app_idLessThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_app_idLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1583,8 +1495,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_app_idBetween(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_app_idBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -1601,8 +1512,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_app_idStartsWith(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_app_idStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1617,8 +1527,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_app_idEndsWith(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_app_idEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1633,8 +1542,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_app_idContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_app_idContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -1646,8 +1554,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_app_idMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_app_idMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -1659,8 +1566,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_app_idIsEmpty() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_app_idIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -1671,8 +1577,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      from_app_idIsNotEmpty() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> from_app_idIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -1683,8 +1588,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      owner_account_user_idEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> owner_account_user_idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1697,8 +1601,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      owner_account_user_idGreaterThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> owner_account_user_idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1711,8 +1614,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      owner_account_user_idGreaterThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> owner_account_user_idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1725,8 +1627,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      owner_account_user_idLessThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> owner_account_user_idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1739,8 +1640,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      owner_account_user_idLessThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> owner_account_user_idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1753,8 +1653,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      owner_account_user_idBetween(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> owner_account_user_idBetween(
     int lower,
     int upper,
   ) {
@@ -1769,8 +1668,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      is_testEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> is_testEqualTo(
     bool value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1783,8 +1681,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      idEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1797,8 +1694,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      idGreaterThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1811,8 +1707,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      idGreaterThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1825,8 +1720,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      idLessThan(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1839,8 +1733,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      idLessThanOrEqualTo(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1853,8 +1746,7 @@ extension MessageDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition>
-      idBetween(
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterFilterCondition> idBetween(
     int lower,
     int upper,
   ) {
@@ -1870,13 +1762,10 @@ extension MessageDatabaseQueryFilter
   }
 }
 
-extension MessageDatabaseQueryObject
-    on QueryBuilder<MessageDatabase, MessageDatabase, QFilterCondition> {}
+extension MessageDatabaseQueryObject on QueryBuilder<MessageDatabase, MessageDatabase, QFilterCondition> {}
 
-extension MessageDatabaseQuerySortBy
-    on QueryBuilder<MessageDatabase, MessageDatabase, QSortBy> {
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortBySpecial_type({bool caseSensitive = true}) {
+extension MessageDatabaseQuerySortBy on QueryBuilder<MessageDatabase, MessageDatabase, QSortBy> {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1885,8 +1774,7 @@ extension MessageDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortBySpecial_typeDesc({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortBySpecial_typeDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1896,50 +1784,43 @@ extension MessageDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByIs_outgoing() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByIs_outgoing() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByIs_outgoingDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByIs_outgoingDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByMessage_id() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByMessage_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByMessage_idDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByMessage_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByFrom_user_id() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByFrom_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByFrom_user_idDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByFrom_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByText(
-      {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByText({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         5,
@@ -1948,8 +1829,7 @@ extension MessageDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByTextDesc(
-      {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByTextDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         5,
@@ -1965,29 +1845,25 @@ extension MessageDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByDateDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByDateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByUpdate_date() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByUpdate_date() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByUpdate_dateDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByUpdate_dateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByStatus(
-      {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByStatus({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         8,
@@ -1996,8 +1872,7 @@ extension MessageDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByStatusDesc(
-      {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByStatusDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         8,
@@ -2007,8 +1882,7 @@ extension MessageDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByChat_unique_id({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByChat_unique_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         9,
@@ -2017,8 +1891,7 @@ extension MessageDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByChat_unique_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByChat_unique_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         9,
@@ -2028,8 +1901,7 @@ extension MessageDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         10,
@@ -2038,8 +1910,7 @@ extension MessageDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByFrom_app_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         10,
@@ -2049,15 +1920,13 @@ extension MessageDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByOwner_account_user_id() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(11);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByOwner_account_user_idDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(11, sort: Sort.desc);
     });
@@ -2069,8 +1938,7 @@ extension MessageDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      sortByIs_testDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> sortByIs_testDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(12, sort: Sort.desc);
     });
@@ -2089,73 +1957,62 @@ extension MessageDatabaseQuerySortBy
   }
 }
 
-extension MessageDatabaseQuerySortThenBy
-    on QueryBuilder<MessageDatabase, MessageDatabase, QSortThenBy> {
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenBySpecial_type({bool caseSensitive = true}) {
+extension MessageDatabaseQuerySortThenBy on QueryBuilder<MessageDatabase, MessageDatabase, QSortThenBy> {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenBySpecial_typeDesc({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenBySpecial_typeDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByIs_outgoing() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByIs_outgoing() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByIs_outgoingDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByIs_outgoingDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByMessage_id() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByMessage_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByMessage_idDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByMessage_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByFrom_user_id() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByFrom_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByFrom_user_idDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByFrom_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByText(
-      {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByText({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByTextDesc(
-      {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByTextDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, sort: Sort.desc, caseSensitive: caseSensitive);
     });
@@ -2167,78 +2024,67 @@ extension MessageDatabaseQuerySortThenBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByDateDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByDateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByUpdate_date() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByUpdate_date() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByUpdate_dateDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByUpdate_dateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByStatus(
-      {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByStatus({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(8, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByStatusDesc(
-      {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByStatusDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(8, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByChat_unique_id({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByChat_unique_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(9, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByChat_unique_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByChat_unique_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(9, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(10, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByFrom_app_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(10, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByOwner_account_user_id() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(11);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByOwner_account_user_idDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(11, sort: Sort.desc);
     });
@@ -2250,8 +2096,7 @@ extension MessageDatabaseQuerySortThenBy
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy>
-      thenByIs_testDesc() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterSortBy> thenByIs_testDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(12, sort: Sort.desc);
     });
@@ -2270,95 +2115,81 @@ extension MessageDatabaseQuerySortThenBy
   }
 }
 
-extension MessageDatabaseQueryWhereDistinct
-    on QueryBuilder<MessageDatabase, MessageDatabase, QDistinct> {
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
-      distinctBySpecial_type({bool caseSensitive = true}) {
+extension MessageDatabaseQueryWhereDistinct on QueryBuilder<MessageDatabase, MessageDatabase, QDistinct> {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
-      distinctByIs_outgoing() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctByIs_outgoing() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(2);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
-      distinctByMessage_id() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctByMessage_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(3);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
-      distinctByFrom_user_id() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctByFrom_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(4);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctByText(
-      {bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctByText({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(5, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
-      distinctByDate() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctByDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(6);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
-      distinctByUpdate_date() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctByUpdate_date() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(7);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
-      distinctByStatus({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctByStatus({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(8, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
-      distinctByChat_unique_id({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctByChat_unique_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(9, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
-      distinctByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(10, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
-      distinctByOwner_account_user_id() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(11);
     });
   }
 
-  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct>
-      distinctByIs_test() {
+  QueryBuilder<MessageDatabase, MessageDatabase, QAfterDistinct> distinctByIs_test() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(12);
     });
   }
 }
 
-extension MessageDatabaseQueryProperty1
-    on QueryBuilder<MessageDatabase, MessageDatabase, QProperty> {
+extension MessageDatabaseQueryProperty1 on QueryBuilder<MessageDatabase, MessageDatabase, QProperty> {
   QueryBuilder<MessageDatabase, String, QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
@@ -2407,8 +2238,7 @@ extension MessageDatabaseQueryProperty1
     });
   }
 
-  QueryBuilder<MessageDatabase, String, QAfterProperty>
-      chat_unique_idProperty() {
+  QueryBuilder<MessageDatabase, String, QAfterProperty> chat_unique_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(9);
     });
@@ -2420,8 +2250,7 @@ extension MessageDatabaseQueryProperty1
     });
   }
 
-  QueryBuilder<MessageDatabase, int, QAfterProperty>
-      owner_account_user_idProperty() {
+  QueryBuilder<MessageDatabase, int, QAfterProperty> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(11);
     });
@@ -2440,17 +2269,14 @@ extension MessageDatabaseQueryProperty1
   }
 }
 
-extension MessageDatabaseQueryProperty2<R>
-    on QueryBuilder<MessageDatabase, R, QAfterProperty> {
-  QueryBuilder<MessageDatabase, (R, String), QAfterProperty>
-      special_typeProperty() {
+extension MessageDatabaseQueryProperty2<R> on QueryBuilder<MessageDatabase, R, QAfterProperty> {
+  QueryBuilder<MessageDatabase, (R, String), QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<MessageDatabase, (R, bool), QAfterProperty>
-      is_outgoingProperty() {
+  QueryBuilder<MessageDatabase, (R, bool), QAfterProperty> is_outgoingProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
@@ -2462,8 +2288,7 @@ extension MessageDatabaseQueryProperty2<R>
     });
   }
 
-  QueryBuilder<MessageDatabase, (R, int), QAfterProperty>
-      from_user_idProperty() {
+  QueryBuilder<MessageDatabase, (R, int), QAfterProperty> from_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
@@ -2481,8 +2306,7 @@ extension MessageDatabaseQueryProperty2<R>
     });
   }
 
-  QueryBuilder<MessageDatabase, (R, int), QAfterProperty>
-      update_dateProperty() {
+  QueryBuilder<MessageDatabase, (R, int), QAfterProperty> update_dateProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(7);
     });
@@ -2494,22 +2318,19 @@ extension MessageDatabaseQueryProperty2<R>
     });
   }
 
-  QueryBuilder<MessageDatabase, (R, String), QAfterProperty>
-      chat_unique_idProperty() {
+  QueryBuilder<MessageDatabase, (R, String), QAfterProperty> chat_unique_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(9);
     });
   }
 
-  QueryBuilder<MessageDatabase, (R, String), QAfterProperty>
-      from_app_idProperty() {
+  QueryBuilder<MessageDatabase, (R, String), QAfterProperty> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(10);
     });
   }
 
-  QueryBuilder<MessageDatabase, (R, int), QAfterProperty>
-      owner_account_user_idProperty() {
+  QueryBuilder<MessageDatabase, (R, int), QAfterProperty> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(11);
     });
@@ -2528,31 +2349,26 @@ extension MessageDatabaseQueryProperty2<R>
   }
 }
 
-extension MessageDatabaseQueryProperty3<R1, R2>
-    on QueryBuilder<MessageDatabase, (R1, R2), QAfterProperty> {
-  QueryBuilder<MessageDatabase, (R1, R2, String), QOperations>
-      special_typeProperty() {
+extension MessageDatabaseQueryProperty3<R1, R2> on QueryBuilder<MessageDatabase, (R1, R2), QAfterProperty> {
+  QueryBuilder<MessageDatabase, (R1, R2, String), QOperations> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<MessageDatabase, (R1, R2, bool), QOperations>
-      is_outgoingProperty() {
+  QueryBuilder<MessageDatabase, (R1, R2, bool), QOperations> is_outgoingProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<MessageDatabase, (R1, R2, int), QOperations>
-      message_idProperty() {
+  QueryBuilder<MessageDatabase, (R1, R2, int), QOperations> message_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<MessageDatabase, (R1, R2, int), QOperations>
-      from_user_idProperty() {
+  QueryBuilder<MessageDatabase, (R1, R2, int), QOperations> from_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
@@ -2570,36 +2386,31 @@ extension MessageDatabaseQueryProperty3<R1, R2>
     });
   }
 
-  QueryBuilder<MessageDatabase, (R1, R2, int), QOperations>
-      update_dateProperty() {
+  QueryBuilder<MessageDatabase, (R1, R2, int), QOperations> update_dateProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(7);
     });
   }
 
-  QueryBuilder<MessageDatabase, (R1, R2, String), QOperations>
-      statusProperty() {
+  QueryBuilder<MessageDatabase, (R1, R2, String), QOperations> statusProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(8);
     });
   }
 
-  QueryBuilder<MessageDatabase, (R1, R2, String), QOperations>
-      chat_unique_idProperty() {
+  QueryBuilder<MessageDatabase, (R1, R2, String), QOperations> chat_unique_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(9);
     });
   }
 
-  QueryBuilder<MessageDatabase, (R1, R2, String), QOperations>
-      from_app_idProperty() {
+  QueryBuilder<MessageDatabase, (R1, R2, String), QOperations> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(10);
     });
   }
 
-  QueryBuilder<MessageDatabase, (R1, R2, int), QOperations>
-      owner_account_user_idProperty() {
+  QueryBuilder<MessageDatabase, (R1, R2, int), QOperations> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(11);
     });

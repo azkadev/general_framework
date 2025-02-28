@@ -39,18 +39,13 @@ import 'package:base_web_template_general_framework_project_scheme/database_sche
 import 'package:base_web_template_general_framework_project_scheme/database_scheme/message_database.dart';
 import 'package:general_lib/extension/map.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
-    on BaseWebTemplateGeneralFrameworkProjectApiDatabase {
+extension BaseWebTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage on BaseWebTemplateGeneralFrameworkProjectApiDatabase {
   Future<List<MessageDatabase>> message_getMessageAllMessage({
     required String chat_unique_id,
     required num offset,
     required num limit,
   }) async {
-    return (await supabase_message
-            .select()
-            .eq("chat_unique_id", chat_unique_id)
-            .range(offset.toInt(), limit.toInt()))
-        .map((e) {
+    return (await supabase_message.select().eq("chat_unique_id", chat_unique_id).range(offset.toInt(), limit.toInt())).map((e) {
       return MessageDatabase(e);
     }).toList();
   }
@@ -59,12 +54,7 @@ extension BaseWebTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
     required String chat_unique_id,
     required num message_id,
   }) async {
-    final result = await supabase_message
-        .select()
-        .eq("chat_unique_id", chat_unique_id)
-        .eq("message_id", message_id)
-        .limit(1)
-        .maybeSingle();
+    final result = await supabase_message.select().eq("chat_unique_id", chat_unique_id).eq("message_id", message_id).limit(1).maybeSingle();
     if (result == null) {
       return null;
     }
@@ -74,12 +64,7 @@ extension BaseWebTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
   Future<int> message_getLastMessageId({
     required String chat_unique_id,
   }) async {
-    final result = await supabase_message
-        .select()
-        .eq("chat_unique_id", chat_unique_id)
-        .order("message_id", ascending: false)
-        .limit(1)
-        .maybeSingle();
+    final result = await supabase_message.select().eq("chat_unique_id", chat_unique_id).order("message_id", ascending: false).limit(1).maybeSingle();
     if (result == null) {
       return 0;
     }
@@ -93,27 +78,16 @@ extension BaseWebTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
     required num message_id,
     required MessageDatabase newMessageDatabase,
   }) async {
-    message_utils_removeUnusedMessageDatabase(
-        messageDatabase: newMessageDatabase);
+    message_utils_removeUnusedMessageDatabase(messageDatabase: newMessageDatabase);
     newMessageDatabase.chat_unique_id = chat_unique_id;
     newMessageDatabase.from_user_id = user_id;
     newMessageDatabase.message_id = message_id;
-    final result = await supabase_message
-        .select()
-        .eq("chat_unique_id", chat_unique_id)
-        .eq("from_user_id", user_id)
-        .eq("message_id", message_id)
-        .limit(1)
-        .maybeSingle();
+    final result = await supabase_message.select().eq("chat_unique_id", chat_unique_id).eq("from_user_id", user_id).eq("message_id", message_id).limit(1).maybeSingle();
     if (result == null) {
       return false;
     }
 
-    final new_update = await supabase_message
-        .update(newMessageDatabase.toJson())
-        .order("id", ascending: true)
-        .limit(1)
-        .maybeSingle();
+    final new_update = await supabase_message.update(newMessageDatabase.toJson()).order("id", ascending: true).limit(1).maybeSingle();
     if (new_update == null) {
       return false;
     }
@@ -125,21 +99,15 @@ extension BaseWebTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
     required num user_id,
     required MessageDatabase newMessageDatabase,
   }) async {
-    final int new_message_id =
-        await message_utils_newMessageId(chat_unique_id: chat_unique_id);
+    final int new_message_id = await message_utils_newMessageId(chat_unique_id: chat_unique_id);
     if (new_message_id < 1) {
       return null;
     }
-    message_utils_removeUnusedMessageDatabase(
-        messageDatabase: newMessageDatabase);
+    message_utils_removeUnusedMessageDatabase(messageDatabase: newMessageDatabase);
     newMessageDatabase.chat_unique_id = chat_unique_id;
     newMessageDatabase.from_user_id = user_id;
     newMessageDatabase.message_id = new_message_id;
-    final new_data = await supabase_message
-        .insert(newMessageDatabase.toJson(), defaultToNull: false)
-        .select()
-        .limit(1)
-        .maybeSingle();
+    final new_data = await supabase_message.insert(newMessageDatabase.toJson(), defaultToNull: false).select().limit(1).maybeSingle();
     if (new_data == null) {
       return null;
     }
@@ -158,13 +126,7 @@ extension BaseWebTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
         1;
     while (true) {
       await Future.delayed(Duration(milliseconds: 1));
-      final result = await supabase_message
-          .select()
-          .eq("chat_unique_id", chat_unique_id)
-          .eq("message_id", new_message_id)
-          .order("message_id", ascending: false)
-          .limit(1)
-          .maybeSingle();
+      final result = await supabase_message.select().eq("chat_unique_id", chat_unique_id).eq("message_id", new_message_id).order("message_id", ascending: false).limit(1).maybeSingle();
       if (result == null) {
         return new_message_id;
       } else {
@@ -178,7 +140,6 @@ extension BaseWebTemplateGeneralFrameworkProjectApiDatabaseExtensionMessage
   }) {
     messageDatabase.rawData.removeByKeys(["id", "@type"]);
     List keys = MessageDatabase.defaultData.keys.toList();
-    messageDatabase.rawData
-        .removeWhere((key, value) => keys.contains(key) == false);
+    messageDatabase.rawData.removeWhere((key, value) => keys.contains(key) == false);
   }
 }

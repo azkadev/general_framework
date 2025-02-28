@@ -40,8 +40,7 @@ import 'package:base_web_template_general_framework_project_api/update/update.da
 import 'package:base_web_template_general_framework_project_scheme/converter/account.dart';
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetMeAccount
-    on BaseWebTemplateGeneralFrameworkProjectApi {
+extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetMeAccount on BaseWebTemplateGeneralFrameworkProjectApi {
   FutureOr<Account> api_getMe({
     required InvokeRequestData invokeRequestData,
   }) {

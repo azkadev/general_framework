@@ -44,8 +44,7 @@ import 'package:base_web_template_general_framework_project_scheme/respond_schem
 
 import 'package:base_web_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsignUpOk
-    on BaseWebTemplateGeneralFrameworkProjectApi {
+extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsignUpOk on BaseWebTemplateGeneralFrameworkProjectApi {
   FutureOr<Ok> api_signUp({
     required InvokeRequestData invokeRequestData,
   }) async {
@@ -62,31 +61,24 @@ extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsignUpOk
     }();
     // validation
     {
-      final Map? validation_username =
-          BaseWebTemplateGeneralFrameworkProjectSchemeValidation
-              .usernameValidation(username: username_parameters);
+      final Map? validation_username = BaseWebTemplateGeneralFrameworkProjectSchemeValidation.usernameValidation(username: username_parameters);
       if (validation_username != null) {
         return Ok(validation_username);
       }
 
-      final Map? validation_password =
-          BaseWebTemplateGeneralFrameworkProjectSchemeValidation
-              .usernameValidation(username: password_parameters);
+      final Map? validation_password = BaseWebTemplateGeneralFrameworkProjectSchemeValidation.usernameValidation(username: password_parameters);
       if (validation_password != null) {
         return Ok(validation_password);
       }
     }
     // check account
     {
-      final AccountDatabase? account_data_old =
-          await generalFrameworkApiDatabase.account_getAccountByUserName(
-              username: username_parameters);
+      final AccountDatabase? account_data_old = await generalFrameworkApiDatabase.account_getAccountByUserName(username: username_parameters);
       if (account_data_old != null) {
         return Ok({"@type": "error", "message": "username_already_exist"});
       }
     }
-    final AccountDatabase? account_data_new =
-        await generalFrameworkApiDatabase.account_createNewAccount(
+    final AccountDatabase? account_data_new = await generalFrameworkApiDatabase.account_createNewAccount(
       username: username_parameters,
       password: password_parameters,
       newAccountDatabase: AccountDatabase.create(

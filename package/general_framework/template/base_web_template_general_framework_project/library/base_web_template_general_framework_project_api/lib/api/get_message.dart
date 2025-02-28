@@ -44,13 +44,11 @@ import 'package:base_web_template_general_framework_project_scheme/database_sche
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_web_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetMessageMessage
-    on BaseWebTemplateGeneralFrameworkProjectApi {
+extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetMessageMessage on BaseWebTemplateGeneralFrameworkProjectApi {
   FutureOr<Message> api_getMessage({
     required InvokeRequestData invokeRequestData,
   }) async {
-    final GetMessage getMessage =
-        invokeRequestData.parametersBuilder<GetMessage>(
+    final GetMessage getMessage = invokeRequestData.parametersBuilder<GetMessage>(
       builder: (parameters) {
         return GetMessage(parameters.toJson());
       },
@@ -62,8 +60,7 @@ extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetMessageMessage
       });
     }
 
-    final ChatDatabase? chatDatabase =
-        await generalFrameworkApiDatabase.chat_getChatDatabase(
+    final ChatDatabase? chatDatabase = await generalFrameworkApiDatabase.chat_getChatDatabase(
       chat_id: getMessage.chat_id ?? 0,
       user_id: invokeRequestData.accountDatabase.id ?? 0,
     );
@@ -81,8 +78,7 @@ extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetMessageMessage
       });
     }
 
-    final MessageDatabase? message_data =
-        await generalFrameworkApiDatabase.message_getMessageByMessageId(
+    final MessageDatabase? message_data = await generalFrameworkApiDatabase.message_getMessageByMessageId(
       chat_unique_id: chat_unique_id,
       message_id: getMessage.message_id ?? 0,
     );

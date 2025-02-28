@@ -36,8 +36,7 @@ import 'package:base_web_template_general_framework_project_flutter/client/core.
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/account.dart';
 import 'package:flutter/material.dart';
 
-class AccountPage
-    extends BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
+class AccountPage extends BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
   final Account account;
   const AccountPage({
     super.key,

@@ -39,8 +39,7 @@ import 'package:base_web_template_general_framework_project_scheme/api_scheme/ap
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:general_framework/core/client/options.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate
-    on BaseWebTemplateGeneralFrameworkProjectClient {
+extension BaseWebTemplateGeneralFrameworkProjectClientExtensionInvokeApiGenerate on BaseWebTemplateGeneralFrameworkProjectClient {
   /// generate
   Future<Ok> api_signUp({
     required SignUp signUpParameters,

@@ -46,8 +46,7 @@ class DatabaseMiniSchema {
 
   String special_type = "databaseMiniSchema";
 
-  ApplicationConfiguration application_configuration =
-      ApplicationConfiguration();
+  ApplicationConfiguration application_configuration = ApplicationConfiguration();
 
   List<Accounts> accounts = [];
 
@@ -76,8 +75,7 @@ class DatabaseMiniSchema {
       if (value is ApplicationConfiguration) {
         this.application_configuration = value;
       } else {
-        ApplicationConfiguration state_value_procces =
-            ApplicationConfiguration();
+        ApplicationConfiguration state_value_procces = ApplicationConfiguration();
         (value as Map).forEach((key, value) {
           state_value_procces[key] = value;
         });
@@ -336,8 +334,7 @@ class ApplicationConfiguration {
   static ApplicationConfiguration create({
     bool utils_is_print_data = false,
   }) {
-    ApplicationConfiguration applicationConfiguration_data_create =
-        ApplicationConfiguration();
+    ApplicationConfiguration applicationConfiguration_data_create = ApplicationConfiguration();
 
     if (utils_is_print_data) {
       // print(applicationConfiguration_data_create.toStringPretty());

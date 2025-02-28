@@ -123,8 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SingleChildScrollView(
         child: ConstrainedBox(
-          constraints: BoxConstraints(
-              minHeight: context.height, minWidth: context.width),
+          constraints: BoxConstraints(minHeight: context.height, minWidth: context.width),
           child: Column(
             // Column is also a layout widget. It takes a list of children and
             // arranges them vertically. By default, it sizes itself to fit its

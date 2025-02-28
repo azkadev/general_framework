@@ -43,8 +43,7 @@ import 'package:base_template_general_framework_project_scheme/converter/message
 import 'package:base_template_general_framework_project_scheme/database_scheme/database_scheme.dart';
 import 'package:base_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
-extension BaseTemplateGeneralFrameworkProjectApiExtensionsendMessageMessage
-    on BaseTemplateGeneralFrameworkProjectApi {
+extension BaseTemplateGeneralFrameworkProjectApiExtensionsendMessageMessage on BaseTemplateGeneralFrameworkProjectApi {
   FutureOr<Message> api_sendMessage({
     required InvokeRequestData invokeRequestData,
   }) async {
@@ -74,8 +73,7 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsendMessageMessage
         "message": "text_cant_empty",
       });
     }
-    final ChatDatabase? chatDatabase =
-        await generalFrameworkApiDatabase.chat_getChatDatabase(
+    final ChatDatabase? chatDatabase = await generalFrameworkApiDatabase.chat_getChatDatabase(
       chat_id: chat_id_parameters,
       user_id: invokeRequestData.accountDatabase.id ?? 0,
     );
@@ -92,8 +90,7 @@ extension BaseTemplateGeneralFrameworkProjectApiExtensionsendMessageMessage
         "message": "chat_not_found",
       });
     }
-    final MessageDatabase? new_message_data =
-        await generalFrameworkApiDatabase.message_createNewMessage(
+    final MessageDatabase? new_message_data = await generalFrameworkApiDatabase.message_createNewMessage(
       chat_unique_id: chat_unique_id,
       user_id: invokeRequestData.accountDatabase.id ?? 0,
       newMessageDatabase: MessageDatabase.create(

@@ -42,13 +42,11 @@ import 'package:base_web_template_general_framework_project_scheme/converter/ses
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_web_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetSessionsSessions
-    on BaseWebTemplateGeneralFrameworkProjectApi {
+extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetSessionsSessions on BaseWebTemplateGeneralFrameworkProjectApi {
   FutureOr<Sessions> api_getSessions({
     required InvokeRequestData invokeRequestData,
   }) async {
-    final GetSessions getSessions =
-        invokeRequestData.parametersBuilder<GetSessions>(
+    final GetSessions getSessions = invokeRequestData.parametersBuilder<GetSessions>(
       builder: (parameters) {
         return GetSessions(parameters.toJson());
       },

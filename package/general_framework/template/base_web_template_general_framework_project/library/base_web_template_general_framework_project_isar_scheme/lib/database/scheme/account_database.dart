@@ -190,18 +190,7 @@ class AccountDatabase {
 
   /// return original data json
   static Map get defaultData {
-    return {
-      "@type": "accountDatabase",
-      "id": 0,
-      "first_name": "",
-      "last_name": "",
-      "username": "",
-      "bio": "",
-      "password": "",
-      "from_app_id": "",
-      "owner_account_user_id": 0,
-      "is_test": false
-    };
+    return {"@type": "accountDatabase", "id": 0, "first_name": "", "last_name": "", "username": "", "bio": "", "password": "", "from_app_id": "", "owner_account_user_id": 0, "is_test": false};
   }
 
   static AccountDatabase create({

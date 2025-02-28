@@ -43,8 +43,7 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class HomePage
-    extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
+class HomePage extends BaseTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
   const HomePage({super.key, required super.generalFrameworkClientFlutter});
 
   @override
@@ -52,8 +51,7 @@ class HomePage
 }
 
 class _HomePageState extends State<HomePage> {
-  final ScrollControllerAutoKeepStateData scrollControllerAutoKeepStateData =
-      ScrollControllerAutoKeepStateData(
+  final ScrollControllerAutoKeepStateData scrollControllerAutoKeepStateData = ScrollControllerAutoKeepStateData(
     keyId: "home_page",
   );
 
@@ -128,10 +126,7 @@ class _HomePageState extends State<HomePage> {
                     unreadCount: 5,
                     date: DateTime.now(),
                     onTap: () {
-                      routerGeneralLibFlutter().pushNamed(
-                          routeName: "/chat",
-                          arguments:
-                              Account.create(first_name: "Azka Developer"));
+                      routerGeneralLibFlutter().pushNamed(routeName: "/chat", arguments: Account.create(first_name: "Azka Developer"));
                     },
                   );
                 }),
@@ -142,8 +137,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          widget.generalFrameworkClientFlutter.generalFrameworkClient
-              .api_getMe(getMeParameters: GetMe.create());
+          widget.generalFrameworkClientFlutter.generalFrameworkClient.api_getMe(getMeParameters: GetMe.create());
         },
         child: const Icon(
           Icons.message,

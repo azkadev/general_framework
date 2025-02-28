@@ -42,20 +42,17 @@ import 'package:base_web_template_general_framework_project_scheme/converter/acc
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_web_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsearchAccountByUsernameAccount
-    on BaseWebTemplateGeneralFrameworkProjectApi {
+extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsearchAccountByUsernameAccount on BaseWebTemplateGeneralFrameworkProjectApi {
   FutureOr<Account> api_searchAccountByUsername({
     required InvokeRequestData invokeRequestData,
   }) async {
-    final SearchAccountByUsername searchAccountByUsername =
-        invokeRequestData.parametersBuilder<SearchAccountByUsername>(
+    final SearchAccountByUsername searchAccountByUsername = invokeRequestData.parametersBuilder<SearchAccountByUsername>(
       builder: (parameters) {
         return SearchAccountByUsername(parameters.toJson());
       },
     );
 
-    final String username_procces =
-        (searchAccountByUsername.username ?? "").trim();
+    final String username_procces = (searchAccountByUsername.username ?? "").trim();
     if (username_procces.isEmpty) {
       return Account({
         "@type": "error",

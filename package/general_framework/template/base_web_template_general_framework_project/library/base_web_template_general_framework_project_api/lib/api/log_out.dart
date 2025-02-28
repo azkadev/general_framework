@@ -40,16 +40,12 @@ import 'package:base_web_template_general_framework_project_api/update/update.da
 import 'package:base_web_template_general_framework_project_api_database/session/session.dart';
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiExtensionlogOutOk
-    on BaseWebTemplateGeneralFrameworkProjectApi {
+extension BaseWebTemplateGeneralFrameworkProjectApiExtensionlogOutOk on BaseWebTemplateGeneralFrameworkProjectApi {
   FutureOr<Ok> api_logOut({
     required InvokeRequestData invokeRequestData,
   }) async {
-    final bool is_delete =
-        await generalFrameworkApiDatabase.session_deleteSession(
-      account_user_id: invokeRequestData.accountDatabase.id ??
-          invokeRequestData.sessionDatabase.account_user_id ??
-          0,
+    final bool is_delete = await generalFrameworkApiDatabase.session_deleteSession(
+      account_user_id: invokeRequestData.accountDatabase.id ?? invokeRequestData.sessionDatabase.account_user_id ?? 0,
       token: invokeRequestData.sessionDatabase.token ?? "",
     );
     if (is_delete == false) {

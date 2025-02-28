@@ -38,7 +38,6 @@ import 'package:base_web_template_general_framework_project_secret/base_web_temp
 void main(List<String> arguments) async {
   baseTemplateGeneralFrameworkProjectApiServerCli(
     arguments: arguments,
-    baseTemplateGeneralFrameworkProjectSecretServerSide:
-        BaseWebTemplateGeneralFrameworkProjectSecretServerSide.defaultData(),
+    baseTemplateGeneralFrameworkProjectSecretServerSide: BaseWebTemplateGeneralFrameworkProjectSecretServerSide.defaultData(),
   );
 }

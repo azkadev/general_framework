@@ -49,15 +49,11 @@ enum SignPageType {
   reset_password;
 
   String title() {
-    return name
-        .split("_")
-        .map((e) => e.toLowerCase().toUpperCaseFirstData())
-        .join(" ");
+    return name.split("_").map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" ");
   }
 }
 
-class SignPage
-    extends BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
+class SignPage extends BaseWebTemplateGeneralFrameworkProjectClientFlutterAppStatefulWidget {
   const SignPage({super.key, required super.generalFrameworkClientFlutter});
 
   @override
@@ -66,15 +62,11 @@ class SignPage
 
 class _SignPageState extends State<SignPage> {
   SignPageType signPageType = SignPageType.sign_in;
-  final TextEditingController usernameTextEditingController =
-      TextEditingController();
-  final TextEditingController passwordTextEditingController =
-      TextEditingController();
-  final TextEditingController newPasswordTextEditingController =
-      TextEditingController();
+  final TextEditingController usernameTextEditingController = TextEditingController();
+  final TextEditingController passwordTextEditingController = TextEditingController();
+  final TextEditingController newPasswordTextEditingController = TextEditingController();
 
-  final TextEditingController secretWordsTextEditingController =
-      TextEditingController();
+  final TextEditingController secretWordsTextEditingController = TextEditingController();
 
   @override
   void initState() {
@@ -196,9 +188,7 @@ class _SignPageState extends State<SignPage> {
       final String secretWords = secretWordsTextEditingController.text.trim();
       if (username.isEmpty) {}
       if (signPageType == SignPageType.sign_in) {
-        final res = await widget
-            .generalFrameworkClientFlutter.generalFrameworkClient
-            .api_signIn(
+        final res = await widget.generalFrameworkClientFlutter.generalFrameworkClient.api_signIn(
           signInParameters: SignIn.create(
             username: username,
             password: password,
@@ -209,17 +199,14 @@ class _SignPageState extends State<SignPage> {
           context.routerGeneralLibFlutter().pushAndRemoveUntil(
                 newRoute: MaterialPageRoute(
                   builder: (context) {
-                    return HomePage(
-                        generalFrameworkClientFlutter:
-                            widget.generalFrameworkClientFlutter);
+                    return HomePage(generalFrameworkClientFlutter: widget.generalFrameworkClientFlutter);
                   },
                 ),
                 routeName: "/",
               );
         }
       } else if (signPageType == SignPageType.sign_up) {
-        await widget.generalFrameworkClientFlutter.generalFrameworkClient
-            .api_signUp(
+        await widget.generalFrameworkClientFlutter.generalFrameworkClient.api_signUp(
           signUpParameters: SignUp.create(
             username: username,
             password: newPassword,

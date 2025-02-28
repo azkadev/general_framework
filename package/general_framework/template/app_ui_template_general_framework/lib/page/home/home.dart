@@ -68,9 +68,7 @@ class _HomePageState extends State<HomePage> {
                 leading: Icon(Icons.settings),
                 title: Text("Settings"),
                 onTap: () {
-                  context
-                      .routerGeneralLibFlutter()
-                      .pushNamed(routeName: "/settings");
+                  context.routerGeneralLibFlutter().pushNamed(routeName: "/settings");
                 },
               ),
               SizedBox(

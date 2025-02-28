@@ -39,8 +39,7 @@ import 'package:base_web_template_general_framework_project_api/base_web_templat
 import 'package:base_web_template_general_framework_project_api/update/update.dart';
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetUpdateUpdate
-    on BaseWebTemplateGeneralFrameworkProjectApi {
+extension BaseWebTemplateGeneralFrameworkProjectApiExtensiongetUpdateUpdate on BaseWebTemplateGeneralFrameworkProjectApi {
   FutureOr<Update> api_getUpdate({
     required InvokeRequestData invokeRequestData,
   }) {

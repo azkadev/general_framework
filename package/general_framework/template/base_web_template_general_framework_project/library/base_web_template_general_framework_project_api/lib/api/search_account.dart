@@ -42,13 +42,11 @@ import 'package:base_web_template_general_framework_project_scheme/converter/acc
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 import 'package:base_web_template_general_framework_project_scheme/api_scheme/api_scheme.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsearchAccountAccounts
-    on BaseWebTemplateGeneralFrameworkProjectApi {
+extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsearchAccountAccounts on BaseWebTemplateGeneralFrameworkProjectApi {
   FutureOr<Accounts> api_searchAccount({
     required InvokeRequestData invokeRequestData,
   }) async {
-    final SearchAccount searchAccount =
-        invokeRequestData.parametersBuilder<SearchAccount>(
+    final SearchAccount searchAccount = invokeRequestData.parametersBuilder<SearchAccount>(
       builder: (parameters) {
         return SearchAccount(parameters.toJson());
       },
@@ -57,8 +55,7 @@ extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsearchAccountAccount
     if (query.isEmpty) {
       return Accounts({"@type": "error", "message": "query_cant_empty"});
     }
-    final res =
-        await generalFrameworkApiDatabase.account_searchAccount(query: query);
+    final res = await generalFrameworkApiDatabase.account_searchAccount(query: query);
     return Accounts.create(
       total_count: res.length,
       accounts: res.map((e) {

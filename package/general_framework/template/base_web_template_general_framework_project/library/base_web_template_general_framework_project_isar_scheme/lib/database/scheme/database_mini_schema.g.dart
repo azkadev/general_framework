@@ -45,8 +45,7 @@ part of 'database_mini_schema.dart';
 // ignore_for_file: type=lint
 
 extension GetDatabaseMiniSchemaCollection on Isar {
-  IsarCollection<int, DatabaseMiniSchema> get databaseMiniSchemas =>
-      this.collection();
+  IsarCollection<int, DatabaseMiniSchema> get databaseMiniSchemas => this.collection();
 }
 
 const DatabaseMiniSchemaSchema = IsarGeneratedSchema(
@@ -94,11 +93,7 @@ const DatabaseMiniSchemaSchema = IsarGeneratedSchema(
     deserialize: deserializeDatabaseMiniSchema,
     deserializeProperty: deserializeDatabaseMiniSchemaProp,
   ),
-  embeddedSchemas: [
-    ApplicationConfigurationSchema,
-    AccountsSchema,
-    SessionsSchema
-  ],
+  embeddedSchemas: [ApplicationConfigurationSchema, AccountsSchema, SessionsSchema],
 );
 
 @isarProtected
@@ -237,8 +232,7 @@ dynamic deserializeDatabaseMiniSchemaProp(IsarReader reader, int property) {
           if (reader.isNull) {
             return const <Accounts>[];
           } else {
-            final list =
-                List<Accounts>.filled(length, Accounts(), growable: true);
+            final list = List<Accounts>.filled(length, Accounts(), growable: true);
             for (var i = 0; i < length; i++) {
               {
                 final objectReader = IsarCore.readObject(reader, i);
@@ -264,8 +258,7 @@ dynamic deserializeDatabaseMiniSchemaProp(IsarReader reader, int property) {
           if (reader.isNull) {
             return const <Sessions>[];
           } else {
-            final list =
-                List<Sessions>.filled(length, Sessions(), growable: true);
+            final list = List<Sessions>.filled(length, Sessions(), growable: true);
             for (var i = 0; i < length; i++) {
               {
                 final objectReader = IsarCore.readObject(reader, i);
@@ -366,8 +359,7 @@ class _DatabaseMiniSchemaUpdateAllImpl implements _DatabaseMiniSchemaUpdateAll {
 extension DatabaseMiniSchemaUpdate on IsarCollection<int, DatabaseMiniSchema> {
   _DatabaseMiniSchemaUpdate get update => _DatabaseMiniSchemaUpdateImpl(this);
 
-  _DatabaseMiniSchemaUpdateAll get updateAll =>
-      _DatabaseMiniSchemaUpdateAllImpl(this);
+  _DatabaseMiniSchemaUpdateAll get updateAll => _DatabaseMiniSchemaUpdateAllImpl(this);
 }
 
 sealed class _DatabaseMiniSchemaQueryUpdate {
@@ -379,8 +371,7 @@ sealed class _DatabaseMiniSchemaQueryUpdate {
   });
 }
 
-class _DatabaseMiniSchemaQueryUpdateImpl
-    implements _DatabaseMiniSchemaQueryUpdate {
+class _DatabaseMiniSchemaQueryUpdateImpl implements _DatabaseMiniSchemaQueryUpdate {
   const _DatabaseMiniSchemaQueryUpdateImpl(this.query, {this.limit});
 
   final IsarQuery<DatabaseMiniSchema> query;
@@ -403,15 +394,12 @@ class _DatabaseMiniSchemaQueryUpdateImpl
 }
 
 extension DatabaseMiniSchemaQueryUpdate on IsarQuery<DatabaseMiniSchema> {
-  _DatabaseMiniSchemaQueryUpdate get updateFirst =>
-      _DatabaseMiniSchemaQueryUpdateImpl(this, limit: 1);
+  _DatabaseMiniSchemaQueryUpdate get updateFirst => _DatabaseMiniSchemaQueryUpdateImpl(this, limit: 1);
 
-  _DatabaseMiniSchemaQueryUpdate get updateAll =>
-      _DatabaseMiniSchemaQueryUpdateImpl(this);
+  _DatabaseMiniSchemaQueryUpdate get updateAll => _DatabaseMiniSchemaQueryUpdateImpl(this);
 }
 
-class _DatabaseMiniSchemaQueryBuilderUpdateImpl
-    implements _DatabaseMiniSchemaQueryUpdate {
+class _DatabaseMiniSchemaQueryBuilderUpdateImpl implements _DatabaseMiniSchemaQueryUpdate {
   const _DatabaseMiniSchemaQueryBuilderUpdateImpl(this.query, {this.limit});
 
   final QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QOperations> query;
@@ -438,19 +426,14 @@ class _DatabaseMiniSchemaQueryBuilderUpdateImpl
   }
 }
 
-extension DatabaseMiniSchemaQueryBuilderUpdate
-    on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QOperations> {
-  _DatabaseMiniSchemaQueryUpdate get updateFirst =>
-      _DatabaseMiniSchemaQueryBuilderUpdateImpl(this, limit: 1);
+extension DatabaseMiniSchemaQueryBuilderUpdate on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QOperations> {
+  _DatabaseMiniSchemaQueryUpdate get updateFirst => _DatabaseMiniSchemaQueryBuilderUpdateImpl(this, limit: 1);
 
-  _DatabaseMiniSchemaQueryUpdate get updateAll =>
-      _DatabaseMiniSchemaQueryBuilderUpdateImpl(this);
+  _DatabaseMiniSchemaQueryUpdate get updateAll => _DatabaseMiniSchemaQueryBuilderUpdateImpl(this);
 }
 
-extension DatabaseMiniSchemaQueryFilter
-    on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QFilterCondition> {
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      special_typeEqualTo(
+extension DatabaseMiniSchemaQueryFilter on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QFilterCondition> {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> special_typeEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -465,8 +448,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      special_typeGreaterThan(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> special_typeGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -481,8 +463,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      special_typeGreaterThanOrEqualTo(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> special_typeGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -497,8 +478,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      special_typeLessThan(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> special_typeLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -513,8 +493,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      special_typeLessThanOrEqualTo(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> special_typeLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -529,8 +508,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      special_typeBetween(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> special_typeBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -547,8 +525,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      special_typeStartsWith(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> special_typeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -563,8 +540,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      special_typeEndsWith(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> special_typeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -579,8 +555,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      special_typeContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> special_typeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -592,8 +567,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      special_typeMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> special_typeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -605,8 +579,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      special_typeIsEmpty() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> special_typeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -617,8 +590,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      special_typeIsNotEmpty() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> special_typeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -629,13 +601,11 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      accountsIsEmpty() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> accountsIsEmpty() {
     return not().accountsIsNotEmpty();
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      accountsIsNotEmpty() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> accountsIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterOrEqualCondition(property: 3, value: null),
@@ -643,13 +613,11 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      sessionsIsEmpty() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> sessionsIsEmpty() {
     return not().sessionsIsNotEmpty();
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      sessionsIsNotEmpty() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> sessionsIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterOrEqualCondition(property: 4, value: null),
@@ -657,8 +625,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      from_app_idEqualTo(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> from_app_idEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -673,8 +640,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      from_app_idGreaterThan(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> from_app_idGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -689,8 +655,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      from_app_idGreaterThanOrEqualTo(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> from_app_idGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -705,8 +670,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      from_app_idLessThan(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> from_app_idLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -721,8 +685,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      from_app_idLessThanOrEqualTo(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> from_app_idLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -737,8 +700,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      from_app_idBetween(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> from_app_idBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -755,8 +717,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      from_app_idStartsWith(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> from_app_idStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -771,8 +732,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      from_app_idEndsWith(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> from_app_idEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -787,8 +747,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      from_app_idContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> from_app_idContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -800,8 +759,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      from_app_idMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> from_app_idMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -813,8 +771,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      from_app_idIsEmpty() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> from_app_idIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -825,8 +782,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      from_app_idIsNotEmpty() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> from_app_idIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -837,8 +793,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      owner_account_user_idEqualTo(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> owner_account_user_idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -851,8 +806,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      owner_account_user_idGreaterThan(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> owner_account_user_idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -865,8 +819,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      owner_account_user_idGreaterThanOrEqualTo(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> owner_account_user_idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -879,8 +832,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      owner_account_user_idLessThan(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> owner_account_user_idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -893,8 +845,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      owner_account_user_idLessThanOrEqualTo(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> owner_account_user_idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -907,8 +858,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      owner_account_user_idBetween(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> owner_account_user_idBetween(
     int lower,
     int upper,
   ) {
@@ -923,8 +873,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      is_testEqualTo(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> is_testEqualTo(
     bool value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -937,8 +886,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      idEqualTo(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -951,8 +899,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      idGreaterThan(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -965,8 +912,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      idGreaterThanOrEqualTo(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -979,8 +925,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      idLessThan(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -993,8 +938,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      idLessThanOrEqualTo(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1007,8 +951,7 @@ extension DatabaseMiniSchemaQueryFilter
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      idBetween(
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> idBetween(
     int lower,
     int upper,
   ) {
@@ -1024,20 +967,16 @@ extension DatabaseMiniSchemaQueryFilter
   }
 }
 
-extension DatabaseMiniSchemaQueryObject
-    on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QFilterCondition> {
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition>
-      application_configuration(FilterQuery<ApplicationConfiguration> q) {
+extension DatabaseMiniSchemaQueryObject on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QFilterCondition> {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterFilterCondition> application_configuration(FilterQuery<ApplicationConfiguration> q) {
     return QueryBuilder.apply(this, (query) {
       return query.object(q, 2);
     });
   }
 }
 
-extension DatabaseMiniSchemaQuerySortBy
-    on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QSortBy> {
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      sortBySpecial_type({bool caseSensitive = true}) {
+extension DatabaseMiniSchemaQuerySortBy on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QSortBy> {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> sortBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1046,8 +985,7 @@ extension DatabaseMiniSchemaQuerySortBy
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      sortBySpecial_typeDesc({bool caseSensitive = true}) {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> sortBySpecial_typeDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1057,8 +995,7 @@ extension DatabaseMiniSchemaQuerySortBy
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      sortByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> sortByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         5,
@@ -1067,8 +1004,7 @@ extension DatabaseMiniSchemaQuerySortBy
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      sortByFrom_app_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> sortByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         5,
@@ -1078,192 +1014,163 @@ extension DatabaseMiniSchemaQuerySortBy
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      sortByOwner_account_user_id() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> sortByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      sortByOwner_account_user_idDesc() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> sortByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      sortByIs_test() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> sortByIs_test() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      sortByIs_testDesc() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> sortByIs_testDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      sortById() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> sortById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      sortByIdDesc() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> sortByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0, sort: Sort.desc);
     });
   }
 }
 
-extension DatabaseMiniSchemaQuerySortThenBy
-    on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QSortThenBy> {
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      thenBySpecial_type({bool caseSensitive = true}) {
+extension DatabaseMiniSchemaQuerySortThenBy on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QSortThenBy> {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> thenBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      thenBySpecial_typeDesc({bool caseSensitive = true}) {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> thenBySpecial_typeDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      thenByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> thenByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      thenByFrom_app_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> thenByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      thenByOwner_account_user_id() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> thenByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      thenByOwner_account_user_idDesc() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> thenByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      thenByIs_test() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> thenByIs_test() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      thenByIs_testDesc() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> thenByIs_testDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(7, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      thenById() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy>
-      thenByIdDesc() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(0, sort: Sort.desc);
     });
   }
 }
 
-extension DatabaseMiniSchemaQueryWhereDistinct
-    on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QDistinct> {
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterDistinct>
-      distinctBySpecial_type({bool caseSensitive = true}) {
+extension DatabaseMiniSchemaQueryWhereDistinct on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QDistinct> {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterDistinct> distinctBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterDistinct>
-      distinctByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterDistinct> distinctByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(5, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterDistinct>
-      distinctByOwner_account_user_id() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterDistinct> distinctByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(6);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterDistinct>
-      distinctByIs_test() {
+  QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QAfterDistinct> distinctByIs_test() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(7);
     });
   }
 }
 
-extension DatabaseMiniSchemaQueryProperty1
-    on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QProperty> {
-  QueryBuilder<DatabaseMiniSchema, String, QAfterProperty>
-      special_typeProperty() {
+extension DatabaseMiniSchemaQueryProperty1 on QueryBuilder<DatabaseMiniSchema, DatabaseMiniSchema, QProperty> {
+  QueryBuilder<DatabaseMiniSchema, String, QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, ApplicationConfiguration, QAfterProperty>
-      application_configurationProperty() {
+  QueryBuilder<DatabaseMiniSchema, ApplicationConfiguration, QAfterProperty> application_configurationProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, List<Accounts>, QAfterProperty>
-      accountsProperty() {
+  QueryBuilder<DatabaseMiniSchema, List<Accounts>, QAfterProperty> accountsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, List<Sessions>, QAfterProperty>
-      sessionsProperty() {
+  QueryBuilder<DatabaseMiniSchema, List<Sessions>, QAfterProperty> sessionsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, String, QAfterProperty>
-      from_app_idProperty() {
+  QueryBuilder<DatabaseMiniSchema, String, QAfterProperty> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, int, QAfterProperty>
-      owner_account_user_idProperty() {
+  QueryBuilder<DatabaseMiniSchema, int, QAfterProperty> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(6);
     });
@@ -1282,52 +1189,44 @@ extension DatabaseMiniSchemaQueryProperty1
   }
 }
 
-extension DatabaseMiniSchemaQueryProperty2<R>
-    on QueryBuilder<DatabaseMiniSchema, R, QAfterProperty> {
-  QueryBuilder<DatabaseMiniSchema, (R, String), QAfterProperty>
-      special_typeProperty() {
+extension DatabaseMiniSchemaQueryProperty2<R> on QueryBuilder<DatabaseMiniSchema, R, QAfterProperty> {
+  QueryBuilder<DatabaseMiniSchema, (R, String), QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, (R, ApplicationConfiguration),
-      QAfterProperty> application_configurationProperty() {
+  QueryBuilder<DatabaseMiniSchema, (R, ApplicationConfiguration), QAfterProperty> application_configurationProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, (R, List<Accounts>), QAfterProperty>
-      accountsProperty() {
+  QueryBuilder<DatabaseMiniSchema, (R, List<Accounts>), QAfterProperty> accountsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, (R, List<Sessions>), QAfterProperty>
-      sessionsProperty() {
+  QueryBuilder<DatabaseMiniSchema, (R, List<Sessions>), QAfterProperty> sessionsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, (R, String), QAfterProperty>
-      from_app_idProperty() {
+  QueryBuilder<DatabaseMiniSchema, (R, String), QAfterProperty> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, (R, int), QAfterProperty>
-      owner_account_user_idProperty() {
+  QueryBuilder<DatabaseMiniSchema, (R, int), QAfterProperty> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(6);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, (R, bool), QAfterProperty>
-      is_testProperty() {
+  QueryBuilder<DatabaseMiniSchema, (R, bool), QAfterProperty> is_testProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(7);
     });
@@ -1340,52 +1239,44 @@ extension DatabaseMiniSchemaQueryProperty2<R>
   }
 }
 
-extension DatabaseMiniSchemaQueryProperty3<R1, R2>
-    on QueryBuilder<DatabaseMiniSchema, (R1, R2), QAfterProperty> {
-  QueryBuilder<DatabaseMiniSchema, (R1, R2, String), QOperations>
-      special_typeProperty() {
+extension DatabaseMiniSchemaQueryProperty3<R1, R2> on QueryBuilder<DatabaseMiniSchema, (R1, R2), QAfterProperty> {
+  QueryBuilder<DatabaseMiniSchema, (R1, R2, String), QOperations> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, (R1, R2, ApplicationConfiguration),
-      QOperations> application_configurationProperty() {
+  QueryBuilder<DatabaseMiniSchema, (R1, R2, ApplicationConfiguration), QOperations> application_configurationProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, (R1, R2, List<Accounts>), QOperations>
-      accountsProperty() {
+  QueryBuilder<DatabaseMiniSchema, (R1, R2, List<Accounts>), QOperations> accountsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, (R1, R2, List<Sessions>), QOperations>
-      sessionsProperty() {
+  QueryBuilder<DatabaseMiniSchema, (R1, R2, List<Sessions>), QOperations> sessionsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, (R1, R2, String), QOperations>
-      from_app_idProperty() {
+  QueryBuilder<DatabaseMiniSchema, (R1, R2, String), QOperations> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, (R1, R2, int), QOperations>
-      owner_account_user_idProperty() {
+  QueryBuilder<DatabaseMiniSchema, (R1, R2, int), QOperations> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(6);
     });
   }
 
-  QueryBuilder<DatabaseMiniSchema, (R1, R2, bool), QOperations>
-      is_testProperty() {
+  QueryBuilder<DatabaseMiniSchema, (R1, R2, bool), QOperations> is_testProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(7);
     });
@@ -1425,24 +1316,20 @@ const ApplicationConfigurationSchema = IsarGeneratedSchema(
 );
 
 @isarProtected
-int serializeApplicationConfiguration(
-    IsarWriter writer, ApplicationConfiguration object) {
+int serializeApplicationConfiguration(IsarWriter writer, ApplicationConfiguration object) {
   IsarCore.writeString(writer, 1, object.special_type);
   return 0;
 }
 
 @isarProtected
-ApplicationConfiguration deserializeApplicationConfiguration(
-    IsarReader reader) {
+ApplicationConfiguration deserializeApplicationConfiguration(IsarReader reader) {
   final object = ApplicationConfiguration();
   object.special_type = IsarCore.readString(reader, 1) ?? '';
   return object;
 }
 
-extension ApplicationConfigurationQueryFilter on QueryBuilder<
-    ApplicationConfiguration, ApplicationConfiguration, QFilterCondition> {
-  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration,
-      QAfterFilterCondition> special_typeEqualTo(
+extension ApplicationConfigurationQueryFilter on QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QFilterCondition> {
+  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QAfterFilterCondition> special_typeEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1457,8 +1344,7 @@ extension ApplicationConfigurationQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration,
-      QAfterFilterCondition> special_typeGreaterThan(
+  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QAfterFilterCondition> special_typeGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1473,8 +1359,7 @@ extension ApplicationConfigurationQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration,
-      QAfterFilterCondition> special_typeGreaterThanOrEqualTo(
+  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QAfterFilterCondition> special_typeGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1489,8 +1374,7 @@ extension ApplicationConfigurationQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration,
-      QAfterFilterCondition> special_typeLessThan(
+  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QAfterFilterCondition> special_typeLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1505,8 +1389,7 @@ extension ApplicationConfigurationQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration,
-      QAfterFilterCondition> special_typeLessThanOrEqualTo(
+  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QAfterFilterCondition> special_typeLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1521,8 +1404,7 @@ extension ApplicationConfigurationQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration,
-      QAfterFilterCondition> special_typeBetween(
+  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QAfterFilterCondition> special_typeBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -1539,8 +1421,7 @@ extension ApplicationConfigurationQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration,
-      QAfterFilterCondition> special_typeStartsWith(
+  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QAfterFilterCondition> special_typeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1555,8 +1436,7 @@ extension ApplicationConfigurationQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration,
-      QAfterFilterCondition> special_typeEndsWith(
+  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QAfterFilterCondition> special_typeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1571,9 +1451,7 @@ extension ApplicationConfigurationQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration,
-          QAfterFilterCondition>
-      special_typeContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QAfterFilterCondition> special_typeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -1585,9 +1463,7 @@ extension ApplicationConfigurationQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration,
-          QAfterFilterCondition>
-      special_typeMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QAfterFilterCondition> special_typeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -1599,8 +1475,7 @@ extension ApplicationConfigurationQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration,
-      QAfterFilterCondition> special_typeIsEmpty() {
+  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QAfterFilterCondition> special_typeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -1611,8 +1486,7 @@ extension ApplicationConfigurationQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration,
-      QAfterFilterCondition> special_typeIsNotEmpty() {
+  QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QAfterFilterCondition> special_typeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -1624,8 +1498,7 @@ extension ApplicationConfigurationQueryFilter on QueryBuilder<
   }
 }
 
-extension ApplicationConfigurationQueryObject on QueryBuilder<
-    ApplicationConfiguration, ApplicationConfiguration, QFilterCondition> {}
+extension ApplicationConfigurationQueryObject on QueryBuilder<ApplicationConfiguration, ApplicationConfiguration, QFilterCondition> {}
 
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, invalid_use_of_protected_member, lines_longer_than_80_chars, constant_identifier_names, avoid_js_rounded_ints, no_leading_underscores_for_local_identifiers, require_trailing_commas, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_in_if_null_operators, library_private_types_in_public_api, prefer_const_constructors
@@ -1668,8 +1541,7 @@ Accounts deserializeAccounts(IsarReader reader) {
   return object;
 }
 
-extension AccountsQueryFilter
-    on QueryBuilder<Accounts, Accounts, QFilterCondition> {
+extension AccountsQueryFilter on QueryBuilder<Accounts, Accounts, QFilterCondition> {
   QueryBuilder<Accounts, Accounts, QAfterFilterCondition> special_typeEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -1685,8 +1557,7 @@ extension AccountsQueryFilter
     });
   }
 
-  QueryBuilder<Accounts, Accounts, QAfterFilterCondition>
-      special_typeGreaterThan(
+  QueryBuilder<Accounts, Accounts, QAfterFilterCondition> special_typeGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1701,8 +1572,7 @@ extension AccountsQueryFilter
     });
   }
 
-  QueryBuilder<Accounts, Accounts, QAfterFilterCondition>
-      special_typeGreaterThanOrEqualTo(
+  QueryBuilder<Accounts, Accounts, QAfterFilterCondition> special_typeGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1732,8 +1602,7 @@ extension AccountsQueryFilter
     });
   }
 
-  QueryBuilder<Accounts, Accounts, QAfterFilterCondition>
-      special_typeLessThanOrEqualTo(
+  QueryBuilder<Accounts, Accounts, QAfterFilterCondition> special_typeLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1765,8 +1634,7 @@ extension AccountsQueryFilter
     });
   }
 
-  QueryBuilder<Accounts, Accounts, QAfterFilterCondition>
-      special_typeStartsWith(
+  QueryBuilder<Accounts, Accounts, QAfterFilterCondition> special_typeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1796,9 +1664,7 @@ extension AccountsQueryFilter
     });
   }
 
-  QueryBuilder<Accounts, Accounts, QAfterFilterCondition> special_typeContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<Accounts, Accounts, QAfterFilterCondition> special_typeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -1810,9 +1676,7 @@ extension AccountsQueryFilter
     });
   }
 
-  QueryBuilder<Accounts, Accounts, QAfterFilterCondition> special_typeMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<Accounts, Accounts, QAfterFilterCondition> special_typeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -1824,8 +1688,7 @@ extension AccountsQueryFilter
     });
   }
 
-  QueryBuilder<Accounts, Accounts, QAfterFilterCondition>
-      special_typeIsEmpty() {
+  QueryBuilder<Accounts, Accounts, QAfterFilterCondition> special_typeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -1836,8 +1699,7 @@ extension AccountsQueryFilter
     });
   }
 
-  QueryBuilder<Accounts, Accounts, QAfterFilterCondition>
-      special_typeIsNotEmpty() {
+  QueryBuilder<Accounts, Accounts, QAfterFilterCondition> special_typeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -1862,8 +1724,7 @@ extension AccountsQueryFilter
   }
 }
 
-extension AccountsQueryObject
-    on QueryBuilder<Accounts, Accounts, QFilterCondition> {}
+extension AccountsQueryObject on QueryBuilder<Accounts, Accounts, QFilterCondition> {}
 
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, invalid_use_of_protected_member, lines_longer_than_80_chars, constant_identifier_names, avoid_js_rounded_ints, no_leading_underscores_for_local_identifiers, require_trailing_commas, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_in_if_null_operators, library_private_types_in_public_api, prefer_const_constructors
@@ -1906,8 +1767,7 @@ Sessions deserializeSessions(IsarReader reader) {
   return object;
 }
 
-extension SessionsQueryFilter
-    on QueryBuilder<Sessions, Sessions, QFilterCondition> {
+extension SessionsQueryFilter on QueryBuilder<Sessions, Sessions, QFilterCondition> {
   QueryBuilder<Sessions, Sessions, QAfterFilterCondition> special_typeEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -1923,8 +1783,7 @@ extension SessionsQueryFilter
     });
   }
 
-  QueryBuilder<Sessions, Sessions, QAfterFilterCondition>
-      special_typeGreaterThan(
+  QueryBuilder<Sessions, Sessions, QAfterFilterCondition> special_typeGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1939,8 +1798,7 @@ extension SessionsQueryFilter
     });
   }
 
-  QueryBuilder<Sessions, Sessions, QAfterFilterCondition>
-      special_typeGreaterThanOrEqualTo(
+  QueryBuilder<Sessions, Sessions, QAfterFilterCondition> special_typeGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1970,8 +1828,7 @@ extension SessionsQueryFilter
     });
   }
 
-  QueryBuilder<Sessions, Sessions, QAfterFilterCondition>
-      special_typeLessThanOrEqualTo(
+  QueryBuilder<Sessions, Sessions, QAfterFilterCondition> special_typeLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2003,8 +1860,7 @@ extension SessionsQueryFilter
     });
   }
 
-  QueryBuilder<Sessions, Sessions, QAfterFilterCondition>
-      special_typeStartsWith(
+  QueryBuilder<Sessions, Sessions, QAfterFilterCondition> special_typeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2034,9 +1890,7 @@ extension SessionsQueryFilter
     });
   }
 
-  QueryBuilder<Sessions, Sessions, QAfterFilterCondition> special_typeContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<Sessions, Sessions, QAfterFilterCondition> special_typeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -2048,9 +1902,7 @@ extension SessionsQueryFilter
     });
   }
 
-  QueryBuilder<Sessions, Sessions, QAfterFilterCondition> special_typeMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<Sessions, Sessions, QAfterFilterCondition> special_typeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -2062,8 +1914,7 @@ extension SessionsQueryFilter
     });
   }
 
-  QueryBuilder<Sessions, Sessions, QAfterFilterCondition>
-      special_typeIsEmpty() {
+  QueryBuilder<Sessions, Sessions, QAfterFilterCondition> special_typeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -2074,8 +1925,7 @@ extension SessionsQueryFilter
     });
   }
 
-  QueryBuilder<Sessions, Sessions, QAfterFilterCondition>
-      special_typeIsNotEmpty() {
+  QueryBuilder<Sessions, Sessions, QAfterFilterCondition> special_typeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -2100,5 +1950,4 @@ extension SessionsQueryFilter
   }
 }
 
-extension SessionsQueryObject
-    on QueryBuilder<Sessions, Sessions, QFilterCondition> {}
+extension SessionsQueryObject on QueryBuilder<Sessions, Sessions, QFilterCondition> {}

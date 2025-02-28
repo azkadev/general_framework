@@ -62,10 +62,7 @@ class _SettingsPageState extends State<SettingsPage> {
               return [
                 PopupMenuItem(
                   onTap: () {
-                    context.routerGeneralLibFlutter().pushNamedAndRemoveUntil(
-                        routeName: "/sign",
-                        arguments: null,
-                        removeRouteName: "/");
+                    context.routerGeneralLibFlutter().pushNamedAndRemoveUntil(routeName: "/sign", arguments: null, removeRouteName: "/");
                   },
                   child: Text("Logout"),
                 ),

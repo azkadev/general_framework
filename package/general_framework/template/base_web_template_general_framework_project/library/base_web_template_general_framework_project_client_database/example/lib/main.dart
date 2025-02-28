@@ -39,15 +39,12 @@ import 'package:flutter/material.dart';
 import 'package:base_web_template_general_framework_project_client_database/base_web_template_general_framework_project_client_database.dart';
 import 'package:http/http.dart';
 
-final BaseWebTemplateGeneralFrameworkProjectClientDatabase database =
-    BaseWebTemplateGeneralFrameworkProjectClientDatabase(
-  baseWebTemplateGeneralFrameworkProjectSecretClientSide:
-      BaseWebTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
+final BaseWebTemplateGeneralFrameworkProjectClientDatabase database = BaseWebTemplateGeneralFrameworkProjectClientDatabase(
+  baseWebTemplateGeneralFrameworkProjectSecretClientSide: BaseWebTemplateGeneralFrameworkProjectSecretClientSide.defaultData(),
 );
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await database.ensureInitialized(
-      currentPath: Directory.current.path, httpClient: Client());
+  await database.ensureInitialized(currentPath: Directory.current.path, httpClient: Client());
 
   runApp(const MyApp());
 }

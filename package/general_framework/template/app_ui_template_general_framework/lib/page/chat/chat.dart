@@ -68,9 +68,7 @@ class _ChatPageState extends State<ChatPage> {
                 leading: Icon(Icons.settings),
                 title: Text("Settings"),
                 onTap: () {
-                  context
-                      .routerGeneralLibFlutter()
-                      .pushNamed(routeName: "/settings");
+                  context.routerGeneralLibFlutter().pushNamed(routeName: "/settings");
                 },
               ),
               SizedBox(

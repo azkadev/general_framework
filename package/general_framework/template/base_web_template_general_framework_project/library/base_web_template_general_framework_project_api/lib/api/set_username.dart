@@ -42,8 +42,7 @@ import 'package:base_web_template_general_framework_project_scheme/base_web_temp
 import 'package:base_web_template_general_framework_project_scheme/database_scheme/account_database.dart';
 import 'package:base_web_template_general_framework_project_scheme/respond_scheme/respond_scheme.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsetUsernameOk
-    on BaseWebTemplateGeneralFrameworkProjectApi {
+extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsetUsernameOk on BaseWebTemplateGeneralFrameworkProjectApi {
   FutureOr<Ok> api_setUsername({
     required InvokeRequestData invokeRequestData,
   }) async {
@@ -55,17 +54,14 @@ extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsetUsernameOk
     }();
 
     {
-      final Map? validation_username =
-          BaseWebTemplateGeneralFrameworkProjectSchemeValidation
-              .usernameValidation(username: username_parameters);
+      final Map? validation_username = BaseWebTemplateGeneralFrameworkProjectSchemeValidation.usernameValidation(username: username_parameters);
       if (validation_username != null) {
         return Ok(validation_username);
       }
     }
     // check username already exist or not
     {
-      final AccountDatabase? account_old = await generalFrameworkApiDatabase
-          .account_getAccountByUserName(username: username_parameters);
+      final AccountDatabase? account_old = await generalFrameworkApiDatabase.account_getAccountByUserName(username: username_parameters);
       if (account_old != null) {
         return Ok({
           "@type": "error",
@@ -73,8 +69,7 @@ extension BaseWebTemplateGeneralFrameworkProjectApiExtensionsetUsernameOk
         });
       }
     }
-    final bool is_update_succes =
-        await generalFrameworkApiDatabase.account_saveAccountByUserId(
+    final bool is_update_succes = await generalFrameworkApiDatabase.account_saveAccountByUserId(
       account_user_id: invokeRequestData.accountDatabase.id ?? 0,
       newAccountDatabase: AccountDatabase.create(
         username: username_parameters,

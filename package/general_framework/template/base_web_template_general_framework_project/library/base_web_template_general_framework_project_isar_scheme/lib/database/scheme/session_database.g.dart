@@ -45,8 +45,7 @@ part of 'session_database.dart';
 // ignore_for_file: type=lint
 
 extension GetSessionDatabaseCollection on Isar {
-  IsarCollection<int, SessionDatabase> get sessionDatabases =>
-      this.collection();
+  IsarCollection<int, SessionDatabase> get sessionDatabases => this.collection();
 }
 
 const SessionDatabaseSchema = IsarGeneratedSchema(
@@ -218,8 +217,7 @@ class _SessionDatabaseUpdateAllImpl implements _SessionDatabaseUpdateAll {
 extension SessionDatabaseUpdate on IsarCollection<int, SessionDatabase> {
   _SessionDatabaseUpdate get update => _SessionDatabaseUpdateImpl(this);
 
-  _SessionDatabaseUpdateAll get updateAll =>
-      _SessionDatabaseUpdateAllImpl(this);
+  _SessionDatabaseUpdateAll get updateAll => _SessionDatabaseUpdateAllImpl(this);
 }
 
 sealed class _SessionDatabaseQueryUpdate {
@@ -260,15 +258,12 @@ class _SessionDatabaseQueryUpdateImpl implements _SessionDatabaseQueryUpdate {
 }
 
 extension SessionDatabaseQueryUpdate on IsarQuery<SessionDatabase> {
-  _SessionDatabaseQueryUpdate get updateFirst =>
-      _SessionDatabaseQueryUpdateImpl(this, limit: 1);
+  _SessionDatabaseQueryUpdate get updateFirst => _SessionDatabaseQueryUpdateImpl(this, limit: 1);
 
-  _SessionDatabaseQueryUpdate get updateAll =>
-      _SessionDatabaseQueryUpdateImpl(this);
+  _SessionDatabaseQueryUpdate get updateAll => _SessionDatabaseQueryUpdateImpl(this);
 }
 
-class _SessionDatabaseQueryBuilderUpdateImpl
-    implements _SessionDatabaseQueryUpdate {
+class _SessionDatabaseQueryBuilderUpdateImpl implements _SessionDatabaseQueryUpdate {
   const _SessionDatabaseQueryBuilderUpdateImpl(this.query, {this.limit});
 
   final QueryBuilder<SessionDatabase, SessionDatabase, QOperations> query;
@@ -299,19 +294,14 @@ class _SessionDatabaseQueryBuilderUpdateImpl
   }
 }
 
-extension SessionDatabaseQueryBuilderUpdate
-    on QueryBuilder<SessionDatabase, SessionDatabase, QOperations> {
-  _SessionDatabaseQueryUpdate get updateFirst =>
-      _SessionDatabaseQueryBuilderUpdateImpl(this, limit: 1);
+extension SessionDatabaseQueryBuilderUpdate on QueryBuilder<SessionDatabase, SessionDatabase, QOperations> {
+  _SessionDatabaseQueryUpdate get updateFirst => _SessionDatabaseQueryBuilderUpdateImpl(this, limit: 1);
 
-  _SessionDatabaseQueryUpdate get updateAll =>
-      _SessionDatabaseQueryBuilderUpdateImpl(this);
+  _SessionDatabaseQueryUpdate get updateAll => _SessionDatabaseQueryBuilderUpdateImpl(this);
 }
 
-extension SessionDatabaseQueryFilter
-    on QueryBuilder<SessionDatabase, SessionDatabase, QFilterCondition> {
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      special_typeEqualTo(
+extension SessionDatabaseQueryFilter on QueryBuilder<SessionDatabase, SessionDatabase, QFilterCondition> {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> special_typeEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -326,8 +316,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      special_typeGreaterThan(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> special_typeGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -342,8 +331,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      special_typeGreaterThanOrEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> special_typeGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -358,8 +346,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      special_typeLessThan(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> special_typeLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -374,8 +361,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      special_typeLessThanOrEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> special_typeLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -390,8 +376,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      special_typeBetween(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> special_typeBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -408,8 +393,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      special_typeStartsWith(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> special_typeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -424,8 +408,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      special_typeEndsWith(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> special_typeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -440,8 +423,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      special_typeContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> special_typeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -453,8 +435,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      special_typeMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> special_typeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -466,8 +447,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      special_typeIsEmpty() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> special_typeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -478,8 +458,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      special_typeIsNotEmpty() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> special_typeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -490,8 +469,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      account_user_idEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> account_user_idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -504,8 +482,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      account_user_idGreaterThan(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> account_user_idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -518,8 +495,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      account_user_idGreaterThanOrEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> account_user_idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -532,8 +508,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      account_user_idLessThan(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> account_user_idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -546,8 +521,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      account_user_idLessThanOrEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> account_user_idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -560,8 +534,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      account_user_idBetween(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> account_user_idBetween(
     int lower,
     int upper,
   ) {
@@ -576,8 +549,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      tokenEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> tokenEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -592,8 +564,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      tokenGreaterThan(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> tokenGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -608,8 +579,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      tokenGreaterThanOrEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> tokenGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -624,8 +594,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      tokenLessThan(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> tokenLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -640,8 +609,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      tokenLessThanOrEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> tokenLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -656,8 +624,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      tokenBetween(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> tokenBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -674,8 +641,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      tokenStartsWith(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> tokenStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -690,8 +656,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      tokenEndsWith(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> tokenEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -706,8 +671,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      tokenContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> tokenContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -719,8 +683,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      tokenMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> tokenMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -732,8 +695,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      tokenIsEmpty() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> tokenIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -744,8 +706,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      tokenIsNotEmpty() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> tokenIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -756,8 +717,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      from_app_idEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> from_app_idEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -772,8 +732,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      from_app_idGreaterThan(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> from_app_idGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -788,8 +747,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      from_app_idGreaterThanOrEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> from_app_idGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -804,8 +762,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      from_app_idLessThan(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> from_app_idLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -820,8 +777,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      from_app_idLessThanOrEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> from_app_idLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -836,8 +792,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      from_app_idBetween(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> from_app_idBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -854,8 +809,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      from_app_idStartsWith(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> from_app_idStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -870,8 +824,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      from_app_idEndsWith(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> from_app_idEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -886,8 +839,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      from_app_idContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> from_app_idContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -899,8 +851,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      from_app_idMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> from_app_idMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -912,8 +863,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      from_app_idIsEmpty() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> from_app_idIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -924,8 +874,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      from_app_idIsNotEmpty() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> from_app_idIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -936,8 +885,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      owner_account_user_idEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> owner_account_user_idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -950,8 +898,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      owner_account_user_idGreaterThan(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> owner_account_user_idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -964,8 +911,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      owner_account_user_idGreaterThanOrEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> owner_account_user_idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -978,8 +924,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      owner_account_user_idLessThan(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> owner_account_user_idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -992,8 +937,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      owner_account_user_idLessThanOrEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> owner_account_user_idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1006,8 +950,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      owner_account_user_idBetween(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> owner_account_user_idBetween(
     int lower,
     int upper,
   ) {
@@ -1022,8 +965,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      is_testEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> is_testEqualTo(
     bool value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1036,8 +978,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      idEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1050,8 +991,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      idGreaterThan(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1064,8 +1004,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      idGreaterThanOrEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1078,8 +1017,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      idLessThan(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1092,8 +1030,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      idLessThanOrEqualTo(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1106,8 +1043,7 @@ extension SessionDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition>
-      idBetween(
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterFilterCondition> idBetween(
     int lower,
     int upper,
   ) {
@@ -1123,13 +1059,10 @@ extension SessionDatabaseQueryFilter
   }
 }
 
-extension SessionDatabaseQueryObject
-    on QueryBuilder<SessionDatabase, SessionDatabase, QFilterCondition> {}
+extension SessionDatabaseQueryObject on QueryBuilder<SessionDatabase, SessionDatabase, QFilterCondition> {}
 
-extension SessionDatabaseQuerySortBy
-    on QueryBuilder<SessionDatabase, SessionDatabase, QSortBy> {
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      sortBySpecial_type({bool caseSensitive = true}) {
+extension SessionDatabaseQuerySortBy on QueryBuilder<SessionDatabase, SessionDatabase, QSortBy> {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1138,8 +1071,7 @@ extension SessionDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      sortBySpecial_typeDesc({bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortBySpecial_typeDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1149,22 +1081,19 @@ extension SessionDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      sortByAccount_user_id() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortByAccount_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      sortByAccount_user_idDesc() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortByAccount_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortByToken(
-      {bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortByToken({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         3,
@@ -1173,8 +1102,7 @@ extension SessionDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortByTokenDesc(
-      {bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortByTokenDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         3,
@@ -1184,8 +1112,7 @@ extension SessionDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      sortByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         4,
@@ -1194,8 +1121,7 @@ extension SessionDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      sortByFrom_app_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         4,
@@ -1205,15 +1131,13 @@ extension SessionDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      sortByOwner_account_user_id() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      sortByOwner_account_user_idDesc() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, sort: Sort.desc);
     });
@@ -1225,8 +1149,7 @@ extension SessionDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      sortByIs_testDesc() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> sortByIs_testDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6, sort: Sort.desc);
     });
@@ -1245,73 +1168,62 @@ extension SessionDatabaseQuerySortBy
   }
 }
 
-extension SessionDatabaseQuerySortThenBy
-    on QueryBuilder<SessionDatabase, SessionDatabase, QSortThenBy> {
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      thenBySpecial_type({bool caseSensitive = true}) {
+extension SessionDatabaseQuerySortThenBy on QueryBuilder<SessionDatabase, SessionDatabase, QSortThenBy> {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      thenBySpecial_typeDesc({bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenBySpecial_typeDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      thenByAccount_user_id() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenByAccount_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      thenByAccount_user_idDesc() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenByAccount_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(2, sort: Sort.desc);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenByToken(
-      {bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenByToken({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenByTokenDesc(
-      {bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenByTokenDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      thenByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      thenByFrom_app_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      thenByOwner_account_user_id() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      thenByOwner_account_user_idDesc() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, sort: Sort.desc);
     });
@@ -1323,8 +1235,7 @@ extension SessionDatabaseQuerySortThenBy
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy>
-      thenByIs_testDesc() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterSortBy> thenByIs_testDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(6, sort: Sort.desc);
     });
@@ -1343,53 +1254,45 @@ extension SessionDatabaseQuerySortThenBy
   }
 }
 
-extension SessionDatabaseQueryWhereDistinct
-    on QueryBuilder<SessionDatabase, SessionDatabase, QDistinct> {
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct>
-      distinctBySpecial_type({bool caseSensitive = true}) {
+extension SessionDatabaseQueryWhereDistinct on QueryBuilder<SessionDatabase, SessionDatabase, QDistinct> {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct> distinctBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct>
-      distinctByAccount_user_id() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct> distinctByAccount_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(2);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct>
-      distinctByToken({bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct> distinctByToken({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(3, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct>
-      distinctByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct> distinctByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(4, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct>
-      distinctByOwner_account_user_id() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct> distinctByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(5);
     });
   }
 
-  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct>
-      distinctByIs_test() {
+  QueryBuilder<SessionDatabase, SessionDatabase, QAfterDistinct> distinctByIs_test() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(6);
     });
   }
 }
 
-extension SessionDatabaseQueryProperty1
-    on QueryBuilder<SessionDatabase, SessionDatabase, QProperty> {
+extension SessionDatabaseQueryProperty1 on QueryBuilder<SessionDatabase, SessionDatabase, QProperty> {
   QueryBuilder<SessionDatabase, String, QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
@@ -1414,8 +1317,7 @@ extension SessionDatabaseQueryProperty1
     });
   }
 
-  QueryBuilder<SessionDatabase, int, QAfterProperty>
-      owner_account_user_idProperty() {
+  QueryBuilder<SessionDatabase, int, QAfterProperty> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
@@ -1434,17 +1336,14 @@ extension SessionDatabaseQueryProperty1
   }
 }
 
-extension SessionDatabaseQueryProperty2<R>
-    on QueryBuilder<SessionDatabase, R, QAfterProperty> {
-  QueryBuilder<SessionDatabase, (R, String), QAfterProperty>
-      special_typeProperty() {
+extension SessionDatabaseQueryProperty2<R> on QueryBuilder<SessionDatabase, R, QAfterProperty> {
+  QueryBuilder<SessionDatabase, (R, String), QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<SessionDatabase, (R, int), QAfterProperty>
-      account_user_idProperty() {
+  QueryBuilder<SessionDatabase, (R, int), QAfterProperty> account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
@@ -1456,15 +1355,13 @@ extension SessionDatabaseQueryProperty2<R>
     });
   }
 
-  QueryBuilder<SessionDatabase, (R, String), QAfterProperty>
-      from_app_idProperty() {
+  QueryBuilder<SessionDatabase, (R, String), QAfterProperty> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
   }
 
-  QueryBuilder<SessionDatabase, (R, int), QAfterProperty>
-      owner_account_user_idProperty() {
+  QueryBuilder<SessionDatabase, (R, int), QAfterProperty> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
@@ -1483,17 +1380,14 @@ extension SessionDatabaseQueryProperty2<R>
   }
 }
 
-extension SessionDatabaseQueryProperty3<R1, R2>
-    on QueryBuilder<SessionDatabase, (R1, R2), QAfterProperty> {
-  QueryBuilder<SessionDatabase, (R1, R2, String), QOperations>
-      special_typeProperty() {
+extension SessionDatabaseQueryProperty3<R1, R2> on QueryBuilder<SessionDatabase, (R1, R2), QAfterProperty> {
+  QueryBuilder<SessionDatabase, (R1, R2, String), QOperations> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<SessionDatabase, (R1, R2, int), QOperations>
-      account_user_idProperty() {
+  QueryBuilder<SessionDatabase, (R1, R2, int), QOperations> account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
@@ -1505,15 +1399,13 @@ extension SessionDatabaseQueryProperty3<R1, R2>
     });
   }
 
-  QueryBuilder<SessionDatabase, (R1, R2, String), QOperations>
-      from_app_idProperty() {
+  QueryBuilder<SessionDatabase, (R1, R2, String), QOperations> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
   }
 
-  QueryBuilder<SessionDatabase, (R1, R2, int), QOperations>
-      owner_account_user_idProperty() {
+  QueryBuilder<SessionDatabase, (R1, R2, int), QOperations> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });

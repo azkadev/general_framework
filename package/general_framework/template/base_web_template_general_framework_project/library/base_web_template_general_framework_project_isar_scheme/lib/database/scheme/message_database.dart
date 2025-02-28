@@ -211,21 +211,7 @@ class MessageDatabase {
 
   /// return original data json
   static Map get defaultData {
-    return {
-      "@type": "messageDatabase",
-      "is_outgoing": false,
-      "message_id": 0,
-      "from_user_id": 0,
-      "text": "",
-      "date": 0,
-      "update_date": 0,
-      "status": "",
-      "chat_unique_id": "",
-      "from_app_id": "",
-      "owner_account_user_id": 0,
-      "is_test": false,
-      "id": 0
-    };
+    return {"@type": "messageDatabase", "is_outgoing": false, "message_id": 0, "from_user_id": 0, "text": "", "date": 0, "update_date": 0, "status": "", "chat_unique_id": "", "from_app_id": "", "owner_account_user_id": 0, "is_test": false, "id": 0};
   }
 
   static MessageDatabase create({

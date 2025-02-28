@@ -37,8 +37,7 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:base_web_template_general_framework_project_client_database/base_web_template_general_framework_project_client_database_core.dart';
 import 'package:base_web_template_general_framework_project_scheme/database_scheme/account_database.dart';
 
-extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionAccount
-    on BaseWebTemplateGeneralFrameworkProjectClientDatabase {
+extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionAccount on BaseWebTemplateGeneralFrameworkProjectClientDatabase {
   List<AccountDatabase> get coreDatabaseAccounts {
     final value = coreDatabaseValue();
     if (value["accounts"] is List == false) {
@@ -67,8 +66,7 @@ extension BaseWebTemplateGeneralFrameworkProjectClientDatabaseExtensionAccount
       if (element_username.isEmpty) {
         continue;
       }
-      if (RegExp("^(${RegExp.escape(username)})\$", caseSensitive: false)
-          .hasMatch(element_username)) {
+      if (RegExp("^(${RegExp.escape(username)})\$", caseSensitive: false).hasMatch(element_username)) {
         return element;
       }
     }

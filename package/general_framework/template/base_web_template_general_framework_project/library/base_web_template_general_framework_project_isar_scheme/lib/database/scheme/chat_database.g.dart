@@ -118,8 +118,7 @@ ChatDatabase deserializeChatDatabase(IsarReader reader) {
       if (reader.isNull) {
         object.chat_ids = const <int>[];
       } else {
-        final list =
-            List<int>.filled(length, -9223372036854775808, growable: true);
+        final list = List<int>.filled(length, -9223372036854775808, growable: true);
         for (var i = 0; i < length; i++) {
           list[i] = IsarCore.readLong(reader, i);
         }
@@ -149,8 +148,7 @@ dynamic deserializeChatDatabaseProp(IsarReader reader, int property) {
           if (reader.isNull) {
             return const <int>[];
           } else {
-            final list =
-                List<int>.filled(length, -9223372036854775808, growable: true);
+            final list = List<int>.filled(length, -9223372036854775808, growable: true);
             for (var i = 0; i < length; i++) {
               list[i] = IsarCore.readLong(reader, i);
             }
@@ -288,8 +286,7 @@ class _ChatDatabaseQueryUpdateImpl implements _ChatDatabaseQueryUpdate {
 }
 
 extension ChatDatabaseQueryUpdate on IsarQuery<ChatDatabase> {
-  _ChatDatabaseQueryUpdate get updateFirst =>
-      _ChatDatabaseQueryUpdateImpl(this, limit: 1);
+  _ChatDatabaseQueryUpdate get updateFirst => _ChatDatabaseQueryUpdateImpl(this, limit: 1);
 
   _ChatDatabaseQueryUpdate get updateAll => _ChatDatabaseQueryUpdateImpl(this);
 }
@@ -323,19 +320,14 @@ class _ChatDatabaseQueryBuilderUpdateImpl implements _ChatDatabaseQueryUpdate {
   }
 }
 
-extension ChatDatabaseQueryBuilderUpdate
-    on QueryBuilder<ChatDatabase, ChatDatabase, QOperations> {
-  _ChatDatabaseQueryUpdate get updateFirst =>
-      _ChatDatabaseQueryBuilderUpdateImpl(this, limit: 1);
+extension ChatDatabaseQueryBuilderUpdate on QueryBuilder<ChatDatabase, ChatDatabase, QOperations> {
+  _ChatDatabaseQueryUpdate get updateFirst => _ChatDatabaseQueryBuilderUpdateImpl(this, limit: 1);
 
-  _ChatDatabaseQueryUpdate get updateAll =>
-      _ChatDatabaseQueryBuilderUpdateImpl(this);
+  _ChatDatabaseQueryUpdate get updateAll => _ChatDatabaseQueryBuilderUpdateImpl(this);
 }
 
-extension ChatDatabaseQueryFilter
-    on QueryBuilder<ChatDatabase, ChatDatabase, QFilterCondition> {
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      special_typeEqualTo(
+extension ChatDatabaseQueryFilter on QueryBuilder<ChatDatabase, ChatDatabase, QFilterCondition> {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> special_typeEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -350,8 +342,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      special_typeGreaterThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> special_typeGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -366,8 +357,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      special_typeGreaterThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> special_typeGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -382,8 +372,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      special_typeLessThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> special_typeLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -398,8 +387,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      special_typeLessThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> special_typeLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -414,8 +402,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      special_typeBetween(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> special_typeBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -432,8 +419,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      special_typeStartsWith(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> special_typeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -448,8 +434,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      special_typeEndsWith(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> special_typeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -464,8 +449,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      special_typeContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> special_typeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -477,8 +461,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      special_typeMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> special_typeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -490,8 +473,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      special_typeIsEmpty() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> special_typeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -502,8 +484,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      special_typeIsNotEmpty() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> special_typeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -514,8 +495,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_idsElementEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_idsElementEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -528,8 +508,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_idsElementGreaterThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_idsElementGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -542,8 +521,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_idsElementGreaterThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_idsElementGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -556,8 +534,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_idsElementLessThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_idsElementLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -570,8 +547,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_idsElementLessThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_idsElementLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -584,8 +560,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_idsElementBetween(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_idsElementBetween(
     int lower,
     int upper,
   ) {
@@ -600,13 +575,11 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_idsIsEmpty() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_idsIsEmpty() {
     return not().chat_idsIsNotEmpty();
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_idsIsNotEmpty() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_idsIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterOrEqualCondition(property: 2, value: null),
@@ -614,8 +587,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_unique_idEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_unique_idEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -630,8 +602,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_unique_idGreaterThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_unique_idGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -646,8 +617,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_unique_idGreaterThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_unique_idGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -662,8 +632,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_unique_idLessThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_unique_idLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -678,8 +647,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_unique_idLessThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_unique_idLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -694,8 +662,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_unique_idBetween(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_unique_idBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -712,8 +679,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_unique_idStartsWith(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_unique_idStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -728,8 +694,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_unique_idEndsWith(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_unique_idEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -744,8 +709,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_unique_idContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_unique_idContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -757,8 +721,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_unique_idMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_unique_idMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -770,8 +733,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_unique_idIsEmpty() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_unique_idIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -782,8 +744,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      chat_unique_idIsNotEmpty() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> chat_unique_idIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -794,8 +755,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      from_app_idEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> from_app_idEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -810,8 +770,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      from_app_idGreaterThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> from_app_idGreaterThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -826,8 +785,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      from_app_idGreaterThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> from_app_idGreaterThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -842,8 +800,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      from_app_idLessThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> from_app_idLessThan(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -858,8 +815,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      from_app_idLessThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> from_app_idLessThanOrEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -874,8 +830,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      from_app_idBetween(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> from_app_idBetween(
     String lower,
     String upper, {
     bool caseSensitive = true,
@@ -892,8 +847,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      from_app_idStartsWith(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> from_app_idStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -908,8 +862,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      from_app_idEndsWith(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> from_app_idEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -924,8 +877,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      from_app_idContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> from_app_idContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         ContainsCondition(
@@ -937,8 +889,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      from_app_idMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> from_app_idMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         MatchesCondition(
@@ -950,8 +901,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      from_app_idIsEmpty() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> from_app_idIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const EqualCondition(
@@ -962,8 +912,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      from_app_idIsNotEmpty() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> from_app_idIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         const GreaterCondition(
@@ -974,8 +923,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      owner_account_user_idEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> owner_account_user_idEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -988,8 +936,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      owner_account_user_idGreaterThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> owner_account_user_idGreaterThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1002,8 +949,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      owner_account_user_idGreaterThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> owner_account_user_idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1016,8 +962,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      owner_account_user_idLessThan(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> owner_account_user_idLessThan(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1030,8 +975,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      owner_account_user_idLessThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> owner_account_user_idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1044,8 +988,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      owner_account_user_idBetween(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> owner_account_user_idBetween(
     int lower,
     int upper,
   ) {
@@ -1060,8 +1003,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      is_testEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> is_testEqualTo(
     bool value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1100,8 +1042,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      idGreaterThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> idGreaterThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1127,8 +1068,7 @@ extension ChatDatabaseQueryFilter
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition>
-      idLessThanOrEqualTo(
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterFilterCondition> idLessThanOrEqualTo(
     int value,
   ) {
     return QueryBuilder.apply(this, (query) {
@@ -1157,13 +1097,10 @@ extension ChatDatabaseQueryFilter
   }
 }
 
-extension ChatDatabaseQueryObject
-    on QueryBuilder<ChatDatabase, ChatDatabase, QFilterCondition> {}
+extension ChatDatabaseQueryObject on QueryBuilder<ChatDatabase, ChatDatabase, QFilterCondition> {}
 
-extension ChatDatabaseQuerySortBy
-    on QueryBuilder<ChatDatabase, ChatDatabase, QSortBy> {
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortBySpecial_type(
-      {bool caseSensitive = true}) {
+extension ChatDatabaseQuerySortBy on QueryBuilder<ChatDatabase, ChatDatabase, QSortBy> {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1172,8 +1109,7 @@ extension ChatDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortBySpecial_typeDesc(
-      {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortBySpecial_typeDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         1,
@@ -1183,8 +1119,7 @@ extension ChatDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByChat_unique_id(
-      {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByChat_unique_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         3,
@@ -1193,8 +1128,7 @@ extension ChatDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
-      sortByChat_unique_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByChat_unique_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         3,
@@ -1204,8 +1138,7 @@ extension ChatDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByFrom_app_id(
-      {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         4,
@@ -1214,8 +1147,7 @@ extension ChatDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByFrom_app_idDesc(
-      {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(
         4,
@@ -1225,15 +1157,13 @@ extension ChatDatabaseQuerySortBy
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
-      sortByOwner_account_user_id() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5);
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
-      sortByOwner_account_user_idDesc() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> sortByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, sort: Sort.desc);
     });
@@ -1264,59 +1194,50 @@ extension ChatDatabaseQuerySortBy
   }
 }
 
-extension ChatDatabaseQuerySortThenBy
-    on QueryBuilder<ChatDatabase, ChatDatabase, QSortThenBy> {
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenBySpecial_type(
-      {bool caseSensitive = true}) {
+extension ChatDatabaseQuerySortThenBy on QueryBuilder<ChatDatabase, ChatDatabase, QSortThenBy> {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenBySpecial_typeDesc(
-      {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenBySpecial_typeDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(1, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByChat_unique_id(
-      {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByChat_unique_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
-      thenByChat_unique_idDesc({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByChat_unique_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(3, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByFrom_app_id(
-      {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByFrom_app_idDesc(
-      {bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByFrom_app_idDesc({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(4, sort: Sort.desc, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
-      thenByOwner_account_user_id() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5);
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy>
-      thenByOwner_account_user_idDesc() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterSortBy> thenByOwner_account_user_idDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(5, sort: Sort.desc);
     });
@@ -1347,38 +1268,32 @@ extension ChatDatabaseQuerySortThenBy
   }
 }
 
-extension ChatDatabaseQueryWhereDistinct
-    on QueryBuilder<ChatDatabase, ChatDatabase, QDistinct> {
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
-      distinctBySpecial_type({bool caseSensitive = true}) {
+extension ChatDatabaseQueryWhereDistinct on QueryBuilder<ChatDatabase, ChatDatabase, QDistinct> {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct> distinctBySpecial_type({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(1, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
-      distinctByChat_ids() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct> distinctByChat_ids() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(2);
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
-      distinctByChat_unique_id({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct> distinctByChat_unique_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(3, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
-      distinctByFrom_app_id({bool caseSensitive = true}) {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct> distinctByFrom_app_id({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(4, caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct>
-      distinctByOwner_account_user_id() {
+  QueryBuilder<ChatDatabase, ChatDatabase, QAfterDistinct> distinctByOwner_account_user_id() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(5);
     });
@@ -1391,8 +1306,7 @@ extension ChatDatabaseQueryWhereDistinct
   }
 }
 
-extension ChatDatabaseQueryProperty1
-    on QueryBuilder<ChatDatabase, ChatDatabase, QProperty> {
+extension ChatDatabaseQueryProperty1 on QueryBuilder<ChatDatabase, ChatDatabase, QProperty> {
   QueryBuilder<ChatDatabase, String, QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
@@ -1417,8 +1331,7 @@ extension ChatDatabaseQueryProperty1
     });
   }
 
-  QueryBuilder<ChatDatabase, int, QAfterProperty>
-      owner_account_user_idProperty() {
+  QueryBuilder<ChatDatabase, int, QAfterProperty> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
@@ -1437,38 +1350,32 @@ extension ChatDatabaseQueryProperty1
   }
 }
 
-extension ChatDatabaseQueryProperty2<R>
-    on QueryBuilder<ChatDatabase, R, QAfterProperty> {
-  QueryBuilder<ChatDatabase, (R, String), QAfterProperty>
-      special_typeProperty() {
+extension ChatDatabaseQueryProperty2<R> on QueryBuilder<ChatDatabase, R, QAfterProperty> {
+  QueryBuilder<ChatDatabase, (R, String), QAfterProperty> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<ChatDatabase, (R, List<int>), QAfterProperty>
-      chat_idsProperty() {
+  QueryBuilder<ChatDatabase, (R, List<int>), QAfterProperty> chat_idsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<ChatDatabase, (R, String), QAfterProperty>
-      chat_unique_idProperty() {
+  QueryBuilder<ChatDatabase, (R, String), QAfterProperty> chat_unique_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<ChatDatabase, (R, String), QAfterProperty>
-      from_app_idProperty() {
+  QueryBuilder<ChatDatabase, (R, String), QAfterProperty> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
   }
 
-  QueryBuilder<ChatDatabase, (R, int), QAfterProperty>
-      owner_account_user_idProperty() {
+  QueryBuilder<ChatDatabase, (R, int), QAfterProperty> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });
@@ -1487,38 +1394,32 @@ extension ChatDatabaseQueryProperty2<R>
   }
 }
 
-extension ChatDatabaseQueryProperty3<R1, R2>
-    on QueryBuilder<ChatDatabase, (R1, R2), QAfterProperty> {
-  QueryBuilder<ChatDatabase, (R1, R2, String), QOperations>
-      special_typeProperty() {
+extension ChatDatabaseQueryProperty3<R1, R2> on QueryBuilder<ChatDatabase, (R1, R2), QAfterProperty> {
+  QueryBuilder<ChatDatabase, (R1, R2, String), QOperations> special_typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(1);
     });
   }
 
-  QueryBuilder<ChatDatabase, (R1, R2, List<int>), QOperations>
-      chat_idsProperty() {
+  QueryBuilder<ChatDatabase, (R1, R2, List<int>), QOperations> chat_idsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
     });
   }
 
-  QueryBuilder<ChatDatabase, (R1, R2, String), QOperations>
-      chat_unique_idProperty() {
+  QueryBuilder<ChatDatabase, (R1, R2, String), QOperations> chat_unique_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(3);
     });
   }
 
-  QueryBuilder<ChatDatabase, (R1, R2, String), QOperations>
-      from_app_idProperty() {
+  QueryBuilder<ChatDatabase, (R1, R2, String), QOperations> from_app_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(4);
     });
   }
 
-  QueryBuilder<ChatDatabase, (R1, R2, int), QOperations>
-      owner_account_user_idProperty() {
+  QueryBuilder<ChatDatabase, (R1, R2, int), QOperations> owner_account_user_idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(5);
     });

@@ -55,14 +55,10 @@ class SignPage extends StatefulWidget {
 
 class _SignPageState extends State<SignPage> {
   SignPageType signPageType = SignPageType.sign_in;
-  final TextEditingController username_text_editing_controller =
-      TextEditingController();
-  final TextEditingController password_text_editing_controller =
-      TextEditingController();
-  final TextEditingController new_password_text_editing_controller =
-      TextEditingController();
-  final TextEditingController secret_words_text_editing_controller =
-      TextEditingController();
+  final TextEditingController username_text_editing_controller = TextEditingController();
+  final TextEditingController password_text_editing_controller = TextEditingController();
+  final TextEditingController new_password_text_editing_controller = TextEditingController();
+  final TextEditingController secret_words_text_editing_controller = TextEditingController();
 
   @override
   void initState() {
@@ -91,9 +87,7 @@ class _SignPageState extends State<SignPage> {
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            minHeight: context.height -
-                context.mediaQueryData.padding.top -
-                context.mediaQueryData.padding.bottom,
+            minHeight: context.height - context.mediaQueryData.padding.top - context.mediaQueryData.padding.bottom,
             minWidth: context.width,
           ),
           child: Column(
@@ -118,10 +112,7 @@ class _SignPageState extends State<SignPage> {
                   onSignPressed();
                 },
                 child: Text(
-                  signPageType.name
-                      .split("_")
-                      .map((e) => e.toLowerCase().toUpperCaseFirstData())
-                      .join(" "),
+                  signPageType.name.split("_").map((e) => e.toLowerCase().toUpperCaseFirstData()).join(" "),
                 ),
               ),
               SizedBox(
@@ -147,10 +138,7 @@ class _SignPageState extends State<SignPage> {
   }
 
   Widget passwordFormWidget() {
-    return textFormFieldWidget(
-        controller: password_text_editing_controller,
-        labelText: "Password",
-        hintText: "password 121301301 0");
+    return textFormFieldWidget(controller: password_text_editing_controller, labelText: "Password", hintText: "password 121301301 0");
   }
 
   Widget newPasswordFormWidget() {
