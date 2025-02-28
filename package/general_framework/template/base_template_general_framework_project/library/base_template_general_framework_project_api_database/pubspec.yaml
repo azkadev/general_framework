@@ -10,9 +10,9 @@ dependencies:
   base_template_general_framework_project_secret:
     path: '../base_template_general_framework_project_secret'
   collection: '^1.19.0'
-  general_lib: '^0.0.65'
+  general_lib: '^0.0.66'
   path: '^1.9.0'
-  http: '^1.2.2'
+  http: '^1.3.0'
   general_framework: '^0.0.25'
   yet_another_json_isolate: '^2.0.0'
   supabase: '^2.6.2'

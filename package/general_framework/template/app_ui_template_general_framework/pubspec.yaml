@@ -9,7 +9,7 @@ dependencies:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
   general_lib_flutter: '^0.0.41'
-  general_lib: '^0.0.65'
+  general_lib: '^0.0.66'
   simulate: '^0.0.52'
   general_framework: '^0.0.25'
 dev_dependencies:
