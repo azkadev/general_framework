@@ -9,7 +9,7 @@ dependencies:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
   path: '^1.9.0'
-  general_lib: '^0.0.66'
+  general_lib: '^0.0.67'
   base_web_template_general_framework_project_flutter:
     path: '../'
   base_web_template_general_framework_project_client:
@@ -24,7 +24,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 dependency_overrides:
-  pointycastle: '3.8.0'
+  pointycastle: '4.0.0'
   mime: '^2.0.0'
 funding:
   - 'https://github.com/sponsors/azkadev'

@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: 'flutter'
   path: '^1.9.0'
-  general_lib: '^0.0.66'
+  general_lib: '^0.0.67'
   general_lib_flutter: '^0.0.41'
   base_template_general_framework_project_scheme:
     path: '../base_template_general_framework_project_scheme'
@@ -26,7 +26,7 @@ dev_dependencies:
     sdk: 'flutter'
   flutter_lints: '^5.0.0'
 dependency_overrides:
-  pointycastle: '3.8.0'
+  pointycastle: '4.0.0'
   mime: '^2.0.0'
 funding:
   - 'https://github.com/sponsors/azkadev'

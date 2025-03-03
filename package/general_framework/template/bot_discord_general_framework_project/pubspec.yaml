@@ -5,14 +5,14 @@ environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
   path: '^1.9.0'
-  general_lib: '^0.0.66'
-  server_universe: '^0.0.36'
+  general_lib: '^0.0.67'
+  server_universe: '^0.0.37'
   mason_logger: '^0.3.1'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
 dependency_overrides:
-  pointycastle: '3.8.0'
+  pointycastle: '4.0.0'
   mime: '^2.0.0'
 funding:
   - 'https://github.com/sponsors/azkadev'
