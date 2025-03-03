@@ -41,40 +41,38 @@ import 'package:general_framework/schemes/api_schemes.dart';
 import 'package:general_framework/schemes/schemes.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:path/path.dart' as path;
-// import 'package:io_universe/io_universe.dart';
-import "extension.dart";
 
 void main(List<String> args) async {
   {
     final Directory directory_lib_scheme =
         Directory(path.join(Directory.current.path, "lib", "scheme"))
-            .recreate();
+            .generalLibUtilsDangerRecreate();
 
     ///
 
     await jsonToScripts(
       api_schemes,
       directory: Directory(path.join(directory_lib_scheme.path, "api_scheme"))
-          .recreate(),
+          .generalLibUtilsDangerRecreate(),
     );
     await jsonToScripts(
       schemes,
-      directory:
-          Directory(path.join(directory_lib_scheme.path, "scheme")).recreate(),
+      directory: Directory(path.join(directory_lib_scheme.path, "scheme"))
+          .generalLibUtilsDangerRecreate(),
     );
   }
 
   {
     final Directory directory_lib_scheme =
         Directory(path.join(Directory.current.path, "lib", "general", "scheme"))
-            .recreate();
+            .generalLibUtilsDangerRecreate();
 
     ///
 
     await jsonToScripts(
       general_api_schemes,
       directory: Directory(path.join(directory_lib_scheme.path, "api_scheme"))
-          .recreate(),
+          .generalLibUtilsDangerRecreate(),
     );
   }
 }

@@ -42,21 +42,20 @@ import 'package:general_lib/general_lib.dart';
 import "package:path/path.dart" as path;
 import 'package:translate_client/translate_client.dart';
 import 'package:io_universe/io_universe.dart';
-import "extension.dart";
 
 void main(List<String> args) async {
   final directory_lib_language = Directory(path.join(
     Directory.current.path,
     "lib",
     "language",
-  )).recreate();
+  )).generalLibUtilsDangerRecreate();
   await jsonToLanguageScript(
     language_raw: general_framework_language_scheme,
     default_language_code_id: "id",
     directory: Directory(path.join(
       directory_lib_language.path,
       "general_framework",
-    )).recreate(),
+    )).generalLibUtilsDangerRecreate(),
     is_translate: false,
     onData:
         (String origin_data, language_code_id, default_language_code_id) async {

@@ -3,7 +3,7 @@ linter:
   rules:
     - public_member_api_docs
 analyzer:
-  exclude: 
+  exclude:
     - template/
     - dev/
     - test
