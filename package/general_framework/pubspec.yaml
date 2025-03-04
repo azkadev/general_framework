@@ -4,6 +4,7 @@ version: '0.0.28'
 homepage: 'https://github.com/azkadev/general_framework'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://azkadev.github.io/general_framework/'
+publish_to: none
 funding:
   - 'https://github.com/sponsors/azkadev'
 platforms:
@@ -38,7 +39,7 @@ dependencies:
   html: '^0.15.5'
   translate_client: '^0.0.11'
   window_manager: '^0.4.3'
-  general_system_device: '^0.0.54'
+  general_system_device: '^0.0.54' 
 dependency_overrides:
   pointycastle: '4.0.0'
   mime: '^2.0.0'
