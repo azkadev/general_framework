@@ -91,8 +91,7 @@ class MarkdownCustomTextNodeGeneralFramework extends ElementNode {
     }
     final spans = parseHtml(
       m.Text(text),
-      visitor:
-          WidgetVisitor(config: visitor.config, generators: visitor.generators),
+      visitor: WidgetVisitor(config: visitor.config, generators: visitor.generators),
       parentStyle: parentStyle,
     );
     for (var element in spans) {

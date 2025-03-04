@@ -97,9 +97,7 @@ class _Divider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.only(top: divider.space),
-        child: Divider(height: divider.height, color: divider.color));
+    return Container(margin: EdgeInsets.only(top: divider.space), child: Divider(height: divider.height, color: divider.color));
   }
 }
 
@@ -116,18 +114,11 @@ class HeadingDivider {
 
   /// UncompleteDocumentation
 
-  HeadingDivider(
-      {this.space = 4.8,
-      this.color = const Color(0xFFd7dde3),
-      this.height = 1.0});
+  HeadingDivider({this.space = 4.8, this.color = const Color(0xFFd7dde3), this.height = 1.0});
 
   /// UncompleteDocumentation
 
-  HeadingDivider copy({Color? color, double? space, double? height}) =>
-      HeadingDivider(
-          color: color ?? this.color,
-          space: space ?? this.space,
-          height: height ?? this.height);
+  HeadingDivider copy({Color? color, double? space, double? height}) => HeadingDivider(color: color ?? this.color, space: space ?? this.space, height: height ?? this.height);
 
   /// UncompleteDocumentation
   static HeadingDivider h1 = HeadingDivider();

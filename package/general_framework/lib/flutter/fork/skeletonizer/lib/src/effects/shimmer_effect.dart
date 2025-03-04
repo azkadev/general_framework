@@ -133,25 +133,10 @@ class _ShimmerEffect extends ShimmerEffect {
   final TileMode tileMode = TileMode.clamp;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is _ShimmerEffect &&
-          runtimeType == other.runtimeType &&
-          baseColor == other.baseColor &&
-          highlightColor == other.highlightColor &&
-          begin == other.begin &&
-          duration == other.duration &&
-          end == other.end &&
-          tileMode == other.tileMode;
+  bool operator ==(Object other) => identical(this, other) || other is _ShimmerEffect && runtimeType == other.runtimeType && baseColor == other.baseColor && highlightColor == other.highlightColor && begin == other.begin && duration == other.duration && end == other.end && tileMode == other.tileMode;
 
   @override
-  int get hashCode =>
-      baseColor.hashCode ^
-      highlightColor.hashCode ^
-      begin.hashCode ^
-      end.hashCode ^
-      tileMode.hashCode ^
-      duration.hashCode;
+  int get hashCode => baseColor.hashCode ^ highlightColor.hashCode ^ begin.hashCode ^ end.hashCode ^ tileMode.hashCode ^ duration.hashCode;
 }
 
 class _RawShimmerEffect extends ShimmerEffect {
@@ -181,25 +166,10 @@ class _RawShimmerEffect extends ShimmerEffect {
   }) : super._();
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is _RawShimmerEffect &&
-          runtimeType == other.runtimeType &&
-          colors == other.colors &&
-          stops == other.stops &&
-          begin == other.begin &&
-          end == other.end &&
-          duration == other.duration &&
-          tileMode == other.tileMode;
+  bool operator ==(Object other) => identical(this, other) || other is _RawShimmerEffect && runtimeType == other.runtimeType && colors == other.colors && stops == other.stops && begin == other.begin && end == other.end && duration == other.duration && tileMode == other.tileMode;
 
   @override
-  int get hashCode =>
-      colors.hashCode ^
-      stops.hashCode ^
-      begin.hashCode ^
-      end.hashCode ^
-      tileMode.hashCode ^
-      duration.hashCode;
+  int get hashCode => colors.hashCode ^ stops.hashCode ^ begin.hashCode ^ end.hashCode ^ tileMode.hashCode ^ duration.hashCode;
 }
 
 class _SlidingGradientTransform extends GradientTransform {
@@ -216,8 +186,7 @@ class _SlidingGradientTransform extends GradientTransform {
     if (isVertical) {
       return Matrix4.translationValues(0.0, bounds.height * offset, 0.0);
     }
-    final resolvedOffset =
-        textDirection == TextDirection.rtl ? -offset : offset;
+    final resolvedOffset = textDirection == TextDirection.rtl ? -offset : offset;
     return Matrix4.translationValues(bounds.width * resolvedOffset, 0.0, 0.0);
   }
 }

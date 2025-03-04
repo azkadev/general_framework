@@ -43,8 +43,7 @@ import 'package:path/path.dart' as path;
 abstract class GeneralServicePublicClientBaseCore {}
 
 /// UncompleteDocumentation
-abstract class GeneralServicePublicClient<T extends GeneralFrameworkClient>
-    implements GeneralServicePublicClientBaseCore {
+abstract class GeneralServicePublicClient<T extends GeneralFrameworkClient> implements GeneralServicePublicClientBaseCore {
   /// UncompleteDocumentation
   final GeneralFrameworkClientFunction<T> generalFrameworkClientFunction;
 
@@ -74,8 +73,7 @@ abstract class GeneralServicePublicClient<T extends GeneralFrameworkClient>
 
   /// UncompleteDocumentation
   Directory get directoryDatabase {
-    final Directory directory = Directory(
-        path.join(directoryBase.path, "general_services_public_database"));
+    final Directory directory = Directory(path.join(directoryBase.path, "general_services_public_database"));
 
     /// web is not support crete diectory so return
     if (Dart.isWeb) {
@@ -89,8 +87,7 @@ abstract class GeneralServicePublicClient<T extends GeneralFrameworkClient>
 
   /// UncompleteDocumentation
   Directory get directoryFiles {
-    final Directory directory = Directory(
-        path.join(directoryBase.path, "general_services_public_files"));
+    final Directory directory = Directory(path.join(directoryBase.path, "general_services_public_files"));
 
     /// web is not support crete diectory so return
     if (Dart.isWeb) {

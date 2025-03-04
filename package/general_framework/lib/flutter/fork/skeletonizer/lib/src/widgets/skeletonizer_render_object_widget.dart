@@ -37,8 +37,7 @@ import 'package:general_framework/flutter/fork/skeletonizer/lib/src/rendering/re
 import 'package:general_framework/flutter/fork/skeletonizer/lib/src/widgets/skeletonizer.dart';
 
 /// Builds a [RenderSkeletonizerGeneralFramework]
-class SkeletonizerGeneralFrameworkRenderObjectWidget
-    extends SingleChildRenderObjectWidget {
+class SkeletonizerGeneralFrameworkRenderObjectWidget extends SingleChildRenderObjectWidget {
   /// The default constructor
   const SkeletonizerGeneralFrameworkRenderObjectWidget({
     super.key,
@@ -52,9 +51,7 @@ class SkeletonizerGeneralFrameworkRenderObjectWidget
   @override
   RenderSkeletonizerGeneralFramework createRenderObject(BuildContext context) {
     if (data.isInsideZone) {
-      final shouldRecreateShader =
-          SkeletonizerGeneralFramework.of(context).config.effect !=
-              data.config.effect;
+      final shouldRecreateShader = SkeletonizerGeneralFramework.of(context).config.effect != data.config.effect;
       return ZonedRenderSkeletonizerGeneralFramework(
         animationValue: data.animationValue,
         brightness: data.brightness,
@@ -91,8 +88,7 @@ class SkeletonizerGeneralFrameworkRenderObjectWidget
 }
 
 /// Builds a [RenderSkeletonizerGeneralFramework]
-class SliverSkeletonizerGeneralFrameworkRenderObjectWidget
-    extends SingleChildRenderObjectWidget {
+class SliverSkeletonizerGeneralFrameworkRenderObjectWidget extends SingleChildRenderObjectWidget {
   /// The default constructor
   const SliverSkeletonizerGeneralFrameworkRenderObjectWidget({
     super.key,
@@ -104,12 +100,9 @@ class SliverSkeletonizerGeneralFrameworkRenderObjectWidget
   final SkeletonizerGeneralFrameworkBuildData data;
 
   @override
-  RenderSliverSkeletonizerGeneralFramework createRenderObject(
-      BuildContext context) {
+  RenderSliverSkeletonizerGeneralFramework createRenderObject(BuildContext context) {
     if (data.isInsideZone) {
-      final shouldRecreateShader =
-          SkeletonizerGeneralFramework.of(context).config.effect !=
-              data.config.effect;
+      final shouldRecreateShader = SkeletonizerGeneralFramework.of(context).config.effect != data.config.effect;
       return ZonedSliverRenderSkeletonizerGeneralFramework(
         animationValue: data.animationValue,
         brightness: data.brightness,

@@ -61,18 +61,10 @@ class GeneralFrameworkDocumentation extends JsonScheme {
           "title": "",
           "description": "",
           "sidebars": [
-            {
-              "@type": "generalFrameworkDocumentationDocumentationSideBar",
-              "title": "",
-              "navigate_content_id": "content"
-            }
+            {"@type": "generalFrameworkDocumentationDocumentationSideBar", "title": "", "navigate_content_id": "content"}
           ],
           "contents": [
-            {
-              "@type": "generalFrameworkDocumentationDocumentationsContent",
-              "content_id": "",
-              "content": ""
-            }
+            {"@type": "generalFrameworkDocumentationDocumentationsContent", "content_id": "", "content": ""}
           ]
         }
       ],
@@ -83,11 +75,7 @@ class GeneralFrameworkDocumentation extends JsonScheme {
             "@type": "generalFrameworkDocumentationFooterData",
             "title": "",
             "footer": [
-              {
-                "@type": "generalFrameworkDocumentationFooterSubData",
-                "text": "",
-                "url": ""
-              }
+              {"@type": "generalFrameworkDocumentationFooterSubData", "text": "", "url": ""}
             ]
           }
         ]
@@ -228,10 +216,7 @@ class GeneralFrameworkDocumentation extends JsonScheme {
       if (rawData["documentations"] is List == false) {
         return [];
       }
-      return (rawData["documentations"] as List)
-          .map((e) => GeneralFrameworkDocumentationDocumentation(e as Map))
-          .toList()
-          .cast<GeneralFrameworkDocumentationDocumentation>();
+      return (rawData["documentations"] as List).map((e) => GeneralFrameworkDocumentationDocumentation(e as Map)).toList().cast<GeneralFrameworkDocumentationDocumentation>();
     } catch (e) {
       return [];
     }
@@ -279,23 +264,19 @@ class GeneralFrameworkDocumentation extends JsonScheme {
       "description": description,
       "content": content,
       "author_url_social_medias": author_url_social_medias,
-      "documentations":
-          (documentations != null) ? documentations.toJson() : null,
+      "documentations": (documentations != null) ? documentations.toJson() : null,
       "footer": (footer != null) ? footer.toJson() : null,
     };
 
-    generalFrameworkDocumentation_data_create_json
-        .removeWhere((key, value) => value == null);
+    generalFrameworkDocumentation_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (generalFrameworkDocumentation_data_create_json.containsKey(key) ==
-            false) {
+        if (generalFrameworkDocumentation_data_create_json.containsKey(key) == false) {
           generalFrameworkDocumentation_data_create_json[key] = value;
         }
       });
     }
-    return GeneralFrameworkDocumentation(
-        generalFrameworkDocumentation_data_create_json);
+    return GeneralFrameworkDocumentation(generalFrameworkDocumentation_data_create_json);
   }
 }

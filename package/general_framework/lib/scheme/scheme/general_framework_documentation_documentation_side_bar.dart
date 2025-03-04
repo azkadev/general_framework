@@ -44,11 +44,7 @@ class GeneralFrameworkDocumentationDocumentationSideBar extends JsonScheme {
   /// return default data
   ///
   static Map get defaultData {
-    return {
-      "@type": "generalFrameworkDocumentationDocumentationSideBar",
-      "title": "",
-      "navigate_content_id": "content"
-    };
+    return {"@type": "generalFrameworkDocumentationDocumentationSideBar", "title": "", "navigate_content_id": "content"};
   }
 
   /// check data
@@ -131,27 +127,21 @@ class GeneralFrameworkDocumentationDocumentationSideBar extends JsonScheme {
     String? navigate_content_id,
   }) {
     // GeneralFrameworkDocumentationDocumentationSideBar generalFrameworkDocumentationDocumentationSideBar = GeneralFrameworkDocumentationDocumentationSideBar({
-    final Map
-        generalFrameworkDocumentationDocumentationSideBar_data_create_json = {
+    final Map generalFrameworkDocumentationDocumentationSideBar_data_create_json = {
       "@type": special_type,
       "title": title,
       "navigate_content_id": navigate_content_id,
     };
 
-    generalFrameworkDocumentationDocumentationSideBar_data_create_json
-        .removeWhere((key, value) => value == null);
+    generalFrameworkDocumentationDocumentationSideBar_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (generalFrameworkDocumentationDocumentationSideBar_data_create_json
-                .containsKey(key) ==
-            false) {
-          generalFrameworkDocumentationDocumentationSideBar_data_create_json[
-              key] = value;
+        if (generalFrameworkDocumentationDocumentationSideBar_data_create_json.containsKey(key) == false) {
+          generalFrameworkDocumentationDocumentationSideBar_data_create_json[key] = value;
         }
       });
     }
-    return GeneralFrameworkDocumentationDocumentationSideBar(
-        generalFrameworkDocumentationDocumentationSideBar_data_create_json);
+    return GeneralFrameworkDocumentationDocumentationSideBar(generalFrameworkDocumentationDocumentationSideBar_data_create_json);
   }
 }

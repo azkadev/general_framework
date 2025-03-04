@@ -37,8 +37,7 @@ import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 /// UncompleteDocumentation
-class MaterialOutlineGeneralFrameworkBuilderGeneralWidget
-    extends StatelessWidget {
+class MaterialOutlineGeneralFrameworkBuilderGeneralWidget extends StatelessWidget {
   /// UncompleteDocumentation
   final double? width;
 
@@ -99,8 +98,7 @@ class MaterialOutlineGeneralFrameworkBuilderGeneralWidget
 }
 
 /// UncompleteDocumentation
-class MaterialOutlineGeneralFrameworkButtonBuilderGeneralWidget
-    extends StatelessWidget {
+class MaterialOutlineGeneralFrameworkButtonBuilderGeneralWidget extends StatelessWidget {
   /// UncompleteDocumentation
   final double? width;
 
@@ -164,8 +162,7 @@ class MaterialOutlineGeneralFrameworkButtonBuilderGeneralWidget
 }
 
 /// UncompleteDocumentation
-class MaterialOutlineGeneralFrameworkButtonGeneralWidget
-    extends StatelessWidget {
+class MaterialOutlineGeneralFrameworkButtonGeneralWidget extends StatelessWidget {
   /// UncompleteDocumentation
   final double? width;
 

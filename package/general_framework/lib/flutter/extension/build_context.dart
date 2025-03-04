@@ -52,11 +52,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
             if (data["message"] is String == false) {
               data["message"] = "";
             }
-            return (data["message"] as String)
-                .toLowerCase()
-                .split("_")
-                .map((e) => e.toUpperCaseFirstData())
-                .join(" ");
+            return (data["message"] as String).toLowerCase().split("_").map((e) => e.toUpperCaseFirstData()).join(" ");
           },
         ),
       );

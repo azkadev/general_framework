@@ -171,16 +171,13 @@ class CarouselGeneralFrameworkView extends StatefulWidget {
   final List<Widget> Function(BuildContext context) onBuilder;
 
   @override
-  State<CarouselGeneralFrameworkView> createState() =>
-      _CarouselGeneralFrameworkViewState();
+  State<CarouselGeneralFrameworkView> createState() => _CarouselGeneralFrameworkViewState();
 }
 
-class _CarouselGeneralFrameworkViewState
-    extends State<CarouselGeneralFrameworkView> {
+class _CarouselGeneralFrameworkViewState extends State<CarouselGeneralFrameworkView> {
   late double _itemExtent;
   CarouselGeneralFrameworkController? _internalController;
-  CarouselGeneralFrameworkController get _controller =>
-      widget.controller ?? _internalController!;
+  CarouselGeneralFrameworkController get _controller => widget.controller ?? _internalController!;
 
   @override
   void initState() {
@@ -230,11 +227,8 @@ class _CarouselGeneralFrameworkViewState
       case Axis.horizontal:
         assert(debugCheckHasDirectionality(context));
         final TextDirection textDirection = Directionality.of(context);
-        final AxisDirection axisDirection =
-            textDirectionToAxisDirection(textDirection);
-        return widget.reverse
-            ? flipAxisDirection(axisDirection)
-            : axisDirection;
+        final AxisDirection axisDirection = textDirectionToAxisDirection(textDirection);
+        return widget.reverse ? flipAxisDirection(axisDirection) : axisDirection;
       case Axis.vertical:
         return widget.reverse ? AxisDirection.up : AxisDirection.down;
     }
@@ -243,19 +237,15 @@ class _CarouselGeneralFrameworkViewState
   @override
   Widget build(BuildContext context) {
     final AxisDirection axisDirection = _getDirection(context);
-    const CarouselGeneralFrameworkScrollPhysics physics =
-        CarouselGeneralFrameworkScrollPhysics();
+    const CarouselGeneralFrameworkScrollPhysics physics = CarouselGeneralFrameworkScrollPhysics();
     // final ScrollPhysics physics = (widget.isShowAll) ? ScrollConfiguration.of(context).getScrollPhysics(context) : const CarouselGeneralFrameworkScrollPhysics();
 
-    final EdgeInsets effectivePadding =
-        widget.padding ?? const EdgeInsets.all(4.0);
+    final EdgeInsets effectivePadding = widget.padding ?? const EdgeInsets.all(4.0);
 
     return ConstrainedBox(
       constraints: widget.constraints,
       child: MediaQuery(
-        data: context.mediaQueryData.copyWith(
-            size: Size(
-                widget.constraints.maxWidth, widget.constraints.maxHeight)),
+        data: context.mediaQueryData.copyWith(size: Size(widget.constraints.maxWidth, widget.constraints.maxHeight)),
         child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
             final double mainAxisExtent = switch (widget.scrollDirection) {
@@ -314,8 +304,7 @@ class _CarouselGeneralFrameworkViewState
 /// transition. This compression is controlled by the `minExtent` property and
 /// aligns with the [Material Design CarouselGeneralFramework specifications]
 /// (https://m3.material.io/components/carousel/guidelines#96c5c157-fe5b-4ee3-a9b4-72bf8efab7e9).
-class _SliverFixedExtentCarouselGeneralFramework
-    extends SliverMultiBoxAdaptorWidget {
+class _SliverFixedExtentCarouselGeneralFramework extends SliverMultiBoxAdaptorWidget {
   const _SliverFixedExtentCarouselGeneralFramework({
     required super.delegate,
     required this.minExtent,
@@ -327,8 +316,7 @@ class _SliverFixedExtentCarouselGeneralFramework
 
   @override
   RenderSliverFixedExtentBoxAdaptor createRenderObject(BuildContext context) {
-    final SliverMultiBoxAdaptorElement element =
-        context as SliverMultiBoxAdaptorElement;
+    final SliverMultiBoxAdaptorElement element = context as SliverMultiBoxAdaptorElement;
     return _RenderSliverFixedExtentCarouselGeneralFramework(
       childManager: element,
       minExtent: minExtent,
@@ -337,15 +325,13 @@ class _SliverFixedExtentCarouselGeneralFramework
   }
 
   @override
-  void updateRenderObject(BuildContext context,
-      _RenderSliverFixedExtentCarouselGeneralFramework renderObject) {
+  void updateRenderObject(BuildContext context, _RenderSliverFixedExtentCarouselGeneralFramework renderObject) {
     renderObject.maxExtent = itemExtent;
     renderObject.minExtent = itemExtent;
   }
 }
 
-class _RenderSliverFixedExtentCarouselGeneralFramework
-    extends RenderSliverFixedExtentBoxAdaptor {
+class _RenderSliverFixedExtentCarouselGeneralFramework extends RenderSliverFixedExtentBoxAdaptor {
   _RenderSliverFixedExtentCarouselGeneralFramework({
     required super.childManager,
     required double maxExtent,
@@ -374,10 +360,8 @@ class _RenderSliverFixedExtentCarouselGeneralFramework
   }
 
   // This implements the [itemExtentBuilder] callback.
-  double _buildItemExtent(
-      int index, SliverLayoutDimensions currentLayoutDimensions) {
-    final int firstVisibleIndex =
-        (constraints.scrollOffset / maxExtent).floor();
+  double _buildItemExtent(int index, SliverLayoutDimensions currentLayoutDimensions) {
+    final int firstVisibleIndex = (constraints.scrollOffset / maxExtent).floor();
 
     // Calculate how many items have been completely scroll off screen.
     final int offscreenItems = (constraints.scrollOffset / maxExtent).floor();
@@ -386,14 +370,12 @@ class _RenderSliverFixedExtentCarouselGeneralFramework
     // `constraints.scrollOffset` must be greater than
     // `offscreenItems * maxExtent`, so the difference between these two is how
     // much the current first visible item is off screen.
-    final double offscreenExtent =
-        constraints.scrollOffset - offscreenItems * maxExtent;
+    final double offscreenExtent = constraints.scrollOffset - offscreenItems * maxExtent;
 
     // If there is not enough space to place the last visible item but the remaining
     // space is larger than `minExtent`, the extent for last item should be at
     // least the remaining extent to ensure a smooth size transition.
-    final double effectiveMinExtent =
-        math.max(constraints.remainingPaintExtent % maxExtent, minExtent);
+    final double effectiveMinExtent = math.max(constraints.remainingPaintExtent % maxExtent, minExtent);
 
     // Two special cases are the first and last visible items. Other items' extent
     // should all return `maxExtent`.
@@ -402,12 +384,9 @@ class _RenderSliverFixedExtentCarouselGeneralFramework
       return math.max(effectiveExtent, effectiveMinExtent);
     }
 
-    final double scrollOffsetForLastIndex =
-        constraints.scrollOffset + constraints.remainingPaintExtent;
-    if (index ==
-        getMaxChildIndexForScrollOffset(scrollOffsetForLastIndex, maxExtent)) {
-      return clampDouble(scrollOffsetForLastIndex - maxExtent * index,
-          effectiveMinExtent, maxExtent);
+    final double scrollOffsetForLastIndex = constraints.scrollOffset + constraints.remainingPaintExtent;
+    if (index == getMaxChildIndexForScrollOffset(scrollOffsetForLastIndex, maxExtent)) {
+      return clampDouble(scrollOffsetForLastIndex - maxExtent * index, effectiveMinExtent, maxExtent);
     }
 
     return maxExtent;
@@ -429,23 +408,19 @@ class _RenderSliverFixedExtentCarouselGeneralFramework
   /// The layout offset for the child with the given index.
   @override
   double indexToLayoutOffset(
-    @Deprecated(
-        'The itemExtent is already available within the scope of this function. '
+    @Deprecated('The itemExtent is already available within the scope of this function. '
         'This feature was deprecated after v3.20.0-7.0.pre.')
     double itemExtent,
     int index,
   ) {
-    final int firstVisibleIndex =
-        (constraints.scrollOffset / maxExtent).floor();
+    final int firstVisibleIndex = (constraints.scrollOffset / maxExtent).floor();
 
     // If there is not enough space to place the last visible item but the remaining
     // space is larger than `minExtent`, the extent for last item should be at
     // least the remaining extent to make sure a smooth size transition.
-    final double effectiveMinExtent =
-        math.max(constraints.remainingPaintExtent % maxExtent, minExtent);
+    final double effectiveMinExtent = math.max(constraints.remainingPaintExtent % maxExtent, minExtent);
     if (index == firstVisibleIndex) {
-      final double firstVisibleItemExtent =
-          _buildItemExtent(index, _currentLayoutDimensions);
+      final double firstVisibleItemExtent = _buildItemExtent(index, _currentLayoutDimensions);
 
       // If the first item is squished to be less than `effectievMinExtent`,
       // then it should stop changinng its size and should start to scroll off screen.
@@ -461,13 +436,11 @@ class _RenderSliverFixedExtentCarouselGeneralFramework
   @override
   int getMinChildIndexForScrollOffset(
     double scrollOffset,
-    @Deprecated(
-        'The itemExtent is already available within the scope of this function. '
+    @Deprecated('The itemExtent is already available within the scope of this function. '
         'This feature was deprecated after v3.20.0-7.0.pre.')
     double itemExtent,
   ) {
-    final int firstVisibleIndex =
-        (constraints.scrollOffset / maxExtent).floor();
+    final int firstVisibleIndex = (constraints.scrollOffset / maxExtent).floor();
     return math.max(firstVisibleIndex, 0);
   }
 
@@ -475,16 +448,14 @@ class _RenderSliverFixedExtentCarouselGeneralFramework
   @override
   int getMaxChildIndexForScrollOffset(
     double scrollOffset,
-    @Deprecated(
-        'The itemExtent is already available within the scope of this function. '
+    @Deprecated('The itemExtent is already available within the scope of this function. '
         'This feature was deprecated after v3.20.0-7.0.pre.')
     double itemExtent,
   ) {
     if (maxExtent > 0.0) {
       final double actual = scrollOffset / maxExtent - 1;
       final int round = actual.round();
-      if ((actual * maxExtent - round * maxExtent).abs() <
-          precisionErrorTolerance) {
+      if ((actual * maxExtent - round * maxExtent).abs() < precisionErrorTolerance) {
         return math.max(0, round);
       }
       return math.max(0, actual.ceil());
@@ -554,10 +525,8 @@ class CarouselGeneralFrameworkScrollPhysics extends ScrollPhysics {
       'the CarouselGeneralFrameworkController',
     );
 
-    final _CarouselGeneralFrameworkPosition metrics =
-        position as _CarouselGeneralFrameworkPosition;
-    if ((velocity <= 0.0 && metrics.pixels <= metrics.minScrollExtent) ||
-        (velocity >= 0.0 && metrics.pixels >= metrics.maxScrollExtent)) {
+    final _CarouselGeneralFrameworkPosition metrics = position as _CarouselGeneralFrameworkPosition;
+    if ((velocity <= 0.0 && metrics.pixels <= metrics.minScrollExtent) || (velocity >= 0.0 && metrics.pixels >= metrics.maxScrollExtent)) {
       return super.createBallisticSimulation(metrics, velocity);
     }
 
@@ -608,13 +577,10 @@ class _CarouselGeneralFrameworkMetrics extends FixedScrollMetrics {
     double? devicePixelRatio,
   }) {
     return _CarouselGeneralFrameworkMetrics(
-      minScrollExtent: minScrollExtent ??
-          (hasContentDimensions ? this.minScrollExtent : null),
-      maxScrollExtent: maxScrollExtent ??
-          (hasContentDimensions ? this.maxScrollExtent : null),
+      minScrollExtent: minScrollExtent ?? (hasContentDimensions ? this.minScrollExtent : null),
+      maxScrollExtent: maxScrollExtent ?? (hasContentDimensions ? this.maxScrollExtent : null),
       pixels: pixels ?? (hasPixels ? this.pixels : null),
-      viewportDimension: viewportDimension ??
-          (hasViewportDimension ? this.viewportDimension : null),
+      viewportDimension: viewportDimension ?? (hasViewportDimension ? this.viewportDimension : null),
       axisDirection: axisDirection ?? this.axisDirection,
       itemExtent: itemExtent ?? this.itemExtent,
       devicePixelRatio: devicePixelRatio ?? this.devicePixelRatio,
@@ -622,8 +588,7 @@ class _CarouselGeneralFrameworkMetrics extends FixedScrollMetrics {
   }
 }
 
-class _CarouselGeneralFrameworkPosition extends ScrollPositionWithSingleContext
-    implements _CarouselGeneralFrameworkMetrics {
+class _CarouselGeneralFrameworkPosition extends ScrollPositionWithSingleContext implements _CarouselGeneralFrameworkMetrics {
   _CarouselGeneralFrameworkPosition({
     required super.physics,
     required super.context,
@@ -647,8 +612,7 @@ class _CarouselGeneralFrameworkPosition extends ScrollPositionWithSingleContext
     assert(viewportDimension > 0.0);
     final double fraction = itemExtent! / viewportDimension;
 
-    final double actual =
-        math.max(0.0, pixels) / (viewportDimension * fraction);
+    final double actual = math.max(0.0, pixels) / (viewportDimension * fraction);
     final double round = actual.roundToDouble();
     if ((actual - round).abs() < precisionErrorTolerance) {
       return round;
@@ -664,8 +628,7 @@ class _CarouselGeneralFrameworkPosition extends ScrollPositionWithSingleContext
 
   @override
   bool applyViewportDimension(double viewportDimension) {
-    final double? oldViewportDimensions =
-        hasViewportDimension ? this.viewportDimension : null;
+    final double? oldViewportDimensions = hasViewportDimension ? this.viewportDimension : null;
     if (viewportDimension == oldViewportDimensions) {
       return true;
     }
@@ -704,13 +667,10 @@ class _CarouselGeneralFrameworkPosition extends ScrollPositionWithSingleContext
     double? devicePixelRatio,
   }) {
     return _CarouselGeneralFrameworkMetrics(
-      minScrollExtent: minScrollExtent ??
-          (hasContentDimensions ? this.minScrollExtent : null),
-      maxScrollExtent: maxScrollExtent ??
-          (hasContentDimensions ? this.maxScrollExtent : null),
+      minScrollExtent: minScrollExtent ?? (hasContentDimensions ? this.minScrollExtent : null),
+      maxScrollExtent: maxScrollExtent ?? (hasContentDimensions ? this.maxScrollExtent : null),
       pixels: pixels ?? (hasPixels ? this.pixels : null),
-      viewportDimension: viewportDimension ??
-          (hasViewportDimension ? this.viewportDimension : null),
+      viewportDimension: viewportDimension ?? (hasViewportDimension ? this.viewportDimension : null),
       axisDirection: axisDirection ?? this.axisDirection,
       itemExtent: itemExtent ?? this.itemExtent,
       devicePixelRatio: devicePixelRatio ?? this.devicePixelRatio,
@@ -745,8 +705,7 @@ class CarouselGeneralFrameworkController extends ScrollController {
   }
 
   @override
-  ScrollPosition createScrollPosition(ScrollPhysics physics,
-      ScrollContext context, ScrollPosition? oldPosition) {
+  ScrollPosition createScrollPosition(ScrollPhysics physics, ScrollContext context, ScrollPosition? oldPosition) {
     assert(_carouselState != null);
     final double itemExtent = _carouselState!._itemExtent;
 
@@ -762,8 +721,7 @@ class CarouselGeneralFrameworkController extends ScrollController {
   @override
   void attach(ScrollPosition position) {
     super.attach(position);
-    final _CarouselGeneralFrameworkPosition carouselPosition =
-        position as _CarouselGeneralFrameworkPosition;
+    final _CarouselGeneralFrameworkPosition carouselPosition = position as _CarouselGeneralFrameworkPosition;
     carouselPosition.itemExtent = _carouselState!._itemExtent;
   }
 }

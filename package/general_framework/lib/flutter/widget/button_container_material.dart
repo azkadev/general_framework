@@ -113,19 +113,13 @@ class ButtonContainerMaterialGeneralFrameworkWidget extends StatelessWidget {
       width: width,
       margin: margin,
       clipBehavior: clipBehavior,
-      decoration:
-          (decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault)
-              .call(
+      decoration: (decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault).call(
         context,
         BoxDecoration(
           color: color ?? context.theme.primaryColor,
           borderRadius: borderRadius,
-          border: isWithBorder
-              ? context.extensionGeneralLibFlutterBorderAll()
-              : null,
-          boxShadow: isWithBorder
-              ? context.extensionGeneralLibFlutterBoxShadows()
-              : null,
+          border: isWithBorder ? context.extensionGeneralLibFlutterBorderAll() : null,
+          boxShadow: isWithBorder ? context.extensionGeneralLibFlutterBoxShadows() : null,
         ),
       ),
       child: () {

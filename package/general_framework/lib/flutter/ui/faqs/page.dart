@@ -44,8 +44,7 @@ import 'package:general_lib_flutter/general_lib_flutter.dart';
 /// UncompleteDocumentation
 class FaqsGeneralFrameworkPage extends StatefulWidget {
   /// UncompleteDocumentation
-  final FutureOr<FaqGeneralFrameworkOptions> Function(BuildContext context)
-      onFaqs;
+  final FutureOr<FaqGeneralFrameworkOptions> Function(BuildContext context) onFaqs;
 
   /// UncompleteDocumentation
   const FaqsGeneralFrameworkPage({
@@ -54,8 +53,7 @@ class FaqsGeneralFrameworkPage extends StatefulWidget {
   });
 
   @override
-  State<FaqsGeneralFrameworkPage> createState() =>
-      _FaqsGeneralFrameworkPageState();
+  State<FaqsGeneralFrameworkPage> createState() => _FaqsGeneralFrameworkPageState();
 }
 
 class _TickerProviderEmpty extends TickerProvider {
@@ -65,10 +63,8 @@ class _TickerProviderEmpty extends TickerProvider {
   }
 }
 
-class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage>
-    with TickerProviderStateMixin {
-  TabController tabController =
-      TabController(length: 1, vsync: _TickerProviderEmpty());
+class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage> with TickerProviderStateMixin {
+  TabController tabController = TabController(length: 1, vsync: _TickerProviderEmpty());
   int tabIndex = 0;
   @override
   void initState() {
@@ -86,8 +82,7 @@ class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage>
     super.dispose();
   }
 
-  FaqGeneralFrameworkOptions faqGeneralFrameworkOptions =
-      FaqGeneralFrameworkOptions.empty();
+  FaqGeneralFrameworkOptions faqGeneralFrameworkOptions = FaqGeneralFrameworkOptions.empty();
 
   bool isLoading = false;
   Future<void> refresh() async {
@@ -102,8 +97,7 @@ class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage>
     });
     await Future(() async {
       faqGeneralFrameworkOptions = await widget.onFaqs(context);
-      tabController = TabController(
-          length: faqGeneralFrameworkOptions.faqs.length, vsync: this);
+      tabController = TabController(length: faqGeneralFrameworkOptions.faqs.length, vsync: this);
     });
     setState(() {
       isLoading = false;
@@ -146,8 +140,7 @@ class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage>
         onRefresh: refresh,
         child: SingleChildScrollView(
           child: ConstrainedBox(
-            constraints: BoxConstraints(
-                minHeight: context.height, minWidth: context.width),
+            constraints: BoxConstraints(minHeight: context.height, minWidth: context.width),
             child: Column(
               children: [
                 if (isLoading == false) ...[
@@ -161,16 +154,12 @@ class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage>
                         });
                       },
                       tabs: [
-                        for (int i = 0;
-                            i < faqGeneralFrameworkOptions.faqs.length;
-                            i++) ...[
+                        for (int i = 0; i < faqGeneralFrameworkOptions.faqs.length; i++) ...[
                           () {
                             final e = faqGeneralFrameworkOptions.faqs[i];
                             return Text(
                               e.title,
-                              style: (i == tabIndex)
-                                  ? context.theme.textTheme.titleSmall
-                                  : context.theme.textTheme.bodySmall,
+                              style: (i == tabIndex) ? context.theme.textTheme.titleSmall : context.theme.textTheme.bodySmall,
                             );
                           }(),
                         ],

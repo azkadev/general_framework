@@ -53,16 +53,7 @@ class CreateAds extends JsonScheme {
       "is_anonymous_locked": false,
       "amount_day": 0,
       "show_on_platforms": [""],
-      "author": {
-        "@type": "authorAds",
-        "is_locked": false,
-        "platform_id": "",
-        "account_user_id": 0,
-        "full_name": "",
-        "photo_profile": "",
-        "photo_path": "",
-        "url": ""
-      },
+      "author": {"@type": "authorAds", "is_locked": false, "platform_id": "", "account_user_id": 0, "full_name": "", "photo_profile": "", "photo_path": "", "url": ""},
       "ads": {
         "@type": "contentAds",
         "ads_unique_id": "",

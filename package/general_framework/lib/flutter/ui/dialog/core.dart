@@ -108,8 +108,7 @@ class DialogGeneralFramework {
             filter: blurFilter ?? ImageFilter.blur(sigmaX: 5, sigmaY: 5),
             blendMode: blurBlendMode,
             child: Dialog(
-              shape: (dialogShapeBuilder ??
-                  shapeBorderBuilderGeneralFrameworkWidgetDefault)(
+              shape: (dialogShapeBuilder ?? shapeBorderBuilderGeneralFrameworkWidgetDefault)(
                 context,
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
@@ -166,9 +165,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
   Future<B?> showDialogBuilderWithTitleGeneralFramework<B>({
     required IconData icons,
     required String title,
-    required List<Widget> Function(
-            BuildContext context, void Function(void Function()) setState)
-        itemsBuilder,
+    required List<Widget> Function(BuildContext context, void Function(void Function()) setState) itemsBuilder,
     bool barrierDismissible = true,
     Color? barrierColor,
     String? barrierLabel,
@@ -219,8 +216,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
                           color: context.theme.shadowColor.withAlpha(110),
                           spreadRadius: 1,
                           blurRadius: 4,
-                          offset:
-                              const Offset(0, 3), // changes position of shadow
+                          offset: const Offset(0, 3), // changes position of shadow
                         ),
                       ],
                     ),
@@ -250,9 +246,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     required IconData icons,
     required String title,
     required int itemCount,
-    required Widget Function(BuildContext context, int index,
-            void Function(void Function()) setState)
-        itemBuilder,
+    required Widget Function(BuildContext context, int index, void Function(void Function()) setState) itemBuilder,
     bool barrierDismissible = true,
     Color? barrierColor,
     String? barrierLabel,
@@ -285,9 +279,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
 
   /// UncompleteDocumentation
   Future<B?> showDialogGeneralFramework<B>({
-    required Widget Function(
-            BuildContext context, void Function(void Function()) setState)
-        builder,
+    required Widget Function(BuildContext context, void Function(void Function()) setState) builder,
     bool isWithBlur = false,
     bool isCanShowSnackBar = false,
     ImageFilter? blurFilter,
@@ -322,9 +314,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
   /// UncompleteDocumentation
 
   Future<T?> showDialogFloatingGeneralFramework<T>({
-    required Widget Function(
-            BuildContext context, void Function(void Function()) setState)
-        builder,
+    required Widget Function(BuildContext context, void Function(void Function()) setState) builder,
     bool isWithBlur = true,
     bool barrierDismissible = true,
     Color? barrierColor,
@@ -344,11 +334,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
       anchorPoint: anchorPoint,
       traversalEdgeBehavior: traversalEdgeBehavior,
       builder: (context, setState) {
-        final Size sizeMax = Size(
-            context.width,
-            context.height -
-                (context.mediaQueryData.padding.bottom +
-                    context.mediaQueryData.padding.top));
+        final Size sizeMax = Size(context.width, context.height - (context.mediaQueryData.padding.bottom + context.mediaQueryData.padding.top));
         // print(size_max.height);
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -394,8 +380,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     //   return;
     // }
     final RenderBox button = findRenderObject()! as RenderBox;
-    final RenderBox overlay =
-        Navigator.of(this).overlay!.context.findRenderObject()! as RenderBox;
+    final RenderBox overlay = Navigator.of(this).overlay!.context.findRenderObject()! as RenderBox;
     final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(this);
 
     popupMenuPosition ??= popupMenuTheme.position ?? PopupMenuPosition.over;
@@ -415,8 +400,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     final RelativeRect position = RelativeRect.fromRect(
       Rect.fromPoints(
         button.localToGlobal(offset, ancestor: overlay),
-        button.localToGlobal(button.size.bottomRight(Offset.zero) + offset,
-            ancestor: overlay),
+        button.localToGlobal(button.size.bottomRight(Offset.zero) + offset, ancestor: overlay),
       ),
       Offset.zero & overlay.size,
     );
@@ -454,10 +438,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
       shadowColor: shadowColor,
       surfaceTintColor: surfaceTintColor,
       semanticLabel: semanticLabel,
-      shape: shape ??
-          ShapeDecoration.fromBoxDecoration(
-                  BoxDecoration(borderRadius: BorderRadius.circular(10)))
-              .shape,
+      shape: shape ?? ShapeDecoration.fromBoxDecoration(BoxDecoration(borderRadius: BorderRadius.circular(10))).shape,
       color: color ?? theme.primaryColor,
       useRootNavigator: useRootNavigator,
       constraints: constraints,
@@ -501,8 +482,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
       constraints: constraints ??
           BoxConstraints(
             minWidth: width,
-            maxHeight: height -
-                (mediaQueryData.padding.top + mediaQueryData.padding.bottom),
+            maxHeight: height - (mediaQueryData.padding.top + mediaQueryData.padding.bottom),
             maxWidth: width,
           ),
       barrierColor: barrierColor,

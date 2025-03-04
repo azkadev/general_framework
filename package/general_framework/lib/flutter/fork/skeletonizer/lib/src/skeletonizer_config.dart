@@ -90,23 +90,10 @@ class SkeletonizerGeneralFrameworkConfigData {
   });
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SkeletonizerGeneralFrameworkConfigData &&
-          runtimeType == other.runtimeType &&
-          effect == other.effect &&
-          textBorderRadius == other.textBorderRadius &&
-          justifyMultiLineText == other.justifyMultiLineText &&
-          ignoreContainers == other.ignoreContainers &&
-          containersColor == other.containersColor;
+  bool operator ==(Object other) => identical(this, other) || other is SkeletonizerGeneralFrameworkConfigData && runtimeType == other.runtimeType && effect == other.effect && textBorderRadius == other.textBorderRadius && justifyMultiLineText == other.justifyMultiLineText && ignoreContainers == other.ignoreContainers && containersColor == other.containersColor;
 
   @override
-  int get hashCode =>
-      effect.hashCode ^
-      textBorderRadius.hashCode ^
-      justifyMultiLineText.hashCode ^
-      ignoreContainers.hashCode ^
-      containersColor.hashCode;
+  int get hashCode => effect.hashCode ^ textBorderRadius.hashCode ^ justifyMultiLineText.hashCode ^ ignoreContainers.hashCode ^ containersColor.hashCode;
 
   /// Clones the instance with overrides
   SkeletonizerGeneralFrameworkConfigData copyWith({
@@ -163,19 +150,10 @@ class TextBoneBorderRadius {
   BorderRadiusGeometry? get borderRadius => _borderRadius;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is TextBoneBorderRadius &&
-          runtimeType == other.runtimeType &&
-          _borderRadius == other._borderRadius &&
-          _heightPercentage == other._heightPercentage &&
-          usesHeightFactor == other.usesHeightFactor;
+  bool operator ==(Object other) => identical(this, other) || other is TextBoneBorderRadius && runtimeType == other.runtimeType && _borderRadius == other._borderRadius && _heightPercentage == other._heightPercentage && usesHeightFactor == other.usesHeightFactor;
 
   @override
-  int get hashCode =>
-      _borderRadius.hashCode ^
-      _heightPercentage.hashCode ^
-      usesHeightFactor.hashCode;
+  int get hashCode => _borderRadius.hashCode ^ _heightPercentage.hashCode ^ usesHeightFactor.hashCode;
 }
 
 /// Provided the scoped [SkeletonizerGeneralFrameworkConfigData] to descended widgets
@@ -185,16 +163,12 @@ class SkeletonizerGeneralFrameworkConfig extends InheritedWidget {
 
   /// Depends on the the nearest SkeletonizerGeneralFrameworkConfigData if any
   static SkeletonizerGeneralFrameworkConfigData? maybeOf(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<
-            SkeletonizerGeneralFrameworkConfig>()
-        ?.data;
+    return context.dependOnInheritedWidgetOfExactType<SkeletonizerGeneralFrameworkConfig>()?.data;
   }
 
   /// Depends on the the nearest SkeletonizerGeneralFrameworkConfigData if any otherwise it throws
   static SkeletonizerGeneralFrameworkConfigData of(BuildContext context) {
-    final scope = context.dependOnInheritedWidgetOfExactType<
-        SkeletonizerGeneralFrameworkConfig>();
+    final scope = context.dependOnInheritedWidgetOfExactType<SkeletonizerGeneralFrameworkConfig>();
     assert(() {
       if (scope == null) {
         throw FlutterError(
@@ -216,8 +190,7 @@ class SkeletonizerGeneralFrameworkConfig extends InheritedWidget {
   });
 
   @override
-  bool updateShouldNotify(
-      covariant SkeletonizerGeneralFrameworkConfig oldWidget) {
+  bool updateShouldNotify(covariant SkeletonizerGeneralFrameworkConfig oldWidget) {
     return data != oldWidget.data;
   }
 }

@@ -44,11 +44,7 @@ class GeneralFrameworkDocumentationFooterSubData extends JsonScheme {
   /// return default data
   ///
   static Map get defaultData {
-    return {
-      "@type": "generalFrameworkDocumentationFooterSubData",
-      "text": "",
-      "url": ""
-    };
+    return {"@type": "generalFrameworkDocumentationFooterSubData", "text": "", "url": ""};
   }
 
   /// check data
@@ -137,20 +133,15 @@ class GeneralFrameworkDocumentationFooterSubData extends JsonScheme {
       "url": url,
     };
 
-    generalFrameworkDocumentationFooterSubData_data_create_json
-        .removeWhere((key, value) => value == null);
+    generalFrameworkDocumentationFooterSubData_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (generalFrameworkDocumentationFooterSubData_data_create_json
-                .containsKey(key) ==
-            false) {
-          generalFrameworkDocumentationFooterSubData_data_create_json[key] =
-              value;
+        if (generalFrameworkDocumentationFooterSubData_data_create_json.containsKey(key) == false) {
+          generalFrameworkDocumentationFooterSubData_data_create_json[key] = value;
         }
       });
     }
-    return GeneralFrameworkDocumentationFooterSubData(
-        generalFrameworkDocumentationFooterSubData_data_create_json);
+    return GeneralFrameworkDocumentationFooterSubData(generalFrameworkDocumentationFooterSubData_data_create_json);
   }
 }

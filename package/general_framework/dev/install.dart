@@ -41,6 +41,5 @@ import 'package:general_lib/general_lib.dart';
 void main(List<String> args) {
   final Directory directory = Directory.current;
   print(directory.toStringifyPretty());
-  print(
-      Dart.pub.installFromDirectoryFresh(directoryPackage: Directory.current));
+  print(Dart.pub.installFromDirectoryFresh(directoryPackage: Directory.current));
 }

@@ -53,11 +53,7 @@ class GeneralFrameworkDocumentationFooter extends JsonScheme {
           "@type": "generalFrameworkDocumentationFooterData",
           "title": "",
           "footer": [
-            {
-              "@type": "generalFrameworkDocumentationFooterSubData",
-              "text": "",
-              "url": ""
-            }
+            {"@type": "generalFrameworkDocumentationFooterSubData", "text": "", "url": ""}
           ]
         }
       ]
@@ -108,10 +104,7 @@ class GeneralFrameworkDocumentationFooter extends JsonScheme {
       if (rawData["footers"] is List == false) {
         return [];
       }
-      return (rawData["footers"] as List)
-          .map((e) => GeneralFrameworkDocumentationFooterData(e as Map))
-          .toList()
-          .cast<GeneralFrameworkDocumentationFooterData>();
+      return (rawData["footers"] as List).map((e) => GeneralFrameworkDocumentationFooterData(e as Map)).toList().cast<GeneralFrameworkDocumentationFooterData>();
     } catch (e) {
       return [];
     }
@@ -134,19 +127,15 @@ class GeneralFrameworkDocumentationFooter extends JsonScheme {
       "footers": (footers != null) ? footers.toJson() : null,
     };
 
-    generalFrameworkDocumentationFooter_data_create_json
-        .removeWhere((key, value) => value == null);
+    generalFrameworkDocumentationFooter_data_create_json.removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (generalFrameworkDocumentationFooter_data_create_json
-                .containsKey(key) ==
-            false) {
+        if (generalFrameworkDocumentationFooter_data_create_json.containsKey(key) == false) {
           generalFrameworkDocumentationFooter_data_create_json[key] = value;
         }
       });
     }
-    return GeneralFrameworkDocumentationFooter(
-        generalFrameworkDocumentationFooter_data_create_json);
+    return GeneralFrameworkDocumentationFooter(generalFrameworkDocumentationFooter_data_create_json);
   }
 }

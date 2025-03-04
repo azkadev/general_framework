@@ -45,13 +45,7 @@ class PulseEffect extends PaintingEffect {
   final Color to;
 
   /// Default constructor
-  const PulseEffect(
-      {this.from = const Color(0xFFEBEBF4),
-      this.to = const Color(0xFFF6F6F6),
-      super.lowerBound,
-      super.upperBound,
-      super.duration = const Duration(milliseconds: 1000)})
-      : super(reverse: true);
+  const PulseEffect({this.from = const Color(0xFFEBEBF4), this.to = const Color(0xFFF6F6F6), super.lowerBound, super.upperBound, super.duration = const Duration(milliseconds: 1000)}) : super(reverse: true);
 
   @override
   Paint createPaint(double t, Rect rect, TextDirection? textDirection) {
@@ -68,13 +62,7 @@ class PulseEffect extends PaintingEffect {
   }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is PulseEffect &&
-          runtimeType == other.runtimeType &&
-          from == other.from &&
-          to == other.to &&
-          duration == other.duration;
+  bool operator ==(Object other) => identical(this, other) || other is PulseEffect && runtimeType == other.runtimeType && from == other.from && to == other.to && duration == other.duration;
 
   @override
   int get hashCode => from.hashCode ^ to.hashCode ^ duration.hashCode;

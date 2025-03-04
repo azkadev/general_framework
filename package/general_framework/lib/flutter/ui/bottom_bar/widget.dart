@@ -122,9 +122,7 @@ class BottomBarGeneralFrameworkWidget extends StatelessWidget {
             padding: padding,
             clipBehavior: clipBehavior,
             alignment: alignment,
-            decoration: (decorationBuilder ??
-                    decorationBuilderGeneralFrameworkWidgetDefault)
-                .call(
+            decoration: (decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault).call(
               context,
               BoxDecoration(
                 color: context.theme.appBarTheme.backgroundColor,

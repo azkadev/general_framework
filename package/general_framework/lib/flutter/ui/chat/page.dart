@@ -48,8 +48,7 @@ class ChatPageGeneralFramework extends StatefulWidget {
   });
 
   @override
-  State<ChatPageGeneralFramework> createState() =>
-      _ChatPageGeneralFrameworkState();
+  State<ChatPageGeneralFramework> createState() => _ChatPageGeneralFrameworkState();
 }
 
 class _ChatPageGeneralFrameworkState extends State<ChatPageGeneralFramework> {

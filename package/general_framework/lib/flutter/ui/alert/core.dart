@@ -39,9 +39,7 @@ import 'package:general_framework/flutter/flutter.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 /// UncompleteDocumentation
-typedef AlertGeneralFrameworkButtonFunction<T> = T Function(
-    BuildContext context,
-    AlertGeneralFrameworkOptions alertGeneralFrameworkOptions);
+typedef AlertGeneralFrameworkButtonFunction<T> = T Function(BuildContext context, AlertGeneralFrameworkOptions alertGeneralFrameworkOptions);
 
 /// UncompleteDocumentation
 extension AlertGeneralFrameworkExtensionBuildContext on BuildContext {
@@ -143,8 +141,7 @@ class AlertGeneralFrameworkOptions {
     return AlertGeneralFrameworkOptions(
       title: title ?? this.title,
       builder: builder ?? this.builder,
-      isAutoCloseOnConfirmBtnPressed:
-          isAutoCloseOnConfirmBtnPressed ?? this.isAutoCloseOnConfirmBtnPressed,
+      isAutoCloseOnConfirmBtnPressed: isAutoCloseOnConfirmBtnPressed ?? this.isAutoCloseOnConfirmBtnPressed,
       color: color ?? this.color,
       borderRadius: borderRadius ?? this.borderRadius,
       isShowCancelButton: isShowCloseButton ?? this.isShowCancelButton,
@@ -159,16 +156,12 @@ class AlertGeneralFrameworkOptions {
   }
 
   /// UncompleteDocumentation
-  static void onCancelPressedDefault(BuildContext context,
-      AlertGeneralFrameworkOptions alertGeneralFrameworkOptions) {
-    context
-        .navigator(rootNavigator: alertGeneralFrameworkOptions.useRootNavigator)
-        .pop();
+  static void onCancelPressedDefault(BuildContext context, AlertGeneralFrameworkOptions alertGeneralFrameworkOptions) {
+    context.navigator(rootNavigator: alertGeneralFrameworkOptions.useRootNavigator).pop();
   }
 
   /// UncompleteDocumentation
-  static void onConfirmPressedDefault(BuildContext context,
-      AlertGeneralFrameworkOptions alertGeneralFrameworkOptions) {}
+  static void onConfirmPressedDefault(BuildContext context, AlertGeneralFrameworkOptions alertGeneralFrameworkOptions) {}
 }
 
 /// UncompleteDocumentation
@@ -183,12 +176,10 @@ class AlertGeneralFrameworkWidget extends StatefulWidget {
   });
 
   @override
-  State<AlertGeneralFrameworkWidget> createState() =>
-      _AlertGeneralFrameworkWidgetState();
+  State<AlertGeneralFrameworkWidget> createState() => _AlertGeneralFrameworkWidgetState();
 }
 
-class _AlertGeneralFrameworkWidgetState
-    extends State<AlertGeneralFrameworkWidget> {
+class _AlertGeneralFrameworkWidgetState extends State<AlertGeneralFrameworkWidget> {
   @override
   void initState() {
     // TODO: implement initState
@@ -202,8 +193,7 @@ class _AlertGeneralFrameworkWidgetState
 
   @override
   Widget build(BuildContext context) {
-    final dynamic body = widget.alertGeneralFrameworkOptions
-        .builder(context, widget.alertGeneralFrameworkOptions);
+    final dynamic body = widget.alertGeneralFrameworkOptions.builder(context, widget.alertGeneralFrameworkOptions);
 
     return MenuContainerBuilderGeneralFrameworkWidget(
       isWithBorder: true,
@@ -219,10 +209,8 @@ class _AlertGeneralFrameworkWidgetState
       clipBehavior: null,
       decorationBuilder: (context, decoration) {
         return decoration.copyWith(
-          color: widget.alertGeneralFrameworkOptions.color ??
-              context.theme.primaryColor,
-          borderRadius: widget.alertGeneralFrameworkOptions.borderRadius ??
-              BorderRadius.circular(20),
+          color: widget.alertGeneralFrameworkOptions.color ?? context.theme.primaryColor,
+          borderRadius: widget.alertGeneralFrameworkOptions.borderRadius ?? BorderRadius.circular(20),
         );
       },
       builder: (context) {
@@ -253,10 +241,7 @@ class _AlertGeneralFrameworkWidgetState
                 if (widget.alertGeneralFrameworkOptions.isShowCloseButton) ...[
                   IconButton(
                     onPressed: () {
-                      (widget.alertGeneralFrameworkOptions.onCancelPressed ??
-                              AlertGeneralFrameworkOptions
-                                  .onCancelPressedDefault)(
-                          context, widget.alertGeneralFrameworkOptions);
+                      (widget.alertGeneralFrameworkOptions.onCancelPressed ?? AlertGeneralFrameworkOptions.onCancelPressedDefault)(context, widget.alertGeneralFrameworkOptions);
                     },
                     icon: const Icon(
                       Icons.close,
@@ -306,62 +291,40 @@ class _AlertGeneralFrameworkWidgetState
                 if (widget.alertGeneralFrameworkOptions.isShowCancelButton) ...[
                   Flexible(
                     child: ButtonContainerMaterialGeneralFrameworkWidget(
-                      color: widget.alertGeneralFrameworkOptions.color ??
-                          context.theme.primaryColor,
-                      borderRadius:
-                          widget.alertGeneralFrameworkOptions.borderRadius ??
-                              BorderRadius.circular(20),
+                      color: widget.alertGeneralFrameworkOptions.color ?? context.theme.primaryColor,
+                      borderRadius: widget.alertGeneralFrameworkOptions.borderRadius ?? BorderRadius.circular(20),
                       width: context.width,
                       margin: const EdgeInsets.all(5),
                       builder: (context) {
                         return Padding(
                           padding: const EdgeInsets.all(10),
-                          child: Text(widget
-                              .alertGeneralFrameworkOptions.cancelText
-                              .trim()),
+                          child: Text(widget.alertGeneralFrameworkOptions.cancelText.trim()),
                         );
                       },
                       isLoading: false,
                       onPressed: () {
-                        (widget.alertGeneralFrameworkOptions.onCancelPressed ??
-                                AlertGeneralFrameworkOptions
-                                    .onCancelPressedDefault)(
-                            context, widget.alertGeneralFrameworkOptions);
+                        (widget.alertGeneralFrameworkOptions.onCancelPressed ?? AlertGeneralFrameworkOptions.onCancelPressedDefault)(context, widget.alertGeneralFrameworkOptions);
                       },
                     ),
                   ),
                 ],
                 Flexible(
                   child: ButtonContainerMaterialGeneralFrameworkWidget(
-                    color: widget.alertGeneralFrameworkOptions.color ??
-                        context.theme.primaryColor,
-                    borderRadius:
-                        widget.alertGeneralFrameworkOptions.borderRadius ??
-                            BorderRadius.circular(20),
+                    color: widget.alertGeneralFrameworkOptions.color ?? context.theme.primaryColor,
+                    borderRadius: widget.alertGeneralFrameworkOptions.borderRadius ?? BorderRadius.circular(20),
                     width: context.width,
                     margin: const EdgeInsets.all(5),
                     builder: (context) {
                       return Padding(
                         padding: const EdgeInsets.all(10),
-                        child: Text(widget
-                            .alertGeneralFrameworkOptions.confirmText
-                            .trim()),
+                        child: Text(widget.alertGeneralFrameworkOptions.confirmText.trim()),
                       );
                     },
                     isLoading: false,
                     onPressed: () {
-                      (widget.alertGeneralFrameworkOptions.onConfirmPressed ??
-                              AlertGeneralFrameworkOptions
-                                  .onConfirmPressedDefault)(
-                          context, widget.alertGeneralFrameworkOptions);
-                      if (widget.alertGeneralFrameworkOptions
-                          .isAutoCloseOnConfirmBtnPressed) {
-                        context
-                            .navigator(
-                                rootNavigator: widget
-                                    .alertGeneralFrameworkOptions
-                                    .useRootNavigator)
-                            .pop();
+                      (widget.alertGeneralFrameworkOptions.onConfirmPressed ?? AlertGeneralFrameworkOptions.onConfirmPressedDefault)(context, widget.alertGeneralFrameworkOptions);
+                      if (widget.alertGeneralFrameworkOptions.isAutoCloseOnConfirmBtnPressed) {
+                        context.navigator(rootNavigator: widget.alertGeneralFrameworkOptions.useRootNavigator).pop();
                       }
                     },
                   ),

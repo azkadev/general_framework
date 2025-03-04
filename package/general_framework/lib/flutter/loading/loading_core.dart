@@ -58,8 +58,7 @@ class LoadingGeneralFramework {
   /// UncompleteDocumentation
   static Future<T?> show<T>({
     required BuildContext context,
-    required LoadingGeneralFrameworkController
-        loadingGeneralFrameworkController,
+    required LoadingGeneralFrameworkController loadingGeneralFrameworkController,
     bool barrierDismissible = false,
   }) async {
     return await context.showDialogFloatingGeneralFramework<T>(

@@ -76,9 +76,7 @@ abstract class ElementNode extends MarkdownSpanNodeGeneralFrameworkWidget {
 
   /// UncompleteDocumentation
 
-  TextSpan get childrenSpan => TextSpan(
-      children:
-          List.generate(children.length, (index) => children[index].build()));
+  TextSpan get childrenSpan => TextSpan(children: List.generate(children.length, (index) => children[index].build()));
 }
 
 ///the default concrete node for ElementNode

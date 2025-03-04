@@ -67,8 +67,7 @@ Corporation - GLOBAL CORPORATION & GENERAL CORPORATION
   }
 
   /// UncompleteDocumentation
-  static String helpGlobal(
-      {required String executable_name, required List<String> commands}) {
+  static String helpGlobal({required String executable_name, required List<String> commands}) {
     return """
 General Framework.
 
@@ -124,8 +123,7 @@ Commands:
       isRemoveIfFound: true,
     );
     String command = (args.arguments.firstOrNull ?? "").trim();
-    final String executable_name =
-        path.basenameWithoutExtension(Dart.executable);
+    final String executable_name = path.basenameWithoutExtension(Dart.executable);
     if (commands.contains(command) == false) {
       if (is_interactive) {
         command = logger.chooseOne("Commands?: ", choices: commands);
@@ -139,8 +137,7 @@ Commands:
     }
 
     if (command == "version") {
-      print(jsonToMessage(PackagexProjectGeneralFramework.default_data,
-          jsonFullMedia: {}));
+      print(jsonToMessage(PackagexProjectGeneralFramework.default_data, jsonFullMedia: {}));
       exit(0);
     }
 

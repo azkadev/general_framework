@@ -65,8 +65,7 @@ abstract class GeneralFrameworkApiServerCore {
 
 /// UncompleteDocumentation
 
-abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase>
-    implements GeneralFrameworkApiServerCore {
+abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase> implements GeneralFrameworkApiServerCore {
   /// UncompleteDocumentation
   final ServerUniverseNative serverUniverse;
 
@@ -89,10 +88,8 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase>
   bool _is_initialized = false;
 
   /// UncompleteDocumentation
-  FutureOr<void> ensureInitialized(
-      {required String currentPath, required Client httpClient}) async {
-    await generalFrameworkApi.ensureInitialized(
-        currentPath: currentPath, httpClient: httpClient);
+  FutureOr<void> ensureInitialized({required String currentPath, required Client httpClient}) async {
+    await generalFrameworkApi.ensureInitialized(currentPath: currentPath, httpClient: httpClient);
     if (_is_initialized) {
       return;
     }
@@ -139,8 +136,7 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase>
                 }
                 return {};
               }();
-              if (parameters["@type"] == "error" &&
-                  parameters["message"] == "decrypt_error") {
+              if (parameters["@type"] == "error" && parameters["message"] == "decrypt_error") {
                 await websocket.close();
                 return;
               }

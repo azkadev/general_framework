@@ -40,15 +40,9 @@ import "package:general_lib/scheme/language_code_data.dart";
 import "package:general_lib/language/language_core.dart";
 import "package:general_lib/regexp_replace/regexp_replace.dart";
 
-final Map _general_framework_sign_in_title_data = {
-  "id": "Masuk",
-  "en": "Sign In"
-};
+final Map _general_framework_sign_in_title_data = {"id": "Masuk", "en": "Sign In"};
 
-final Map _general_framework_sign_up_title_data = {
-  "id": "Daftar",
-  "en": "Sign up"
-};
+final Map _general_framework_sign_up_title_data = {"id": "Daftar", "en": "Sign up"};
 
 /// UncompleteDocumentation
 extension GeneralFrameworkSignExtensionGeneralFramework on Language {

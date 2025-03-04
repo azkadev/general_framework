@@ -60,8 +60,7 @@ class GeneralFrameworkClientInvokeOptions {
     bool? isInvokeThrowOnError,
   }) {
     return GeneralFrameworkClientInvokeOptions(
-      networkClientConnectionType:
-          networkClientConnectionType ?? this.networkClientConnectionType,
+      networkClientConnectionType: networkClientConnectionType ?? this.networkClientConnectionType,
       durationTimeOut: durationTimeOut ?? this.durationTimeOut,
       isInvokeThrowOnError: isInvokeThrowOnError ?? this.isInvokeThrowOnError,
     );

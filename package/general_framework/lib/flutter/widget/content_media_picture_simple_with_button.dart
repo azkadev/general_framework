@@ -38,8 +38,7 @@ import 'package:general_framework/flutter/image/image_core.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 /// UncompleteDocumentation
-class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget
-    extends StatelessWidget {
+class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget extends StatelessWidget {
   /// UncompleteDocumentation
   final EdgeInsetsGeometry? margin;
 
@@ -94,8 +93,7 @@ class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget
   @override
   Widget build(BuildContext context) {
     final Size size = this.size ?? Size(context.width, context.height / 3.5);
-    final BorderRadiusGeometry borderRadius =
-        this.borderRadius ?? BorderRadius.circular(20);
+    final BorderRadiusGeometry borderRadius = this.borderRadius ?? BorderRadius.circular(20);
     return MediaQuery(
       data: context.mediaQueryData.copyWith(
         size: size,
@@ -108,12 +106,8 @@ class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget
         decoration: BoxDecoration(
           color: context.theme.primaryColor,
           borderRadius: borderRadius,
-          border: isWithBorder
-              ? context.extensionGeneralLibFlutterBorderAll()
-              : null,
-          boxShadow: isWithBoxShadows
-              ? context.extensionGeneralLibFlutterBoxShadows()
-              : null,
+          border: isWithBorder ? context.extensionGeneralLibFlutterBorderAll() : null,
+          boxShadow: isWithBoxShadows ? context.extensionGeneralLibFlutterBoxShadows() : null,
         ),
         child: ClipRRect(
           borderRadius: borderRadius,
@@ -127,8 +121,7 @@ class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget
                       decoration: BoxDecoration(
                         image: ImageGeneralUiGeneralFramework.decorationImage(
                           pathImage: media,
-                          imageGeneralUiOptions:
-                              const ImageGeneralUiGeneralFrameworkOptions(
+                          imageGeneralUiOptions: const ImageGeneralUiGeneralFrameworkOptions(
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -173,10 +166,8 @@ class ContentMediaPictureSimpleWithButtonGeneralFrameworkWidget
                           decoration: BoxDecoration(
                             color: context.theme.primaryColor,
                             borderRadius: BorderRadius.circular(20),
-                            border:
-                                context.extensionGeneralLibFlutterBorderAll(),
-                            boxShadow:
-                                context.extensionGeneralLibFlutterBoxShadows(),
+                            border: context.extensionGeneralLibFlutterBorderAll(),
+                            boxShadow: context.extensionGeneralLibFlutterBoxShadows(),
                           ),
                           margin: const EdgeInsets.symmetric(
                             vertical: 5,

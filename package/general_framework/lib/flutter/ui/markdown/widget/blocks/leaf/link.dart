@@ -80,8 +80,7 @@ class LinkNode extends ElementNode {
   }
 
   @override
-  TextStyle get style =>
-      parentStyle?.merge(linkConfig.style) ?? linkConfig.style;
+  TextStyle get style => parentStyle?.merge(linkConfig.style) ?? linkConfig.style;
 }
 
 ///config class for link, tag: a
@@ -93,10 +92,7 @@ class LinkConfig implements LeafConfig {
   final ValueCallback<String>? onTap;
 
   /// UncompleteDocumentation
-  const LinkConfig(
-      {this.style = const TextStyle(
-          color: Color(0xff0969da), decoration: TextDecoration.underline),
-      this.onTap});
+  const LinkConfig({this.style = const TextStyle(color: Color(0xff0969da), decoration: TextDecoration.underline), this.onTap});
 
   @nonVirtual
   @override

@@ -39,8 +39,7 @@ import 'package:general_framework/flutter/ui/chat/message.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 /// UncompleteDocumentation
-class ChatControllerGeneralFramework<T extends MessageGeneralFramework>
-    extends ChangeNotifier {
+class ChatControllerGeneralFramework<T extends MessageGeneralFramework> extends ChangeNotifier {
   /// UncompleteDocumentation
   final ScrollControllerAutoKeepStateData scrollControllerAutoKeepStateData;
 

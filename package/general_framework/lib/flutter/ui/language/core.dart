@@ -103,13 +103,10 @@ class LanguageGeneralFrameworkOptions {
     GeneralLibFlutterApp? generalLibFlutterApp,
   }) {
     return LanguageGeneralFrameworkOptions(
-      languageGeneralFrameworkType:
-          languageGeneralFrameworkType ?? this.languageGeneralFrameworkType,
+      languageGeneralFrameworkType: languageGeneralFrameworkType ?? this.languageGeneralFrameworkType,
       onSelect: onSelect ?? this.onSelect,
-      languageGeneralFrameworkController: languageGeneralFrameworkController ??
-          this.languageGeneralFrameworkController,
-      isApplicationFullScreen:
-          isApplicationFullScreen ?? this.isApplicationFullScreen,
+      languageGeneralFrameworkController: languageGeneralFrameworkController ?? this.languageGeneralFrameworkController,
+      isApplicationFullScreen: isApplicationFullScreen ?? this.isApplicationFullScreen,
       applicationIcon: applicationIcon ?? this.applicationIcon,
       applicationTitle: applicationTitle ?? this.applicationTitle,
       generalLibFlutterApp: generalLibFlutterApp ?? this.generalLibFlutterApp,
@@ -117,8 +114,7 @@ class LanguageGeneralFrameworkOptions {
   }
 
   /// UncompleteDocumentation
-  static List<MapEntry<String, LanguageCodeDataDetail>>
-      getCountryGeneralUiPages({
+  static List<MapEntry<String, LanguageCodeDataDetail>> getCountryGeneralUiPages({
     required List<String> countryCodes,
   }) {
     return () {
@@ -144,20 +140,16 @@ class LanguageGeneralFrameworkOptions {
     required List<MapEntry<String, LanguageCodeDataDetail>> languageCodeDatas,
     required String value,
   }) {
-    final List<MapEntry<String, LanguageCodeDataDetail>> languageCodeResults =
-        [];
+    final List<MapEntry<String, LanguageCodeDataDetail>> languageCodeResults = [];
 
     for (final element in languageCodeDatas) {
       try {
         if (RegExp("^(([0-9]+))", caseSensitive: false).hasMatch(value)) {
-          if (!RegExp("^($value)", caseSensitive: false).hasMatch(
-              (element.value.dial_code ?? "")
-                  .replaceAll(RegExp("([+])"), ""))) {
+          if (!RegExp("^($value)", caseSensitive: false).hasMatch((element.value.dial_code ?? "").replaceAll(RegExp("([+])"), ""))) {
             continue;
           }
         } else {
-          if (!RegExp(value, caseSensitive: false)
-              .hasMatch(element.value.name ?? "")) {
+          if (!RegExp(value, caseSensitive: false).hasMatch(element.value.name ?? "")) {
             continue;
           }
         }
@@ -178,10 +170,7 @@ class LanguageGeneralFrameworkOptions {
     required List<MapEntry<String, LanguageCodeDataDetail>> languages,
   }) {
     languages.sort((a, b) {
-      return (a.value.name ?? "")
-          .toLowerCase()
-          .trim()
-          .compareTo((b.value.name ?? "").toLowerCase().trim());
+      return (a.value.name ?? "").toLowerCase().trim().compareTo((b.value.name ?? "").toLowerCase().trim());
     });
   }
 }
@@ -227,8 +216,7 @@ class LanguageGeneralFramework extends StatefulWidget {
   });
 
   @override
-  State<LanguageGeneralFramework> createState() =>
-      LanguageGeneralFrameworkState();
+  State<LanguageGeneralFramework> createState() => LanguageGeneralFrameworkState();
 
   /// UncompleteDocumentation
   static Future<T?> show<T>({
@@ -257,25 +245,20 @@ class LanguageGeneralFramework extends StatefulWidget {
 
 /// UncompleteDocumentation
 
-class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework>
-    with GeneralLibFlutterStatefulWidget {
+class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework> with GeneralLibFlutterStatefulWidget {
   /// UncompleteDocumentation
-  final TextEditingController searchTextEditingController =
-      TextEditingController();
+  final TextEditingController searchTextEditingController = TextEditingController();
 
   /// UncompleteDocumentation
   bool isShowSearch = false;
 
   /// UncompleteDocumentation
-  late final List<MapEntry<String, LanguageCodeDataDetail>> languageCodeDatas =
-      LanguageGeneralFrameworkOptions.getCountryGeneralUiPages(
-    countryCodes: widget.languageGeneralFrameworkOptions
-        .languageGeneralFrameworkController.languageSupports,
+  late final List<MapEntry<String, LanguageCodeDataDetail>> languageCodeDatas = LanguageGeneralFrameworkOptions.getCountryGeneralUiPages(
+    countryCodes: widget.languageGeneralFrameworkOptions.languageGeneralFrameworkController.languageSupports,
   );
 
   /// UncompleteDocumentation
-  late final List<MapEntry<String, LanguageCodeDataDetail>>
-      languageCodeResults = [...languageCodeDatas];
+  late final List<MapEntry<String, LanguageCodeDataDetail>> languageCodeResults = [...languageCodeDatas];
 
   @override
   void initState() {
@@ -314,8 +297,7 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework>
     setStateWithIgnoreError(fn: () {
       languageCodeResults.clear();
     });
-    languageCodeResults.addAll(LanguageGeneralFrameworkOptions.search(
-        languageCodeDatas: languageCodeDatas, value: value));
+    languageCodeResults.addAll(LanguageGeneralFrameworkOptions.search(languageCodeDatas: languageCodeDatas, value: value));
     setStateWithIgnoreError(fn: () {});
   }
 
@@ -334,8 +316,7 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework>
   PreferredSizeWidget appBar({
     required BuildContext context,
   }) {
-    final languageGeneralFrameworkOptions =
-        widget.languageGeneralFrameworkOptions;
+    final languageGeneralFrameworkOptions = widget.languageGeneralFrameworkOptions;
 
     if (isShowSearch) {
       return PreferredSize(
@@ -379,8 +360,7 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework>
     return AppBarGeneralFrameworkWidget.create(
       key: appBarGlobalKey,
       leadingBuilder: (context, child) {
-        if (languageGeneralFrameworkOptions.languageGeneralFrameworkType ==
-            LanguageGeneralFrameworkType.dialog) {
+        if (languageGeneralFrameworkOptions.languageGeneralFrameworkType == LanguageGeneralFrameworkType.dialog) {
           if (context.navigator().canPop()) {
             return IconButton(
               onPressed: () {
@@ -398,20 +378,11 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework>
       context: context,
       title: "Language",
       pageState: this,
-      isShowApplicationIconAndtitle:
-          (languageGeneralFrameworkOptions.languageGeneralFrameworkType ==
-                  LanguageGeneralFrameworkType.full)
-              ? true
-              : false,
-      isApplicationFullScreen:
-          (languageGeneralFrameworkOptions.languageGeneralFrameworkType ==
-                  LanguageGeneralFrameworkType.dialog)
-              ? true
-              : widget.languageGeneralFrameworkOptions.isApplicationFullScreen,
+      isShowApplicationIconAndtitle: (languageGeneralFrameworkOptions.languageGeneralFrameworkType == LanguageGeneralFrameworkType.full) ? true : false,
+      isApplicationFullScreen: (languageGeneralFrameworkOptions.languageGeneralFrameworkType == LanguageGeneralFrameworkType.dialog) ? true : widget.languageGeneralFrameworkOptions.isApplicationFullScreen,
       applicationTitle: widget.languageGeneralFrameworkOptions.applicationTitle,
       applicationIcon: widget.languageGeneralFrameworkOptions.applicationIcon,
-      generalLibFlutterApp:
-          widget.languageGeneralFrameworkOptions.generalLibFlutterApp,
+      generalLibFlutterApp: widget.languageGeneralFrameworkOptions.generalLibFlutterApp,
       actions: (context, pageState) sync* {
         yield IconButton(
           onPressed: () {
@@ -439,15 +410,13 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework>
   Widget body({
     required BuildContext context,
   }) {
-    final languageGeneralFrameworkOptions =
-        widget.languageGeneralFrameworkOptions;
+    final languageGeneralFrameworkOptions = widget.languageGeneralFrameworkOptions;
     return Scaffold(
       appBar: appBar(
         context: context,
       ),
       body: ListenableBuilder(
-        listenable:
-            languageGeneralFrameworkOptions.languageGeneralFrameworkController,
+        listenable: languageGeneralFrameworkOptions.languageGeneralFrameworkController,
         builder: (context, child) {
           return SingleChildScrollView(
             child: Column(
@@ -468,11 +437,9 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework>
 
   @override
   Widget build(BuildContext context) {
-    final languageGeneralFrameworkOptions =
-        widget.languageGeneralFrameworkOptions;
+    final languageGeneralFrameworkOptions = widget.languageGeneralFrameworkOptions;
 
-    if (languageGeneralFrameworkOptions.languageGeneralFrameworkType ==
-        LanguageGeneralFrameworkType.dialog) {
+    if (languageGeneralFrameworkOptions.languageGeneralFrameworkType == LanguageGeneralFrameworkType.dialog) {
       return MenuContainerBuilderGeneralFrameworkWidget(
         isWithBorder: true,
         isWithShadow: true,
@@ -504,10 +471,8 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework>
   Iterable<Widget> contentsWidget({
     required BuildContext context,
   }) {
-    final languageGeneralFrameworkOptions =
-        widget.languageGeneralFrameworkOptions;
-    final countryCodeId = languageGeneralFrameworkOptions
-        .languageGeneralFrameworkController.countryCodeId;
+    final languageGeneralFrameworkOptions = widget.languageGeneralFrameworkOptions;
+    final countryCodeId = languageGeneralFrameworkOptions.languageGeneralFrameworkController.countryCodeId;
     return [
       for (final element in languageCodeResults.toList()) ...[
         contentWidget(
@@ -537,12 +502,8 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework>
         context: context,
         isLoading: isLoading,
         onTap: () {
-          widget.languageGeneralFrameworkOptions
-              .languageGeneralFrameworkController
-              .updateCountryCode(
-                  countryCodeId: languageCodeDataDetail.code ?? "");
-          widget.languageGeneralFrameworkOptions
-              .onSelect(context, languageCodeDataDetail);
+          widget.languageGeneralFrameworkOptions.languageGeneralFrameworkController.updateCountryCode(countryCodeId: languageCodeDataDetail.code ?? "");
+          widget.languageGeneralFrameworkOptions.onSelect(context, languageCodeDataDetail);
         },
         leading: Text(
           languageCodeDataDetail.flag ?? "",
