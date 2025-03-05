@@ -8,10 +8,10 @@ dependencies:
   flutter:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
-  general_lib_flutter: '^0.0.41'
-  general_lib: '^0.0.67'
-  simulate: '^0.0.53'
-  general_framework: '^0.0.28'
+  general_lib_flutter: '^0.0.42'
+  general_lib: '^0.0.69'
+  simulate: '^0.0.54'
+  general_framework: '^0.0.30'
 dev_dependencies:
   flutter_test:
     sdk: 'flutter'

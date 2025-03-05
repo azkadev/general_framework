@@ -32,43 +32,32 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
-import 'dart:async';
 
 import 'package:general_framework/core/database/database_core.dart';
 import 'package:general_lib/json_scheme/json_scheme.dart';
+import 'package:general_schema/general_schema.dart';
 import 'package:http/http.dart';
 
-/// GeneralFrameworkClient
-/// is universal client for help you connection to rest api server super easy friendly
-abstract class GeneralFrameworkApiBaseCore {
-  /// UncompleteDocumentation
-  FutureOr<JsonScheme> invoke({
-    required JsonScheme parameters,
-  }) async {
-    return JsonScheme({"@type": "error", "message": "unimplemented"});
-  }
+/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+class GeneralFrameworkApiEnsureInitialized {
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  final String currentPath;
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  final Client httpClient;
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  GeneralFrameworkApiEnsureInitialized({
+    required this.currentPath,
+    required this.httpClient,
+  });
 }
 
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
-abstract class GeneralFrameworkApiBase<D extends GeneralFrameworkDatabase>
-    implements GeneralFrameworkApiBaseCore {
-  /// UncompleteDocumentation
-  final D generalFrameworkApiDatabase;
-
-  /// UncompleteDocumentation
-  GeneralFrameworkApiBase({
-    required this.generalFrameworkApiDatabase,
+///
+abstract class GeneralFrameworkApi<AGeneralFrameworkApiEnsureInitializedValue extends GeneralFrameworkApiEnsureInitialized, AGeneralFrameworkDatabaseEnsureInitializedValue extends GeneralFrameworkDatabaseEnsureInitialized, AGeneralFrameworkDatabaseValue extends GeneralFrameworkDatabase, AGeneralSchemaInvokeValue extends JsonScheme> extends GeneralSchemaApi<AGeneralFrameworkApiEnsureInitializedValue, AGeneralFrameworkDatabaseValue, AGeneralSchemaInvokeValue> {
+  GeneralFrameworkApi({
+    required super.generalSchemaDatabase,
   });
-
-  /// UncompleteDocumentation
-  FutureOr<void> ensureInitialized({
-    required String currentPath,
-    required Client httpClient,
-  }) async {
-    await generalFrameworkApiDatabase.ensureInitialized(
-      currentPath: currentPath,
-      httpClient: httpClient,
-    );
-  }
 }

@@ -38,6 +38,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:general_schema/client/core.dart';
 import 'package:general_system_device/core/core.dart';
 import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/core/database/database_core.dart';
@@ -83,7 +84,7 @@ abstract class GeneralFrameworkClientBaseCore {
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
 abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
-    implements GeneralFrameworkClientBaseCore {
+    implements GeneralSchemaClient {
   /// UncompleteDocumentation
   final WebSocketClient web_socket_client = WebSocketClient("");
 
@@ -170,6 +171,20 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
   /// UncompleteDocumentation
 
   bool is_initialized = false;
+
+  /// UncompleteDocumentation
+  String encryptData({
+    required Map data,
+  }) {
+    return json.encode(data);
+  }
+
+  /// UncompleteDocumentation
+  String decryptData({
+    required String data,
+  }) {
+    return data;
+  }
 
   /// call this method
   FutureOr<void> ensureInitialized({

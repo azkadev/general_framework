@@ -98,8 +98,7 @@ Commands:
   /// UncompleteDocumentation
   static void generalFrameworkCli({
     required List<String> arguments,
-  }) async {
-    final GeneralFrameworkApi generalFrameworkApi = GeneralFrameworkApi();
+  }) async { 
     final Args args = Args(arguments);
     final List<String> commands = [
       "create",

@@ -40,33 +40,21 @@ import 'dart:typed_data';
 
 import 'package:general_framework/core/api/api.dart';
 import 'package:general_lib/general_lib.dart';
+import 'package:general_schema/general_schema.dart';
 import 'package:http/http.dart';
 import 'package:server_universe/native.dart';
 import 'package:server_universe/native/core/type_handlers/websocket_type_handler.dart';
 import 'package:io_universe/io_universe.dart';
 
 /// UncompleteDocumentation
-abstract class GeneralFrameworkApiServerCore {
-  /// UncompleteDocumentation
-  String encryptData({
-    required Map data,
-  }) {
-    return json.encode(data);
-  }
 
-  /// UncompleteDocumentation
-
-  String decryptData({
-    required String data,
-  }) {
-    return data;
-  }
+abstract class GeneralFrameworkApiServerB extends GeneralSchemaServer {
+  GeneralFrameworkApiServerB({
+    required super.generalSchemaApi,
+  });
 }
 
-/// UncompleteDocumentation
-
-abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase>
-    implements GeneralFrameworkApiServerCore {
+abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApi> {
   /// UncompleteDocumentation
   final ServerUniverseNative serverUniverse;
 
@@ -86,13 +74,26 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase>
     this.pathApi = "/api",
     this.pathWebSocket = "/ws",
   });
+
   bool _is_initialized = false;
 
   /// UncompleteDocumentation
-  FutureOr<void> ensureInitialized(
-      {required String currentPath, required Client httpClient}) async {
-    await generalFrameworkApi.ensureInitialized(
-        currentPath: currentPath, httpClient: httpClient);
+  String encryptData({
+    required Map data,
+  });
+
+  /// UncompleteDocumentation
+
+  String decryptData({
+    required String data,
+  });
+
+  /// UncompleteDocumentation
+  FutureOr<void> ensureInitialized({
+    required String currentPath,
+    required Client httpClient,
+  }) async {
+    await generalFrameworkApi.ensureInitialized(currentPath: currentPath, httpClient: httpClient);
     if (_is_initialized) {
       return;
     }
@@ -139,8 +140,7 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApiBase>
                 }
                 return {};
               }();
-              if (parameters["@type"] == "error" &&
-                  parameters["message"] == "decrypt_error") {
+              if (parameters["@type"] == "error" && parameters["message"] == "decrypt_error") {
                 await websocket.close();
                 return;
               }
