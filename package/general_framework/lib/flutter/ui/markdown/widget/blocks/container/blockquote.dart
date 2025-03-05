@@ -64,7 +64,8 @@ class BlockquoteNode extends ElementNode {
       )),
       padding: config.padding,
       margin: config.margin,
-      child: MarkdownProxyRichTextGeneralFrameworkWidget(childrenSpan, richTextBuilder: visitor.richTextBuilder),
+      child: MarkdownProxyRichTextGeneralFrameworkWidget(childrenSpan,
+          richTextBuilder: visitor.richTextBuilder),
     ));
   }
 
@@ -100,7 +101,8 @@ class BlockquoteConfig implements ContainerConfig {
   });
 
   /// UncompleteDocumentation
-  static BlockquoteConfig get darkConfig => const BlockquoteConfig(textColor: Color(0xffd0d7de));
+  static BlockquoteConfig get darkConfig =>
+      const BlockquoteConfig(textColor: Color(0xffd0d7de));
 
   @nonVirtual
   @override

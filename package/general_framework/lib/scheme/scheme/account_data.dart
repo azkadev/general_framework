@@ -206,7 +206,10 @@ class AccountData extends JsonScheme {
       if (rawData["social_medias"] is List == false) {
         return [];
       }
-      return (rawData["social_medias"] as List).map((e) => LinkData(e as Map)).toList().cast<LinkData>();
+      return (rawData["social_medias"] as List)
+          .map((e) => LinkData(e as Map))
+          .toList()
+          .cast<LinkData>();
     } catch (e) {
       return [];
     }

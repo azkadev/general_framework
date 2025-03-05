@@ -44,7 +44,11 @@ class GeneralFrameworkDocumentationDocumentationsContent extends JsonScheme {
   /// return default data
   ///
   static Map get defaultData {
-    return {"@type": "generalFrameworkDocumentationDocumentationsContent", "content_id": "", "content": ""};
+    return {
+      "@type": "generalFrameworkDocumentationDocumentationsContent",
+      "content_id": "",
+      "content": ""
+    };
   }
 
   /// check data
@@ -127,21 +131,27 @@ class GeneralFrameworkDocumentationDocumentationsContent extends JsonScheme {
     String? content,
   }) {
     // GeneralFrameworkDocumentationDocumentationsContent generalFrameworkDocumentationDocumentationsContent = GeneralFrameworkDocumentationDocumentationsContent({
-    final Map generalFrameworkDocumentationDocumentationsContent_data_create_json = {
+    final Map
+        generalFrameworkDocumentationDocumentationsContent_data_create_json = {
       "@type": special_type,
       "content_id": content_id,
       "content": content,
     };
 
-    generalFrameworkDocumentationDocumentationsContent_data_create_json.removeWhere((key, value) => value == null);
+    generalFrameworkDocumentationDocumentationsContent_data_create_json
+        .removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (generalFrameworkDocumentationDocumentationsContent_data_create_json.containsKey(key) == false) {
-          generalFrameworkDocumentationDocumentationsContent_data_create_json[key] = value;
+        if (generalFrameworkDocumentationDocumentationsContent_data_create_json
+                .containsKey(key) ==
+            false) {
+          generalFrameworkDocumentationDocumentationsContent_data_create_json[
+              key] = value;
         }
       });
     }
-    return GeneralFrameworkDocumentationDocumentationsContent(generalFrameworkDocumentationDocumentationsContent_data_create_json);
+    return GeneralFrameworkDocumentationDocumentationsContent(
+        generalFrameworkDocumentationDocumentationsContent_data_create_json);
   }
 }

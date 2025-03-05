@@ -176,7 +176,13 @@ class ContentAds extends JsonScheme {
       if (rawData["inline_keyboard"] is List == false) {
         return [];
       }
-      return ((rawData["inline_keyboard"] as List).cast<List>()).map((e) => e.map((e) => InlineKeyboard(e as Map)).toList().cast<InlineKeyboard>()).toList().cast<List<InlineKeyboard>>();
+      return ((rawData["inline_keyboard"] as List).cast<List>())
+          .map((e) => e
+              .map((e) => InlineKeyboard(e as Map))
+              .toList()
+              .cast<InlineKeyboard>())
+          .toList()
+          .cast<List<InlineKeyboard>>();
     } catch (e) {
       return [];
     }
@@ -184,7 +190,9 @@ class ContentAds extends JsonScheme {
 
   /// Generated
   set inline_keyboard(List<List<InlineKeyboard>> values) {
-    rawData["inline_keyboard"] = values.map((value) => value.map((value) => value.toJson()).toList()).toList();
+    rawData["inline_keyboard"] = values
+        .map((value) => value.map((value) => value.toJson()).toList())
+        .toList();
   }
 
   /// Generated
@@ -204,7 +212,12 @@ class ContentAds extends JsonScheme {
       "content_type": content_type,
       "medias": medias,
       "caption": caption,
-      "inline_keyboard": (inline_keyboard != null) ? inline_keyboard.map((res) => res.map((e) => e.toJson()).toList().cast<Map>()).toList().cast<List<Map>>() : null,
+      "inline_keyboard": (inline_keyboard != null)
+          ? inline_keyboard
+              .map((res) => res.map((e) => e.toJson()).toList().cast<Map>())
+              .toList()
+              .cast<List<Map>>()
+          : null,
     };
 
     contentAds_data_create_json.removeWhere((key, value) => value == null);

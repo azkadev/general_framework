@@ -36,7 +36,8 @@ import 'package:flutter/material.dart';
 import 'package:general_framework/flutter/client/base.dart';
 
 /// UncompleteDocumentation
-abstract class GeneralFrameworkClientFlutterAppStatefulWidget<T extends GeneralFrameworkClientFlutter> extends StatefulWidget {
+abstract class GeneralFrameworkClientFlutterAppStatefulWidget<
+    T extends GeneralFrameworkClientFlutter> extends StatefulWidget {
   /// UncompleteDocumentation
   final T generalFrameworkClientFlutter;
 
@@ -48,7 +49,8 @@ abstract class GeneralFrameworkClientFlutterAppStatefulWidget<T extends GeneralF
 }
 
 /// UncompleteDocumentation
-abstract class GeneralFrameworkClientFlutterAppStatelessWidget<T extends GeneralFrameworkClientFlutter> extends StatelessWidget {
+abstract class GeneralFrameworkClientFlutterAppStatelessWidget<
+    T extends GeneralFrameworkClientFlutter> extends StatelessWidget {
   /// UncompleteDocumentation
   final T generalFrameworkClientFlutter;
 

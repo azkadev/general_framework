@@ -55,7 +55,9 @@ class InputNode extends MarkdownSpanNodeGeneralFrameworkWidget {
     if (attr['checked'] != null) {
       checked = attr['checked']!.toLowerCase() == 'true';
     }
-    final parentStyleHeight = (parentStyle?.fontSize ?? config.p.textStyle.fontSize ?? 16.0) * (parentStyle?.height ?? config.p.textStyle.height ?? 1.5);
+    final parentStyleHeight =
+        (parentStyle?.fontSize ?? config.p.textStyle.fontSize ?? 16.0) *
+            (parentStyle?.height ?? config.p.textStyle.height ?? 1.5);
     return WidgetSpan(
       child: config.input.builder?.call(checked) ??
           Padding(

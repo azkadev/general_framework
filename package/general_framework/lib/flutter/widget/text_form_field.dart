@@ -142,7 +142,8 @@ class TextFormFieldGeneralFrameworkWidget extends StatelessWidget {
       ),
       onChanged: onChanged,
       clipBehavior: Clip.antiAlias,
-      decoration: (inputDecorationBuilder ?? inputDecorationBuilderGeneralFrameworkWidgetDefault)(
+      decoration: (inputDecorationBuilder ??
+          inputDecorationBuilderGeneralFrameworkWidgetDefault)(
         context,
         InputDecoration(
           contentPadding: const EdgeInsets.all(0.0),

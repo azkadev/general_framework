@@ -168,7 +168,8 @@ class _TocWidgetState extends State<TocWidget> {
       final selfIndex = tocController._index2toc[index]?.selfIndex;
       if (selfIndex != null && _tocList.length > selfIndex) {
         refreshIndex(selfIndex);
-        controller.scrollToIndex(currentIndex, preferPosition: AutoScrollPosition.begin);
+        controller.scrollToIndex(currentIndex,
+            preferPosition: AutoScrollPosition.begin);
       }
     };
     _refreshList(tocController.tocList);
@@ -199,13 +200,19 @@ class _TocWidgetState extends State<TocWidget> {
         bool isCurrentToc = index == currentIndex;
         final itemBuilder = widget.itemBuilder;
         if (itemBuilder != null) {
-          final result = itemBuilder.call(TocItemBuilderData(index, currentToc, currentIndex, refreshIndex));
+          final result = itemBuilder.call(TocItemBuilderData(
+              index, currentToc, currentIndex, refreshIndex));
           if (result != null) return result;
         }
-        final node = currentToc.node.copy(headingConfig: _TocHeadingConfig(TextStyle(fontSize: 16, color: isCurrentToc ? Colors.blue : null), currentToc.node.headingConfig.tag));
+        final node = currentToc.node.copy(
+            headingConfig: _TocHeadingConfig(
+                TextStyle(
+                    fontSize: 16, color: isCurrentToc ? Colors.blue : null),
+                currentToc.node.headingConfig.tag));
         final child = ListTile(
           title: Container(
-            margin: EdgeInsets.only(left: 20.0 * (headingTag2Level[node.headingConfig.tag] ?? 1)),
+            margin: EdgeInsets.only(
+                left: 20.0 * (headingTag2Level[node.headingConfig.tag] ?? 1)),
             child: MarkdownProxyRichTextGeneralFrameworkWidget(node.build()),
           ),
           onTap: () {
@@ -244,7 +251,8 @@ class TocItemBuilderData {
   final ValueChanged<int> refreshIndexCallback;
 
   /// UncompleteDocumentation
-  TocItemBuilderData(this.index, this.toc, this.currentIndex, this.refreshIndexCallback);
+  TocItemBuilderData(
+      this.index, this.toc, this.currentIndex, this.refreshIndexCallback);
 }
 
 ///every heading tag has a special level

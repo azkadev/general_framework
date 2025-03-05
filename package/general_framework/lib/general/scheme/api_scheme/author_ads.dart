@@ -44,7 +44,16 @@ class AuthorAds extends JsonScheme {
   /// return default data
   ///
   static Map get defaultData {
-    return {"@type": "authorAds", "is_locked": false, "platform_id": "", "account_user_id": 0, "full_name": "", "photo_profile": "", "photo_path": "", "url": ""};
+    return {
+      "@type": "authorAds",
+      "is_locked": false,
+      "platform_id": "",
+      "account_user_id": 0,
+      "full_name": "",
+      "photo_profile": "",
+      "photo_path": "",
+      "url": ""
+    };
   }
 
   /// check data

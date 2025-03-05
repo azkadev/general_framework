@@ -50,7 +50,11 @@ class GeneralFrameworkDocumentationFooterData extends JsonScheme {
       "@type": "generalFrameworkDocumentationFooterData",
       "title": "",
       "footer": [
-        {"@type": "generalFrameworkDocumentationFooterSubData", "text": "", "url": ""}
+        {
+          "@type": "generalFrameworkDocumentationFooterSubData",
+          "text": "",
+          "url": ""
+        }
       ]
     };
   }
@@ -116,7 +120,10 @@ class GeneralFrameworkDocumentationFooterData extends JsonScheme {
       if (rawData["footer"] is List == false) {
         return [];
       }
-      return (rawData["footer"] as List).map((e) => GeneralFrameworkDocumentationFooterSubData(e as Map)).toList().cast<GeneralFrameworkDocumentationFooterSubData>();
+      return (rawData["footer"] as List)
+          .map((e) => GeneralFrameworkDocumentationFooterSubData(e as Map))
+          .toList()
+          .cast<GeneralFrameworkDocumentationFooterSubData>();
     } catch (e) {
       return [];
     }
@@ -141,15 +148,19 @@ class GeneralFrameworkDocumentationFooterData extends JsonScheme {
       "footer": (footer != null) ? footer.toJson() : null,
     };
 
-    generalFrameworkDocumentationFooterData_data_create_json.removeWhere((key, value) => value == null);
+    generalFrameworkDocumentationFooterData_data_create_json
+        .removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (generalFrameworkDocumentationFooterData_data_create_json.containsKey(key) == false) {
+        if (generalFrameworkDocumentationFooterData_data_create_json
+                .containsKey(key) ==
+            false) {
           generalFrameworkDocumentationFooterData_data_create_json[key] = value;
         }
       });
     }
-    return GeneralFrameworkDocumentationFooterData(generalFrameworkDocumentationFooterData_data_create_json);
+    return GeneralFrameworkDocumentationFooterData(
+        generalFrameworkDocumentationFooterData_data_create_json);
   }
 }

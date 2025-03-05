@@ -156,7 +156,9 @@ class StoriesGeneralFrameworkWidget extends StatelessWidget {
             width: context.width,
             height: context.height,
             onPressed: onPressed,
-            colorFilter: contentColorFilter ?? const ColorFilter.mode(Color.fromARGB(100, 0, 0, 0), BlendMode.srcOver),
+            colorFilter: contentColorFilter ??
+                const ColorFilter.mode(
+                    Color.fromARGB(100, 0, 0, 0), BlendMode.srcOver),
           ),
         ),
         Positioned(
@@ -166,7 +168,8 @@ class StoriesGeneralFrameworkWidget extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: Row(
               children: [
-                (profileBuilder ?? widgetBuilderGeneralFrameworkWidgetDefault).call(
+                (profileBuilder ?? widgetBuilderGeneralFrameworkWidgetDefault)
+                    .call(
                   context,
                   ProfilePictureGeneralFrameworkWidget(
                     isUseShadow: profileIsUseShadow,
@@ -178,13 +181,16 @@ class StoriesGeneralFrameworkWidget extends StatelessWidget {
                     onPressed: profileOnPressed,
                   ),
                 ),
-                (titleBuilder ?? widgetBuilderGeneralFrameworkWidgetDefault).call(
+                (titleBuilder ?? widgetBuilderGeneralFrameworkWidgetDefault)
+                    .call(
                   context,
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: Text(
                       title,
-                      style: (context.theme.textTheme.titleSmall ?? const TextStyle()).copyWith(
+                      style: (context.theme.textTheme.titleSmall ??
+                              const TextStyle())
+                          .copyWith(
                         shadows: context.extensionGeneralLibFlutterShadows(),
                       ),
                     ),

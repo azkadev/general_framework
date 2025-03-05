@@ -65,13 +65,16 @@ class CodeBlockNode extends ElementNode {
   InlineSpan build() {
     String? language = preConfig.language;
     try {
-      final languageValue = (element.children?.first as m.Element).attributes['class']!;
+      final languageValue =
+          (element.children?.first as m.Element).attributes['class']!;
       language = languageValue.split('-').last;
     } catch (e) {
       language = null;
       debugPrint('get language error:$e');
     }
-    final splitContents = content.trim().split(visitor.splitRegExp ?? WidgetVisitor.defaultSplitRegExp);
+    final splitContents = content
+        .trim()
+        .split(visitor.splitRegExp ?? WidgetVisitor.defaultSplitRegExp);
     if (splitContents.last.isEmpty) splitContents.removeLast();
     final codeBuilder = preConfig.builder;
     if (codeBuilder != null) {
@@ -104,7 +107,9 @@ class CodeBlockNode extends ElementNode {
         ),
       ),
     );
-    return WidgetSpan(child: preConfig.wrapper?.call(widget, content, language ?? '') ?? widget);
+    return WidgetSpan(
+        child:
+            preConfig.wrapper?.call(widget, content, language ?? '') ?? widget);
   }
 
   @override
@@ -121,7 +126,15 @@ List<InlineSpan> highLightSpans(
   TextStyle? styleNotMatched,
   int tabSize = 8,
 }) {
-  return convertHiNodes(hi.highlight.parse(input.trimRight(), language: autoDetectionLanguage ? null : language, autoDetection: autoDetectionLanguage).nodes!, theme, textStyle, styleNotMatched);
+  return convertHiNodes(
+      hi.highlight
+          .parse(input.trimRight(),
+              language: autoDetectionLanguage ? null : language,
+              autoDetection: autoDetectionLanguage)
+          .nodes!,
+      theme,
+      textStyle,
+      styleNotMatched);
 }
 
 /// UncompleteDocumentation
@@ -140,7 +153,9 @@ List<TextSpan> convertHiNodes(
     final nodeStyle = parentStyle ?? theme[node.className ?? ''];
     final finallyStyle = (nodeStyle ?? styleNotMatched)?.merge(style);
     if (node.value != null) {
-      currentSpans.add(node.className == null ? TextSpan(text: node.value, style: finallyStyle) : TextSpan(text: node.value, style: finallyStyle));
+      currentSpans.add(node.className == null
+          ? TextSpan(text: node.value, style: finallyStyle)
+          : TextSpan(text: node.value, style: finallyStyle));
     } else if (node.children != null) {
       List<TextSpan> tmp = [];
       currentSpans.add(TextSpan(children: tmp, style: finallyStyle));

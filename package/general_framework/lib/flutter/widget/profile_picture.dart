@@ -80,7 +80,8 @@ class ProfilePictureGeneralFrameworkWidget extends StatelessWidget {
   final void Function(Object e, StackTrace? stackTrace)? onError;
 
   /// UncompleteDocumentation
-  final Widget Function(BuildContext context, Object error, StackTrace? stackTrace)? errorBuilder;
+  final Widget Function(
+      BuildContext context, Object error, StackTrace? stackTrace)? errorBuilder;
 
   /// UncompleteDocumentation
   final bool isUseShadow;
@@ -114,7 +115,8 @@ class ProfilePictureGeneralFrameworkWidget extends StatelessWidget {
 
   /// UncompleteDocumentation
   Widget body(BuildContext context) {
-    final decorationImageOrNull = ImageGeneralUiGeneralFramework.decorationImageOrNull(
+    final decorationImageOrNull =
+        ImageGeneralUiGeneralFramework.decorationImageOrNull(
       pathImage: pathImage,
       onError: onError,
       imageGeneralUiOptions: ImageGeneralUiGeneralFrameworkOptions(
@@ -173,7 +175,9 @@ class ProfilePictureGeneralFrameworkWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: borderRadius ?? BorderRadius.circular(25),
           border: context.extensionGeneralLibFlutterBorderAll(),
-          boxShadow: isUseShadow ? context.extensionGeneralLibFlutterBoxShadows() : null,
+          boxShadow: isUseShadow
+              ? context.extensionGeneralLibFlutterBoxShadows()
+              : null,
         ),
         child: child,
       );

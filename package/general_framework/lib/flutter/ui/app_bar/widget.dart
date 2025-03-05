@@ -41,7 +41,8 @@ import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:window_manager/window_manager.dart';
 
 /// UncompleteDocumentationu
-class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredSizeWidget {
+class AppBarGeneralFrameworkWidget extends StatelessWidget
+    implements PreferredSizeWidget {
   /// UncompleteDocumentation
   final Size size;
 
@@ -92,7 +93,9 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
 
   @override
   Widget build(BuildContext context) {
-    final Decoration decoration = (decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault).call(
+    final Decoration decoration =
+        (decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault)
+            .call(
       context,
       BoxDecoration(
         color: context.theme.appBarTheme.backgroundColor,
@@ -115,7 +118,9 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
         //   );
         // }(),
         clipBehavior: clipBehavior,
-        decoration: (decorationBuilder ?? decorationBuilderGeneralFrameworkWidgetDefault).call(
+        decoration: (decorationBuilder ??
+                decorationBuilderGeneralFrameworkWidgetDefault)
+            .call(
           context,
           BoxDecoration(
             color: context.theme.appBarTheme.backgroundColor,
@@ -177,7 +182,8 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
   ///
   static AppBarGeneralFrameworkWidget create({
     Key? key,
-    required Widget? Function(BuildContext context, Widget? child) leadingBuilder,
+    required Widget? Function(BuildContext context, Widget? child)
+        leadingBuilder,
     required BuildContext context,
     required String title,
     DecorationBuilderGeneralFrameworkWidget? decorationBuilder,
@@ -190,8 +196,12 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
     required dynamic applicationIcon,
     Widget? backIcon,
     required GeneralLibFlutterApp generalLibFlutterApp,
-    required Iterable<Widget> Function(BuildContext context, GeneralLibFlutterStatefulWidget pageState) actions,
-    required Iterable<Widget> Function(BuildContext context, GeneralLibFlutterStatefulWidget pageState) builder,
+    required Iterable<Widget> Function(
+            BuildContext context, GeneralLibFlutterStatefulWidget pageState)
+        actions,
+    required Iterable<Widget> Function(
+            BuildContext context, GeneralLibFlutterStatefulWidget pageState)
+        builder,
     required Widget Function(BuildContext context, Widget appBar) appBarBuilder,
   }) {
     return AppBarGeneralFrameworkWidget.raw(
@@ -272,14 +282,18 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
     required bool isShowApplicationIconAndtitle,
     required dynamic applicationIcon,
     required String applicationTitle,
-    required Iterable<Widget> Function(BuildContext context, GeneralLibFlutterStatefulWidget pageState) builder,
+    required Iterable<Widget> Function(
+            BuildContext context, GeneralLibFlutterStatefulWidget pageState)
+        builder,
   }) {
     return AppBarGeneralFrameworkWidget(
       key: key,
       size: Size(context.width, context.height),
       decorationBuilder: decorationBuilder ?? decorationDefaultFunction,
       builder: (context) sync* {
-        if (Dart.isDesktop && Dart.isWeb == false && isApplicationFullScreen == false) {
+        if (Dart.isDesktop &&
+            Dart.isWeb == false &&
+            isApplicationFullScreen == false) {
           yield Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -333,7 +347,11 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
   }
 
   ///
-  static Widget backButtonWidget({required void Function()? onPressed, required BuildContext context, required GeneralLibFlutterStatefulWidget generalLibFlutterStatefulWidget, required Widget backIcon}) {
+  static Widget backButtonWidget(
+      {required void Function()? onPressed,
+      required BuildContext context,
+      required GeneralLibFlutterStatefulWidget generalLibFlutterStatefulWidget,
+      required Widget backIcon}) {
     return SkeletonizerGeneralFramework(
       enabled: generalLibFlutterStatefulWidget.isLoading,
       child: IconButton(
@@ -344,7 +362,8 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
   }
 
   ///
-  static Decoration decorationDefaultFunction(BuildContext context, BoxDecoration decoration) {
+  static Decoration decorationDefaultFunction(
+      BuildContext context, BoxDecoration decoration) {
     return decoration.copyWith(
       borderRadius: const BorderRadiusDirectional.only(
         bottomEnd: Radius.circular(20),
@@ -378,7 +397,8 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
     required GeneralLibFlutterApp generalLibFlutterApp,
   }) {
     return ThemeChangeGeneralFrameworkWidget(
-      themeChangeGeneralFrameworkWidgetStyle: ThemeChangeGeneralFrameworkWidgetStyle.minimalist,
+      themeChangeGeneralFrameworkWidgetStyle:
+          ThemeChangeGeneralFrameworkWidgetStyle.minimalist,
       generalLibFlutterApp: generalLibFlutterApp,
       onChanged: () {},
     );
@@ -409,7 +429,8 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
       //   },
       // ),
       WindowCaptionButton.minimize(
-        brightness: platformBrightness(context: context, generalLibFlutterApp: generalLibFlutterApp),
+        brightness: platformBrightness(
+            context: context, generalLibFlutterApp: generalLibFlutterApp),
         onPressed: () async {
           try {
             bool isMinimized = await windowManager.isMinimized();
@@ -432,7 +453,8 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
           if (snapshot.data == true) {
             return WindowCaptionButton.unmaximize(
-              brightness: platformBrightness(context: context, generalLibFlutterApp: generalLibFlutterApp),
+              brightness: platformBrightness(
+                  context: context, generalLibFlutterApp: generalLibFlutterApp),
               onPressed: () async {
                 try {
                   await windowManager.unmaximize();
@@ -441,7 +463,8 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
             );
           }
           return WindowCaptionButton.maximize(
-            brightness: platformBrightness(context: context, generalLibFlutterApp: generalLibFlutterApp),
+            brightness: platformBrightness(
+                context: context, generalLibFlutterApp: generalLibFlutterApp),
             onPressed: () async {
               try {
                 await windowManager.maximize();
@@ -451,7 +474,8 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget implements PreferredS
         },
       ),
       WindowCaptionButton.close(
-        brightness: platformBrightness(context: context, generalLibFlutterApp: generalLibFlutterApp),
+        brightness: platformBrightness(
+            context: context, generalLibFlutterApp: generalLibFlutterApp),
         onPressed: () async {
           context.theme;
           try {

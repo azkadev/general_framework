@@ -44,28 +44,35 @@ import 'package:path/path.dart' as path;
 
 void main(List<String> args) async {
   {
-    final Directory directory_lib_scheme = Directory(path.join(Directory.current.path, "lib", "scheme")).generalLibUtilsDangerRecreate();
+    final Directory directory_lib_scheme =
+        Directory(path.join(Directory.current.path, "lib", "scheme"))
+            .generalLibUtilsDangerRecreate();
 
     ///
 
     await jsonToScripts(
       api_schemes,
-      directory: Directory(path.join(directory_lib_scheme.path, "api_scheme")).generalLibUtilsDangerRecreate(),
+      directory: Directory(path.join(directory_lib_scheme.path, "api_scheme"))
+          .generalLibUtilsDangerRecreate(),
     );
     await jsonToScripts(
       schemes,
-      directory: Directory(path.join(directory_lib_scheme.path, "scheme")).generalLibUtilsDangerRecreate(),
+      directory: Directory(path.join(directory_lib_scheme.path, "scheme"))
+          .generalLibUtilsDangerRecreate(),
     );
   }
 
   {
-    final Directory directory_lib_scheme = Directory(path.join(Directory.current.path, "lib", "general", "scheme")).generalLibUtilsDangerRecreate();
+    final Directory directory_lib_scheme =
+        Directory(path.join(Directory.current.path, "lib", "general", "scheme"))
+            .generalLibUtilsDangerRecreate();
 
     ///
 
     await jsonToScripts(
       general_api_schemes,
-      directory: Directory(path.join(directory_lib_scheme.path, "api_scheme")).generalLibUtilsDangerRecreate(),
+      directory: Directory(path.join(directory_lib_scheme.path, "api_scheme"))
+          .generalLibUtilsDangerRecreate(),
     );
   }
 }

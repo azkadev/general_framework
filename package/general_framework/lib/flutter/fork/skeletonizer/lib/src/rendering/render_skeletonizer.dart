@@ -40,7 +40,8 @@ import 'package:general_framework/flutter/fork/skeletonizer/lib/src/painting/ske
 
 /// Builds a renderer object that overrides the painting operation
 /// and provides a [SkeletonizerGeneralFrameworkPaintingContext] to paint the skeleton effect
-class RenderSkeletonizerGeneralFramework extends RenderProxyBox with _RenderSkeletonBase<RenderBox> {
+class RenderSkeletonizerGeneralFramework extends RenderProxyBox
+    with _RenderSkeletonBase<RenderBox> {
   /// Default constructor
   RenderSkeletonizerGeneralFramework({
     required TextDirection textDirection,
@@ -135,7 +136,9 @@ class RenderSkeletonizerGeneralFramework extends RenderProxyBox with _RenderSkel
 }
 
 /// Creates a Zoned version of [RenderSkeletonizerGeneralFramework] that only shades [Bone] widgets or descendants SkeletonizerGeneralFramework widgets
-class ZonedRenderSkeletonizerGeneralFramework extends RenderSkeletonizerGeneralFramework with _ZonedRenderSkeletonBase<RenderBox> {
+class ZonedRenderSkeletonizerGeneralFramework
+    extends RenderSkeletonizerGeneralFramework
+    with _ZonedRenderSkeletonBase<RenderBox> {
   /// Default constructor
   ZonedRenderSkeletonizerGeneralFramework({
     required super.textDirection,
@@ -154,7 +157,8 @@ class ZonedRenderSkeletonizerGeneralFramework extends RenderSkeletonizerGeneralF
 
 /// Builds a sliver renderer object that overrides the painting operation
 /// and provides a [SkeletonizerGeneralFrameworkPaintingContext] to paint the skeleton effect
-class RenderSliverSkeletonizerGeneralFramework extends RenderProxySliver with _RenderSkeletonBase<RenderSliver> {
+class RenderSliverSkeletonizerGeneralFramework extends RenderProxySliver
+    with _RenderSkeletonBase<RenderSliver> {
   /// Default constructor
   RenderSliverSkeletonizerGeneralFramework({
     required TextDirection textDirection,
@@ -241,14 +245,19 @@ class RenderSliverSkeletonizerGeneralFramework extends RenderProxySliver with _R
   }
 
   @override
-  bool hitTest(SliverHitTestResult result, {required double mainAxisPosition, required double crossAxisPosition}) {
+  bool hitTest(SliverHitTestResult result,
+      {required double mainAxisPosition, required double crossAxisPosition}) {
     if (_ignorePointers) return false;
-    return super.hitTest(result, mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition);
+    return super.hitTest(result,
+        mainAxisPosition: mainAxisPosition,
+        crossAxisPosition: crossAxisPosition);
   }
 }
 
 /// Creates a Zoned version of [RenderSliverSkeletonizerGeneralFramework] that only shades [Bone] widgets or descendants SkeletonizerGeneralFramework widgets
-class ZonedSliverRenderSkeletonizerGeneralFramework extends RenderSliverSkeletonizerGeneralFramework with _ZonedRenderSkeletonBase<RenderSliver> {
+class ZonedSliverRenderSkeletonizerGeneralFramework
+    extends RenderSliverSkeletonizerGeneralFramework
+    with _ZonedRenderSkeletonBase<RenderSliver> {
   /// Default constructor
   ZonedSliverRenderSkeletonizerGeneralFramework({
     required super.textDirection,
@@ -264,13 +273,17 @@ class ZonedSliverRenderSkeletonizerGeneralFramework extends RenderSliverSkeleton
   final bool shouldRecreateShader;
 }
 
-mixin _ZonedRenderSkeletonBase<R extends RenderObject> on _RenderSkeletonBase<R> {
+mixin _ZonedRenderSkeletonBase<R extends RenderObject>
+    on _RenderSkeletonBase<R> {
   bool get shouldRecreateShader;
 
   @override
-  SkeletonizerGeneralFrameworkPaintingContext createSkeletonizerGeneralFrameworkContext(PaintingContext context, Offset offset) {
+  SkeletonizerGeneralFrameworkPaintingContext
+      createSkeletonizerGeneralFrameworkContext(
+          PaintingContext context, Offset offset) {
     assert(context is SkeletonizerGeneralFrameworkPaintingContext);
-    final skeletonizerContext = context as SkeletonizerGeneralFrameworkPaintingContext;
+    final skeletonizerContext =
+        context as SkeletonizerGeneralFrameworkPaintingContext;
     final Paint shaderPaint;
     if (shouldRecreateShader) {
       shaderPaint = config.effect.createPaint(
@@ -292,7 +305,8 @@ mixin _ZonedRenderSkeletonBase<R extends RenderObject> on _RenderSkeletonBase<R>
   }
 }
 
-mixin _RenderSkeletonBase<R extends RenderObject> on RenderObjectWithChildMixin<R> {
+mixin _RenderSkeletonBase<R extends RenderObject>
+    on RenderObjectWithChildMixin<R> {
   /// The text direction used to resolve Directional geometries
   TextDirection get textDirection;
 
@@ -311,7 +325,8 @@ mixin _RenderSkeletonBase<R extends RenderObject> on RenderObjectWithChildMixin<
   @override
   bool get isRepaintBoundary => true;
 
-  SkeletonizerGeneralFrameworkPaintingContext createSkeletonizerGeneralFrameworkContext(
+  SkeletonizerGeneralFrameworkPaintingContext
+      createSkeletonizerGeneralFrameworkContext(
     PaintingContext context,
     Offset offset,
   ) {
@@ -333,7 +348,8 @@ mixin _RenderSkeletonBase<R extends RenderObject> on RenderObjectWithChildMixin<
 
   @override
   void paint(PaintingContext context, Offset offset) {
-    final skeletonizerContext = createSkeletonizerGeneralFrameworkContext(context, offset);
+    final skeletonizerContext =
+        createSkeletonizerGeneralFrameworkContext(context, offset);
     super.paint(skeletonizerContext, offset);
     skeletonizerContext.stopRecordingIfNeeded();
   }

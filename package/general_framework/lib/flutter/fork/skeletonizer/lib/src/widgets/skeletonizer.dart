@@ -155,16 +155,19 @@ abstract class SkeletonizerGeneralFramework extends StatefulWidget {
   }) = SliverSkeletonizerGeneralFramework;
 
   @override
-  State<SkeletonizerGeneralFramework> createState() => SkeletonizerGeneralFrameworkState();
+  State<SkeletonizerGeneralFramework> createState() =>
+      SkeletonizerGeneralFrameworkState();
 
   /// Depends on the the nearest SkeletonizerGeneralFrameworkScope if any
   static SkeletonizerGeneralFrameworkScope? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<SkeletonizerGeneralFrameworkScope>();
+    return context.dependOnInheritedWidgetOfExactType<
+        SkeletonizerGeneralFrameworkScope>();
   }
 
   /// Depends on the the nearest SkeletonizerGeneralFrameworkScope if any otherwise it throws
   static SkeletonizerGeneralFrameworkScope of(BuildContext context) {
-    final scope = context.dependOnInheritedWidgetOfExactType<SkeletonizerGeneralFrameworkScope>();
+    final scope = context.dependOnInheritedWidgetOfExactType<
+        SkeletonizerGeneralFrameworkScope>();
     assert(() {
       if (scope == null) {
         throw FlutterError(
@@ -179,11 +182,14 @@ abstract class SkeletonizerGeneralFramework extends StatefulWidget {
   }
 
   /// Delegates the build to the [SkeletonizerGeneralFrameworkState]
-  Widget build(BuildContext context, SkeletonizerGeneralFrameworkBuildData data);
+  Widget build(
+      BuildContext context, SkeletonizerGeneralFrameworkBuildData data);
 }
 
 /// The state of [SkeletonizerGeneralFramework] widget
-class SkeletonizerGeneralFrameworkState extends State<SkeletonizerGeneralFramework> with TickerProviderStateMixin<SkeletonizerGeneralFramework> {
+class SkeletonizerGeneralFrameworkState
+    extends State<SkeletonizerGeneralFramework>
+    with TickerProviderStateMixin<SkeletonizerGeneralFramework> {
   AnimationController? _animationController;
 
   late bool _enabled = widget.enabled;
@@ -300,7 +306,8 @@ class SkeletonizerGeneralFrameworkState extends State<SkeletonizerGeneralFramewo
   @override
   Widget build(BuildContext context) {
     final parent = SkeletonizerGeneralFramework.maybeOf(context);
-    assert(parent == null || parent.isZone, 'SkeletonizerGeneralFramework widgets can not be nested directly, use SkeletonizerGeneralFramework.zone as a parent for child SkeletonizerGeneralFrameworks.');
+    assert(parent == null || parent.isZone,
+        'SkeletonizerGeneralFramework widgets can not be nested directly, use SkeletonizerGeneralFramework.zone as a parent for child SkeletonizerGeneralFrameworks.');
 
     final isInsideZone = parent?.isZone ?? false;
 
@@ -347,15 +354,20 @@ class _SkeletonizerGeneralFramework extends SkeletonizerGeneralFramework {
   }) : super._zone();
 
   @override
-  Widget build(BuildContext context, SkeletonizerGeneralFrameworkBuildData data) {
-    final enabled = data.enabled && (SkeletonizerGeneralFramework.maybeOf(context)?.enabled ?? true);
+  Widget build(
+      BuildContext context, SkeletonizerGeneralFrameworkBuildData data) {
+    final enabled = data.enabled &&
+        (SkeletonizerGeneralFramework.maybeOf(context)?.enabled ?? true);
     return SkeletonizerGeneralFrameworkScope(
       enabled: data.enabled,
       config: data.config,
       isZone: data.isZone,
       isInsideZone: data.isInsideZone,
       animationController: data.animationController,
-      child: enabled ? SkeletonizerGeneralFrameworkRenderObjectWidget(data: data, child: child) : child,
+      child: enabled
+          ? SkeletonizerGeneralFrameworkRenderObjectWidget(
+              data: data, child: child)
+          : child,
     );
   }
 }
@@ -389,8 +401,10 @@ class SliverSkeletonizerGeneralFramework extends SkeletonizerGeneralFramework {
   }) : super._zone();
 
   @override
-  Widget build(BuildContext context, SkeletonizerGeneralFrameworkBuildData data) {
-    final enabled = data.enabled && (SkeletonizerGeneralFramework.maybeOf(context)?.enabled ?? true);
+  Widget build(
+      BuildContext context, SkeletonizerGeneralFrameworkBuildData data) {
+    final enabled = data.enabled &&
+        (SkeletonizerGeneralFramework.maybeOf(context)?.enabled ?? true);
     return SkeletonizerGeneralFrameworkScope(
       enabled: data.enabled,
       config: data.config,
@@ -452,10 +466,31 @@ class SkeletonizerGeneralFrameworkBuildData {
   final bool isInsideZone;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SkeletonizerGeneralFrameworkBuildData && runtimeType == other.runtimeType && enabled == other.enabled && config == other.config && brightness == other.brightness && isZone == other.isZone && isInsideZone == other.isInsideZone && textDirection == other.textDirection && animationValue == other.animationValue && animationController == other.animationController && ignorePointers == other.ignorePointers;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SkeletonizerGeneralFrameworkBuildData &&
+          runtimeType == other.runtimeType &&
+          enabled == other.enabled &&
+          config == other.config &&
+          brightness == other.brightness &&
+          isZone == other.isZone &&
+          isInsideZone == other.isInsideZone &&
+          textDirection == other.textDirection &&
+          animationValue == other.animationValue &&
+          animationController == other.animationController &&
+          ignorePointers == other.ignorePointers;
 
   @override
-  int get hashCode => enabled.hashCode ^ config.hashCode ^ brightness.hashCode ^ textDirection.hashCode ^ animationValue.hashCode ^ animationController.hashCode ^ isZone.hashCode ^ isInsideZone.hashCode ^ ignorePointers.hashCode;
+  int get hashCode =>
+      enabled.hashCode ^
+      config.hashCode ^
+      brightness.hashCode ^
+      textDirection.hashCode ^
+      animationValue.hashCode ^
+      animationController.hashCode ^
+      isZone.hashCode ^
+      isInsideZone.hashCode ^
+      ignorePointers.hashCode;
 }
 
 /// Provides the skeletonizer activation information
@@ -488,7 +523,12 @@ class SkeletonizerGeneralFrameworkScope extends InheritedWidget {
   final AnimationController? animationController;
 
   @override
-  bool updateShouldNotify(covariant SkeletonizerGeneralFrameworkScope oldWidget) {
-    return enabled != oldWidget.enabled || config != oldWidget.config || isZone != oldWidget.isZone || isInsideZone != oldWidget.isInsideZone || animationController != oldWidget.animationController;
+  bool updateShouldNotify(
+      covariant SkeletonizerGeneralFrameworkScope oldWidget) {
+    return enabled != oldWidget.enabled ||
+        config != oldWidget.config ||
+        isZone != oldWidget.isZone ||
+        isInsideZone != oldWidget.isInsideZone ||
+        animationController != oldWidget.animationController;
   }
 }

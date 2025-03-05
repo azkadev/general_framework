@@ -53,10 +53,18 @@ class GeneralFrameworkDocumentationDocumentation extends JsonScheme {
       "title": "",
       "description": "",
       "sidebars": [
-        {"@type": "generalFrameworkDocumentationDocumentationSideBar", "title": "", "navigate_content_id": "content"}
+        {
+          "@type": "generalFrameworkDocumentationDocumentationSideBar",
+          "title": "",
+          "navigate_content_id": "content"
+        }
       ],
       "contents": [
-        {"@type": "generalFrameworkDocumentationDocumentationsContent", "content_id": "", "content": ""}
+        {
+          "@type": "generalFrameworkDocumentationDocumentationsContent",
+          "content_id": "",
+          "content": ""
+        }
       ]
     };
   }
@@ -156,7 +164,11 @@ class GeneralFrameworkDocumentationDocumentation extends JsonScheme {
       if (rawData["sidebars"] is List == false) {
         return [];
       }
-      return (rawData["sidebars"] as List).map((e) => GeneralFrameworkDocumentationDocumentationSideBar(e as Map)).toList().cast<GeneralFrameworkDocumentationDocumentationSideBar>();
+      return (rawData["sidebars"] as List)
+          .map((e) =>
+              GeneralFrameworkDocumentationDocumentationSideBar(e as Map))
+          .toList()
+          .cast<GeneralFrameworkDocumentationDocumentationSideBar>();
     } catch (e) {
       return [];
     }
@@ -173,14 +185,19 @@ class GeneralFrameworkDocumentationDocumentation extends JsonScheme {
       if (rawData["contents"] is List == false) {
         return [];
       }
-      return (rawData["contents"] as List).map((e) => GeneralFrameworkDocumentationDocumentationsContent(e as Map)).toList().cast<GeneralFrameworkDocumentationDocumentationsContent>();
+      return (rawData["contents"] as List)
+          .map((e) =>
+              GeneralFrameworkDocumentationDocumentationsContent(e as Map))
+          .toList()
+          .cast<GeneralFrameworkDocumentationDocumentationsContent>();
     } catch (e) {
       return [];
     }
   }
 
   /// Generated
-  set contents(List<GeneralFrameworkDocumentationDocumentationsContent> values) {
+  set contents(
+      List<GeneralFrameworkDocumentationDocumentationsContent> values) {
     rawData["contents"] = values.map((value) => value.toJson()).toList();
   }
 
@@ -204,15 +221,20 @@ class GeneralFrameworkDocumentationDocumentation extends JsonScheme {
       "contents": (contents != null) ? contents.toJson() : null,
     };
 
-    generalFrameworkDocumentationDocumentation_data_create_json.removeWhere((key, value) => value == null);
+    generalFrameworkDocumentationDocumentation_data_create_json
+        .removeWhere((key, value) => value == null);
 
     if (schemeUtilsIsSetDefaultData) {
       defaultData.forEach((key, value) {
-        if (generalFrameworkDocumentationDocumentation_data_create_json.containsKey(key) == false) {
-          generalFrameworkDocumentationDocumentation_data_create_json[key] = value;
+        if (generalFrameworkDocumentationDocumentation_data_create_json
+                .containsKey(key) ==
+            false) {
+          generalFrameworkDocumentationDocumentation_data_create_json[key] =
+              value;
         }
       });
     }
-    return GeneralFrameworkDocumentationDocumentation(generalFrameworkDocumentationDocumentation_data_create_json);
+    return GeneralFrameworkDocumentationDocumentation(
+        generalFrameworkDocumentationDocumentation_data_create_json);
   }
 }

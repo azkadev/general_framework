@@ -53,7 +53,8 @@ abstract class GeneralFrameworkDatabaseCore {
 
 /// UncompleteDocumentation
 
-abstract class GeneralFrameworkDatabase implements GeneralFrameworkDatabaseCore {
+abstract class GeneralFrameworkDatabase
+    implements GeneralFrameworkDatabaseCore {
   /// UncompleteDocumentation
   late final String currentPath;
   bool _is_initialized = false;

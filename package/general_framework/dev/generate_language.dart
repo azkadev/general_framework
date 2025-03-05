@@ -57,14 +57,18 @@ void main(List<String> args) async {
       "general_framework",
     )).generalLibUtilsDangerRecreate(),
     is_translate: false,
-    onData: (String origin_data, language_code_id, default_language_code_id) async {
-      return await onData(origin_data, language_code_id, default_language_code_id);
+    onData:
+        (String origin_data, language_code_id, default_language_code_id) async {
+      return await onData(
+          origin_data, language_code_id, default_language_code_id);
     },
   );
-  Process.runSync("dart", ["format", directory_lib_language.uri.toFilePath()], workingDirectory: Directory.current.uri.toFilePath());
+  Process.runSync("dart", ["format", directory_lib_language.uri.toFilePath()],
+      workingDirectory: Directory.current.uri.toFilePath());
 }
 
-FutureOr<String?> onData(String origin_data, language_code_id, default_language_code_id) async {
+FutureOr<String?> onData(
+    String origin_data, language_code_id, default_language_code_id) async {
   if (["id", "en"].contains(language_code_id)) {
     RegExp regExp = RegExp(r"({[a-z0-9_]+})", caseSensitive: false);
     if (regExp.hashData(origin_data)) {

@@ -51,7 +51,8 @@ abstract class GeneralFrameworkApiBaseCore {
 
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
-abstract class GeneralFrameworkApiBase<D extends GeneralFrameworkDatabase> implements GeneralFrameworkApiBaseCore {
+abstract class GeneralFrameworkApiBase<D extends GeneralFrameworkDatabase>
+    implements GeneralFrameworkApiBaseCore {
   /// UncompleteDocumentation
   final D generalFrameworkApiDatabase;
 

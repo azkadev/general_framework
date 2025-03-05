@@ -17,13 +17,21 @@ class PackagexProjectGeneralFramework {
   static Map get default_data {
     return {
       "name": "general_framework",
-      "description": "General Framework Library for help you create project more easy with general standarization style code base",
+      "description":
+          "General Framework Library for help you create project more easy with general standarization style code base",
       "version": "0.0.18",
       "homepage": "https://github.com/azkadev/general_framework",
       "repository": "https://github.com/azkadev/general_framework",
       "documentation": "https://azkadev.github.io/general_framework/",
       "funding": ["https://github.com/sponsors/azkadev"],
-      "platforms": {"android": null, "ios": null, "linux": null, "macos": null, "web": null, "windows": null},
+      "platforms": {
+        "android": null,
+        "ios": null,
+        "linux": null,
+        "macos": null,
+        "web": null,
+        "windows": null
+      },
       "executables": {"general_framework": "general_framework"},
       "issue_tracker": "https://t.me/DEVELOPER_GLOBAL_PUBLIC"
     };

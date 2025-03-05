@@ -1,6 +1,6 @@
 name: 'general_framework'
 description: 'General Framework Library for help you create project more easy with general standarization style code base'
-version: '0.0.29'
+version: '0.0.30'
 homepage: 'https://github.com/azkadev/general_framework'
 repository: 'https://github.com/azkadev/general_framework'
 documentation: 'https://azkadev.github.io/general_framework/'

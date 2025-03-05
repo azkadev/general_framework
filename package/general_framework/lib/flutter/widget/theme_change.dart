@@ -54,7 +54,8 @@ class ThemeChangeGeneralFrameworkWidget extends StatelessWidget {
   final GeneralLibFlutterApp generalLibFlutterApp;
 
   /// UncompleteDocumentation
-  final ThemeChangeGeneralFrameworkWidgetStyle themeChangeGeneralFrameworkWidgetStyle;
+  final ThemeChangeGeneralFrameworkWidgetStyle
+      themeChangeGeneralFrameworkWidgetStyle;
 
   /// UncompleteDocumentation
   final void Function() onChanged;
@@ -90,7 +91,10 @@ class ThemeChangeGeneralFrameworkWidget extends StatelessWidget {
   }) {
     return IconButton(
       onPressed: () {
-        onPressedDefault(context: context, generalLibFlutterApp: generalLibFlutterApp, onChanged: onChanged);
+        onPressedDefault(
+            context: context,
+            generalLibFlutterApp: generalLibFlutterApp,
+            onChanged: onChanged);
       },
       icon: iconWidget(generalLibFlutterApp: generalLibFlutterApp),
     );
@@ -143,7 +147,10 @@ class ThemeChangeGeneralFrameworkWidget extends StatelessWidget {
       case ThemeChangeGeneralFrameworkWidgetStyle.listTile:
         return ListTile(
           onTap: () {
-            onPressedDefault(context: context, generalLibFlutterApp: generalLibFlutterApp, onChanged: onChanged);
+            onPressedDefault(
+                context: context,
+                generalLibFlutterApp: generalLibFlutterApp,
+                onChanged: onChanged);
           },
           leading: iconWidget(generalLibFlutterApp: generalLibFlutterApp),
           title: textWidget(generalLibFlutterApp: generalLibFlutterApp),
@@ -151,7 +158,10 @@ class ThemeChangeGeneralFrameworkWidget extends StatelessWidget {
       default:
         return ButtonContainerMaterialGeneralFrameworkWidget(
           onPressed: () {
-            onPressedDefault(context: context, generalLibFlutterApp: generalLibFlutterApp, onChanged: onChanged);
+            onPressedDefault(
+                context: context,
+                generalLibFlutterApp: generalLibFlutterApp,
+                onChanged: onChanged);
           },
           builder: (context) {
             return Padding(

@@ -89,7 +89,9 @@ class MarkdownGeneralFrameworkGenerator {
 
   ///convert [data] to widgets
   ///[onTocList] can provider [Toc] list
-  List<Widget> buildWidgets(String data, {ValueCallback<List<Toc>>? onTocList, MarkdownConfigGeneralFramework? config}) {
+  List<Widget> buildWidgets(String data,
+      {ValueCallback<List<Toc>>? onTocList,
+      MarkdownConfigGeneralFramework? config}) {
     final mdConfig = config ?? MarkdownConfigGeneralFramework.defaultConfig;
     final m.Document document = m.Document(
       extensionSet: extensionSet ?? m.ExtensionSet.gitHubFlavored,
@@ -111,7 +113,8 @@ class MarkdownGeneralFrameworkGenerator {
           onNodeAccepted?.call(node, index);
           if (node is HeadingNode) {
             final listLength = tocList.length;
-            tocList.add(Toc(node: node, widgetIndex: index, selfIndex: listLength));
+            tocList.add(
+                Toc(node: node, widgetIndex: index, selfIndex: listLength));
           }
         });
     final spans = visitor.visit(nodes);
@@ -127,7 +130,8 @@ class MarkdownGeneralFrameworkGenerator {
 }
 
 /// UncompleteDocumentation
-typedef MarkdownSpanNodeGeneralFrameworkWidgetBuilder = TextSpan Function(MarkdownSpanNodeGeneralFrameworkWidget spanNode);
+typedef MarkdownSpanNodeGeneralFrameworkWidgetBuilder = TextSpan Function(
+    MarkdownSpanNodeGeneralFrameworkWidget spanNode);
 
 /// UncompleteDocumentation
 typedef RichTextBuilder = Widget Function(InlineSpan span);

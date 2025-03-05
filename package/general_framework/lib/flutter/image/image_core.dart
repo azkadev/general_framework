@@ -54,7 +54,8 @@ class ImageGeneralUiGeneralFrameworkOptions {
   final ColorFilter? colorFilter;
 
   /// UncompleteDocumentation
-  final Widget Function(BuildContext context, Object error, StackTrace? stackTrace)? errorBuilder;
+  final Widget Function(
+      BuildContext context, Object error, StackTrace? stackTrace)? errorBuilder;
 
   /// UncompleteDocumentation
   const ImageGeneralUiGeneralFrameworkOptions({
@@ -73,13 +74,15 @@ class ImageGeneralUiGeneralFramework {
   const ImageGeneralUiGeneralFramework();
 
   /// UncompleteDocumentation
-  static ImageGeneralUiGeneralFrameworkOptions imageGeneralUiOptionsDefault = const ImageGeneralUiGeneralFrameworkOptions(
+  static ImageGeneralUiGeneralFrameworkOptions imageGeneralUiOptionsDefault =
+      const ImageGeneralUiGeneralFrameworkOptions(
     fit: BoxFit.cover,
   );
 
   /// UncompleteDocumentation
 
-  static ImageGeneralUiGeneralFrameworkOptions getImageGeneralUiGeneralFrameworkOptions({
+  static ImageGeneralUiGeneralFrameworkOptions
+      getImageGeneralUiGeneralFrameworkOptions({
     required ImageGeneralUiGeneralFrameworkOptions? imageGeneralUiOptions,
   }) {
     return imageGeneralUiOptions ?? imageGeneralUiOptionsDefault;
@@ -92,7 +95,10 @@ class ImageGeneralUiGeneralFramework {
     ImageGeneralUiGeneralFrameworkOptions? imageGeneralUiOptions,
     void Function(Object error, StackTrace? stackTrace)? onError,
   }) {
-    final ImageGeneralUiGeneralFrameworkOptions imageGeneralUiGeneralFrameworkOptions = getImageGeneralUiGeneralFrameworkOptions(imageGeneralUiOptions: imageGeneralUiOptions);
+    final ImageGeneralUiGeneralFrameworkOptions
+        imageGeneralUiGeneralFrameworkOptions =
+        getImageGeneralUiGeneralFrameworkOptions(
+            imageGeneralUiOptions: imageGeneralUiOptions);
     return DecorationImage(
       onError: onError,
       fit: imageGeneralUiGeneralFrameworkOptions.fit,
@@ -118,7 +124,9 @@ class ImageGeneralUiGeneralFramework {
     void Function(Object error, StackTrace? stackTrace)? onError,
   }) {
     try {
-      final ImageGeneralUiGeneralFrameworkOptions imageGeneralUiGeneralFrameworkOptions = getImageGeneralUiGeneralFrameworkOptions(
+      final ImageGeneralUiGeneralFrameworkOptions
+          imageGeneralUiGeneralFrameworkOptions =
+          getImageGeneralUiGeneralFrameworkOptions(
         imageGeneralUiOptions: imageGeneralUiOptions,
       );
       final image = imageOrNull(
@@ -145,9 +153,14 @@ class ImageGeneralUiGeneralFramework {
     ImageGeneralUiGeneralFrameworkOptions? imageGeneralUiOptions,
     Image Function()? onNotFound,
   }) {
-    final ImageGeneralUiGeneralFrameworkOptions imageGeneralUiGeneralFrameworkOptions = getImageGeneralUiGeneralFrameworkOptions(imageGeneralUiOptions: imageGeneralUiOptions);
+    final ImageGeneralUiGeneralFrameworkOptions
+        imageGeneralUiGeneralFrameworkOptions =
+        getImageGeneralUiGeneralFrameworkOptions(
+            imageGeneralUiOptions: imageGeneralUiOptions);
 
-    return imageOrNull(pathImage: pathImage, imageGeneralUiOptions: imageGeneralUiGeneralFrameworkOptions) ??
+    return imageOrNull(
+            pathImage: pathImage,
+            imageGeneralUiOptions: imageGeneralUiGeneralFrameworkOptions) ??
         Image.asset(
           "",
           errorBuilder: imageGeneralUiGeneralFrameworkOptions.errorBuilder,
@@ -162,7 +175,10 @@ class ImageGeneralUiGeneralFramework {
     ImageGeneralUiGeneralFrameworkOptions? imageGeneralUiOptions,
   }) {
     try {
-      final ImageGeneralUiGeneralFrameworkOptions imageGeneralUiGeneralFrameworkOptions = getImageGeneralUiGeneralFrameworkOptions(imageGeneralUiOptions: imageGeneralUiOptions);
+      final ImageGeneralUiGeneralFrameworkOptions
+          imageGeneralUiGeneralFrameworkOptions =
+          getImageGeneralUiGeneralFrameworkOptions(
+              imageGeneralUiOptions: imageGeneralUiOptions);
       final errorBuilder = imageGeneralUiGeneralFrameworkOptions.errorBuilder;
       if (pathImage is String) {
         if (pathImage.isNotEmpty) {
