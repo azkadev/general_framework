@@ -38,7 +38,6 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 import 'dart:io';
 
-import 'package:general_framework/api/api_core.dart';
 import 'package:general_framework/packagex/packagex.dart';
 import 'package:general_lib/fork/mason_logger/mason_logger.dart';
 import 'package:general_lib/general_lib.dart';
@@ -98,7 +97,7 @@ Commands:
   /// UncompleteDocumentation
   static void generalFrameworkCli({
     required List<String> arguments,
-  }) async { 
+  }) async {
     final Args args = Args(arguments);
     final List<String> commands = [
       "create",

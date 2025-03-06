@@ -38,6 +38,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:general_framework/core/core.dart';
 import 'package:general_schema/client/core.dart';
 import 'package:general_system_device/core/core.dart';
 import 'package:general_framework/core/client/options.dart';
@@ -64,27 +65,37 @@ typedef InvokeClientFunction<T> = FutureOr<T> Function(
   GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions,
 );
 
-/// UncompleteDocumentation
-abstract class GeneralFrameworkClientBaseCore {
-  /// UncompleteDocumentation
-  String encryptData({
-    required Map data,
-  }) {
-    return json.encode(data);
-  }
+/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+class GeneralFrameworkClientEnsureInitialized {
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  final String currentPath;
 
-  /// UncompleteDocumentation
-  String decryptData({
-    required String data,
-  }) {
-    return data;
-  }
+  final InvokeClientFunction<dynamic> onInvokeResult;
+  final InvokeClientValidationFunction<Map?> onInvokeValidation;
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  GeneralFrameworkClientEnsureInitialized({
+    required this.currentPath,
+    required this.onInvokeResult,
+    required this.onInvokeValidation,
+  });
 }
 
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
-abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
-    implements GeneralSchemaClient {
+abstract class GeneralFrameworkClient<
+        AGeneralFrameworkClientEnsureInitializedValue extends GeneralFrameworkClientEnsureInitialized,
+        AGeneralFrameworkClientInvokeValueOptions extends GeneralFrameworkClientInvokeOptions,
+        AGeneralFrameworkClientRequestDefaultValue extends GeneralFrameworkClientInvokeOptions,
+        AGeneralFrameworkDatabaseValue extends GeneralFrameworkDatabase,
+        AGeneralFrameworkApiValue extends GeneralFrameworkApi>
+    extends GeneralSchemaClient<
+        AGeneralFrameworkClientEnsureInitializedValue,
+        JsonScheme,
+        AGeneralFrameworkClientInvokeValueOptions,
+        AGeneralFrameworkClientRequestDefaultValue,
+        AGeneralFrameworkDatabaseValue,
+        AGeneralFrameworkApiValue> {
   /// UncompleteDocumentation
   final WebSocketClient web_socket_client = WebSocketClient("");
 
@@ -107,17 +118,10 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
   final NetworkClientConnectionType networkClientConnectionType;
 
   /// UncompleteDocumentation
-  late final GeneralFrameworkClientInvokeOptions
-      generalFrameworkClientInvokeOptions;
-
-  /// UncompleteDocumentation
   final String apiUrl;
 
   /// UncompleteDocumentation
   final GeneralSystemDeviceLibrary generalLibrary;
-
-  /// UncompleteDocumentation
-  final D generalFrameworkDatabase;
 
   /// UncompleteDocumentation
   late final InvokeClientValidationFunction<Map?> onInvokeValidation;
@@ -139,17 +143,28 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
   GeneralFrameworkClient({
     required this.pathApi,
     required this.pathWebSocket,
-    required this.generalFrameworkDatabase,
     required this.generalLibrary,
     required this.apiUrl,
     required this.networkClientConnectionType,
-    required this.generalFrameworkClientInvokeOptions,
+    required super.generalSchemaDatabase,
+    required super.generalSchemaApi,
+    required super.requestDefault,
     EventEmitter? eventEmitter,
     this.eventUpdate = "update",
     this.eventInvoke = "invoke",
     Client? httpClient,
   })  : event_emitter = eventEmitter ?? EventEmitter(),
         http_client = httpClient ?? Client();
+
+  /// UncompleteDocumentation
+  String encryptData({
+    required Map data,
+  });
+
+  /// UncompleteDocumentation
+  String decryptData({
+    required String data,
+  });
 
   /// UncompleteDocumentation
   Uri get api_uri {
@@ -168,30 +183,9 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
     );
   }
 
-  /// UncompleteDocumentation
-
   bool is_initialized = false;
-
-  /// UncompleteDocumentation
-  String encryptData({
-    required Map data,
-  }) {
-    return json.encode(data);
-  }
-
-  /// UncompleteDocumentation
-  String decryptData({
-    required String data,
-  }) {
-    return data;
-  }
-
-  /// call this method
-  FutureOr<void> ensureInitialized({
-    required InvokeClientFunction<dynamic> onInvokeResult,
-    required InvokeClientValidationFunction<Map?> onInvokeValidation,
-    required String currentPath,
-  }) async {
+  @override
+  FutureOr<void> initialized() async {
     if (is_initialized) {
       return;
     }
@@ -202,14 +196,10 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
             scheme: (api_uri.scheme == "https") ? "wss" : "ws",
             path: pathWebSocket)
         .toString();
-
     this.onInvokeResult = onInvokeResult;
     this.onInvokeValidation = onInvokeValidation;
     this.currentPath = currentPath;
-    await generalFrameworkDatabase.ensureInitialized(
-      currentPath: currentPath,
-      httpClient: http_client,
-    );
+
     is_initialized = true;
     if (Dart.isWeb) {
       return;
@@ -339,22 +329,21 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
     }
   }
 
-  /// UncompleteDocumentation
-  Future<Map> invokeRaw({
-    required Map parameters,
-    required GeneralFrameworkClientInvokeOptions?
-        generalFrameworkClientInvokeOptions,
+  @override
+  Future<JsonScheme> invokeRaw({
+    required JsonScheme invokeParameters,
+    required AGeneralFrameworkClientInvokeValueOptions? invokeOptions,
   }) async {
-    if (parameters["@type"] is String == false) {
-      parameters["@type"] = "";
+    if (invokeParameters.rawData["@type"] is String == false) {
+      invokeParameters.rawData["@type"] = "";
     }
-    final String method_name = (parameters["@type"] as String).trim();
+    final String method_name =
+        (invokeParameters.rawData["@type"] as String).trim();
     final String extra_parameters = utils_getExtra(
-      parameters: parameters,
+      parameters: invokeParameters.rawData,
     );
     final GeneralFrameworkClientInvokeOptions invoke_parameters =
-        generalFrameworkClientInvokeOptions ??
-            this.generalFrameworkClientInvokeOptions;
+        invokeOptions ?? this.requestDefault;
 
     final Completer<Map> completer = Completer<Map>();
     late final EventEmitterListener listener;
@@ -363,8 +352,9 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
       final NetworkClientConnectionType networkClientConnectionType =
           invoke_parameters.networkClientConnectionType;
       try {
-        final Map invoke_validation =
-            await onInvokeValidation(parameters, invoke_parameters) ?? {};
+        final Map invoke_validation = await onInvokeValidation(
+                invokeParameters.rawData, invoke_parameters) ??
+            {};
         if (invoke_validation.isNotEmpty) {
           return invoke_validation;
         }
@@ -372,7 +362,8 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
           return {"@type": "error", "message": "method_must_be_not_empty"};
         }
 
-        final String parameter_encrypt = (encryptData(data: parameters)).trim();
+        final String parameter_encrypt =
+            (encryptData(data: invokeParameters.rawData)).trim();
         if (networkClientConnectionType == NetworkClientConnectionType.http) {
           final Map<String, String> headers = <String, String>{
             "Accept": "*/*",
@@ -456,35 +447,24 @@ abstract class GeneralFrameworkClient<D extends GeneralFrameworkDatabase>
       }
     } catch (e) {}
     utils_checkResult(result: result);
-    await onInvokeResult(result, parameters, invoke_parameters);
+    await onInvokeResult(result, invokeParameters.rawData, invoke_parameters);
     if (result["@type"] == "error") {
       if (invoke_parameters.isInvokeThrowOnError) {
         throw result;
       }
     }
-    return result;
-  }
-
-  /// UncompleteDocumentation
-  Future<Map> invoke({
-    required Map parameters,
-    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
-  }) async {
-    return await invokeRaw(
-      parameters: parameters,
-      generalFrameworkClientInvokeOptions: generalFrameworkClientInvokeOptions,
-    );
+    return JsonScheme(result);
   }
 
   /// UncompleteDocumentation
   FutureOr<T> invokeBuilder<T>({
-    required Map parameters,
-    GeneralFrameworkClientInvokeOptions? generalFrameworkClientInvokeOptions,
-    required FutureOr<T> Function(Map result) onResult,
+    required JsonScheme invokeParameters,
+    required AGeneralFrameworkClientInvokeValueOptions? invokeOptions,
+    required FutureOr<T> Function(JsonScheme result) onResult,
   }) async {
     return await onResult(await invoke(
-        parameters: parameters,
-        generalFrameworkClientInvokeOptions:
-            generalFrameworkClientInvokeOptions));
+      invokeParameters: invokeParameters,
+      invokeOptions: invokeOptions,
+    ));
   }
 }

@@ -99,8 +99,8 @@ class GeneralFrameworkDatabaseEnsureInitialized {
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 abstract class GeneralFrameworkDatabase<
         AGeneralFrameworkDatabaseEnsureInitializedValue extends GeneralFrameworkDatabaseEnsureInitialized>
-    implements
-        GeneralSchemaDatabase<AGeneralFrameworkDatabaseEnsureInitializedValue> {
+    extends GeneralSchemaDatabase<
+        AGeneralFrameworkDatabaseEnsureInitializedValue> {
   /// UncompleteDocumentation
   late final String currentPath;
   bool _is_initialized = false;

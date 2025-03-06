@@ -41,25 +41,18 @@ import 'dart:typed_data';
 import 'package:general_framework/core/api/api.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_schema/general_schema.dart';
-import 'package:http/http.dart';
 import 'package:server_universe/native.dart';
 import 'package:server_universe/native/core/type_handlers/websocket_type_handler.dart';
 import 'package:io_universe/io_universe.dart';
 
-/// UncompleteDocumentation
-
-abstract class GeneralFrameworkApiServerB extends GeneralSchemaServer {
-  GeneralFrameworkApiServerB({
-    required super.generalSchemaApi,
-  });
-}
-
-abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApi> {
+abstract class GeneralFrameworkApiServer<
+        AGeneralFrameworkApiServerEnsureInitializedValue,
+        AGeneralFrameworkApiSchemaApiValue extends GeneralFrameworkApi>
+    extends GeneralSchemaServer<
+        AGeneralFrameworkApiServerEnsureInitializedValue,
+        AGeneralFrameworkApiSchemaApiValue> {
   /// UncompleteDocumentation
   final ServerUniverseNative serverUniverse;
-
-  /// UncompleteDocumentation
-  final T generalFrameworkApi;
 
   /// UncompleteDocumentation
   final String pathApi;
@@ -69,13 +62,11 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApi> {
 
   /// UncompleteDocumentation
   GeneralFrameworkApiServer({
-    required this.generalFrameworkApi,
     required this.serverUniverse,
     this.pathApi = "/api",
     this.pathWebSocket = "/ws",
+    required super.generalSchemaApi,
   });
-
-  bool _is_initialized = false;
 
   /// UncompleteDocumentation
   String encryptData({
@@ -88,15 +79,14 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApi> {
     required String data,
   });
 
-  /// UncompleteDocumentation
-  FutureOr<void> ensureInitialized({
-    required String currentPath,
-    required Client httpClient,
-  }) async {
-    await generalFrameworkApi.ensureInitialized(currentPath: currentPath, httpClient: httpClient);
+  bool _is_initialized = false;
+
+  @override
+  FutureOr<void> initialized() async {
     if (_is_initialized) {
       return;
     }
+    _is_initialized = true;
     {
       serverUniverse.all("*", cors());
       serverUniverse.all(pathApi, (req, res) async {
@@ -110,7 +100,10 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApi> {
             }
             return {};
           });
-          final result = await invoke(parameters: JsonScheme(parameters));
+          final result = await generalSchemaApi.invoke(
+            invokeParameters: JsonScheme(parameters),
+            invokeOptions: null,
+          );
           return res.send(encryptData(data: result.toJson()));
         } catch (e) {
           return res.send(encryptData(data: {
@@ -140,26 +133,21 @@ abstract class GeneralFrameworkApiServer<T extends GeneralFrameworkApi> {
                 }
                 return {};
               }();
-              if (parameters["@type"] == "error" && parameters["message"] == "decrypt_error") {
+              if (parameters["@type"] == "error" &&
+                  parameters["message"] == "decrypt_error") {
                 await websocket.close();
                 return;
               }
-              final result = await invoke(parameters: JsonScheme(parameters));
+              final result = await generalSchemaApi.invoke(
+                invokeParameters: JsonScheme(parameters),
+                invokeOptions: null,
+              );
               return websocket.send(encryptData(data: result.toJson()));
             },
           );
         },
       );
     }
-    _is_initialized = true;
-  }
-
-  /// UncompleteDocumentation
-
-  FutureOr<JsonScheme> invoke({
-    required JsonScheme parameters,
-  }) async {
-    return await generalFrameworkApi.invoke(parameters: parameters);
   }
 
   /// UncompleteDocumentation

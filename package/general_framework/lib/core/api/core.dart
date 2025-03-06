@@ -56,7 +56,15 @@ class GeneralFrameworkApiEnsureInitialized {
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
 ///
-abstract class GeneralFrameworkApi<AGeneralFrameworkApiEnsureInitializedValue extends GeneralFrameworkApiEnsureInitialized, AGeneralFrameworkDatabaseEnsureInitializedValue extends GeneralFrameworkDatabaseEnsureInitialized, AGeneralFrameworkDatabaseValue extends GeneralFrameworkDatabase, AGeneralSchemaInvokeValue extends JsonScheme> extends GeneralSchemaApi<AGeneralFrameworkApiEnsureInitializedValue, AGeneralFrameworkDatabaseValue, AGeneralSchemaInvokeValue> {
+abstract class GeneralFrameworkApi<
+        AGeneralFrameworkApiEnsureInitializedValue extends GeneralFrameworkApiEnsureInitialized,
+        AGeneralFrameworkDatabaseValue extends GeneralFrameworkDatabase,
+        AGeneralFrameworkApiInvokeValueOptions>
+    extends GeneralSchemaApi<
+        AGeneralFrameworkApiEnsureInitializedValue,
+        AGeneralFrameworkDatabaseValue,
+        JsonScheme,
+        AGeneralFrameworkApiInvokeValueOptions> {
   GeneralFrameworkApi({
     required super.generalSchemaDatabase,
   });
