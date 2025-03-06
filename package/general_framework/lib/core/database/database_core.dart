@@ -56,7 +56,10 @@ class GeneralFrameworkDatabaseEnsureInitialized {
 }
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
-abstract class GeneralFrameworkDatabase<AGeneralFrameworkDatabaseEnsureInitializedValue extends GeneralFrameworkDatabaseEnsureInitialized> extends GeneralSchemaDatabase<AGeneralFrameworkDatabaseEnsureInitializedValue> {
+abstract class GeneralFrameworkDatabase<
+        AGeneralFrameworkDatabaseEnsureInitializedValue extends GeneralFrameworkDatabaseEnsureInitialized>
+    extends GeneralSchemaDatabase<
+        AGeneralFrameworkDatabaseEnsureInitializedValue> {
   /// UncompleteDocumentation
   late final String currentPath;
 
@@ -69,7 +72,8 @@ abstract class GeneralFrameworkDatabase<AGeneralFrameworkDatabaseEnsureInitializ
   bool _isEnsureInitialized = false;
   @override
   FutureOr<void> ensureInitialized({
-    required AGeneralFrameworkDatabaseEnsureInitializedValue generalSchemaEnsureInitialized,
+    required AGeneralFrameworkDatabaseEnsureInitializedValue
+        generalSchemaEnsureInitialized,
   }) async {
     await super.ensureInitialized(
       generalSchemaEnsureInitialized: generalSchemaEnsureInitialized,
@@ -81,5 +85,4 @@ abstract class GeneralFrameworkDatabase<AGeneralFrameworkDatabaseEnsureInitializ
     ensureInitializedDatabase();
     _isEnsureInitialized = true;
   }
-  
 }

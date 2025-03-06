@@ -69,9 +69,10 @@ class GeneralFrameworkClientEnsureInitialized {
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final String currentPath;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final InvokeClientFunction<dynamic> onInvokeResult;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final InvokeClientValidationFunction<Map?> onInvokeValidation;
 
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
@@ -187,17 +188,19 @@ abstract class GeneralFrameworkClient<
   bool _isEnsureInitialized = false;
   @override
   FutureOr<void> ensureInitialized({
-    required AGeneralFrameworkClientEnsureInitializedValue generalSchemaEnsureInitialized,
+    required AGeneralFrameworkClientEnsureInitializedValue
+        generalSchemaEnsureInitialized,
   }) async {
     await super.ensureInitialized(
       generalSchemaEnsureInitialized: generalSchemaEnsureInitialized,
     );
     if (_isEnsureInitialized) {
       return;
-    } 
+    }
     _isEnsureInitialized = true;
   }
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   bool is_initialized = false;
   @override
   FutureOr<void> initialized() async {

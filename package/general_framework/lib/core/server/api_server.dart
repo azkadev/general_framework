@@ -41,13 +41,29 @@ import 'dart:typed_data';
 import 'package:general_framework/core/api/api.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_schema/general_schema.dart';
+import 'package:http/http.dart';
 import 'package:server_universe/native.dart';
 import 'package:server_universe/native/core/type_handlers/websocket_type_handler.dart';
 import 'package:io_universe/io_universe.dart';
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+class GeneralFrameworkApiServerEnsureInitialized {
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  final String currentPath;
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  final Client httpClient;
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  GeneralFrameworkApiServerEnsureInitialized({
+    required this.currentPath,
+    required this.httpClient,
+  });
+}
+
+/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 abstract class GeneralFrameworkApiServer<
-        AGeneralFrameworkApiServerEnsureInitializedValue,
+        AGeneralFrameworkApiServerEnsureInitializedValue extends GeneralFrameworkApiServerEnsureInitialized,
         AGeneralFrameworkApiSchemaApiValue extends GeneralFrameworkApi>
     extends GeneralSchemaServer<
         AGeneralFrameworkApiServerEnsureInitializedValue,
@@ -83,14 +99,15 @@ abstract class GeneralFrameworkApiServer<
   bool _isEnsureInitialized = false;
   @override
   FutureOr<void> ensureInitialized({
-    required AGeneralFrameworkApiServerEnsureInitializedValue generalSchemaEnsureInitialized,
+    required AGeneralFrameworkApiServerEnsureInitializedValue
+        generalSchemaEnsureInitialized,
   }) async {
     await super.ensureInitialized(
       generalSchemaEnsureInitialized: generalSchemaEnsureInitialized,
     );
     if (_isEnsureInitialized) {
       return;
-    } 
+    }
     _isEnsureInitialized = true;
   }
 

@@ -58,7 +58,7 @@ class GeneralFrameworkApiEnsureInitialized {
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
 ///
-abstract class GeneralFrameworkApi<
+abstract class GeneralFrameworkApiBase<
         AGeneralFrameworkApiEnsureInitializedValue extends GeneralFrameworkApiEnsureInitialized,
         AGeneralFrameworkDatabaseValue extends GeneralFrameworkDatabase,
         AGeneralFrameworkApiInvokeValueOptions>
@@ -67,22 +67,38 @@ abstract class GeneralFrameworkApi<
         AGeneralFrameworkDatabaseValue,
         JsonScheme,
         AGeneralFrameworkApiInvokeValueOptions> {
-          
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  GeneralFrameworkApiBase({
+    required super.generalSchemaDatabase,
+  });
+}
+
+/// GeneralFrameworkClient
+/// is universal client for help you connection to rest api server super easy friendly
+///
+abstract class GeneralFrameworkApi<
+        AGeneralFrameworkApiEnsureInitializedValue extends GeneralFrameworkApiEnsureInitialized,
+        AGeneralFrameworkDatabaseValue extends GeneralFrameworkDatabase,
+        AGeneralFrameworkApiInvokeValueOptions>
+    extends GeneralFrameworkApiBase<
+        AGeneralFrameworkApiEnsureInitializedValue,
+        AGeneralFrameworkDatabaseValue,
+        AGeneralFrameworkApiInvokeValueOptions> {
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   GeneralFrameworkApi({
     required super.generalSchemaDatabase,
   });
   bool _isEnsureInitialized = false;
   @override
   FutureOr<void> ensureInitialized({
-    required AGeneralFrameworkApiEnsureInitializedValue generalSchemaEnsureInitialized,
+    required AGeneralFrameworkApiEnsureInitializedValue
+        generalSchemaEnsureInitialized,
   }) async {
     await super.ensureInitialized(
       generalSchemaEnsureInitialized: generalSchemaEnsureInitialized,
     );
     if (_isEnsureInitialized) {
       return;
-    } 
+    }
     _isEnsureInitialized = true;
   }
 }
