@@ -80,6 +80,20 @@ abstract class GeneralFrameworkApiServer<
     required String data,
   });
 
+  bool _isEnsureInitialized = false;
+  @override
+  FutureOr<void> ensureInitialized({
+    required AGeneralFrameworkApiServerEnsureInitializedValue generalSchemaEnsureInitialized,
+  }) async {
+    await super.ensureInitialized(
+      generalSchemaEnsureInitialized: generalSchemaEnsureInitialized,
+    );
+    if (_isEnsureInitialized) {
+      return;
+    } 
+    _isEnsureInitialized = true;
+  }
+
   bool _is_initialized = false;
 
   @override

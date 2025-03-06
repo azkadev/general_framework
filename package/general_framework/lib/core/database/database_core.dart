@@ -39,7 +39,7 @@ import 'dart:async';
 import 'package:general_schema/database/database.dart';
 import 'package:http/http.dart';
 import 'package:io_universe/io_universe.dart';
- 
+
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 class GeneralFrameworkDatabaseEnsureInitialized {
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
@@ -56,36 +56,30 @@ class GeneralFrameworkDatabaseEnsureInitialized {
 }
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
-abstract class GeneralFrameworkDatabase<
-        AGeneralFrameworkDatabaseEnsureInitializedValue extends GeneralFrameworkDatabaseEnsureInitialized>
-    extends GeneralSchemaDatabase<
-        AGeneralFrameworkDatabaseEnsureInitializedValue> {
+abstract class GeneralFrameworkDatabase<AGeneralFrameworkDatabaseEnsureInitializedValue extends GeneralFrameworkDatabaseEnsureInitialized> extends GeneralSchemaDatabase<AGeneralFrameworkDatabaseEnsureInitializedValue> {
   /// UncompleteDocumentation
   late final String currentPath;
-  bool _is_initialized = false;
 
   /// UncompleteDocumentation
   Directory get directory_base;
 
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
-  late final AGeneralFrameworkDatabaseEnsureInitializedValue
-      generalFrameworkDatabaseEnsureInitialized;
-
-  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   void ensureInitializedDatabase();
 
+  bool _isEnsureInitialized = false;
   @override
   FutureOr<void> ensureInitialized({
-    required AGeneralFrameworkDatabaseEnsureInitializedValue
-        generalSchemaEnsureInitialized,
+    required AGeneralFrameworkDatabaseEnsureInitializedValue generalSchemaEnsureInitialized,
   }) async {
-    if (_is_initialized) {
+    await super.ensureInitialized(
+      generalSchemaEnsureInitialized: generalSchemaEnsureInitialized,
+    );
+    if (_isEnsureInitialized) {
       return;
     }
-    this.generalFrameworkDatabaseEnsureInitialized =
-        generalSchemaEnsureInitialized;
     generalSchemaEnsureInitialized.httpClient;
     ensureInitializedDatabase();
-    _is_initialized = true;
+    _isEnsureInitialized = true;
   }
+  
 }

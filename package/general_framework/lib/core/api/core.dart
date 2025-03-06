@@ -33,6 +33,8 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 
+import 'dart:async';
+
 import 'package:general_framework/core/database/database_core.dart';
 import 'package:general_lib/json_scheme/json_scheme.dart';
 import 'package:general_schema/general_schema.dart';
@@ -70,4 +72,17 @@ abstract class GeneralFrameworkApi<
   GeneralFrameworkApi({
     required super.generalSchemaDatabase,
   });
+  bool _isEnsureInitialized = false;
+  @override
+  FutureOr<void> ensureInitialized({
+    required AGeneralFrameworkApiEnsureInitializedValue generalSchemaEnsureInitialized,
+  }) async {
+    await super.ensureInitialized(
+      generalSchemaEnsureInitialized: generalSchemaEnsureInitialized,
+    );
+    if (_isEnsureInitialized) {
+      return;
+    } 
+    _isEnsureInitialized = true;
+  }
 }
