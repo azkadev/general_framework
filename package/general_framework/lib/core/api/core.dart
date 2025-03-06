@@ -65,6 +65,8 @@ abstract class GeneralFrameworkApi<
         AGeneralFrameworkDatabaseValue,
         JsonScheme,
         AGeneralFrameworkApiInvokeValueOptions> {
+          
+/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   GeneralFrameworkApi({
     required super.generalSchemaDatabase,
   });

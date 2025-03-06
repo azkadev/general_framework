@@ -45,6 +45,7 @@ import 'package:server_universe/native.dart';
 import 'package:server_universe/native/core/type_handlers/websocket_type_handler.dart';
 import 'package:io_universe/io_universe.dart';
 
+/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 abstract class GeneralFrameworkApiServer<
         AGeneralFrameworkApiServerEnsureInitializedValue,
         AGeneralFrameworkApiSchemaApiValue extends GeneralFrameworkApi>

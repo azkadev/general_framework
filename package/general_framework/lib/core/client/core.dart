@@ -41,7 +41,6 @@ import 'dart:typed_data';
 import 'package:general_framework/core/core.dart';
 import 'package:general_schema/client/core.dart';
 import 'package:general_system_device/core/core.dart';
-import 'package:general_framework/core/client/options.dart';
 import 'package:general_framework/core/database/database_core.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/scheme/socket_connection.dart';
@@ -70,7 +69,9 @@ class GeneralFrameworkClientEnsureInitialized {
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final String currentPath;
 
+/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final InvokeClientFunction<dynamic> onInvokeResult;
+/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final InvokeClientValidationFunction<Map?> onInvokeValidation;
 
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
@@ -183,6 +184,7 @@ abstract class GeneralFrameworkClient<
     );
   }
 
+/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   bool is_initialized = false;
   @override
   FutureOr<void> initialized() async {
@@ -343,7 +345,7 @@ abstract class GeneralFrameworkClient<
       parameters: invokeParameters.rawData,
     );
     final GeneralFrameworkClientInvokeOptions invoke_parameters =
-        invokeOptions ?? this.requestDefault;
+        invokeOptions ?? requestDefault;
 
     final Completer<Map> completer = Completer<Map>();
     late final EventEmitterListener listener;

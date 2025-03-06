@@ -39,48 +39,7 @@ import 'dart:async';
 import 'package:general_schema/database/database.dart';
 import 'package:http/http.dart';
 import 'package:io_universe/io_universe.dart';
-
-// /// UncompleteDocumentation
-// abstract class GeneralFrameworkDatabaseCore {
-//   /// UncompleteDocumentation
-//   Directory get directory_base {
-//     return Directory("");
-//   }
-
-//   /// UncompleteDocumentation
-
-//   void ensureInitializedDatabase() {}
-// }
-
-// /// UncompleteDocumentation
-
-// abstract class GeneralFrameworkDatabase implements GeneralFrameworkDatabaseCore {
-//   /// UncompleteDocumentation
-//   late final String currentPath;
-//   bool _is_initialized = false;
-
-//   /// UncompleteDocumentation
-//   late final Client httpClient;
-
-//   /// UncompleteDocumentation
-//   GeneralFrameworkDatabase();
-
-//   /// UncompleteDocumentation
-
-//   FutureOr<void> ensureInitialized({
-//     required String currentPath,
-//     required Client httpClient,
-//   }) async {
-//     if (_is_initialized) {
-//       return;
-//     }
-//     this.currentPath = currentPath;
-//     this.httpClient = httpClient;
-//     ensureInitializedDatabase();
-//     _is_initialized = true;
-//   }
-// }
-
+ 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 class GeneralFrameworkDatabaseEnsureInitialized {
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer

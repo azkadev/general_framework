@@ -93,8 +93,7 @@ abstract class GeneralFrameworkClientFlutterCore {
 
 /// UncompleteDocumentation
 
-abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
-    implements GeneralFrameworkClientFlutterCore {
+abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> {
   /// UncompleteDocumentation
   final GlobalKey<NavigatorState> navigatorKey;
 
@@ -146,12 +145,6 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
       context: context,
       onLoading: onLoading,
     );
-    await generalFrameworkClient.ensureInitialized(
-      onInvokeResult: onInvokeResult,
-      currentPath:
-          generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
-      onInvokeValidation: onInvokeValidation,
-    );
 
     try {
       _player.ensureInitialized();
@@ -162,6 +155,31 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient>
 
     is_initialized = true;
   }
+
+  /// UncompleteDocumentation
+  FutureOr<dynamic> onInvokeResult(Map result, Map parameters,
+      GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions);
+
+  /// UncompleteDocumentation
+  FutureOr<Map?> onInvokeValidation(Map parameters,
+      GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions);
+
+  /// UncompleteDocumentation
+  Widget onErrorRoute(BuildContext context,
+      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter);
+
+  /// UncompleteDocumentation
+
+  Widget onNotFoundRoute(BuildContext context,
+      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter);
+
+  /// UncompleteDocumentation
+
+  void ensureInitializedRoute();
+
+  /// UncompleteDocumentation
+
+  GeneralLibFlutterApp generalLibFlutterAppFunction();
 
   /// UncompleteDocumentation
 
