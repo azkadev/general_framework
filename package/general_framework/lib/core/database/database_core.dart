@@ -59,10 +59,7 @@ class GeneralFrameworkDatabaseEnsureInitialized {
 abstract class GeneralFrameworkDatabase<
         AGeneralFrameworkDatabaseEnsureInitializedValue extends GeneralFrameworkDatabaseEnsureInitialized>
     extends GeneralSchemaDatabase<
-        AGeneralFrameworkDatabaseEnsureInitializedValue> {
-  /// UncompleteDocumentation
-  late final String currentPath;
-
+        AGeneralFrameworkDatabaseEnsureInitializedValue> { 
   /// UncompleteDocumentation
   Directory get directory_base;
 

@@ -47,36 +47,27 @@ import 'package:general_framework/flutter/client/general_framework_client_flutte
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 /// UncompleteDocumentation
-typedef GeneralFrameworkClientFlutterFunction<
-        T extends GeneralFrameworkClientFlutter>
-    = T Function();
+typedef GeneralFrameworkClientFlutterFunction<T extends GeneralFrameworkClientFlutter> = T Function();
 
 /// UncompleteDocumentation
 
 abstract class GeneralFrameworkClientFlutterCore {
   /// UncompleteDocumentation
-  FutureOr<dynamic> onInvokeResult(
-      Map result,
-      Map parameters,
-      GeneralFrameworkClientInvokeOptions
-          generalFrameworkClientInvokeOptions) {}
+  FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {}
 
   /// UncompleteDocumentation
-  FutureOr<Map?> onInvokeValidation(Map parameters,
-      GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
+  FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions) {
     return null;
   }
 
   /// UncompleteDocumentation
-  Widget onErrorRoute(BuildContext context,
-      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+  Widget onErrorRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
     throw UnimplementedError();
   }
 
   /// UncompleteDocumentation
 
-  Widget onNotFoundRoute(BuildContext context,
-      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
+  Widget onNotFoundRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter) {
     throw UnimplementedError();
   }
 
@@ -104,21 +95,16 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> {
   final T generalFrameworkClient;
 
   /// UncompleteDocumentation
-  late final RouteGeneralLibFlutter routeGeneralLibFlutter =
-      RouteGeneralLibFlutter(
+  late final RouteGeneralLibFlutter routeGeneralLibFlutter = RouteGeneralLibFlutter(
     onErrorRoute: onErrorRoute,
     onNotFoundRoute: onNotFoundRoute,
   );
 
-  late final GeneralSystemDeviceLibraryPlayerBase _player =
-      generalLibrary.media_player;
-  late final GeneralSystemDeviceLibraryPlayerControllerBase
-      _player_notification;
+  late final GeneralSystemDeviceLibraryPlayerBase _player = generalLibrary.media_player;
+  late final GeneralSystemDeviceLibraryPlayerControllerBase _player_notification;
 
   /// UncompleteDocumentation
-  final GeneralFrameworkClientFlutterAppDirectory
-      generalFrameworkClientFlutterAppDirectory =
-      GeneralFrameworkClientFlutterAppDirectory();
+  final GeneralFrameworkClientFlutterAppDirectory generalFrameworkClientFlutterAppDirectory = GeneralFrameworkClientFlutterAppDirectory();
 
   /// UncompleteDocumentation
   GeneralFrameworkClientFlutter({
@@ -146,32 +132,38 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> {
       onLoading: onLoading,
     );
 
+    await generalFrameworkClient.ensureInitialized(
+      // onInvokeResult: onInvokeResult,
+      // currentPath: generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
+      // onInvokeValidation: onInvokeValidation,
+      generalSchemaEnsureInitialized: GeneralFrameworkClientEnsureInitialized(
+        currentPath: generalFrameworkClientFlutterAppDirectory.app_support_directory.path,
+        onInvokeResult: onInvokeResult,
+        onInvokeValidation: onInvokeValidation,
+      ),
+    );
+
     try {
       _player.ensureInitialized();
 
-      _player_notification =
-          player().createPlayer(player_id: "app_notification");
+      _player_notification = player().createPlayer(player_id: "app_notification");
     } catch (e) {}
 
     is_initialized = true;
   }
 
   /// UncompleteDocumentation
-  FutureOr<dynamic> onInvokeResult(Map result, Map parameters,
-      GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions);
+  FutureOr<dynamic> onInvokeResult(Map result, Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions);
 
   /// UncompleteDocumentation
-  FutureOr<Map?> onInvokeValidation(Map parameters,
-      GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions);
+  FutureOr<Map?> onInvokeValidation(Map parameters, GeneralFrameworkClientInvokeOptions generalFrameworkClientInvokeOptions);
 
   /// UncompleteDocumentation
-  Widget onErrorRoute(BuildContext context,
-      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter);
+  Widget onErrorRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter);
 
   /// UncompleteDocumentation
 
-  Widget onNotFoundRoute(BuildContext context,
-      RouteDataGeneralLibFlutter routeDataGeneralLibFlutter);
+  Widget onNotFoundRoute(BuildContext context, RouteDataGeneralLibFlutter routeDataGeneralLibFlutter);
 
   /// UncompleteDocumentation
 
@@ -197,8 +189,7 @@ abstract class GeneralFrameworkClientFlutter<T extends GeneralFrameworkClient> {
     required String soundNotification,
   }) async {
     try {
-      await playerNotification()
-          .open(GeneralSystemDeviceLibraryPlayerMediaBase(soundNotification));
+      await playerNotification().open(GeneralSystemDeviceLibraryPlayerMediaBase(soundNotification));
     } catch (e) {}
   }
 }

@@ -64,7 +64,7 @@ class GeneralFrameworkApiServerEnsureInitialized {
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 abstract class GeneralFrameworkApiServer<
         AGeneralFrameworkApiServerEnsureInitializedValue extends GeneralFrameworkApiServerEnsureInitialized,
-        AGeneralFrameworkApiSchemaApiValue extends GeneralFrameworkApi>
+        AGeneralFrameworkApiSchemaApiValue extends GeneralFrameworkApiBase>
     extends GeneralSchemaServer<
         AGeneralFrameworkApiServerEnsureInitializedValue,
         AGeneralFrameworkApiSchemaApiValue> {

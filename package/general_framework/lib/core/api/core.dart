@@ -58,15 +58,8 @@ class GeneralFrameworkApiEnsureInitialized {
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
 ///
-abstract class GeneralFrameworkApiBase<
-        AGeneralFrameworkApiEnsureInitializedValue extends GeneralFrameworkApiEnsureInitialized,
-        AGeneralFrameworkDatabaseValue extends GeneralFrameworkDatabase,
-        AGeneralFrameworkApiInvokeValueOptions>
-    extends GeneralSchemaApi<
-        AGeneralFrameworkApiEnsureInitializedValue,
-        AGeneralFrameworkDatabaseValue,
-        JsonScheme,
-        AGeneralFrameworkApiInvokeValueOptions> {
+abstract class GeneralFrameworkApiBase<AGeneralFrameworkApiEnsureInitializedValue extends GeneralFrameworkApiEnsureInitialized, AGeneralFrameworkDatabaseValue extends GeneralFrameworkDatabase, AGeneralFrameworkApiInvokeValueOptions> extends GeneralSchemaApi<AGeneralFrameworkApiEnsureInitializedValue, AGeneralFrameworkDatabaseValue, JsonScheme, AGeneralFrameworkApiInvokeValueOptions> {
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   GeneralFrameworkApiBase({
     required super.generalSchemaDatabase,
   });
@@ -75,14 +68,7 @@ abstract class GeneralFrameworkApiBase<
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
 ///
-abstract class GeneralFrameworkApi<
-        AGeneralFrameworkApiEnsureInitializedValue extends GeneralFrameworkApiEnsureInitialized,
-        AGeneralFrameworkDatabaseValue extends GeneralFrameworkDatabase,
-        AGeneralFrameworkApiInvokeValueOptions>
-    extends GeneralFrameworkApiBase<
-        AGeneralFrameworkApiEnsureInitializedValue,
-        AGeneralFrameworkDatabaseValue,
-        AGeneralFrameworkApiInvokeValueOptions> {
+abstract class GeneralFrameworkApi<AGeneralFrameworkApiEnsureInitializedValue extends GeneralFrameworkApiEnsureInitialized, AGeneralFrameworkDatabaseValue extends GeneralFrameworkDatabase, AGeneralFrameworkApiInvokeValueOptions> extends GeneralFrameworkApiBase<AGeneralFrameworkApiEnsureInitializedValue, AGeneralFrameworkDatabaseValue, AGeneralFrameworkApiInvokeValueOptions> {
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   GeneralFrameworkApi({
     required super.generalSchemaDatabase,
@@ -90,8 +76,7 @@ abstract class GeneralFrameworkApi<
   bool _isEnsureInitialized = false;
   @override
   FutureOr<void> ensureInitialized({
-    required AGeneralFrameworkApiEnsureInitializedValue
-        generalSchemaEnsureInitialized,
+    required AGeneralFrameworkApiEnsureInitializedValue generalSchemaEnsureInitialized,
   }) async {
     await super.ensureInitialized(
       generalSchemaEnsureInitialized: generalSchemaEnsureInitialized,
@@ -99,6 +84,12 @@ abstract class GeneralFrameworkApi<
     if (_isEnsureInitialized) {
       return;
     }
+    await generalSchemaDatabase.ensureInitialized(
+      generalSchemaEnsureInitialized: GeneralFrameworkDatabaseEnsureInitialized(
+        currentPath: generalSchemaEnsureInitialized.currentPath,
+        httpClient: generalSchemaEnsureInitialized.httpClient,
+      ),
+    );
     _isEnsureInitialized = true;
   }
 }
