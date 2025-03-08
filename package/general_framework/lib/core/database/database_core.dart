@@ -59,7 +59,7 @@ class GeneralFrameworkDatabaseEnsureInitialized {
 abstract class GeneralFrameworkDatabase<
         AGeneralFrameworkDatabaseEnsureInitializedValue extends GeneralFrameworkDatabaseEnsureInitialized>
     extends GeneralSchemaDatabase<
-        AGeneralFrameworkDatabaseEnsureInitializedValue> { 
+        AGeneralFrameworkDatabaseEnsureInitializedValue> {
   /// UncompleteDocumentation
   Directory get directory_base;
 

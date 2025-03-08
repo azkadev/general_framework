@@ -409,7 +409,7 @@ class AppBarGeneralFrameworkWidget extends StatelessWidget
     required BuildContext context,
     required GeneralLibFlutterApp generalLibFlutterApp,
   }) {
-    if (Dart.isDesktop == false) {
+    if (Dart.isDesktop == false || Dart.isWeb) {
       return const SizedBox.shrink();
     }
     final children = [

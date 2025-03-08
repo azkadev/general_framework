@@ -47,7 +47,8 @@ import 'package:general_lib/scheme/socket_connection.dart';
 import 'package:http/http.dart';
 
 /// UncompleteDocumentation
-typedef GeneralFrameworkClientFunction<T extends GeneralFrameworkClient> = T Function();
+typedef GeneralFrameworkClientFunction<T extends GeneralFrameworkClient> = T
+    Function();
 
 /// UncompleteDocumentation
 typedef InvokeClientValidationFunction<T> = FutureOr<T> Function(
@@ -84,7 +85,19 @@ class GeneralFrameworkClientEnsureInitialized {
 
 /// GeneralFrameworkClient
 /// is universal client for help you connection to rest api server super easy friendly
-abstract class GeneralFrameworkClient<AGeneralFrameworkClientEnsureInitializedValue extends GeneralFrameworkClientEnsureInitialized, AGeneralFrameworkClientInvokeValueOptions extends GeneralFrameworkClientInvokeOptions, AGeneralFrameworkClientRequestDefaultValue extends GeneralFrameworkClientInvokeOptions, AGeneralFrameworkDatabaseValue extends GeneralFrameworkDatabase, AGeneralFrameworkApiValue extends GeneralFrameworkApiBase> extends GeneralSchemaClient<AGeneralFrameworkClientEnsureInitializedValue, JsonScheme, AGeneralFrameworkClientInvokeValueOptions, AGeneralFrameworkClientRequestDefaultValue, AGeneralFrameworkDatabaseValue, AGeneralFrameworkApiValue> {
+abstract class GeneralFrameworkClient<
+        AGeneralFrameworkClientEnsureInitializedValue extends GeneralFrameworkClientEnsureInitialized,
+        AGeneralFrameworkClientInvokeValueOptions extends GeneralFrameworkClientInvokeOptions,
+        AGeneralFrameworkClientRequestDefaultValue extends GeneralFrameworkClientInvokeOptions,
+        AGeneralFrameworkDatabaseValue extends GeneralFrameworkDatabase,
+        AGeneralFrameworkApiValue extends GeneralFrameworkApiBase>
+    extends GeneralSchemaClient<
+        AGeneralFrameworkClientEnsureInitializedValue,
+        JsonScheme,
+        AGeneralFrameworkClientInvokeValueOptions,
+        AGeneralFrameworkClientRequestDefaultValue,
+        AGeneralFrameworkDatabaseValue,
+        AGeneralFrameworkApiValue> {
   /// UncompleteDocumentation
   final WebSocketClient web_socket_client = WebSocketClient("");
 
@@ -168,7 +181,8 @@ abstract class GeneralFrameworkClient<AGeneralFrameworkClientEnsureInitializedVa
   bool _isEnsureInitialized = false;
   @override
   FutureOr<void> ensureInitialized({
-    required AGeneralFrameworkClientEnsureInitializedValue generalSchemaEnsureInitialized,
+    required AGeneralFrameworkClientEnsureInitializedValue
+        generalSchemaEnsureInitialized,
   }) async {
     await super.ensureInitialized(
       generalSchemaEnsureInitialized: generalSchemaEnsureInitialized,
@@ -194,7 +208,11 @@ abstract class GeneralFrameworkClient<AGeneralFrameworkClientEnsureInitializedVa
     }
     tcp_socket_client.host = api_uri.host;
     tcp_socket_client.port = api_uri.port;
-    web_socket_client.url = api_uri.replace(scheme: (api_uri.scheme == "https") ? "wss" : "ws", path: pathWebSocket).toString();
+    web_socket_client.url = api_uri
+        .replace(
+            scheme: (api_uri.scheme == "https") ? "wss" : "ws",
+            path: pathWebSocket)
+        .toString();
     this.currentPath = currentPath;
 
     is_initialized = true;
@@ -206,8 +224,10 @@ abstract class GeneralFrameworkClient<AGeneralFrameworkClientEnsureInitializedVa
         onSocketData: onSocketData,
         onSocketConnection: onSocketConnection,
       );
-    } else if (networkClientConnectionType == NetworkClientConnectionType.websocket) {
-      await web_socket_client.connect(onSocketData: onSocketData, onSocketConnection: onSocketConnection);
+    } else if (networkClientConnectionType ==
+        NetworkClientConnectionType.websocket) {
+      await web_socket_client.connect(
+          onSocketData: onSocketData, onSocketConnection: onSocketConnection);
     }
   }
 
@@ -222,7 +242,8 @@ abstract class GeneralFrameworkClient<AGeneralFrameworkClientEnsureInitializedVa
           return data;
         }
         if (data is List<int> || data is Uint8List) {
-          return json.decode(decryptData(data: utf8.decode(data, allowMalformed: true)));
+          return json.decode(
+              decryptData(data: utf8.decode(data, allowMalformed: true)));
         }
       } catch (e) {}
       return {};
@@ -247,7 +268,8 @@ abstract class GeneralFrameworkClient<AGeneralFrameworkClientEnsureInitializedVa
   EventEmitterListener on({
     required String event_name,
     required FutureOr<dynamic> Function(Map update) callback,
-    required FutureOr<dynamic> Function(Object e, StackTrace stackTrace) onError,
+    required FutureOr<dynamic> Function(Object e, StackTrace stackTrace)
+        onError,
   }) {
     return event_emitter.on(
       eventName: event_name,
@@ -330,19 +352,25 @@ abstract class GeneralFrameworkClient<AGeneralFrameworkClientEnsureInitializedVa
     if (invokeParameters.rawData["@type"] is String == false) {
       invokeParameters.rawData["@type"] = "";
     }
-    final String method_name = (invokeParameters.rawData["@type"] as String).trim();
+    final String method_name =
+        (invokeParameters.rawData["@type"] as String).trim();
     final String extra_parameters = utils_getExtra(
       parameters: invokeParameters.rawData,
     );
-    final GeneralFrameworkClientInvokeOptions invoke_parameters = invokeOptions ?? requestDefault;
+    final GeneralFrameworkClientInvokeOptions invoke_parameters =
+        invokeOptions ?? requestDefault;
 
     final Completer<Map> completer = Completer<Map>();
     late final EventEmitterListener listener;
 
     final Map result = await Future<Map>(() async {
-      final NetworkClientConnectionType networkClientConnectionType = invoke_parameters.networkClientConnectionType;
+      final NetworkClientConnectionType networkClientConnectionType =
+          invoke_parameters.networkClientConnectionType;
       try {
-        final Map invoke_validation = await generalSchemaEnsureInitialized.onInvokeValidation(invokeParameters.rawData, invoke_parameters) ?? {};
+        final Map invoke_validation =
+            await generalSchemaEnsureInitialized.onInvokeValidation(
+                    invokeParameters.rawData, invoke_parameters) ??
+                {};
         if (invoke_validation.isNotEmpty) {
           return invoke_validation;
         }
@@ -350,7 +378,8 @@ abstract class GeneralFrameworkClient<AGeneralFrameworkClientEnsureInitializedVa
           return {"@type": "error", "message": "method_must_be_not_empty"};
         }
 
-        final String parameter_encrypt = (encryptData(data: invokeParameters.rawData)).trim();
+        final String parameter_encrypt =
+            (encryptData(data: invokeParameters.rawData)).trim();
         if (networkClientConnectionType == NetworkClientConnectionType.http) {
           final Map<String, String> headers = <String, String>{
             "Accept": "*/*",
@@ -359,13 +388,19 @@ abstract class GeneralFrameworkClient<AGeneralFrameworkClientEnsureInitializedVa
           if (Dart.isWeb) {
             headers["from-platform"] = "web";
           } else {
-            headers["from-platform"] = Dart.operatingSystem.trim().toLowerCase();
+            headers["from-platform"] =
+                Dart.operatingSystem.trim().toLowerCase();
           }
           headers["from-client-type"] = Dart.executable_type.name;
-          final Response response = await http_client.post(api_uri, headers: headers, body: parameter_encrypt);
+          final Response response = await http_client.post(api_uri,
+              headers: headers, body: parameter_encrypt);
           completer.complete(json.decode(decryptData(data: response.body)));
-        } else if ([NetworkClientConnectionType.tcpsocket, NetworkClientConnectionType.websocket].contains(networkClientConnectionType)) {
-          if (networkClientConnectionType == NetworkClientConnectionType.websocket) {
+        } else if ([
+          NetworkClientConnectionType.tcpsocket,
+          NetworkClientConnectionType.websocket
+        ].contains(networkClientConnectionType)) {
+          if (networkClientConnectionType ==
+              NetworkClientConnectionType.websocket) {
             await web_socket_client.send(value: utf8.encode(parameter_encrypt));
           } else {
             await tcp_socket_client.send(value: utf8.encode(parameter_encrypt));
@@ -428,7 +463,8 @@ abstract class GeneralFrameworkClient<AGeneralFrameworkClientEnsureInitializedVa
       }
     } catch (e) {}
     utils_checkResult(result: result);
-    await generalSchemaEnsureInitialized.onInvokeResult(result, invokeParameters.rawData, invoke_parameters);
+    await generalSchemaEnsureInitialized.onInvokeResult(
+        result, invokeParameters.rawData, invoke_parameters);
     if (result["@type"] == "error") {
       if (invoke_parameters.isInvokeThrowOnError) {
         throw result;

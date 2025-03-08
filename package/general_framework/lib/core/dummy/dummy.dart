@@ -44,8 +44,9 @@ import 'package:general_schema/general_schema.dart';
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 class GeneralFrameworkApiDummy extends GeneralFrameworkApi {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
-  GeneralFrameworkApiDummy() : super(generalSchemaDatabase: GeneralFrameworkApiDatabaseDummy());
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  GeneralFrameworkApiDummy()
+      : super(generalSchemaDatabase: GeneralFrameworkApiDatabaseDummy());
 
   @override
   FutureOr<void> dispose() async {
@@ -53,7 +54,8 @@ class GeneralFrameworkApiDummy extends GeneralFrameworkApi {
   }
 
   @override
-  FutureOr<GeneralSchemaDeviceStatusSupportType> getDetailStatusDeviceSupportAsync() {
+  FutureOr<GeneralSchemaDeviceStatusSupportType>
+      getDetailStatusDeviceSupportAsync() {
     return GeneralSchemaDeviceStatusSupportType.unknown;
   }
 
@@ -78,7 +80,8 @@ class GeneralFrameworkApiDummy extends GeneralFrameworkApi {
   }
 
   @override
-  FutureOr<JsonScheme> invokeRaw({required JsonScheme invokeParameters, required invokeOptions}) {
+  FutureOr<JsonScheme> invokeRaw(
+      {required JsonScheme invokeParameters, required invokeOptions}) {
     return JsonScheme({"@type": "error", "message": "dummy"});
   }
 
@@ -95,11 +98,11 @@ class GeneralFrameworkApiDummy extends GeneralFrameworkApi {
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 class GeneralFrameworkApiDatabaseDummy extends GeneralFrameworkDatabase {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   GeneralFrameworkApiDatabaseDummy();
 
   @override
-   Directory get directory_base => Directory("");
+  Directory get directory_base => Directory("");
 
   @override
   FutureOr<void> dispose() async {
@@ -107,11 +110,11 @@ class GeneralFrameworkApiDatabaseDummy extends GeneralFrameworkDatabase {
   }
 
   @override
-  void ensureInitializedDatabase() {
-   }
+  void ensureInitializedDatabase() {}
 
   @override
-  FutureOr<GeneralSchemaDeviceStatusSupportType> getDetailStatusDeviceSupportAsync() {
+  FutureOr<GeneralSchemaDeviceStatusSupportType>
+      getDetailStatusDeviceSupportAsync() {
     return GeneralSchemaDeviceStatusSupportType.unknown;
   }
 
