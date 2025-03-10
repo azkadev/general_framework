@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 // import 'package:freezed_annotation/freezed_annotation.dart';
 
 // part 'theme.freezed.dart';
@@ -11,13 +9,10 @@ import 'package:flutter/widgets.dart';
 class DeviceFrameTheme extends InheritedWidget {
   /// Give a [style] to all descentant in [child] device frames.
   const DeviceFrameTheme({
-    Key? key,
+    super.key,
     required this.style,
-    required Widget child,
-  }) : super(
-          key: key,
-          child: child,
-        );
+    required super.child,
+  });
 
   /// The style of the device frame.
   final DeviceFrameStyle style;

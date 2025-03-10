@@ -99,14 +99,14 @@ class ImageViewer extends StatelessWidget {
   final Widget child;
 
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
-  const ImageViewer({Key? key, required this.child}) : super(key: key);
+  const ImageViewer({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.of(context).pop(),
       child: Scaffold(
-        backgroundColor: Colors.black.withOpacity(0.3),
+        backgroundColor: Colors.black.withAlpha(30),
         body: Stack(
           fit: StackFit.expand,
           children: [
@@ -119,14 +119,14 @@ class ImageViewer extends StatelessWidget {
                 child: IconButton(
                   onPressed: () => Navigator.of(context).pop(),
                   icon: Container(
-                    child: Icon(
+                    child: const Icon(
                       Icons.clear,
                       color: Colors.grey,
                     ),
                     width: 40,
                     height: 40,
                     decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withAlpha(20),
                         shape: BoxShape.circle),
                   ),
                 ),

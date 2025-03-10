@@ -13,9 +13,9 @@ class ProxyRichText extends StatelessWidget {
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const ProxyRichText(
     this.textSpan, {
-    Key? key,
+    super.key,
     this.richTextBuilder,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

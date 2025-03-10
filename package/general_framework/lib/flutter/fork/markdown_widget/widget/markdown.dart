@@ -34,7 +34,7 @@ class MarkdownWidget extends StatefulWidget {
 
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const MarkdownWidget({
-    Key? key,
+    super.key,
     required this.data,
     this.tocController,
     this.physics,
@@ -43,7 +43,7 @@ class MarkdownWidget extends StatefulWidget {
     this.padding,
     this.config,
     this.markdownGenerator,
-  }) : super(key: key);
+  });
 
   @override
   MarkdownWidgetState createState() => MarkdownWidgetState();
@@ -172,6 +172,6 @@ Widget wrapByAutoScroll(
     controller: controller,
     index: index,
     child: child,
-    highlightColor: Colors.black.withOpacity(0.1),
+    highlightColor: Colors.black.withAlpha(10),
   );
 }

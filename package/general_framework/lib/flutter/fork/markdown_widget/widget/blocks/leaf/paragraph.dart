@@ -36,7 +36,7 @@ class PConfig implements LeafConfig {
 
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static PConfig get darkConfig =>
-      PConfig(textStyle: const TextStyle(fontSize: 16));
+      const PConfig(textStyle: TextStyle(fontSize: 16));
 
   @nonVirtual
   @override

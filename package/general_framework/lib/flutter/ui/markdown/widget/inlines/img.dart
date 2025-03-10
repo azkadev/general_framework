@@ -140,7 +140,7 @@ class ImageViewer extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.of(context).pop(),
       child: Scaffold(
-        // backgroundColor: Colors.black.withOpacity(0.3),
+        // backgroundColor: Colors.black.withAlpha(255 / 0.3),
         backgroundColor: Colors.black.withValues(alpha: 0.3),
         body: Stack(
           fit: StackFit.expand,
@@ -161,7 +161,7 @@ class ImageViewer extends StatelessWidget {
                     width: 40,
                     height: 40,
                     decoration: BoxDecoration(
-                      // color: Colors.white.withOpacity(0.2),
+                      // color: Colors.white.withAlpha(255 / 0.2),
                       color: Colors.white.withValues(alpha: 0.2),
                       shape: BoxShape.circle,
                     ),

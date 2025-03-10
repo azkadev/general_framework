@@ -120,7 +120,7 @@ class _SimulateAppState extends State<SimulateApp> {
   DeviceInfo device = Devices.android.samsungGalaxyNote20Ultra;
   @override
   void initState() {
-    // TODO: implement initState
+    //  initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       task();
@@ -130,7 +130,7 @@ class _SimulateAppState extends State<SimulateApp> {
   @override
   void dispose() {
     Simulate.simulate_data.is_use_simulate_app = false;
-    // TODO: implement dispose
+    //  dispose
     super.dispose();
   }
 

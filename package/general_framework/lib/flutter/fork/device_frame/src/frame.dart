@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'info/device_type.dart';
 import 'info/info.dart';
@@ -52,12 +51,12 @@ class DeviceFrame extends StatelessWidget {
   /// If [isFrameVisible] is `true`, only the [screen] is displayed, but clipped with
   /// the device screen shape.
   const DeviceFrame({
-    Key? key,
+    super.key,
     required this.device,
     required this.screen,
     this.orientation = Orientation.portrait,
     this.isFrameVisible = true,
-  }) : super(key: key);
+  });
 
   /// Creates a [MediaQuery] from the given device [info], and for the current device [orientation].
   ///

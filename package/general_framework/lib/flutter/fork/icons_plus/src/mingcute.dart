@@ -5,9 +5,8 @@ import 'package:flutter/widgets.dart';
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 class MingCuteIconData extends IconData {
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
-  const MingCuteIconData(int code)
+  const MingCuteIconData(super.code)
       : super(
-          code,
           fontFamily: 'MingCute',
           fontPackage: 'general_framework',
         );

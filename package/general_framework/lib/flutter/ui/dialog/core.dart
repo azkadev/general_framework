@@ -492,7 +492,7 @@ extension BuildContextGeneralFrameworkFlutterExtension on BuildContext {
     return await showModalBottomSheet<T>(
       context: this,
       builder: builder,
-      // backgroundColor: theme.primaryColor.withOpacity(0.85),
+      // backgroundColor: theme.primaryColor.withAlpha(255 / 0.85),
       backgroundColor: theme.primaryColor.withValues(alpha: 0.85),
       barrierLabel: barrierLabel,
       elevation: elevation,

@@ -34,7 +34,7 @@ class CodeConfig implements InlineConfig {
 
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static CodeConfig get darkConfig =>
-      CodeConfig(style: const TextStyle(backgroundColor: Color(0xCC555555)));
+      const CodeConfig(style: TextStyle(backgroundColor: Color(0xCC555555)));
 
   @nonVirtual
   @override

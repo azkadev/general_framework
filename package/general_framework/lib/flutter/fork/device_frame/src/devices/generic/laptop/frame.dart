@@ -337,7 +337,7 @@ class GenericLaptopFramePainter extends CustomPainter {
       windowPath,
       Paint()
         ..blendMode = BlendMode.multiply
-        ..color = const Color(0xFF3F2548).withOpacity(0.6)
+        ..color = const Color(0xFF3F2548).withAlpha(60)
         ..maskFilter = const MaskFilter.blur(
           BlurStyle.outer,
           56,

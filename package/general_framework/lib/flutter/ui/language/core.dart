@@ -210,7 +210,7 @@ class LanguageGeneralFrameworkController extends ChangeNotifier {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    //  dispose
     super.dispose();
   }
 }
@@ -279,7 +279,7 @@ class LanguageGeneralFrameworkState extends State<LanguageGeneralFramework>
 
   @override
   void initState() {
-    // TODO: implement initState
+    //  initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {});

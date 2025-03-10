@@ -58,7 +58,7 @@ class HeadingNode extends ElementNode {
 class _Divider extends StatelessWidget {
   final HeadingDivider divider;
 
-  const _Divider({Key? key, required this.divider}) : super(key: key);
+  const _Divider({required this.divider});
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +114,7 @@ abstract class HeadingConfig implements LeafConfig {
   HeadingDivider? get divider => null;
 
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
-  EdgeInsets get padding => EdgeInsets.only(top: 8, bottom: 4);
+  EdgeInsets get padding => const EdgeInsets.only(top: 8, bottom: 4);
 }
 
 ///config class for h1

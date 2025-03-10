@@ -92,13 +92,13 @@ class TocWidget extends StatefulWidget {
 
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const TocWidget({
-    Key? key,
+    super.key,
     required this.controller,
     this.physics,
     this.shrinkWrap = false,
     this.padding,
     this.itemBuilder,
-  }) : super(key: key);
+  });
 
   @override
   State<TocWidget> createState() => _TocWidgetState();

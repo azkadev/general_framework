@@ -72,7 +72,7 @@ class _FaqsGeneralFrameworkPageState extends State<FaqsGeneralFrameworkPage>
   int tabIndex = 0;
   @override
   void initState() {
-    // TODO: implement initState
+    //  initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       refresh();

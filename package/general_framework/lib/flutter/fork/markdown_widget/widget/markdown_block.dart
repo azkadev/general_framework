@@ -20,12 +20,12 @@ class MarkdownBlock extends StatelessWidget {
 
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const MarkdownBlock({
-    Key? key,
+    super.key,
     required this.data,
     this.selectable = true,
     this.config,
     this.generator,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

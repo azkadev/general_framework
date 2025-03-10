@@ -56,7 +56,7 @@ class MCheckBox extends StatelessWidget {
   final bool checked;
 
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
-  const MCheckBox({Key? key, required this.checked}) : super(key: key);
+  const MCheckBox({super.key, required this.checked});
 
   @override
   Widget build(BuildContext context) {

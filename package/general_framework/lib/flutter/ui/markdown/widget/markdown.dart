@@ -210,7 +210,7 @@ Widget wrapByAutoScroll(
     controller: controller,
     index: index,
     child: child,
-    // highlightColor: Colors.black.withOpacity(0.1),
+    // highlightColor: Colors.black.withAlpha(255 / 0.1),
     highlightColor: Colors.black.withValues(alpha: 0.1),
   );
 }

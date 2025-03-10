@@ -76,7 +76,7 @@ class LoadingGeneralFrameworkWidget extends StatelessWidget {
               }
               return Container(
                 decoration: BoxDecoration(
-                  // color: context.theme.primaryColor.withOpacity(0.85),
+                  // color: context.theme.primaryColor.withAlpha(255 / 0.85),
                   color: context.theme.primaryColor.withValues(alpha: 0.85),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
@@ -119,7 +119,7 @@ class LoadingGeneralFrameworkWidget extends StatelessWidget {
               }
               return Container(
                 decoration: BoxDecoration(
-                  // color: context.theme.primaryColor.withOpacity(0.85),
+                  // color: context.theme.primaryColor.withAlpha(255 / 0.85),
                   color: context.theme.primaryColor.withValues(alpha: 0.85),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(

@@ -9,7 +9,7 @@ class _FramePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
-    paint_0_fill.color = Color(0xff3A4245).withOpacity(1.0);
+    paint_0_fill.color = const Color(0xff3A4245).withAlpha(255);
     canvas.drawRRect(
         RRect.fromRectAndCorners(
             Rect.fromLTWH(size.width * 0.003658750, 0, size.width * 0.9961124,
@@ -21,7 +21,7 @@ class _FramePainter extends CustomPainter {
         paint_0_fill);
 
     Paint paint_1_fill = Paint()..style = PaintingStyle.fill;
-    paint_1_fill.color = Color(0xff121515).withOpacity(1.0);
+    paint_1_fill.color = const Color(0xff121515).withAlpha(255);
     canvas.drawRRect(
         RRect.fromRectAndCorners(
             Rect.fromLTWH(size.width * 0.006571617, size.height * 0.002108385,
@@ -47,7 +47,7 @@ class _FramePainter extends CustomPainter {
     path_2.close();
 
     Paint paint_2_fill = Paint()..style = PaintingStyle.fill;
-    paint_2_fill.color = Color(0xff262C2D).withOpacity(1.0);
+    paint_2_fill.color = const Color(0xff262C2D).withAlpha(255);
     canvas.drawPath(path_2, paint_2_fill);
 
     Path path_3 = Path();
@@ -59,7 +59,7 @@ class _FramePainter extends CustomPainter {
     path_3.close();
 
     Paint paint_3_fill = Paint()..style = PaintingStyle.fill;
-    paint_3_fill.color = Color(0xff262C2D).withOpacity(1.0);
+    paint_3_fill.color = const Color(0xff262C2D).withAlpha(255);
     canvas.drawPath(path_3, paint_3_fill);
 
     Path path_4 = Path();
@@ -71,7 +71,7 @@ class _FramePainter extends CustomPainter {
     path_4.close();
 
     Paint paint_4_fill = Paint()..style = PaintingStyle.fill;
-    paint_4_fill.color = Color(0xff121515).withOpacity(1.0);
+    paint_4_fill.color = const Color(0xff121515).withAlpha(255);
     canvas.drawPath(path_4, paint_4_fill);
 
     Path path_5 = Path();
@@ -83,7 +83,7 @@ class _FramePainter extends CustomPainter {
     path_5.close();
 
     Paint paint_5_fill = Paint()..style = PaintingStyle.fill;
-    paint_5_fill.color = Color(0xff636F73).withOpacity(1.0);
+    paint_5_fill.color = const Color(0xff636F73).withAlpha(255);
     canvas.drawPath(path_5, paint_5_fill);
   }
 

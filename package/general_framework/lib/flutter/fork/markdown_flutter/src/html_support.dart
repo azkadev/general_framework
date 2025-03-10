@@ -58,8 +58,7 @@ class HtmlElement extends m.Element {
   final String textContent;
 
   /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
-  HtmlElement(String tag, List<m.Node>? children, this.textContent)
-      : super(tag, children);
+  HtmlElement(super.tag, super.children, this.textContent);
 }
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer

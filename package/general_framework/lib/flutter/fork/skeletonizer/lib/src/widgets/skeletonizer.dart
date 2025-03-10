@@ -218,7 +218,7 @@ class SkeletonizerGeneralFrameworkState
             ? const SkeletonizerGeneralFrameworkConfigData.dark(
                 effect: ShimmerEffect(
                   //
-                  // baseColor: context.theme.dialogBackgroundColor.withOpacity(0.85),
+                  // baseColor: context.theme.dialogBackgroundColor.withAlpha(255 / 0.85),
                   // highlightColor: context.theme.indicatorColor,
 
                   baseColor: Color.fromARGB(255, 20, 26, 20),
