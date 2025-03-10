@@ -48,71 +48,68 @@ dev_dependencies:
   flutter_lints: '^5.0.0'
   msix: '^3.16.7'
 flutter:
-  assets: 
-    - packages/general_framework/assets/images/characters/abc-warriors-characters/
-    - packages/general_framework/assets/images/characters/adventure-time-cartoon/
-    - packages/general_framework/assets/images/characters/animation-characters/
-    - packages/general_framework/assets/images/characters/bt21/
-    - packages/general_framework/assets/images/characters/cinema-symbols/
-    - packages/general_framework/assets/images/characters/dc-characters/
-    - packages/general_framework/assets/images/characters/futurama/
-    - packages/general_framework/assets/images/characters/gaming/
-    - packages/general_framework/assets/images/characters/houses-of-game-of-thrones/
-    - packages/general_framework/assets/images/characters/marvel-characters/
-    - packages/general_framework/assets/images/characters/movie-characters/
-    - packages/general_framework/assets/images/characters/naruto/
-    - packages/general_framework/assets/images/characters/other/
-    - packages/general_framework/assets/images/characters/star-trek-movie/
-    - packages/general_framework/assets/images/characters/star-wars-movie/
-    - packages/general_framework/assets/images/characters/steven-universe/
-    - packages/general_framework/assets/images/characters/the-matrix/
-    - packages/general_framework/assets/images/characters/the-simpsons-movie/
-    # Flags SVG images
-    - packages/general_framework/assets/images/logos/flags/
-    # Logos SVG images
-    - packages/general_framework/assets/images/logos/adobe/
-    - packages/general_framework/assets/images/logos/apple/
-    - packages/general_framework/assets/images/logos/browsers/
-    - packages/general_framework/assets/images/logos/cinema/
-    - packages/general_framework/assets/images/logos/clothing-brands/
-    - packages/general_framework/assets/images/logos/cloud-storage/
-    - packages/general_framework/assets/images/logos/creative-software/
-    - packages/general_framework/assets/images/logos/crypto-currency/
-    - packages/general_framework/assets/images/logos/eating-places/
-    - packages/general_framework/assets/images/logos/ecommerce/
-    - packages/general_framework/assets/images/logos/education/
-    - packages/general_framework/assets/images/logos/enterprise/
-    - packages/general_framework/assets/images/logos/google-services/
-    - packages/general_framework/assets/images/logos/hardware/
-    - packages/general_framework/assets/images/logos/hosting/
-    - packages/general_framework/assets/images/logos/icons8/
-    - packages/general_framework/assets/images/logos/marketing/
-    - packages/general_framework/assets/images/logos/messengers/
-    - packages/general_framework/assets/images/logos/microsoft/
-    - packages/general_framework/assets/images/logos/military-symbols/
-    - packages/general_framework/assets/images/logos/music/
-    - packages/general_framework/assets/images/logos/networks/
-    - packages/general_framework/assets/images/logos/other/
-    - packages/general_framework/assets/images/logos/photo-and-video/
-    - packages/general_framework/assets/images/logos/publishing/
-    - packages/general_framework/assets/images/logos/search-engines/
-    - packages/general_framework/assets/images/logos/social-bookmarking/
-    - packages/general_framework/assets/images/logos/social-media/
-    - packages/general_framework/assets/images/logos/software-development/
-    - packages/general_framework/assets/images/logos/sports/
-    - packages/general_framework/assets/images/logos/streaming/
-    - packages/general_framework/assets/images/logos/transport/
-    - packages/general_framework/assets/images/logos/travel/
-    - packages/general_framework/assets/images/logos/utilities/
-    - packages/general_framework/assets/images/logos/video-games/
-    # Popular SVG images
-    - packages/general_framework/assets/images/popular/common-actions/
-    - packages/general_framework/assets/images/popular/documents-and-folders/
-    - packages/general_framework/assets/images/popular/other/
-    - packages/general_framework/assets/images/popular/settings/
-    - packages/general_framework/assets/images/popular/social-media/
-    - packages/general_framework/assets/images/popular/status/
-    - packages/general_framework/assets/images/popular/website-sections/
+  assets:
+    - 'packages/general_framework/assets/images/characters/abc-warriors-characters/'
+    - 'packages/general_framework/assets/images/characters/adventure-time-cartoon/'
+    - 'packages/general_framework/assets/images/characters/animation-characters/'
+    - 'packages/general_framework/assets/images/characters/bt21/'
+    - 'packages/general_framework/assets/images/characters/cinema-symbols/'
+    - 'packages/general_framework/assets/images/characters/dc-characters/'
+    - 'packages/general_framework/assets/images/characters/futurama/'
+    - 'packages/general_framework/assets/images/characters/gaming/'
+    - 'packages/general_framework/assets/images/characters/houses-of-game-of-thrones/'
+    - 'packages/general_framework/assets/images/characters/marvel-characters/'
+    - 'packages/general_framework/assets/images/characters/movie-characters/'
+    - 'packages/general_framework/assets/images/characters/naruto/'
+    - 'packages/general_framework/assets/images/characters/other/'
+    - 'packages/general_framework/assets/images/characters/star-trek-movie/'
+    - 'packages/general_framework/assets/images/characters/star-wars-movie/'
+    - 'packages/general_framework/assets/images/characters/steven-universe/'
+    - 'packages/general_framework/assets/images/characters/the-matrix/'
+    - 'packages/general_framework/assets/images/characters/the-simpsons-movie/'
+    - 'packages/general_framework/assets/images/logos/flags/'
+    - 'packages/general_framework/assets/images/logos/adobe/'
+    - 'packages/general_framework/assets/images/logos/apple/'
+    - 'packages/general_framework/assets/images/logos/browsers/'
+    - 'packages/general_framework/assets/images/logos/cinema/'
+    - 'packages/general_framework/assets/images/logos/clothing-brands/'
+    - 'packages/general_framework/assets/images/logos/cloud-storage/'
+    - 'packages/general_framework/assets/images/logos/creative-software/'
+    - 'packages/general_framework/assets/images/logos/crypto-currency/'
+    - 'packages/general_framework/assets/images/logos/eating-places/'
+    - 'packages/general_framework/assets/images/logos/ecommerce/'
+    - 'packages/general_framework/assets/images/logos/education/'
+    - 'packages/general_framework/assets/images/logos/enterprise/'
+    - 'packages/general_framework/assets/images/logos/google-services/'
+    - 'packages/general_framework/assets/images/logos/hardware/'
+    - 'packages/general_framework/assets/images/logos/hosting/'
+    - 'packages/general_framework/assets/images/logos/icons8/'
+    - 'packages/general_framework/assets/images/logos/marketing/'
+    - 'packages/general_framework/assets/images/logos/messengers/'
+    - 'packages/general_framework/assets/images/logos/microsoft/'
+    - 'packages/general_framework/assets/images/logos/military-symbols/'
+    - 'packages/general_framework/assets/images/logos/music/'
+    - 'packages/general_framework/assets/images/logos/networks/'
+    - 'packages/general_framework/assets/images/logos/other/'
+    - 'packages/general_framework/assets/images/logos/photo-and-video/'
+    - 'packages/general_framework/assets/images/logos/publishing/'
+    - 'packages/general_framework/assets/images/logos/search-engines/'
+    - 'packages/general_framework/assets/images/logos/social-bookmarking/'
+    - 'packages/general_framework/assets/images/logos/social-media/'
+    - 'packages/general_framework/assets/images/logos/software-development/'
+    - 'packages/general_framework/assets/images/logos/sports/'
+    - 'packages/general_framework/assets/images/logos/streaming/'
+    - 'packages/general_framework/assets/images/logos/transport/'
+    - 'packages/general_framework/assets/images/logos/travel/'
+    - 'packages/general_framework/assets/images/logos/utilities/'
+    - 'packages/general_framework/assets/images/logos/video-games/'
+    - 'packages/general_framework/assets/images/popular/common-actions/'
+    - 'packages/general_framework/assets/images/popular/documents-and-folders/'
+    - 'packages/general_framework/assets/images/popular/other/'
+    - 'packages/general_framework/assets/images/popular/settings/'
+    - 'packages/general_framework/assets/images/popular/social-media/'
+    - 'packages/general_framework/assets/images/popular/status/'
+    - 'packages/general_framework/assets/images/popular/website-sections/'
   fonts:
     - family: 'AntDesign'
       fonts:
@@ -158,5 +155,7 @@ flutter:
         - asset: 'packages/general_framework/assets/fonts/TeenyIcons.ttf'
     - family: 'ZondIcons'
       fonts:
-        - asset: 'packages/general_framework/assets/fonts/ZondIcons.ttf' 
-issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC' 
+        - asset: 'packages/general_framework/assets/fonts/ZondIcons.ttf'
+issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
+project:
+  type: ''
