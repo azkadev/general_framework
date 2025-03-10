@@ -4,12 +4,13 @@ import '../config/markdown_generator.dart';
 
 ///use [ProxyRichText] to give `textScaleFactor` a default value
 class ProxyRichText extends StatelessWidget {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final InlineSpan textSpan;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final RichTextBuilder? richTextBuilder;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const ProxyRichText(
     this.textSpan, {
     Key? key,

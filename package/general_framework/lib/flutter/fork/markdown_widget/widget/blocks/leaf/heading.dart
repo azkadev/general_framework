@@ -10,12 +10,13 @@ import '../../widget_visitor.dart';
 ///An ATX heading consists of a string of characters
 ///A setext heading consists of one or more lines of text
 class HeadingNode extends ElementNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final HeadingConfig headingConfig;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final WidgetVisitor visitor;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   HeadingNode(this.headingConfig, this.visitor);
 
   @override
@@ -40,7 +41,7 @@ class HeadingNode extends ElementNode {
     );
   }
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   HeadingNode copy({HeadingConfig? headingConfig}) {
     final node = HeadingNode(headingConfig ?? this.headingConfig, visitor);
     for (var e in children) {
@@ -78,41 +79,41 @@ class HeadingDivider {
   ///the height of divider
   final double height;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   HeadingDivider(
       {this.space = 4.8,
       this.color = const Color(0xFFd7dde3),
       this.height = 1.0});
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   HeadingDivider copy({Color? color, double? space, double? height}) =>
       HeadingDivider(
           color: color ?? this.color,
           space: space ?? this.space,
           height: height ?? this.height);
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static HeadingDivider h1 = HeadingDivider();
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static HeadingDivider h2 = HeadingDivider(space: 3.6);
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static HeadingDivider h3 = HeadingDivider(space: 2.4);
 }
 
 ///config class for heading
 abstract class HeadingConfig implements LeafConfig {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const HeadingConfig();
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   TextStyle get style;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   HeadingDivider? get divider => null;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   EdgeInsets get padding => EdgeInsets.only(top: 8, bottom: 4);
 }
 
@@ -121,7 +122,7 @@ class H1Config extends HeadingConfig {
   @override
   final TextStyle style;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const H1Config(
       {this.style = const TextStyle(
         fontSize: 32,
@@ -133,7 +134,7 @@ class H1Config extends HeadingConfig {
   @override
   String get tag => MarkdownTag.h1.name;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static H1Config get darkConfig => const H1Config(
           style: TextStyle(
         fontSize: 32,
@@ -151,7 +152,7 @@ class H2Config extends HeadingConfig {
   @override
   final TextStyle style;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const H2Config(
       {this.style = const TextStyle(
         fontSize: 24,
@@ -163,7 +164,7 @@ class H2Config extends HeadingConfig {
   @override
   String get tag => MarkdownTag.h2.name;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static H2Config get darkConfig => const H2Config(
           style: TextStyle(
         fontSize: 24,
@@ -181,7 +182,7 @@ class H3Config extends HeadingConfig {
   @override
   final TextStyle style;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const H3Config(
       {this.style = const TextStyle(
         fontSize: 20,
@@ -193,7 +194,7 @@ class H3Config extends HeadingConfig {
   @override
   String get tag => MarkdownTag.h3.name;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static H3Config get darkConfig => const H3Config(
           style: TextStyle(
         fontSize: 20,
@@ -211,7 +212,7 @@ class H4Config extends HeadingConfig {
   @override
   final TextStyle style;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const H4Config(
       {this.style = const TextStyle(
         fontSize: 16,
@@ -223,7 +224,7 @@ class H4Config extends HeadingConfig {
   @override
   String get tag => MarkdownTag.h4.name;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static H4Config get darkConfig => const H4Config(
           style: TextStyle(
         fontSize: 16,
@@ -238,7 +239,7 @@ class H5Config extends HeadingConfig {
   @override
   final TextStyle style;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const H5Config(
       {this.style = const TextStyle(
         fontSize: 16,
@@ -250,7 +251,7 @@ class H5Config extends HeadingConfig {
   @override
   String get tag => MarkdownTag.h5.name;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static H5Config get darkConfig => const H5Config(
           style: TextStyle(
         fontSize: 16,
@@ -265,7 +266,7 @@ class H6Config extends HeadingConfig {
   @override
   final TextStyle style;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const H6Config(
       {this.style = const TextStyle(
         fontSize: 16,
@@ -277,7 +278,7 @@ class H6Config extends HeadingConfig {
   @override
   String get tag => MarkdownTag.h6.name;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static H6Config get darkConfig => const H6Config(
           style: TextStyle(
         fontSize: 16,

@@ -19,7 +19,7 @@ class TocController {
   ValueCallback<int>? _onIndexChangedCallback;
   ValueCallback<List<Toc>>? _onListChanged;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   void setTocList(List<Toc> list) {
     _index2toc.clear();
     for (final toc in list) {
@@ -32,10 +32,10 @@ class TocController {
     _jumpToIndexCallback = value;
   }
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   List<Toc> get tocList => List.unmodifiable(_index2toc.values);
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   void dispose() {
     _index2toc.clear();
     _onIndexChangedCallback = null;
@@ -43,12 +43,12 @@ class TocController {
     _onListChanged = null;
   }
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   void jumpToIndex(int index) {
     _jumpToIndexCallback?.call(index);
   }
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   void onIndexChanged(int index) {
     _onIndexChangedCallback?.call(index);
   }
@@ -65,7 +65,7 @@ class Toc {
   ///index of [TocController.tocList]
   final int selfIndex;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   Toc({
     required this.node,
     this.widgetIndex = 0,
@@ -90,7 +90,7 @@ class TocWidget extends StatefulWidget {
   ///use [itemBuilder] to return a custom widget
   final TocItemBuilder? itemBuilder;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const TocWidget({
     Key? key,
     required this.controller,
@@ -214,7 +214,7 @@ class TocItemBuilderData {
   ///use [refreshIndexCallback] to change [currentIndex]
   final ValueChanged<int> refreshIndexCallback;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   TocItemBuilderData(
       this.index, this.toc, this.currentIndex, this.refreshIndexCallback);
 }

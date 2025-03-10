@@ -7,10 +7,10 @@ import '../../span_node.dart';
 ///
 ///A sequence of non-blank lines that cannot be interpreted as other kinds of blocks forms a paragraph
 class ParagraphNode extends ElementNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final PConfig pConfig;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   ParagraphNode(this.pConfig);
 
   @override
@@ -28,13 +28,13 @@ class ParagraphNode extends ElementNode {
 
 ///config class for paragraphs, tag: p
 class PConfig implements LeafConfig {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final TextStyle textStyle;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const PConfig({this.textStyle = const TextStyle(fontSize: 16)});
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static PConfig get darkConfig =>
       PConfig(textStyle: const TextStyle(fontSize: 16));
 

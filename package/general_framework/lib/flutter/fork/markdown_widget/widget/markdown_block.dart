@@ -18,7 +18,7 @@ class MarkdownBlock extends StatelessWidget {
   ///to generator markdown data
   final MarkdownGenerator? generator;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const MarkdownBlock({
     Key? key,
     required this.data,

@@ -10,12 +10,13 @@ import '../../widget_visitor.dart';
 ///
 /// A block quote marker, optionally preceded by up to three spaces of indentation
 class BlockquoteNode extends ElementNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final BlockquoteConfig config;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final WidgetVisitor visitor;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   BlockquoteNode(this.config, this.visitor);
 
   @override
@@ -40,18 +41,22 @@ class BlockquoteNode extends ElementNode {
 
 ///config class for Block quotes, tag: blockquote
 class BlockquoteConfig implements ContainerConfig {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final Color sideColor;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final Color textColor;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final double sideWith;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final EdgeInsets padding;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final EdgeInsets margin;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const BlockquoteConfig({
     this.sideColor = const Color(0xffd0d7de),
     this.textColor = const Color(0xff57606a),
@@ -60,9 +65,9 @@ class BlockquoteConfig implements ContainerConfig {
     this.margin = const EdgeInsets.fromLTRB(0, 8, 0, 8),
   });
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static BlockquoteConfig get darkConfig =>
-      BlockquoteConfig(textColor: const Color(0xffd0d7de));
+      const BlockquoteConfig(textColor: Color(0xffd0d7de));
 
   @nonVirtual
   @override

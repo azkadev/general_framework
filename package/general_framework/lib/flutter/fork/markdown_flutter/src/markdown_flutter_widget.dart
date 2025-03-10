@@ -124,7 +124,7 @@ MarkdownGenerator markdownFlutterGeneratorConfig() {
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 class CustomCode extends CodeNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   CustomCode(super.text, super.codeConfig);
 
   @override
@@ -137,23 +137,31 @@ class CustomCode extends CodeNode {
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 class MarkdownFlutterWidget extends StatelessWidget {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final String data;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final EdgeInsetsGeometry? padding;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final bool shrinkWrap;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final bool selectable;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final MarkdownConfig? config;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final MarkdownGenerator? markdownGeneratorConfig;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final ScrollPhysics? physics;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final TocController? tocController;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const MarkdownFlutterWidget({
     super.key,
     this.padding,

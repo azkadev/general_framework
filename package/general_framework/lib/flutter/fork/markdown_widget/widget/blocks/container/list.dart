@@ -12,18 +12,22 @@ import '../leaf/paragraph.dart';
 ///
 /// ordered list and unordered widget
 class UlOrOLNode extends ElementNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final String tag;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final ListConfig config;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final Map<String, String> attribute;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   late int start;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final WidgetVisitor visitor;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   UlOrOLNode(this.tag, this.attribute, this.config, this.visitor) {
     start = (int.tryParse(attribute['start'] ?? '') ?? 1) - 1;
   }
@@ -66,26 +70,27 @@ class UlOrOLNode extends ElementNode {
 /// A list is a sequence of one or more list items of the same type.
 /// The list items may be separated by any number of blank lines.
 class ListNode extends ElementNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final MarkdownConfig config;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final WidgetVisitor visitor;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   ListNode(this.config, this.visitor);
 
   int _index = 0;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   int get index => _index;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   bool get isOrdered {
     final p = parent;
     return p != null && p is UlOrOLNode && p.tag == MarkdownTag.ol.name;
   }
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   int get depth {
     int d = 0;
     SpanNode? p = parent;
@@ -147,7 +152,7 @@ class ListNode extends ElementNode {
     );
   }
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   bool get isCheckbox {
     return children.isNotEmpty && children.first is InputNode;
   }
@@ -167,7 +172,7 @@ class ListConfig implements ContainerConfig {
   ///the marker widget for list
   final ListMarker? marker;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const ListConfig({
     this.marginLeft = 32.0,
     this.marginBottom = 4.0,

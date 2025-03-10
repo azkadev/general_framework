@@ -7,34 +7,46 @@ import '../../widget_visitor.dart';
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 class TableConfig implements ContainerConfig {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final Map<int, TableColumnWidth>? columnWidths;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final TableColumnWidth? defaultColumnWidth;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final TextDirection? textDirection;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final TableBorder? border;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final TableCellVerticalAlignment? defaultVerticalAlignment;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final TextBaseline? textBaseline;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final Decoration? headerRowDecoration;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final Decoration? bodyRowDecoration;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final TextStyle? headerStyle;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final TextStyle? bodyStyle;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final EdgeInsets headPadding;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final EdgeInsets bodyPadding;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final WidgetWrapper? wrapper;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const TableConfig({
     this.columnWidths,
     this.defaultColumnWidth,
@@ -58,13 +70,13 @@ class TableConfig implements ContainerConfig {
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 class TableNode extends ElementNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final MarkdownConfig config;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   TableNode(this.config);
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   TableConfig get tbConfig => config.table;
 
   @override
@@ -104,15 +116,16 @@ class TableNode extends ElementNode {
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 class THeadNode extends ElementNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final MarkdownConfig config;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final WidgetVisitor visitor;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   THeadNode(this.config, this.visitor);
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   List<TableRow> get rows => List.generate(children.length, (index) {
         final trChild = children[index] as TrNode;
         return TableRow(
@@ -130,7 +143,7 @@ class THeadNode extends ElementNode {
             }));
       });
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   int get cellCount => (children.first as TrNode).children.length;
 
   @override
@@ -142,15 +155,16 @@ class THeadNode extends ElementNode {
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 class TBodyNode extends ElementNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final MarkdownConfig config;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final WidgetVisitor visitor;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   TBodyNode(this.config, this.visitor);
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   List<TableRow> buildRows(int cellCount) {
     return List.generate(children.length, (index) {
       final child = children[index] as TrNode;
@@ -191,12 +205,13 @@ class ThNode extends ElementNode {
 
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 class TdNode extends ElementNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final Map<String, String> attribute;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final WidgetVisitor visitor;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   TdNode(this.attribute, this.visitor);
 
   @override

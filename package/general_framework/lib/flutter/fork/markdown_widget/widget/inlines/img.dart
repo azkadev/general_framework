@@ -4,17 +4,19 @@ import '../../markdown_widget.dart';
 
 ///Tag: [MarkdownTag.img]
 class ImageNode extends SpanNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final Map<String, String> attributes;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final MarkdownConfig config;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final WidgetVisitor visitor;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   ImgConfig get imgConfig => config.img;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   ImageNode(this.attributes, this.config, this.visitor);
 
   @override
@@ -51,7 +53,7 @@ class ImageNode extends SpanNode {
         child: imgConfig.builder?.call(imageUrl, attributes) ?? result);
   }
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   Widget buildErrorImage(String url, String alt, Object? error) {
     return ProxyRichText(
       TextSpan(children: [
@@ -83,7 +85,7 @@ class ImgConfig implements InlineConfig {
   ///use [errorBuilder] to return a custom error image
   final ErrorImgBuilder? errorBuilder;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const ImgConfig({this.builder, this.errorBuilder});
 
   @nonVirtual
@@ -93,10 +95,10 @@ class ImgConfig implements InlineConfig {
 
 ///show image with [InteractiveViewer]
 class ImageViewer extends StatelessWidget {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final Widget child;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const ImageViewer({Key? key, required this.child}) : super(key: key);
 
   @override
@@ -140,5 +142,6 @@ class ImageViewer extends StatelessWidget {
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 typedef ImgBuilder = Widget Function(
     String url, Map<String, String> attributes);
+
 /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
 typedef ErrorImgBuilder = Widget Function(String url, String alt, Object error);

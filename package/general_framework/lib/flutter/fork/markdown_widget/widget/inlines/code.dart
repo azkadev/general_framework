@@ -7,12 +7,13 @@ import '../span_node.dart';
 ///Tag:  [MarkdownTag.code]
 ///the code textSpan
 class CodeNode extends ElementNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final CodeConfig codeConfig;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final String text;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   CodeNode(this.text, this.codeConfig);
 
   @override
@@ -24,14 +25,14 @@ class CodeNode extends ElementNode {
 
 ///config class for code, tag: code
 class CodeConfig implements InlineConfig {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final TextStyle style;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const CodeConfig(
       {this.style = const TextStyle(backgroundColor: Color(0xCCeff1f3))});
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static CodeConfig get darkConfig =>
       CodeConfig(style: const TextStyle(backgroundColor: Color(0xCC555555)));
 

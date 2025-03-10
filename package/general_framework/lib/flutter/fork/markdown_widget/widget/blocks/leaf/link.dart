@@ -12,12 +12,13 @@ import '../../span_node.dart';
 ///link will always be wrapped by other tags, such as [MarkdownTag.p]
 
 class LinkNode extends ElementNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final Map<String, String> attributes;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final LinkConfig linkConfig;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   LinkNode(this.attributes, this.linkConfig);
 
   @override
@@ -51,12 +52,13 @@ class LinkNode extends ElementNode {
 
 ///config class for link, tag: a
 class LinkConfig implements LeafConfig {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final TextStyle style;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final ValueCallback<String>? onTap;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const LinkConfig(
       {this.style = const TextStyle(
           color: Color(0xff0969da), decoration: TextDecoration.underline),

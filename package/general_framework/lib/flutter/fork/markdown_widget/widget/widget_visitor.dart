@@ -37,10 +37,10 @@ class WidgetVisitor implements m.NodeVisitor {
   ///use [splitRegExp] to split markdown data
   final RegExp? splitRegExp;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   static RegExp defaultSplitRegExp = RegExp(r'(\r?\n)|(\r)');
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   WidgetVisitor({
     MarkdownConfig? config,
     this.generators = const [],
@@ -147,7 +147,7 @@ class WidgetVisitor implements m.NodeVisitor {
         ImageNode(e.attributes, config, visitor),
   };
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   SpanNode getNodeByElement(m.Element element, MarkdownConfig config) {
     return _tag2node[element.tag]?.call(element, config, this) ??
         textGenerator?.call(element, config, this) ??
@@ -168,12 +168,13 @@ typedef SpanNodeAcceptCallback = void Function(SpanNode node, int nodeIndex);
 
 ///use [SpanNodeGeneratorWithTag] that you can custom your own [SpanNodeGenerator] with tag
 class SpanNodeGeneratorWithTag {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final String tag;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final SpanNodeGenerator generator;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   SpanNodeGeneratorWithTag({required this.tag, required this.generator});
 }
 

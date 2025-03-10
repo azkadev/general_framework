@@ -6,12 +6,13 @@ import '../span_node.dart';
 
 ///Tag: [MarkdownTag.input]
 class InputNode extends SpanNode {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final Map<String, String> attr;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final MarkdownConfig config;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   InputNode(this.attr, this.config);
 
   @override
@@ -38,10 +39,10 @@ typedef CheckBoxBuilder = Widget Function(bool checked);
 
 ///config class for checkbox, tag: input
 class CheckBoxConfig implements InlineConfig {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final CheckBoxBuilder? builder;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const CheckBoxConfig({this.builder});
 
   @nonVirtual
@@ -51,10 +52,10 @@ class CheckBoxConfig implements InlineConfig {
 
 ///the check box widget
 class MCheckBox extends StatelessWidget {
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final bool checked;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   const MCheckBox({Key? key, required this.checked}) : super(key: key);
 
   @override

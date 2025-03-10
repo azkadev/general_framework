@@ -57,7 +57,7 @@ class HtmlElement extends m.Element {
   @override
   final String textContent;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   HtmlElement(String tag, List<m.Node>? children, this.textContent)
       : super(tag, children);
 }
@@ -66,19 +66,21 @@ class HtmlElement extends m.Element {
 class HtmlToSpanVisitor extends TreeVisitor {
   final List<SpanNode> _spans = [];
   final List<SpanNode> _spansStack = [];
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final WidgetVisitor visitor;
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   final TextStyle parentStyle;
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   HtmlToSpanVisitor({
     WidgetVisitor? visitor,
     TextStyle? parentStyle,
   })  : visitor = visitor ?? WidgetVisitor(),
         parentStyle = parentStyle ?? const TextStyle();
 
-/// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
+  /// General Library Documentation Undocument By General Corporation & Global Corporation & General Developer
   List<SpanNode> toVisit(List<h.Node> nodes) {
     _spans.clear();
     for (final node in nodes) {
